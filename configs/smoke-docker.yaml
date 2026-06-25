@@ -1,23 +1,18 @@
-# RootCauseBench — smoke test: one model, one scenario, one attempt.
-# Fast local validation that the harness, Docker image and grader all wire up.
-# Usage: source .env && uv run harbor run -c configs/smoke-docker.yaml
-
+# root-cause-bench — smoke test: one model, one scenario, one attempt.
+# Usage: set -a && source .env && set +a && harbor run -c configs/smoke-docker.yaml -y
 jobs_dir: jobs
 n_attempts: 1
-
-orchestrator:
-  type: local
-  n_concurrent_trials: 1
-  quiet: false
+n_concurrent_trials: 1
+quiet: false
 
 environment:
   type: docker
 
 agents:
   - name: terminus-2
-    model_name: openrouter/anthropic/claude-opus-4.6
+    model_name: openrouter/openai/gpt-4o-mini
 
 datasets:
-  - path: datasets
+  - path: datasets/rootcausebench
     task_names:
-      - rootcausebench/payment-nil-deref-panic
+      - payment-nil-deref-panic
