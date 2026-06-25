@@ -1,0 +1,13 @@
+{
+  "scenario": "transformer-dependency-startup-crash",
+  "root_cause_commit": "8f1116bd26e4901475d935eb2659f8ae2273baab",
+  "first_failing_service": "pipeline-transformer",
+  "blast_radius": [
+    "workflow-engine"
+  ],
+  "remediation": "config-revert",
+  "decoy_deploy_commits": [
+    "defc5b01691d1f6eaa8544cf812715552dc9e1da"
+  ],
+  "notes": "Culprit bumps the protobuf runtime in pipeline-transformer/go.mod, creating a runtime version conflict (duplicate registration / incompatible runtime) that panics on startup -> pipeline-transformer CrashLoopBackOff -> workflow-engine's pipeline-transformer endpoint is unavailable. The fix is to revert the dependency change (config-revert of go.mod/go.sum). TRAP: an innocent '#deps Bump aws-sdk minor' deployed to workflow-engine near onset is a decoy \u2014 it is a dependency bump too, but it touches a different service and does not cause the protobuf panic. The right SHA is the pipeline-transformer protobuf bump, not the aws-sdk bump."
+}

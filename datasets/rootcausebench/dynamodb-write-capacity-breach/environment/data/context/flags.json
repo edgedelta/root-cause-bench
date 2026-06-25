@@ -1,0 +1,9 @@
+[
+  {
+    "timestamp": "2026-06-22T17:19:10Z",
+    "flag": "memory_compaction_v2",
+    "service": "ai-memory-svc",
+    "change": "off->on",
+    "actor": "deepak.rao"
+  }
+]

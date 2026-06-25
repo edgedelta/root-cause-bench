@@ -1,0 +1,23 @@
+[
+  {
+    "signature": "failed to deserialize metric envelope: missing required field 'meta'",
+    "service": "metric-ingestor-1",
+    "count": 22,
+    "delta_vs_baseline": "+22",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "metric-ingestor-1-iq ApproximateAgeOfOldestMessage rising",
+    "service": "kafka-metric-ingestor",
+    "count": 8,
+    "delta_vs_baseline": "+8",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "decoded <N> metric envelopes from metric-ingestor-1-iq",
+    "service": "metric-ingestor-1",
+    "count": 40,
+    "delta_vs_baseline": "-980",
+    "sentiment": "neutral"
+  }
+]

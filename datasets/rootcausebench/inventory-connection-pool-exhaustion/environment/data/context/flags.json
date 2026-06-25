@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": "2026-06-20T13:49:20Z",
+    "flag": "inventory_read_replica_routing",
+    "service": "inventoryservice",
+    "change": "off->on",
+    "actor": "priya.nair"
+  },
+  {
+    "timestamp": "2026-06-20T12:10:00Z",
+    "flag": "cart_async_reserve",
+    "service": "cartservice",
+    "change": "off->on",
+    "actor": "amir.haddad"
+  }
+]

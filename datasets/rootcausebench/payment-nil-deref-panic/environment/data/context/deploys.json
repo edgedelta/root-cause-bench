@@ -1,0 +1,14 @@
+[
+  {
+    "timestamp": "2026-06-19T10:22:00Z",
+    "service": "paymentservice",
+    "commit_sha": "5642d6b17f39cc430c2a48ca705cbab33002d03b",
+    "version": "v2026.06.19-1021"
+  },
+  {
+    "timestamp": "2026-06-19T09:15:00Z",
+    "service": "frontend",
+    "commit_sha": "b3318c4dc3099c7aba93b0ed83168f61128fb0ee",
+    "version": "v2026.06.19-0915"
+  }
+]

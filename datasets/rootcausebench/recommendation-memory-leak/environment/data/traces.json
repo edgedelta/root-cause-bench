@@ -1,0 +1,33 @@
+[
+  {
+    "trace_id": "dde5fd0a8d36e9c4e6c982a37b4ee4c1",
+    "span_id": "a1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "GET /",
+    "start": "2026-06-21T10:44:10Z",
+    "duration_ms": 95,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "b1",
+    "parent_id": "a1",
+    "service": "recommendationservice",
+    "name": "ListRecommendations",
+    "start": "2026-06-21T10:44:10Z",
+    "duration_ms": 12,
+    "status": "ERROR",
+    "error": "connection refused (pod restarting)"
+  },
+  {
+    "trace_id": "40839d710ac78f1326d3c734d2d77c5b",
+    "span_id": "z1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "GET /",
+    "start": "2026-06-21T08:20:00Z",
+    "duration_ms": 88,
+    "status": "OK"
+  }
+]

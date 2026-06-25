@@ -1,0 +1,10 @@
+{
+  "service": "pipeline-transformer",
+  "metric": "pod_restart_total",
+  "threshold": 3,
+  "observed": 9,
+  "fired_at": "2026-06-23T14:53:00Z",
+  "severity": "high",
+  "monitor": "K8s Pod Startup Failure Monitor",
+  "summary": "pipeline-transformer in CrashLoopBackOff; startup panic loading protobuf runtime: version conflict (proto: duplicate registration / incompatible runtime)"
+}

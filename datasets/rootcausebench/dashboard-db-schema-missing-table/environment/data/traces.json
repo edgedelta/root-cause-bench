@@ -1,0 +1,23 @@
+[
+  {
+    "trace_id": "e962901223eba15d6a291819ae6bdd6b",
+    "span_id": "a1",
+    "parent_id": null,
+    "service": "dashboard-svc",
+    "name": "GET /api/v1/dashboard/favorites",
+    "start": "2026-06-22T11:25:08Z",
+    "duration_ms": 18,
+    "status": "ERROR",
+    "error": "relation \"dashboard_favorites\" does not exist"
+  },
+  {
+    "trace_id": "f152f9df7e3a8715adb6afc8723744aa",
+    "span_id": "z1",
+    "parent_id": null,
+    "service": "dashboard-svc",
+    "name": "GET /api/v1/dashboard/",
+    "start": "2026-06-22T11:08:00Z",
+    "duration_ms": 24,
+    "status": "OK"
+  }
+]

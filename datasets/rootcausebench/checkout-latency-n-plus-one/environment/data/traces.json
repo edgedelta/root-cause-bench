@@ -1,0 +1,502 @@
+[
+  {
+    "trace_id": "4cc84c02d84493ebb3627463cd734b40",
+    "span_id": "a1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "POST /api/checkout",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 4180,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "b1",
+    "parent_id": "a1",
+    "service": "checkoutservice",
+    "name": "PlaceOrder",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 4090,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c0",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 80.6,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c1",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 65.9,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c2",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 80.1,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c3",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 86.4,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c4",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 71.1,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c5",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 63.5,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c6",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 64.7,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c7",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 67.2,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c8",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 85.6,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c9",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 60.0,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c10",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 88.7,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c11",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 71.6,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c12",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 76.0,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c13",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 73.9,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c14",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 88.2,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c15",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 84.8,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c16",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 83.4,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c17",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 61.3,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c18",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 84.3,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c19",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 63.8,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c20",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 66.4,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c21",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 65.9,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c22",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 64.3,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c23",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 62.9,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c24",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 83.6,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c25",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 81.6,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c26",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 80.5,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c27",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 78.8,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c28",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 63.8,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c29",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 60.9,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c30",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 65.6,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c31",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 94.8,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c32",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 70.2,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c33",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 63.1,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c34",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 64.7,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c35",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 83.0,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c36",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 79.2,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c37",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 84.8,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c38",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 64.3,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c39",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 83.2,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c40",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 85.9,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c41",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 89.6,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c42",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 92.9,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c43",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 64.5,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c44",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 83.7,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c45",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 69.3,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c46",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:02:42Z",
+    "duration_ms": 60.0,
+    "status": "OK"
+  },
+  {
+    "trace_id": "7fe2b44dafb7c0e459763e95373926c7",
+    "span_id": "z1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "POST /api/checkout",
+    "start": "2026-06-18T14:10:00Z",
+    "duration_ms": 230,
+    "status": "OK"
+  }
+]

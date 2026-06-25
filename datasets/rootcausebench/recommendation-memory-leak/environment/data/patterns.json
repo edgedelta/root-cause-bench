@@ -1,0 +1,37 @@
+[
+  {
+    "signature": "OOMKilled: container exceeded memory limit <N>Mi",
+    "service": "recommendationservice",
+    "count": 3,
+    "delta_vs_baseline": "+3",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "GC pause <N>ms; heap growing, forced GC did not reclaim",
+    "service": "recommendationservice",
+    "count": 11,
+    "delta_vs_baseline": "+11",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "recommendation rail failed to render: upstream unavailable",
+    "service": "frontend",
+    "count": 84,
+    "delta_vs_baseline": "+84",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "served recommendations",
+    "service": "recommendationservice",
+    "count": 1200,
+    "delta_vs_baseline": "-40",
+    "sentiment": "neutral"
+  },
+  {
+    "signature": "starting recommendationservice <version>",
+    "service": "recommendationservice",
+    "count": 4,
+    "delta_vs_baseline": "+3",
+    "sentiment": "neutral"
+  }
+]

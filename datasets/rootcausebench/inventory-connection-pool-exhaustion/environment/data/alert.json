@@ -1,0 +1,10 @@
+{
+  "service": "inventoryservice",
+  "metric": "db_pool_wait_seconds_p99",
+  "threshold": 0.5,
+  "observed": 9.8,
+  "fired_at": "2026-06-20T13:53:00Z",
+  "severity": "critical",
+  "monitor": "inventory-db-pool-saturation",
+  "summary": "inventoryservice DB pool acquire wait p99 above 0.5s; multiple upstreams timing out"
+}

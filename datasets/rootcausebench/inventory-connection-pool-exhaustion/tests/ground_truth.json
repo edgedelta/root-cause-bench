@@ -1,0 +1,16 @@
+{
+  "scenario": "inventory-connection-pool-exhaustion",
+  "root_cause_commit": "13ac92a16b155fd29f379d4eab35ec82c976c44f",
+  "first_failing_service": "inventoryservice",
+  "blast_radius": [
+    "cartservice",
+    "shippingservice",
+    "frontend"
+  ],
+  "remediation": "rollback",
+  "decoy_deploy_commits": [
+    "ba9484cecab7dc64c69915a99277f714884b326d",
+    "76005bb9118b9af36cf360279e3ec2ef8442e1a9"
+  ],
+  "notes": "Culprit lowers pgx pool max-conns (50->10) in db.yaml/pool.go. Onset is ~8 min after deploy as the pool saturates under load. The shipping + order deploys and the read_replica_routing flag near onset are decoys."
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "timestamp": "2026-06-22T11:24:00Z",
+    "service": "dashboard-svc",
+    "commit_sha": "4f3740c125c5a9cbcf606e020005d1fe047ba386",
+    "version": "v2026.06.22-1124"
+  },
+  {
+    "timestamp": "2026-06-22T11:24:30Z",
+    "service": "dashboard-svc",
+    "commit_sha": "451b10297064c3cd3cba519ef5ad0ed58ede0a8b",
+    "version": "v2026.06.22-1125"
+  }
+]

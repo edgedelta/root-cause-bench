@@ -1,0 +1,14 @@
+[
+  {
+    "timestamp": "2026-06-23T09:42:00Z",
+    "service": "ai-agent-svc",
+    "commit_sha": "41f4a783a75e53ab9bd5169adaeb2b0413d0d339",
+    "version": "v2026.06.23-0942"
+  },
+  {
+    "timestamp": "2026-06-23T09:42:20Z",
+    "service": "web",
+    "commit_sha": "0422ec79bc772e9d3ee84a27422a5d2874415444",
+    "version": "v2026.06.23-0943"
+  }
+]

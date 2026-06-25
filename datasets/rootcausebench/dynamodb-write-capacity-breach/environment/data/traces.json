@@ -1,0 +1,33 @@
+[
+  {
+    "trace_id": "f36df81cb5b205b4d4a3c6686a7c059f",
+    "span_id": "a1",
+    "parent_id": null,
+    "service": "ai-agent-svc",
+    "name": "PersistThreadMemory",
+    "start": "2026-06-22T17:20:20Z",
+    "duration_ms": 1200,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "b1",
+    "parent_id": "a1",
+    "service": "ai-memory-svc",
+    "name": "PutItem memory-store",
+    "start": "2026-06-22T17:20:20Z",
+    "duration_ms": 1180,
+    "status": "ERROR",
+    "error": "ProvisionedThroughputExceededException"
+  },
+  {
+    "trace_id": "a6f9ac60301a531c89b3050f917a55cd",
+    "span_id": "z1",
+    "parent_id": null,
+    "service": "ai-memory-svc",
+    "name": "BatchWriteItem memory-store",
+    "start": "2026-06-22T16:12:00Z",
+    "duration_ms": 22,
+    "status": "OK"
+  }
+]

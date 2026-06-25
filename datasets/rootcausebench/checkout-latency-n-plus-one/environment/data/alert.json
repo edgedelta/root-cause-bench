@@ -1,0 +1,10 @@
+{
+  "service": "checkoutservice",
+  "metric": "http_server_duration_p99_ms",
+  "threshold": 800,
+  "observed": 4120,
+  "fired_at": "2026-06-18T15:06:00Z",
+  "severity": "critical",
+  "monitor": "checkout-p99-latency",
+  "summary": "checkoutservice p99 latency above 800ms for 3m"
+}

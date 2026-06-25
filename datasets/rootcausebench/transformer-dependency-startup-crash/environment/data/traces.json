@@ -1,0 +1,23 @@
+[
+  {
+    "trace_id": "5b2515a482c89f48697b26c4ca2cddcd",
+    "span_id": "a1",
+    "parent_id": null,
+    "service": "workflow-engine",
+    "name": "ForwardToPipelineTransformer",
+    "start": "2026-06-23T14:51:35Z",
+    "duration_ms": 5,
+    "status": "ERROR",
+    "error": "connection refused"
+  },
+  {
+    "trace_id": "ecb54808a8013e504568663aafed340e",
+    "span_id": "z1",
+    "parent_id": null,
+    "service": "pipeline-transformer",
+    "name": "ProcessBatch",
+    "start": "2026-06-23T14:08:00Z",
+    "duration_ms": 14,
+    "status": "OK"
+  }
+]

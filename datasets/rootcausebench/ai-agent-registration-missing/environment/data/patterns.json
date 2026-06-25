@@ -1,0 +1,23 @@
+[
+  {
+    "signature": "predefined internal agent lookup failed: 'thread-title-determiner' not found",
+    "service": "ai-agent-svc",
+    "count": 20,
+    "delta_vs_baseline": "+20",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "context builder aborted: upstream ai-agent-svc returned 500",
+    "service": "ai-memory-svc",
+    "count": 6,
+    "delta_vs_baseline": "+6",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "AgenticLoopService/runMainLoop completed thread",
+    "service": "ai-agent-svc",
+    "count": 410,
+    "delta_vs_baseline": "-260",
+    "sentiment": "neutral"
+  }
+]

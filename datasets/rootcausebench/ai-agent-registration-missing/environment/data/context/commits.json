@@ -1,0 +1,183 @@
+[
+  {
+    "sha": "0fa0f1195bb6c21bf070fd4be964b0eb75384484",
+    "author": "tunde.okafor",
+    "timestamp": "2026-06-23T09:03:55Z",
+    "message": "#ingest Tune SQS receive batch size logging",
+    "files_changed": [
+      "pkg/ingest/sqs/log.go"
+    ]
+  },
+  {
+    "sha": "65a26b1dc99b627e62133325c5c026153c973105",
+    "author": "priya.nair",
+    "timestamp": "2026-06-23T09:17:50Z",
+    "message": "#misc Fix typo in error message",
+    "files_changed": [
+      "pkg/errors/messages.go"
+    ]
+  },
+  {
+    "sha": "059283c53b7e011125f9955ff8dc40f687ac2459",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-23T09:37:10Z",
+    "message": "#ci Cache go build in CircleCI",
+    "files_changed": [
+      ".circleci/config.yml"
+    ]
+  },
+  {
+    "sha": "0422ec79bc772e9d3ee84a27422a5d2874415444",
+    "author": "priya.nair",
+    "timestamp": "2026-06-23T09:39:20Z",
+    "message": "#web Restyle issue card header",
+    "files_changed": [
+      "web/src/components/IssueCard.tsx"
+    ]
+  },
+  {
+    "sha": "41f4a783a75e53ab9bd5169adaeb2b0413d0d339",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-23T09:40:00Z",
+    "message": "#ai Refactor agent bootstrap",
+    "files_changed": [
+      "ai/src/runtime/bootstrap.ts",
+      "ai/src/runtime/agent_registry.ts"
+    ]
+  },
+  {
+    "sha": "cacad36dd5fce5e42cfae9af0737f2823d38bf25",
+    "author": "sofia.marino",
+    "timestamp": "2026-06-23T10:06:05Z",
+    "message": "#dashboard Update dashboard color palette",
+    "files_changed": [
+      "dashboard-svc/dashboard-frontend/theme.ts"
+    ]
+  },
+  {
+    "sha": "e3eb9054a1f17c98d53e48eae4c494ad8ed11f65",
+    "author": "sofia.marino",
+    "timestamp": "2026-06-23T10:18:52Z",
+    "message": "#docs Update connector setup guide",
+    "files_changed": [
+      "documentation/content/connectors/slack.md"
+    ]
+  },
+  {
+    "sha": "2954791710a6c6a7b002ee74b9f266e3513b33d4",
+    "author": "noah.bergstrom",
+    "timestamp": "2026-06-23T10:26:56Z",
+    "message": "#ai Update prompt template wording",
+    "files_changed": [
+      "ai/src/prompts/system.txt"
+    ]
+  },
+  {
+    "sha": "81bcf1e644523570a4896bf4b150603dbfe40b8b",
+    "author": "tunde.okafor",
+    "timestamp": "2026-06-23T10:30:00Z",
+    "message": "#chore Rotate staging TLS cert",
+    "files_changed": [
+      "deploy/staging/tls.yaml"
+    ]
+  },
+  {
+    "sha": "4f4c63a391c4cbf4e607c66687af9619efb0589a",
+    "author": "tunde.okafor",
+    "timestamp": "2026-06-23T10:30:43Z",
+    "message": "#docs Document feature flag lifecycle",
+    "files_changed": [
+      "documentation/content/flags.md"
+    ]
+  },
+  {
+    "sha": "563edcd9cdf354196c911ed717d152167b8ff750",
+    "author": "carlos.mendez",
+    "timestamp": "2026-06-23T10:33:37Z",
+    "message": "#test Add table tests for CQL parser",
+    "files_changed": [
+      "pkg/cql/parse_test.go"
+    ]
+  },
+  {
+    "sha": "e4b0f52a94064525f223db9ff90c8a15eb2181be",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-23T10:48:41Z",
+    "message": "#admin Add /readyz probe handler",
+    "files_changed": [
+      "api/internal/health/ready.go"
+    ]
+  },
+  {
+    "sha": "34cdc0dd0fee3df022fd29195743966e9ad60925",
+    "author": "tunde.okafor",
+    "timestamp": "2026-06-23T11:03:37Z",
+    "message": "#web Fix tooltip alignment on overview page",
+    "files_changed": [
+      "web/src/components/Tooltip.tsx"
+    ]
+  },
+  {
+    "sha": "bcc5ebcf165d1efbe610d9316c48589a04f20282",
+    "author": "lena.fischer",
+    "timestamp": "2026-06-23T11:08:12Z",
+    "message": "#api Collapse duplicate validation funcs",
+    "files_changed": [
+      "api/internal/validate/validate.go"
+    ]
+  },
+  {
+    "sha": "49c563f6f857152e9b5979fe97a75e21f94ceb63",
+    "author": "carlos.mendez",
+    "timestamp": "2026-06-23T11:31:21Z",
+    "message": "#olapdb Update part GC log verbosity",
+    "files_changed": [
+      "olapdb/src/Storages/PartGCThread.cpp"
+    ]
+  },
+  {
+    "sha": "a254420156122475e7558d64567384b6a5e3a1ed",
+    "author": "lena.fischer",
+    "timestamp": "2026-06-23T11:39:18Z",
+    "message": "#api Add request id to access log",
+    "files_changed": [
+      "api/internal/middleware/reqid.go"
+    ]
+  },
+  {
+    "sha": "ee6500a92af4a65c5db9c50c0021fce865a0c4f0",
+    "author": "noah.bergstrom",
+    "timestamp": "2026-06-23T11:40:09Z",
+    "message": "#web Restyle banner on settings page",
+    "files_changed": [
+      "web/src/pages/Settings.css"
+    ]
+  },
+  {
+    "sha": "588b02ab99affde80ef09f5504f1eccaa9fe733b",
+    "author": "carlos.mendez",
+    "timestamp": "2026-06-23T11:44:31Z",
+    "message": "#transformer Add structured log field service",
+    "files_changed": [
+      "pipeline-transformer/internal/log/fields.go"
+    ]
+  },
+  {
+    "sha": "c66c4942f01e6b75aaf54a1b4e2dbd12d01541d0",
+    "author": "noah.bergstrom",
+    "timestamp": "2026-06-23T11:53:57Z",
+    "message": "#metrics Add histogram for cache hits",
+    "files_changed": [
+      "pkg/cache/metrics.go"
+    ]
+  },
+  {
+    "sha": "eb69a993e40e4027db9d200dd7d46bcb3d8e99aa",
+    "author": "carlos.mendez",
+    "timestamp": "2026-06-23T11:56:26Z",
+    "message": "#k8s Bump resource requests for compactor",
+    "files_changed": [
+      "charts/log-compactor/values.yaml"
+    ]
+  }
+]

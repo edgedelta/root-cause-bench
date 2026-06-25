@@ -1,0 +1,129 @@
+[
+  {
+    "sha": "0422ec79bc772e9d3ee84a27422a5d2874415444",
+    "author": "lena.fischer",
+    "timestamp": "2026-06-19T09:04:55Z",
+    "message": "feat: add structured logging fields to request middleware",
+    "files_changed": [
+      "internal/middleware/log.go"
+    ]
+  },
+  {
+    "sha": "819dfdd9189455012a438072f9e5dc4702247265",
+    "author": "priya.nair",
+    "timestamp": "2026-06-19T09:07:40Z",
+    "message": "ci: cache go build in GitHub Actions",
+    "files_changed": [
+      ".github/workflows/build.yml"
+    ]
+  },
+  {
+    "sha": "b3318c4dc3099c7aba93b0ed83168f61128fb0ee",
+    "author": "carlos.mendez",
+    "timestamp": "2026-06-19T09:26:45Z",
+    "message": "test: increase coverage on retry backoff",
+    "files_changed": [
+      "pkg/retry/backoff_test.go"
+    ]
+  },
+  {
+    "sha": "c59080f7da9dccf5c61a0b0e4949ddfe44ef5198",
+    "author": "lena.fischer",
+    "timestamp": "2026-06-19T09:27:02Z",
+    "message": "test: golden files for invoice rendering",
+    "files_changed": [
+      "pkg/invoice/testdata/golden.json"
+    ]
+  },
+  {
+    "sha": "69fcbed4d2e8f357a23531750f0f11f895b2c37f",
+    "author": "jdoe",
+    "timestamp": "2026-06-19T09:52:38Z",
+    "message": "fix: race in metrics registry init",
+    "files_changed": [
+      "pkg/cache/registry.go"
+    ]
+  },
+  {
+    "sha": "0e32a24b73409c0eac2369a2dfc5ab27cc93c5de",
+    "author": "ivan.petrov",
+    "timestamp": "2026-06-19T09:54:20Z",
+    "message": "feat: add prometheus histogram for cache hits",
+    "files_changed": [
+      "pkg/cache/metrics.go"
+    ]
+  },
+  {
+    "sha": "c5cb31bc306cfad99ffc95e71c6b8eaaf2a40f74",
+    "author": "grace.kim",
+    "timestamp": "2026-06-19T09:55:54Z",
+    "message": "refactor: extract response writer helper",
+    "files_changed": [
+      "internal/httputil/writer.go"
+    ]
+  },
+  {
+    "sha": "fd1cfc056e50e63473eae384c4c34a61d853a834",
+    "author": "amir.haddad",
+    "timestamp": "2026-06-19T09:58:24Z",
+    "message": "perf: reuse sync.Pool for buffers in encoder",
+    "files_changed": [
+      "pkg/codec/pool.go"
+    ]
+  },
+  {
+    "sha": "767b9494a44bf94c6542f6ed9de51c38eb8732d2",
+    "author": "amir.haddad",
+    "timestamp": "2026-06-19T10:00:26Z",
+    "message": "fix: off-by-one in batch chunking",
+    "files_changed": [
+      "pkg/batch/chunk.go"
+    ]
+  },
+  {
+    "sha": "3dfbfbf88a865a881fa4bc90b52e9ec1876cef31",
+    "author": "fatima.zahra",
+    "timestamp": "2026-06-19T10:01:36Z",
+    "message": "test: add table-driven tests for currency conversion",
+    "files_changed": [
+      "pkg/money/convert_test.go"
+    ]
+  },
+  {
+    "sha": "825a71fe1414921ff28422880255b7fd9edc2ac3",
+    "author": "tunde.okafor",
+    "timestamp": "2026-06-19T10:04:01Z",
+    "message": "chore: bump go.mod dependencies",
+    "files_changed": [
+      "go.mod",
+      "go.sum"
+    ]
+  },
+  {
+    "sha": "2092bc721f3a36e99264b15559b5bdcd04daa9e0",
+    "author": "marta.kowalski",
+    "timestamp": "2026-06-19T10:12:03Z",
+    "message": "chore: update CODEOWNERS",
+    "files_changed": [
+      "CODEOWNERS"
+    ]
+  },
+  {
+    "sha": "5642d6b17f39cc430c2a48ca705cbab33002d03b",
+    "author": "carlos.mendez",
+    "timestamp": "2026-06-19T10:20:00Z",
+    "message": "refactor(payment): read gateway response without checking optional 3DS field",
+    "files_changed": [
+      "services/payment/charge.go"
+    ]
+  },
+  {
+    "sha": "d84662c27fca6c818d5bb17220b1b150ddfba362",
+    "author": "ivan.petrov",
+    "timestamp": "2026-06-19T10:28:02Z",
+    "message": "perf: preallocate buffer in JSON encoder",
+    "files_changed": [
+      "pkg/codec/json.go"
+    ]
+  }
+]

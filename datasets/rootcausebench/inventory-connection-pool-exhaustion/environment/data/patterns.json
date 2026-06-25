@@ -1,0 +1,44 @@
+[
+  {
+    "signature": "pgx pool: context deadline exceeded acquiring connection (pool exhausted)",
+    "service": "inventoryservice",
+    "count": 540,
+    "delta_vs_baseline": "+540",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "pgx pool: waited <N>ms to acquire connection",
+    "service": "inventoryservice",
+    "count": 96,
+    "delta_vs_baseline": "+96",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "upstream inventoryservice timeout after <N>ms",
+    "service": "cartservice",
+    "count": 210,
+    "delta_vs_baseline": "+210",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "carrier rate-card refreshed",
+    "service": "shippingservice",
+    "count": 3,
+    "delta_vs_baseline": "+3",
+    "sentiment": "neutral"
+  },
+  {
+    "signature": "feature flag inventory_read_replica_routing enabled",
+    "service": "inventoryservice",
+    "count": 1,
+    "delta_vs_baseline": "+1",
+    "sentiment": "neutral"
+  },
+  {
+    "signature": "reservation committed",
+    "service": "inventoryservice",
+    "count": 240,
+    "delta_vs_baseline": "-3100",
+    "sentiment": "neutral"
+  }
+]

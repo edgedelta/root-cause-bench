@@ -1,0 +1,9 @@
+[
+  {
+    "timestamp": "2026-06-21T10:15:00Z",
+    "flag": "reco_model_v3",
+    "service": "recommendationservice",
+    "change": "off->on",
+    "actor": "priya.nair"
+  }
+]

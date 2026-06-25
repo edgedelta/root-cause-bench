@@ -1,0 +1,43 @@
+[
+  {
+    "trace_id": "00a775cceb45df46f004be9da933646c",
+    "span_id": "a1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "POST /api/cart/reserve",
+    "start": "2026-06-20T13:50:30Z",
+    "duration_ms": 5010,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "b1",
+    "parent_id": "a1",
+    "service": "cartservice",
+    "name": "Reserve",
+    "start": "2026-06-20T13:50:30Z",
+    "duration_ms": 5000,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c1",
+    "parent_id": "b1",
+    "service": "inventoryservice",
+    "name": "ReserveStock",
+    "start": "2026-06-20T13:50:30Z",
+    "duration_ms": 5000,
+    "status": "ERROR",
+    "error": "pool exhausted: context deadline exceeded"
+  },
+  {
+    "trace_id": "943702ac40a01a9b5af1b4959c9c0848",
+    "span_id": "d1",
+    "parent_id": null,
+    "service": "shippingservice",
+    "name": "GET /api/shipping/quote",
+    "start": "2026-06-20T13:50:44Z",
+    "duration_ms": 4900,
+    "status": "ERROR"
+  }
+]

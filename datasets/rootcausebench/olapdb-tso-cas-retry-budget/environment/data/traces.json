@@ -1,0 +1,45 @@
+[
+  {
+    "trace_id": "7ebfce3f60123eb96893847059427453",
+    "span_id": "a1",
+    "parent_id": null,
+    "service": "stream-taskmanager",
+    "name": "Metric_threshold_monitoring_job/source",
+    "start": "2026-06-24T14:37:35Z",
+    "duration_ms": 5000,
+    "status": "ERROR",
+    "error": "olapdb commit timeout"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "b1",
+    "parent_id": "a1",
+    "service": "olapdb-server",
+    "name": "commitParts",
+    "start": "2026-06-24T14:37:35Z",
+    "duration_ms": 5000,
+    "status": "ERROR",
+    "error": "CnchLock acquire timed out"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c1",
+    "parent_id": "b1",
+    "service": "olapdb-tso",
+    "name": "GetCommitTimestamp",
+    "start": "2026-06-24T14:37:35Z",
+    "duration_ms": 5000,
+    "status": "ERROR",
+    "error": "FoundationDB transaction timeout; CAS retry budget exhausted"
+  },
+  {
+    "trace_id": "8df43e2e16bdae3673cd024b99b9d79b",
+    "span_id": "z1",
+    "parent_id": null,
+    "service": "stream-taskmanager",
+    "name": "Metric_threshold_monitoring_job/source",
+    "start": "2026-06-24T13:10:00Z",
+    "duration_ms": 120,
+    "status": "OK"
+  }
+]

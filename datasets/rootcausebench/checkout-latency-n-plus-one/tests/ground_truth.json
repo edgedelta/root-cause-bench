@@ -1,0 +1,14 @@
+{
+  "scenario": "checkout-latency-n-plus-one",
+  "root_cause_commit": "559e94ce37a7b4b6053149c40ba8a5bc9113ca6e",
+  "first_failing_service": "checkoutservice",
+  "blast_radius": [
+    "cartservice",
+    "frontend"
+  ],
+  "remediation": "rollback",
+  "decoy_deploy_commits": [
+    "db5e56f2e1f50445d4c90040f50a7589b0908c58"
+  ],
+  "notes": "Culprit adds a per-line-item catalog lookup (N+1). The frontend CSS deploy 30s before onset is a decoy. productcatalogservice is a victim of fan-out, not the cause."
+}

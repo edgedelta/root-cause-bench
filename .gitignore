@@ -1,0 +1,17 @@
+# Python
+.venv
+.uv
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# OS
+.DS_Store
+
+# Harbor / local runs
+jobs/
+.env
+
+# Local benchmark artifacts
+benchmark-results/*.local
+local_notes.md

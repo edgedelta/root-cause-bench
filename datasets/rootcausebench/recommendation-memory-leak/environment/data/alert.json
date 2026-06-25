@@ -1,0 +1,10 @@
+{
+  "service": "recommendationservice",
+  "metric": "container_oom_killed_total",
+  "threshold": 0,
+  "observed": 3,
+  "fired_at": "2026-06-21T10:44:30Z",
+  "severity": "critical",
+  "monitor": "reco-oomkill",
+  "summary": "recommendationservice pods OOMKilled (3 in 1m); container_memory_rss exceeded limit"
+}

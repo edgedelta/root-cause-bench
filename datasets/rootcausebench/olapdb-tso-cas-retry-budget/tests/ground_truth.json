@@ -1,0 +1,14 @@
+{
+  "scenario": "olapdb-tso-cas-retry-budget",
+  "root_cause_commit": "48ad9c8a5a8caa9ee41379f17435befe8880dbc6",
+  "first_failing_service": "olapdb-tso",
+  "blast_radius": [
+    "stream-taskmanager",
+    "platform-api"
+  ],
+  "remediation": "rollback",
+  "decoy_deploy_commits": [
+    "d4100bec06bc7609d3c9272613e3019c473bc934"
+  ],
+  "notes": "Culprit lowers the TSO CAS retry budget -> during TSO leader-election the FoundationDB CAS operations exhaust their (now too small) retry budget and time out -> olapdb-tso fails to issue commit timestamps -> olapdb-server CnchLock acquire times out -> the stream-taskmanager Flink taskmanager job (Metric_threshold_monitoring_job) goes unhealthy and platform-api metadata queries 5xx. Onset is ~6min delayed (budget only exhausts under leader-election churn). The dashboard-svc chart-cache deploy near onset is an innocent decoy."
+}

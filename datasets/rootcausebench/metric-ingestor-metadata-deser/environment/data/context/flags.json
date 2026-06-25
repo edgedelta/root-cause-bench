@@ -1,0 +1,9 @@
+[
+  {
+    "timestamp": "2026-06-24T10:54:00Z",
+    "flag": "ingest_zstd_payloads",
+    "service": "metric-ingestor-1",
+    "change": "off->on",
+    "actor": "carlos.mendez"
+  }
+]

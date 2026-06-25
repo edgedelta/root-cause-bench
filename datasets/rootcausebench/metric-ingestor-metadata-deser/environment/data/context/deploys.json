@@ -1,0 +1,14 @@
+[
+  {
+    "timestamp": "2026-06-24T10:57:00Z",
+    "service": "metric-ingestor-1",
+    "commit_sha": "4e169b782276b9dd9b962e4474687622bda48589",
+    "version": "v2026.06.24-1057"
+  },
+  {
+    "timestamp": "2026-06-24T10:58:15Z",
+    "service": "kafka-metric-ingestor",
+    "commit_sha": "17f8bae42e0e4e071aae9867ec68ccc395a99c63",
+    "version": "v2026.06.24-1058"
+  }
+]

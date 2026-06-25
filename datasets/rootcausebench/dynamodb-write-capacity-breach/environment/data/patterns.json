@@ -1,0 +1,30 @@
+[
+  {
+    "signature": "DynamoDB ProvisionedThroughputExceededException on table memory-store",
+    "service": "ai-memory-svc",
+    "count": 18,
+    "delta_vs_baseline": "+18",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "single-item PutItem to memory-store (batching disabled)",
+    "service": "ai-memory-svc",
+    "count": 10,
+    "delta_vs_baseline": "+10",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "memory persist failed: ai-memory-svc returned 503",
+    "service": "ai-agent-svc",
+    "count": 6,
+    "delta_vs_baseline": "+6",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "batched <N> memory writes to DynamoDB table memory-store",
+    "service": "ai-memory-svc",
+    "count": 0,
+    "delta_vs_baseline": "-540",
+    "sentiment": "neutral"
+  }
+]

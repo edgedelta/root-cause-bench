@@ -1,0 +1,9 @@
+[
+  {
+    "timestamp": "2026-06-23T14:45:00Z",
+    "flag": "pipeline-transformer_parallel_pipeline",
+    "service": "pipeline-transformer",
+    "change": "off->on",
+    "actor": "yuki.tanaka"
+  }
+]

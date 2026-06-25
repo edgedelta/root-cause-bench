@@ -1,0 +1,438 @@
+[
+  {
+    "sha": "b6104c466c459746cf1d1924953343a98a0c54d2",
+    "author": "lena.fischer",
+    "timestamp": "2026-06-21T08:00:53Z",
+    "message": "ci: cache go build in GitHub Actions",
+    "files_changed": [
+      ".github/workflows/build.yml"
+    ]
+  },
+  {
+    "sha": "d34b4159350434f5d82d9c2da329949e186903cb",
+    "author": "fatima.zahra",
+    "timestamp": "2026-06-21T08:02:04Z",
+    "message": "feat: add /readyz endpoint",
+    "files_changed": [
+      "internal/health/ready.go"
+    ]
+  },
+  {
+    "sha": "4bded1761773b13c7fb741af48e71a17466203ba",
+    "author": "noah.bergstrom",
+    "timestamp": "2026-06-21T08:05:49Z",
+    "message": "perf: preallocate buffer in JSON encoder",
+    "files_changed": [
+      "pkg/codec/json.go"
+    ]
+  },
+  {
+    "sha": "4153fb75c0bd9a35a5e6f5c46bc0d2fd06dfe7c6",
+    "author": "noah.bergstrom",
+    "timestamp": "2026-06-21T08:12:31Z",
+    "message": "chore: pin golangci-lint to v1.61",
+    "files_changed": [
+      ".golangci.yml"
+    ]
+  },
+  {
+    "sha": "a125e5b00c4ee610dc5aed9bbfa0e1ecf687224e",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-21T08:14:18Z",
+    "message": "docs: update API reference for orders endpoint",
+    "files_changed": [
+      "docs/api/orders.md"
+    ]
+  },
+  {
+    "sha": "dc20d6c44ee5c7799f6fdc98f7b136839acb11a7",
+    "author": "jdoe",
+    "timestamp": "2026-06-21T08:20:22Z",
+    "message": "test: add table-driven tests for currency conversion",
+    "files_changed": [
+      "pkg/money/convert_test.go"
+    ]
+  },
+  {
+    "sha": "09a07bc5197653729652cc78372ca9d989cf4a66",
+    "author": "jdoe",
+    "timestamp": "2026-06-21T08:23:52Z",
+    "message": "refactor: collapse duplicate validation funcs",
+    "files_changed": [
+      "pkg/validate/validate.go"
+    ]
+  },
+  {
+    "sha": "2e72c00af4d56bae6146541aa95e8ea6cf4611bb",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-21T08:24:45Z",
+    "message": "fix: close response body in health checker",
+    "files_changed": [
+      "internal/health/check.go"
+    ]
+  },
+  {
+    "sha": "005dd92844522d00b0e5672ad728aa23b22aba2e",
+    "author": "sofia.marino",
+    "timestamp": "2026-06-21T08:25:31Z",
+    "message": "style: gofmt and goimports across repo",
+    "files_changed": [
+      "pkg/cart/cart.go",
+      "pkg/cart/cart_test.go"
+    ]
+  },
+  {
+    "sha": "1b853e63ed1a8af20ac08c5d1ace463bc60feef9",
+    "author": "grace.kim",
+    "timestamp": "2026-06-21T08:26:00Z",
+    "message": "chore: upgrade base image to distroless:nonroot",
+    "files_changed": [
+      "Dockerfile"
+    ]
+  },
+  {
+    "sha": "b8f145a2e50da66f147fa9c92351fe18905f8d5c",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-06-21T08:27:19Z",
+    "message": "fix: handle empty slice in pagination helper",
+    "files_changed": [
+      "pkg/paginate/paginate.go"
+    ]
+  },
+  {
+    "sha": "59bde9171b1c3403464c72a93f2515220b356e78",
+    "author": "carlos.mendez",
+    "timestamp": "2026-06-21T08:36:09Z",
+    "message": "fix: correct typo in error message",
+    "files_changed": [
+      "internal/errors/messages.go"
+    ]
+  },
+  {
+    "sha": "acd3f1f1c1ac818fa3653a0e554331ee792790a8",
+    "author": "ivan.petrov",
+    "timestamp": "2026-06-21T08:36:34Z",
+    "message": "chore: update CODEOWNERS",
+    "files_changed": [
+      "CODEOWNERS"
+    ]
+  },
+  {
+    "sha": "72be8e872dab6267ff4381f6b39e1b460c867c79",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-06-21T08:38:34Z",
+    "message": "chore: tidy imports in product service",
+    "files_changed": [
+      "services/product/main.go"
+    ]
+  },
+  {
+    "sha": "de3806ff86d73ccac1d05cd838b938c4bb6082c2",
+    "author": "marta.kowalski",
+    "timestamp": "2026-06-21T08:48:54Z",
+    "message": "feat: emit OTel span attributes for user_id",
+    "files_changed": [
+      "internal/trace/attrs.go"
+    ]
+  },
+  {
+    "sha": "f3c5747fa21817b242464390529472dc8d75e55e",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-21T08:50:09Z",
+    "message": "refactor: move DTOs into api/types",
+    "files_changed": [
+      "api/types/types.go"
+    ]
+  },
+  {
+    "sha": "823dc962508c4556e89b591fdebd54b0e33fc2b4",
+    "author": "ivan.petrov",
+    "timestamp": "2026-06-21T08:52:03Z",
+    "message": "chore: rotate staging TLS cert",
+    "files_changed": [
+      "deploy/staging/tls.yaml"
+    ]
+  },
+  {
+    "sha": "dc71849501e08693810649d964f65b20acbf57a3",
+    "author": "jdoe",
+    "timestamp": "2026-06-21T08:56:50Z",
+    "message": "test: increase coverage on retry backoff",
+    "files_changed": [
+      "pkg/retry/backoff_test.go"
+    ]
+  },
+  {
+    "sha": "5c53ad6e8a14465608da74f91900ee0210dc5ab4",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-21T09:12:55Z",
+    "message": "docs: document feature flag lifecycle",
+    "files_changed": [
+      "docs/flags.md"
+    ]
+  },
+  {
+    "sha": "ecf7fa232eeccb943f90897b1fe2bc8f093bb32d",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-06-21T09:14:20Z",
+    "message": "test: fuzz the SKU parser",
+    "files_changed": [
+      "pkg/sku/parse_fuzz_test.go"
+    ]
+  },
+  {
+    "sha": "a00b7580800287b6d2832644e6cd9301ec28cb9c",
+    "author": "amir.haddad",
+    "timestamp": "2026-06-21T09:15:41Z",
+    "message": "chore: bump go.mod dependencies",
+    "files_changed": [
+      "go.mod",
+      "go.sum"
+    ]
+  },
+  {
+    "sha": "225ad2d4bef05350321e8e65ec025cf1b36ddeae",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-21T09:22:31Z",
+    "message": "feat: add prometheus histogram for cache hits",
+    "files_changed": [
+      "pkg/cache/metrics.go"
+    ]
+  },
+  {
+    "sha": "aa77fd216acc815a3e18d2a8682cad9e93d10e98",
+    "author": "grace.kim",
+    "timestamp": "2026-06-21T09:30:51Z",
+    "message": "docs: clarify env var precedence",
+    "files_changed": [
+      "README.md"
+    ]
+  },
+  {
+    "sha": "02bcf4185cd69a164c29b1dc8a9ac4b3d40a64b2",
+    "author": "tunde.okafor",
+    "timestamp": "2026-06-21T09:32:45Z",
+    "message": "fix: off-by-one in batch chunking",
+    "files_changed": [
+      "pkg/batch/chunk.go"
+    ]
+  },
+  {
+    "sha": "ebf5859611f128d090384b0d391d982c84466d8b",
+    "author": "priya.nair",
+    "timestamp": "2026-06-21T09:48:08Z",
+    "message": "fix: guard against negative quantity in cart",
+    "files_changed": [
+      "pkg/cart/validate.go"
+    ]
+  },
+  {
+    "sha": "6c0341fdb9473521b106ab0ec971523eade90f88",
+    "author": "noah.bergstrom",
+    "timestamp": "2026-06-21T09:50:49Z",
+    "message": "refactor: simplify config loading with viper",
+    "files_changed": [
+      "internal/config/load.go"
+    ]
+  },
+  {
+    "sha": "bc57fe7e54ae0190c8aec5a3bb8afdd5b2de000b",
+    "author": "priya.nair",
+    "timestamp": "2026-06-21T09:51:31Z",
+    "message": "refactor: extract response writer helper",
+    "files_changed": [
+      "internal/httputil/writer.go"
+    ]
+  },
+  {
+    "sha": "f5b7ea106390ea2f34e9b3b8c44558637c9845eb",
+    "author": "ivan.petrov",
+    "timestamp": "2026-06-21T10:11:04Z",
+    "message": "docs: add runbook for deploy rollback",
+    "files_changed": [
+      "docs/runbooks/rollback.md"
+    ]
+  },
+  {
+    "sha": "deeb4370f7dd02de356afdaddcd6125ca9c8e21f",
+    "author": "marta.kowalski",
+    "timestamp": "2026-06-21T10:18:11Z",
+    "message": "fix: race in metrics registry init",
+    "files_changed": [
+      "pkg/cache/registry.go"
+    ]
+  },
+  {
+    "sha": "e1c78b519242b49cd853470bd5bf8bae96f0e8f9",
+    "author": "tunde.okafor",
+    "timestamp": "2026-06-21T10:21:23Z",
+    "message": "test: add integration test for graceful shutdown",
+    "files_changed": [
+      "cmd/server/shutdown_test.go"
+    ]
+  },
+  {
+    "sha": "2cb945411674ff9fd4be7dfba3dd57c4000327b3",
+    "author": "tunde.okafor",
+    "timestamp": "2026-06-21T10:25:16Z",
+    "message": "test: golden files for invoice rendering",
+    "files_changed": [
+      "pkg/invoice/testdata/golden.json"
+    ]
+  },
+  {
+    "sha": "55e97b60b68450cbec53b8f3031edb4f7f9d69f6",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-06-21T10:29:05Z",
+    "message": "refactor: rename internal package observability->telemetry",
+    "files_changed": [
+      "internal/telemetry/telemetry.go"
+    ]
+  },
+  {
+    "sha": "c6566fcc695be384caeebd7ae0a893ccb345ae83",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-06-21T10:30:00Z",
+    "message": "feat(reco): cache per-request candidate scores in package-level map",
+    "files_changed": [
+      "services/recommendation/scorer.go",
+      "services/recommendation/cache.go"
+    ]
+  },
+  {
+    "sha": "4e4f154a6d3f5ac93f4471e327853b470a14dc89",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-21T10:31:53Z",
+    "message": "feat: add request id propagation header",
+    "files_changed": [
+      "internal/middleware/reqid.go"
+    ]
+  },
+  {
+    "sha": "f72cb9d310cfa25d98fe780c6c0829cd2c8257c1",
+    "author": "noah.bergstrom",
+    "timestamp": "2026-06-21T10:38:00Z",
+    "message": "feat(reco): add background goroutine to prefetch trending items",
+    "files_changed": [
+      "services/recommendation/prefetch.go"
+    ]
+  },
+  {
+    "sha": "966b58e908857759ff52d61a304009673b835c7b",
+    "author": "tunde.okafor",
+    "timestamp": "2026-06-21T10:39:54Z",
+    "message": "perf: reuse sync.Pool for buffers in encoder",
+    "files_changed": [
+      "pkg/codec/pool.go"
+    ]
+  },
+  {
+    "sha": "a7adc828066e19011f9475c856bd9fc6a44bbf68",
+    "author": "tunde.okafor",
+    "timestamp": "2026-06-21T10:41:21Z",
+    "message": "feat: support gzip request bodies",
+    "files_changed": [
+      "internal/middleware/gzip.go"
+    ]
+  },
+  {
+    "sha": "75ef3d7e0c5ee6891c4cf8c1b738a35087275b7f",
+    "author": "noah.bergstrom",
+    "timestamp": "2026-06-21T10:42:57Z",
+    "message": "feat: add structured logging fields to request middleware",
+    "files_changed": [
+      "internal/middleware/log.go"
+    ]
+  },
+  {
+    "sha": "1c2c2bae89a72f427dbbfdea45ab1176a559184e",
+    "author": "lena.fischer",
+    "timestamp": "2026-06-21T10:59:09Z",
+    "message": "ci: cache go build in GitHub Actions",
+    "files_changed": [
+      ".github/workflows/build.yml"
+    ]
+  },
+  {
+    "sha": "133681be3f1eff5dea3c7c8be6ea0bcb67b44c8a",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-21T11:00:05Z",
+    "message": "feat: add /readyz endpoint",
+    "files_changed": [
+      "internal/health/ready.go"
+    ]
+  },
+  {
+    "sha": "2a4290de8f5c1f3d3dd8bf936989c17b296d008c",
+    "author": "lena.fischer",
+    "timestamp": "2026-06-21T11:00:55Z",
+    "message": "perf: preallocate buffer in JSON encoder",
+    "files_changed": [
+      "pkg/codec/json.go"
+    ]
+  },
+  {
+    "sha": "1344a40eb343b930b62f63d19072c30b00f5c201",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-06-21T11:02:20Z",
+    "message": "chore: pin golangci-lint to v1.61",
+    "files_changed": [
+      ".golangci.yml"
+    ]
+  },
+  {
+    "sha": "9d5ff7f5bdec5d87e180bf5d9291c34a24bd16e6",
+    "author": "noah.bergstrom",
+    "timestamp": "2026-06-21T11:06:08Z",
+    "message": "docs: update API reference for orders endpoint",
+    "files_changed": [
+      "docs/api/orders.md"
+    ]
+  },
+  {
+    "sha": "0d9abdf0585460db11dd070f99749b3a09f162ca",
+    "author": "fatima.zahra",
+    "timestamp": "2026-06-21T11:19:31Z",
+    "message": "test: add table-driven tests for currency conversion",
+    "files_changed": [
+      "pkg/money/convert_test.go"
+    ]
+  },
+  {
+    "sha": "50cf3687997f80549b58ee02be12579b61114265",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-06-21T11:23:20Z",
+    "message": "refactor: collapse duplicate validation funcs",
+    "files_changed": [
+      "pkg/validate/validate.go"
+    ]
+  },
+  {
+    "sha": "7d02819812647acece81c2d57207d06f0bd00b1b",
+    "author": "carlos.mendez",
+    "timestamp": "2026-06-21T11:24:44Z",
+    "message": "fix: close response body in health checker",
+    "files_changed": [
+      "internal/health/check.go"
+    ]
+  },
+  {
+    "sha": "61a1175321a16683741d46addf0a104890dbfb69",
+    "author": "tunde.okafor",
+    "timestamp": "2026-06-21T11:42:53Z",
+    "message": "style: gofmt and goimports across repo",
+    "files_changed": [
+      "pkg/cart/cart.go",
+      "pkg/cart/cart_test.go"
+    ]
+  },
+  {
+    "sha": "3effee8dd6a3d6dabc52549e0ef2e7060914cbc6",
+    "author": "sofia.marino",
+    "timestamp": "2026-06-21T11:50:17Z",
+    "message": "chore: upgrade base image to distroless:nonroot",
+    "files_changed": [
+      "Dockerfile"
+    ]
+  }
+]

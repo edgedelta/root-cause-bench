@@ -1,0 +1,37 @@
+[
+  {
+    "signature": "FoundationDB transaction timeout during TSO leader-election; CAS operation failed",
+    "service": "olapdb-tso",
+    "count": 14,
+    "delta_vs_baseline": "+14",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "CnchLock acquire timed out; could not obtain commit_ts",
+    "service": "olapdb-server",
+    "count": 6,
+    "delta_vs_baseline": "+6",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "Flink taskmanager: Metric_threshold_monitoring_job restarting",
+    "service": "stream-taskmanager",
+    "count": 8,
+    "delta_vs_baseline": "+8",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "Debug CnchLock acquire <N> locks in <N> ms",
+    "service": "olapdb-server",
+    "count": 980,
+    "delta_vs_baseline": "-120",
+    "sentiment": "neutral"
+  },
+  {
+    "signature": "Debug TransactionCoordinator Created write txn",
+    "service": "olapdb-server",
+    "count": 640,
+    "delta_vs_baseline": "-80",
+    "sentiment": "neutral"
+  }
+]

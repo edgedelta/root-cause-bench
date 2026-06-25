@@ -1,0 +1,10 @@
+{
+  "service": "ai-memory-svc",
+  "metric": "dynamodb_write_throttle_ratio",
+  "threshold": 0.05,
+  "observed": 0.58,
+  "fired_at": "2026-06-22T17:23:00Z",
+  "severity": "high",
+  "monitor": "AI Teammates Overall Error Monitor",
+  "summary": "ai-memory-svc write failures; DynamoDB table memory-store exceeded provisioned write-capacity (ProvisionedThroughputExceededException)"
+}

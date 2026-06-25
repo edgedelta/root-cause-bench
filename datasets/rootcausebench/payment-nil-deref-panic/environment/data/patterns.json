@@ -1,0 +1,23 @@
+[
+  {
+    "signature": "panic: runtime error: invalid memory address or nil pointer dereference",
+    "service": "paymentservice",
+    "count": 318,
+    "delta_vs_baseline": "+318",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "payment call failed: upstream 500 from paymentservice",
+    "service": "checkoutservice",
+    "count": 142,
+    "delta_vs_baseline": "+142",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "charge authorized",
+    "service": "paymentservice",
+    "count": 60,
+    "delta_vs_baseline": "-980",
+    "sentiment": "neutral"
+  }
+]

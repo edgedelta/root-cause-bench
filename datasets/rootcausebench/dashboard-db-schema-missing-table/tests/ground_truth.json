@@ -1,0 +1,11 @@
+{
+  "scenario": "dashboard-db-schema-missing-table",
+  "root_cause_commit": "4f3740c125c5a9cbcf606e020005d1fe047ba386",
+  "first_failing_service": "dashboard-svc",
+  "blast_radius": [],
+  "remediation": "roll-forward",
+  "decoy_deploy_commits": [
+    "451b10297064c3cd3cba519ef5ad0ed58ede0a8b"
+  ],
+  "notes": "Culprit ships DAO/view code that SELECTs from a dashboard_favorites table, but the corresponding migration was omitted, so the table does not exist -> dashboard-svc 500s with 'relation does not exist'. Fix is to add the missing migration (roll-forward). The color-palette deploy near onset is an innocent decoy; the right SHA is the migration/DAO commit, not the theme commit."
+}

@@ -1,0 +1,9 @@
+[
+  {
+    "timestamp": "2026-06-19T10:05:00Z",
+    "flag": "payment_retry_idempotency_keys",
+    "service": "paymentservice",
+    "change": "off->on",
+    "actor": "sofia.marino"
+  }
+]

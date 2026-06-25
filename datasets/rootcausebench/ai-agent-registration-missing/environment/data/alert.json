@@ -1,0 +1,10 @@
+{
+  "service": "ai-agent-svc",
+  "metric": "http_5xx_ratio",
+  "threshold": 0.02,
+  "observed": 0.61,
+  "fired_at": "2026-06-23T09:45:00Z",
+  "severity": "high",
+  "monitor": "AI Teammates Overall Error Monitor",
+  "summary": "ai-agent-svc returning HTTP 500 on agent lookups; 'thread-title-determiner not found' in org-scoped registry"
+}

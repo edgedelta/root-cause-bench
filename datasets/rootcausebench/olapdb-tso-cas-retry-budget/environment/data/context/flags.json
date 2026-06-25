@@ -1,0 +1,9 @@
+[
+  {
+    "timestamp": "2026-06-24T14:28:00Z",
+    "flag": "tso_fast_path",
+    "service": "olapdb-tso",
+    "change": "off->on",
+    "actor": "priya.nair"
+  }
+]

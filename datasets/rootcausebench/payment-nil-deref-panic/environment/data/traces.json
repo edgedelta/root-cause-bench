@@ -1,0 +1,33 @@
+[
+  {
+    "trace_id": "1fb74ec02b09f7946c8ac180a018e7fd",
+    "span_id": "a1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "POST /api/checkout",
+    "start": "2026-06-19T10:23:00Z",
+    "duration_ms": 180,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "b1",
+    "parent_id": "a1",
+    "service": "checkoutservice",
+    "name": "Checkout",
+    "start": "2026-06-19T10:23:00Z",
+    "duration_ms": 150,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c1",
+    "parent_id": "b1",
+    "service": "paymentservice",
+    "name": "Charge",
+    "start": "2026-06-19T10:23:00Z",
+    "duration_ms": 8,
+    "status": "ERROR",
+    "error": "nil pointer dereference"
+  }
+]

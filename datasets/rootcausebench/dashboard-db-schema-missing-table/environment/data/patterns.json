@@ -1,0 +1,16 @@
+[
+  {
+    "signature": "sqlalchemy.exc.ProgrammingError: relation \"dashboard_favorites\" does not exist",
+    "service": "dashboard-svc",
+    "count": 18,
+    "delta_vs_baseline": "+18",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "served dashboard list; 200 OK",
+    "service": "dashboard-svc",
+    "count": 12,
+    "delta_vs_baseline": "-220",
+    "sentiment": "neutral"
+  }
+]

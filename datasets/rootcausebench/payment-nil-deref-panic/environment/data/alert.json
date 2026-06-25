@@ -1,0 +1,10 @@
+{
+  "service": "paymentservice",
+  "metric": "error_rate_5xx_ratio",
+  "threshold": 0.02,
+  "observed": 0.71,
+  "fired_at": "2026-06-19T10:25:00Z",
+  "severity": "critical",
+  "monitor": "payment-5xx-error-rate",
+  "summary": "paymentservice 5xx error ratio above 2% (observed 71%)"
+}

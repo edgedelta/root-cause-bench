@@ -1,0 +1,401 @@
+[
+  {
+    "sha": "8bdcf162a8195e1792c0113f08d774bd571a001f",
+    "author": "noah.bergstrom",
+    "timestamp": "2026-06-22T16:15:56Z",
+    "message": "#dashboard Update dashboard color palette",
+    "files_changed": [
+      "dashboard-svc/dashboard-frontend/theme.ts"
+    ]
+  },
+  {
+    "sha": "a92c4d1479cb2c83814fe11ed61b382f144bae09",
+    "author": "tunde.okafor",
+    "timestamp": "2026-06-22T16:18:22Z",
+    "message": "#api Collapse duplicate validation funcs",
+    "files_changed": [
+      "api/internal/validate/validate.go"
+    ]
+  },
+  {
+    "sha": "e8a8a0319088984a4e396406517e15cc492e3335",
+    "author": "sofia.marino",
+    "timestamp": "2026-06-22T16:27:14Z",
+    "message": "#web Fix tooltip alignment on overview page",
+    "files_changed": [
+      "web/src/components/Tooltip.tsx"
+    ]
+  },
+  {
+    "sha": "c4743b94003a68dd8ae85f02e6df1cc9d658e60a",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-06-22T16:29:53Z",
+    "message": "#chore Rotate staging TLS cert",
+    "files_changed": [
+      "deploy/staging/tls.yaml"
+    ]
+  },
+  {
+    "sha": "385704090f50b289a5e1d6aea1a8febd72d74ee7",
+    "author": "priya.nair",
+    "timestamp": "2026-06-22T16:32:03Z",
+    "message": "#web Add empty-state illustration to issues list",
+    "files_changed": [
+      "web/src/pages/Issues.tsx"
+    ]
+  },
+  {
+    "sha": "48928b96a02a62bcc0da1d1715af0b42291b3de0",
+    "author": "amir.haddad",
+    "timestamp": "2026-06-22T16:33:11Z",
+    "message": "#ai Update prompt template wording",
+    "files_changed": [
+      "ai/src/prompts/system.txt"
+    ]
+  },
+  {
+    "sha": "e1def4d92735368fd3449b964ff5b9ac706acf93",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-22T16:40:39Z",
+    "message": "#api Add request id to access log",
+    "files_changed": [
+      "api/internal/middleware/reqid.go"
+    ]
+  },
+  {
+    "sha": "c46951383dbf04844d2ca2923bc07939a3dcbb3f",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-06-22T16:42:31Z",
+    "message": "#admin Add /readyz probe handler",
+    "files_changed": [
+      "api/internal/health/ready.go"
+    ]
+  },
+  {
+    "sha": "9c593b64bb225e6e60ac69a1324059658c15a71a",
+    "author": "sofia.marino",
+    "timestamp": "2026-06-22T16:43:42Z",
+    "message": "#admin Add /readyz probe handler",
+    "files_changed": [
+      "api/internal/health/ready.go"
+    ]
+  },
+  {
+    "sha": "f6d74b3a8fa33b17501aff3ec4640288f015b023",
+    "author": "noah.bergstrom",
+    "timestamp": "2026-06-22T16:43:48Z",
+    "message": "#docs Document feature flag lifecycle",
+    "files_changed": [
+      "documentation/content/flags.md"
+    ]
+  },
+  {
+    "sha": "dbae07b11a7595ba63df49342a97fc032bee213c",
+    "author": "amir.haddad",
+    "timestamp": "2026-06-22T16:49:09Z",
+    "message": "#web Restyle banner on settings page",
+    "files_changed": [
+      "web/src/pages/Settings.css"
+    ]
+  },
+  {
+    "sha": "dcccdf3bee484d16271356705ce7db58ec4cf254",
+    "author": "priya.nair",
+    "timestamp": "2026-06-22T16:51:19Z",
+    "message": "#docs Document feature flag lifecycle",
+    "files_changed": [
+      "documentation/content/flags.md"
+    ]
+  },
+  {
+    "sha": "0f41142bcbcba86bdd8db16791718db6bb4644be",
+    "author": "priya.nair",
+    "timestamp": "2026-06-22T16:51:41Z",
+    "message": "#ingest Tune SQS receive batch size logging",
+    "files_changed": [
+      "pkg/ingest/sqs/log.go"
+    ]
+  },
+  {
+    "sha": "e221ffe4f4500c9c98ccb245815d938d48a96395",
+    "author": "priya.nair",
+    "timestamp": "2026-06-22T17:02:45Z",
+    "message": "#dashboard Update dashboard color palette",
+    "files_changed": [
+      "dashboard-svc/dashboard-frontend/theme.ts"
+    ]
+  },
+  {
+    "sha": "a1af4c1adbefc965050848b55ef37e7f0edd4987",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-22T17:10:00Z",
+    "message": "#ai Remove write batching in memory store",
+    "files_changed": [
+      "ai/src/memory/dynamo_store.ts",
+      "ai/src/memory/writer.ts"
+    ]
+  },
+  {
+    "sha": "14799d5dacaec892c8d2cf8c0fd8daa728c30e5c",
+    "author": "amir.haddad",
+    "timestamp": "2026-06-22T17:13:26Z",
+    "message": "#web Restyle banner on settings page",
+    "files_changed": [
+      "web/src/pages/Settings.css"
+    ]
+  },
+  {
+    "sha": "0f17c8f66a0c1b010c7f050ddbf454da0416f34a",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-22T17:13:33Z",
+    "message": "#metrics Add histogram for cache hits",
+    "files_changed": [
+      "pkg/cache/metrics.go"
+    ]
+  },
+  {
+    "sha": "ff6268f2ae72d176ff8d51a2dab0783c8caa2c96",
+    "author": "sofia.marino",
+    "timestamp": "2026-06-22T17:16:30Z",
+    "message": "#web Restyle banner on settings page",
+    "files_changed": [
+      "web/src/pages/Settings.css"
+    ]
+  },
+  {
+    "sha": "c036f7077589a414b1b5835599c261f7c34f3f4b",
+    "author": "noah.bergstrom",
+    "timestamp": "2026-06-22T17:17:00Z",
+    "message": "#api Add request id to access log",
+    "files_changed": [
+      "api/internal/middleware/reqid.go"
+    ]
+  },
+  {
+    "sha": "78028ccfb8fb4b892d86f4aa2c005ee40d939dba",
+    "author": "tunde.okafor",
+    "timestamp": "2026-06-22T17:19:31Z",
+    "message": "#deps Bump aws-sdk-go-v2 patch",
+    "files_changed": [
+      "go.mod",
+      "go.sum"
+    ]
+  },
+  {
+    "sha": "e7a91941db9d37a63e2c753e8f805df4ce7ebe95",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-22T17:25:44Z",
+    "message": "#olapdb Update part GC log verbosity",
+    "files_changed": [
+      "olapdb/src/Storages/PartGCThread.cpp"
+    ]
+  },
+  {
+    "sha": "8f79b5407b131147890447d1a96c020357e13e19",
+    "author": "tunde.okafor",
+    "timestamp": "2026-06-22T17:35:02Z",
+    "message": "#api Collapse duplicate validation funcs",
+    "files_changed": [
+      "api/internal/validate/validate.go"
+    ]
+  },
+  {
+    "sha": "9a2ce66254b41c7fb28f699c3775041cccdd8a26",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-22T17:35:03Z",
+    "message": "#chore Rotate staging TLS cert",
+    "files_changed": [
+      "deploy/staging/tls.yaml"
+    ]
+  },
+  {
+    "sha": "bab4c3e9da9fed707173ccd6dac2b95c225a3c05",
+    "author": "noah.bergstrom",
+    "timestamp": "2026-06-22T17:35:56Z",
+    "message": "#k8s Bump resource requests for compactor",
+    "files_changed": [
+      "charts/log-compactor/values.yaml"
+    ]
+  },
+  {
+    "sha": "aed6362c30c2f7e1e66d698a445ac93ea709fa62",
+    "author": "lena.fischer",
+    "timestamp": "2026-06-22T17:43:58Z",
+    "message": "#misc Fix typo in error message",
+    "files_changed": [
+      "pkg/errors/messages.go"
+    ]
+  },
+  {
+    "sha": "c0e4cfc6ce3b5b85c0430ca90dfdd19d2d7dd05f",
+    "author": "tunde.okafor",
+    "timestamp": "2026-06-22T17:45:01Z",
+    "message": "#olapdb Update part GC log verbosity",
+    "files_changed": [
+      "olapdb/src/Storages/PartGCThread.cpp"
+    ]
+  },
+  {
+    "sha": "28e27fed470cd7a809d9b8fec42e1e98909ee23e",
+    "author": "priya.nair",
+    "timestamp": "2026-06-22T17:52:40Z",
+    "message": "#ingest Tune SQS receive batch size logging",
+    "files_changed": [
+      "pkg/ingest/sqs/log.go"
+    ]
+  },
+  {
+    "sha": "33360ae85a04cfb65738b9341cae7874c5ab2ca3",
+    "author": "tunde.okafor",
+    "timestamp": "2026-06-22T17:57:20Z",
+    "message": "#web Fix tooltip alignment on overview page",
+    "files_changed": [
+      "web/src/components/Tooltip.tsx"
+    ]
+  },
+  {
+    "sha": "e0ca21b02e10dbd843af65932628dea58251de35",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-22T18:05:38Z",
+    "message": "#ai Update prompt template wording",
+    "files_changed": [
+      "ai/src/prompts/system.txt"
+    ]
+  },
+  {
+    "sha": "3edc599b2b9d48f7f8862ec30e102c7fbe15635a",
+    "author": "lena.fischer",
+    "timestamp": "2026-06-22T18:06:50Z",
+    "message": "#docs Document feature flag lifecycle",
+    "files_changed": [
+      "documentation/content/flags.md"
+    ]
+  },
+  {
+    "sha": "7cce27e58c1cbae11a61eab1a4c3b144c8b660af",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-22T18:09:41Z",
+    "message": "#ci Cache go build in CircleCI",
+    "files_changed": [
+      ".circleci/config.yml"
+    ]
+  },
+  {
+    "sha": "91fe318b2a87c9f985be5118d73c2695d094a5cb",
+    "author": "lena.fischer",
+    "timestamp": "2026-06-22T18:12:44Z",
+    "message": "#metrics Add histogram for cache hits",
+    "files_changed": [
+      "pkg/cache/metrics.go"
+    ]
+  },
+  {
+    "sha": "87da0afe828cd76d6d1845a51935d231eeef6cbc",
+    "author": "carlos.mendez",
+    "timestamp": "2026-06-22T18:13:59Z",
+    "message": "#test Add table tests for CQL parser",
+    "files_changed": [
+      "pkg/cql/parse_test.go"
+    ]
+  },
+  {
+    "sha": "75ebe36e8174570cf941a701d197e8350a1fbe1d",
+    "author": "sofia.marino",
+    "timestamp": "2026-06-22T18:16:42Z",
+    "message": "#deps Bump aws-sdk-go-v2 patch",
+    "files_changed": [
+      "go.mod",
+      "go.sum"
+    ]
+  },
+  {
+    "sha": "b2bde10e4ecf05ce44d9cc45e3d82df2609d686b",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-06-22T18:20:23Z",
+    "message": "#ci Cache go build in CircleCI",
+    "files_changed": [
+      ".circleci/config.yml"
+    ]
+  },
+  {
+    "sha": "08634769e91d253a8b2fc5e115526e227ef1a91c",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-22T18:22:35Z",
+    "message": "#k8s Bump resource requests for compactor",
+    "files_changed": [
+      "charts/log-compactor/values.yaml"
+    ]
+  },
+  {
+    "sha": "fcc27c4a7512b6b2eb85fadab4b655917155dfb1",
+    "author": "tunde.okafor",
+    "timestamp": "2026-06-22T18:25:05Z",
+    "message": "#docs Update connector setup guide",
+    "files_changed": [
+      "documentation/content/connectors/slack.md"
+    ]
+  },
+  {
+    "sha": "cee1e9b3f16841447d77f0be810b72ebd3ece445",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-22T18:37:34Z",
+    "message": "#transformer Add structured log field service",
+    "files_changed": [
+      "pipeline-transformer/internal/log/fields.go"
+    ]
+  },
+  {
+    "sha": "c2c1404066d47d3606366ee53fb6ec6313a90ea7",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-22T18:41:25Z",
+    "message": "#transformer Add structured log field service",
+    "files_changed": [
+      "pipeline-transformer/internal/log/fields.go"
+    ]
+  },
+  {
+    "sha": "a8e304f9e7276cb11b33d24d285a7c01f5dfbf76",
+    "author": "tunde.okafor",
+    "timestamp": "2026-06-22T18:49:46Z",
+    "message": "#docs Update connector setup guide",
+    "files_changed": [
+      "documentation/content/connectors/slack.md"
+    ]
+  },
+  {
+    "sha": "200a156aaea86984915c810cd081b57b2bd064b4",
+    "author": "noah.bergstrom",
+    "timestamp": "2026-06-22T18:49:57Z",
+    "message": "#misc Fix typo in error message",
+    "files_changed": [
+      "pkg/errors/messages.go"
+    ]
+  },
+  {
+    "sha": "13fd8289e0c71f32e4f15f6a446c647ac079c953",
+    "author": "sofia.marino",
+    "timestamp": "2026-06-22T18:52:03Z",
+    "message": "#test Add table tests for CQL parser",
+    "files_changed": [
+      "pkg/cql/parse_test.go"
+    ]
+  },
+  {
+    "sha": "14db3d1062559422baaade0e34482e5bf7475fd3",
+    "author": "amir.haddad",
+    "timestamp": "2026-06-22T18:58:48Z",
+    "message": "#api Add request id to access log",
+    "files_changed": [
+      "api/internal/middleware/reqid.go"
+    ]
+  },
+  {
+    "sha": "b256a3daf0f201ec02b379f39e13b930b193ce93",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-22T18:59:39Z",
+    "message": "#web Add empty-state illustration to issues list",
+    "files_changed": [
+      "web/src/pages/Issues.tsx"
+    ]
+  }
+]

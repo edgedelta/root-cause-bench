@@ -1,0 +1,12 @@
+{
+  "scenario": "payment-nil-deref-panic",
+  "root_cause_commit": "5642d6b17f39cc430c2a48ca705cbab33002d03b",
+  "first_failing_service": "paymentservice",
+  "blast_radius": [
+    "checkoutservice",
+    "frontend"
+  ],
+  "remediation": "rollback",
+  "decoy_deploy_commits": [],
+  "notes": "Culprit dereferences an optional 3DS field without a nil check; panic on every charge. checkout and frontend are downstream victims."
+}

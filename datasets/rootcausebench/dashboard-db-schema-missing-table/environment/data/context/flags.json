@@ -1,0 +1,9 @@
+[
+  {
+    "timestamp": "2026-06-22T11:21:00Z",
+    "flag": "dashboard-svc_new_charts_ui",
+    "service": "dashboard-svc",
+    "change": "off->on",
+    "actor": "deepak.rao"
+  }
+]

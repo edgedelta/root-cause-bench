@@ -1,0 +1,9 @@
+[
+  {
+    "timestamp": "2026-06-23T09:37:00Z",
+    "flag": "agent_streaming_v2",
+    "service": "ai-agent-svc",
+    "change": "off->on",
+    "actor": "wei.zhang"
+  }
+]

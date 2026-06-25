@@ -1,0 +1,10 @@
+{
+  "service": "stream-taskmanager",
+  "metric": "flink_job_uptime_seconds",
+  "threshold": 0,
+  "observed": 0,
+  "fired_at": "2026-06-24T14:39:00Z",
+  "severity": "high",
+  "monitor": "FlinkJobUnhealthy",
+  "summary": "FlinkJobUnhealthy on Metric_threshold_monitoring_job (stream-taskmanager taskmanager); upstream olapdb-tso FoundationDB transaction timeouts during TSO leader-election"
+}

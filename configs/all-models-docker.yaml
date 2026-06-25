@@ -1,0 +1,39 @@
+# RootCauseBench — all scenarios, several frontier models (Docker).
+# Usage: source .env && uv run harbor run -c configs/all-models-docker.yaml
+# 10 scenarios × N models × 3 attempts.
+
+jobs_dir: jobs
+n_attempts: 3
+
+orchestrator:
+  type: local
+  n_concurrent_trials: 8
+  quiet: false
+
+environment:
+  type: docker
+
+agents:
+  - name: terminus-2
+    model_name: openrouter/anthropic/claude-opus-4.6
+  - name: terminus-2
+    model_name: openrouter/openai/gpt-5.2-codex
+  - name: terminus-2
+    model_name: openrouter/google/gemini-3-pro-preview
+  - name: terminus-2
+    model_name: openrouter/moonshotai/kimi-k2.5
+
+datasets:
+  - path: datasets
+    task_names:
+      - rootcausebench/checkout-latency-n-plus-one
+      - rootcausebench/payment-nil-deref-panic
+      - rootcausebench/inventory-connection-pool-exhaustion
+      - rootcausebench/recommendation-memory-leak
+      # Reconstructions of representative production incident classes (fictional identifiers):
+      - rootcausebench/olapdb-tso-cas-retry-budget
+      - rootcausebench/ai-agent-registration-missing
+      - rootcausebench/dynamodb-write-capacity-breach
+      - rootcausebench/metric-ingestor-metadata-deser
+      - rootcausebench/dashboard-db-schema-missing-table
+      - rootcausebench/transformer-dependency-startup-crash

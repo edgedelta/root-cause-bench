@@ -1,0 +1,23 @@
+[
+  {
+    "signature": "panic: proto: duplicate registration / incompatible protobuf runtime version",
+    "service": "pipeline-transformer",
+    "count": 16,
+    "delta_vs_baseline": "+16",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "OnCall AI WorkflowEngine: pipeline-transformer endpoint unavailable (connection refused)",
+    "service": "workflow-engine",
+    "count": 6,
+    "delta_vs_baseline": "+6",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "pipeline-transformer pipeline healthy; processed <N> batches",
+    "service": "pipeline-transformer",
+    "count": 0,
+    "delta_vs_baseline": "-300",
+    "sentiment": "neutral"
+  }
+]

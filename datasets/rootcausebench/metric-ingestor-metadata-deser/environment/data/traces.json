@@ -1,0 +1,23 @@
+[
+  {
+    "trace_id": "994799d1f6347007a852efebcbc97a88",
+    "span_id": "a1",
+    "parent_id": null,
+    "service": "metric-ingestor-1",
+    "name": "DecodeEnvelope",
+    "start": "2026-06-24T10:59:08Z",
+    "duration_ms": 3,
+    "status": "ERROR",
+    "error": "missing required field 'meta'"
+  },
+  {
+    "trace_id": "f5292f3e683eccd39c706bfba0f78a74",
+    "span_id": "z1",
+    "parent_id": null,
+    "service": "metric-ingestor-1",
+    "name": "DecodeEnvelope",
+    "start": "2026-06-24T10:10:00Z",
+    "duration_ms": 2,
+    "status": "OK"
+  }
+]

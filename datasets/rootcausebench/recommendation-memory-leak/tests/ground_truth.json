@@ -1,0 +1,13 @@
+{
+  "scenario": "recommendation-memory-leak",
+  "root_cause_commit": "c6566fcc695be384caeebd7ae0a893ccb345ae83",
+  "first_failing_service": "recommendationservice",
+  "blast_radius": [
+    "frontend"
+  ],
+  "remediation": "rollback",
+  "decoy_deploy_commits": [
+    "f72cb9d310cfa25d98fe780c6c0829cd2c8257c1"
+  ],
+  "notes": "Culprit caches per-request scores in a package-level map that never evicts -> unbounded growth -> OOMKill ~12 min after deploy. The 'prefetch goroutine' commit deployed near onset is a plausible decoy but is not the leak."
+}

@@ -1,0 +1,37 @@
+[
+  {
+    "signature": "slow request: PlaceOrder exceeded <N>ms",
+    "service": "checkoutservice",
+    "count": 412,
+    "delta_vs_baseline": "+412",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "SELECT * FROM catalog_items WHERE sku = $<N>",
+    "service": "checkoutservice",
+    "count": 19200,
+    "delta_vs_baseline": "+18700",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "upstream checkoutservice slow, timeout budget exceeded",
+    "service": "cartservice",
+    "count": 88,
+    "delta_vs_baseline": "+88",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "handled request",
+    "service": "frontend",
+    "count": 5300,
+    "delta_vs_baseline": "+120",
+    "sentiment": "neutral"
+  },
+  {
+    "signature": "feature flag checkout_new_recommendation_rail enabled for cohort",
+    "service": "frontend",
+    "count": 30,
+    "delta_vs_baseline": "+30",
+    "sentiment": "neutral"
+  }
+]

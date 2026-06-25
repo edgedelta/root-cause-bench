@@ -1,0 +1,447 @@
+[
+  {
+    "sha": "9c384d8d9c4e85ffe80605a2ab61e487f633cef5",
+    "author": "grace.kim",
+    "timestamp": "2026-06-20T11:01:07Z",
+    "message": "chore: tidy imports in product service",
+    "files_changed": [
+      "services/product/main.go"
+    ]
+  },
+  {
+    "sha": "d45308b2c06a169d6d24ba4a1f8cd2a36bb0ffd0",
+    "author": "marta.kowalski",
+    "timestamp": "2026-06-20T11:08:38Z",
+    "message": "feat: add /readyz endpoint",
+    "files_changed": [
+      "internal/health/ready.go"
+    ]
+  },
+  {
+    "sha": "e8d1497769611cef1590e116d60b6d850f42b11b",
+    "author": "ivan.petrov",
+    "timestamp": "2026-06-20T11:08:47Z",
+    "message": "refactor: collapse duplicate validation funcs",
+    "files_changed": [
+      "pkg/validate/validate.go"
+    ]
+  },
+  {
+    "sha": "8603d5fdfa1869a1cff83641009662d1fd9f4ac3",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-20T11:10:30Z",
+    "message": "feat: add prometheus histogram for cache hits",
+    "files_changed": [
+      "pkg/cache/metrics.go"
+    ]
+  },
+  {
+    "sha": "3f982cb10536e33bc81def3814ff3f991d3310d9",
+    "author": "fatima.zahra",
+    "timestamp": "2026-06-20T11:24:06Z",
+    "message": "chore: update CODEOWNERS",
+    "files_changed": [
+      "CODEOWNERS"
+    ]
+  },
+  {
+    "sha": "7e2ca060731764815334cb9112b12ee095200a2d",
+    "author": "fatima.zahra",
+    "timestamp": "2026-06-20T11:25:05Z",
+    "message": "refactor: extract response writer helper",
+    "files_changed": [
+      "internal/httputil/writer.go"
+    ]
+  },
+  {
+    "sha": "7f143d8c56b30ae81d2c6b73a666b83a9dc78209",
+    "author": "marta.kowalski",
+    "timestamp": "2026-06-20T11:33:09Z",
+    "message": "chore: upgrade base image to distroless:nonroot",
+    "files_changed": [
+      "Dockerfile"
+    ]
+  },
+  {
+    "sha": "b38966a29d0a477f9830155d5ba5818dbeb9609a",
+    "author": "ivan.petrov",
+    "timestamp": "2026-06-20T11:37:43Z",
+    "message": "docs: add runbook for deploy rollback",
+    "files_changed": [
+      "docs/runbooks/rollback.md"
+    ]
+  },
+  {
+    "sha": "43b420c9b1720d8ef39d862abe16c563083be898",
+    "author": "marta.kowalski",
+    "timestamp": "2026-06-20T11:40:34Z",
+    "message": "fix: race in metrics registry init",
+    "files_changed": [
+      "pkg/cache/registry.go"
+    ]
+  },
+  {
+    "sha": "04dc30454ecae3d1c10f8c5e19e1e1e8d90a0d31",
+    "author": "noah.bergstrom",
+    "timestamp": "2026-06-20T11:42:51Z",
+    "message": "fix: off-by-one in batch chunking",
+    "files_changed": [
+      "pkg/batch/chunk.go"
+    ]
+  },
+  {
+    "sha": "2cbb44c01a589c058e90382ba21471c5253b96b3",
+    "author": "grace.kim",
+    "timestamp": "2026-06-20T11:43:03Z",
+    "message": "fix: close response body in health checker",
+    "files_changed": [
+      "internal/health/check.go"
+    ]
+  },
+  {
+    "sha": "53762646d2c215e4d312f05c68c8f3607bd327aa",
+    "author": "grace.kim",
+    "timestamp": "2026-06-20T11:53:13Z",
+    "message": "refactor: rename internal package observability->telemetry",
+    "files_changed": [
+      "internal/telemetry/telemetry.go"
+    ]
+  },
+  {
+    "sha": "4006a3260aceb653a79c35db98f777f3bff34560",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-20T11:58:47Z",
+    "message": "docs: update API reference for orders endpoint",
+    "files_changed": [
+      "docs/api/orders.md"
+    ]
+  },
+  {
+    "sha": "8fd5625995ac544a80a8ead474252a8d77f9e464",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-06-20T12:02:35Z",
+    "message": "feat: add request id propagation header",
+    "files_changed": [
+      "internal/middleware/reqid.go"
+    ]
+  },
+  {
+    "sha": "53190eb5c4171a1e25ec066e3e9553cb4c960b65",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-20T12:05:35Z",
+    "message": "test: golden files for invoice rendering",
+    "files_changed": [
+      "pkg/invoice/testdata/golden.json"
+    ]
+  },
+  {
+    "sha": "df82bfa84c1779ccf97449bc99b5cd7267efa5d4",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-20T12:10:03Z",
+    "message": "feat: support gzip request bodies",
+    "files_changed": [
+      "internal/middleware/gzip.go"
+    ]
+  },
+  {
+    "sha": "f54c101b354be85eda0c1f8106b496b7b3c2583f",
+    "author": "tunde.okafor",
+    "timestamp": "2026-06-20T12:10:38Z",
+    "message": "ci: cache go build in GitHub Actions",
+    "files_changed": [
+      ".github/workflows/build.yml"
+    ]
+  },
+  {
+    "sha": "4704d98ad4ab848d2ab53635350de282f99022d1",
+    "author": "priya.nair",
+    "timestamp": "2026-06-20T12:16:30Z",
+    "message": "test: add integration test for graceful shutdown",
+    "files_changed": [
+      "cmd/server/shutdown_test.go"
+    ]
+  },
+  {
+    "sha": "7b42d62ba831b54f4891b9aeabd93b06482d487e",
+    "author": "jdoe",
+    "timestamp": "2026-06-20T12:19:09Z",
+    "message": "test: add table-driven tests for currency conversion",
+    "files_changed": [
+      "pkg/money/convert_test.go"
+    ]
+  },
+  {
+    "sha": "a68027c0cb31d33d94ff56bb35bc4bedb0832019",
+    "author": "lena.fischer",
+    "timestamp": "2026-06-20T12:32:14Z",
+    "message": "test: increase coverage on retry backoff",
+    "files_changed": [
+      "pkg/retry/backoff_test.go"
+    ]
+  },
+  {
+    "sha": "d14a9c75f606ab2ba164ed15beaee74253776b52",
+    "author": "fatima.zahra",
+    "timestamp": "2026-06-20T12:46:48Z",
+    "message": "style: gofmt and goimports across repo",
+    "files_changed": [
+      "pkg/cart/cart.go",
+      "pkg/cart/cart_test.go"
+    ]
+  },
+  {
+    "sha": "af70d81540dcda7e9991f1433cfe32ba219e4124",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-20T12:48:45Z",
+    "message": "chore: pin golangci-lint to v1.61",
+    "files_changed": [
+      ".golangci.yml"
+    ]
+  },
+  {
+    "sha": "e70a5ae729820015a320a9879040f96bfe2eb5d8",
+    "author": "sofia.marino",
+    "timestamp": "2026-06-20T12:51:52Z",
+    "message": "docs: clarify env var precedence",
+    "files_changed": [
+      "README.md"
+    ]
+  },
+  {
+    "sha": "f3b59bfab1c05d602fd3776f60e4f899178d5615",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-20T12:52:42Z",
+    "message": "perf: reuse sync.Pool for buffers in encoder",
+    "files_changed": [
+      "pkg/codec/pool.go"
+    ]
+  },
+  {
+    "sha": "807756fe272e8f0cf1383827af09310a52e757d3",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-20T13:09:07Z",
+    "message": "fix: guard against negative quantity in cart",
+    "files_changed": [
+      "pkg/cart/validate.go"
+    ]
+  },
+  {
+    "sha": "e430d4a72ccb214acdd4e05c7e89022bcfe0783d",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-06-20T13:14:35Z",
+    "message": "chore: rotate staging TLS cert",
+    "files_changed": [
+      "deploy/staging/tls.yaml"
+    ]
+  },
+  {
+    "sha": "6e19c5cea3a971931c4f48704e47077a4ef7b456",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-20T13:20:58Z",
+    "message": "chore: bump go.mod dependencies",
+    "files_changed": [
+      "go.mod",
+      "go.sum"
+    ]
+  },
+  {
+    "sha": "bd05ab0cac49e84f40cef0c1b409482f219ac4f9",
+    "author": "tunde.okafor",
+    "timestamp": "2026-06-20T13:24:19Z",
+    "message": "refactor: move DTOs into api/types",
+    "files_changed": [
+      "api/types/types.go"
+    ]
+  },
+  {
+    "sha": "19c0582d5d79d9d2cfd47fcecef0a9efbef37ff1",
+    "author": "sofia.marino",
+    "timestamp": "2026-06-20T13:28:31Z",
+    "message": "test: fuzz the SKU parser",
+    "files_changed": [
+      "pkg/sku/parse_fuzz_test.go"
+    ]
+  },
+  {
+    "sha": "450ef9e7f8904787374574822be1db6ffa2f4db4",
+    "author": "tunde.okafor",
+    "timestamp": "2026-06-20T13:34:36Z",
+    "message": "fix: correct typo in error message",
+    "files_changed": [
+      "internal/errors/messages.go"
+    ]
+  },
+  {
+    "sha": "428407d2d32d16b7a09e2f1b6eca3396c8229e87",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-06-20T13:34:45Z",
+    "message": "docs: document feature flag lifecycle",
+    "files_changed": [
+      "docs/flags.md"
+    ]
+  },
+  {
+    "sha": "e601bd18760e98d94575396e24f1e10d6de3e612",
+    "author": "amir.haddad",
+    "timestamp": "2026-06-20T13:39:07Z",
+    "message": "refactor: simplify config loading with viper",
+    "files_changed": [
+      "internal/config/load.go"
+    ]
+  },
+  {
+    "sha": "13ac92a16b155fd29f379d4eab35ec82c976c44f",
+    "author": "ivan.petrov",
+    "timestamp": "2026-06-20T13:40:00Z",
+    "message": "perf(inventory): tune pgx pool sizing for memory headroom",
+    "files_changed": [
+      "services/inventory/db/pool.go",
+      "services/inventory/config/db.yaml"
+    ]
+  },
+  {
+    "sha": "13ac92a16b155fd29f379d4eab35ec82c976c44f",
+    "author": "ivan.petrov",
+    "timestamp": "2026-06-20T13:40:00Z",
+    "message": "perf(inventory): tune pgx pool sizing for memory headroom",
+    "files_changed": [
+      "services/inventory/db/pool.go",
+      "services/inventory/config/db.yaml"
+    ]
+  },
+  {
+    "sha": "b6262ea46bc70b162b0427fb7ed31d6008db17b1",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-20T13:42:09Z",
+    "message": "feat: emit OTel span attributes for user_id",
+    "files_changed": [
+      "internal/trace/attrs.go"
+    ]
+  },
+  {
+    "sha": "ba9484cecab7dc64c69915a99277f714884b326d",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-20T13:47:30Z",
+    "message": "feat(shipping): add carrier rate-card refresh job",
+    "files_changed": [
+      "services/shipping/ratecard.go"
+    ]
+  },
+  {
+    "sha": "76005bb9118b9af36cf360279e3ec2ef8442e1a9",
+    "author": "marta.kowalski",
+    "timestamp": "2026-06-20T13:48:10Z",
+    "message": "fix(order): correct tax rounding for EU VAT",
+    "files_changed": [
+      "services/order/tax.go"
+    ]
+  },
+  {
+    "sha": "467296c27d4d94d4046312c1d9ea3a26b448bf3c",
+    "author": "carlos.mendez",
+    "timestamp": "2026-06-20T13:49:21Z",
+    "message": "feat: add structured logging fields to request middleware",
+    "files_changed": [
+      "internal/middleware/log.go"
+    ]
+  },
+  {
+    "sha": "1d0c3c8a7ae31c7cc8af5470fcf854b0c682066a",
+    "author": "ivan.petrov",
+    "timestamp": "2026-06-20T13:50:09Z",
+    "message": "perf: preallocate buffer in JSON encoder",
+    "files_changed": [
+      "pkg/codec/json.go"
+    ]
+  },
+  {
+    "sha": "8f0b56bd93b74aea189adb3325d48dbd436d3588",
+    "author": "fatima.zahra",
+    "timestamp": "2026-06-20T14:04:16Z",
+    "message": "fix: handle empty slice in pagination helper",
+    "files_changed": [
+      "pkg/paginate/paginate.go"
+    ]
+  },
+  {
+    "sha": "a817193d4f107fae6b0071e048651b68a81de963",
+    "author": "jdoe",
+    "timestamp": "2026-06-20T14:07:19Z",
+    "message": "chore: tidy imports in product service",
+    "files_changed": [
+      "services/product/main.go"
+    ]
+  },
+  {
+    "sha": "dfb0b91e7979060be4e7be23f098f9b03f246017",
+    "author": "priya.nair",
+    "timestamp": "2026-06-20T14:09:46Z",
+    "message": "feat: add /readyz endpoint",
+    "files_changed": [
+      "internal/health/ready.go"
+    ]
+  },
+  {
+    "sha": "84da2fa2eee7b53aeab0a662e9d2689adcfb3d04",
+    "author": "fatima.zahra",
+    "timestamp": "2026-06-20T14:12:41Z",
+    "message": "refactor: collapse duplicate validation funcs",
+    "files_changed": [
+      "pkg/validate/validate.go"
+    ]
+  },
+  {
+    "sha": "b168c1a4cdbfbac155a3a0e65074a2f5470b6484",
+    "author": "lena.fischer",
+    "timestamp": "2026-06-20T14:22:11Z",
+    "message": "feat: add prometheus histogram for cache hits",
+    "files_changed": [
+      "pkg/cache/metrics.go"
+    ]
+  },
+  {
+    "sha": "df7f5663ec91604e5051f072c9bd675e8d5f79aa",
+    "author": "noah.bergstrom",
+    "timestamp": "2026-06-20T14:30:46Z",
+    "message": "chore: update CODEOWNERS",
+    "files_changed": [
+      "CODEOWNERS"
+    ]
+  },
+  {
+    "sha": "ea785ac9086869a8f0a1a8d06f20954c83cea82c",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-20T14:35:38Z",
+    "message": "refactor: extract response writer helper",
+    "files_changed": [
+      "internal/httputil/writer.go"
+    ]
+  },
+  {
+    "sha": "33360ae85a04cfb65738b9341cae7874c5ab2ca3",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-06-20T14:44:20Z",
+    "message": "chore: upgrade base image to distroless:nonroot",
+    "files_changed": [
+      "Dockerfile"
+    ]
+  },
+  {
+    "sha": "2459073558ed214765f035b7560db50a82bd2a45",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-06-20T14:44:34Z",
+    "message": "docs: add runbook for deploy rollback",
+    "files_changed": [
+      "docs/runbooks/rollback.md"
+    ]
+  },
+  {
+    "sha": "c4ab38a7090da45ed2db2e1a8207df9ca42970a9",
+    "author": "jdoe",
+    "timestamp": "2026-06-20T14:46:01Z",
+    "message": "fix: race in metrics registry init",
+    "files_changed": [
+      "pkg/cache/registry.go"
+    ]
+  }
+]
