@@ -1,0 +1,57 @@
+{
+  "provider": "stripe",
+  "source": "https://status.stripe.com/api/v2/incidents.json",
+  "fetched_at": "2026-09-22T11:30:00Z",
+  "components": [
+    {
+      "name": "Stripe API",
+      "endpoint": "api.stripe.com",
+      "status": "degraded_performance"
+    },
+    {
+      "name": "Charges",
+      "endpoint": "api.stripe.com/v1/charges",
+      "status": "partial_outage"
+    },
+    {
+      "name": "Dashboard",
+      "endpoint": "dashboard.stripe.com",
+      "status": "operational"
+    }
+  ],
+  "incidents": [
+    {
+      "id": "inc_2026_09_22_charges",
+      "name": "Elevated error rates on the Charges API",
+      "impact": "major",
+      "status": "monitoring",
+      "started_at": "2026-09-22T11:04:00Z",
+      "updates": [
+        {
+          "timestamp": "2026-09-22T11:06:00Z",
+          "body": "We are observing elevated 5xx responses and increased latency on POST /v1/charges in the us region. Investigating."
+        },
+        {
+          "timestamp": "2026-09-22T11:14:00Z",
+          "body": "A subset of charge requests are returning HTTP 503. Retries may also fail while the issue persists. Mitigation in progress."
+        },
+        {
+          "timestamp": "2026-09-22T11:27:00Z",
+          "body": "Error rates are recovering. Continuing to monitor."
+        }
+      ]
+    }
+  ],
+  "api_error_rate_pct": [
+    { "timestamp": "2026-09-22T10:50:00Z", "endpoint": "api.stripe.com/v1/charges", "value": 0.3 },
+    { "timestamp": "2026-09-22T10:55:00Z", "endpoint": "api.stripe.com/v1/charges", "value": 0.4 },
+    { "timestamp": "2026-09-22T11:00:00Z", "endpoint": "api.stripe.com/v1/charges", "value": 0.5 },
+    { "timestamp": "2026-09-22T11:04:00Z", "endpoint": "api.stripe.com/v1/charges", "value": 12.7 },
+    { "timestamp": "2026-09-22T11:06:00Z", "endpoint": "api.stripe.com/v1/charges", "value": 58.9 },
+    { "timestamp": "2026-09-22T11:10:00Z", "endpoint": "api.stripe.com/v1/charges", "value": 73.2 },
+    { "timestamp": "2026-09-22T11:15:00Z", "endpoint": "api.stripe.com/v1/charges", "value": 70.1 },
+    { "timestamp": "2026-09-22T11:20:00Z", "endpoint": "api.stripe.com/v1/charges", "value": 44.6 },
+    { "timestamp": "2026-09-22T11:25:00Z", "endpoint": "api.stripe.com/v1/charges", "value": 9.8 },
+    { "timestamp": "2026-09-22T11:30:00Z", "endpoint": "api.stripe.com/v1/charges", "value": 1.1 }
+  ]
+}

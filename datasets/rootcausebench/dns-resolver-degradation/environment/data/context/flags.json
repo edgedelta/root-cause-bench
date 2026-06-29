@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": "2026-06-20T10:05:00Z",
+    "flag": "checkout_new_pricing_ui",
+    "service": "checkoutservice",
+    "change": "off->on",
+    "actor": "amir.haddad"
+  },
+  {
+    "timestamp": "2026-06-20T09:30:00Z",
+    "flag": "recs_ann_index_v2",
+    "service": "recommendationservice",
+    "change": "off->on",
+    "actor": "sofia.marino"
+  }
+]

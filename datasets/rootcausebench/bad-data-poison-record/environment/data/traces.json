@@ -1,0 +1,52 @@
+[
+  {
+    "trace_id": "3f563416750337a606d4cb31168e5a51",
+    "span_id": "a1",
+    "parent_id": null,
+    "service": "event-enricher-1",
+    "name": "ValidateGeoRecord",
+    "start": "2026-06-24T11:38:11Z",
+    "duration_ms": 2,
+    "status": "ERROR",
+    "error": "field 'lat' out of range [-90,90] got 412.700000",
+    "attributes": {
+      "record_id": "geo-evt-8f3a2174",
+      "partition": 3,
+      "offset": 148820291,
+      "producer": "geo-partner-feed"
+    }
+  },
+  {
+    "trace_id": "5ce2e62d5d9f41c86b6c971b31cbb4b2",
+    "span_id": "a2",
+    "parent_id": null,
+    "service": "event-enricher-1",
+    "name": "ValidateGeoRecord",
+    "start": "2026-06-24T11:40:36Z",
+    "duration_ms": 2,
+    "status": "ERROR",
+    "error": "field 'lat' out of range [-90,90] got 412.700000",
+    "attributes": {
+      "record_id": "geo-evt-8f3a2174",
+      "partition": 3,
+      "offset": 148820291,
+      "producer": "geo-partner-feed"
+    }
+  },
+  {
+    "trace_id": "ff66d382912936d21b0d1059c8afab67",
+    "span_id": "z1",
+    "parent_id": null,
+    "service": "event-enricher-1",
+    "name": "ValidateGeoRecord",
+    "start": "2026-06-24T11:10:00Z",
+    "duration_ms": 1,
+    "status": "OK",
+    "attributes": {
+      "record_id": "geo-evt-8f3a2090",
+      "partition": 3,
+      "offset": 148820180,
+      "producer": "geo-partner-feed"
+    }
+  }
+]

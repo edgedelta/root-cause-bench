@@ -1,0 +1,284 @@
+[
+  {
+    "sha": "66e5c75a81488a9b24d17a93fd9e32305a9579ca",
+    "author": "carlos.mendez",
+    "timestamp": "2026-06-24T10:14:09Z",
+    "message": "#api Add request id to access log",
+    "files_changed": [
+      "api/internal/middleware/reqid.go"
+    ],
+    "diff": "@@ api/internal/middleware/reqid.go @@\n+\trid := r.Header.Get(\"X-Request-Id\")\n+\tif rid == \"\" {\n+\t\trid = uuid.NewString()\n+\t}\n+\tlogger = logger.With(\"request_id\", rid)"
+  },
+  {
+    "sha": "8e0ee5fee57cfae3c249e2809f445a49d2f3e1eb",
+    "author": "amir.haddad",
+    "timestamp": "2026-06-24T10:39:02Z",
+    "message": "#deps Bump geojson decoder patch",
+    "files_changed": [
+      "go.mod",
+      "go.sum"
+    ],
+    "diff": "@@ go.mod @@\n-\tgithub.com/edgedelta/geojson v1.12.3\n+\tgithub.com/edgedelta/geojson v1.12.4"
+  },
+  {
+    "sha": "30cb6576698a1dfbb116399ca3ab43874067b388",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-24T10:48:51Z",
+    "message": "#enrich Tidy geo record parser",
+    "files_changed": [
+      "pkg/enrich/geo/parse.go"
+    ],
+    "diff": "@@ pkg/enrich/geo/parse.go @@ func ParseRecord(b []byte) (*GeoRecord, error) {\n-\tvar r GeoRecord\n-\tif err := json.Unmarshal(b, &r); err != nil {\n-\t\treturn nil, err\n-\t}\n-\treturn &r, nil\n+\tr := &GeoRecord{}\n+\tif err := json.Unmarshal(b, r); err != nil {\n+\t\treturn nil, fmt.Errorf(\"parse geo record: %w\", err)\n+\t}\n+\treturn r, nil"
+  },
+  {
+    "sha": "210d6e37b3c1fe534c7029f0a244ce5422091eec",
+    "author": "tunde.okafor",
+    "timestamp": "2026-06-24T10:55:40Z",
+    "message": "#admin Add /readyz probe handler",
+    "files_changed": [
+      "api/internal/health/ready.go"
+    ],
+    "diff": "@@ api/internal/health/ready.go @@\n+func Readyz(w http.ResponseWriter, r *http.Request) {\n+\tif !pool.Ready() {\n+\t\tw.WriteHeader(503)\n+\t\treturn\n+\t}\n+\tw.WriteHeader(200)\n+}"
+  },
+  {
+    "sha": "e927e3a67bf01c98e64c45e6178aed80af571467",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-06-24T11:00:33Z",
+    "message": "#enrich Rename enrich worker version constant",
+    "files_changed": [
+      "pkg/enrich/version.go"
+    ],
+    "diff": "@@ pkg/enrich/version.go @@\n-const Version = \"v2026.06.24-1014\"\n+const Version = \"v2026.06.24-1102\""
+  },
+  {
+    "sha": "44d3c5a4b45c74be28eb30dab87c2565033d0b58",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-24T11:09:17Z",
+    "message": "#enrich Tune SQS receive batch size logging",
+    "files_changed": [
+      "pkg/enrich/sqs/log.go"
+    ],
+    "diff": "@@ pkg/enrich/sqs/log.go @@\n-\tlog.Printf(\"received %d records\", len(msgs))\n+\tlogger.Debug(\"sqs receive\", \"count\", len(msgs), \"queue\", q.Name)"
+  },
+  {
+    "sha": "d35af7feef3e256a34b215fa14d1d108cab5e788",
+    "author": "priya.nair",
+    "timestamp": "2026-06-24T11:31:22Z",
+    "message": "#enrich Tidy geo coordinate validation helper",
+    "files_changed": [
+      "pkg/enrich/geo/validate.go"
+    ],
+    "diff": "@@ pkg/enrich/geo/validate.go @@ func validateCoords(r *GeoRecord) error {\n-\tif r.Lat < -90 || r.Lat > 90 {\n-\t\treturn errOutOfRange(\"lat\", r.Lat)\n-\t}\n-\tif r.Lon < -180 || r.Lon > 180 {\n-\t\treturn errOutOfRange(\"lon\", r.Lon)\n-\t}\n-\treturn nil\n+\tif err := checkRange(\"lat\", r.Lat, -90, 90); err != nil {\n+\t\treturn err\n+\t}\n+\treturn checkRange(\"lon\", r.Lon, -180, 180)"
+  },
+  {
+    "sha": "409ef7882ecc3c86ac04129d053c2022209fef15",
+    "author": "amir.haddad",
+    "timestamp": "2026-06-24T11:33:48Z",
+    "message": "#web Restyle banner on settings page",
+    "files_changed": [
+      "web/src/pages/Settings.css"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "927b609171f2e7d1b0ccb2ac270bcdbeea8fdab5",
+    "author": "priya.nair",
+    "timestamp": "2026-06-24T11:46:55Z",
+    "message": "#docs Document feature flag lifecycle",
+    "files_changed": [
+      "documentation/content/flags.md"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "648c33ec3d6c15bdbcad2929255bb7945197ba3a",
+    "author": "amir.haddad",
+    "timestamp": "2026-06-24T11:47:30Z",
+    "message": "#olapdb Update part GC log verbosity",
+    "files_changed": [
+      "olapdb/src/Storages/PartGCThread.cpp"
+    ],
+    "diff": "@@ olapdb/src/Storages/PartGCThread.cpp @@\n-\t\tLOG_TRACE(log, \"collected {} parts\", n);\n+\t\tLOG_DEBUG(log, \"collected {} parts in {} ms\", n, elapsed);"
+  },
+  {
+    "sha": "b304dcfd91fbd8df640f01852316b37af95d5029",
+    "author": "sofia.marino",
+    "timestamp": "2026-06-24T11:48:12Z",
+    "message": "#ci Cache go build in CircleCI",
+    "files_changed": [
+      ".circleci/config.yml"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "3c7bfd1c87e3588e8594a03e3d2639ee4e617f5c",
+    "author": "sofia.marino",
+    "timestamp": "2026-06-24T11:49:01Z",
+    "message": "#web Fix tooltip alignment on overview page",
+    "files_changed": [
+      "web/src/components/Tooltip.tsx"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "0f746423c301173ac5db1c68e2440cc524b634b5",
+    "author": "noah.bergstrom",
+    "timestamp": "2026-06-24T11:50:19Z",
+    "message": "#chore Rotate staging TLS cert",
+    "files_changed": [
+      "deploy/staging/tls.yaml"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "cbadc0f5d00e8cb58b8d2167e47d8d8962c1680d",
+    "author": "sofia.marino",
+    "timestamp": "2026-06-24T11:51:44Z",
+    "message": "#k8s Bump resource requests for compactor",
+    "files_changed": [
+      "charts/log-compactor/values.yaml"
+    ],
+    "diff": "@@ charts/log-compactor/values.yaml @@\n-\t  memory: 512Mi\n+\t  memory: 768Mi"
+  },
+  {
+    "sha": "1896e56b88eb15a0007aa9b3f1e61a4c611b07b3",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-06-24T11:53:10Z",
+    "message": "#metrics Add histogram for cache hits",
+    "files_changed": [
+      "pkg/cache/metrics.go"
+    ],
+    "diff": "@@ pkg/cache/metrics.go @@\n+\tcacheHits = prometheus.NewCounter(prometheus.CounterOpts{\n+\t\tName: \"cache_hits_total\",\n+\t})\n+\tprometheus.MustRegister(cacheHits)"
+  },
+  {
+    "sha": "c6ec3a53ffa8ca49e2ce969ca70f093e7c1b58cb",
+    "author": "sofia.marino",
+    "timestamp": "2026-06-24T12:01:34Z",
+    "message": "#dashboard Update dashboard color palette",
+    "files_changed": [
+      "dashboard-svc/dashboard-frontend/theme.ts"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "cefc882b265cd8ae372fe17b79628c8bd8eae46e",
+    "author": "noah.bergstrom",
+    "timestamp": "2026-06-24T12:15:48Z",
+    "message": "#ai Update prompt template wording",
+    "files_changed": [
+      "ai/src/prompts/system.txt"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "dfd88fe36ba0b0987926dc122ba463d460432fb4",
+    "author": "sofia.marino",
+    "timestamp": "2026-06-24T12:17:19Z",
+    "message": "#docs Update connector setup guide",
+    "files_changed": [
+      "documentation/content/connectors/slack.md"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "d84181ea74499bb2bce31784dc6a30d0062d30de",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-24T12:31:27Z",
+    "message": "#misc Fix typo in error message",
+    "files_changed": [
+      "pkg/errors/messages.go"
+    ],
+    "diff": "@@ pkg/errors/messages.go @@\n-\t\"recieved unexpected status\"\n+\t\"received unexpected status\""
+  },
+  {
+    "sha": "166c966c0d518531b3c7e216cbc2ea81ed897edc",
+    "author": "noah.bergstrom",
+    "timestamp": "2026-06-24T12:32:42Z",
+    "message": "#api Collapse duplicate validation funcs",
+    "files_changed": [
+      "api/internal/validate/validate.go"
+    ],
+    "diff": "@@ api/internal/validate/validate.go @@\n-\tif err := validateName(x); err != nil { return err }\n-\tif err := validateName2(x); err != nil { return err }\n+\tif err := validateName(x); err != nil { return err }"
+  },
+  {
+    "sha": "52a066e3b365a186ee19e4f71c974442920b7c25",
+    "author": "lena.fischer",
+    "timestamp": "2026-06-24T12:40:30Z",
+    "message": "#dashboard Update dashboard color palette",
+    "files_changed": [
+      "dashboard-svc/dashboard-frontend/theme.ts"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "d2c8ea7d1c1276c5b05c074b0709d7ab15748bba",
+    "author": "noah.bergstrom",
+    "timestamp": "2026-06-24T12:50:54Z",
+    "message": "#web Fix tooltip alignment on overview page",
+    "files_changed": [
+      "web/src/components/Tooltip.tsx"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "3214b68d36da43b4f84c65208ef30b3bda144a23",
+    "author": "noah.bergstrom",
+    "timestamp": "2026-06-24T12:54:44Z",
+    "message": "#ci Cache go build in CircleCI",
+    "files_changed": [
+      ".circleci/config.yml"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "4b545e62e402ca3b445a8e3da7f7819c66a52fa7",
+    "author": "sofia.marino",
+    "timestamp": "2026-06-24T12:58:54Z",
+    "message": "#deps Bump aws-sdk-go-v2 patch",
+    "files_changed": [
+      "go.mod",
+      "go.sum"
+    ],
+    "diff": "@@ go.mod @@\n-\tgithub.com/aws/aws-sdk-go-v2/config v1.27.0\n+\tgithub.com/aws/aws-sdk-go-v2/config v1.27.1"
+  },
+  {
+    "sha": "bb8a46cb3106b4ac4746c733a3363a822c07e6e6",
+    "author": "carlos.mendez",
+    "timestamp": "2026-06-24T13:02:51Z",
+    "message": "#api Add request id to access log",
+    "files_changed": [
+      "api/internal/middleware/reqid.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "dd95983e3eee9ea1851bdd95d53f87efe9974ee7",
+    "author": "sofia.marino",
+    "timestamp": "2026-06-24T13:04:59Z",
+    "message": "#enrich Add structured log field service",
+    "files_changed": [
+      "pkg/enrich/log/fields.go"
+    ],
+    "diff": "@@ pkg/enrich/log/fields.go @@\n+\tfields = append(fields, slog.String(\"service\", svc))"
+  },
+  {
+    "sha": "de14d4bd30de97df4055e35ae35eee30ae791e51",
+    "author": "carlos.mendez",
+    "timestamp": "2026-06-24T13:09:20Z",
+    "message": "#api Collapse duplicate validation funcs",
+    "files_changed": [
+      "api/internal/validate/validate.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "1499f7970dfea302ed2c8b736e2e0df15dc60c6a",
+    "author": "sofia.marino",
+    "timestamp": "2026-06-24T13:17:46Z",
+    "message": "#olapdb Update part GC log verbosity",
+    "files_changed": [
+      "olapdb/src/Storages/PartGCThread.cpp"
+    ],
+    "diff": null
+  }
+]

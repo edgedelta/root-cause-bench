@@ -1,0 +1,20 @@
+[
+  {
+    "timestamp": "2026-06-18T14:21:30Z",
+    "service": "frontend",
+    "commit_sha": "8975e17f00649f6587cfd4c60a0c0469d01ec8ea",
+    "version": "v2026.06.18-1421"
+  },
+  {
+    "timestamp": "2026-06-18T14:33:10Z",
+    "service": "frontend",
+    "commit_sha": "4328ace9619796f2a3437fde1567fa51656346c0",
+    "version": "v2026.06.18-1433"
+  },
+  {
+    "timestamp": "2026-06-18T14:18:00Z",
+    "service": "checkoutservice",
+    "commit_sha": "f832d01fe185c094860c99ec22c30facaf9ddee7",
+    "version": "v2026.06.18-1418"
+  }
+]

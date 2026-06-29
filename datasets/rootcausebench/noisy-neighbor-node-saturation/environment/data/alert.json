@@ -1,0 +1,10 @@
+{
+  "service": "recommendationservice",
+  "metric": "http_server_duration_p99_ms",
+  "threshold": 500.0,
+  "observed": 3870.0,
+  "fired_at": "2026-06-20T13:48:00Z",
+  "severity": "critical",
+  "monitor": "recommendation-latency-p99",
+  "summary": "recommendationservice request latency p99 above 500ms; ranking calls stalling, upstreams degraded"
+}

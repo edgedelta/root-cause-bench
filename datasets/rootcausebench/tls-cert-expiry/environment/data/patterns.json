@@ -1,0 +1,58 @@
+[
+  {
+    "signature": "post \"https://paymentservice.svc:8443/charge\": remote error: tls: x509: certificate has expired or is not yet valid: current time <T> is after <T>",
+    "service": "orderservice",
+    "count": 1840,
+    "delta_vs_baseline": "+1840",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "tls handshake to paymentservice.svc failed after <N>ms",
+    "service": "orderservice",
+    "count": 1902,
+    "delta_vs_baseline": "+1902",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "Charge upstream call returned error, returning 502 to caller",
+    "service": "orderservice",
+    "count": 1795,
+    "delta_vs_baseline": "+1795",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "peer certificate check: leaf CN=paymentservice.svc serial=0x4f2a notBefore=2025-06-18T15:04:00Z notAfter=2026-06-18T15:04:00Z",
+    "service": "orderservice",
+    "count": 1902,
+    "delta_vs_baseline": "+1900",
+    "sentiment": "neutral"
+  },
+  {
+    "signature": "upstream orderservice returned 502, propagating error",
+    "service": "checkoutservice",
+    "count": 1540,
+    "delta_vs_baseline": "+1540",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "order request failed, showing retry banner",
+    "service": "frontend",
+    "count": 1320,
+    "delta_vs_baseline": "+1320",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "handled request",
+    "service": "paymentservice",
+    "count": 210,
+    "delta_vs_baseline": "-3400",
+    "sentiment": "neutral"
+  },
+  {
+    "signature": "feature flag order_async_receipt_email enabled for cohort",
+    "service": "orderservice",
+    "count": 24,
+    "delta_vs_baseline": "+24",
+    "sentiment": "neutral"
+  }
+]

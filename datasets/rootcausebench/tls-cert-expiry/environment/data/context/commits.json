@@ -1,0 +1,286 @@
+[
+  {
+    "sha": "420eddd12dbf0a2a11f602923075266af9debef3",
+    "author": "jdoe",
+    "timestamp": "2026-06-18T14:02:11Z",
+    "message": "fix: guard nil address book entry",
+    "files_changed": [
+      "pkg/addr/lookup.go"
+    ],
+    "diff": "@@ func Lookup(id string) *Entry {\n \te := index[id]\n+\tif e == nil {\n+\t\treturn &Entry{}\n+\t}\n \treturn e\n }"
+  },
+  {
+    "sha": "5cd5baf346679fb986f224f288ba6392931cabc2",
+    "author": "lena.fischer",
+    "timestamp": "2026-06-18T14:06:40Z",
+    "message": "style: gofmt and goimports across repo",
+    "files_changed": [
+      "pkg/order/order.go",
+      "pkg/order/order_test.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "661611484a2030487117a4c269e2517e58747dc9",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-18T14:11:58Z",
+    "message": "docs: update API reference for orders endpoint",
+    "files_changed": [
+      "docs/api/orders.md"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "5efbc6607b9bd417ffef9abd73c8aa697f9780e8",
+    "author": "amir.haddad",
+    "timestamp": "2026-06-18T14:18:22Z",
+    "message": "test: fuzz the SKU parser",
+    "files_changed": [
+      "pkg/sku/parse_fuzz_test.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "e8903c6f841465747859602dddbec5b9bf02d52f",
+    "author": "sofia.marino",
+    "timestamp": "2026-06-18T14:24:07Z",
+    "message": "test: golden files for invoice rendering",
+    "files_changed": [
+      "pkg/invoice/testdata/golden.json"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "e3fdf8e6b3dc081346feeecea85e109af6be8a12",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-18T14:29:33Z",
+    "message": "refactor: collapse duplicate validation funcs",
+    "files_changed": [
+      "pkg/validate/validate.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "40465f54a9e15cf6eeb6480fddef3117e9a1d8b4",
+    "author": "priya.nair",
+    "timestamp": "2026-06-18T14:38:50Z",
+    "message": "refactor: extract shared transport for payment client",
+    "files_changed": [
+      "services/order/payment_client.go",
+      "internal/httpx/transport.go"
+    ],
+    "diff": "@@ services/order/payment_client.go: func NewPaymentClient(cfg Config) *PaymentClient {\n-\thc := &http.Client{\n-\t\tTimeout: 5 * time.Second,\n-\t\tTransport: &http.Transport{\n-\t\t\tTLSClientConfig: cfg.TLS,\n-\t\t\tMaxIdleConns:    64,\n-\t\t},\n-\t}\n+\thc := httpx.NewClient(httpx.Options{\n+\t\tTimeout:      5 * time.Second,\n+\t\tTLSConfig:    cfg.TLS,\n+\t\tMaxIdleConns: 64,\n+\t})\n \treturn &PaymentClient{hc: hc, base: cfg.PaymentURL}\n }\n@@ internal/httpx/transport.go: new helper\n+func NewClient(o Options) *http.Client {\n+\treturn &http.Client{\n+\t\tTimeout: o.Timeout,\n+\t\tTransport: &http.Transport{\n+\t\t\tTLSClientConfig: o.TLSConfig,\n+\t\t\tMaxIdleConns:    o.MaxIdleConns,\n+\t\t},\n+\t}\n+}"
+  },
+  {
+    "sha": "2f7ffaf51c99872bff00d8e03920d5b67bb54de2",
+    "author": "lena.fischer",
+    "timestamp": "2026-06-18T14:43:18Z",
+    "message": "test: increase coverage on retry backoff",
+    "files_changed": [
+      "pkg/retry/backoff_test.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "08ef0a2e22992be6b925efb424c0c3bc4b34abbd",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-18T14:47:05Z",
+    "message": "chore: pin golangci-lint to v1.61",
+    "files_changed": [
+      ".golangci.yml"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "e27c73cbed59164a408cdbe6a1308fe2eb3fb3d7",
+    "author": "lena.fischer",
+    "timestamp": "2026-06-18T14:51:44Z",
+    "message": "docs: document feature flag lifecycle",
+    "files_changed": [
+      "docs/flags.md"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "57d572d5f437848b93cdc20779fbd65ffd228479",
+    "author": "marta.kowalski",
+    "timestamp": "2026-06-18T14:55:12Z",
+    "message": "chore: tidy TLS cipher suite list in client config",
+    "files_changed": [
+      "internal/httpx/tlsconf.go"
+    ],
+    "diff": "@@ internal/httpx/tlsconf.go: func DefaultTLS() *tls.Config {\n \treturn &tls.Config{\n \t\tMinVersion: tls.VersionTLS12,\n-\t\tCipherSuites: []uint16{\n-\t\t\ttls.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,\n-\t\t\ttls.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,\n-\t\t\ttls.TLS_RSA_WITH_AES_128_GCM_SHA256,\n-\t\t},\n+\t\tCipherSuites: []uint16{\n+\t\t\ttls.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,\n+\t\t\ttls.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,\n+\t\t\ttls.TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,\n+\t\t},\n \t}\n }"
+  },
+  {
+    "sha": "4f3b583397b86eb19a001242196d2ada35123686",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-06-18T14:58:36Z",
+    "message": "fix: off-by-one in batch chunking",
+    "files_changed": [
+      "pkg/batch/chunk.go"
+    ],
+    "diff": "@@ func Chunk(n, size int) int {\n-\treturn n / size\n+\treturn (n + size - 1) / size\n }"
+  },
+  {
+    "sha": "d0fae31793fd3b2cd6b5361d5e88730ae811242b",
+    "author": "grace.kim",
+    "timestamp": "2026-06-18T15:00:14Z",
+    "message": "feat(frontend): restyle order summary panel",
+    "files_changed": [
+      "services/frontend/static/order.css",
+      "services/frontend/templates/summary.html"
+    ],
+    "diff": "@@ services/frontend/static/order.css\n-.summary { padding: 8px 12px; }\n+.summary { padding: 10px 16px; border-radius: 8px; }\n+.summary .total { font-weight: 600; }"
+  },
+  {
+    "sha": "62590eaf0271bb3c03370d812e623228b250ba32",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-06-18T15:02:48Z",
+    "message": "chore: bump go.mod dependencies",
+    "files_changed": [
+      "go.mod",
+      "go.sum"
+    ],
+    "diff": "@@ require (\n-\tgithub.com/quic-go/qtls-go1-20 v0.3.4\n+\tgithub.com/quic-go/qtls-go1-20 v0.4.0\n-\tgolang.org/x/crypto v0.23.0\n+\tgolang.org/x/crypto v0.24.0\n )"
+  },
+  {
+    "sha": "498ca53518c41b4561bb5f82a6326beb27a8f532",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-18T15:05:21Z",
+    "message": "refactor: tidy order PlaceOrder handler",
+    "files_changed": [
+      "services/order/handler.go"
+    ],
+    "diff": "@@ services/order/handler.go: func (h *Handler) PlaceOrder(w http.ResponseWriter, r *http.Request) {\n-\tvar req PlaceOrderRequest\n-\tif err := json.NewDecoder(r.Body).Decode(&req); err != nil {\n-\t\thttp.Error(w, err.Error(), 400)\n-\t\treturn\n-\t}\n-\tresp, err := h.payments.Charge(r.Context(), req)\n-\tif err != nil { http.Error(w, err.Error(), 502); return }\n-\twriteJSON(w, resp)\n+\treq, err := decodeRequest[PlaceOrderRequest](r)\n+\tif err != nil {\n+\t\twriteError(w, http.StatusBadRequest, err)\n+\t\treturn\n+\t}\n+\tresp, err := h.payments.Charge(r.Context(), req)\n+\tif err != nil {\n+\t\twriteError(w, http.StatusBadGateway, err)\n+\t\treturn\n+\t}\n+\twriteJSON(w, resp)\n }"
+  },
+  {
+    "sha": "d27e147dc8860c28662b8657876192e699c3f0c4",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-18T15:09:47Z",
+    "message": "chore: update CODEOWNERS",
+    "files_changed": [
+      "CODEOWNERS"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "42494a56fd7345fa81a4c98c45c76f75393698f7",
+    "author": "grace.kim",
+    "timestamp": "2026-06-18T15:12:30Z",
+    "message": "feat: support gzip request bodies",
+    "files_changed": [
+      "internal/middleware/gzip.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "f9c63d94c9b76292e5bdd4cfceaf1aff2a1155de",
+    "author": "fatima.zahra",
+    "timestamp": "2026-06-18T15:16:09Z",
+    "message": "ci: cache go build in GitHub Actions",
+    "files_changed": [
+      ".github/workflows/build.yml"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "87ce8a14a511a7095811d2229cc498a71f38ab42",
+    "author": "lena.fischer",
+    "timestamp": "2026-06-18T15:20:55Z",
+    "message": "refactor: move DTOs into api/types",
+    "files_changed": [
+      "api/types/types.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "a04c4fe1046e89561fbc9ac46b2039e8fbe86980",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-06-18T15:27:41Z",
+    "message": "test: add table-driven tests for currency conversion",
+    "files_changed": [
+      "pkg/money/convert_test.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "6a1aa9bd74b3847b25c3b338f58323818d6fb425",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-18T15:33:18Z",
+    "message": "chore: upgrade base image to distroless:nonroot",
+    "files_changed": [
+      "Dockerfile"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "55546e7f3bb8937c617cf6eea7cf675456516f98",
+    "author": "priya.nair",
+    "timestamp": "2026-06-18T15:38:02Z",
+    "message": "refactor: rename internal package observability->telemetry",
+    "files_changed": [
+      "internal/telemetry/telemetry.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "6200cd69af39c700a30c324c93550ed63387f034",
+    "author": "ivan.petrov",
+    "timestamp": "2026-06-18T15:43:29Z",
+    "message": "chore: tidy imports in payment service",
+    "files_changed": [
+      "services/payment/main.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "4a3053c5ee684a80d9b5ee340b059b1e45ed6467",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-06-18T15:48:50Z",
+    "message": "feat: emit OTel span attributes for user_id",
+    "files_changed": [
+      "internal/trace/attrs.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "a908d47473c163e829ffe395685b9b5cfa6b8a52",
+    "author": "lena.fischer",
+    "timestamp": "2026-06-18T15:54:16Z",
+    "message": "fix: correct typo in error message",
+    "files_changed": [
+      "internal/errors/messages.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "e17ddbde4230f01cdceba1adb5de4aab0d5e3fb5",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-18T16:01:33Z",
+    "message": "feat: add structured logging fields to request middleware",
+    "files_changed": [
+      "internal/middleware/log.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "25dd115713dad0e8d5812a3b5d447a85ab55933d",
+    "author": "amir.haddad",
+    "timestamp": "2026-06-18T16:09:12Z",
+    "message": "refactor: simplify config loading with viper",
+    "files_changed": [
+      "internal/config/load.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "17526a9e689c3a6d86388ffb367c89c3a4d4e49e",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-18T16:18:40Z",
+    "message": "feat: add /readyz endpoint",
+    "files_changed": [
+      "internal/health/ready.go"
+    ],
+    "diff": null
+  }
+]

@@ -1,0 +1,174 @@
+[
+  {
+    "sha": "4b3c9e496fae4d97bc0059b74dcb29552ab10c48",
+    "author": "grace.kim",
+    "timestamp": "2026-06-20T11:02:11Z",
+    "message": "chore: tidy imports in media service",
+    "files_changed": [
+      "services/media/main.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "f78b1c04e4c3dd96312708fd8f4aec751f38c6d4",
+    "author": "marta.kowalski",
+    "timestamp": "2026-06-20T11:09:40Z",
+    "message": "feat: add /readyz endpoint",
+    "files_changed": [
+      "internal/health/ready.go"
+    ],
+    "diff": "@@ internal/health/ready.go @@\n+func Readyz(w http.ResponseWriter, r *http.Request) {\n+\tw.WriteHeader(http.StatusOK)\n+}"
+  },
+  {
+    "sha": "d658a27b99c640c84d2f9e2957149818325ad2ba",
+    "author": "ivan.petrov",
+    "timestamp": "2026-06-20T11:21:05Z",
+    "message": "refactor: collapse duplicate validation funcs",
+    "files_changed": [
+      "pkg/validate/validate.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "d50127a6372c7a81ba9e8ea85bbae4b2f8a715a0",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-20T11:35:18Z",
+    "message": "feat: prometheus histogram for asset fetch",
+    "files_changed": [
+      "services/media/metrics.go"
+    ],
+    "diff": "@@ services/media/metrics.go @@\n+var assetFetch = prometheus.NewHistogram(prometheus.HistogramOpts{\n+\tName: \"asset_fetch_seconds\", Buckets: prometheus.DefBuckets,\n+})"
+  },
+  {
+    "sha": "154ae6e3adbcdb23bac5fd48a43a04f2647c0a5b",
+    "author": "fatima.zahra",
+    "timestamp": "2026-06-20T11:48:02Z",
+    "message": "chore: update CODEOWNERS",
+    "files_changed": [
+      "CODEOWNERS"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "adfa77a7ff2c803cb7acac0bfe45b1dabf41f21c",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-20T12:03:27Z",
+    "message": "docs: clarify env var precedence",
+    "files_changed": [
+      "README.md"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "2b8b1cd98aec6e8acc037fab7007b6f7502eb5cc",
+    "author": "ivan.petrov",
+    "timestamp": "2026-06-20T12:31:54Z",
+    "message": "chore(media): tune s3 client request settings",
+    "files_changed": [
+      "services/media/s3client.go",
+      "services/media/config/s3.yaml"
+    ],
+    "diff": "@@ services/media/s3client.go @@\n \tcfg := s3.NewClientConfig()\n-\tcfg.RequestTimeout = 3 * time.Second\n+\tcfg.RequestTimeout = 5 * time.Second\n-\tcfg.MaxRetries = 3\n+\tcfg.MaxRetries = 4\n@@ services/media/config/s3.yaml @@\n-  request_timeout: 3s\n+  request_timeout: 5s\n-  max_retries: 3\n+  max_retries: 4"
+  },
+  {
+    "sha": "68faabbc1acfd27b7d1a08db5e00426636b096ff",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-06-20T12:44:19Z",
+    "message": "feat: add request id propagation header",
+    "files_changed": [
+      "internal/middleware/reqid.go"
+    ],
+    "diff": "@@ internal/middleware/reqid.go @@\n+\t\tif rid == \"\" { rid = uuid.NewString() }\n+\t\tw.Header().Set(\"X-Request-Id\", rid)"
+  },
+  {
+    "sha": "d6a77f4c37b31c978586719be8ccd32c24dcf3a7",
+    "author": "priya.nair",
+    "timestamp": "2026-06-20T12:58:33Z",
+    "message": "test: add integration test for graceful shutdown",
+    "files_changed": [
+      "cmd/server/shutdown_test.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "63737f24e6df27135d14a019eb3b30340025ee9c",
+    "author": "carlos.mendez",
+    "timestamp": "2026-06-20T13:11:48Z",
+    "message": "refactor(media): extract object fetch helper",
+    "files_changed": [
+      "services/media/fetch.go"
+    ],
+    "diff": "@@ services/media/fetch.go @@\n-\tout, err := s.s3.GetObject(ctx, &s3.GetObjectInput{Bucket: &b, Key: &k})\n-\tif err != nil { return nil, err }\n-\treturn io.ReadAll(out.Body)\n+\treturn s.getObjectBytes(ctx, b, k)\n+}\n+\n+func (s *Server) getObjectBytes(ctx context.Context, b, k string) ([]byte, error) {\n+\tout, err := s.s3.GetObject(ctx, &s3.GetObjectInput{Bucket: &b, Key: &k})\n+\tif err != nil { return nil, err }\n+\treturn io.ReadAll(out.Body)"
+  },
+  {
+    "sha": "bcee1fa0d88bcfcceed9dabc9dc319167bbb4609",
+    "author": "sofia.marino",
+    "timestamp": "2026-06-20T13:19:02Z",
+    "message": "test: fuzz the SKU parser",
+    "files_changed": [
+      "pkg/sku/parse_fuzz_test.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "db5e89581657ab5430bcec792a9a6f893af52b96",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-20T13:27:36Z",
+    "message": "chore: bump go.mod dependencies",
+    "files_changed": [
+      "go.mod",
+      "go.sum"
+    ],
+    "diff": "@@ go.mod @@\n-\tgithub.com/aws/aws-sdk-go-v2/service/s3 v1.53.1\n+\tgithub.com/aws/aws-sdk-go-v2/service/s3 v1.53.2"
+  },
+  {
+    "sha": "4f69b091454af3cb6491c6dbce21fe699d2d69a0",
+    "author": "tunde.okafor",
+    "timestamp": "2026-06-20T13:34:41Z",
+    "message": "fix: correct typo in error message",
+    "files_changed": [
+      "internal/errors/messages.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "8c7fe8c717e7ae870c6c8e4b1163b87cfcec9964",
+    "author": "amir.haddad",
+    "timestamp": "2026-06-20T13:40:12Z",
+    "message": "refactor: simplify config loading with viper",
+    "files_changed": [
+      "internal/config/load.go"
+    ],
+    "diff": "@@ internal/config/load.go @@\n-\tv := viper.New()\n+\tv := viper.NewWithOptions(viper.KeyDelimiter(\".\"))"
+  },
+  {
+    "sha": "fa16c962fc437e83c8e03f6b28ea98bc8854c7f5",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-20T13:48:55Z",
+    "message": "feat: emit OTel span attributes for user_id",
+    "files_changed": [
+      "internal/trace/attrs.go"
+    ],
+    "diff": "@@ internal/trace/attrs.go @@\n+\t\tspan.SetAttributes(attribute.String(\"user_id\", uid))"
+  },
+  {
+    "sha": "450aea67cc309fc99f4ea5fdd50aef6f2e619415",
+    "author": "marta.kowalski",
+    "timestamp": "2026-06-20T13:55:20Z",
+    "message": "fix(checkout): correct tax rounding for EU VAT",
+    "files_changed": [
+      "services/checkout/tax.go"
+    ],
+    "diff": "@@ services/checkout/tax.go @@\n-\treturn math.Round(net * rate)\n+\treturn math.Round(net*rate*100) / 100"
+  },
+  {
+    "sha": "f7f11d2abd93e1fc8a88223196acd75b4d6af834",
+    "author": "jdoe",
+    "timestamp": "2026-06-20T14:03:07Z",
+    "message": "chore: tidy imports in catalog service",
+    "files_changed": [
+      "services/catalog/main.go"
+    ],
+    "diff": null
+  }
+]

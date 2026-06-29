@@ -1,0 +1,44 @@
+[
+  {
+    "signature": "worker pool saturated, request queued",
+    "service": "frontend",
+    "count": 1840,
+    "delta_vs_baseline": "+1840",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "request rejected: server overloaded, shedding load",
+    "service": "frontend",
+    "count": 612,
+    "delta_vs_baseline": "+612",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "autoscaler signalled desired replicas increase; pods pending",
+    "service": "frontend",
+    "count": 9,
+    "delta_vs_baseline": "+9",
+    "sentiment": "neutral"
+  },
+  {
+    "signature": "elevated request volume, response time degraded",
+    "service": "checkoutservice",
+    "count": 140,
+    "delta_vs_baseline": "+140",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "handled request",
+    "service": "frontend",
+    "count": 41200,
+    "delta_vs_baseline": "+33800",
+    "sentiment": "neutral"
+  },
+  {
+    "signature": "feature flag spring_flash_sale_banner enabled for cohort",
+    "service": "frontend",
+    "count": 24,
+    "delta_vs_baseline": "+24",
+    "sentiment": "neutral"
+  }
+]

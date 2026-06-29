@@ -1,0 +1,17 @@
+{
+  "scenario": "tls-cert-expiry",
+  "root_cause_commit": "none",
+  "first_failing_service": "orderservice",
+  "blast_radius": [
+    "checkoutservice",
+    "frontend"
+  ],
+  "remediation": "rotate-cert",
+  "decoy_deploy_commits": [
+    "40465f54a9e15cf6eeb6480fddef3117e9a1d8b4",
+    "57d572d5f437848b93cdc20779fbd65ffd228479",
+    "62590eaf0271bb3c03370d812e623228b250ba32",
+    "498ca53518c41b4561bb5f82a6326beb27a8f532"
+  ],
+  "notes": "NO-CODE-CAUSE. The trigger is an EXPIRED TLS certificate, not any commit. The paymentservice serving leaf cert (CN=paymentservice.svc, serial 0x4f2a) has notAfter=2026-06-18T15:04:00Z (visible in alert.detail, in orderservice peer-certificate-check log/pattern lines, and as the paymentservice tls_cert_seconds_until_expiry gauge in metrics.csv which counts down and crosses 0 at exactly 15:04:00). The instant it passed, orderservice -> paymentservice mTLS handshakes began failing with 'x509: certificate has expired or is not yet valid'. orderservice is first_failing_service: its upstream_call_error_ratio jumps ~0 -> ~0.9 at 15:04 and it returns 502 to callers. Blast radius = checkoutservice and frontend (callers that propagate the 502 / show retry banners). paymentservice itself is HEALTHY (still listening, p99 fine) -- its inbound RPS just collapses because callers cannot complete the handshake; this rules out a paymentservice code fault. ONSET ALIGNS TO THE CERT notAfter TIMESTAMP (15:04:00), NOT to any deploy: deploys land at 14:40:10, 14:56:30, 15:01:05, 15:03:40, 15:06:20 -- none at 15:04:00. The cert is a managed/ops artifact; no commit in commits.json changes it (commits.json contains no cert/key/PEM file change). Tempting INNOCENT bait commits (all on the TLS path, none alters cert validity): (1) 40465f54 'refactor: extract shared transport for payment client' (priya.nair, orderservice, deployed 14:40) -- moves the http.Client construction into httpx.NewClient but passes the same cfg.TLS through unchanged, so it cannot affect cert lifetime or trust; deployed 24min before onset with zero errors in between. (2) 57d572d5 'chore: tidy TLS cipher suite list in client config' (orderservice, deployed 14:56) -- reorders/adds cipher suites and keeps MinVersion TLS1.2; cipher selection is unrelated to certificate expiry (an expired-cert handshake fails regardless of cipher), and it ran clean for 8min before onset. (3) 62590eaf 'chore: bump go.mod dependencies' (orderservice, deployed 15:03:40) -- bumps qtls-go1-20 and golang.org/x/crypto patch versions; these are TLS-adjacent libs but the bump does not disable verification or change notAfter handling, and the verification path it uses still correctly REPORTS the cert as expired (which is the observed, correct behavior). (4) 498ca535 'refactor: tidy order PlaceOrder handler' (orderservice) is the INNOCENT-DEPLOY-AT-ONSET decoy: deployed 15:06:20, just before the alert fired, touching the literally-named PlaceOrder handler -- but its diff only swaps error handling to decodeRequest/writeError helpers and returns 502 on upstream failure; it neither initiates TLS nor predates the 15:04:00 onset, so it cannot be the cause. The flag changes in flags.json (order_async_receipt_email, payment_capture_v2) are distractors. Remediation is operational: rotate/reissue the paymentservice serving certificate (rotate-cert); no rollback fixes an expired cert."
+}

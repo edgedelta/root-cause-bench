@@ -1,0 +1,37 @@
+[
+  {
+    "signature": "POST https://api.stripe.com/v1/charges returned 503",
+    "service": "paymentservice",
+    "count": 3870,
+    "delta_vs_baseline": "+3860",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "POST https://api.stripe.com/v1/charges exceeded deadline",
+    "service": "paymentservice",
+    "count": 740,
+    "delta_vs_baseline": "+738",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "upstream paymentservice charge unavailable",
+    "service": "checkoutservice",
+    "count": 612,
+    "delta_vs_baseline": "+612",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "handled request",
+    "service": "frontend",
+    "count": 4200,
+    "delta_vs_baseline": "+40",
+    "sentiment": "neutral"
+  },
+  {
+    "signature": "feature flag payment_new_receipt_layout enabled for cohort",
+    "service": "frontend",
+    "count": 24,
+    "delta_vs_baseline": "+24",
+    "sentiment": "neutral"
+  }
+]

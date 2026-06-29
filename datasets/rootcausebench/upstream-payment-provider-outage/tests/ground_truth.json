@@ -1,0 +1,16 @@
+{
+  "scenario": "upstream-payment-provider-outage",
+  "root_cause_commit": "none",
+  "first_failing_service": "paymentservice",
+  "blast_radius": [
+    "checkoutservice"
+  ],
+  "remediation": "failover",
+  "decoy_deploy_commits": [
+    "f0a2b4c6d8e0f2a4b6c8d0e2f4a6b8c0d2e4f6a8",
+    "b6c8d0e2f4a6b8c0d2e4f6a8b0c2d4e6f8a0b2c4",
+    "c7d9e1f3a5b7c9d1e3f5a7b9c1d3e5f7a9b1c3d5",
+    "e3f5a7b9c1d3e5f7a9b1c3d5e7f9a1b3c5d7e9f1"
+  ],
+  "notes": "No code commit caused this incident; the answer is 'none'. The trigger is an external third-party payment provider (Stripe) outage. The external signal is in status_feed.json: the Stripe Charges API (api.stripe.com/v1/charges) goes to 'partial_outage' with api_error_rate_pct jumping 0.5 -> 12.7 at 11:04 and peaking ~73% at 11:10, recovering by 11:27 -- exactly tracking paymentservice's symptom window. Every paymentservice ERROR log is on the OUTBOUND provider call ('POST https://api.stripe.com/v1/charges returned 503' / 'exceeded deadline', upstream.host=api.stripe.com), and the metric upstream_provider_error_rate_pct mirrors the provider's own error rate. Traces show the slow/erroring span is the single outbound HTTP POST to api.stripe.com (peer.service=stripe, http.status_code=503) plus its retries -- there is exactly ONE charge call per request (no fan-out, so not an N+1) and paymentservice requests_per_sec is FLAT ~300 (so not a traffic surge). paymentservice's own RPS and internal handling are healthy; the failure is entirely on calls TO the provider. blast_radius=checkoutservice (it calls paymentservice and surfaces 'upstream paymentservice charge unavailable'); cartservice stays healthy. Tempting INNOCENT commits (all benign, none can produce a provider-side 5xx): f0a2b4c6 ('refactor: tidy payment Charge handler', deepak.rao, paymentservice, deployed 11:05:30 -- the MOST RECENT paymentservice deploy, right at onset; but its diff only swaps error handling to decodeRequest/writeError helpers, no provider-call change); b6c8d0e2 ('refactor: extract chargeRequest builder', paymentservice -- pure extract-method, identical params sent to the provider); c7d9e1f3 ('chore: tune payment client retry settings', paymentservice -- raises MaxAttempts 2->3 and backoff, which would only ADD load against an already-down provider, not cause its 5xx); e3f5a7b9 ('chore: bump go.mod dependencies' -- bumps stripe-go SDK v76.21.0->v76.22.0, a client patch bump that cannot change the provider's server-side availability). flags.json (payment_new_receipt_layout, ledger_async_writeback) are distractors. Correct remediation is operational: fail over to the backup/secondary payment provider (or escalate to the upstream provider) and ride out the outage -- no rollback fixes a third-party outage."
+}

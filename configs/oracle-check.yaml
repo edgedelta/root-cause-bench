@@ -26,3 +26,10 @@ datasets:
       - search-mapping-query-break
       - transformer-dependency-startup-crash
       - unbounded-query-delayed-onset
+      - upstream-payment-provider-outage
+      - traffic-surge-flash-sale
+      - tls-cert-expiry
+      - noisy-neighbor-node-saturation
+      - bad-data-poison-record
+      - cloud-region-impairment
+      - dns-resolver-degradation

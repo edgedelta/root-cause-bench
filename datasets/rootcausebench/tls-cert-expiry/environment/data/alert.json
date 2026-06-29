@@ -1,0 +1,11 @@
+{
+  "service": "orderservice",
+  "metric": "upstream_call_error_ratio",
+  "threshold": 0.05,
+  "observed": 0.91,
+  "fired_at": "2026-06-18T15:07:00Z",
+  "severity": "critical",
+  "monitor": "orderservice-payment-call-errors",
+  "summary": "orderservice outbound calls to paymentservice failing above 5% for 3m",
+  "detail": "Errors are TLS handshake failures on the orderservice -> paymentservice mTLS connection. Sampled handshake error: 'x509: certificate has expired or is not yet valid'. The paymentservice serving leaf certificate (CN=paymentservice.svc, serial 0x4f2a) notAfter is 2026-06-18T15:04:00Z."
+}

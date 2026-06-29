@@ -1,0 +1,9 @@
+[
+  {
+    "timestamp": "2026-06-24T11:20:00Z",
+    "flag": "enrich_zstd_payloads",
+    "service": "event-enricher-1",
+    "change": "off->on",
+    "actor": "carlos.mendez"
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": "2026-06-18T14:50:00Z",
+    "flag": "order_async_receipt_email",
+    "service": "orderservice",
+    "change": "off->on",
+    "actor": "lena.fischer"
+  },
+  {
+    "timestamp": "2026-06-18T13:20:00Z",
+    "flag": "payment_capture_v2",
+    "service": "paymentservice",
+    "change": "off->on",
+    "actor": "amir.haddad"
+  }
+]

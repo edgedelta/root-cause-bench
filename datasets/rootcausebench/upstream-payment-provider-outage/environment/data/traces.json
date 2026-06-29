@@ -1,0 +1,111 @@
+[
+  {
+    "trace_id": "same",
+    "span_id": "a1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "POST /api/checkout",
+    "start": "2026-09-22T11:06:30Z",
+    "duration_ms": 4150,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "b1",
+    "parent_id": "a1",
+    "service": "checkoutservice",
+    "name": "Checkout",
+    "start": "2026-09-22T11:06:30Z",
+    "duration_ms": 4080,
+    "status": "OK"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "b2",
+    "parent_id": "b1",
+    "service": "paymentservice",
+    "name": "Charge",
+    "start": "2026-09-22T11:06:30Z",
+    "duration_ms": 4010,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c1",
+    "parent_id": "b2",
+    "service": "paymentservice",
+    "name": "HTTP POST api.stripe.com/v1/charges",
+    "start": "2026-09-22T11:06:30Z",
+    "duration_ms": 3980,
+    "status": "ERROR",
+    "http.url": "https://api.stripe.com/v1/charges",
+    "http.status_code": 503,
+    "peer.service": "stripe"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c2",
+    "parent_id": "b2",
+    "service": "paymentservice",
+    "name": "HTTP POST api.stripe.com/v1/charges (retry 1)",
+    "start": "2026-09-22T11:06:31Z",
+    "duration_ms": 900,
+    "status": "ERROR",
+    "http.status_code": 503,
+    "peer.service": "stripe"
+  },
+  {
+    "trace_id": "same",
+    "span_id": "c3",
+    "parent_id": "b2",
+    "service": "paymentservice",
+    "name": "HTTP POST api.stripe.com/v1/charges (retry 2)",
+    "start": "2026-09-22T11:06:32Z",
+    "duration_ms": 950,
+    "status": "ERROR",
+    "http.status_code": 503,
+    "peer.service": "stripe"
+  },
+  {
+    "trace_id": "base1",
+    "span_id": "z1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "POST /api/checkout",
+    "start": "2026-09-22T10:35:00Z",
+    "duration_ms": 240,
+    "status": "OK"
+  },
+  {
+    "trace_id": "base1",
+    "span_id": "z2",
+    "parent_id": "z1",
+    "service": "checkoutservice",
+    "name": "Checkout",
+    "start": "2026-09-22T10:35:00Z",
+    "duration_ms": 205,
+    "status": "OK"
+  },
+  {
+    "trace_id": "base1",
+    "span_id": "z3",
+    "parent_id": "z2",
+    "service": "paymentservice",
+    "name": "Charge",
+    "start": "2026-09-22T10:35:00Z",
+    "duration_ms": 160,
+    "status": "OK"
+  },
+  {
+    "trace_id": "base1",
+    "span_id": "z4",
+    "parent_id": "z3",
+    "service": "paymentservice",
+    "name": "HTTP POST api.stripe.com/v1/charges",
+    "start": "2026-09-22T10:35:00Z",
+    "duration_ms": 120,
+    "status": "OK",
+    "http.status_code": 200,
+    "peer.service": "stripe"
+  }
+]

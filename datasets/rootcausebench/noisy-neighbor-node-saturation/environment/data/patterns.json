@@ -1,0 +1,44 @@
+[
+  {
+    "signature": "ranking handler exceeded soft latency budget; scheduler runqueue delayed (cpu contended)",
+    "service": "recommendationservice",
+    "count": 612,
+    "delta_vs_baseline": "+612",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "Throttling container recommendationservice on node <NODE> (cgroup cpu.cfs quota enforced; node CPU contended)",
+    "service": "kubelet",
+    "count": 38,
+    "delta_vs_baseline": "+38",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "Node <NODE> under increasing CPU and memory load from pod analytics/analytics-batch-export-<ID>",
+    "service": "kubelet",
+    "count": 11,
+    "delta_vs_baseline": "+11",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "upstream recommendationservice timeout after <N>ms",
+    "service": "frontend",
+    "count": 174,
+    "delta_vs_baseline": "+174",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "Scheduled pod analytics/analytics-batch-export-<ID> to node <NODE>",
+    "service": "kube-scheduler",
+    "count": 1,
+    "delta_vs_baseline": "+1",
+    "sentiment": "neutral"
+  },
+  {
+    "signature": "ranking served",
+    "service": "recommendationservice",
+    "count": 980,
+    "delta_vs_baseline": "-120",
+    "sentiment": "neutral"
+  }
+]

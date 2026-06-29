@@ -41,12 +41,20 @@ small — read it, slice it, correlate it.
    dependency** of the failing service. Innocent changes are planted near onset to mislead you.
 5. Distinguish **cause** from **blast radius**: a downstream service that times out waiting on the
    culprit is a victim, not the cause.
+6. **The cause may not be a commit at all.** Many incidents are triggered operationally, with no
+   guilty code change in the window — a traffic surge, an upstream provider/cloud outage, an
+   expired TLS certificate, a node/infra problem, or bad input data. If **no** commit's diff
+   actually produces the observed fault and the evidence points to an operational/external trigger,
+   the correct answer is **`"none"`**. Do not convict an innocent commit just because one is there.
 
 ## Rules
 
-- Do **NOT** speculate. Pick the commit whose **diff** the evidence actually supports as the cause.
+- Do **NOT** speculate. Convict a commit **only if its diff actually produces the observed fault.**
 - The latest deploy before onset is **not automatically** the culprit. Verify causality.
-- Feature-flag changes in `flags.json` are **distractors**; the root cause is always a git commit.
+- If the evidence points to an operational/external cause (and no commit's diff explains the
+  symptom), answer `root_cause_commit: "none"`. Guessing a commit when the cause is operational is
+  a **wrong answer**, just like naming the wrong commit.
+- Feature-flag changes in `flags.json` are **distractors**.
 
 ## Output (required)
 
@@ -54,10 +62,10 @@ Write your machine-checkable answer to **`/workdir/root_cause.json`**:
 
 ```json
 {
-  "root_cause_commit": "<full git sha from commits.json>",
+  "root_cause_commit": "<full git sha from commits.json, OR \"none\" if no commit caused it>",
   "first_failing_service": "<service name>",
   "blast_radius": ["<downstream service>", "..."],
-  "remediation": "rollback" | "roll-forward" | "config-revert" | "scale" | "feature-flag-disable"
+  "remediation": "<short action: e.g. rollback, roll-forward, config-revert, scale, failover, rotate-cert, feature-flag-disable>"
 }
 ```
 

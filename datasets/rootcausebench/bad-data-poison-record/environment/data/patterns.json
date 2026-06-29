@@ -1,0 +1,23 @@
+[
+  {
+    "signature": "record validation error: field 'lat' out of range [-90,90] got 412.700000 record_id=geo-evt-8f3a2174 partition=3 offset=148820291 producer=geo-partner-feed",
+    "service": "event-enricher-1",
+    "count": 26,
+    "delta_vs_baseline": "+26",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "geo-events-iq ApproximateAgeOfOldestMessage rising; consumer redelivering same offset 148820291",
+    "service": "kafka-geo-events",
+    "count": 9,
+    "delta_vs_baseline": "+9",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "enriched <N> geo records from geo-events-iq; committed offset",
+    "service": "event-enricher-1",
+    "count": 38,
+    "delta_vs_baseline": "-940",
+    "sentiment": "neutral"
+  }
+]

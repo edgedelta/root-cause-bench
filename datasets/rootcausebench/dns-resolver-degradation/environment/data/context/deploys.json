@@ -1,0 +1,20 @@
+[
+  {
+    "timestamp": "2026-06-20T09:18:00Z",
+    "service": "paymentservice",
+    "commit_sha": "94e921a612d3e77d02a767522a6dee322cc5bd40",
+    "version": "v2026.06.20-0915"
+  },
+  {
+    "timestamp": "2026-06-20T09:46:00Z",
+    "service": "checkoutservice",
+    "commit_sha": "2f6d5580118ab19f2172f495e250ceb52c9ce6d9",
+    "version": "v2026.06.20-0944"
+  },
+  {
+    "timestamp": "2026-06-20T10:02:00Z",
+    "service": "emailservice",
+    "commit_sha": "4f9b40d3a24a2fb05209032e4a579ac0e3657f77",
+    "version": "v2026.06.20-1001"
+  }
+]

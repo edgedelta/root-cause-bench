@@ -1,0 +1,16 @@
+{
+  "scenario": "noisy-neighbor-node-saturation",
+  "root_cause_commit": "none",
+  "first_failing_service": "recommendationservice",
+  "blast_radius": [
+    "frontend",
+    "checkoutservice"
+  ],
+  "remediation": "reschedule",
+  "decoy_deploy_commits": [
+    "d4b8e1a6c9f0437ba5e21c80d7b3f95248ae6c13",
+    "0e7c3a9f1b6d425da8c10e7246b9f53802ac1d68",
+    "f2a8c6e0d3b7491ca5f16d802e9b7c4319ad0f53"
+  ],
+  "notes": "NO CODE CAUSE. The trigger is operational: a noisy neighbor. At 13:40:00 the k8s scheduler placed an unrelated batch/cron pod, analytics/analytics-batch-export-29kd7 (a different team/namespace), onto node gke-prod-pool-3-a1b2 -- the SAME node that runs recommendationservice-7c9f-q4m2. The neighbor's CPU ramps to ~5.6 cores and memory working set to ~11GiB; node_cpu_utilization_ratio climbs 0.34->0.97 and node_memory_utilization_ratio 0.41->0.93 starting exactly at 13:40. Our pod is starved purely by co-location: container_cpu_cfs_throttled_seconds for recommendationservice jumps 0.02->~8.9 and http_server_duration_p99_ms ramps 78ms->~4200ms; kubelet emits CPUThrottlingHigh + NodeUnderPressure/MemoryPressure events naming the neighbor. Crucially recommendationservice's OWN request rate is FLAT (~42 rps), so it is not a traffic surge, and its CPU *usage* is pinned at the cgroup quota (throttled), not elevated by its own work. recommendationservice's code is unchanged at onset: its two deploys land at 13:05 (d4b8e1a6, a pure ranking-scorer refactor) and 13:22 (0e7c3a9f, a config bump raising candidate_cache_entries 50000->60000) -- both BEFORE onset, and neither diff can produce CPU throttling or a node-wide CPU/mem spike. TEMPTING WRONG answers: (1) 0e7c3a9f, the most recent recommendation deploy before onset, touching a cache config -- but raising cache entries by 20% cannot saturate a node's CPU and the latency step is at 13:40, ~18 min after that deploy; (2) d4b8e1a6, a refactor on the failing service's hot ranking path -- but it is a behavior-preserving extraction with no allocation/loop change; (3) f2a8c6e0, a prometheus client_golang patch bump (1.19.0->1.19.1), no behavior change. flags.json (recommendation_rerank_v2 at 13:21, checkout_suggestions_enabled at 12:30) are distractors. The correct answer is root_cause_commit=none; first_failing_service=recommendationservice; blast_radius=frontend+checkoutservice (callers that time out on the starved ranking calls). Remediation is OPERATIONAL: reschedule -- evict the batch pod / add anti-affinity or a resource limit so the co-tenant cannot saturate the node (alternatively scale recommendationservice onto an uncontended node); no rollback fixes it because no code is at fault."
+}

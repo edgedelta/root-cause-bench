@@ -1,0 +1,10 @@
+{
+  "service": "paymentservice",
+  "metric": "outbound_call_error_ratio",
+  "threshold": 0.05,
+  "observed": 0.71,
+  "fired_at": "2026-06-20T10:41:00Z",
+  "severity": "critical",
+  "monitor": "payment-outbound-dependency-errors",
+  "summary": "paymentservice outbound call error ratio above 5%; name resolution failing on egress to api.stripe.com"
+}

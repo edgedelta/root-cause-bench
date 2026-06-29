@@ -1,0 +1,154 @@
+[
+  {
+    "sha": "a1308d72057c9de7f3b7cef712a701a8334a02de",
+    "author": "jdoe",
+    "timestamp": "2026-06-18T14:02:11Z",
+    "message": "fix: guard against negative quantity in cart",
+    "files_changed": [
+      "pkg/cart/validate.go"
+    ],
+    "diff": "@@ func ValidateQty(q int) error {\n-\treturn nil\n+\tif q < 0 {\n+\t\treturn ErrNegativeQty\n+\t}\n+\treturn nil\n }"
+  },
+  {
+    "sha": "e040f01bb63ecc800603c26d0f09a05d90ade183",
+    "author": "lena.fischer",
+    "timestamp": "2026-06-18T14:06:48Z",
+    "message": "style: gofmt and goimports across repo",
+    "files_changed": [
+      "pkg/cart/cart.go",
+      "pkg/cart/cart_test.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "f832d01fe185c094860c99ec22c30facaf9ddee7",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-06-18T14:09:30Z",
+    "message": "chore: bump go.mod dependencies",
+    "files_changed": [
+      "go.mod",
+      "go.sum"
+    ],
+    "diff": "@@ require (\n-\tgithub.com/gorilla/mux v1.8.0\n+\tgithub.com/gorilla/mux v1.8.1\n-\tgoogle.golang.org/grpc v1.62.0\n+\tgoogle.golang.org/grpc v1.62.1\n )"
+  },
+  {
+    "sha": "58fd12222dc83de35f91c60ba06d13394b4445d2",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-18T14:12:05Z",
+    "message": "docs: update API reference for orders endpoint",
+    "files_changed": [
+      "docs/api/orders.md"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "8975e17f00649f6587cfd4c60a0c0469d01ec8ea",
+    "author": "grace.kim",
+    "timestamp": "2026-06-18T14:16:40Z",
+    "message": "refactor: extract request decoding into helper in frontend gateway",
+    "files_changed": [
+      "services/frontend/gateway/handler.go"
+    ],
+    "diff": "@@ services/frontend/gateway/handler.go: func (g *Gateway) ServeCheckout(w http.ResponseWriter, r *http.Request) {\n-\tvar req CheckoutReq\n-\tif err := json.NewDecoder(r.Body).Decode(&req); err != nil {\n-\t\thttp.Error(w, \"bad request\", 400)\n-\t\treturn\n-\t}\n+\treq, err := decodeCheckout(r)\n+\tif err != nil {\n+\t\twriteError(w, http.StatusBadRequest, err)\n+\t\treturn\n+\t}\n \tg.proxy(w, r, req)\n }\n@@ services/frontend/gateway/handler.go: new helper\n+func decodeCheckout(r *http.Request) (CheckoutReq, error) {\n+\tvar req CheckoutReq\n+\terr := json.NewDecoder(r.Body).Decode(&req)\n+\treturn req, err\n+}"
+  },
+  {
+    "sha": "c4fd750bd634c9ed41ef98588bd1c4cf1fd76a3b",
+    "author": "sofia.marino",
+    "timestamp": "2026-06-18T14:19:22Z",
+    "message": "test: golden files for invoice rendering",
+    "files_changed": [
+      "pkg/invoice/testdata/golden.json"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "a5f158a603462135dd207465fbcfbf9b27b960cd",
+    "author": "amir.haddad",
+    "timestamp": "2026-06-18T14:23:50Z",
+    "message": "test: fuzz the SKU parser",
+    "files_changed": [
+      "pkg/sku/parse_fuzz_test.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "4328ace9619796f2a3437fde1567fa51656346c0",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-18T14:27:14Z",
+    "message": "chore: switch access logs to structured fields in frontend",
+    "files_changed": [
+      "services/frontend/gateway/logging.go"
+    ],
+    "diff": "@@ services/frontend/gateway/logging.go: func logRequest(r *http.Request, status int, took time.Duration) {\n-\tlog.Printf(\"%s %s %d %s\", r.Method, r.URL.Path, status, took)\n+\tlogger.Info(\"handled request\",\n+\t\t\"method\", r.Method,\n+\t\t\"route\", r.URL.Path,\n+\t\t\"status\", status,\n+\t\t\"took_ms\", took.Milliseconds(),\n+\t)\n }"
+  },
+  {
+    "sha": "8fa22df1df4274f3ca4d957b19e8bb666b919ac7",
+    "author": "lena.fischer",
+    "timestamp": "2026-06-18T14:31:09Z",
+    "message": "fix: handle empty slice in pagination helper",
+    "files_changed": [
+      "pkg/paginate/paginate.go"
+    ],
+    "diff": "@@ func Page(items []T, n int) [][]T {\n+\tif len(items) == 0 {\n+\t\treturn nil\n+\t}\n \tout := make([][]T, 0, len(items)/n+1)"
+  },
+  {
+    "sha": "762203928c11e3c372c686300fa79a2553bc4a42",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-18T14:34:55Z",
+    "message": "refactor: collapse duplicate validation funcs",
+    "files_changed": [
+      "pkg/validate/validate.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "95b162feea0e8e3a4d718383599881f12fb9592b",
+    "author": "lena.fischer",
+    "timestamp": "2026-06-18T14:38:40Z",
+    "message": "test: increase coverage on retry backoff",
+    "files_changed": [
+      "pkg/retry/backoff_test.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "50f9cec572b66333ea4bc848469d45bc59d37124",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-18T14:41:52Z",
+    "message": "chore: pin golangci-lint to v1.61",
+    "files_changed": [
+      ".golangci.yml"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "038d4946c52ea16c22a82e1cc889414330c757ca",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-18T14:44:30Z",
+    "message": "perf: preallocate buffer in JSON encoder",
+    "files_changed": [
+      "pkg/codec/json.go"
+    ],
+    "diff": "@@ func Encode(v any) ([]byte, error) {\n-\tbuf := bytes.Buffer{}\n+\tbuf := bytes.Buffer{}\n+\tbuf.Grow(512)\n \tenc := json.NewEncoder(&buf)"
+  },
+  {
+    "sha": "cc00c673b1e00129d837fa975d40d129a49b2dcb",
+    "author": "lena.fischer",
+    "timestamp": "2026-06-18T14:47:18Z",
+    "message": "docs: document feature flag lifecycle",
+    "files_changed": [
+      "docs/flags.md"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "e88a516b83e324e8d5f8906e8617bafb66168872",
+    "author": "lena.fischer",
+    "timestamp": "2026-06-18T14:50:03Z",
+    "message": "test: add integration test for graceful shutdown",
+    "files_changed": [
+      "cmd/server/shutdown_test.go"
+    ],
+    "diff": null
+  }
+]

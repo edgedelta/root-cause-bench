@@ -1,0 +1,17 @@
+{
+  "scenario": "dns-resolver-degradation",
+  "root_cause_commit": "none",
+  "first_failing_service": "paymentservice",
+  "blast_radius": [
+    "checkoutservice",
+    "emailservice",
+    "recommendationservice"
+  ],
+  "remediation": "escalate-upstream",
+  "decoy_deploy_commits": [
+    "94e921a612d3e77d02a767522a6dee322cc5bd40",
+    "2f6d5580118ab19f2172f495e250ceb52c9ce6d9",
+    "4f9b40d3a24a2fb05209032e4a579ac0e3657f77"
+  ],
+  "notes": "NO-CODE-CAUSE scenario; correct answer is the literal string \"none\". The trigger is an external cluster-DNS / upstream-resolver degradation, NOT any commit. Evidence: (1) at 10:30 multiple UNRELATED services (paymentservice->api.stripe.com, checkoutservice->paymentservice.payments.svc.cluster.local, emailservice->smtp.sendgrid.net, recommendationservice->featurestore.ml.svc.cluster.local) all begin failing SIMULTANEOUSLY with name-resolution errors (no such host / getaddrinfo ENOTFOUND / lookup i/o timeout on 10.96.0.10:53). A single code commit on one service cannot make four independent services fail to resolve four different hostnames at the same instant. (2) The coredns infra metrics step exactly at 10:30: coredns_servfail_ratio ~0->0.5+, coredns_request_duration_p99_ms ~15ms->~5000ms, coredns_forward_healthcheck_failures 0->>0; coredns logs show 'plugin/forward: all upstreams down; returning SERVFAIL' and forward healthcheck i/o timeouts to upstream 169.254.20.10:53. status_feed.json records the cluster-DNS component degraded at 10:30 and infra paging the upstream DNS provider. (3) NO deploy occurs at onset: the only three deploys (09:18 paymentservice, 09:46 checkoutservice, 10:02 emailservice) are all >28 min before onset and their diffs touch nothing related to name resolution. TEMPTING DECOYS (all innocent): 94e921a6 (carlos.mendez, pkg/httpclient/client.go) only retunes Transport idle-conn settings (MaxIdleConns/IdleConnTimeout) -- it never changes the resolver or any hostname; 2f6d5580 (priya.nair, deploy/config/endpoints.yaml) only regroups/reformats the endpoint config, the hostnames are byte-for-byte unchanged; 4f9b40d3 (deepak.rao, go.mod) is a grpc v1.62.0->v1.62.1 patch bump with no resolver behavior change. feature flags (checkout_new_pricing_ui, recs_ann_index_v2) are distractors. Remediation is operational: escalate to the upstream DNS provider / fail over CoreDNS forward to a secondary resolver -- no rollback fixes it."
+}

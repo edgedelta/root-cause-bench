@@ -1,0 +1,20 @@
+[
+  {
+    "timestamp": "2026-06-20T13:05:00Z",
+    "service": "recommendationservice",
+    "commit_sha": "d4b8e1a6c9f0437ba5e21c80d7b3f95248ae6c13",
+    "version": "v2026.06.20-1302"
+  },
+  {
+    "timestamp": "2026-06-20T13:22:00Z",
+    "service": "recommendationservice",
+    "commit_sha": "0e7c3a9f1b6d425da8c10e7246b9f53802ac1d68",
+    "version": "v2026.06.20-1319"
+  },
+  {
+    "timestamp": "2026-06-20T13:54:00Z",
+    "service": "orderservice",
+    "commit_sha": "c3e9a1f7b6d0428fa5c816d740e9b8c2319ad0f58",
+    "version": "v2026.06.20-1351"
+  }
+]

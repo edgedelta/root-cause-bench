@@ -1,0 +1,26 @@
+[
+  {
+    "timestamp": "2026-06-20T12:33:00Z",
+    "service": "mediaservice",
+    "commit_sha": "2b8b1cd98aec6e8acc037fab7007b6f7502eb5cc",
+    "version": "v2026.06.20-1231"
+  },
+  {
+    "timestamp": "2026-06-20T13:13:00Z",
+    "service": "mediaservice",
+    "commit_sha": "63737f24e6df27135d14a019eb3b30340025ee9c",
+    "version": "v2026.06.20-1311"
+  },
+  {
+    "timestamp": "2026-06-20T13:29:00Z",
+    "service": "catalogservice",
+    "commit_sha": "db5e89581657ab5430bcec792a9a6f893af52b96",
+    "version": "v2026.06.20-1327"
+  },
+  {
+    "timestamp": "2026-06-20T13:57:00Z",
+    "service": "checkoutservice",
+    "commit_sha": "450aea67cc309fc99f4ea5fdd50aef6f2e619415",
+    "version": "v2026.06.20-1355"
+  }
+]

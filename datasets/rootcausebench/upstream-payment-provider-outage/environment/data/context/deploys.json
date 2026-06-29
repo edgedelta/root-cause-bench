@@ -1,0 +1,26 @@
+[
+  {
+    "timestamp": "2026-09-22T10:53:10Z",
+    "service": "paymentservice",
+    "commit_sha": "b6c8d0e2f4a6b8c0d2e4f6a8b0c2d4e6f8a0b2c4",
+    "version": "v2026.09.22-1053"
+  },
+  {
+    "timestamp": "2026-09-22T10:56:40Z",
+    "service": "paymentservice",
+    "commit_sha": "c7d9e1f3a5b7c9d1e3f5a7b9c1d3e5f7a9b1c3d5",
+    "version": "v2026.09.22-1056"
+  },
+  {
+    "timestamp": "2026-09-22T10:59:50Z",
+    "service": "frontend",
+    "commit_sha": "d8e0f2a4b6c8d0e2f4a6b8c0d2e4f6a8b0c2d4e6",
+    "version": "v2026.09.22-1059"
+  },
+  {
+    "timestamp": "2026-09-22T11:05:30Z",
+    "service": "paymentservice",
+    "commit_sha": "f0a2b4c6d8e0f2a4b6c8d0e2f4a6b8c0d2e4f6a8",
+    "version": "v2026.09.22-1105"
+  }
+]

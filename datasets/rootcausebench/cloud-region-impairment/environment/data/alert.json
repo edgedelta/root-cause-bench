@@ -1,0 +1,10 @@
+{
+  "service": "mediaservice",
+  "metric": "s3_request_errors_5xx_ratio",
+  "threshold": 0.05,
+  "observed": 0.34,
+  "fired_at": "2026-06-20T13:53:00Z",
+  "severity": "critical",
+  "monitor": "mediaservice-s3-error-rate",
+  "summary": "mediaservice S3 request 5xx ratio above 5%; asset fetches failing, upstreams returning 503"
+}

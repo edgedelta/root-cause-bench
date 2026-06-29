@@ -1,0 +1,21 @@
+{
+  "source": "cluster-infra-status",
+  "component": "cluster-dns (CoreDNS) / upstream resolver",
+  "events": [
+    {
+      "timestamp": "2026-06-20T10:30:00Z",
+      "status": "degraded",
+      "detail": "CoreDNS forward plugin reporting elevated SERVFAIL; upstream node-local resolver 169.254.20.10:53 not responding to health checks in us-west-2a/2b"
+    },
+    {
+      "timestamp": "2026-06-20T10:36:00Z",
+      "status": "degraded",
+      "detail": "cluster-wide name resolution failures elevated; multiple namespaces affected (payments, checkout, email, ml)"
+    },
+    {
+      "timestamp": "2026-06-20T10:58:00Z",
+      "status": "investigating",
+      "detail": "platform/infra paged upstream DNS provider; mitigation: point CoreDNS forward at secondary resolver 10.96.0.11 / 1.1.1.1"
+    }
+  ]
+}

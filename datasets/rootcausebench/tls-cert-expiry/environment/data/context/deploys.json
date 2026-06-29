@@ -1,0 +1,32 @@
+[
+  {
+    "timestamp": "2026-06-18T14:40:10Z",
+    "service": "orderservice",
+    "commit_sha": "40465f54a9e15cf6eeb6480fddef3117e9a1d8b4",
+    "version": "v2026.06.18-1440"
+  },
+  {
+    "timestamp": "2026-06-18T14:56:30Z",
+    "service": "orderservice",
+    "commit_sha": "57d572d5f437848b93cdc20779fbd65ffd228479",
+    "version": "v2026.06.18-1456"
+  },
+  {
+    "timestamp": "2026-06-18T15:01:05Z",
+    "service": "frontend",
+    "commit_sha": "d0fae31793fd3b2cd6b5361d5e88730ae811242b",
+    "version": "v2026.06.18-1501"
+  },
+  {
+    "timestamp": "2026-06-18T15:03:40Z",
+    "service": "orderservice",
+    "commit_sha": "62590eaf0271bb3c03370d812e623228b250ba32",
+    "version": "v2026.06.18-1503"
+  },
+  {
+    "timestamp": "2026-06-18T15:06:20Z",
+    "service": "orderservice",
+    "commit_sha": "498ca53518c41b4561bb5f82a6326beb27a8f532",
+    "version": "v2026.06.18-1506"
+  }
+]

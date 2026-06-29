@@ -1,0 +1,44 @@
+[
+  {
+    "signature": "aws sdk s3 GetObject failed: ServiceUnavailable (503) region=us-east-1",
+    "service": "mediaservice",
+    "count": 612,
+    "delta_vs_baseline": "+612",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "aws sdk s3 GetObject retry: SlowDown (503)",
+    "service": "mediaservice",
+    "count": 388,
+    "delta_vs_baseline": "+388",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "aws sdk s3 ListObjectsV2 failed: ServiceUnavailable (503) region=us-east-1",
+    "service": "catalogservice",
+    "count": 174,
+    "delta_vs_baseline": "+174",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "upstream mediaservice returned 503",
+    "service": "frontend",
+    "count": 233,
+    "delta_vs_baseline": "+233",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "object fetch ok",
+    "service": "mediaservice",
+    "count": 120,
+    "delta_vs_baseline": "-2600",
+    "sentiment": "neutral"
+  },
+  {
+    "signature": "checkout completed",
+    "service": "checkoutservice",
+    "count": 410,
+    "delta_vs_baseline": "+4",
+    "sentiment": "neutral"
+  }
+]

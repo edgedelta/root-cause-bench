@@ -1,0 +1,10 @@
+{
+  "service": "event-enricher-1",
+  "metric": "record_validation_error_ratio",
+  "threshold": 0.05,
+  "observed": 0.98,
+  "fired_at": "2026-06-24T11:42:00Z",
+  "severity": "high",
+  "monitor": "Default Log Threshold Monitor",
+  "summary": "event-enricher-1 failing to validate geo records from geo-events-iq; queue geo-events-iq backlog rising (ApproximateAgeOfOldestMessage)"
+}

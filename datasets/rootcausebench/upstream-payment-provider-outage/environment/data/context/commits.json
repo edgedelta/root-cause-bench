@@ -1,0 +1,246 @@
+[
+  {
+    "sha": "3a1f0c9d2b7e4a6f81c0d5e2f3a4b5c6d7e8f901",
+    "author": "jdoe",
+    "timestamp": "2026-09-22T10:02:11Z",
+    "message": "fix: guard against empty idempotency key",
+    "files_changed": [
+      "pkg/idem/key.go"
+    ],
+    "diff": "@@ func Key(s string) (string, error) {\n+\tif s == \"\" {\n+\t\treturn \"\", ErrEmptyKey\n+\t}\n \treturn normalize(s), nil\n }"
+  },
+  {
+    "sha": "b8c2d4e6f0a1c3b5d7e9f1a2b4c6d8e0f2a4b6c8",
+    "author": "lena.fischer",
+    "timestamp": "2026-09-22T10:08:40Z",
+    "message": "style: gofmt and goimports across repo",
+    "files_changed": [
+      "pkg/ledger/ledger.go",
+      "pkg/ledger/ledger_test.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "c1d3e5f7a9b1c3d5e7f9a1b3c5d7e9f1a3b5c7d9",
+    "author": "wei.zhang",
+    "timestamp": "2026-09-22T10:14:03Z",
+    "message": "docs: update API reference for charges endpoint",
+    "files_changed": [
+      "docs/api/charges.md"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "d2e4f6a8b0c2d4e6f8a0b2c4d6e8f0a2b4c6d8e0",
+    "author": "sofia.marino",
+    "timestamp": "2026-09-22T10:21:55Z",
+    "message": "test: golden files for receipt rendering",
+    "files_changed": [
+      "pkg/receipt/testdata/golden.json"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "e3f5a7b9c1d3e5f7a9b1c3d5e7f9a1b3c5d7e9f1",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-09-22T10:31:18Z",
+    "message": "chore: bump go.mod dependencies",
+    "files_changed": [
+      "go.mod",
+      "go.sum"
+    ],
+    "diff": "@@ require (\n-\tgithub.com/stripe/stripe-go/v76 v76.21.0\n+\tgithub.com/stripe/stripe-go/v76 v76.22.0\n-\tgoogle.golang.org/grpc v1.66.0\n+\tgoogle.golang.org/grpc v1.66.2\n )"
+  },
+  {
+    "sha": "f4a6b8c0d2e4f6a8b0c2d4e6f8a0b2c4d6e8f0a2",
+    "author": "amir.haddad",
+    "timestamp": "2026-09-22T10:39:02Z",
+    "message": "test: fuzz the currency code parser",
+    "files_changed": [
+      "pkg/money/parse_fuzz_test.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "a5b7c9d1e3f5a7b9c1d3e5f7a9b1c3d5e7f9a1b3",
+    "author": "lena.fischer",
+    "timestamp": "2026-09-22T10:44:51Z",
+    "message": "fix: handle empty slice in pagination helper",
+    "files_changed": [
+      "pkg/paginate/paginate.go"
+    ],
+    "diff": "@@ func Page(items []T, n int) [][]T {\n+\tif len(items) == 0 {\n+\t\treturn nil\n+\t}\n \tout := make([][]T, 0, len(items)/n+1)"
+  },
+  {
+    "sha": "b6c8d0e2f4a6b8c0d2e4f6a8b0c2d4e6f8a0b2c4",
+    "author": "deepak.rao",
+    "timestamp": "2026-09-22T10:52:30Z",
+    "message": "refactor: extract chargeRequest builder in payment client",
+    "files_changed": [
+      "services/payment/charge.go",
+      "services/payment/client.go"
+    ],
+    "diff": "@@ services/payment/charge.go: func (s *Service) Charge(ctx context.Context, req ChargeRequest) (*Charge, error) {\n-\tparams := &stripe.ChargeParams{}\n-\tparams.Amount = stripe.Int64(req.AmountCents)\n-\tparams.Currency = stripe.String(req.Currency)\n-\tparams.Source = stripe.String(req.Token)\n-\tch, err := s.client.Charges.New(ctx, params)\n-\tif err != nil {\n-\t\treturn nil, err\n-\t}\n-\treturn toCharge(ch), nil\n+\tparams := s.buildChargeParams(req)\n+\tch, err := s.client.Charges.New(ctx, params)\n+\tif err != nil {\n+\t\treturn nil, err\n+\t}\n+\treturn toCharge(ch), nil\n }\n@@ services/payment/client.go: new helper\n+func (s *Service) buildChargeParams(req ChargeRequest) *stripe.ChargeParams {\n+\tp := &stripe.ChargeParams{}\n+\tp.Amount = stripe.Int64(req.AmountCents)\n+\tp.Currency = stripe.String(req.Currency)\n+\tp.Source = stripe.String(req.Token)\n+\treturn p\n+}"
+  },
+  {
+    "sha": "c7d9e1f3a5b7c9d1e3f5a7b9c1d3e5f7a9b1c3d5",
+    "author": "deepak.rao",
+    "timestamp": "2026-09-22T10:55:12Z",
+    "message": "chore: tune payment client retry settings",
+    "files_changed": [
+      "services/payment/retry.go"
+    ],
+    "diff": "@@ services/payment/retry.go\n var chargeRetry = retry.Config{\n-\tMaxAttempts:    2,\n-\tInitialBackoff: 100 * time.Millisecond,\n+\tMaxAttempts:    3,\n+\tInitialBackoff: 200 * time.Millisecond,\n \tMaxBackoff:     2 * time.Second,\n }"
+  },
+  {
+    "sha": "d8e0f2a4b6c8d0e2f4a6b8c0d2e4f6a8b0c2d4e6",
+    "author": "grace.kim",
+    "timestamp": "2026-09-22T10:58:44Z",
+    "message": "feat(frontend): restyle payment status banner",
+    "files_changed": [
+      "services/frontend/static/payment.css",
+      "services/frontend/templates/status.html"
+    ],
+    "diff": "@@ services/frontend/static/payment.css\n-.pay-banner { background: #eef; padding: 6px 10px; }\n+.pay-banner { background: #e6f0ff; padding: 8px 14px; border-radius: 6px; }"
+  },
+  {
+    "sha": "e9f1a3b5c7d9e1f3a5b7c9d1e3f5a7b9c1d3e5f7",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-09-22T11:02:33Z",
+    "message": "fix: off-by-one in batch chunking",
+    "files_changed": [
+      "pkg/batch/chunk.go"
+    ],
+    "diff": "@@ func Chunk(n, size int) int {\n-\treturn n / size\n+\treturn (n + size - 1) / size\n }"
+  },
+  {
+    "sha": "f0a2b4c6d8e0f2a4b6c8d0e2f4a6b8c0d2e4f6a8",
+    "author": "deepak.rao",
+    "timestamp": "2026-09-22T11:04:20Z",
+    "message": "refactor: tidy payment Charge handler",
+    "files_changed": [
+      "services/payment/handler.go"
+    ],
+    "diff": "@@ services/payment/handler.go: func (h *Handler) Charge(w http.ResponseWriter, r *http.Request) {\n-\tvar req ChargeRequest\n-\tif err := json.NewDecoder(r.Body).Decode(&req); err != nil {\n-\t\thttp.Error(w, err.Error(), 400)\n-\t\treturn\n-\t}\n-\tch, err := h.svc.Charge(r.Context(), req)\n-\tif err != nil { http.Error(w, err.Error(), 502); return }\n-\twriteJSON(w, ch)\n+\treq, err := decodeRequest[ChargeRequest](r)\n+\tif err != nil {\n+\t\twriteError(w, http.StatusBadRequest, err)\n+\t\treturn\n+\t}\n+\tch, err := h.svc.Charge(r.Context(), req)\n+\tif err != nil {\n+\t\twriteError(w, http.StatusBadGateway, err)\n+\t\treturn\n+\t}\n+\twriteJSON(w, ch)\n }"
+  },
+  {
+    "sha": "a1b3c5d7e9f1a3b5c7d9e1f3a5b7c9d1e3f5a7b9",
+    "author": "wei.zhang",
+    "timestamp": "2026-09-22T11:21:07Z",
+    "message": "chore: update CODEOWNERS",
+    "files_changed": [
+      "CODEOWNERS"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "b2c4d6e8f0a2b4c6d8e0f2a4b6c8d0e2f4a6b8c0",
+    "author": "grace.kim",
+    "timestamp": "2026-09-22T11:24:59Z",
+    "message": "feat: support gzip request bodies",
+    "files_changed": [
+      "internal/middleware/gzip.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "c3d5e7f9a1b3c5d7e9f1a3b5c7d9e1f3a5b7c9d1",
+    "author": "fatima.zahra",
+    "timestamp": "2026-09-22T11:30:14Z",
+    "message": "ci: cache go build in GitHub Actions",
+    "files_changed": [
+      ".github/workflows/build.yml"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "d4e6f8a0b2c4d6e8f0a2b4c6d8e0f2a4b6c8d0e2",
+    "author": "lena.fischer",
+    "timestamp": "2026-09-22T11:36:48Z",
+    "message": "refactor: move DTOs into api/types",
+    "files_changed": [
+      "api/types/types.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "e5f7a9b1c3d5e7f9a1b3c5d7e9f1a3b5c7d9e1f3",
+    "author": "sofia.marino",
+    "timestamp": "2026-09-22T11:42:30Z",
+    "message": "chore: rotate staging TLS cert",
+    "files_changed": [
+      "deploy/staging/tls.yaml"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "f6a8b0c2d4e6f8a0b2c4d6e8f0a2b4c6d8e0f2a4",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-09-22T11:48:22Z",
+    "message": "test: add table-driven tests for currency conversion",
+    "files_changed": [
+      "pkg/money/convert_test.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "a7b9c1d3e5f7a9b1c3d5e7f9a1b3c5d7e9f1a3b5",
+    "author": "wei.zhang",
+    "timestamp": "2026-09-22T11:53:09Z",
+    "message": "chore: upgrade base image to distroless:nonroot",
+    "files_changed": [
+      "Dockerfile"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "b8c0d2e4f6a8b0c2d4e6f8a0b2c4d6e8f0a2b4c6",
+    "author": "priya.nair",
+    "timestamp": "2026-09-22T12:01:55Z",
+    "message": "perf: reuse sync.Pool for buffers in encoder",
+    "files_changed": [
+      "pkg/codec/pool.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "c9d1e3f5a7b9c1d3e5f7a9b1c3d5e7f9a1b3c5d7",
+    "author": "ivan.petrov",
+    "timestamp": "2026-09-22T12:08:41Z",
+    "message": "chore: tidy imports in ledger service",
+    "files_changed": [
+      "services/ledger/main.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "d0e2f4a6b8c0d2e4f6a8b0c2d4e6f8a0b2c4d6e8",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-09-22T12:15:27Z",
+    "message": "feat: emit OTel span attributes for merchant_id",
+    "files_changed": [
+      "internal/trace/attrs.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "e1f3a5b7c9d1e3f5a7b9c1d3e5f7a9b1c3d5e7f9",
+    "author": "lena.fischer",
+    "timestamp": "2026-09-22T12:22:13Z",
+    "message": "fix: correct typo in error message",
+    "files_changed": [
+      "internal/errors/messages.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "f2a4b6c8d0e2f4a6b8c0d2e4f6a8b0c2d4e6f8a0",
+    "author": "wei.zhang",
+    "timestamp": "2026-09-22T12:29:58Z",
+    "message": "feat: add structured logging fields to request middleware",
+    "files_changed": [
+      "internal/middleware/log.go"
+    ],
+    "diff": null
+  }
+]

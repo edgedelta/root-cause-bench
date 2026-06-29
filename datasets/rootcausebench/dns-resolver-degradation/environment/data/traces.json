@@ -1,0 +1,66 @@
+[
+  {
+    "trace_id": "0a1b2c3d4e5f60718293a4b5c6d7e8f9",
+    "span_id": "p0",
+    "parent_id": null,
+    "service": "checkoutservice",
+    "name": "POST /api/checkout",
+    "start": "2026-06-20T10:30:08Z",
+    "duration_ms": 5020,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "0a1b2c3d4e5f60718293a4b5c6d7e8f9",
+    "span_id": "p1",
+    "parent_id": "p0",
+    "service": "paymentservice",
+    "name": "Charge",
+    "start": "2026-06-20T10:30:08Z",
+    "duration_ms": 5000,
+    "status": "ERROR",
+    "error": "lookup api.stripe.com on 10.96.0.10:53: no such host"
+  },
+  {
+    "trace_id": "0a1b2c3d4e5f60718293a4b5c6d7e8f9",
+    "span_id": "p2",
+    "parent_id": "p1",
+    "service": "paymentservice",
+    "name": "egress https://api.stripe.com/v1/charges",
+    "start": "2026-06-20T10:30:08Z",
+    "duration_ms": 4998,
+    "status": "ERROR",
+    "error": "getaddrinfo ENOTFOUND api.stripe.com"
+  },
+  {
+    "trace_id": "11223344556677889900aabbccddeeff",
+    "span_id": "e0",
+    "parent_id": null,
+    "service": "emailservice",
+    "name": "SendReceipt",
+    "start": "2026-06-20T10:30:45Z",
+    "duration_ms": 5005,
+    "status": "ERROR",
+    "error": "lookup smtp.sendgrid.net on 10.96.0.10:53: no such host"
+  },
+  {
+    "trace_id": "99887766554433221100ffeeddccbbaa",
+    "span_id": "r0",
+    "parent_id": null,
+    "service": "recommendationservice",
+    "name": "GET /api/recommendations",
+    "start": "2026-06-20T10:31:10Z",
+    "duration_ms": 4900,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "99887766554433221100ffeeddccbbaa",
+    "span_id": "r1",
+    "parent_id": "r0",
+    "service": "recommendationservice",
+    "name": "egress featurestore.ml.svc.cluster.local",
+    "start": "2026-06-20T10:31:10Z",
+    "duration_ms": 4890,
+    "status": "ERROR",
+    "error": "lookup featurestore.ml.svc.cluster.local: i/o timeout"
+  }
+]

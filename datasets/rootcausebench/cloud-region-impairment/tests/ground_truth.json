@@ -1,0 +1,16 @@
+{
+  "scenario": "cloud-region-impairment",
+  "root_cause_commit": "none",
+  "first_failing_service": "mediaservice",
+  "blast_radius": [
+    "catalogservice",
+    "frontend"
+  ],
+  "remediation": "failover",
+  "decoy_deploy_commits": [
+    "2b8b1cd98aec6e8acc037fab7007b6f7502eb5cc",
+    "63737f24e6df27135d14a019eb3b30340025ee9c",
+    "db5e89581657ab5430bcec792a9a6f893af52b96"
+  ],
+  "notes": "NO code cause. The trigger is a cloud-provider (AWS S3) regional impairment in us-east-1, visible in status_feed.json: event S3-us-east-1-2026-06-20 goes status=degraded ('Increased Error Rates and Latencies') started_at 13:46:00Z -- the exact onset. Every error in our telemetry is on a call TO S3 via the AWS SDK: logs show 'aws sdk s3 GetObject/ListObjectsV2 ... ServiceUnavailable (503)/SlowDown region=us-east-1 host=edgedelta-media-prod.s3.us-east-1.amazonaws.com', and the failing trace span is S3.GetObject with peer.service=aws.s3 (the fault is inside the provider call, not our code). It hits MULTIPLE of our services that use S3 simultaneously (mediaservice first + worst, catalogservice next), while checkoutservice -- which does NOT call S3 -- stays healthy the whole window (the control). No deploy lines up with the 13:46 onset: the media deploys are at 12:33 and 13:13, the catalog deploy at 13:29, and the only near-onset deploy (checkoutservice 13:57) is unrelated and after the alert. TEMPTING WRONG commits (all on the S3/media path but innocent): 2b8b1cd9 'tune s3 client timeouts' (ivan.petrov, services/media/s3client.go) only raises client RequestTimeout 3s->5s and MaxRetries 3->4 -- a client-side knob that cannot make S3 itself return 503s; 63737f24 'extract object fetch helper' (services/media/fetch.go) is pure code motion around the same GetObject call, no behavior change; db5e8958 'bump go.mod' is an aws-sdk-go-v2 s3 patch bump v1.53.1->v1.53.2 with no relevant behavior change. flags.json (media_signed_url_v2, catalog_cache_warm) are distractors. Remediation is operational: fail S3 traffic over to the healthy us-west-2 region (status_feed shows us-west-2 operating-normally with a cross-region replica) and/or escalate-upstream to the provider. No rollback fixes a provider outage."
+}

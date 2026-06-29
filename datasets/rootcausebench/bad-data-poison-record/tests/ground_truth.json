@@ -1,0 +1,15 @@
+{
+  "scenario": "bad-data-poison-record",
+  "root_cause_commit": "none",
+  "first_failing_service": "event-enricher-1",
+  "blast_radius": [
+    "kafka-geo-events"
+  ],
+  "remediation": "purge-bad-data",
+  "decoy_deploy_commits": [
+    "d35af7feef3e256a34b215fa14d1d108cab5e788",
+    "30cb6576698a1dfbb116399ca3ab43874067b388",
+    "8e0ee5fee57cfae3c249e2809f445a49d2f3e1eb"
+  ],
+  "notes": "NO-CODE-CAUSE (operational). A single poison/malformed record arrived from an EXTERNAL upstream producer (producer=geo-partner-feed, a partner that has no commit or deploy in our window). The record geo-evt-8f3a2174 at partition=3 offset=148820291 carries an impossible coordinate lat=412.7 (valid range is [-90,90]). event-enricher-1's validator correctly rejects it; because the consumer cannot commit past a record it can't process, it redelivers the SAME offset 148820291 over and over, so the identical record_id/offset fails repeatedly (~every 7s) with the identical 'field lat out of range' error. Good throughput collapses and kafka-geo-events reports rising geo-events-iq ApproximateAgeOfOldestMessage (the downstream blast radius). The consumer code is CORRECT and UNCHANGED in a breaking way: it validated millions of good records fine before 11:38 and the only failing record is this one out-of-range value. There is NO deploy at onset (last deploy v2026.06.24-1131 landed 11:32, ~6 min before onset, and the service was healthy through 11:32->11:38). Tempting but INNOCENT commits planted on the consumer in the window: (1) d35af7fe 'Tidy geo coordinate validation helper' deployed 11:32 right before onset (the latest deploy on the loud service) -- its diff refactors the lat/lon bounds check into checkRange() but PRESERVES the exact same [-90,90]/[-180,180] limits, so it still (correctly) rejects lat=412.7; it does not create the bad record. (2) 30cb6576 'Tidy geo record parser' -- a no-behavior parser refactor (var->pointer, wrapped error), does not touch validation or produce the value. (3) 8e0ee5fe 'Bump geojson decoder patch' -- a dependency patch bump, not a value-producing change. The bad value is in the DATA, produced by an external party, not by any of these diffs. Correct answer: root_cause_commit='none'. Remediation: purge/quarantine the poison record (skip offset 148820291 / move to DLQ) so the consumer can advance; escalate to the external producer geo-partner-feed. No rollback fixes it because no code change caused it."
+}

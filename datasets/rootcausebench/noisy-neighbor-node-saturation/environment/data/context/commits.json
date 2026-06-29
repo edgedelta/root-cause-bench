@@ -1,0 +1,214 @@
+[
+  {
+    "sha": "a31f7c0e9b2d45168af0c7e1d3b9a4625fce1180",
+    "author": "grace.kim",
+    "timestamp": "2026-06-20T11:04:12Z",
+    "message": "chore: tidy imports in catalog service",
+    "files_changed": [
+      "services/catalog/main.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "5d8b1e94c7a0426fb913d6028e7f4c1aa9026d33",
+    "author": "marta.kowalski",
+    "timestamp": "2026-06-20T11:12:48Z",
+    "message": "feat: add /readyz endpoint",
+    "files_changed": [
+      "internal/health/ready.go"
+    ],
+    "diff": "@@ internal/health/ready.go @@\n+func Readyz(w http.ResponseWriter, r *http.Request) {\n+\tw.WriteHeader(http.StatusOK)\n+\t_, _ = w.Write([]byte(\"ok\"))\n+}"
+  },
+  {
+    "sha": "c0a6f2371e8b49d5a1f70c2d6b3e85194ad7f662",
+    "author": "ivan.petrov",
+    "timestamp": "2026-06-20T11:21:33Z",
+    "message": "refactor: collapse duplicate validation funcs",
+    "files_changed": [
+      "pkg/validate/validate.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "7b2d9e5a14c6403fa8e21d70b9c4f6358ad12e07",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-20T11:29:51Z",
+    "message": "feat: add prometheus histogram for cache hits",
+    "files_changed": [
+      "pkg/cache/metrics.go"
+    ],
+    "diff": "@@ pkg/cache/metrics.go @@\n+var cacheHits = prometheus.NewHistogram(prometheus.HistogramOpts{\n+\tName: \"cache_hit_seconds\", Buckets: prometheus.DefBuckets,\n+})"
+  },
+  {
+    "sha": "e94c0d7b2a1f4836b5e09d7c1a4f60238bd9e145",
+    "author": "fatima.zahra",
+    "timestamp": "2026-06-20T11:41:09Z",
+    "message": "chore: update CODEOWNERS",
+    "files_changed": [
+      "CODEOWNERS"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "16a8f3c5d90e427bb2c1086f4e7a9d35c0fb2e88",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-20T11:52:27Z",
+    "message": "perf: reuse sync.Pool for buffers in encoder",
+    "files_changed": [
+      "pkg/codec/pool.go"
+    ],
+    "diff": "@@ pkg/codec/pool.go @@\n+var bufPool = sync.Pool{New: func() any { return new(bytes.Buffer) }}\n \tb := bufPool.Get().(*bytes.Buffer)\n+\tdefer bufPool.Put(b)"
+  },
+  {
+    "sha": "b7e1409c6d2a48f3a905c1e7b6d34f8e2901a5cd",
+    "author": "noah.bergstrom",
+    "timestamp": "2026-06-20T11:55:18Z",
+    "message": "docs: add runbook for deploy rollback",
+    "files_changed": [
+      "docs/runbooks/rollback.md"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "2f6c8a0b1d4e497ca3f15d80e9b7c63148af20d9",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-06-20T12:03:44Z",
+    "message": "feat: add request id propagation header",
+    "files_changed": [
+      "internal/middleware/reqid.go"
+    ],
+    "diff": "@@ internal/middleware/reqid.go @@\n+\t\tif rid == \"\" { rid = uuid.NewString() }\n+\t\tw.Header().Set(\"X-Request-Id\", rid)"
+  },
+  {
+    "sha": "9a3e6c7d2b8f415ea0c93d6147b8e25039fc1a64",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-20T12:15:02Z",
+    "message": "feat: support gzip request bodies",
+    "files_changed": [
+      "internal/middleware/gzip.go"
+    ],
+    "diff": "@@ internal/middleware/gzip.go @@\n+\t\tif r.Header.Get(\"Content-Encoding\") == \"gzip\" {\n+\t\t\tr.Body, _ = gzip.NewReader(r.Body)\n+\t\t}"
+  },
+  {
+    "sha": "3c9f1a6e0d7b482fa6e15c2049b8d73e15ac9f02",
+    "author": "tunde.okafor",
+    "timestamp": "2026-06-20T12:24:18Z",
+    "message": "ci: cache go build in GitHub Actions",
+    "files_changed": [
+      ".github/workflows/build.yml"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "8e0b4d2a7c1f493db5a06e8147c2f9304ab1d7e6",
+    "author": "priya.nair",
+    "timestamp": "2026-06-20T12:38:55Z",
+    "message": "test: add integration test for graceful shutdown",
+    "files_changed": [
+      "cmd/server/shutdown_test.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "1f7a9c3e6b0d428fa2c815d70e9b4f6328dc0a51",
+    "author": "lena.fischer",
+    "timestamp": "2026-06-20T12:51:40Z",
+    "message": "style: gofmt and goimports across repo",
+    "files_changed": [
+      "pkg/cart/cart.go",
+      "pkg/cart/cart_test.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "d4b8e1a6c9f0437ba5e21c80d7b3f95248ae6c13",
+    "author": "ivan.petrov",
+    "timestamp": "2026-06-20T13:02:09Z",
+    "message": "refactor(recommendation): extract ranking scorer into helper",
+    "files_changed": [
+      "services/recommendation/rank.go"
+    ],
+    "diff": "@@ services/recommendation/rank.go @@\n-\tfor _, c := range cands {\n-\t\tc.score = w0 + w1*c.ctr + w2*c.recency\n-\t\tout = append(out, c)\n-\t}\n+\tfor _, c := range cands {\n+\t\tout = append(out, scoreCandidate(c, w0, w1, w2))\n+\t}\n+}\n+\n+func scoreCandidate(c cand, w0, w1, w2 float64) cand {\n+\tc.score = w0 + w1*c.ctr + w2*c.recency\n+\treturn c"
+  },
+  {
+    "sha": "6b0d2f8a4c1e497fb3a09d6157c2e84031bd9a72",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-06-20T13:11:36Z",
+    "message": "chore: rotate staging TLS cert",
+    "files_changed": [
+      "deploy/staging/tls.yaml"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "0e7c3a9f1b6d425da8c10e7246b9f53802ac1d68",
+    "author": "amir.haddad",
+    "timestamp": "2026-06-20T13:19:50Z",
+    "message": "chore(recommendation): adjust in-memory candidate cache size",
+    "files_changed": [
+      "services/recommendation/config/cache.yaml"
+    ],
+    "diff": "@@ services/recommendation/config/cache.yaml @@\n-  candidate_cache_entries: 50000\n+  candidate_cache_entries: 60000\n   candidate_cache_ttl: 10m"
+  },
+  {
+    "sha": "f2a8c6e0d3b7491ca5f16d802e9b7c4319ad0f53",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-20T13:27:14Z",
+    "message": "chore: bump go.mod dependencies",
+    "files_changed": [
+      "go.mod",
+      "go.sum"
+    ],
+    "diff": "@@ go.mod @@\n-\tgithub.com/prometheus/client_golang v1.19.0\n+\tgithub.com/prometheus/client_golang v1.19.1"
+  },
+  {
+    "sha": "5c1e9a7b3d0f486fa2c815e740b9d6328ac1f0e9",
+    "author": "tunde.okafor",
+    "timestamp": "2026-06-20T13:33:41Z",
+    "message": "refactor: move DTOs into api/types",
+    "files_changed": [
+      "api/types/types.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "a6f0c2e8d4b1497ba3c905e7160d8b5329cf1a74",
+    "author": "sofia.marino",
+    "timestamp": "2026-06-20T13:38:22Z",
+    "message": "test: fuzz the SKU parser",
+    "files_changed": [
+      "pkg/sku/parse_fuzz_test.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "7d2b8e0a6c3f491da5f16c80e2b9f74318ad0c61",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-20T13:45:55Z",
+    "message": "feat: emit OTel span attributes for user_id",
+    "files_changed": [
+      "internal/trace/attrs.go"
+    ],
+    "diff": "@@ internal/trace/attrs.go @@\n+\t\tspan.SetAttributes(attribute.String(\"user_id\", uid))"
+  },
+  {
+    "sha": "c3e9a1f7b6d0428fa5c816d740e9b8c2319ad0f58",
+    "author": "marta.kowalski",
+    "timestamp": "2026-06-20T13:51:07Z",
+    "message": "fix(order): correct tax rounding for EU VAT",
+    "files_changed": [
+      "services/order/tax.go"
+    ],
+    "diff": "@@ services/order/tax.go @@\n-\treturn math.Round(net * rate)\n+\treturn math.Round(net*rate*100) / 100"
+  },
+  {
+    "sha": "8a0c6e2d4b1f497ba3c915d720e9b6c4308ad1f6",
+    "author": "fatima.zahra",
+    "timestamp": "2026-06-20T14:06:33Z",
+    "message": "fix: handle empty slice in pagination helper",
+    "files_changed": [
+      "pkg/paginate/paginate.go"
+    ],
+    "diff": "@@ pkg/paginate/paginate.go @@\n+\tif len(items) == 0 { return nil, nil }"
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "service": "frontend",
+  "metric": "http_server_duration_p99_ms",
+  "threshold": 800,
+  "observed": 2180,
+  "fired_at": "2026-06-18T15:06:00Z",
+  "severity": "critical",
+  "monitor": "frontend-p99-latency",
+  "summary": "frontend p99 latency above 800ms for 3m"
+}

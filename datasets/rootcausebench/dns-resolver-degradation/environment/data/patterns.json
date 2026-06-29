@@ -1,0 +1,65 @@
+[
+  {
+    "signature": "lookup api.stripe.com on 10.96.0.10:53: no such host",
+    "service": "paymentservice",
+    "count": 312,
+    "delta_vs_baseline": "+312",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "getaddrinfo ENOTFOUND <host>",
+    "service": "paymentservice",
+    "count": 188,
+    "delta_vs_baseline": "+188",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "lookup <host> on 10.96.0.10:53: i/o timeout",
+    "service": "checkoutservice",
+    "count": 204,
+    "delta_vs_baseline": "+204",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "smtp send failed: lookup smtp.sendgrid.net on 10.96.0.10:53: no such host",
+    "service": "emailservice",
+    "count": 96,
+    "delta_vs_baseline": "+96",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "feature fetch failed: lookup featurestore.ml.svc.cluster.local: server misbehaving",
+    "service": "recommendationservice",
+    "count": 77,
+    "delta_vs_baseline": "+77",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "plugin/forward: all upstreams down; returning SERVFAIL",
+    "service": "coredns",
+    "count": 143,
+    "delta_vs_baseline": "+143",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "forward: HEALTHCHECK: i/o timeout to 169.254.20.10:53",
+    "service": "coredns",
+    "count": 61,
+    "delta_vs_baseline": "+61",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "outbound call completed",
+    "service": "paymentservice",
+    "count": 38,
+    "delta_vs_baseline": "-980",
+    "sentiment": "neutral"
+  },
+  {
+    "signature": "feature flag checkout_new_pricing_ui enabled",
+    "service": "checkoutservice",
+    "count": 1,
+    "delta_vs_baseline": "+1",
+    "sentiment": "neutral"
+  }
+]

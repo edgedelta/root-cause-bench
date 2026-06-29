@@ -1,0 +1,40 @@
+{
+  "source": "aws-health-dashboard",
+  "region": "us-east-1",
+  "fetched_at": "2026-06-20T14:05:00Z",
+  "events": [
+    {
+      "id": "S3-us-east-1-2026-06-20",
+      "service": "Amazon Simple Storage Service (S3)",
+      "region": "us-east-1",
+      "status": "degraded",
+      "title": "Increased Error Rates and Latencies",
+      "started_at": "2026-06-20T13:46:00Z",
+      "updated_at": "2026-06-20T14:04:00Z",
+      "resolved_at": null,
+      "detail": "Between 1:46 PM and now we are experiencing increased error rates and latencies for Amazon S3 requests in the US-EAST-1 Region. GetObject, PutObject and ListObjectsV2 may return 503 SlowDown / ServiceUnavailable responses. Other Regions are not affected."
+    },
+    {
+      "id": "EC2-us-east-1-2026-06-20-info",
+      "service": "Amazon Elastic Compute Cloud (EC2)",
+      "region": "us-east-1",
+      "status": "operating-normally",
+      "title": "Service is operating normally",
+      "started_at": "2026-06-20T11:00:00Z",
+      "updated_at": "2026-06-20T14:04:00Z",
+      "resolved_at": null,
+      "detail": "No issues."
+    },
+    {
+      "id": "S3-us-west-2-2026-06-20-info",
+      "service": "Amazon Simple Storage Service (S3)",
+      "region": "us-west-2",
+      "status": "operating-normally",
+      "title": "Service is operating normally",
+      "started_at": "2026-06-20T11:00:00Z",
+      "updated_at": "2026-06-20T14:04:00Z",
+      "resolved_at": null,
+      "detail": "No issues. Cross-region replica available."
+    }
+  ]
+}

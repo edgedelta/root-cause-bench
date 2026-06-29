@@ -1,0 +1,90 @@
+[
+  {
+    "trace_id": "f1e2d3c4b5a6978800112233445566aa",
+    "span_id": "a1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "POST /api/checkout",
+    "start": "2026-06-18T15:06:12Z",
+    "duration_ms": 4900,
+    "status": "OK",
+    "attributes": {
+      "queue_wait_ms": 4380,
+      "handler_ms": 120
+    }
+  },
+  {
+    "trace_id": "f1e2d3c4b5a6978800112233445566aa",
+    "span_id": "b1",
+    "parent_id": "a1",
+    "service": "checkoutservice",
+    "name": "PlaceOrder",
+    "start": "2026-06-18T15:06:16Z",
+    "duration_ms": 360,
+    "status": "OK"
+  },
+  {
+    "trace_id": "f1e2d3c4b5a6978800112233445566aa",
+    "span_id": "c1",
+    "parent_id": "b1",
+    "service": "cartservice",
+    "name": "GetCart",
+    "start": "2026-06-18T15:06:16Z",
+    "duration_ms": 110,
+    "status": "OK"
+  },
+  {
+    "trace_id": "f1e2d3c4b5a6978800112233445566aa",
+    "span_id": "d1",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:06:16Z",
+    "duration_ms": 95,
+    "status": "OK"
+  },
+  {
+    "trace_id": "f1e2d3c4b5a6978800112233445566aa",
+    "span_id": "d2",
+    "parent_id": "b1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:06:16Z",
+    "duration_ms": 88,
+    "status": "OK"
+  },
+  {
+    "trace_id": "baseline00000000111122223333aaaa",
+    "span_id": "a0",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "POST /api/checkout",
+    "start": "2026-06-18T14:20:05Z",
+    "duration_ms": 250,
+    "status": "OK",
+    "attributes": {
+      "queue_wait_ms": 3,
+      "handler_ms": 118
+    }
+  },
+  {
+    "trace_id": "baseline00000000111122223333aaaa",
+    "span_id": "b0",
+    "parent_id": "a0",
+    "service": "checkoutservice",
+    "name": "PlaceOrder",
+    "start": "2026-06-18T14:20:05Z",
+    "duration_ms": 130,
+    "status": "OK"
+  },
+  {
+    "trace_id": "baseline00000000111122223333aaaa",
+    "span_id": "c0",
+    "parent_id": "b0",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T14:20:05Z",
+    "duration_ms": 70,
+    "status": "OK"
+  }
+]

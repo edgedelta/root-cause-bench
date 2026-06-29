@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": "2026-06-20T13:21:00Z",
+    "flag": "recommendation_rerank_v2",
+    "service": "recommendationservice",
+    "change": "off->on",
+    "actor": "amir.haddad"
+  },
+  {
+    "timestamp": "2026-06-20T12:30:00Z",
+    "flag": "checkout_suggestions_enabled",
+    "service": "checkoutservice",
+    "change": "off->on",
+    "actor": "priya.nair"
+  }
+]

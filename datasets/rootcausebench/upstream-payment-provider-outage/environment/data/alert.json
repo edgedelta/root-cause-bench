@@ -1,0 +1,10 @@
+{
+  "service": "paymentservice",
+  "metric": "charge_error_rate_pct",
+  "threshold": 5,
+  "observed": 71.4,
+  "fired_at": "2026-09-22T11:18:00Z",
+  "severity": "critical",
+  "monitor": "payment-charge-error-rate",
+  "summary": "paymentservice charge error rate above 5% for 3m"
+}

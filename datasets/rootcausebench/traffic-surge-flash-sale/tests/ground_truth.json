@@ -1,0 +1,17 @@
+{
+  "scenario": "traffic-surge-flash-sale",
+  "root_cause_commit": "none",
+  "first_failing_service": "frontend",
+  "blast_radius": [
+    "checkoutservice",
+    "cartservice",
+    "productcatalogservice"
+  ],
+  "remediation": "scale",
+  "decoy_deploy_commits": [
+    "4328ace9619796f2a3437fde1567fa51656346c0",
+    "8975e17f00649f6587cfd4c60a0c0469d01ec8ea",
+    "f832d01fe185c094860c99ec22c30facaf9ddee7"
+  ],
+  "notes": "NO code caused this. A marketing flash sale at 15:00 drove an organic ~6.3x traffic surge: frontend requests_per_sec climbs from ~920/s to ~5790/s between 15:00 and 15:06, and EVERY tier's requests_per_sec scales with it (checkoutservice/cartservice/productcatalogservice all ~6x). The frontend edge saturates first: cpu_utilization pegs near 1.0, request_queue_depth blows up (0->200+), p99 crosses 800ms at 15:02 and peaks ~2180-2340ms, and http_5xx_per_sec rises only once CPU saturates (load shedding, not a code error). The slow trace shows the time is queue_wait_ms (~4380ms QUEUED at the edge), not a slow downstream span or a code path -- every downstream hop is normal latency. Logs show 'worker pool saturated, request queued', 'request rejected: server overloaded, shedding load' (503), and 'autoscaler signalled desired replicas increase; pods pending' (capacity lagged demand). There is NO deploy at onset: the only deploys are 14:18-14:33, all well before the surge. The tempting innocent commits, all deployed BEFORE the surge and NONE at onset: (1) 8975e17f 'extract request decoding into helper in frontend gateway' (grace.kim, frontend, deployed 14:21) -- only moves JSON decode into a helper, same work per request, no added cost; (2) 4328ace9 'switch access logs to structured fields in frontend' (deepak.rao, frontend, the MOST RECENT frontend deploy at 14:33) -- swaps log.Printf for a structured logger.Info, one log line per request, does not add latency that scales 6x with traffic; (3) f832d01f 'bump go.mod dependencies' (gorilla/mux + grpc patch bumps, checkoutservice, deployed 14:18) -- patch-version bumps with no behavior change. None of these diffs produces a load-proportional saturation; the saturation is fully explained by demand outstripping fixed capacity. flags.json (spring_flash_sale_banner on at 14:45) is a distractor marketing toggle, not a code change. Remediation is operational: scale out the frontend fleet (add replicas) to absorb the surge."
+}

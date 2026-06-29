@@ -1,0 +1,20 @@
+[
+  {
+    "timestamp": "2026-06-24T10:51:30Z",
+    "service": "event-enricher-1",
+    "commit_sha": "30cb6576698a1dfbb116399ca3ab43874067b388",
+    "version": "v2026.06.24-1048"
+  },
+  {
+    "timestamp": "2026-06-24T11:03:10Z",
+    "service": "event-enricher-1",
+    "commit_sha": "e927e3a67bf01c98e64c45e6178aed80af571467",
+    "version": "v2026.06.24-1102"
+  },
+  {
+    "timestamp": "2026-06-24T11:32:40Z",
+    "service": "event-enricher-1",
+    "commit_sha": "d35af7feef3e256a34b215fa14d1d108cab5e788",
+    "version": "v2026.06.24-1131"
+  }
+]

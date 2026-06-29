@@ -1,0 +1,626 @@
+[
+  {
+    "trace_id": "a4c123b1612dd272d1371c17149d4395",
+    "span_id": "a1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "POST /api/order",
+    "start": "2026-06-18T15:01:10Z",
+    "duration_ms": 146.0,
+    "status": "OK"
+  },
+  {
+    "trace_id": "a4c123b1612dd272d1371c17149d4395",
+    "span_id": "b1",
+    "parent_id": "a1",
+    "service": "checkoutservice",
+    "name": "Checkout",
+    "start": "2026-06-18T15:01:10Z",
+    "duration_ms": 120.0,
+    "status": "OK"
+  },
+  {
+    "trace_id": "a4c123b1612dd272d1371c17149d4395",
+    "span_id": "c1",
+    "parent_id": "b1",
+    "service": "orderservice",
+    "name": "PlaceOrder",
+    "start": "2026-06-18T15:01:10Z",
+    "duration_ms": 98.0,
+    "status": "OK"
+  },
+  {
+    "trace_id": "a4c123b1612dd272d1371c17149d4395",
+    "span_id": "d1",
+    "parent_id": "c1",
+    "service": "orderservice",
+    "name": "POST paymentservice/charge",
+    "start": "2026-06-18T15:01:10Z",
+    "duration_ms": 54.0,
+    "status": "OK"
+  },
+  {
+    "trace_id": "a4c123b1612dd272d1371c17149d4395",
+    "span_id": "e1",
+    "parent_id": "d1",
+    "service": "paymentservice",
+    "name": "Charge",
+    "start": "2026-06-18T15:01:10Z",
+    "duration_ms": 41.0,
+    "status": "OK"
+  },
+  {
+    "trace_id": "36b3216fdaeeb975729fae923d5a4fd1",
+    "span_id": "a1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "POST /api/order",
+    "start": "2026-06-18T15:04:00Z",
+    "duration_ms": 39.2,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "36b3216fdaeeb975729fae923d5a4fd1",
+    "span_id": "b1",
+    "parent_id": "a1",
+    "service": "checkoutservice",
+    "name": "Checkout",
+    "start": "2026-06-18T15:04:00Z",
+    "duration_ms": 17.1,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "36b3216fdaeeb975729fae923d5a4fd1",
+    "span_id": "c1",
+    "parent_id": "b1",
+    "service": "orderservice",
+    "name": "PlaceOrder",
+    "start": "2026-06-18T15:04:00Z",
+    "duration_ms": 17.6,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "36b3216fdaeeb975729fae923d5a4fd1",
+    "span_id": "d1",
+    "parent_id": "c1",
+    "service": "orderservice",
+    "name": "POST paymentservice/charge",
+    "start": "2026-06-18T15:04:00Z",
+    "duration_ms": 14.3,
+    "status": "ERROR",
+    "error": "tls: x509: certificate has expired or is not yet valid"
+  },
+  {
+    "trace_id": "aabfe228f219e9cb0eb53f16947ccf25",
+    "span_id": "a1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "POST /api/order",
+    "start": "2026-06-18T15:05:07Z",
+    "duration_ms": 29.0,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "aabfe228f219e9cb0eb53f16947ccf25",
+    "span_id": "b1",
+    "parent_id": "a1",
+    "service": "checkoutservice",
+    "name": "Checkout",
+    "start": "2026-06-18T15:05:07Z",
+    "duration_ms": 23.7,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "aabfe228f219e9cb0eb53f16947ccf25",
+    "span_id": "c1",
+    "parent_id": "b1",
+    "service": "orderservice",
+    "name": "PlaceOrder",
+    "start": "2026-06-18T15:05:07Z",
+    "duration_ms": 20.8,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "aabfe228f219e9cb0eb53f16947ccf25",
+    "span_id": "d1",
+    "parent_id": "c1",
+    "service": "orderservice",
+    "name": "POST paymentservice/charge",
+    "start": "2026-06-18T15:05:07Z",
+    "duration_ms": 14.6,
+    "status": "ERROR",
+    "error": "tls: x509: certificate has expired or is not yet valid"
+  },
+  {
+    "trace_id": "8dbc74254770f58904dba41ecccc3fc1",
+    "span_id": "a1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "POST /api/order",
+    "start": "2026-06-18T15:06:14Z",
+    "duration_ms": 23.8,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "8dbc74254770f58904dba41ecccc3fc1",
+    "span_id": "b1",
+    "parent_id": "a1",
+    "service": "checkoutservice",
+    "name": "Checkout",
+    "start": "2026-06-18T15:06:14Z",
+    "duration_ms": 29.8,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "8dbc74254770f58904dba41ecccc3fc1",
+    "span_id": "c1",
+    "parent_id": "b1",
+    "service": "orderservice",
+    "name": "PlaceOrder",
+    "start": "2026-06-18T15:06:14Z",
+    "duration_ms": 16.4,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "8dbc74254770f58904dba41ecccc3fc1",
+    "span_id": "d1",
+    "parent_id": "c1",
+    "service": "orderservice",
+    "name": "POST paymentservice/charge",
+    "start": "2026-06-18T15:06:14Z",
+    "duration_ms": 8.9,
+    "status": "ERROR",
+    "error": "tls: x509: certificate has expired or is not yet valid"
+  },
+  {
+    "trace_id": "13043b026c48bbf33feff9243a8f506b",
+    "span_id": "a1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "POST /api/order",
+    "start": "2026-06-18T15:07:21Z",
+    "duration_ms": 22.9,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "13043b026c48bbf33feff9243a8f506b",
+    "span_id": "b1",
+    "parent_id": "a1",
+    "service": "checkoutservice",
+    "name": "Checkout",
+    "start": "2026-06-18T15:07:21Z",
+    "duration_ms": 23.6,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "13043b026c48bbf33feff9243a8f506b",
+    "span_id": "c1",
+    "parent_id": "b1",
+    "service": "orderservice",
+    "name": "PlaceOrder",
+    "start": "2026-06-18T15:07:21Z",
+    "duration_ms": 12.3,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "13043b026c48bbf33feff9243a8f506b",
+    "span_id": "d1",
+    "parent_id": "c1",
+    "service": "orderservice",
+    "name": "POST paymentservice/charge",
+    "start": "2026-06-18T15:07:21Z",
+    "duration_ms": 12.2,
+    "status": "ERROR",
+    "error": "tls: x509: certificate has expired or is not yet valid"
+  },
+  {
+    "trace_id": "28b5b7a767c76fb008f86bebb2737f6a",
+    "span_id": "a1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "POST /api/order",
+    "start": "2026-06-18T15:04:28Z",
+    "duration_ms": 24.1,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "28b5b7a767c76fb008f86bebb2737f6a",
+    "span_id": "b1",
+    "parent_id": "a1",
+    "service": "checkoutservice",
+    "name": "Checkout",
+    "start": "2026-06-18T15:04:28Z",
+    "duration_ms": 24.7,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "28b5b7a767c76fb008f86bebb2737f6a",
+    "span_id": "c1",
+    "parent_id": "b1",
+    "service": "orderservice",
+    "name": "PlaceOrder",
+    "start": "2026-06-18T15:04:28Z",
+    "duration_ms": 21.0,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "28b5b7a767c76fb008f86bebb2737f6a",
+    "span_id": "d1",
+    "parent_id": "c1",
+    "service": "orderservice",
+    "name": "POST paymentservice/charge",
+    "start": "2026-06-18T15:04:28Z",
+    "duration_ms": 14.7,
+    "status": "ERROR",
+    "error": "tls: x509: certificate has expired or is not yet valid"
+  },
+  {
+    "trace_id": "fb23c6f5da2cec255404e4fb440034d6",
+    "span_id": "a1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "POST /api/order",
+    "start": "2026-06-18T15:05:35Z",
+    "duration_ms": 36.5,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "fb23c6f5da2cec255404e4fb440034d6",
+    "span_id": "b1",
+    "parent_id": "a1",
+    "service": "checkoutservice",
+    "name": "Checkout",
+    "start": "2026-06-18T15:05:35Z",
+    "duration_ms": 19.0,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "fb23c6f5da2cec255404e4fb440034d6",
+    "span_id": "c1",
+    "parent_id": "b1",
+    "service": "orderservice",
+    "name": "PlaceOrder",
+    "start": "2026-06-18T15:05:35Z",
+    "duration_ms": 14.5,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "fb23c6f5da2cec255404e4fb440034d6",
+    "span_id": "d1",
+    "parent_id": "c1",
+    "service": "orderservice",
+    "name": "POST paymentservice/charge",
+    "start": "2026-06-18T15:05:35Z",
+    "duration_ms": 10.3,
+    "status": "ERROR",
+    "error": "tls: x509: certificate has expired or is not yet valid"
+  },
+  {
+    "trace_id": "7a8d41bed440e50454f31af3176813e0",
+    "span_id": "a1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "POST /api/order",
+    "start": "2026-06-18T15:06:42Z",
+    "duration_ms": 35.2,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "7a8d41bed440e50454f31af3176813e0",
+    "span_id": "b1",
+    "parent_id": "a1",
+    "service": "checkoutservice",
+    "name": "Checkout",
+    "start": "2026-06-18T15:06:42Z",
+    "duration_ms": 28.8,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "7a8d41bed440e50454f31af3176813e0",
+    "span_id": "c1",
+    "parent_id": "b1",
+    "service": "orderservice",
+    "name": "PlaceOrder",
+    "start": "2026-06-18T15:06:42Z",
+    "duration_ms": 16.4,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "7a8d41bed440e50454f31af3176813e0",
+    "span_id": "d1",
+    "parent_id": "c1",
+    "service": "orderservice",
+    "name": "POST paymentservice/charge",
+    "start": "2026-06-18T15:06:42Z",
+    "duration_ms": 12.9,
+    "status": "ERROR",
+    "error": "tls: x509: certificate has expired or is not yet valid"
+  },
+  {
+    "trace_id": "68ef786e4d3cea27d26934b484e73cf5",
+    "span_id": "a1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "POST /api/order",
+    "start": "2026-06-18T15:07:49Z",
+    "duration_ms": 39.8,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "68ef786e4d3cea27d26934b484e73cf5",
+    "span_id": "b1",
+    "parent_id": "a1",
+    "service": "checkoutservice",
+    "name": "Checkout",
+    "start": "2026-06-18T15:07:49Z",
+    "duration_ms": 27.7,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "68ef786e4d3cea27d26934b484e73cf5",
+    "span_id": "c1",
+    "parent_id": "b1",
+    "service": "orderservice",
+    "name": "PlaceOrder",
+    "start": "2026-06-18T15:07:49Z",
+    "duration_ms": 13.6,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "68ef786e4d3cea27d26934b484e73cf5",
+    "span_id": "d1",
+    "parent_id": "c1",
+    "service": "orderservice",
+    "name": "POST paymentservice/charge",
+    "start": "2026-06-18T15:07:49Z",
+    "duration_ms": 11.5,
+    "status": "ERROR",
+    "error": "tls: x509: certificate has expired or is not yet valid"
+  },
+  {
+    "trace_id": "cad6ba2b0aee0ca923732881584d8c4f",
+    "span_id": "a1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "POST /api/order",
+    "start": "2026-06-18T15:04:56Z",
+    "duration_ms": 34.0,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "cad6ba2b0aee0ca923732881584d8c4f",
+    "span_id": "b1",
+    "parent_id": "a1",
+    "service": "checkoutservice",
+    "name": "Checkout",
+    "start": "2026-06-18T15:04:56Z",
+    "duration_ms": 17.3,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "cad6ba2b0aee0ca923732881584d8c4f",
+    "span_id": "c1",
+    "parent_id": "b1",
+    "service": "orderservice",
+    "name": "PlaceOrder",
+    "start": "2026-06-18T15:04:56Z",
+    "duration_ms": 12.6,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "cad6ba2b0aee0ca923732881584d8c4f",
+    "span_id": "d1",
+    "parent_id": "c1",
+    "service": "orderservice",
+    "name": "POST paymentservice/charge",
+    "start": "2026-06-18T15:04:56Z",
+    "duration_ms": 13.5,
+    "status": "ERROR",
+    "error": "tls: x509: certificate has expired or is not yet valid"
+  },
+  {
+    "trace_id": "d2802827283e0ad84173581569969e58",
+    "span_id": "a1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "POST /api/order",
+    "start": "2026-06-18T15:05:03Z",
+    "duration_ms": 26.9,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "d2802827283e0ad84173581569969e58",
+    "span_id": "b1",
+    "parent_id": "a1",
+    "service": "checkoutservice",
+    "name": "Checkout",
+    "start": "2026-06-18T15:05:03Z",
+    "duration_ms": 16.3,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "d2802827283e0ad84173581569969e58",
+    "span_id": "c1",
+    "parent_id": "b1",
+    "service": "orderservice",
+    "name": "PlaceOrder",
+    "start": "2026-06-18T15:05:03Z",
+    "duration_ms": 14.5,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "d2802827283e0ad84173581569969e58",
+    "span_id": "d1",
+    "parent_id": "c1",
+    "service": "orderservice",
+    "name": "POST paymentservice/charge",
+    "start": "2026-06-18T15:05:03Z",
+    "duration_ms": 8.1,
+    "status": "ERROR",
+    "error": "tls: x509: certificate has expired or is not yet valid"
+  },
+  {
+    "trace_id": "6f7e3dfc967a64cb14028d512c9791e5",
+    "span_id": "a1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "POST /api/order",
+    "start": "2026-06-18T15:06:10Z",
+    "duration_ms": 23.2,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "6f7e3dfc967a64cb14028d512c9791e5",
+    "span_id": "b1",
+    "parent_id": "a1",
+    "service": "checkoutservice",
+    "name": "Checkout",
+    "start": "2026-06-18T15:06:10Z",
+    "duration_ms": 22.2,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "6f7e3dfc967a64cb14028d512c9791e5",
+    "span_id": "c1",
+    "parent_id": "b1",
+    "service": "orderservice",
+    "name": "PlaceOrder",
+    "start": "2026-06-18T15:06:10Z",
+    "duration_ms": 14.6,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "6f7e3dfc967a64cb14028d512c9791e5",
+    "span_id": "d1",
+    "parent_id": "c1",
+    "service": "orderservice",
+    "name": "POST paymentservice/charge",
+    "start": "2026-06-18T15:06:10Z",
+    "duration_ms": 15.7,
+    "status": "ERROR",
+    "error": "tls: x509: certificate has expired or is not yet valid"
+  },
+  {
+    "trace_id": "a7196b50ac2f86702824c1c099724caf",
+    "span_id": "a1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "POST /api/order",
+    "start": "2026-06-18T15:07:17Z",
+    "duration_ms": 23.0,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "a7196b50ac2f86702824c1c099724caf",
+    "span_id": "b1",
+    "parent_id": "a1",
+    "service": "checkoutservice",
+    "name": "Checkout",
+    "start": "2026-06-18T15:07:17Z",
+    "duration_ms": 26.1,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "a7196b50ac2f86702824c1c099724caf",
+    "span_id": "c1",
+    "parent_id": "b1",
+    "service": "orderservice",
+    "name": "PlaceOrder",
+    "start": "2026-06-18T15:07:17Z",
+    "duration_ms": 18.4,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "a7196b50ac2f86702824c1c099724caf",
+    "span_id": "d1",
+    "parent_id": "c1",
+    "service": "orderservice",
+    "name": "POST paymentservice/charge",
+    "start": "2026-06-18T15:07:17Z",
+    "duration_ms": 8.4,
+    "status": "ERROR",
+    "error": "tls: x509: certificate has expired or is not yet valid"
+  },
+  {
+    "trace_id": "d4072014b3ce107f80e222f828767efc",
+    "span_id": "a1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "POST /api/order",
+    "start": "2026-06-18T15:04:24Z",
+    "duration_ms": 21.5,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "d4072014b3ce107f80e222f828767efc",
+    "span_id": "b1",
+    "parent_id": "a1",
+    "service": "checkoutservice",
+    "name": "Checkout",
+    "start": "2026-06-18T15:04:24Z",
+    "duration_ms": 28.7,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "d4072014b3ce107f80e222f828767efc",
+    "span_id": "c1",
+    "parent_id": "b1",
+    "service": "orderservice",
+    "name": "PlaceOrder",
+    "start": "2026-06-18T15:04:24Z",
+    "duration_ms": 14.9,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "d4072014b3ce107f80e222f828767efc",
+    "span_id": "d1",
+    "parent_id": "c1",
+    "service": "orderservice",
+    "name": "POST paymentservice/charge",
+    "start": "2026-06-18T15:04:24Z",
+    "duration_ms": 8.4,
+    "status": "ERROR",
+    "error": "tls: x509: certificate has expired or is not yet valid"
+  },
+  {
+    "trace_id": "624a8940f1f836f99eee3692f09e2e8c",
+    "span_id": "a1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "POST /api/order",
+    "start": "2026-06-18T15:05:31Z",
+    "duration_ms": 24.2,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "624a8940f1f836f99eee3692f09e2e8c",
+    "span_id": "b1",
+    "parent_id": "a1",
+    "service": "checkoutservice",
+    "name": "Checkout",
+    "start": "2026-06-18T15:05:31Z",
+    "duration_ms": 29.2,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "624a8940f1f836f99eee3692f09e2e8c",
+    "span_id": "c1",
+    "parent_id": "b1",
+    "service": "orderservice",
+    "name": "PlaceOrder",
+    "start": "2026-06-18T15:05:31Z",
+    "duration_ms": 14.1,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "624a8940f1f836f99eee3692f09e2e8c",
+    "span_id": "d1",
+    "parent_id": "c1",
+    "service": "orderservice",
+    "name": "POST paymentservice/charge",
+    "start": "2026-06-18T15:05:31Z",
+    "duration_ms": 12.7,
+    "status": "ERROR",
+    "error": "tls: x509: certificate has expired or is not yet valid"
+  }
+]

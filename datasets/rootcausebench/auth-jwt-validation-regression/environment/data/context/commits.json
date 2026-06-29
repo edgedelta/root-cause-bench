@@ -195,7 +195,7 @@
     "sha": "7dacc6c8a3c3fe7053afd5d8518ffef1f9843baa",
     "author": "carlos.mendez",
     "timestamp": "2026-09-14T09:51:40Z",
-    "message": "refactor(auth): simplify option defaults in token verifier",
+    "message": "refactor(auth): simplify expiry validation in token verifier",
     "files_changed": [
       "pkg/auth/jwt.go"
     ],
