@@ -127,33 +127,55 @@ uv run scripts/process_results.py jobs/<timestamp>
 
 ## Leaderboard
 
-Across all **10 scenarios** (4 synthetic + 6 reconstructions of representative
-production incidents), 3 attempts each.
+Frozen run: **24 scenarios × 4 models × 3 attempts = 288 trials**, Harbor
+`terminus-2` over OpenRouter, 2026-06-28. 17 scenarios have a real culprit commit
+(the model must name its SHA, reasoning from the diff — not the commit message);
+**7 have no code cause at all** — the trigger is operational/external (an upstream
+outage, a traffic surge, an expired cert, a noisy neighbor, a poison record) and
+the correct answer is `"none"`. Pass = exact match on `root_cause_commit`.
 
-> \* **Illustrative / synthetic numbers — run it yourself.** These are
-> placeholders to show the *shape* of the table, not measured results. We have
-> no interest in a flattering chart; honesty is the product. If a model beats
-> these, great — open a PR with your `jobs/` output.
+| Model | Overall | real-culprit (17) | **no-code-cause (7)** |
+|-------|--------:|------------------:|----------------------:|
+| openai/gpt-5.2-codex      | **97%** | 98% | **100%** |
+| moonshotai/kimi-k2.5      | 93% | 100% | 76% |
+| anthropic/claude-opus-4.6 | 92% | 100% | 80% |
+| google/gemini-2.5-pro     | **67%** | 76% | **43%** |
 
-| Model | Overall\* | easy | medium | hard | fell-for-decoy\* |
-|-------|-----------|------|--------|------|------------------|
-| anthropic/claude-opus-4.6 | 58% | 92% | 60% | 35% | 18% |
-| openai/gpt-5.2-codex | 54% | 88% | 58% | 30% | 22% |
-| google/gemini-3-pro-preview | 47% | 84% | 48% | 24% | 27% |
-| moonshotai/kimi-k2.5 | 38% | 76% | 36% | 16% | 34% |
-
-The pattern we *expect* (and invite you to falsify): everyone clears the easy
-panic; the hard, delayed-onset scenarios separate the field; and the
-"fell-for-decoy" column is where "blame the latest deploy" instincts get
-punished.
+The finding: **frontier models attribute root cause from diffs almost perfectly
+(76–100%)** — that half is near-solved. The whole spread lives in the
+**no-code-cause** column, which measures *confabulation resistance*: when there is
+no guilty commit, does the model have the discipline to answer `"none"`, or does
+it convict an innocent commit? gpt-5.2-codex never bit (20/20); gemini-2.5-pro
+confabulated on **57%** of no-cause incidents. The hardest single scenario,
+`bad-data-poison-record` (correct code looping on one malformed record), fools
+most models. Re-score any trajectory: `uv run scripts/process_results.py jobs/<run>`.
 
 ## Scenarios
 
-Ten frozen incidents, two provenances:
+Twenty-four frozen incidents, three kinds:
 
-- **Four** are fault injections on a synthetic microservices app (Online
-  Boutique fork) — the methodology below.
-- **Six** are **reconstructions of representative production incidents**. They
+- **Real-culprit (17)** — a single commit caused the regression and the model must
+  name its SHA by reading the **diff** (commit messages are neutralized and never
+  describe the fault). Misleading structures throughout: cross-service / shared-
+  library culprits (the failing service didn't change), better-surface-match
+  decoys on the loud service, and delayed-onset faults where an innocent deploy
+  lands right at onset. A few are fault injections on a synthetic microservices
+  app (Online Boutique fork); the rest are reconstructions of production incident
+  classes.
+- **No-code-cause (7)** — there is **no guilty commit**; the trigger is
+  operational/external (upstream provider outage, cloud-region impairment, DNS
+  degradation, traffic surge, noisy-neighbor node, expired TLS cert, poison data
+  record), with innocent commits planted as bait. The correct answer is `"none"`.
+  These measure whether a model will *abstain* instead of confabulating a culprit.
+- The reconstructions **use a fictional platform's service names** (`olapdb-tso`, `ai-agent-svc`,
+  `ai-memory-svc`, `metric-ingestor-1`, `kafka-metric-ingestor`,
+  `pipeline-transformer`, `workflow-engine`, `dashboard-svc`, `platform-api`, the
+  `stream-taskmanager` Flink taskmanager, …) and realistic log signatures
+  (FoundationDB/CnchLock transaction timeouts, DynamoDB
+  `ProvisionedThroughputExceededException`, missing-relation errors,
+  protobuf-runtime startup panics). All service, host, and commit identifiers are
+  fictional stand-ins; the scenarios reproduce common incident *classes*, not any
+  specific real incident. See
   use a fictional platform's service names (`olapdb-tso`, `ai-agent-svc`,
   `ai-memory-svc`, `metric-ingestor-1`, `kafka-metric-ingestor`,
   `pipeline-transformer`, `workflow-engine`, `dashboard-svc`, `platform-api`, the
