@@ -1,0 +1,20 @@
+[
+  {
+    "timestamp": "2026-09-14T10:05:00Z",
+    "service": "gatewayservice",
+    "commit_sha": "7dacc6c8a3c3fe7053afd5d8518ffef1f9843baa",
+    "version": "v2026.09.14-1003"
+  },
+  {
+    "timestamp": "2026-09-14T10:13:00Z",
+    "service": "userservice",
+    "commit_sha": "090d53d94509234858941a7e87d9ecd7a714f76a",
+    "version": "v2026.09.14-1011"
+  },
+  {
+    "timestamp": "2026-09-14T10:14:00Z",
+    "service": "orderservice",
+    "commit_sha": "2e6b5b44cf6a6185b3a542760d29a0597abc0e47",
+    "version": "v2026.09.14-1012"
+  }
+]

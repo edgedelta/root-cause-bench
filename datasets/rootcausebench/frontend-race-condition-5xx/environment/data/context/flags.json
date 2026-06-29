@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": "2026-06-18T14:50:00Z",
+    "flag": "frontend_new_recommendation_rail",
+    "service": "frontend",
+    "change": "off->on",
+    "actor": "lena.fischer"
+  },
+  {
+    "timestamp": "2026-06-18T13:15:00Z",
+    "flag": "cart_persist_v2",
+    "service": "cartservice",
+    "change": "off->on",
+    "actor": "amir.haddad"
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "timestamp": "2026-06-18T14:55:30Z",
+    "service": "frontend",
+    "commit_sha": "c3a79d0eaeeded2803a3f2b24c9fb7ae7825a560",
+    "version": "v2026.06.18-1455"
+  },
+  {
+    "timestamp": "2026-06-18T15:01:40Z",
+    "service": "frontend",
+    "commit_sha": "30432f5f3769b553f1ae6c1764490fc3fe6b175e",
+    "version": "v2026.06.18-1501"
+  },
+  {
+    "timestamp": "2026-06-18T14:30:00Z",
+    "service": "cartservice",
+    "commit_sha": "854268721b467ad757bf78c40e5acea8e98fed89",
+    "version": "v2026.06.18-1430"
+  },
+  {
+    "timestamp": "2026-06-18T15:22:00Z",
+    "service": "frontend",
+    "commit_sha": "b81fa78438bcdada87d8a1527d0d8406e1e59ef3",
+    "version": "v2026.06.18-1522"
+  }
+]

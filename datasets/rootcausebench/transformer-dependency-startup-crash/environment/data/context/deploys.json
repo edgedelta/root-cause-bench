@@ -2,13 +2,7 @@
   {
     "timestamp": "2026-06-23T14:50:00Z",
     "service": "pipeline-transformer",
-    "commit_sha": "8f1116bd26e4901475d935eb2659f8ae2273baab",
-    "version": "v2026.06.23-1450"
-  },
-  {
-    "timestamp": "2026-06-23T14:50:20Z",
-    "service": "workflow-engine",
     "commit_sha": "defc5b01691d1f6eaa8544cf812715552dc9e1da",
-    "version": "v2026.06.23-1451"
+    "version": "v2026.06.23-1450"
   }
 ]

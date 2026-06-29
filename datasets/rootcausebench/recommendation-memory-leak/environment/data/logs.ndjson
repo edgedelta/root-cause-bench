@@ -86,7 +86,7 @@
 {"timestamp": "2026-06-21T10:42:45Z", "service": "recommendationservice", "severity_text": "WARN", "msg": "GC pause 480ms; heap growing, forced GC did not reclaim", "go.heap_inuse_mb": 498, "trace_id": "fac128f2b3ed94c4be08d489dbce6ffe"}
 {"timestamp": "2026-06-21T10:44:00Z", "service": "recommendationservice", "severity_text": "ERROR", "msg": "OOMKilled: container exceeded memory limit 512Mi", "k8s.event": "OOMKilling", "trace_id": "ddc63a2b8b7dbbac931d7eea27ecebf0"}
 {"timestamp": "2026-06-21T10:44:04Z", "service": "frontend", "severity_text": "ERROR", "msg": "recommendation rail failed to render: upstream unavailable", "http.route": "/", "trace_id": "b58d7c281c751708e8f3eb8885fd7bc3"}
-{"timestamp": "2026-06-21T10:44:20Z", "service": "recommendationservice", "severity_text": "INFO", "msg": "starting recommendationservice v2026.06.21-1039", "trace_id": "f09799b21e7ff58a055897a02a1dbd2e"}
+{"timestamp": "2026-06-21T10:44:20Z", "service": "recommendationservice", "severity_text": "INFO", "msg": "starting recommendationservice v2026.06.21-1028", "trace_id": "f09799b21e7ff58a055897a02a1dbd2e"}
 {"timestamp": "2026-06-21T10:44:32Z", "service": "frontend", "severity_text": "ERROR", "msg": "recommendation rail failed to render: upstream unavailable", "http.route": "/", "trace_id": "1c2b797c1eca4a21b4a7d50294c375b0"}
 {"timestamp": "2026-06-21T10:45:45Z", "service": "frontend", "severity_text": "ERROR", "msg": "recommendation rail failed to render: upstream unavailable", "http.route": "/", "trace_id": "fde2dae1b4761010087e6fd90efd85b8"}
 {"timestamp": "2026-06-21T10:46:21Z", "service": "frontend", "severity_text": "ERROR", "msg": "recommendation rail failed to render: upstream unavailable", "http.route": "/", "trace_id": "1f8328da487725591dacff9ab275c970"}

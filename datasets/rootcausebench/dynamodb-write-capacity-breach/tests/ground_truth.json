@@ -1,14 +1,15 @@
 {
   "scenario": "dynamodb-write-capacity-breach",
-  "root_cause_commit": "a1af4c1adbefc965050848b55ef37e7f0edd4987",
+  "root_cause_commit": "7e2c9b41a0f5d3c8b6e4f10927ad3c5e8f1b6a04",
   "first_failing_service": "ai-memory-svc",
   "blast_radius": [
     "ai-agent-svc"
   ],
   "remediation": "rollback",
   "decoy_deploy_commits": [
+    "a1af4c1adbefc965050848b55ef37e7f0edd4987",
     "c036f7077589a414b1b5835599c261f7c34f3f4b",
     "ff6268f2ae72d176ff8d51a2dab0783c8caa2c96"
   ],
-  "notes": "Culprit removes write batching (BatchWriteItem) in the memory store, so every memory write becomes an individual PutItem. Per-item write volume multiplies, consumed write capacity climbs over ~8min and breaches the provisioned write-capacity ceiling on DynamoDB table memory-store -> ProvisionedThroughputExceededException -> ai-memory-svc write failures; ai-agent-svc can't persist thread memory. Rollback restores batching. Two innocent deploys (platform-api access-log, web banner) and a feature-flag flip near onset are decoys."
+  "notes": "Cross-service shared-library culprit with delayed onset. The ai-memory-svc deploy at 17:12 (v2026.06.22-1712) ships commit 7e2c9b41 to the SHARED persistence lib pkg/memstore/dynamo_writer.go, whose diff replaces the BatchWriteItem grouping loop (<=25 items/request) with a per-item PutItem loop. Each memory write now consumes a separate write unit, so consumed_write_capacity climbs ~200/min for ~8min from the 320 baseline, breaching the 2400 provisioned ceiling at ~17:20; dynamodb_write_throttle_ratio then ramps to 0.58 and the table throws ProvisionedThroughputExceededException. WARN lines 'single-item PutItem to memory-store (batching disabled)' precede the ERROR throttles and point straight at the mechanism. ai-memory-svc is first-failing; ai-agent-svc is blast radius (memory persist 503s). Decoys: a1af4c1 is an INNOCENT ai-memory-svc commit (compaction-helper tidy, 17:08) that is the most-recent change ON the failing service and touches its own files but cannot produce write throttling; c036 (platform-api request-id) and ff6268 (web banner) deploy at ~17:19 right at onset; a flag flip memory_compaction_v2 off->on at 17:19:10 is a distractor. Rollback the ai-memory-svc deploy to restore BatchWriteItem batching."
 }

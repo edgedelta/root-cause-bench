@@ -1,0 +1,10 @@
+{
+  "service": "logging-agent",
+  "metric": "disk_used_pct",
+  "threshold": 0.9,
+  "observed": 1.0,
+  "fired_at": "2026-06-22T10:25:00Z",
+  "severity": "critical",
+  "monitor": "logging-agent-disk-pressure",
+  "summary": "logging-agent host volume /var/log/edge above 90% (observed 100%)"
+}

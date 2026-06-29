@@ -3,10 +3,11 @@
     "sha": "0422ec79bc772e9d3ee84a27422a5d2874415444",
     "author": "lena.fischer",
     "timestamp": "2026-06-19T09:04:55Z",
-    "message": "feat: add structured logging fields to request middleware",
+    "message": "refactor: structured logging fields in request middleware",
     "files_changed": [
       "internal/middleware/log.go"
-    ]
+    ],
+    "diff": "@@ internal/middleware/log.go @@\n-\t\tlog.Printf(\"%s %s\", r.Method, r.URL.Path)\n+\t\tlogger.Info(\"request\",\n+\t\t\t\"method\", r.Method,\n+\t\t\t\"path\", r.URL.Path,\n+\t\t\t\"trace_id\", traceID(r.Context()))"
   },
   {
     "sha": "819dfdd9189455012a438072f9e5dc4702247265",
@@ -15,7 +16,8 @@
     "message": "ci: cache go build in GitHub Actions",
     "files_changed": [
       ".github/workflows/build.yml"
-    ]
+    ],
+    "diff": "@@ .github/workflows/build.yml @@\n+      - uses: actions/cache@v4\n+        with:\n+          path: ~/.cache/go-build\n+          key: go-build-${{ hashFiles('go.sum') }}"
   },
   {
     "sha": "b3318c4dc3099c7aba93b0ed83168f61128fb0ee",
@@ -24,7 +26,8 @@
     "message": "test: increase coverage on retry backoff",
     "files_changed": [
       "pkg/retry/backoff_test.go"
-    ]
+    ],
+    "diff": "@@ pkg/retry/backoff_test.go @@\n+\tt.Run(\"jitter bounds\", func(t *testing.T) {\n+\t\td := Backoff(3)\n+\t\tif d < 200*time.Millisecond || d > 800*time.Millisecond {\n+\t\t\tt.Fatalf(\"out of bounds: %v\", d)\n+\t\t}\n+\t})"
   },
   {
     "sha": "c59080f7da9dccf5c61a0b0e4949ddfe44ef5198",
@@ -33,16 +36,18 @@
     "message": "test: golden files for invoice rendering",
     "files_changed": [
       "pkg/invoice/testdata/golden.json"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "69fcbed4d2e8f357a23531750f0f11f895b2c37f",
     "author": "jdoe",
     "timestamp": "2026-06-19T09:52:38Z",
-    "message": "fix: race in metrics registry init",
+    "message": "fix: guard metrics registry init",
     "files_changed": [
       "pkg/cache/registry.go"
-    ]
+    ],
+    "diff": "@@ pkg/cache/registry.go @@\n-\tregistry = newRegistry()\n+\tregistryOnce.Do(func() {\n+\t\tregistry = newRegistry()\n+\t})"
   },
   {
     "sha": "0e32a24b73409c0eac2369a2dfc5ab27cc93c5de",
@@ -51,7 +56,8 @@
     "message": "feat: add prometheus histogram for cache hits",
     "files_changed": [
       "pkg/cache/metrics.go"
-    ]
+    ],
+    "diff": "@@ pkg/cache/metrics.go @@\n+\tcacheHitLatency = prometheus.NewHistogram(prometheus.HistogramOpts{\n+\t\tName:    \"cache_hit_latency_seconds\",\n+\t\tBuckets: prometheus.DefBuckets,\n+\t})\n+\tprometheus.MustRegister(cacheHitLatency)"
   },
   {
     "sha": "c5cb31bc306cfad99ffc95e71c6b8eaaf2a40f74",
@@ -60,7 +66,8 @@
     "message": "refactor: extract response writer helper",
     "files_changed": [
       "internal/httputil/writer.go"
-    ]
+    ],
+    "diff": "@@ internal/httputil/writer.go @@\n-\tw.WriteHeader(code)\n-\tjson.NewEncoder(w).Encode(body)\n+\tWriteJSON(w, code, body)\n+}\n+\n+func WriteJSON(w http.ResponseWriter, code int, body any) {\n+\tw.Header().Set(\"Content-Type\", \"application/json\")\n+\tw.WriteHeader(code)\n+\t_ = json.NewEncoder(w).Encode(body)"
   },
   {
     "sha": "fd1cfc056e50e63473eae384c4c34a61d853a834",
@@ -69,7 +76,8 @@
     "message": "perf: reuse sync.Pool for buffers in encoder",
     "files_changed": [
       "pkg/codec/pool.go"
-    ]
+    ],
+    "diff": "@@ pkg/codec/pool.go @@\n+var bufPool = sync.Pool{New: func() any { return new(bytes.Buffer) }}\n+\n+func getBuf() *bytes.Buffer { return bufPool.Get().(*bytes.Buffer) }\n+func putBuf(b *bytes.Buffer) { b.Reset(); bufPool.Put(b) }"
   },
   {
     "sha": "767b9494a44bf94c6542f6ed9de51c38eb8732d2",
@@ -78,16 +86,18 @@
     "message": "fix: off-by-one in batch chunking",
     "files_changed": [
       "pkg/batch/chunk.go"
-    ]
+    ],
+    "diff": "@@ pkg/batch/chunk.go @@\n-\tfor i := 0; i < len(items); i += size {\n-\t\tend := i + size\n+\tfor i := 0; i < len(items); i += size {\n+\t\tend := i + size\n+\t\tif end > len(items) {\n+\t\t\tend = len(items)\n+\t\t}"
   },
   {
     "sha": "3dfbfbf88a865a881fa4bc90b52e9ec1876cef31",
     "author": "fatima.zahra",
     "timestamp": "2026-06-19T10:01:36Z",
-    "message": "test: add table-driven tests for currency conversion",
+    "message": "test: table-driven tests for currency conversion",
     "files_changed": [
       "pkg/money/convert_test.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "825a71fe1414921ff28422880255b7fd9edc2ac3",
@@ -97,25 +107,18 @@
     "files_changed": [
       "go.mod",
       "go.sum"
-    ]
-  },
-  {
-    "sha": "2092bc721f3a36e99264b15559b5bdcd04daa9e0",
-    "author": "marta.kowalski",
-    "timestamp": "2026-06-19T10:12:03Z",
-    "message": "chore: update CODEOWNERS",
-    "files_changed": [
-      "CODEOWNERS"
-    ]
+    ],
+    "diff": "@@ go.mod @@\n-\tgithub.com/prometheus/client_golang v1.19.0\n+\tgithub.com/prometheus/client_golang v1.19.1"
   },
   {
     "sha": "5642d6b17f39cc430c2a48ca705cbab33002d03b",
     "author": "carlos.mendez",
     "timestamp": "2026-06-19T10:20:00Z",
-    "message": "refactor(payment): read gateway response without checking optional 3DS field",
+    "message": "refactor(payment): simplify gateway response handling in charge path",
     "files_changed": [
       "services/payment/charge.go"
-    ]
+    ],
+    "diff": "@@ services/payment/charge.go @@ func (c *Charge) readThreeDSResult(resp *GatewayResponse) string {\n-\tif resp.ThreeDS == nil {\n-\t\treturn \"\"\n-\t}\n-\treturn resp.ThreeDS.Status\n+\treturn resp.ThreeDS.Status"
   },
   {
     "sha": "d84662c27fca6c818d5bb17220b1b150ddfba362",
@@ -124,6 +127,7 @@
     "message": "perf: preallocate buffer in JSON encoder",
     "files_changed": [
       "pkg/codec/json.go"
-    ]
+    ],
+    "diff": "@@ pkg/codec/json.go @@\n-\tbuf := bytes.Buffer{}\n+\tbuf := bytes.Buffer{}\n+\tbuf.Grow(512)"
   }
 ]

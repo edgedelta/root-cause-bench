@@ -1,0 +1,14 @@
+{
+  "scenario": "logging-debug-disk-fill",
+  "root_cause_commit": "ce164c13c54ed0cb3bc6d2e28545adc9e2656641",
+  "first_failing_service": "logging-agent",
+  "blast_radius": [
+    "log-query-api",
+    "ingest-gateway"
+  ],
+  "remediation": "config-revert",
+  "decoy_deploy_commits": [
+    "d270fbb2e2fc11b54f85cd93e63e62afd39be15c"
+  ],
+  "notes": "The culprit diff flips the logging-agent runtime config level info->debug and sample_rate 0.1->1.0 (config/agent.yaml). This floods the local sink: log_write_throughput_lps jumps ~1200 -> ~12000 right after the 10:00 deploy, disk_used_pct climbs steadily to 100% by ~10:18, then write_error_count spikes and logs show 'no space left on device' and a read-only filesystem before the writer goroutine exits. log-query-api (reads the same /var/log/edge volume) and ingest-gateway (buffers when the sink is unavailable) are downstream victims, not the cause. The decoy d270fbb is an innocent refactor of the sink writer on the SAME failing service deployed just before onset (extracts a writeLine helper) -- a better surface match by filename/service, but it changes no verbosity/volume. Remediation is to revert the config change (config-revert)."
+}

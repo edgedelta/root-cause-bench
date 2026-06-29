@@ -1,5 +1,11 @@
 [
   {
+    "timestamp": "2026-06-24T10:52:10Z",
+    "service": "pipeline-transformer",
+    "commit_sha": "1f0d0d35569ead615b0b9c692c776c41a57a3af4",
+    "version": "v2026.06.24-1052"
+  },
+  {
     "timestamp": "2026-06-24T10:57:00Z",
     "service": "metric-ingestor-1",
     "commit_sha": "4e169b782276b9dd9b962e4474687622bda48589",

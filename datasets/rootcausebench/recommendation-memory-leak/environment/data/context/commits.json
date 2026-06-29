@@ -2,65 +2,83 @@
   {
     "sha": "b6104c466c459746cf1d1924953343a98a0c54d2",
     "author": "lena.fischer",
-    "timestamp": "2026-06-21T08:00:53Z",
+    "timestamp": "2026-06-21T07:40:53Z",
     "message": "ci: cache go build in GitHub Actions",
     "files_changed": [
       ".github/workflows/build.yml"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "d34b4159350434f5d82d9c2da329949e186903cb",
     "author": "fatima.zahra",
-    "timestamp": "2026-06-21T08:02:04Z",
+    "timestamp": "2026-06-21T07:42:04Z",
     "message": "feat: add /readyz endpoint",
     "files_changed": [
       "internal/health/ready.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "4bded1761773b13c7fb741af48e71a17466203ba",
     "author": "noah.bergstrom",
-    "timestamp": "2026-06-21T08:05:49Z",
+    "timestamp": "2026-06-21T07:45:49Z",
     "message": "perf: preallocate buffer in JSON encoder",
     "files_changed": [
       "pkg/codec/json.go"
-    ]
+    ],
+    "diff": "--- a/pkg/codec/json.go\n+++ b/pkg/codec/json.go\n@@ -18,7 +18,8 @@ func Marshal(v any) ([]byte, error) {\n-\tbuf := bytes.NewBuffer(nil)\n+\tbuf := bytes.NewBuffer(make([]byte, 0, 4096))\n \tenc := json.NewEncoder(buf)\n \tif err := enc.Encode(v); err != nil {\n \t\treturn nil, err\n \t}\n \treturn buf.Bytes(), nil\n }"
+  },
+  {
+    "sha": "c6566fcc695be384caeebd7ae0a893ccb345ae83",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-06-21T07:55:00Z",
+    "message": "feat(reco): record per-request candidate scores for offline tuning",
+    "files_changed": [
+      "services/recommendation/scorer.go",
+      "services/recommendation/history.go"
+    ],
+    "diff": "--- a/services/recommendation/history.go\n+++ b/services/recommendation/history.go\n@@ -1,10 +1,28 @@\n package recommendation\n \n-// scoreHistory is reset per request.\n-type scoreRecord struct {\n+// scoreRecord captures the scored candidate set for one request so the\n+// offline tuning job can replay production scoring decisions.\n+type scoreRecord struct {\n \tReqID      string\n \tUserID     string\n \tCandidates []ScoredItem\n+\tScoredAt   time.Time\n }\n \n+// scoreLog accumulates every request's scored candidates for the\n+// offline tuning export.\n+var scoreLog []scoreRecord\n+\n+func recordScores(reqID, userID string, c []ScoredItem) {\n+\tscoreLog = append(scoreLog, scoreRecord{\n+\t\tReqID:      reqID,\n+\t\tUserID:     userID,\n+\t\tCandidates: c,\n+\t\tScoredAt:   time.Now(),\n+\t})\n+}\n--- a/services/recommendation/scorer.go\n+++ b/services/recommendation/scorer.go\n@@ -44,6 +44,7 @@ func (s *Scorer) Score(ctx context.Context, req *Request) ([]ScoredItem, error)\n \tfor _, cand := range candidates {\n \t\tscored = append(scored, s.scoreOne(ctx, cand))\n \t}\n+\trecordScores(req.ID, req.UserID, scored)\n \treturn scored, nil\n }"
   },
   {
     "sha": "4153fb75c0bd9a35a5e6f5c46bc0d2fd06dfe7c6",
     "author": "noah.bergstrom",
-    "timestamp": "2026-06-21T08:12:31Z",
+    "timestamp": "2026-06-21T08:02:31Z",
     "message": "chore: pin golangci-lint to v1.61",
     "files_changed": [
       ".golangci.yml"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "a125e5b00c4ee610dc5aed9bbfa0e1ecf687224e",
     "author": "deepak.rao",
-    "timestamp": "2026-06-21T08:14:18Z",
+    "timestamp": "2026-06-21T08:04:18Z",
     "message": "docs: update API reference for orders endpoint",
     "files_changed": [
       "docs/api/orders.md"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "dc20d6c44ee5c7799f6fdc98f7b136839acb11a7",
     "author": "jdoe",
-    "timestamp": "2026-06-21T08:20:22Z",
-    "message": "test: add table-driven tests for currency conversion",
+    "timestamp": "2026-06-21T08:10:22Z",
+    "message": "refactor: tidy adservice request handler",
     "files_changed": [
-      "pkg/money/convert_test.go"
-    ]
+      "services/ad/handler.go"
+    ],
+    "diff": "--- a/services/ad/handler.go\n+++ b/services/ad/handler.go\n@@ -30,9 +30,7 @@ func (h *Handler) Serve(w http.ResponseWriter, r *http.Request) {\n-\tads, err := h.fetch(r.Context(), req)\n-\tif err != nil {\n-\t\thttp.Error(w, err.Error(), 500)\n-\t\treturn\n-\t}\n+\tads, err := h.fetchWithFallback(r.Context(), req)\n \twriteJSON(w, ads)\n }"
   },
   {
     "sha": "09a07bc5197653729652cc78372ca9d989cf4a66",
     "author": "jdoe",
-    "timestamp": "2026-06-21T08:23:52Z",
+    "timestamp": "2026-06-21T08:13:52Z",
     "message": "refactor: collapse duplicate validation funcs",
     "files_changed": [
       "pkg/validate/validate.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "2e72c00af4d56bae6146541aa95e8ea6cf4611bb",
@@ -69,7 +87,8 @@
     "message": "fix: close response body in health checker",
     "files_changed": [
       "internal/health/check.go"
-    ]
+    ],
+    "diff": "--- a/internal/health/check.go\n+++ b/internal/health/check.go\n@@ -22,6 +22,7 @@ func (c *Checker) probe(url string) error {\n \tresp, err := c.client.Get(url)\n \tif err != nil {\n \t\treturn err\n \t}\n+\tdefer resp.Body.Close()\n \treturn nil\n }"
   },
   {
     "sha": "005dd92844522d00b0e5672ad728aa23b22aba2e",
@@ -79,7 +98,8 @@
     "files_changed": [
       "pkg/cart/cart.go",
       "pkg/cart/cart_test.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "1b853e63ed1a8af20ac08c5d1ace463bc60feef9",
@@ -88,7 +108,8 @@
     "message": "chore: upgrade base image to distroless:nonroot",
     "files_changed": [
       "Dockerfile"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "b8f145a2e50da66f147fa9c92351fe18905f8d5c",
@@ -97,7 +118,8 @@
     "message": "fix: handle empty slice in pagination helper",
     "files_changed": [
       "pkg/paginate/paginate.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "59bde9171b1c3403464c72a93f2515220b356e78",
@@ -106,7 +128,8 @@
     "message": "fix: correct typo in error message",
     "files_changed": [
       "internal/errors/messages.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "acd3f1f1c1ac818fa3653a0e554331ee792790a8",
@@ -115,7 +138,8 @@
     "message": "chore: update CODEOWNERS",
     "files_changed": [
       "CODEOWNERS"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "72be8e872dab6267ff4381f6b39e1b460c867c79",
@@ -124,7 +148,8 @@
     "message": "chore: tidy imports in product service",
     "files_changed": [
       "services/product/main.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "de3806ff86d73ccac1d05cd838b938c4bb6082c2",
@@ -133,7 +158,8 @@
     "message": "feat: emit OTel span attributes for user_id",
     "files_changed": [
       "internal/trace/attrs.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "f3c5747fa21817b242464390529472dc8d75e55e",
@@ -142,7 +168,8 @@
     "message": "refactor: move DTOs into api/types",
     "files_changed": [
       "api/types/types.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "823dc962508c4556e89b591fdebd54b0e33fc2b4",
@@ -151,7 +178,8 @@
     "message": "chore: rotate staging TLS cert",
     "files_changed": [
       "deploy/staging/tls.yaml"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "dc71849501e08693810649d964f65b20acbf57a3",
@@ -160,7 +188,8 @@
     "message": "test: increase coverage on retry backoff",
     "files_changed": [
       "pkg/retry/backoff_test.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "5c53ad6e8a14465608da74f91900ee0210dc5ab4",
@@ -169,7 +198,8 @@
     "message": "docs: document feature flag lifecycle",
     "files_changed": [
       "docs/flags.md"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "ecf7fa232eeccb943f90897b1fe2bc8f093bb32d",
@@ -178,7 +208,8 @@
     "message": "test: fuzz the SKU parser",
     "files_changed": [
       "pkg/sku/parse_fuzz_test.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "a00b7580800287b6d2832644e6cd9301ec28cb9c",
@@ -188,7 +219,8 @@
     "files_changed": [
       "go.mod",
       "go.sum"
-    ]
+    ],
+    "diff": "--- a/go.mod\n+++ b/go.mod\n@@ -12,7 +12,7 @@ require (\n-\tgithub.com/redis/go-redis/v9 v9.5.1\n+\tgithub.com/redis/go-redis/v9 v9.5.3\n \tgo.opentelemetry.io/otel v1.28.0\n )"
   },
   {
     "sha": "225ad2d4bef05350321e8e65ec025cf1b36ddeae",
@@ -197,7 +229,8 @@
     "message": "feat: add prometheus histogram for cache hits",
     "files_changed": [
       "pkg/cache/metrics.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "aa77fd216acc815a3e18d2a8682cad9e93d10e98",
@@ -206,7 +239,8 @@
     "message": "docs: clarify env var precedence",
     "files_changed": [
       "README.md"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "02bcf4185cd69a164c29b1dc8a9ac4b3d40a64b2",
@@ -215,7 +249,8 @@
     "message": "fix: off-by-one in batch chunking",
     "files_changed": [
       "pkg/batch/chunk.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "ebf5859611f128d090384b0d391d982c84466d8b",
@@ -224,7 +259,8 @@
     "message": "fix: guard against negative quantity in cart",
     "files_changed": [
       "pkg/cart/validate.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "6c0341fdb9473521b106ab0ec971523eade90f88",
@@ -233,7 +269,8 @@
     "message": "refactor: simplify config loading with viper",
     "files_changed": [
       "internal/config/load.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "bc57fe7e54ae0190c8aec5a3bb8afdd5b2de000b",
@@ -242,7 +279,8 @@
     "message": "refactor: extract response writer helper",
     "files_changed": [
       "internal/httputil/writer.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "f5b7ea106390ea2f34e9b3b8c44558637c9845eb",
@@ -251,16 +289,18 @@
     "message": "docs: add runbook for deploy rollback",
     "files_changed": [
       "docs/runbooks/rollback.md"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "deeb4370f7dd02de356afdaddcd6125ca9c8e21f",
     "author": "marta.kowalski",
     "timestamp": "2026-06-21T10:18:11Z",
-    "message": "fix: race in metrics registry init",
+    "message": "chore: lazy-init metrics registry",
     "files_changed": [
       "pkg/cache/registry.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "e1c78b519242b49cd853470bd5bf8bae96f0e8f9",
@@ -269,7 +309,8 @@
     "message": "test: add integration test for graceful shutdown",
     "files_changed": [
       "cmd/server/shutdown_test.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "2cb945411674ff9fd4be7dfba3dd57c4000327b3",
@@ -278,7 +319,8 @@
     "message": "test: golden files for invoice rendering",
     "files_changed": [
       "pkg/invoice/testdata/golden.json"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "55e97b60b68450cbec53b8f3031edb4f7f9d69f6",
@@ -287,17 +329,18 @@
     "message": "refactor: rename internal package observability->telemetry",
     "files_changed": [
       "internal/telemetry/telemetry.go"
-    ]
+    ],
+    "diff": null
   },
   {
-    "sha": "c6566fcc695be384caeebd7ae0a893ccb345ae83",
-    "author": "yuki.tanaka",
+    "sha": "966b58e908857759ff52d61a304009673b835c7b",
+    "author": "tunde.okafor",
     "timestamp": "2026-06-21T10:30:00Z",
-    "message": "feat(reco): cache per-request candidate scores in package-level map",
+    "message": "perf: reuse sync.Pool for buffers in encoder",
     "files_changed": [
-      "services/recommendation/scorer.go",
-      "services/recommendation/cache.go"
-    ]
+      "pkg/codec/pool.go"
+    ],
+    "diff": "--- a/pkg/codec/pool.go\n+++ b/pkg/codec/pool.go\n@@ -8,9 +8,11 @@ var bufPool = sync.Pool{\n \tNew: func() any { return new(bytes.Buffer) },\n }\n \n func getBuf() *bytes.Buffer {\n-\treturn new(bytes.Buffer)\n+\tb := bufPool.Get().(*bytes.Buffer)\n+\tb.Reset()\n+\treturn b\n }\n \n func putBuf(b *bytes.Buffer) { bufPool.Put(b) }"
   },
   {
     "sha": "4e4f154a6d3f5ac93f4471e327853b470a14dc89",
@@ -306,25 +349,18 @@
     "message": "feat: add request id propagation header",
     "files_changed": [
       "internal/middleware/reqid.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "f72cb9d310cfa25d98fe780c6c0829cd2c8257c1",
     "author": "noah.bergstrom",
-    "timestamp": "2026-06-21T10:38:00Z",
-    "message": "feat(reco): add background goroutine to prefetch trending items",
+    "timestamp": "2026-06-21T10:28:40Z",
+    "message": "feat(reco): prefetch trending items into bounded LRU on a ticker",
     "files_changed": [
       "services/recommendation/prefetch.go"
-    ]
-  },
-  {
-    "sha": "966b58e908857759ff52d61a304009673b835c7b",
-    "author": "tunde.okafor",
-    "timestamp": "2026-06-21T10:39:54Z",
-    "message": "perf: reuse sync.Pool for buffers in encoder",
-    "files_changed": [
-      "pkg/codec/pool.go"
-    ]
+    ],
+    "diff": "--- /dev/null\n+++ b/services/recommendation/prefetch.go\n@@ -0,0 +1,34 @@\n+package recommendation\n+\n+// trendingCache holds at most trendingMax entries; oldest are evicted.\n+const trendingMax = 256\n+\n+var trending = lru.New(trendingMax)\n+\n+// prefetchLoop refreshes the trending set every 30s. The LRU is fixed\n+// size, so memory use is bounded regardless of how long it runs.\n+func prefetchLoop(ctx context.Context, src TrendingSource) {\n+\tt := time.NewTicker(30 * time.Second)\n+\tdefer t.Stop()\n+\tfor {\n+\t\tselect {\n+\t\tcase <-ctx.Done():\n+\t\t\treturn\n+\t\tcase <-t.C:\n+\t\t\titems, err := src.Top(ctx, trendingMax)\n+\t\t\tif err != nil {\n+\t\t\t\tcontinue\n+\t\t\t}\n+\t\t\tfor _, it := range items {\n+\t\t\t\ttrending.Add(it.SKU, it)\n+\t\t\t}\n+\t\t}\n+\t}\n+}"
   },
   {
     "sha": "a7adc828066e19011f9475c856bd9fc6a44bbf68",
@@ -333,7 +369,8 @@
     "message": "feat: support gzip request bodies",
     "files_changed": [
       "internal/middleware/gzip.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "75ef3d7e0c5ee6891c4cf8c1b738a35087275b7f",
@@ -342,97 +379,7 @@
     "message": "feat: add structured logging fields to request middleware",
     "files_changed": [
       "internal/middleware/log.go"
-    ]
-  },
-  {
-    "sha": "1c2c2bae89a72f427dbbfdea45ab1176a559184e",
-    "author": "lena.fischer",
-    "timestamp": "2026-06-21T10:59:09Z",
-    "message": "ci: cache go build in GitHub Actions",
-    "files_changed": [
-      ".github/workflows/build.yml"
-    ]
-  },
-  {
-    "sha": "133681be3f1eff5dea3c7c8be6ea0bcb67b44c8a",
-    "author": "deepak.rao",
-    "timestamp": "2026-06-21T11:00:05Z",
-    "message": "feat: add /readyz endpoint",
-    "files_changed": [
-      "internal/health/ready.go"
-    ]
-  },
-  {
-    "sha": "2a4290de8f5c1f3d3dd8bf936989c17b296d008c",
-    "author": "lena.fischer",
-    "timestamp": "2026-06-21T11:00:55Z",
-    "message": "perf: preallocate buffer in JSON encoder",
-    "files_changed": [
-      "pkg/codec/json.go"
-    ]
-  },
-  {
-    "sha": "1344a40eb343b930b62f63d19072c30b00f5c201",
-    "author": "yuki.tanaka",
-    "timestamp": "2026-06-21T11:02:20Z",
-    "message": "chore: pin golangci-lint to v1.61",
-    "files_changed": [
-      ".golangci.yml"
-    ]
-  },
-  {
-    "sha": "9d5ff7f5bdec5d87e180bf5d9291c34a24bd16e6",
-    "author": "noah.bergstrom",
-    "timestamp": "2026-06-21T11:06:08Z",
-    "message": "docs: update API reference for orders endpoint",
-    "files_changed": [
-      "docs/api/orders.md"
-    ]
-  },
-  {
-    "sha": "0d9abdf0585460db11dd070f99749b3a09f162ca",
-    "author": "fatima.zahra",
-    "timestamp": "2026-06-21T11:19:31Z",
-    "message": "test: add table-driven tests for currency conversion",
-    "files_changed": [
-      "pkg/money/convert_test.go"
-    ]
-  },
-  {
-    "sha": "50cf3687997f80549b58ee02be12579b61114265",
-    "author": "yuki.tanaka",
-    "timestamp": "2026-06-21T11:23:20Z",
-    "message": "refactor: collapse duplicate validation funcs",
-    "files_changed": [
-      "pkg/validate/validate.go"
-    ]
-  },
-  {
-    "sha": "7d02819812647acece81c2d57207d06f0bd00b1b",
-    "author": "carlos.mendez",
-    "timestamp": "2026-06-21T11:24:44Z",
-    "message": "fix: close response body in health checker",
-    "files_changed": [
-      "internal/health/check.go"
-    ]
-  },
-  {
-    "sha": "61a1175321a16683741d46addf0a104890dbfb69",
-    "author": "tunde.okafor",
-    "timestamp": "2026-06-21T11:42:53Z",
-    "message": "style: gofmt and goimports across repo",
-    "files_changed": [
-      "pkg/cart/cart.go",
-      "pkg/cart/cart_test.go"
-    ]
-  },
-  {
-    "sha": "3effee8dd6a3d6dabc52549e0ef2e7060914cbc6",
-    "author": "sofia.marino",
-    "timestamp": "2026-06-21T11:50:17Z",
-    "message": "chore: upgrade base image to distroless:nonroot",
-    "files_changed": [
-      "Dockerfile"
-    ]
+    ],
+    "diff": null
   }
 ]

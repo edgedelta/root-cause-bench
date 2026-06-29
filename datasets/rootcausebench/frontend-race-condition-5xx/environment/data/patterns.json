@@ -1,0 +1,44 @@
+[
+  {
+    "signature": "fatal error: concurrent map writes",
+    "service": "frontend",
+    "count": 173,
+    "delta_vs_baseline": "+173",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "request failed with status <N>",
+    "service": "frontend",
+    "count": 1840,
+    "delta_vs_baseline": "+1835",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "http server goroutine panicked, recovered and restarted listener",
+    "service": "frontend",
+    "count": 41,
+    "delta_vs_baseline": "+41",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "upstream frontend reset connection during checkout",
+    "service": "cartservice",
+    "count": 96,
+    "delta_vs_baseline": "+96",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "handled request",
+    "service": "frontend",
+    "count": 5410,
+    "delta_vs_baseline": "+140",
+    "sentiment": "neutral"
+  },
+  {
+    "signature": "feature flag frontend_new_recommendation_rail enabled for cohort",
+    "service": "frontend",
+    "count": 28,
+    "delta_vs_baseline": "+28",
+    "sentiment": "neutral"
+  }
+]

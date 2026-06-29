@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": "2026-09-14T10:10:00Z",
+    "flag": "gateway_strict_audience_check",
+    "service": "gatewayservice",
+    "change": "off->on",
+    "actor": "priya.nair"
+  },
+  {
+    "timestamp": "2026-09-14T09:15:00Z",
+    "flag": "user_session_cache",
+    "service": "userservice",
+    "change": "off->on",
+    "actor": "amir.haddad"
+  }
+]

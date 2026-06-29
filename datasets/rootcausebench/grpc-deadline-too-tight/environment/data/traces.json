@@ -1,0 +1,89 @@
+[
+  {
+    "trace_id": "b7c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5",
+    "span_id": "a1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "GET /api/reco",
+    "start": "2026-06-18T15:03:12Z",
+    "duration_ms": 1340,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "b7c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5",
+    "span_id": "b1",
+    "parent_id": "a1",
+    "service": "recommendationservice",
+    "name": "Recommend",
+    "start": "2026-06-18T15:03:12Z",
+    "duration_ms": 312,
+    "status": "ERROR",
+    "status_message": "rpc error: code = DeadlineExceeded desc = context deadline exceeded"
+  },
+  {
+    "trace_id": "b7c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5",
+    "span_id": "c1",
+    "parent_id": "b1",
+    "service": "recommendationservice",
+    "name": "catalog.ListProducts (client)",
+    "start": "2026-06-18T15:03:12Z",
+    "duration_ms": 301,
+    "status": "ERROR",
+    "status_message": "DeadlineExceeded",
+    "rpc.grpc.status_code": 4,
+    "deadline_ms": 300
+  },
+  {
+    "trace_id": "b7c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5",
+    "span_id": "d1",
+    "parent_id": "c1",
+    "service": "productcatalogservice",
+    "name": "ListProducts",
+    "start": "2026-06-18T15:03:12Z",
+    "duration_ms": 399,
+    "status": "ERROR",
+    "status_message": "context canceled",
+    "rpc.grpc.status_code": 1
+  },
+  {
+    "trace_id": "0a1b2c3d4e5f60718293a4b5c6d7e8f9",
+    "span_id": "z1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "GET /api/reco",
+    "start": "2026-06-18T14:20:00Z",
+    "duration_ms": 470,
+    "status": "OK"
+  },
+  {
+    "trace_id": "0a1b2c3d4e5f60718293a4b5c6d7e8f9",
+    "span_id": "z2",
+    "parent_id": "z1",
+    "service": "recommendationservice",
+    "name": "Recommend",
+    "start": "2026-06-18T14:20:00Z",
+    "duration_ms": 445,
+    "status": "OK"
+  },
+  {
+    "trace_id": "0a1b2c3d4e5f60718293a4b5c6d7e8f9",
+    "span_id": "z3",
+    "parent_id": "z2",
+    "service": "recommendationservice",
+    "name": "catalog.ListProducts (client)",
+    "start": "2026-06-18T14:20:00Z",
+    "duration_ms": 408,
+    "status": "OK",
+    "deadline_ms": 5000
+  },
+  {
+    "trace_id": "0a1b2c3d4e5f60718293a4b5c6d7e8f9",
+    "span_id": "z4",
+    "parent_id": "z3",
+    "service": "productcatalogservice",
+    "name": "ListProducts",
+    "start": "2026-06-18T14:20:00Z",
+    "duration_ms": 401,
+    "status": "OK"
+  }
+]

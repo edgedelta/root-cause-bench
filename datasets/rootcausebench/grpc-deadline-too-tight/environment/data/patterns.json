@@ -1,0 +1,37 @@
+[
+  {
+    "signature": "catalog Fetch failed: rpc error: code = DeadlineExceeded desc = context deadline exceeded",
+    "service": "recommendationservice",
+    "count": 2210,
+    "delta_vs_baseline": "+2208",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "ListProducts: context canceled by client before completion",
+    "service": "productcatalogservice",
+    "count": 2180,
+    "delta_vs_baseline": "+2176",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "recommendation rail unavailable, rendering fallback",
+    "service": "frontend",
+    "count": 640,
+    "delta_vs_baseline": "+640",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "handled request",
+    "service": "productcatalogservice",
+    "count": 54000,
+    "delta_vs_baseline": "+300",
+    "sentiment": "neutral"
+  },
+  {
+    "signature": "feature flag reco_personalized_rail enabled for cohort",
+    "service": "frontend",
+    "count": 30,
+    "delta_vs_baseline": "+30",
+    "sentiment": "neutral"
+  }
+]

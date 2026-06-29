@@ -20,12 +20,26 @@ EOF
 cat > /workdir/reasoning.md << 'EOF'
 # Root cause: checkout-latency-n-plus-one
 
-Culprit adds a per-line-item catalog lookup (N+1). The frontend CSS deploy 30s before onset is a decoy. productcatalogservice is a victim of fan-out, not the cause.
+Culprit: 559e94ce (checkoutservice, deployed 14:59:30). Its diff replaces the
+denormalized cart fields with a per-line-item catalog DB lookup
+(a.catalog.GetItem -> "SELECT * FROM catalog_items WHERE sku = $1") inside the
+AssembleOrder loop. That is the N+1: db_query_count_per_request jumps ~3 -> ~47,
+checkoutservice p99 ~210ms -> ~3800ms, productcatalogservice RPS fans out
+~900 -> ~4100, and the slow PlaceOrder logs show 40-51 identical SELECTs per
+request. Onset is delayed (~15:03) because the new path is only exercised under
+load.
 
-Reconstructed timeline: the regression onset follows the culprit deploy. The
-deploy(s) and feature-flag change closest to onset are decoys; the culprit is
-the commit whose changed files directly touch the first failing service's
-failing code path. Remediation: roll back the offending deploy.
+Why not the near-onset decoys:
+- 78ad4135 ("refactor: tidy checkout PlaceOrder handler") is the MOST RECENT
+  checkoutservice deploy before onset (15:01:25) and touches the literally-named
+  PlaceOrder handler, but its diff only swaps error handling to helper funcs --
+  no per-item query, so it cannot produce the DB fan-out.
+- db5e56f2 is a frontend CSS restyle 30s before onset (no backend change).
+- e315e6f1 is a go.mod patch-version bump. flags.json changes are distractors.
+
+Blast radius: cartservice (times out on the slow upstream) and frontend.
+productcatalogservice is a victim of the query fan-out, not the cause.
+Remediation: roll back the offending deploy.
 EOF
 
 echo "Oracle answer written to /workdir/root_cause.json"

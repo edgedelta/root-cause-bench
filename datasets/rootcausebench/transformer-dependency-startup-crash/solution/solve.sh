@@ -19,12 +19,30 @@ EOF
 cat > /workdir/reasoning.md << 'EOF'
 # Root cause: transformer-dependency-startup-crash
 
-Culprit bumps the protobuf runtime in pipeline-transformer/go.mod, creating a runtime version conflict (duplicate registration / incompatible runtime) that panics on startup -> pipeline-transformer CrashLoopBackOff -> workflow-engine's pipeline-transformer endpoint is unavailable. The fix is to revert the dependency change (config-revert of go.mod/go.sum). TRAP: an innocent '#deps Bump aws-sdk minor' deployed to workflow-engine near onset is a decoy — it is a dependency bump too, but it touches a different service and does not cause the protobuf panic. The right SHA is the pipeline-transformer protobuf bump, not the aws-sdk bump.
+Fault signature: pipeline-transformer panics at startup with
+"proto: duplicate registration / incompatible protobuf runtime version" and
+goes CrashLoopBackOff (pod_ready_replicas 3->0, pod_restart_total climbing to 9).
+Onset is ~14:51, right after the 14:50 pipeline-transformer deploy.
 
-Reconstructed timeline: the regression onset follows the culprit deploy. The
-deploy(s) and feature-flag change closest to onset are decoys; the culprit is
-the commit whose changed files directly touch the first failing service's
-failing code path.
+Culprit = 8f1116bd26e4901475d935eb2659f8ae2273baab. Its diff bumps
+google.golang.org/protobuf from v1.31.0 to v1.34.2 in pipeline-transformer/go.mod
+while the module still pins github.com/golang/protobuf v1.5.2 (indirect) and
+pkg/pb v0.18.0 (generated against the v1.31 runtime). The v1.34 global type
+registry is incompatible with the legacy v1.5.2 registry, so init-time proto
+registration panics. That is the only diff that produces this conflict. Fix:
+revert the protobuf pin in go.mod/go.sum (config-revert).
+
+Why not the near-onset decoy: defc5b0 is ALSO a "go module pins" commit on the
+SAME service, committed closer to onset (14:48), and it is the commit_sha on the
+14:50 deploy record -- so "blame the recent dependency bump / the deployed
+commit" points there. But its diff only bumps aws-sdk-go (v1.50->v1.53), which
+touches the S3 sink client and changes no protobuf/runtime dependency, so it
+cannot cause the registration panic. ac4d66a (aws-sdk-go-v2 patch) is on the
+root go.mod, not vendored by the transformer.
+
+Blast radius: workflow-engine -- its pipeline-transformer endpoint returns
+connection refused while the transformer pods crash-loop. It is a victim, not
+the cause.
 EOF
 
 echo "Oracle answer written to /workdir/root_cause.json"

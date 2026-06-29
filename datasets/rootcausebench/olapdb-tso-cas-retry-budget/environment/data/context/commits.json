@@ -6,7 +6,8 @@
     "message": "#transformer Add structured log field service",
     "files_changed": [
       "pipeline-transformer/internal/log/fields.go"
-    ]
+    ],
+    "diff": "--- a/pipeline-transformer/internal/log/fields.go\n+++ b/pipeline-transformer/internal/log/fields.go\n@@\n+\tf.Str(\"service\", svc)"
   },
   {
     "sha": "a679ec8cd3125938017772dd01ce9167b73825c2",
@@ -16,7 +17,8 @@
     "files_changed": [
       "go.mod",
       "go.sum"
-    ]
+    ],
+    "diff": "--- a/go.mod\n+++ b/go.mod\n@@ -12,7 +12,7 @@ require (\n-\tgithub.com/aws/aws-sdk-go-v2 v1.30.3\n+\tgithub.com/aws/aws-sdk-go-v2 v1.30.4\n \tgithub.com/aws/aws-sdk-go-v2/config v1.27.27"
   },
   {
     "sha": "f72e0c11a59f1cfe6336058fb2482e246d3fd165",
@@ -25,7 +27,8 @@
     "message": "#ci Cache go build in CircleCI",
     "files_changed": [
       ".circleci/config.yml"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "aecd44421f74762f2e086181facff2050bb88ade",
@@ -34,16 +37,18 @@
     "message": "#web Fix tooltip alignment on overview page",
     "files_changed": [
       "web/src/components/Tooltip.tsx"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "fdbbb0420c4b6f5ae86f9ec1863a9521dcadef0d",
     "author": "carlos.mendez",
-    "timestamp": "2026-06-24T13:09:51Z",
-    "message": "#olapdb Update part GC log verbosity",
+    "timestamp": "2026-06-24T14:34:12Z",
+    "message": "#olapdb Tidy TSO leader-election logging",
     "files_changed": [
-      "olapdb/src/Storages/PartGCThread.cpp"
-    ]
+      "olapdb/src/TSO/TSOServer.cpp"
+    ],
+    "diff": "--- a/olapdb/src/TSO/TSOServer.cpp\n+++ b/olapdb/src/TSO/TSOServer.cpp\n@@ -212,7 +212,7 @@ void TSOServer::onLeaderElected(const LeaderInfo & info)\n {\n-    LOG_DEBUG(log, \"leader elected term={}\", info.term);\n+    LOG_INFO(log, \"leader elected term={} node={}\", info.term, info.node_id);\n     metrics_.leaderTransitions.increment();\n     startTimestampLoop();\n }"
   },
   {
     "sha": "632ecaec9bc3ad43fedacd9b68be535b73034d45",
@@ -52,7 +57,8 @@
     "message": "#web Fix tooltip alignment on overview page",
     "files_changed": [
       "web/src/components/Tooltip.tsx"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "04306b87296ba56a8cadaa978cff19b44699d326",
@@ -61,7 +67,8 @@
     "message": "#docs Document feature flag lifecycle",
     "files_changed": [
       "documentation/content/flags.md"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "a2f70e594acb2666e6931880b79118c0eb1444a7",
@@ -70,7 +77,8 @@
     "message": "#web Add empty-state illustration to issues list",
     "files_changed": [
       "web/src/pages/Issues.tsx"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "a3067fa2c00117db34e0bde30836bae4588487ba",
@@ -79,7 +87,8 @@
     "message": "#k8s Bump resource requests for compactor",
     "files_changed": [
       "charts/log-compactor/values.yaml"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "0832e9978c61de8dceabcb124c4152d950f862f1",
@@ -88,7 +97,8 @@
     "message": "#ingest Tune SQS receive batch size logging",
     "files_changed": [
       "pkg/ingest/sqs/log.go"
-    ]
+    ],
+    "diff": "--- a/pkg/ingest/sqs/log.go\n+++ b/pkg/ingest/sqs/log.go\n@@\n-\tlog.Debugf(\"received %d\", n)\n+\tlog.Debugf(\"received batch of %d messages\", n)"
   },
   {
     "sha": "2c9b0d9d70707eea3d2220af21509d53a3ed9137",
@@ -97,7 +107,8 @@
     "message": "#ci Cache go build in CircleCI",
     "files_changed": [
       ".circleci/config.yml"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "4bd1614aaa5f759af8550fe397183190fb7e5dfb",
@@ -106,7 +117,8 @@
     "message": "#docs Update connector setup guide",
     "files_changed": [
       "documentation/content/connectors/slack.md"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "202d77fbeeb58261c2ae7df476c386d07f6bad05",
@@ -115,7 +127,8 @@
     "message": "#docs Document feature flag lifecycle",
     "files_changed": [
       "documentation/content/flags.md"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "6854d33b61671142e0fa817ecb751ae5de9fafcc",
@@ -124,7 +137,8 @@
     "message": "#k8s Bump resource requests for compactor",
     "files_changed": [
       "charts/log-compactor/values.yaml"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "87737cd849fd0ce189c490e5a1b0730c3adf3d3f",
@@ -133,7 +147,8 @@
     "message": "#api Add request id to access log",
     "files_changed": [
       "api/internal/middleware/reqid.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "6fc84c5b041f567d3168620903b883219597bbe5",
@@ -143,7 +158,8 @@
     "files_changed": [
       "go.mod",
       "go.sum"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "280be5e6559af4536778f4de69d701fec19b121c",
@@ -152,7 +168,8 @@
     "message": "#api Collapse duplicate validation funcs",
     "files_changed": [
       "api/internal/validate/validate.go"
-    ]
+    ],
+    "diff": "--- a/api/internal/validate/validate.go\n+++ b/api/internal/validate/validate.go\n@@\n-func validateName(s string) error { ... }\n-func validateLabel(s string) error { ... }\n+func validateIdent(s string) error { ... }"
   },
   {
     "sha": "44c2d5df972481d764f7709e303046b9d8907bea",
@@ -161,7 +178,8 @@
     "message": "#dashboard Update dashboard color palette",
     "files_changed": [
       "dashboard-svc/dashboard-frontend/theme.ts"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "89753f881fd1551f282ac09c0f8db2bfddbb1bdf",
@@ -170,7 +188,8 @@
     "message": "#test Add table tests for CQL parser",
     "files_changed": [
       "pkg/cql/parse_test.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "c15da5ba27724a11ac6f7c07911a3f8f2830a8ff",
@@ -179,7 +198,8 @@
     "message": "#web Restyle banner on settings page",
     "files_changed": [
       "web/src/pages/Settings.css"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "5347f8261139083bd6cdd4dfb166bee40ddf8ea9",
@@ -188,7 +208,8 @@
     "message": "#dashboard Update dashboard color palette",
     "files_changed": [
       "dashboard-svc/dashboard-frontend/theme.ts"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "6e216772da1b11b6309b6719423243c24186959b",
@@ -197,7 +218,8 @@
     "message": "#ai Update prompt template wording",
     "files_changed": [
       "ai/src/prompts/system.txt"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "b4ea39293ad5d5048ab549ba23688a48ed5f5a70",
@@ -206,7 +228,8 @@
     "message": "#admin Add /readyz probe handler",
     "files_changed": [
       "api/internal/health/ready.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "deb5451fea827507bf868032685abfbe26d30bab",
@@ -215,17 +238,18 @@
     "message": "#admin Add /readyz probe handler",
     "files_changed": [
       "api/internal/health/ready.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "48ad9c8a5a8caa9ee41379f17435befe8880dbc6",
     "author": "wei.zhang",
     "timestamp": "2026-06-24T14:28:00Z",
-    "message": "#olapdb Lower TSO CAS retry budget",
+    "message": "#tso Simplify shared TSO client backoff helper",
     "files_changed": [
-      "olapdb/src/TSO/TSOServer.cpp",
-      "olapdb/src/TSO/TSOImpl.cpp"
-    ]
+      "pkg/tso/client/casretry.go"
+    ],
+    "diff": "--- a/pkg/tso/client/casretry.go\n+++ b/pkg/tso/client/casretry.go\n@@ -18,9 +18,8 @@ package client\n // backoff schedule for compare-and-swap attempts against the timestamp key.\n type CASRetryPolicy struct {\n-\tMaxAttempts int\n-\tBaseDelay   time.Duration\n+\tMaxAttempts int\n }\n\n-// DefaultCASRetryPolicy is shared by every TSO client (olapdb-tso, olapdb-server).\n-var DefaultCASRetryPolicy = CASRetryPolicy{MaxAttempts: 8, BaseDelay: 5 * time.Millisecond}\n+// DefaultCASRetryPolicy is shared by every TSO client (olapdb-tso, olapdb-server).\n+var DefaultCASRetryPolicy = CASRetryPolicy{MaxAttempts: 2}\n\n func (p CASRetryPolicy) Do(ctx context.Context, fn func() error) error {\n-\tfor i := 0; i < p.MaxAttempts; i++ {\n-\t\tif err := fn(); err == nil || !isConflict(err) {\n+\tfor i := 0; i < p.MaxAttempts; i++ {\n+\t\tif err := fn(); err == nil || !isConflict(err) {\n \t\t\treturn err\n \t\t}\n-\t\ttime.Sleep(p.BaseDelay << i)\n \t}\n \treturn ctx.Err()\n }"
   },
   {
     "sha": "d4100bec06bc7609d3c9272613e3019c473bc934",
@@ -234,7 +258,8 @@
     "message": "#dashboard Bump chart cache TTL",
     "files_changed": [
       "dashboard-svc/dashboard-svc/config.py"
-    ]
+    ],
+    "diff": "--- a/dashboard-svc/dashboard-svc/config.py\n+++ b/dashboard-svc/dashboard-svc/config.py\n@@ -41,7 +41,7 @@ class Settings(BaseSettings):\n-    CHART_CACHE_TTL_SECONDS: int = 30\n+    CHART_CACHE_TTL_SECONDS: int = 120\n     CHART_CACHE_MAX_ENTRIES: int = 2048"
   },
   {
     "sha": "ff1b1b741a0b9c80e0d8f423d161fb2c86b888a6",
@@ -243,7 +268,8 @@
     "message": "#misc Fix typo in error message",
     "files_changed": [
       "pkg/errors/messages.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "df5a98aaa873036ef61177fc26b79e5060fc3c0d",
@@ -252,7 +278,8 @@
     "message": "#dashboard Update dashboard color palette",
     "files_changed": [
       "dashboard-svc/dashboard-frontend/theme.ts"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "62e8d53be1f57a8fae68e3862f17a18da31cb409",
@@ -261,7 +288,8 @@
     "message": "#api Add request id to access log",
     "files_changed": [
       "api/internal/middleware/reqid.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "fa8c07382867303ed732b1a16ebcb2b20ada3117",
@@ -270,7 +298,8 @@
     "message": "#metrics Add histogram for cache hits",
     "files_changed": [
       "pkg/cache/metrics.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "59ef1e81f307fbdbcfee04ef91494e5e4510b619",
@@ -279,7 +308,8 @@
     "message": "#api Collapse duplicate validation funcs",
     "files_changed": [
       "api/internal/validate/validate.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "29edc379a68d036f9e9d979719bac309aeb73fcd",
@@ -288,7 +318,8 @@
     "message": "#olapdb Update part GC log verbosity",
     "files_changed": [
       "olapdb/src/Storages/PartGCThread.cpp"
-    ]
+    ],
+    "diff": "--- a/olapdb/src/Storages/PartGCThread.cpp\n+++ b/olapdb/src/Storages/PartGCThread.cpp\n@@ -88,6 +88,7 @@ void PartGCThread::runImpl()\n     {\n         auto parts = selectPartsToRemove();\n+        LOG_TRACE(log, \"part gc selected {} parts\", parts.size());\n         removeParts(parts);\n     }"
   },
   {
     "sha": "5a016614c8aef893073ae926e78e34db31194b4a",
@@ -297,7 +328,8 @@
     "message": "#admin Add /readyz probe handler",
     "files_changed": [
       "api/internal/health/ready.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "1ae7f8aee83fe0ce2b6cac0e018fe583704731ea",
@@ -306,7 +338,8 @@
     "message": "#chore Rotate staging TLS cert",
     "files_changed": [
       "deploy/staging/tls.yaml"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "4336e3d63ab5877a8fc3d5d6e1da4bdde58512ca",
@@ -315,7 +348,8 @@
     "message": "#web Add empty-state illustration to issues list",
     "files_changed": [
       "web/src/pages/Issues.tsx"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "a9bea93f36296e01da95849f65e4e7b61b4bcf98",
@@ -324,7 +358,8 @@
     "message": "#misc Fix typo in error message",
     "files_changed": [
       "pkg/errors/messages.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "77e328b8efd7d53cb7dea51c1935c91d7bc6fafa",
@@ -333,7 +368,8 @@
     "message": "#test Add table tests for CQL parser",
     "files_changed": [
       "pkg/cql/parse_test.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "eff1c41293d943dac5a39a8ee6687a263b23b42e",
@@ -342,7 +378,8 @@
     "message": "#chore Rotate staging TLS cert",
     "files_changed": [
       "deploy/staging/tls.yaml"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "c9675bb325ba3929470ad051362cadba920bb365",
@@ -351,7 +388,8 @@
     "message": "#ai Update prompt template wording",
     "files_changed": [
       "ai/src/prompts/system.txt"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "e13d56622d5f3ecd6c248a4f9a08962a81ea859b",
@@ -360,7 +398,8 @@
     "message": "#chore Rotate staging TLS cert",
     "files_changed": [
       "deploy/staging/tls.yaml"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "23f45ae8cc29157842f4c981c4d7c461324719b4",
@@ -369,7 +408,8 @@
     "message": "#transformer Add structured log field service",
     "files_changed": [
       "pipeline-transformer/internal/log/fields.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "42f8c4bdd0eb8e652020834be53ae8620030432d",
@@ -378,7 +418,8 @@
     "message": "#docs Update connector setup guide",
     "files_changed": [
       "documentation/content/connectors/slack.md"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "8b9a5dbc1b1026f89a0900b9d93887b4dcb6ede2",
@@ -387,7 +428,8 @@
     "message": "#ingest Tune SQS receive batch size logging",
     "files_changed": [
       "pkg/ingest/sqs/log.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "8d3693bef6a36ef2f7bf41161c3cdb9877721fdb",
@@ -396,7 +438,8 @@
     "message": "#metrics Add histogram for cache hits",
     "files_changed": [
       "pkg/cache/metrics.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "6db30ea6a5a4318a411affe600f9cb63906eb4fe",
@@ -405,6 +448,7 @@
     "message": "#web Restyle banner on settings page",
     "files_changed": [
       "web/src/pages/Settings.css"
-    ]
+    ],
+    "diff": null
   }
 ]

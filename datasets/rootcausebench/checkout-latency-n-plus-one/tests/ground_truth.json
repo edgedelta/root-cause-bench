@@ -8,7 +8,8 @@
   ],
   "remediation": "rollback",
   "decoy_deploy_commits": [
+    "78ad41355be70805bbf2985d5642a80ed842e056",
     "db5e56f2e1f50445d4c90040f50a7589b0908c58"
   ],
-  "notes": "Culprit adds a per-line-item catalog lookup (N+1). The frontend CSS deploy 30s before onset is a decoy. productcatalogservice is a victim of fan-out, not the cause."
+  "notes": "Culprit is 559e94ce (deepak.rao, checkoutservice, deployed 14:59:30). Its diff adds a per-line-item catalog DB lookup (a.catalog.GetItem -> 'SELECT * FROM catalog_items WHERE sku = $1') inside the AssembleOrder loop, replacing denormalized cart fields. That is the N+1: db_query_count_per_request jumps ~3 -> ~47, p99 ~210ms -> ~3800ms, productcatalogservice RPS fans out ~900 -> ~4100, and logs show ~40-51 identical SELECTs per PlaceOrder. Onset is delayed (~15:03) because the new path is only exercised under load. Better-surface-match decoy: 78ad4135 ('refactor: tidy checkout PlaceOrder handler', deepak.rao, checkoutservice) is the MOST RECENT checkoutservice deploy before onset (15:01:25) and touches the literally-named PlaceOrder handler -- but its diff only swaps error handling to decodeRequest/writeError helpers; it adds no per-item query, so it cannot produce the DB fan-out. Secondary decoys: db5e56f2 (frontend CSS restyle, 30s before onset, no backend change) and e315e6f1 (go.mod patch-version bump). The flag changes in flags.json are distractors. productcatalogservice is a victim of the fan-out, not the cause."
 }

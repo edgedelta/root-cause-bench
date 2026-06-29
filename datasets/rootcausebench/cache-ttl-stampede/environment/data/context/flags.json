@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": "2026-07-11T13:37:30Z",
+    "flag": "catalog_query_planner_v2",
+    "service": "productdb",
+    "change": "off->on",
+    "actor": "tomas.novak"
+  },
+  {
+    "timestamp": "2026-07-11T12:40:00Z",
+    "flag": "search_async_index",
+    "service": "searchservice",
+    "change": "off->on",
+    "actor": "amir.haddad"
+  }
+]

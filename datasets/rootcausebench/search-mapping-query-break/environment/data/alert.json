@@ -1,0 +1,10 @@
+{
+  "service": "searchservice",
+  "metric": "search_error_rate_pct",
+  "threshold": 5,
+  "observed": 94.6,
+  "fired_at": "2026-06-18T15:06:00Z",
+  "severity": "critical",
+  "monitor": "search-error-rate",
+  "summary": "searchservice query error rate above 5% for 3m"
+}

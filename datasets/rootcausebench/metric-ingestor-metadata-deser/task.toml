@@ -3,7 +3,7 @@ version = "1.0"
 [metadata]
 author_name = "Edge Delta"
 author_email = "oss@edgedelta.com"
-difficulty = "medium"
+difficulty = "hard"
 category = "observability"
 tags = ["root-cause", "ingest", "olapdb", "metadata-deserialization-failure", "queue-backlog", "observability", "incident"]
 

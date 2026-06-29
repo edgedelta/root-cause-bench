@@ -1,0 +1,44 @@
+[
+  {
+    "signature": "query failed: query_shard_exception: no mapping found for field [<FIELD>]",
+    "service": "searchservice",
+    "count": 7100,
+    "delta_vs_baseline": "+7100",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "parse_exception: failed to parse search source: unknown field [<FIELD>]",
+    "service": "searchservice",
+    "count": 4300,
+    "delta_vs_baseline": "+4300",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "upstream searchservice returned <CODE> for /search",
+    "service": "frontend",
+    "count": 980,
+    "delta_vs_baseline": "+972",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "similar-items lookup failed: searchservice error, returning empty",
+    "service": "recommendationservice",
+    "count": 540,
+    "delta_vs_baseline": "+540",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "handled request",
+    "service": "frontend",
+    "count": 6100,
+    "delta_vs_baseline": "+90",
+    "sentiment": "neutral"
+  },
+  {
+    "signature": "feature flag search_typeahead_v2 enabled for cohort",
+    "service": "frontend",
+    "count": 24,
+    "delta_vs_baseline": "+24",
+    "sentiment": "neutral"
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "trace_id": "loggingflood0000000000000000aaaa",
+    "span_id": "a1",
+    "parent_id": null,
+    "service": "ingest-gateway",
+    "name": "POST /v1/logs:ingest",
+    "start": "2026-06-22T10:20:00Z",
+    "duration_ms": 5200,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "loggingflood0000000000000000aaaa",
+    "span_id": "b1",
+    "parent_id": "a1",
+    "service": "logging-agent",
+    "name": "Sink.Write",
+    "start": "2026-06-22T10:20:00Z",
+    "duration_ms": 5180,
+    "status": "ERROR",
+    "error": "write /var/log/edge/agent.ndjson: no space left on device"
+  },
+  {
+    "trace_id": "loggingquery00000000000000000bbb",
+    "span_id": "a2",
+    "parent_id": null,
+    "service": "log-query-api",
+    "name": "GET /api/logs/search",
+    "start": "2026-06-22T10:21:00Z",
+    "duration_ms": 410,
+    "status": "ERROR",
+    "error": "read-only file system: /var/log/edge"
+  }
+]

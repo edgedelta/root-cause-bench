@@ -1,0 +1,304 @@
+[
+  {
+    "sha": "a1f0c9b73e2d48a6c5108f4b2d9e7c6a5b3f1e02",
+    "author": "grace.kim",
+    "timestamp": "2026-07-11T11:58:12Z",
+    "message": "chore: tidy imports in catalog handler",
+    "files_changed": [
+      "services/catalog/handler.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "b2e1d0a84f3e59b7d6219a5c3e0f8d7b6c4a2f13",
+    "author": "marta.kowalski",
+    "timestamp": "2026-07-11T12:03:41Z",
+    "message": "feat: add /healthz endpoint",
+    "files_changed": [
+      "internal/health/healthz.go"
+    ],
+    "diff": "@@ internal/health/healthz.go @@\n+func Healthz(w http.ResponseWriter, r *http.Request) {\n+\tw.WriteHeader(http.StatusOK)\n+\t_, _ = w.Write([]byte(\"ok\"))\n+}"
+  },
+  {
+    "sha": "c3d2e1b95a4f60c8e7320b6d4f1a9e8c7d5b3a24",
+    "author": "ivan.petrov",
+    "timestamp": "2026-07-11T12:09:55Z",
+    "message": "refactor: collapse duplicate validation funcs",
+    "files_changed": [
+      "pkg/validate/validate.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "d642c0cd285c287fdb5b6872468507e88442e6a5",
+    "author": "mei.lin",
+    "timestamp": "2026-07-11T12:18:30Z",
+    "message": "feat(cache): export hit and miss counters",
+    "files_changed": [
+      "pkg/cache/metrics.go"
+    ],
+    "diff": "@@ pkg/cache/metrics.go @@\n+var cacheHits = prometheus.NewCounter(prometheus.CounterOpts{Name: \"cache_hits_total\"})\n+var cacheMiss = prometheus.NewCounter(prometheus.CounterOpts{Name: \"cache_misses_total\"})\n \tfunc (c *Cache) Get(k string) (v []byte, ok bool) {\n+\t\tif ok { cacheHits.Inc() } else { cacheMiss.Inc() }"
+  },
+  {
+    "sha": "e5f4a3c06b5d71e9f8431c7e5a2b0f9d8e6c4b35",
+    "author": "fatima.zahra",
+    "timestamp": "2026-07-11T12:24:18Z",
+    "message": "chore: update CODEOWNERS",
+    "files_changed": [
+      "CODEOWNERS"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "f6a5b4d17c6e82f0a9542d8f6b3c1a0e9f7d5c46",
+    "author": "fatima.zahra",
+    "timestamp": "2026-07-11T12:31:07Z",
+    "message": "refactor: extract response writer helper",
+    "files_changed": [
+      "internal/httputil/writer.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "a7b6c5e28d7f93a1b0653e9a7c4d2b1f0a8e6d57",
+    "author": "marta.kowalski",
+    "timestamp": "2026-07-11T12:37:44Z",
+    "message": "chore: upgrade base image to distroless:nonroot",
+    "files_changed": [
+      "Dockerfile"
+    ],
+    "diff": "@@ Dockerfile @@\n-FROM gcr.io/distroless/static:latest\n+FROM gcr.io/distroless/static:nonroot"
+  },
+  {
+    "sha": "b8c7d6f39e8a04b2c1764f0b8d5e3c2a1b9f7e68",
+    "author": "ivan.petrov",
+    "timestamp": "2026-07-11T12:43:22Z",
+    "message": "docs: add runbook for deploy rollback",
+    "files_changed": [
+      "docs/runbooks/rollback.md"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "c9d8e7a40f9b15c3d2875a1c9e6f4d3b2c0a8f79",
+    "author": "wei.zhang",
+    "timestamp": "2026-07-11T12:49:03Z",
+    "message": "test: golden files for invoice rendering",
+    "files_changed": [
+      "pkg/invoice/testdata/golden.json"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "d0e9f8b51a0c26d4e3986b2d0f7a5e4c3d1b9a8a",
+    "author": "noah.bergstrom",
+    "timestamp": "2026-07-11T12:54:39Z",
+    "message": "fix: off-by-one in batch chunking",
+    "files_changed": [
+      "pkg/batch/chunk.go"
+    ],
+    "diff": "@@ pkg/batch/chunk.go @@\n \tfor i := 0; i < len(xs); i += size {\n \t\tend := i + size\n+\t\tif end > len(xs) { end = len(xs) }"
+  },
+  {
+    "sha": "e1f0a9c62b1d37e5f4097c3e1a8b6f5d4e2c0b9b",
+    "author": "grace.kim",
+    "timestamp": "2026-07-11T12:59:51Z",
+    "message": "fix: close response body in health checker",
+    "files_changed": [
+      "internal/health/check.go"
+    ],
+    "diff": "@@ internal/health/check.go @@\n \tresp, err := client.Do(req)\n+\tdefer resp.Body.Close()"
+  },
+  {
+    "sha": "f2a1b0d73c2e48f6a5108d4f2b9c7a6e5f3d1c0c",
+    "author": "wei.zhang",
+    "timestamp": "2026-07-11T13:04:16Z",
+    "message": "docs: update API reference for catalog endpoint",
+    "files_changed": [
+      "docs/api/catalog.md"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "c62e9decee7bb083f3628909019dd66e25dd25d8",
+    "author": "priya.sharma",
+    "timestamp": "2026-07-11T13:08:44Z",
+    "message": "chore(cache): adjust default entry ttl in shared cache config",
+    "files_changed": [
+      "pkg/cache/config.go",
+      "pkg/cache/redis.yaml"
+    ],
+    "diff": "@@ pkg/cache/config.go @@\n func DefaultConfig() *Config {\n \treturn &Config{\n-\t\t// DefaultTTL is the entry lifetime shared by all services that\n-\t\t// embed the read-through cache and do not set their own TTL.\n-\t\tDefaultTTL: 15 * time.Minute,\n+\t\t// DefaultTTL is the entry lifetime shared by all services that\n+\t\t// embed the read-through cache and do not set their own TTL.\n+\t\tDefaultTTL: 15 * time.Second,\n \t\tMaxEntries: 100000,\n \t}\n }\n@@ pkg/cache/redis.yaml @@\n-  default_ttl: 15m\n+  default_ttl: 15s\n   max_entries: 100000"
+  },
+  {
+    "sha": "a3b2c1e84d3f59a7b6219e5a3c0d8b7f6a4e2d1d",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-07-11T13:11:20Z",
+    "message": "feat: add request id propagation header",
+    "files_changed": [
+      "internal/middleware/reqid.go"
+    ],
+    "diff": "@@ internal/middleware/reqid.go @@\n+\t\tif rid == \"\" { rid = uuid.NewString() }\n+\t\tw.Header().Set(\"X-Request-Id\", rid)"
+  },
+  {
+    "sha": "b4c3d2f95e4a60b8c7320a6b4d1e9c8a7b5f3e2e",
+    "author": "tunde.okafor",
+    "timestamp": "2026-07-11T13:14:48Z",
+    "message": "ci: cache go build in GitHub Actions",
+    "files_changed": [
+      ".github/workflows/build.yml"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "c5d4e3a06f5b71c9d8431b7c5e2f0d9b8c6a4f3f",
+    "author": "priya.nair",
+    "timestamp": "2026-07-11T13:18:02Z",
+    "message": "test: add integration test for graceful shutdown",
+    "files_changed": [
+      "cmd/server/shutdown_test.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "d6e5f4b17a6c82d0e9542c8d6f3a1e0c9d7b5a40",
+    "author": "jdoe",
+    "timestamp": "2026-07-11T13:21:33Z",
+    "message": "test: add table-driven tests for currency conversion",
+    "files_changed": [
+      "pkg/money/convert_test.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "e7f6a5c28b7d93e1f0653d9e7a4b2f1d0e8c6b51",
+    "author": "lena.fischer",
+    "timestamp": "2026-07-11T13:25:10Z",
+    "message": "style: gofmt and goimports across repo",
+    "files_changed": [
+      "pkg/cart/cart.go",
+      "pkg/cart/cart_test.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "f8a7b6d39c8e04f2a1764e0f8b5c3a2e1f9d7c62",
+    "author": "deepak.rao",
+    "timestamp": "2026-07-11T13:28:47Z",
+    "message": "perf: reuse sync.Pool for buffers in encoder",
+    "files_changed": [
+      "pkg/codec/pool.go"
+    ],
+    "diff": "@@ pkg/codec/pool.go @@\n+var bufPool = sync.Pool{New: func() any { return new(bytes.Buffer) }}\n \tb := bufPool.Get().(*bytes.Buffer)\n+\tdefer bufPool.Put(b)"
+  },
+  {
+    "sha": "a9b8c7e40d9f15a3b2875f1c9e6a4d3e2f0b8d73",
+    "author": "carlos.mendez",
+    "timestamp": "2026-07-11T13:31:26Z",
+    "message": "refactor(catalog): simplify item lookup handler",
+    "files_changed": [
+      "services/catalog/lookup.go"
+    ],
+    "diff": "@@ services/catalog/lookup.go @@\n-\titem, err := s.cache.GetOrLoad(ctx, key, s.loadFromDB)\n-\tif err != nil { return nil, err }\n-\treturn item, nil\n+\treturn s.cache.GetOrLoad(ctx, key, s.loadFromDB)"
+  },
+  {
+    "sha": "b0c9d8f51e0a26b4c3986a2d0f7b5e4f3a1c9e84",
+    "author": "sofia.marino",
+    "timestamp": "2026-07-11T13:34:09Z",
+    "message": "test: fuzz the SKU parser",
+    "files_changed": [
+      "pkg/sku/parse_fuzz_test.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "9ecb8232f401e85df1801227a686ba243d99beb9",
+    "author": "tomas.novak",
+    "timestamp": "2026-07-11T13:36:58Z",
+    "message": "chore(db): add index on catalog_items.updated_at",
+    "files_changed": [
+      "db/migrations/0042_catalog_items_updated_at_idx.sql"
+    ],
+    "diff": "@@ db/migrations/0042_catalog_items_updated_at_idx.sql @@\n+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_catalog_items_updated_at\n+  ON catalog_items (updated_at);"
+  },
+  {
+    "sha": "c1d0e9a62f1b37c5d4097b3e1a8c6f5e4d2b0a95",
+    "author": "tunde.okafor",
+    "timestamp": "2026-07-11T13:39:41Z",
+    "message": "fix: correct typo in error message",
+    "files_changed": [
+      "internal/errors/messages.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "d2e1f0b73a2c48d6e5108c4f2b9d7a6f5e3c1b06",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-07-11T13:42:55Z",
+    "message": "docs: document feature flag lifecycle",
+    "files_changed": [
+      "docs/flags.md"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "e3f2a1c84b3d59e7f6219d5a3c0e8b7a6f4d2c17",
+    "author": "amir.haddad",
+    "timestamp": "2026-07-11T13:45:30Z",
+    "message": "refactor: simplify config loading with viper",
+    "files_changed": [
+      "internal/config/load.go"
+    ],
+    "diff": "@@ internal/config/load.go @@\n-\tv := viper.New()\n+\tv := viper.NewWithOptions(viper.KeyDelimiter(\".\"))\n \tv.SetConfigName(\"config\")"
+  },
+  {
+    "sha": "f4a3b2d95c4e60f8a7320e6b4d1f9c8b7a5e3d28",
+    "author": "wei.zhang",
+    "timestamp": "2026-07-11T13:49:12Z",
+    "message": "feat: emit OTel span attributes for tenant_id",
+    "files_changed": [
+      "internal/trace/attrs.go"
+    ],
+    "diff": "@@ internal/trace/attrs.go @@\n+\t\tspan.SetAttributes(attribute.String(\"tenant_id\", tid))"
+  },
+  {
+    "sha": "a5b4c3e06d5f71a9b8431f7c5e2a0d9c8b6f4e39",
+    "author": "marta.kowalski",
+    "timestamp": "2026-07-11T13:52:48Z",
+    "message": "fix(order): correct tax rounding for EU VAT",
+    "files_changed": [
+      "services/order/tax.go"
+    ],
+    "diff": "@@ services/order/tax.go @@\n-\treturn math.Round(net * rate)\n+\treturn math.Round(net*rate*100) / 100"
+  },
+  {
+    "sha": "b6c5d4f17e6a82b0c9542a8d6f3b1e0d9c7a5f4a",
+    "author": "carlos.mendez",
+    "timestamp": "2026-07-11T13:56:25Z",
+    "message": "feat: add structured logging fields to request middleware",
+    "files_changed": [
+      "internal/middleware/log.go"
+    ],
+    "diff": "@@ internal/middleware/log.go @@\n+\t\tlogger = logger.With(\"route\", r.URL.Path, \"method\", r.Method)"
+  },
+  {
+    "sha": "c7d6e5a28f7b93c1d0653b9e7a4c2f1e0d8b6a5b",
+    "author": "ivan.petrov",
+    "timestamp": "2026-07-11T13:59:03Z",
+    "message": "perf: preallocate buffer in JSON encoder",
+    "files_changed": [
+      "pkg/codec/json.go"
+    ],
+    "diff": "@@ pkg/codec/json.go @@\n-\tbuf := bytes.Buffer{}\n+\tbuf := bytes.NewBuffer(make([]byte, 0, 4096))"
+  },
+  {
+    "sha": "d8e7f6b39a8c04d2e1764a0f8b5d3c2f1e9a7b6c",
+    "author": "fatima.zahra",
+    "timestamp": "2026-07-11T14:02:40Z",
+    "message": "fix: handle empty slice in pagination helper",
+    "files_changed": [
+      "pkg/paginate/paginate.go"
+    ],
+    "diff": "@@ pkg/paginate/paginate.go @@\n+\tif len(items) == 0 { return nil, nil }"
+  }
+]

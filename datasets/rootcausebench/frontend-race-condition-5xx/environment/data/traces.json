@@ -1,0 +1,100 @@
+[
+  {
+    "trace_id": "7fe2b44dafb7c0e459763e95373926c7",
+    "span_id": "z1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "POST /api/checkout",
+    "start": "2026-06-18T14:10:00Z",
+    "duration_ms": 214,
+    "status": "OK"
+  },
+  {
+    "trace_id": "7fe2b44dafb7c0e459763e95373926c7",
+    "span_id": "z2",
+    "parent_id": "z1",
+    "service": "cartservice",
+    "name": "GetCart",
+    "start": "2026-06-18T14:10:00Z",
+    "duration_ms": 41,
+    "status": "OK"
+  },
+  {
+    "trace_id": "a1b2c3d4e5f60718293a4b5c6d7e8f90",
+    "span_id": "f1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "POST /api/checkout",
+    "start": "2026-06-18T15:03:57Z",
+    "duration_ms": 12,
+    "status": "ERROR",
+    "status_message": "panic recovered: concurrent map writes",
+    "http.status_code": 500
+  },
+  {
+    "trace_id": "b2c3d4e5f60718293a4b5c6d7e8f9012",
+    "span_id": "f2",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "POST /api/checkout",
+    "start": "2026-06-18T15:04:14Z",
+    "duration_ms": 9,
+    "status": "ERROR",
+    "status_message": "panic recovered: concurrent map writes",
+    "http.status_code": 500
+  },
+  {
+    "trace_id": "c3d4e5f60718293a4b5c6d7e8f901234",
+    "span_id": "f3",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "POST /api/checkout",
+    "start": "2026-06-18T15:05:40Z",
+    "duration_ms": 7,
+    "status": "ERROR",
+    "status_message": "panic recovered: concurrent map writes",
+    "http.status_code": 502
+  },
+  {
+    "trace_id": "d4e5f60718293a4b5c6d7e8f90123456",
+    "span_id": "g1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "POST /api/checkout",
+    "start": "2026-06-18T15:06:31Z",
+    "duration_ms": 198,
+    "status": "OK"
+  },
+  {
+    "trace_id": "d4e5f60718293a4b5c6d7e8f90123456",
+    "span_id": "g2",
+    "parent_id": "g1",
+    "service": "cartservice",
+    "name": "GetCart",
+    "start": "2026-06-18T15:06:31Z",
+    "duration_ms": 44,
+    "status": "OK"
+  },
+  {
+    "trace_id": "d4e5f60718293a4b5c6d7e8f90123456",
+    "span_id": "g3",
+    "parent_id": "g1",
+    "service": "productcatalogservice",
+    "name": "GetProduct",
+    "start": "2026-06-18T15:06:31Z",
+    "duration_ms": 63,
+    "status": "OK"
+  },
+  {
+    "trace_id": "e5f60718293a4b5c6d7e8f9012345678",
+    "span_id": "h1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "POST /api/checkout",
+    "start": "2026-06-18T15:08:47Z",
+    "duration_ms": 6,
+    "status": "ERROR",
+    "status_message": "panic recovered: concurrent map writes",
+    "http.status_code": 500
+  }
+]

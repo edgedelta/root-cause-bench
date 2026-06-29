@@ -1,0 +1,405 @@
+[
+  {
+    "sha": "1c11372965fbd575d3ee68fe90403574ef782ef3",
+    "author": "jdoe",
+    "timestamp": "2026-06-18T14:02:11Z",
+    "message": "fix: handle empty query string in search params",
+    "files_changed": [
+      "pkg/searchparams/parse.go"
+    ],
+    "diff": "@@ func Parse(q string) (Query, error) {\n+\tif q == \"\" {\n+\t\treturn Query{}, nil\n+\t}\n \treturn parseRaw(q)\n }"
+  },
+  {
+    "sha": "1bf9064dbde4c777da7cd2f2e642ca995e942e23",
+    "author": "lena.fischer",
+    "timestamp": "2026-06-18T14:04:50Z",
+    "message": "style: gofmt and goimports across repo",
+    "files_changed": [
+      "pkg/searchparams/parse.go",
+      "pkg/searchparams/parse_test.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "714a570cefe900986dbb7b691ba821eaa7a203ea",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-06-18T14:08:03Z",
+    "message": "chore: bump go.mod dependencies",
+    "files_changed": [
+      "go.mod",
+      "go.sum"
+    ],
+    "diff": "@@ require (\n-\tgithub.com/opensearch-project/opensearch-go/v2 v2.3.0\n+\tgithub.com/opensearch-project/opensearch-go/v2 v2.3.1\n-\tgoogle.golang.org/grpc v1.62.0\n+\tgoogle.golang.org/grpc v1.62.1\n )"
+  },
+  {
+    "sha": "498c5ddd3829c796e86cd60246b362455b6e952e",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-18T14:11:40Z",
+    "message": "docs: update API reference for search endpoint",
+    "files_changed": [
+      "docs/api/search.md"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "ed46dafc0fa123a1e79a01f295fb3818829dc192",
+    "author": "sofia.marino",
+    "timestamp": "2026-06-18T14:18:22Z",
+    "message": "test: golden files for facet aggregation",
+    "files_changed": [
+      "pkg/facet/testdata/golden.json"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "9c6f2444ef8aad1c7af2c1e6fe6d079e9b469c77",
+    "author": "amir.haddad",
+    "timestamp": "2026-06-18T14:21:05Z",
+    "message": "test: fuzz the query tokenizer",
+    "files_changed": [
+      "pkg/tokenizer/tok_fuzz_test.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "7826eb3a2af61c954f0243ca0b0340c5a0fbf1cd",
+    "author": "lena.fischer",
+    "timestamp": "2026-06-18T14:26:33Z",
+    "message": "fix: handle empty slice in pagination helper",
+    "files_changed": [
+      "pkg/paginate/paginate.go"
+    ],
+    "diff": "@@ func Page(items []T, n int) [][]T {\n+\tif len(items) == 0 {\n+\t\treturn nil\n+\t}\n \tout := make([][]T, 0, len(items)/n+1)"
+  },
+  {
+    "sha": "e8a76dcbc6ea4a9d61a1cc3450c3062818e51531",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-18T14:31:09Z",
+    "message": "refactor: collapse duplicate validation funcs",
+    "files_changed": [
+      "pkg/validate/validate.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "a32cf57753ab866f686a748028b2c677ca5a9340",
+    "author": "lena.fischer",
+    "timestamp": "2026-06-18T14:42:44Z",
+    "message": "test: increase coverage on backoff helper",
+    "files_changed": [
+      "pkg/backoff/backoff_test.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "2f986a92263b136ce19e034156238b4cd60baee4",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-18T14:43:18Z",
+    "message": "chore: pin golangci-lint to v1.61",
+    "files_changed": [
+      ".golangci.yml"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "fa6e31d9b812b7595ba1152935e73f7987b1ff30",
+    "author": "lena.fischer",
+    "timestamp": "2026-06-18T14:50:55Z",
+    "message": "docs: document feature flag lifecycle",
+    "files_changed": [
+      "docs/flags.md"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "aab157b0cb3c22dbd703bea36c470fc78b93c3f5",
+    "author": "lena.fischer",
+    "timestamp": "2026-06-18T14:57:31Z",
+    "message": "test: add integration test for graceful shutdown",
+    "files_changed": [
+      "cmd/server/shutdown_test.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "4074a93cbf3be1458094e636f38d7f2fa8d4d29b",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-18T14:58:12Z",
+    "message": "refactor: align catalog index mapping with product schema",
+    "files_changed": [
+      "services/search/index/mapping.go"
+    ],
+    "diff": "@@ services/search/index/mapping.go: var CatalogMapping = map[string]any{\n \t\"properties\": map[string]any{\n-\t\t\"title\":       map[string]any{\"type\": \"text\", \"analyzer\": \"standard\"},\n+\t\t\"name\":        map[string]any{\"type\": \"text\", \"analyzer\": \"standard\"},\n \t\t\"description\": map[string]any{\"type\": \"text\", \"analyzer\": \"standard\"},\n \t\t\"sku\":         map[string]any{\"type\": \"keyword\"},\n \t\t\"price\":       map[string]any{\"type\": \"double\"},\n \t},\n }\n@@ note: query builder in services/search/query.go still issues match on \"title\":\n \tq := elastic.NewMatchQuery(\"title\", userQuery)  // unchanged"
+  },
+  {
+    "sha": "80fab22525f24c782aac5efbe35d47fa59c96d2a",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-18T14:59:05Z",
+    "message": "perf: preallocate buffer in JSON encoder",
+    "files_changed": [
+      "pkg/codec/json.go"
+    ],
+    "diff": "@@ func Encode(v any) ([]byte, error) {\n-\tbuf := bytes.Buffer{}\n+\tbuf := bytes.Buffer{}\n+\tbuf.Grow(512)\n \tenc := json.NewEncoder(&buf)"
+  },
+  {
+    "sha": "f91ebd4b4b10c67f6f6fbf8f8f1c15c6d2620c82",
+    "author": "grace.kim",
+    "timestamp": "2026-06-18T14:59:48Z",
+    "message": "feat(frontend): restyle search box and results card",
+    "files_changed": [
+      "services/frontend/static/search.css",
+      "services/frontend/templates/search.html"
+    ],
+    "diff": "@@ services/frontend/static/search.css\n-.search-box { border: 1px solid #ccc; padding: 6px; }\n+.search-box { border: 1px solid #19a974; padding: 8px 12px; border-radius: 8px; }\n+.result-card { box-shadow: 0 1px 3px rgba(0,0,0,.08); }"
+  },
+  {
+    "sha": "2b31b542e8de80e0f9cd6b99c4a7023faefbacca",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-06-18T15:00:41Z",
+    "message": "fix: off-by-one in batch chunking",
+    "files_changed": [
+      "pkg/batch/chunk.go"
+    ],
+    "diff": "@@ func Chunk(n, size int) int {\n-\treturn n / size\n+\treturn (n + size - 1) / size\n }"
+  },
+  {
+    "sha": "2a2f3891d9e367e4d7b0954bcf98a9639ab72aca",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-18T15:01:20Z",
+    "message": "refactor: tidy search handler request decoding",
+    "files_changed": [
+      "services/search/handler.go"
+    ],
+    "diff": "@@ services/search/handler.go: func (h *Handler) Search(w http.ResponseWriter, r *http.Request) {\n-\tq := r.URL.Query().Get(\"q\")\n-\tif q == \"\" {\n-\t\thttp.Error(w, \"missing q\", 400)\n-\t\treturn\n-\t}\n-\tres, err := h.engine.Search(r.Context(), q)\n-\tif err != nil { http.Error(w, err.Error(), 500); return }\n-\twriteJSON(w, res)\n+\treq, err := decodeSearchRequest(r)\n+\tif err != nil {\n+\t\twriteError(w, http.StatusBadRequest, err)\n+\t\treturn\n+\t}\n+\tres, err := h.engine.Search(r.Context(), req.Q)\n+\tif err != nil {\n+\t\twriteError(w, http.StatusInternalServerError, err)\n+\t\treturn\n+\t}\n+\twriteJSON(w, res)\n }"
+  },
+  {
+    "sha": "bf1c876ea0d7b47fc42b97a0c510687473562367",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-18T15:11:48Z",
+    "message": "chore: update CODEOWNERS",
+    "files_changed": [
+      "CODEOWNERS"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "8e5837921e6db7f4a409da53962e12b684f3a7bc",
+    "author": "grace.kim",
+    "timestamp": "2026-06-18T15:13:12Z",
+    "message": "feat: support gzip request bodies",
+    "files_changed": [
+      "internal/middleware/gzip.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "acd7bfb489fc4fc6b3faf8be4dcddeebcf12e73b",
+    "author": "fatima.zahra",
+    "timestamp": "2026-06-18T15:16:05Z",
+    "message": "ci: cache go build in GitHub Actions",
+    "files_changed": [
+      ".github/workflows/build.yml"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "f6c5e8f564aa80436b97b001ddf849a3708b37f8",
+    "author": "ivan.petrov",
+    "timestamp": "2026-06-18T14:21:30Z",
+    "message": "refactor: move recommend DTOs into api/types",
+    "files_changed": [
+      "services/recommend/types.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "726898300e7e2e07649f7fca89425279aa029a82",
+    "author": "sofia.marino",
+    "timestamp": "2026-06-18T15:29:55Z",
+    "message": "chore: rotate staging TLS cert",
+    "files_changed": [
+      "deploy/staging/tls.yaml"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "2cbeba833eef04cac5a9f5e8c107deeca5b062b9",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-06-18T15:35:02Z",
+    "message": "test: add table-driven tests for currency conversion",
+    "files_changed": [
+      "pkg/money/convert_test.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "08a96a8f22507a0bc4a09e6e5709777f57df0218",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-18T15:38:44Z",
+    "message": "chore: upgrade base image to distroless:nonroot",
+    "files_changed": [
+      "Dockerfile"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "9dc77785c492bf78374961660ac402c9276c3651",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-18T15:39:31Z",
+    "message": "refactor: rename internal package observability->telemetry",
+    "files_changed": [
+      "internal/telemetry/telemetry.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "597d353a4ce32fb5c4bdf78f53b2b460ac08fb7b",
+    "author": "priya.nair",
+    "timestamp": "2026-06-18T15:41:50Z",
+    "message": "perf: reuse sync.Pool for buffers in encoder",
+    "files_changed": [
+      "pkg/codec/pool.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "43127506925b9904c9e69f017db224e25ad15eed",
+    "author": "ivan.petrov",
+    "timestamp": "2026-06-18T15:43:58Z",
+    "message": "chore: tidy imports in recommend service",
+    "files_changed": [
+      "services/recommend/main.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "480f6d2192700117053cb88bb0307b8562caa86a",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-06-18T15:48:09Z",
+    "message": "feat: emit OTel span attributes for user_id",
+    "files_changed": [
+      "internal/trace/attrs.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "bdcbce9ae74949022b763a2a27e1fdfdae96df56",
+    "author": "grace.kim",
+    "timestamp": "2026-06-18T15:51:02Z",
+    "message": "feat: add prometheus histogram for cache hits",
+    "files_changed": [
+      "pkg/cache/metrics.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "9faa964d6680d6f201a313665cb03aa7d63c1e03",
+    "author": "lena.fischer",
+    "timestamp": "2026-06-18T15:51:33Z",
+    "message": "fix: correct typo in error message",
+    "files_changed": [
+      "internal/errors/messages.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "6b1df0524006b3c1cdc3a24c8accc74417a20c3c",
+    "author": "lena.fischer",
+    "timestamp": "2026-06-18T15:54:47Z",
+    "message": "fix: close response body in health checker",
+    "files_changed": [
+      "internal/health/check.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "ba0d23221a0b8bf8627d3163037e7de25f368ac9",
+    "author": "amir.haddad",
+    "timestamp": "2026-06-18T15:58:20Z",
+    "message": "refactor: simplify config loading with viper",
+    "files_changed": [
+      "internal/config/load.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "17256824054829b67188a8e4d61f6a81f6973288",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-18T16:07:10Z",
+    "message": "feat: add /readyz endpoint",
+    "files_changed": [
+      "internal/health/ready.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "1e979d5edf2dd4c3851217243ea6f2115fc99a20",
+    "author": "marta.kowalski",
+    "timestamp": "2026-06-18T16:08:14Z",
+    "message": "refactor: extract response writer helper",
+    "files_changed": [
+      "internal/httputil/writer.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "407a2a430081439c3deb935b7205b35cce8c1c54",
+    "author": "jdoe",
+    "timestamp": "2026-06-18T16:26:40Z",
+    "message": "chore: lazy-init metrics registry",
+    "files_changed": [
+      "pkg/cache/registry.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "23ce3dea610f09642d86eff3bcec6d952e0b430f",
+    "author": "noah.bergstrom",
+    "timestamp": "2026-06-18T16:34:33Z",
+    "message": "docs: clarify env var precedence",
+    "files_changed": [
+      "README.md"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "556746170c1a77b91bd7de26608044156e9e6061",
+    "author": "grace.kim",
+    "timestamp": "2026-06-18T16:35:51Z",
+    "message": "feat: add request id propagation header",
+    "files_changed": [
+      "internal/middleware/reqid.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "632c148af7f92dbc2bbad7b6805f35c439fe09dd",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-18T16:51:02Z",
+    "message": "docs: add runbook for deploy rollback",
+    "files_changed": [
+      "docs/runbooks/rollback.md"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "b9074d0e7ab081062287a9da9aca0937fe7e366a",
+    "author": "ivan.petrov",
+    "timestamp": "2026-06-18T16:58:31Z",
+    "message": "refactor: collapse duplicate validation funcs",
+    "files_changed": [
+      "pkg/validate/validate.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "1f207f2c3ee824407e96bf1ec737f5410f666121",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-06-18T16:59:02Z",
+    "message": "style: gofmt and goimports across repo",
+    "files_changed": [
+      "pkg/searchparams/parse.go"
+    ],
+    "diff": null
+  }
+]

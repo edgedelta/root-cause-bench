@@ -1,0 +1,51 @@
+[
+  {
+    "signature": "jwt validation failed: token is expired",
+    "service": "gatewayservice",
+    "count": 3120,
+    "delta_vs_baseline": "+3120",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "rejecting request: invalid token",
+    "service": "gatewayservice",
+    "count": 1180,
+    "delta_vs_baseline": "+1180",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "jwt validation failed: token is expired",
+    "service": "userservice",
+    "count": 900,
+    "delta_vs_baseline": "+900",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "jwt validation failed: token is expired",
+    "service": "orderservice",
+    "count": 640,
+    "delta_vs_baseline": "+640",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "jwt validation failed: token is expired",
+    "service": "paymentservice",
+    "count": 410,
+    "delta_vs_baseline": "+410",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "feature flag gateway_strict_audience_check enabled",
+    "service": "gatewayservice",
+    "count": 1,
+    "delta_vs_baseline": "+1",
+    "sentiment": "neutral"
+  },
+  {
+    "signature": "token validated",
+    "service": "gatewayservice",
+    "count": 210,
+    "delta_vs_baseline": "-2600",
+    "sentiment": "neutral"
+  }
+]

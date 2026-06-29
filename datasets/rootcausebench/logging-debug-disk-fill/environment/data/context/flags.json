@@ -1,0 +1,9 @@
+[
+  {
+    "timestamp": "2026-06-22T10:06:00Z",
+    "flag": "agent_gzip_sink",
+    "service": "logging-agent",
+    "change": "off->on",
+    "actor": "sofia.marino"
+  }
+]

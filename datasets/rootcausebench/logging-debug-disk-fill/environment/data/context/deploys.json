@@ -1,0 +1,20 @@
+[
+  {
+    "timestamp": "2026-06-22T10:00:30Z",
+    "service": "logging-agent",
+    "commit_sha": "ce164c13c54ed0cb3bc6d2e28545adc9e2656641",
+    "version": "v2026.06.22-0958"
+  },
+  {
+    "timestamp": "2026-06-22T09:43:00Z",
+    "service": "logging-agent",
+    "commit_sha": "d270fbb2e2fc11b54f85cd93e63e62afd39be15c",
+    "version": "v2026.06.22-0941"
+  },
+  {
+    "timestamp": "2026-06-22T10:14:20Z",
+    "service": "log-query-api",
+    "commit_sha": "335aa96c4c4707820da87e182341c9401e4b912b",
+    "version": "v2026.06.22-1012"
+  }
+]

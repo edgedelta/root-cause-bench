@@ -1,0 +1,314 @@
+[
+  {
+    "sha": "a31f0c47d8e1b29a5e6c4f0a1b8d3c72e9f04a11",
+    "author": "lena.fischer",
+    "timestamp": "2026-06-21T07:05:12Z",
+    "message": "ci: split unit and integration jobs",
+    "files_changed": [
+      ".github/workflows/test.yml"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "b72e9d104c5f3a8b6071e2d4c9a18f5b3e0c6d22",
+    "author": "fatima.zahra",
+    "timestamp": "2026-06-21T07:11:48Z",
+    "message": "chore: bump go.mod dependencies",
+    "files_changed": [
+      "go.mod",
+      "go.sum"
+    ],
+    "diff": "--- a/go.mod\n+++ b/go.mod\n@@ -10,7 +10,7 @@ require (\n-\tgithub.com/jackc/pgx/v5 v5.6.0\n+\tgithub.com/jackc/pgx/v5 v5.6.1\n \tgo.opentelemetry.io/otel v1.28.0\n )"
+  },
+  {
+    "sha": "c84a1f6209d7b3e5a09c8d61f4b27a93e5d08c33",
+    "author": "noah.bergstrom",
+    "timestamp": "2026-06-21T07:19:05Z",
+    "message": "refactor: tidy search query builder in dbx",
+    "files_changed": [
+      "pkg/dbx/query.go"
+    ],
+    "diff": "--- a/pkg/dbx/query.go\n+++ b/pkg/dbx/query.go\n@@ -41,11 +41,13 @@ func (b *Builder) OrderBy(col string, desc bool) *Builder {\n-\tif desc {\n-\t\tb.order = col + \" DESC\"\n-\t} else {\n-\t\tb.order = col + \" ASC\"\n-\t}\n+\tdir := \" ASC\"\n+\tif desc {\n+\t\tdir = \" DESC\"\n+\t}\n+\tb.order = col + dir\n \treturn b\n }\n \n // Limit appends a LIMIT clause; callers stay responsible for passing one.\n func (b *Builder) Limit(n int) *Builder { b.limit = n; return b }"
+  },
+  {
+    "sha": "d05c7e391a2f8b46c1d09e7a35f08b2c4a6e1d44",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-21T07:28:33Z",
+    "message": "docs: update search api reference",
+    "files_changed": [
+      "docs/api/search.md"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "e16b8f4a2b3c9d57f2e1a08b46c19d3f5b7e2c55",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-21T07:37:51Z",
+    "message": "fix: close rows iterator in catalog reader",
+    "files_changed": [
+      "services/productcatalog/reader.go"
+    ],
+    "diff": "--- a/services/productcatalog/reader.go\n+++ b/services/productcatalog/reader.go\n@@ -52,6 +52,7 @@ func (r *Reader) List(ctx context.Context) ([]Item, error) {\n \trows, err := r.db.Query(ctx, listSQL)\n \tif err != nil {\n \t\treturn nil, err\n \t}\n+\tdefer rows.Close()\n \treturn scanItems(rows)\n }"
+  },
+  {
+    "sha": "f27c9051b4d8a3e69f0c1b27e5a48d3c6b9e0f66",
+    "author": "amir.haddad",
+    "timestamp": "2026-06-21T07:49:20Z",
+    "message": "chore: raise db pool max connections",
+    "files_changed": [
+      "internal/db/pool.go"
+    ],
+    "diff": "--- a/internal/db/pool.go\n+++ b/internal/db/pool.go\n@@ -14,8 +14,8 @@ func newPool(dsn string) (*pgxpool.Pool, error) {\n \tcfg, err := pgxpool.ParseConfig(dsn)\n \tif err != nil {\n \t\treturn nil, err\n \t}\n-\tcfg.MaxConns = 20\n+\tcfg.MaxConns = 40\n \treturn pgxpool.NewWithConfig(context.Background(), cfg)\n }"
+  },
+  {
+    "sha": "c1cba9e7f3204a8d6b59e0c1a47f28d3b6e095a7",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-06-21T08:08:00Z",
+    "message": "feat(search): order results by relevance score",
+    "files_changed": [
+      "services/search/query.go"
+    ],
+    "diff": "--- a/services/search/query.go\n+++ b/services/search/query.go\n@@ -27,11 +27,12 @@ func buildSearchSQL(tenantID string) string {\n-\t// Return the top matches for the tenant, ranked by score.\n-\treturn `SELECT id, title, score\n-\t        FROM search_events\n-\t        WHERE tenant_id = $1\n-\t        ORDER BY score DESC\n-\t        LIMIT 50`\n+\t// Rank all of the tenant's events by score so the handler can\n+\t// re-rank with the new relevance model before trimming.\n+\treturn `SELECT id, title, score\n+\t        FROM search_events\n+\t        WHERE tenant_id = $1\n+\t        ORDER BY score DESC`\n }\n \n func (s *Service) Search(ctx context.Context, tenantID string) ([]Result, error) {\n \trows, err := s.db.Query(ctx, buildSearchSQL(tenantID), tenantID)\n \tif err != nil {\n \t\treturn nil, err\n \t}\n \tdefer rows.Close()\n \treturn scanResults(rows)\n }"
+  },
+  {
+    "sha": "a48d1c620e9f3b75a8c0d14e7b29f53a6c8e1b77",
+    "author": "sofia.marino",
+    "timestamp": "2026-06-21T08:16:42Z",
+    "message": "style: gofmt across repo",
+    "files_changed": [
+      "pkg/cart/cart.go",
+      "pkg/cart/cart_test.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "b59e2d731f0a4c86b9d1e25f8c30a64b7d9e0c88",
+    "author": "jdoe",
+    "timestamp": "2026-06-21T08:23:09Z",
+    "message": "refactor: extract response writer helper",
+    "files_changed": [
+      "internal/httputil/writer.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "c60f3e842a1b5d97c0e2f36a9d41b75c8e0f1d99",
+    "author": "carlos.mendez",
+    "timestamp": "2026-06-21T08:31:55Z",
+    "message": "fix: correct typo in error message",
+    "files_changed": [
+      "internal/errors/messages.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "d71a4f953b2c6e08d1f3a47b0e52c86d9f1a2e10",
+    "author": "ivan.petrov",
+    "timestamp": "2026-06-21T08:39:27Z",
+    "message": "chore: update CODEOWNERS",
+    "files_changed": [
+      "CODEOWNERS"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "e82b5a064c3d7f19e204b58c1f63d97e0a2b3f21",
+    "author": "marta.kowalski",
+    "timestamp": "2026-06-21T08:46:13Z",
+    "message": "feat: emit otel span attributes for tenant_id",
+    "files_changed": [
+      "internal/trace/attrs.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "f93c6b175d4e8a20e315c69d2a74e08f1b3c4a32",
+    "author": "priya.nair",
+    "timestamp": "2026-06-21T08:54:48Z",
+    "message": "fix: guard against negative quantity in cart",
+    "files_changed": [
+      "pkg/cart/validate.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "a04d7c286e5f9b31f426d70e3b85f19a2c4d5b43",
+    "author": "tunde.okafor",
+    "timestamp": "2026-06-21T09:01:34Z",
+    "message": "test: golden files for invoice rendering",
+    "files_changed": [
+      "pkg/invoice/testdata/golden.json"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "b15e8d397f6a0c42e537e81f4c96a20b3d5e6c54",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-21T09:08:19Z",
+    "message": "docs: document feature flag lifecycle",
+    "files_changed": [
+      "docs/flags.md"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "c26f9e408a7b1d53f648f92e5a07b31c4e6f7d65",
+    "author": "noah.bergstrom",
+    "timestamp": "2026-06-21T09:15:02Z",
+    "message": "refactor: simplify config loading with viper",
+    "files_changed": [
+      "internal/config/load.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "d37a0f519b8c2e64f759a03f6b18c42d5f7a8e76",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-21T09:21:47Z",
+    "message": "feat: add prometheus histogram for cache hits",
+    "files_changed": [
+      "pkg/cache/metrics.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "e48b1a620c9d3f75a86a14b07c29d53e6f8b9a87",
+    "author": "grace.kim",
+    "timestamp": "2026-06-21T09:28:31Z",
+    "message": "docs: clarify env var precedence",
+    "files_changed": [
+      "README.md"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "f59c2b731d0e4a86b97c25f81d3a064e7f9a0b98",
+    "author": "tunde.okafor",
+    "timestamp": "2026-06-21T09:35:16Z",
+    "message": "fix: off-by-one in batch chunking",
+    "files_changed": [
+      "pkg/batch/chunk.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "a6ad3c842e1f5b09c08d36a92f47b51c6e0d8f19",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-06-21T09:42:58Z",
+    "message": "test: fuzz the sku parser",
+    "files_changed": [
+      "pkg/sku/parse_fuzz_test.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "b71e4d953c2a6f08d19e47b03f85c26d7a0e1b20",
+    "author": "marta.kowalski",
+    "timestamp": "2026-06-21T09:49:41Z",
+    "message": "chore: lazy-init metrics registry",
+    "files_changed": [
+      "pkg/cache/registry.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "c82f5a064d3b7e19e205c68f1a74d09e2b3c4f31",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-21T09:56:25Z",
+    "message": "feat: add request id propagation header",
+    "files_changed": [
+      "internal/middleware/reqid.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "d93a6b175e4c8f20e316d79a2b85f01c3d6e7a42",
+    "author": "ivan.petrov",
+    "timestamp": "2026-06-21T10:03:08Z",
+    "message": "docs: add runbook for deploy rollback",
+    "files_changed": [
+      "docs/runbooks/rollback.md"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "e04b7c286f5a9d31e427f80e3c96b12a4d5e6f53",
+    "author": "tunde.okafor",
+    "timestamp": "2026-06-21T10:09:52Z",
+    "message": "test: add integration test for graceful shutdown",
+    "files_changed": [
+      "cmd/server/shutdown_test.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "f15c8d397a6b0e42e538a91f4c07b23d5e6f7a64",
+    "author": "amir.haddad",
+    "timestamp": "2026-06-21T10:16:37Z",
+    "message": "chore: pin golangci-lint to v1.61",
+    "files_changed": [
+      ".golangci.yml"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "a26d9e408b7c1f53e649a03f5b18d24c6e0f8a75",
+    "author": "wei.zhang",
+    "timestamp": "2026-06-21T10:23:21Z",
+    "message": "refactor: rename internal package observability->telemetry",
+    "files_changed": [
+      "internal/telemetry/telemetry.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "b37a0f519c8d2e64f750b13a06b29c41d5f7a8e86",
+    "author": "sofia.marino",
+    "timestamp": "2026-06-21T10:29:14Z",
+    "message": "feat: support gzip request bodies",
+    "files_changed": [
+      "internal/middleware/gzip.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "c48b1a620d9e3f75e86b24c07a29d51e6f8b9a97",
+    "author": "priya.nair",
+    "timestamp": "2026-06-21T10:33:46Z",
+    "message": "feat: add structured logging fields to request middleware",
+    "files_changed": [
+      "internal/middleware/log.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "f7cb29d4108e5a3b6c0729fda1c8b5e093e6d4a2",
+    "author": "noah.bergstrom",
+    "timestamp": "2026-06-21T10:36:30Z",
+    "message": "feat(search): support sort direction in search api",
+    "files_changed": [
+      "services/search/handler.go"
+    ],
+    "diff": "--- a/services/search/handler.go\n+++ b/services/search/handler.go\n@@ -33,9 +33,16 @@ func (h *Handler) Search(w http.ResponseWriter, r *http.Request) {\n \ttenantID := tenantFrom(r)\n+\t// Allow callers to flip ranking direction; default stays DESC.\n+\tasc := r.URL.Query().Get(\"order\") == \"asc\"\n \tres, err := h.svc.Search(r.Context(), tenantID)\n \tif err != nil {\n \t\thttp.Error(w, err.Error(), 500)\n \t\treturn\n \t}\n+\tif asc {\n+\t\tsort.Slice(res, func(i, j int) bool { return res[i].Score < res[j].Score })\n+\t}\n+\tif len(res) > 50 {\n+\t\tres = res[:50]\n+\t}\n \twriteJSON(w, res)\n }"
+  },
+  {
+    "sha": "a59c2b731e0d4a86c97d25f81e3b064a7f9a0b08",
+    "author": "carlos.mendez",
+    "timestamp": "2026-06-21T10:44:55Z",
+    "message": "chore: rotate staging tls cert",
+    "files_changed": [
+      "deploy/staging/tls.yaml"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "b60f3e842f1a5d97c0e3f47a9d41b62c8e0f1d19",
+    "author": "grace.kim",
+    "timestamp": "2026-06-21T10:50:33Z",
+    "message": "chore: upgrade base image to distroless:nonroot",
+    "files_changed": [
+      "Dockerfile"
+    ],
+    "diff": null
+  }
+]

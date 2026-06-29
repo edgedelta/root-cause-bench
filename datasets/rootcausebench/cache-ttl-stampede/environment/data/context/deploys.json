@@ -1,0 +1,20 @@
+[
+  {
+    "timestamp": "2026-07-11T13:12:00Z",
+    "service": "catalogservice",
+    "commit_sha": "c62e9decee7bb083f3628909019dd66e25dd25d8",
+    "version": "v2026.07.11-1308"
+  },
+  {
+    "timestamp": "2026-07-11T13:38:00Z",
+    "service": "productdb",
+    "commit_sha": "9ecb8232f401e85df1801227a686ba243d99beb9",
+    "version": "migration-0042"
+  },
+  {
+    "timestamp": "2026-07-11T13:53:00Z",
+    "service": "orderservice",
+    "commit_sha": "a5b4c3e06d5f71a9b8431f7c5e2a0d9c8b6f4e39",
+    "version": "v2026.07.11-1352"
+  }
+]

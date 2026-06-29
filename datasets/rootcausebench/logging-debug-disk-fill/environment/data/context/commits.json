@@ -1,0 +1,83 @@
+[
+  {
+    "sha": "4f71ee9bcc020be3db5a36114bbb3961b32add0e",
+    "author": "lena.fischer",
+    "timestamp": "2026-06-22T09:02:11Z",
+    "message": "chore: tidy import ordering in collector",
+    "files_changed": [
+      "services/logging-agent/internal/collector/tail.go"
+    ],
+    "diff": "@@ services/logging-agent/internal/collector/tail.go @@\n-\timport (\n-\t\t\"os\"\n-\t\t\"bufio\"\n-\t)\n+\timport (\n+\t\t\"bufio\"\n+\t\t\"os\"\n+\t)"
+  },
+  {
+    "sha": "3dfd26d8637da52e41eb9c5dfbf1ac19979fbb0b",
+    "author": "priya.nair",
+    "timestamp": "2026-06-22T09:11:48Z",
+    "message": "test: add cases for line splitter",
+    "files_changed": [
+      "services/logging-agent/internal/collector/split_test.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "ae0931af88530748c96ea8a048a81bd0e9fc2be7",
+    "author": "carlos.mendez",
+    "timestamp": "2026-06-22T09:24:30Z",
+    "message": "docs: clarify buffer flush semantics in README",
+    "files_changed": [
+      "services/logging-agent/README.md"
+    ],
+    "diff": "@@ services/logging-agent/README.md @@\n-The buffer flushes on size.\n+The buffer flushes on size or on the flush interval, whichever comes first."
+  },
+  {
+    "sha": "d270fbb2e2fc11b54f85cd93e63e62afd39be15c",
+    "author": "grace.kim",
+    "timestamp": "2026-06-22T09:41:05Z",
+    "message": "refactor: extract sink writer helper in logging-agent",
+    "files_changed": [
+      "services/logging-agent/internal/sink/writer.go"
+    ],
+    "diff": "@@ services/logging-agent/internal/sink/writer.go @@\n-\tf, err := os.OpenFile(path, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)\n-\tif err != nil {\n-\t\treturn err\n-\t}\n-\tdefer f.Close()\n-\t_, err = f.Write(line)\n-\treturn err\n+\treturn writeLine(path, line)\n+}\n+\n+func writeLine(path string, line []byte) error {\n+\tf, err := os.OpenFile(path, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)\n+\tif err != nil {\n+\t\treturn err\n+\t}\n+\tdefer f.Close()\n+\t_, err = f.Write(line)\n+\treturn err"
+  },
+  {
+    "sha": "ab6a18e44609cc393f80a1fa754b08127f1d8a65",
+    "author": "ivan.petrov",
+    "timestamp": "2026-06-22T09:46:52Z",
+    "message": "chore: bump otel sdk",
+    "files_changed": [
+      "go.mod",
+      "go.sum"
+    ],
+    "diff": "@@ go.mod @@\n-\tgo.opentelemetry.io/otel v1.27.0\n+\tgo.opentelemetry.io/otel v1.28.0"
+  },
+  {
+    "sha": "ce164c13c54ed0cb3bc6d2e28545adc9e2656641",
+    "author": "tunde.okafor",
+    "timestamp": "2026-06-22T09:58:40Z",
+    "message": "chore: tune logging-agent runtime config defaults",
+    "files_changed": [
+      "services/logging-agent/config/agent.yaml"
+    ],
+    "diff": "@@ services/logging-agent/config/agent.yaml @@\n logging:\n-  level: info\n+  level: debug\n   format: json\n-  sample_rate: 0.1\n+  sample_rate: 1.0\n   sink:\n     path: /var/log/edge/agent.ndjson"
+  },
+  {
+    "sha": "4061100ef5f8c85e86cd8b1168b4d5e0011eb120",
+    "author": "fatima.zahra",
+    "timestamp": "2026-06-22T10:03:09Z",
+    "message": "test: golden output for json formatter",
+    "files_changed": [
+      "services/logging-agent/internal/format/testdata/golden.json"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "335aa96c4c4707820da87e182341c9401e4b912b",
+    "author": "amir.haddad",
+    "timestamp": "2026-06-22T10:12:33Z",
+    "message": "refactor: rename ctx var in query handler",
+    "files_changed": [
+      "services/log-query-api/handler.go"
+    ],
+    "diff": "@@ services/log-query-api/handler.go @@\n-\tc := r.Context()\n-\treturn fetch(c, q)\n+\tctx := r.Context()\n+\treturn fetch(ctx, q)"
+  }
+]

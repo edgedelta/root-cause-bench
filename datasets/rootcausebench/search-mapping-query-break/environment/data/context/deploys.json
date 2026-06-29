@@ -1,0 +1,26 @@
+[
+  {
+    "timestamp": "2026-06-18T14:59:50Z",
+    "service": "searchservice",
+    "commit_sha": "4074a93cbf3be1458094e636f38d7f2fa8d4d29b",
+    "version": "v2026.06.18-1459"
+  },
+  {
+    "timestamp": "2026-06-18T15:00:30Z",
+    "service": "frontend",
+    "commit_sha": "f91ebd4b4b10c67f6f6fbf8f8f1c15c6d2620c82",
+    "version": "v2026.06.18-1500"
+  },
+  {
+    "timestamp": "2026-06-18T15:01:40Z",
+    "service": "searchservice",
+    "commit_sha": "2a2f3891d9e367e4d7b0954bcf98a9639ab72aca",
+    "version": "v2026.06.18-1501"
+  },
+  {
+    "timestamp": "2026-06-18T14:22:00Z",
+    "service": "recommendationservice",
+    "commit_sha": "f6c5e8f564aa80436b97b001ddf849a3708b37f8",
+    "version": "v2026.06.18-1422"
+  }
+]

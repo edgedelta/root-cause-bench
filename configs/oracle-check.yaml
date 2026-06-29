@@ -1,0 +1,28 @@
+jobs_dir: jobs
+n_attempts: 1
+n_concurrent_trials: 6
+quiet: false
+environment:
+  type: docker
+agents:
+  - name: oracle
+datasets:
+  - path: datasets/rootcausebench
+    task_names:
+      - ai-agent-registration-missing
+      - auth-jwt-validation-regression
+      - cache-ttl-stampede
+      - checkout-latency-n-plus-one
+      - dashboard-db-schema-missing-table
+      - dynamodb-write-capacity-breach
+      - frontend-race-condition-5xx
+      - grpc-deadline-too-tight
+      - inventory-connection-pool-exhaustion
+      - logging-debug-disk-fill
+      - metric-ingestor-metadata-deser
+      - olapdb-tso-cas-retry-budget
+      - payment-nil-deref-panic
+      - recommendation-memory-leak
+      - search-mapping-query-break
+      - transformer-dependency-startup-crash
+      - unbounded-query-delayed-onset

@@ -1,0 +1,335 @@
+[
+  {
+    "sha": "ddf0c37456a2c0b1dc51e637a065542ef6fda02c",
+    "author": "grace.kim",
+    "timestamp": "2026-09-14T09:02:11Z",
+    "message": "chore: tidy imports in catalog service",
+    "files_changed": [
+      "services/catalog/main.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "9ac1bf970388ffa4a2059ebe342c74bc2c65d814",
+    "author": "marta.kowalski",
+    "timestamp": "2026-09-14T09:05:30Z",
+    "message": "feat: add /healthz endpoint",
+    "files_changed": [
+      "internal/health/healthz.go"
+    ],
+    "diff": "@@ internal/health/healthz.go @@\n+func Healthz(w http.ResponseWriter, r *http.Request) {\n+\tw.WriteHeader(http.StatusOK)\n+}"
+  },
+  {
+    "sha": "e0849d8926737d4a663c62659dd8fe12e98accf6",
+    "author": "wei.zhang",
+    "timestamp": "2026-09-14T09:08:02Z",
+    "message": "feat: prometheus counter for cache evictions",
+    "files_changed": [
+      "pkg/cache/metrics.go"
+    ],
+    "diff": "@@ pkg/cache/metrics.go @@\n+var cacheEvict = prometheus.NewCounter(prometheus.CounterOpts{\n+\tName: \"cache_evictions_total\",\n+})"
+  },
+  {
+    "sha": "e2fc114a51517e0dc483b6572265213a3152362a",
+    "author": "fatima.zahra",
+    "timestamp": "2026-09-14T09:11:06Z",
+    "message": "chore: update CODEOWNERS",
+    "files_changed": [
+      "CODEOWNERS"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "871ca5a5dcdadd9641cbbc9a18bff6b51866f7de",
+    "author": "ivan.petrov",
+    "timestamp": "2026-09-14T09:13:41Z",
+    "message": "refactor: extract response writer helper",
+    "files_changed": [
+      "internal/httputil/writer.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "5267ec771649c1798fd3f0bc78590ef2593e17ad",
+    "author": "noah.bergstrom",
+    "timestamp": "2026-09-14T09:16:20Z",
+    "message": "docs: add runbook for deploy rollback",
+    "files_changed": [
+      "docs/runbooks/rollback.md"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "6762d0aad964821b5b1eb25be4344195ea28f1ed",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-09-14T09:18:09Z",
+    "message": "test: golden files for invoice rendering",
+    "files_changed": [
+      "pkg/invoice/testdata/golden.json"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "5a9ebf734dfecf299c27ecdb936792d1962d1398",
+    "author": "deepak.rao",
+    "timestamp": "2026-09-14T09:21:55Z",
+    "message": "ci: cache go build in GitHub Actions",
+    "files_changed": [
+      ".github/workflows/build.yml"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "65a9fcd6e75f8a0a5f88a7d26c11255f9b25a247",
+    "author": "priya.nair",
+    "timestamp": "2026-09-14T09:24:33Z",
+    "message": "style: gofmt across repo",
+    "files_changed": [
+      "pkg/cart/cart.go",
+      "pkg/cart/cart_test.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "0509399b10e186182ff31c743967ec7e6ddb3b76",
+    "author": "lena.fischer",
+    "timestamp": "2026-09-14T09:27:12Z",
+    "message": "chore: pin golangci-lint to v1.61",
+    "files_changed": [
+      ".golangci.yml"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "d4999873f012d7753798ef956a6338e0b5b8d01f",
+    "author": "sofia.marino",
+    "timestamp": "2026-09-14T09:30:02Z",
+    "message": "docs: clarify env var precedence",
+    "files_changed": [
+      "README.md"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "7d6840a0e2fa1fff741eb2331fc2ba26c3c7d0dd",
+    "author": "amir.haddad",
+    "timestamp": "2026-09-14T09:32:40Z",
+    "message": "test: increase coverage on retry backoff",
+    "files_changed": [
+      "pkg/retry/backoff_test.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "c1c22e33a326d1439a5f4e18fb93ea2ec0882c46",
+    "author": "tunde.okafor",
+    "timestamp": "2026-09-14T09:35:18Z",
+    "message": "refactor: move DTOs into api/types",
+    "files_changed": [
+      "api/types/types.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "3d50d900ad9eca124b3bbfd1ed9cd52f0eff5d45",
+    "author": "jdoe",
+    "timestamp": "2026-09-14T09:37:49Z",
+    "message": "test: table-driven tests for currency conversion",
+    "files_changed": [
+      "pkg/money/convert_test.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "e20445eea846570a924f4579f2ecef5fa847f343",
+    "author": "raj.patel",
+    "timestamp": "2026-09-14T09:40:12Z",
+    "message": "refactor(auth): split token parsing into helper",
+    "files_changed": [
+      "pkg/auth/parse.go"
+    ],
+    "diff": "@@ pkg/auth/parse.go @@\n-\tclaims := jwt.MapClaims{}\n-\ttok, err := jwt.ParseWithClaims(raw, claims, keyFunc)\n+\ttok, claims, err := parseClaims(raw, keyFunc)\n+}\n+\n+func parseClaims(raw string, keyFunc jwt.Keyfunc) (*jwt.Token, jwt.MapClaims, error) {\n+\tclaims := jwt.MapClaims{}\n+\ttok, err := jwt.ParseWithClaims(raw, claims, keyFunc)\n+\treturn tok, claims, err"
+  },
+  {
+    "sha": "8438a5c1ab553d36a30030778e98209cacd7806d",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-09-14T09:43:05Z",
+    "message": "feat: add request id propagation header",
+    "files_changed": [
+      "internal/middleware/reqid.go"
+    ],
+    "diff": "@@ internal/middleware/reqid.go @@\n+\t\tif rid == \"\" { rid = uuid.NewString() }\n+\t\tw.Header().Set(\"X-Request-Id\", rid)"
+  },
+  {
+    "sha": "0caea98a9d579d6075015b1b95a5ac65a1115fbb",
+    "author": "deepak.rao",
+    "timestamp": "2026-09-14T09:45:33Z",
+    "message": "perf: reuse sync.Pool for buffers in encoder",
+    "files_changed": [
+      "pkg/codec/pool.go"
+    ],
+    "diff": "@@ pkg/codec/pool.go @@\n+var bufPool = sync.Pool{New: func() any { return new(bytes.Buffer) }}\n \tb := bufPool.Get().(*bytes.Buffer)\n+\tdefer bufPool.Put(b)"
+  },
+  {
+    "sha": "ea4ee47e10ca36dd22b0c9894b7de3fdaf2cc3f5",
+    "author": "sofia.marino",
+    "timestamp": "2026-09-14T09:47:01Z",
+    "message": "docs: document feature flag lifecycle",
+    "files_changed": [
+      "docs/flags.md"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "e51a75bd6f9a8f8591398ff1ca6ef31a7a277861",
+    "author": "deepak.rao",
+    "timestamp": "2026-09-14T09:49:18Z",
+    "message": "chore: bump go.mod dependencies",
+    "files_changed": [
+      "go.mod",
+      "go.sum"
+    ],
+    "diff": "@@ go.mod @@\n-\tgithub.com/golang-jwt/jwt/v5 v5.2.0\n+\tgithub.com/golang-jwt/jwt/v5 v5.2.1"
+  },
+  {
+    "sha": "7dacc6c8a3c3fe7053afd5d8518ffef1f9843baa",
+    "author": "carlos.mendez",
+    "timestamp": "2026-09-14T09:51:40Z",
+    "message": "refactor(auth): simplify option defaults in token verifier",
+    "files_changed": [
+      "pkg/auth/jwt.go"
+    ],
+    "diff": "@@ pkg/auth/jwt.go @@\n func (v *Verifier) Validate(tok *jwt.Token, claims jwt.MapClaims) error {\n \tnow := time.Now()\n-\t// allow a small clock-skew tolerance between issuer and verifier pods\n-\tif exp.Add(leeway).Before(now) {\n-\t\treturn ErrTokenExpired\n-\t}\n+\tif exp.Before(now) {\n+\t\treturn ErrTokenExpired\n+\t}\n \treturn nil\n }\n@@ pkg/auth/jwt.go @@\n-// leeway absorbs clock drift across the fleet when checking exp/nbf.\n-const leeway = 120 * time.Second\n"
+  },
+  {
+    "sha": "ae44f060f17c8e6467537c5ce93d79bf879faa3e",
+    "author": "wei.zhang",
+    "timestamp": "2026-09-14T09:54:22Z",
+    "message": "feat: emit OTel span attributes for tenant_id",
+    "files_changed": [
+      "internal/trace/attrs.go"
+    ],
+    "diff": "@@ internal/trace/attrs.go @@\n+\t\tspan.SetAttributes(attribute.String(\"tenant_id\", tid))"
+  },
+  {
+    "sha": "7f5496b223b2d08046021bf964b2388c81c2ca60",
+    "author": "amir.haddad",
+    "timestamp": "2026-09-14T09:57:03Z",
+    "message": "refactor: simplify config loading with viper",
+    "files_changed": [
+      "internal/config/load.go"
+    ],
+    "diff": "@@ internal/config/load.go @@\n-\tv := viper.New()\n+\tv := viper.NewWithOptions(viper.KeyDelimiter(\".\"))"
+  },
+  {
+    "sha": "5116e67e199f0149d13cd94f320233bb37a6cd72",
+    "author": "ivan.petrov",
+    "timestamp": "2026-09-14T10:09:30Z",
+    "message": "chore(gateway): tidy auth middleware error responses",
+    "files_changed": [
+      "services/gateway/middleware/auth.go",
+      "services/gateway/middleware/auth_test.go"
+    ],
+    "diff": "@@ services/gateway/middleware/auth.go @@\n \tif err := verifier.Validate(tok, claims); err != nil {\n-\t\thttp.Error(w, \"unauthorized\", http.StatusUnauthorized)\n+\t\tw.Header().Set(\"WWW-Authenticate\", \"Bearer\")\n+\t\thttp.Error(w, `{\"error\":\"unauthorized\"}`, http.StatusUnauthorized)\n \t\treturn\n \t}"
+  },
+  {
+    "sha": "090d53d94509234858941a7e87d9ecd7a714f76a",
+    "author": "wei.zhang",
+    "timestamp": "2026-09-14T10:11:12Z",
+    "message": "feat(user): add profile avatar upload",
+    "files_changed": [
+      "services/user/profile.go"
+    ],
+    "diff": "@@ services/user/profile.go @@\n+func (s *Server) UploadAvatar(ctx context.Context, r io.Reader) (string, error) {\n+\treturn s.blob.Put(ctx, r)\n+}"
+  },
+  {
+    "sha": "2e6b5b44cf6a6185b3a542760d29a0597abc0e47",
+    "author": "marta.kowalski",
+    "timestamp": "2026-09-14T10:12:40Z",
+    "message": "fix(order): correct tax rounding for EU VAT",
+    "files_changed": [
+      "services/order/tax.go"
+    ],
+    "diff": "@@ services/order/tax.go @@\n-\treturn math.Round(net * rate)\n+\treturn math.Round(net*rate*100) / 100"
+  },
+  {
+    "sha": "a99918ac1ce9244bf6661464123b5556e1f345f5",
+    "author": "ivan.petrov",
+    "timestamp": "2026-09-14T10:15:09Z",
+    "message": "perf: preallocate buffer in JSON encoder",
+    "files_changed": [
+      "pkg/codec/json.go"
+    ],
+    "diff": "@@ pkg/codec/json.go @@\n-\tbuf := bytes.Buffer{}\n+\tbuf := bytes.NewBuffer(make([]byte, 0, 4096))"
+  },
+  {
+    "sha": "d8087beda2613012e17ad35091b0bf8834935633",
+    "author": "carlos.mendez",
+    "timestamp": "2026-09-14T10:17:30Z",
+    "message": "feat: add structured logging fields to request middleware",
+    "files_changed": [
+      "internal/middleware/log.go"
+    ],
+    "diff": "@@ internal/middleware/log.go @@\n+\t\tlogger = logger.With(\"route\", r.URL.Path, \"method\", r.Method)"
+  },
+  {
+    "sha": "a58a68bf94c333d3a5b48ecc5f1dbc4e8b20570f",
+    "author": "fatima.zahra",
+    "timestamp": "2026-09-14T10:19:16Z",
+    "message": "fix: handle empty slice in pagination helper",
+    "files_changed": [
+      "pkg/paginate/paginate.go"
+    ],
+    "diff": "@@ pkg/paginate/paginate.go @@\n+\tif len(items) == 0 { return nil, nil }"
+  },
+  {
+    "sha": "16300d16d3735dda2f8cd926c41d0ea923b9b265",
+    "author": "jdoe",
+    "timestamp": "2026-09-14T10:28:04Z",
+    "message": "chore: tidy imports in catalog service",
+    "files_changed": [
+      "services/catalog/main.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "8edc3390a8d213bbb02a10aa4dd2e191aa537130",
+    "author": "priya.nair",
+    "timestamp": "2026-09-14T10:33:41Z",
+    "message": "feat: add /healthz endpoint",
+    "files_changed": [
+      "internal/health/healthz.go"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "b1339f4e6866edd01d6cc2c6abf95b4392a462f2",
+    "author": "noah.bergstrom",
+    "timestamp": "2026-09-14T10:41:02Z",
+    "message": "chore: update CODEOWNERS",
+    "files_changed": [
+      "CODEOWNERS"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "a789845f5c01c148dd67fba5526bdbb035a9e4bc",
+    "author": "lena.fischer",
+    "timestamp": "2026-09-14T10:49:55Z",
+    "message": "test: golden files for invoice rendering",
+    "files_changed": [
+      "pkg/invoice/testdata/golden.json"
+    ],
+    "diff": null
+  },
+  {
+    "sha": "e398ee30ce2b3ceeb5639ee77526580931f4b98a",
+    "author": "yuki.tanaka",
+    "timestamp": "2026-09-14T10:58:33Z",
+    "message": "docs: add runbook for deploy rollback",
+    "files_changed": [
+      "docs/runbooks/rollback.md"
+    ],
+    "diff": null
+  }
+]

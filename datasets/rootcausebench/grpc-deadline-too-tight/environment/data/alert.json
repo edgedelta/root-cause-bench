@@ -1,0 +1,10 @@
+{
+  "service": "recommendationservice",
+  "metric": "rpc_client_error_rate",
+  "threshold": 0.02,
+  "observed": 0.61,
+  "fired_at": "2026-06-18T15:06:00Z",
+  "severity": "critical",
+  "monitor": "reco-rpc-error-rate",
+  "summary": "recommendationservice gRPC client error rate above 2% for 3m"
+}

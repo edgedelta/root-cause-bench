@@ -1,13 +1,15 @@
 {
   "scenario": "metric-ingestor-metadata-deser",
-  "root_cause_commit": "4e169b782276b9dd9b962e4474687622bda48589",
+  "root_cause_commit": "ab35071b2e727961bb1efeb7fd8e6d73d8f7c088",
   "first_failing_service": "metric-ingestor-1",
   "blast_radius": [
     "kafka-metric-ingestor"
   ],
   "remediation": "rollback",
   "decoy_deploy_commits": [
+    "4e169b782276b9dd9b962e4474687622bda48589",
+    "1f0d0d35569ead615b0b9c692c776c41a57a3af4",
     "17f8bae42e0e4e071aae9867ec68ccc395a99c63"
   ],
-  "notes": "Culprit renames a metadata field on the metric envelope but the decoder still expects the old name, so deserialization fails on every message -> metric-ingestor-1 stops flushing -> the metric-ingestor-1-iq queue backs up and kafka-metric-ingestor sees rising ApproximateAgeOfOldestMessage. Rollback restores the field name. The aws-sdk bump deployed to kafka-metric-ingestor near onset is an innocent decoy."
+  "notes": "Cross-service shared-library culprit (version skew). The true cause is the shared schema module commit ab35071b, which renames the metric-envelope field 'meta' -> 'metadata' (json tag and the required-fields list in envelope_gen.go). The producer (pipeline-transformer) bumps that shared module to v0.9.0 (commit 1f0d0d35) and deploys at 10:52, so it begins emitting envelopes keyed 'metadata'. metric-ingestor-1 still links the old schema and its strict decoder requires 'meta', so every envelope fails with 'missing required field meta' -> it stops flushing to olapdb -> the metric-ingestor-1-iq queue backs up and kafka-metric-ingestor reports rising ApproximateAgeOfOldestMessage. metric-ingestor-1's OWN code did not change in a breaking way. Tempting wrong answers: (1) the innocent ingestor refactor 4e169b78 deployed to the loud failing service at 10:57 right at onset (bait: latest deploy, on the loud service, touches decode.go but only restructures decoder construction); (2) the pipeline-transformer go.mod bump 1f0d0d35 (the delivery vehicle, but the breaking change lives in the shared module it pulls in, not in the bump itself); (3) the aws-sdk-go-v2 bump 17f8bae4 on kafka-metric-ingestor near onset. Reading the diffs: only ab35071b actually renames the field that the decoder requires. Remediation: roll back the shared schema module (revert ab35071b) / the producer to the matching version."
 }

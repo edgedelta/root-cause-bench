@@ -1,0 +1,14 @@
+{
+  "scenario": "grpc-deadline-too-tight",
+  "root_cause_commit": "47f38c2266850843297224b41736539a952ff546",
+  "first_failing_service": "recommendationservice",
+  "blast_radius": [
+    "frontend"
+  ],
+  "remediation": "rollback",
+  "decoy_deploy_commits": [
+    "9a756a127c0616b17a51a98c468de3e6044ce718",
+    "ea343eef188c107bfe5a1733c994279657a7da5b"
+  ],
+  "notes": "Culprit is 47f38c22 (priya.nair, recommendationservice, deployed 14:52:30). Its diff tightens the per-call gRPC client deadline on the productcatalog ListProducts call from context.WithTimeout(ctx, 5*time.Second) to context.WithTimeout(ctx, 300*time.Millisecond). productcatalogservice normally answers ListProducts in ~400ms p99 (server_work_ms ~380-420, span d1 = 399ms, baseline span z4 = 401ms, and its http_server_duration_p99_ms is ~400 in BOTH the baseline and incident windows -- it did NOT get slower). The new 300ms client deadline is below that normal latency, so recommendationservice's calls now hit DeadlineExceeded (rpc.grpc.status_code 4, elapsed ~305-402ms > deadline 300) and rpc_client_error_rate jumps ~0 -> ~0.61, tripping the alert on recommendationservice. The downstream productcatalogservice is the LOUD VICTIM: it logs 'context canceled by client before completion' (status_code 1, CANCELLED) and rpc_server_cancelled_rate jumps ~0 -> ~0.6 because the caller abandons the RPC mid-work -- but it is being cut off, not failing on its own. Onset is delayed (~15:01) relative to the 14:52 deploy: the tighter deadline only bites once latency/load pushes catalog work past 300ms. MISLEADING STRUCTURE: the alert and the noisiest error logs point at the wrong places. (1) Better-surface-match decoy on the downstream: 9a756a12 ('refactor: extract product row scanner', ivan.petrov, productcatalogservice) deploys at 15:01:10 -- right at onset, on the service that looks broken -- but its diff only factors row scanning into scanProducts(); it changes no timeout and no query, so it cannot produce DeadlineExceeded/CANCELLED. (2) Most-recent-deploy decoy on the caller: ea343eef ('refactor: tidy recommendation Handle path', priya.nair, recommendationservice) is the latest recommendationservice deploy before onset (14:59:30) and touches the literally-named Recommend handler -- but its diff only swaps error handling to decodeRequest/writeError helpers; it touches no deadline. (3) Dependency decoy: 07a4aaf2 bumps google.golang.org/grpc v1.61.1->v1.62.0. The flag changes in flags.json are distractors. Blast radius: frontend (recommendation rail unavailable / fallback). Caller p99 actually DROPS slightly during the incident (~450ms -> ~355ms) because it now fails fast at the 300ms deadline instead of waiting -- a tell that the problem is a tightened budget, not a slowdown. Remediation: roll back the offending recommendationservice deploy (47f38c22)."
+}

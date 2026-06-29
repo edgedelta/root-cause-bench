@@ -1,0 +1,16 @@
+{
+  "scenario": "search-mapping-query-break",
+  "root_cause_commit": "4074a93cbf3be1458094e636f38d7f2fa8d4d29b",
+  "first_failing_service": "searchservice",
+  "blast_radius": [
+    "frontend",
+    "recommendationservice"
+  ],
+  "remediation": "rollback",
+  "decoy_deploy_commits": [
+    "2a2f3891d9e367e4d7b0954bcf98a9639ab72aca",
+    "f91ebd4b4b10c67f6f6fbf8f8f1c15c6d2620c82",
+    "714a570cefe900986dbb7b691ba821eaa7a203ea"
+  ],
+  "notes": "Culprit is 4074a93c (deepak.rao, searchservice, deployed 14:59:50). Its diff edits services/search/index/mapping.go and renames the indexed field 'title' -> 'name' in CatalogMapping, while the query builder in services/search/query.go is left UNCHANGED still issuing NewMatchQuery(\"title\", ...). After the index alias picks up the new mapping, every query targets a field that no longer has a mapping, so the engine returns query_shard_exception / parse_exception 'no mapping found for field [title]' / 'unknown field [title]'. Fault signature: searchservice search_error_rate_pct ~1% -> ~94%, search_result_count_avg ~14 -> ~0, and (notably) p99 DROPS (~200ms -> ~70ms) because queries fail fast instead of running -- this is NOT a latency/N+1 regression. Onset is delayed (~15:03) vs the 14:59:50 deploy because errors only surface once the new mapping is live and queried under load. Better-surface-match decoy: 2a2f3891 ('refactor: tidy search handler request decoding', deepak.rao, searchservice) is the MOST RECENT searchservice deploy before onset (15:01:20/deployed 15:01:40) and touches the literally search-named handler.go -- but its diff only swaps inline decode/error handling for decodeSearchRequest/writeError helpers; it changes no field name and no mapping, so it cannot produce 'no mapping found for field'. Secondary decoys: f91ebd4b (frontend search-box CSS/template restyle, ~12s before the mapping deploy, no backend/query change) and 714a570c (go.mod patch bump of opensearch-go v2.3.0->v2.3.1 + grpc, no query/mapping change). The flag changes in flags.json (search_typeahead_v2, recommend_personalization) are distractors. frontend (search bar 5xx) and recommendationservice (similar-items lookup) are blast-radius victims of the searchservice errors, not the cause. Remediation: roll back the offending mapping deploy."
+}

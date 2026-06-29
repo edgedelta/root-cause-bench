@@ -1,0 +1,30 @@
+[
+  {
+    "signature": "slow query: SELECT ... FROM search_events took <N>ms",
+    "service": "searchservice",
+    "count": 8,
+    "delta_vs_baseline": "+8",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "search request failed: upstream deadline exceeded (<N>ms)",
+    "service": "frontend",
+    "count": 96,
+    "delta_vs_baseline": "+96",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "search query served",
+    "service": "searchservice",
+    "count": 1020,
+    "delta_vs_baseline": "-30",
+    "sentiment": "neutral"
+  },
+  {
+    "signature": "starting searchservice <version>",
+    "service": "searchservice",
+    "count": 2,
+    "delta_vs_baseline": "+1",
+    "sentiment": "neutral"
+  }
+]

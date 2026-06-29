@@ -1,0 +1,13 @@
+{
+  "scenario": "unbounded-query-delayed-onset",
+  "root_cause_commit": "c1cba9e7f3204a8d6b59e0c1a47f28d3b6e095a7",
+  "first_failing_service": "searchservice",
+  "blast_radius": [
+    "frontend"
+  ],
+  "remediation": "rollback",
+  "decoy_deploy_commits": [
+    "f7cb29d4108e5a3b6c0729fda1c8b5e093e6d4a2"
+  ],
+  "notes": "DELAYED-ONSET / INNOCENT-DEPLOY-AT-ONSET (hard). Culprit c1cba9 was deployed to searchservice at 08:10. Its diff (services/search/query.go) DELETES the `LIMIT 50` clause from the search_events query, so every Search() now does a full table scan + sort of search_events ordered by score. The table grows organically with traffic (~6100 rows/min), so db_rows_examined jumps from 52 (index-backed, LIMIT 50) to ~1.1M at the deploy and climbs to ~2.03M by 10:42, and db_query_latency_p99_ms climbs MONOTONICALLY from ~40ms to 800ms over ~2h32m, crossing the 800ms alert threshold at 10:42:30 -- a long delayed onset, NOT a step at deploy time. The TEMPTING wrong answer is f7cb29d ('support sort direction in search api'), the MOST-RECENT searchservice deploy at 10:38, only ~4min before the alert and right at onset -- the classic 'blame the latest deploy' trap. But f7cb29d's diff only adds an `order=asc` query param and an in-memory sort, and crucially RE-ADDS a `len(res) > 50` trim in the handler; it does not touch the SQL and is bounded -- and p99/rows_examined were already climbing steadily for 2.5h before it landed, so it cannot be the cause. Other surface-match decoys: c84a1f6 (pkg/dbx query-builder refactor -- reshapes OrderBy but preserves the Limit() method and changes no behavior), f27c905 ('raise db pool max connections' 20->40 -- DB-related but only adds capacity, cannot cause a per-query full scan), e16b8f4 (productcatalog rows.Close fix, different service). flags.json search_relevance_v2 off->on at 10:35 is a distractor (root cause is always a commit). Solve by reading the diff that removes the LIMIT on a query whose scan cost grows with the table, then tracing rows_examined/p99 back to its 08:10 deploy -- not the latest deploy. Remediation: roll back searchservice to before c1cba9."
+}

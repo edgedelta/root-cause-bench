@@ -6,16 +6,18 @@
     "message": "#api Add request id to access log",
     "files_changed": [
       "api/internal/middleware/reqid.go"
-    ]
+    ],
+    "diff": "@@ api/internal/middleware/reqid.go @@\n+\trid := r.Header.Get(\"X-Request-Id\")\n+\tif rid == \"\" {\n+\t\trid = uuid.NewString()\n+\t}\n+\tlogger = logger.With(\"request_id\", rid)"
   },
   {
     "sha": "6d8c975a49cfeac12cb58f3a748455b0e069d7b7",
     "author": "wei.zhang",
     "timestamp": "2026-06-24T10:26:33Z",
-    "message": "#ai Update prompt template wording",
+    "message": "#ingest Tidy metric decode helper",
     "files_changed": [
-      "ai/src/prompts/system.txt"
-    ]
+      "pkg/ingest/metric/decode.go"
+    ],
+    "diff": "@@ pkg/ingest/metric/decode.go @@ func DecodeEnvelope(b []byte) (*schema.MetricEnvelope, error) {\n-\tvar e schema.MetricEnvelope\n-\tif err := schema.Unmarshal(b, &e); err != nil {\n-\t\treturn nil, err\n-\t}\n-\treturn &e, nil\n+\te := schema.NewMetricEnvelope()\n+\tif err := schema.Unmarshal(b, e); err != nil {\n+\t\treturn nil, fmt.Errorf(\"decode envelope: %w\", err)\n+\t}\n+\treturn e, nil"
   },
   {
     "sha": "af27d4b8552435d2da6d9fe6eeb878be00c152c1",
@@ -24,16 +26,19 @@
     "message": "#admin Add /readyz probe handler",
     "files_changed": [
       "api/internal/health/ready.go"
-    ]
+    ],
+    "diff": "@@ api/internal/health/ready.go @@\n+func Readyz(w http.ResponseWriter, r *http.Request) {\n+\tif !pool.Ready() {\n+\t\tw.WriteHeader(503)\n+\t\treturn\n+\t}\n+\tw.WriteHeader(200)\n+}"
   },
   {
     "sha": "ab35071b2e727961bb1efeb7fd8e6d73d8f7c088",
     "author": "lena.fischer",
-    "timestamp": "2026-06-24T10:47:44Z",
-    "message": "#web Add empty-state illustration to issues list",
+    "timestamp": "2026-06-24T10:42:14Z",
+    "message": "#schema Tidy metric envelope field names",
     "files_changed": [
-      "web/src/pages/Issues.tsx"
-    ]
+      "pkg/schema/metricenvelope/envelope.go",
+      "pkg/schema/metricenvelope/envelope_gen.go"
+    ],
+    "diff": "@@ pkg/schema/metricenvelope/envelope.go @@ type MetricEnvelope struct {\n \tName       string            `json:\"name\"`\n \tValue      float64           `json:\"value\"`\n-\tMeta       map[string]string `json:\"meta\"`\n+\tMetadata   map[string]string `json:\"metadata\"`\n \tTimestamp  int64             `json:\"ts\"`\n }\n@@ pkg/schema/metricenvelope/envelope_gen.go @@\n-\trequired := []string{\"name\", \"value\", \"meta\"}\n+\trequired := []string{\"name\", \"value\", \"metadata\"}"
   },
   {
     "sha": "c6ac3467f433dda0aee40465d6d9022d702f67d9",
@@ -42,17 +47,29 @@
     "message": "#ingest Tune SQS receive batch size logging",
     "files_changed": [
       "pkg/ingest/sqs/log.go"
-    ]
+    ],
+    "diff": "@@ pkg/ingest/sqs/log.go @@\n-\tlog.Printf(\"received %d messages\", len(msgs))\n+\tlogger.Debug(\"sqs receive\", \"count\", len(msgs), \"queue\", q.Name)"
+  },
+  {
+    "sha": "1f0d0d35569ead615b0b9c692c776c41a57a3af4",
+    "author": "priya.nair",
+    "timestamp": "2026-06-24T10:51:40Z",
+    "message": "#transformer Bump shared schema module",
+    "files_changed": [
+      "pipeline-transformer/go.mod",
+      "pipeline-transformer/go.sum"
+    ],
+    "diff": "@@ pipeline-transformer/go.mod @@\n-\tgithub.com/edgedelta/pkg/schema v0.8.3\n+\tgithub.com/edgedelta/pkg/schema v0.9.0"
   },
   {
     "sha": "4e169b782276b9dd9b962e4474687622bda48589",
     "author": "yuki.tanaka",
     "timestamp": "2026-06-24T10:55:00Z",
-    "message": "#ingest Rename metadata field on metric envelope",
+    "message": "#ingest Tidy metric decoder construction",
     "files_changed": [
-      "pkg/ingest/metric/envelope.go",
       "pkg/ingest/metric/decode.go"
-    ]
+    ],
+    "diff": "@@ pkg/ingest/metric/decode.go @@ func newDecoder() *Decoder {\n-\td := &Decoder{buf: make([]byte, 0, 4096)}\n-\td.strict = true\n-\treturn d\n+\treturn &Decoder{\n+\t\tbuf:    make([]byte, 0, 4096),\n+\t\tstrict: true,\n+\t}"
   },
   {
     "sha": "17f8bae42e0e4e071aae9867ec68ccc395a99c63",
@@ -62,7 +79,8 @@
     "files_changed": [
       "go.mod",
       "go.sum"
-    ]
+    ],
+    "diff": "@@ go.mod @@\n-\tgithub.com/aws/aws-sdk-go-v2/service/sqs v1.34.1\n+\tgithub.com/aws/aws-sdk-go-v2/service/sqs v1.34.2"
   },
   {
     "sha": "23fc6985b8e1527a2149fe561c6f214641b253a0",
@@ -71,7 +89,8 @@
     "message": "#web Restyle banner on settings page",
     "files_changed": [
       "web/src/pages/Settings.css"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "77a2e0ec739bc5c1cc338e7d9274ed4d0eb5c544",
@@ -80,7 +99,8 @@
     "message": "#docs Document feature flag lifecycle",
     "files_changed": [
       "documentation/content/flags.md"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "acdf88b0662ba3ea55ea31a7316d0f9c6b287154",
@@ -89,7 +109,8 @@
     "message": "#olapdb Update part GC log verbosity",
     "files_changed": [
       "olapdb/src/Storages/PartGCThread.cpp"
-    ]
+    ],
+    "diff": "@@ olapdb/src/Storages/PartGCThread.cpp @@\n-\t\tLOG_TRACE(log, \"collected {} parts\", n);\n+\t\tLOG_DEBUG(log, \"collected {} parts in {} ms\", n, elapsed);"
   },
   {
     "sha": "9d7bc8bb9b5d17ce24f62268df9deaaaf9545c69",
@@ -98,7 +119,8 @@
     "message": "#ci Cache go build in CircleCI",
     "files_changed": [
       ".circleci/config.yml"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "ea435afe583c30e1b2c6dbbf072a97ffbd796553",
@@ -107,7 +129,8 @@
     "message": "#web Fix tooltip alignment on overview page",
     "files_changed": [
       "web/src/components/Tooltip.tsx"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "89af8c6b5965246334ca76f66398202fe78f9119",
@@ -116,7 +139,8 @@
     "message": "#chore Rotate staging TLS cert",
     "files_changed": [
       "deploy/staging/tls.yaml"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "65be258327ed4ccaba7166517e506c29b34efddd",
@@ -125,7 +149,8 @@
     "message": "#k8s Bump resource requests for compactor",
     "files_changed": [
       "charts/log-compactor/values.yaml"
-    ]
+    ],
+    "diff": "@@ charts/log-compactor/values.yaml @@\n-\t  memory: 512Mi\n+\t  memory: 768Mi"
   },
   {
     "sha": "6983dafdc3bd160f7a650dc92f3f3cf96ab27a90",
@@ -134,7 +159,8 @@
     "message": "#metrics Add histogram for cache hits",
     "files_changed": [
       "pkg/cache/metrics.go"
-    ]
+    ],
+    "diff": "@@ pkg/cache/metrics.go @@\n+\tcacheHits = prometheus.NewCounter(prometheus.CounterOpts{\n+\t\tName: \"cache_hits_total\",\n+\t})\n+\tprometheus.MustRegister(cacheHits)"
   },
   {
     "sha": "9049daf8092b227bf66dcf5ec998ff2e0d503c16",
@@ -143,7 +169,8 @@
     "message": "#dashboard Update dashboard color palette",
     "files_changed": [
       "dashboard-svc/dashboard-frontend/theme.ts"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "4e95208cccba7f9c3a7ee1dd819b012a00ad7e59",
@@ -152,7 +179,8 @@
     "message": "#ai Update prompt template wording",
     "files_changed": [
       "ai/src/prompts/system.txt"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "1c7caa45ff760a968fe8f1c1fe0a413c73625588",
@@ -161,7 +189,8 @@
     "message": "#docs Update connector setup guide",
     "files_changed": [
       "documentation/content/connectors/slack.md"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "dfbcb5040dd9b6b785f550ced150d00e82f563e0",
@@ -170,7 +199,8 @@
     "message": "#misc Fix typo in error message",
     "files_changed": [
       "pkg/errors/messages.go"
-    ]
+    ],
+    "diff": "@@ pkg/errors/messages.go @@\n-\t\"recieved unexpected status\"\n+\t\"received unexpected status\""
   },
   {
     "sha": "37b626231e3951f737d56608c697c57f94866f7e",
@@ -179,16 +209,8 @@
     "message": "#api Collapse duplicate validation funcs",
     "files_changed": [
       "api/internal/validate/validate.go"
-    ]
-  },
-  {
-    "sha": "04d77b0479363aa933472629f608be26a965373d",
-    "author": "carlos.mendez",
-    "timestamp": "2026-06-24T12:17:28Z",
-    "message": "#test Add table tests for CQL parser",
-    "files_changed": [
-      "pkg/cql/parse_test.go"
-    ]
+    ],
+    "diff": "@@ api/internal/validate/validate.go @@\n-\tif err := validateName(x); err != nil { return err }\n-\tif err := validateName2(x); err != nil { return err }\n+\tif err := validateName(x); err != nil { return err }"
   },
   {
     "sha": "26fac765052c963f54ccd434bae57c0aca636296",
@@ -197,7 +219,8 @@
     "message": "#dashboard Update dashboard color palette",
     "files_changed": [
       "dashboard-svc/dashboard-frontend/theme.ts"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "044605c99ca8b557f1b70b7a676e1bb3beff0a8f",
@@ -206,7 +229,8 @@
     "message": "#web Fix tooltip alignment on overview page",
     "files_changed": [
       "web/src/components/Tooltip.tsx"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "d854ee88ee3979b5bbb95386a1010898aad33b2b",
@@ -215,7 +239,8 @@
     "message": "#ci Cache go build in CircleCI",
     "files_changed": [
       ".circleci/config.yml"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "d66e9d4e73b6d5742b286a3f2b505ba45529a890",
@@ -225,7 +250,8 @@
     "files_changed": [
       "go.mod",
       "go.sum"
-    ]
+    ],
+    "diff": "@@ go.mod @@\n-\tgithub.com/aws/aws-sdk-go-v2/config v1.27.0\n+\tgithub.com/aws/aws-sdk-go-v2/config v1.27.1"
   },
   {
     "sha": "d5fe8cfd744b386c88c986e14ada7739aa26e575",
@@ -234,7 +260,8 @@
     "message": "#api Add request id to access log",
     "files_changed": [
       "api/internal/middleware/reqid.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "1698edc7862528ba6393eecb11b6d7f16e297f0e",
@@ -243,7 +270,8 @@
     "message": "#transformer Add structured log field service",
     "files_changed": [
       "pipeline-transformer/internal/log/fields.go"
-    ]
+    ],
+    "diff": "@@ pipeline-transformer/internal/log/fields.go @@\n+\tfields = append(fields, slog.String(\"service\", svc))"
   },
   {
     "sha": "9209558db1681140b36459d4adc64a04a819e092",
@@ -252,7 +280,8 @@
     "message": "#api Collapse duplicate validation funcs",
     "files_changed": [
       "api/internal/validate/validate.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "e66b277b1be4753e7b3d8641b6d4d4007b39c768",
@@ -261,15 +290,7 @@
     "message": "#olapdb Update part GC log verbosity",
     "files_changed": [
       "olapdb/src/Storages/PartGCThread.cpp"
-    ]
-  },
-  {
-    "sha": "1f0d0d35569ead615b0b9c692c776c41a57a3af4",
-    "author": "priya.nair",
-    "timestamp": "2026-06-24T12:58:12Z",
-    "message": "#transformer Add structured log field service",
-    "files_changed": [
-      "pipeline-transformer/internal/log/fields.go"
-    ]
+    ],
+    "diff": null
   }
 ]

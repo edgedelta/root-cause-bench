@@ -1,0 +1,10 @@
+{
+  "service": "gatewayservice",
+  "metric": "http_401_unauthorized_ratio",
+  "threshold": 0.05,
+  "observed": 0.61,
+  "fired_at": "2026-09-14T10:21:00Z",
+  "severity": "critical",
+  "monitor": "gateway-auth-rejection-spike",
+  "summary": "gatewayservice 401 unauthorized ratio above 5%; valid sessions being rejected and multiple downstream services also rejecting tokens"
+}

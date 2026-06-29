@@ -1,0 +1,18 @@
+{
+  "scenario": "cache-ttl-stampede",
+  "root_cause_commit": "c62e9decee7bb083f3628909019dd66e25dd25d8",
+  "first_failing_service": "productdb",
+  "blast_radius": [
+    "catalogservice",
+    "frontend",
+    "searchservice"
+  ],
+  "remediation": "rollback",
+  "decoy_deploy_commits": [
+    "9ecb8232f401e85df1801227a686ba243d99beb9",
+    "a9b8c7e40d9f15a3b2875f1c9e6a4d3e2f0b8d73",
+    "d642c0cd285c287fdb5b6872468507e88442e6a5",
+    "a5b4c3e06d5f71a9b8431f7c5e2a0d9c8b6f4e39"
+  ],
+  "notes": "Cross-service + delayed-onset cache stampede. The PAGED/loud service is productdb (db_cpu_utilization crosses 85% at ~13:36 and pins at ~94-96%; db_query_duration_p99_ms and slow-query/statement-timeout logs explode). But productdb itself did not regress: the causal diff is c62e9dec (author priya.sharma, caching/platform team), which lowers the SHARED read-through cache DefaultTTL in pkg/cache/config.go + redis.yaml from 15m to 15s. catalogservice embeds that shared cache and does NOT override the TTL, so after its 13:12 deploy every cached catalog_item entry now expires in 15s. The discriminating signal is cache_hit_ratio (catalogservice): it sits at ~0.97 through 13:12 and then bleeds DOWN to ~0.55 over the next ~25 min as the warm 15m entries expire -- a DELAYED onset. Each miss is a read-through to productdb, so db_queries_per_second climbs ~165 -> ~700 and db_cpu follows, crossing threshold ~24 min after the cache deploy. TEMPTING WRONG answers: (1) 9ecb8232 (tomas.novak, db team) -- a productdb migration deployed at 13:38, right before the 13:46 page, ON the loud service; but its diff only adds an index CONCURRENTLY (CREATE INDEX ... catalog_items.updated_at), which cannot raise read CPU 4x and is unrelated to the id= lookup that is slow. (2) a9b8c7e4 (carlos.mendez, catalogservice, 13:31) refactors the catalog lookup handler and touches cache.GetOrLoad, looking cache-related, but it only collapses an if/return -- no behavior change. (3) d642c0cd adds cache hit/miss counters (metrics only). (4) the orderservice deploy a5b4c3e0 and the catalog_query_planner_v2 flag flip at 13:37 are distractors. first_failing_service is productdb (the metric that breaches). blast_radius = catalogservice (read-through latency), frontend + searchservice (upstream 1500ms timeouts). remediation = rollback (revert the shared cache TTL to 15m, or pin catalogservice's TTL)."
+}

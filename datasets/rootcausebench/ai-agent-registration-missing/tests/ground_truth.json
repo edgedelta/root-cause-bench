@@ -7,7 +7,8 @@
   ],
   "remediation": "roll-forward",
   "decoy_deploy_commits": [
+    "7b8e1c4a9d2f3e6b0c5a8f1d7e4b2c9a6f3d0e1b",
     "0422ec79bc772e9d3ee84a27422a5d2874415444"
   ],
-  "notes": "Culprit refactors agent bootstrap and drops the step that registers predefined internal agents (e.g. thread-title-determiner) at startup. After the deploy/restart the org-scoped lookup can't find them and ai-agent-svc returns 500; ai-memory-svc's context builder fails downstream. Fix is to restore the registration (roll-forward), matching the real fallback-fix PR. The web restyle deploy near onset is an innocent decoy."
+  "notes": "Culprit is the agent-bootstrap refactor (41f4a783): its diff DELETES the registerPredefinedAgents(registry) call from bootstrapAgentRuntime() (and drops the import), so after the deploy/restart the org-scoped predefined-agent registry is never seeded. The startup line 'agent bootstrap complete' still logs (no crash) and the FIRST lookup of 'thread-title-determiner' returns 500; ai-memory-svc's BuildThreadContext fails downstream waiting on getPredefinedAgent. Fix is to restore the registration call (roll-forward), matching the real fallback-fix PR. DECOY 7b8e1c4a ('Adjust predefined-agent lookup handler') ships in the SAME ai-agent-svc release and touches the exact failing endpoint getPredefinedAgent — the best surface match — but its diff only adds a 'scope' field to the existing 500 error body; it does not create or remove the registration, so it cannot be the cause. DECOY 0422ec79 is an innocent web restyle deployed near onset. flags.json (agent_streaming_v2 flip) is a distractor."
 }

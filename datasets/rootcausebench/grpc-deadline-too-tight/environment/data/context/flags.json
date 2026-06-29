@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": "2026-06-18T14:45:00Z",
+    "flag": "reco_personalized_rail",
+    "service": "frontend",
+    "change": "off->on",
+    "actor": "lena.fischer"
+  },
+  {
+    "timestamp": "2026-06-18T13:30:00Z",
+    "flag": "catalog_cache_v2",
+    "service": "productcatalogservice",
+    "change": "off->on",
+    "actor": "amir.haddad"
+  }
+]

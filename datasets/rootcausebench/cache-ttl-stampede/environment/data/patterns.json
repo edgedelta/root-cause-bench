@@ -1,0 +1,51 @@
+[
+  {
+    "signature": "slow query: SELECT * FROM catalog_items WHERE id=$1",
+    "service": "productdb",
+    "count": 612,
+    "delta_vs_baseline": "+610",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "cache miss; read-through to productdb",
+    "service": "catalogservice",
+    "count": 488,
+    "delta_vs_baseline": "+474",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "statement timeout: query exceeded <N>ms under load",
+    "service": "productdb",
+    "count": 57,
+    "delta_vs_baseline": "+57",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "upstream catalogservice timeout after <N>ms",
+    "service": "frontend",
+    "count": 34,
+    "delta_vs_baseline": "+34",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "upstream catalogservice timeout after <N>ms",
+    "service": "searchservice",
+    "count": 29,
+    "delta_vs_baseline": "+29",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "feature flag catalog_query_planner_v2 enabled",
+    "service": "productdb",
+    "count": 1,
+    "delta_vs_baseline": "+1",
+    "sentiment": "neutral"
+  },
+  {
+    "signature": "served catalog page",
+    "service": "catalogservice",
+    "count": 70,
+    "delta_vs_baseline": "-2900",
+    "sentiment": "neutral"
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "signature": "processing record",
+    "service": "logging-agent",
+    "count": 18420,
+    "delta_vs_baseline": "+18420",
+    "sentiment": "neutral"
+  },
+  {
+    "signature": "write /var/log/edge/agent.ndjson: no space left on device",
+    "service": "logging-agent",
+    "count": 9,
+    "delta_vs_baseline": "+9",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "tail read chunk",
+    "service": "logging-agent",
+    "count": 14110,
+    "delta_vs_baseline": "+14110",
+    "sentiment": "neutral"
+  },
+  {
+    "signature": "writer goroutine exited: no space left on device; agent shutting down",
+    "service": "logging-agent",
+    "count": 1,
+    "delta_vs_baseline": "+1",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "query failed: cannot open index segment on /var/log/edge: read-only file system",
+    "service": "log-query-api",
+    "count": 10,
+    "delta_vs_baseline": "+10",
+    "sentiment": "negative"
+  },
+  {
+    "signature": "flushed batch to sink",
+    "service": "logging-agent",
+    "count": 10,
+    "delta_vs_baseline": "-50",
+    "sentiment": "neutral"
+  }
+]

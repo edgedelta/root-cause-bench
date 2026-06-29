@@ -1,0 +1,15 @@
+{
+  "scenario": "frontend-race-condition-5xx",
+  "root_cause_commit": "c3a79d0eaeeded2803a3f2b24c9fb7ae7825a560",
+  "first_failing_service": "frontend",
+  "blast_radius": [
+    "cartservice"
+  ],
+  "remediation": "rollback",
+  "decoy_deploy_commits": [
+    "30432f5f3769b553f1ae6c1764490fc3fe6b175e",
+    "7547b550204f5f6658e1a0db48d185fa3fb306e4",
+    "b81fa78438bcdada87d8a1527d0d8406e1e59ef3"
+  ],
+  "notes": "Culprit is c3a79d0e (priya.nair, frontend, committed 14:54:40, deployed 14:55:30). Its diff removes the sync.Mutex (mu) field from the rate-limiter Limiter struct AND deletes the l.mu.Lock()/defer l.mu.Unlock() pair guarding the shared counts map write (l.counts[clientID]++) in (*Limiter).Allow. That unsynchronized concurrent map write is a Go data race: the runtime throws 'fatal error: concurrent map writes' once two requests hit Allow simultaneously. The fault is intermittent and load-correlated: harmless at low RPS right after the 14:55 deploy, it only triggers once frontend RPS climbs past ~1500 (onset ~15:02), so 5xx rate tracks requests_per_sec and spikes intermittently (it dips at 15:09 even as RPS rises). Logs carry the smoking gun: goroutine_stack = runtime.mapassign_faststr -> frontend/middleware.(*Limiter).Allow(ratelimit.go:38), i.e. the map write in the rate limiter, exactly the line the culprit unlocked. http_server_5xx_rate jumps from ~0 to a 0.10-0.12 peak; frontend error traces have ~6-12ms duration (panic, not latency). BETTER-SURFACE-MATCH DECOY: 30432f5f (marta.kowalski, frontend, committed 15:01:20, deployed 15:01:40) is the MOST RECENT frontend deploy and lands right at onset; it touches services/frontend/handler.go's Checkout handler (the literally checkout-named handler) and changes a 502 status path -- a very tempting match for '5xx on checkout'. But its diff only swaps error handling to decodeRequest/writeError helpers; it adds no shared-map write and removes no lock, so it cannot produce 'concurrent map writes'. The panic predates this deploy (first panic 15:02:41 is consistent with the 14:55 culprit under rising load) and the stack points at ratelimit.go, not handler.go. SECONDARY DECOYS: 7547b550 (go.mod/chi+grpc patch bump, 15:00:12, deployed implicitly with the 15:01 build) and b81fa784 (frontend access-log middleware, committed 15:21 / deployed 15:22 -- AFTER onset, so it cannot be the cause). cartservice is blast radius: it logs 'upstream frontend reset connection' and its 5xx/p99 rise only after frontend's, tracking it. productcatalogservice stays flat (not a victim). flags.json (frontend_new_recommendation_rail) is a distractor. Remediation: roll back the c3a79d0e frontend deploy to restore the lock."
+}

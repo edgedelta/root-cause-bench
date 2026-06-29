@@ -31,3 +31,10 @@ datasets:
       - payment-nil-deref-panic
       - recommendation-memory-leak
       - transformer-dependency-startup-crash
+      - logging-debug-disk-fill
+      - frontend-race-condition-5xx
+      - search-mapping-query-break
+      - cache-ttl-stampede
+      - auth-jwt-validation-regression
+      - grpc-deadline-too-tight
+      - unbounded-query-delayed-onset

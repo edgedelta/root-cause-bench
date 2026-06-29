@@ -6,7 +6,8 @@
     "message": "chore: tidy imports in product service",
     "files_changed": [
       "services/product/main.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "d45308b2c06a169d6d24ba4a1f8cd2a36bb0ffd0",
@@ -15,7 +16,8 @@
     "message": "feat: add /readyz endpoint",
     "files_changed": [
       "internal/health/ready.go"
-    ]
+    ],
+    "diff": "@@ internal/health/ready.go @@\n+func Readyz(w http.ResponseWriter, r *http.Request) {\n+\tw.WriteHeader(http.StatusOK)\n+\t_, _ = w.Write([]byte(\"ok\"))\n+}"
   },
   {
     "sha": "e8d1497769611cef1590e116d60b6d850f42b11b",
@@ -24,7 +26,8 @@
     "message": "refactor: collapse duplicate validation funcs",
     "files_changed": [
       "pkg/validate/validate.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "8603d5fdfa1869a1cff83641009662d1fd9f4ac3",
@@ -33,7 +36,8 @@
     "message": "feat: add prometheus histogram for cache hits",
     "files_changed": [
       "pkg/cache/metrics.go"
-    ]
+    ],
+    "diff": "@@ pkg/cache/metrics.go @@\n+var cacheHits = prometheus.NewHistogram(prometheus.HistogramOpts{\n+\tName: \"cache_hit_seconds\", Buckets: prometheus.DefBuckets,\n+})"
   },
   {
     "sha": "3f982cb10536e33bc81def3814ff3f991d3310d9",
@@ -42,7 +46,8 @@
     "message": "chore: update CODEOWNERS",
     "files_changed": [
       "CODEOWNERS"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "7e2ca060731764815334cb9112b12ee095200a2d",
@@ -51,7 +56,8 @@
     "message": "refactor: extract response writer helper",
     "files_changed": [
       "internal/httputil/writer.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "7f143d8c56b30ae81d2c6b73a666b83a9dc78209",
@@ -60,7 +66,8 @@
     "message": "chore: upgrade base image to distroless:nonroot",
     "files_changed": [
       "Dockerfile"
-    ]
+    ],
+    "diff": "@@ Dockerfile @@\n-FROM gcr.io/distroless/static:latest\n+FROM gcr.io/distroless/static:nonroot"
   },
   {
     "sha": "b38966a29d0a477f9830155d5ba5818dbeb9609a",
@@ -69,16 +76,18 @@
     "message": "docs: add runbook for deploy rollback",
     "files_changed": [
       "docs/runbooks/rollback.md"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "43b420c9b1720d8ef39d862abe16c563083be898",
     "author": "marta.kowalski",
     "timestamp": "2026-06-20T11:40:34Z",
-    "message": "fix: race in metrics registry init",
+    "message": "chore: lazy-init metrics registry",
     "files_changed": [
       "pkg/cache/registry.go"
-    ]
+    ],
+    "diff": "@@ pkg/cache/registry.go @@\n-\treg := prometheus.NewRegistry()\n+\tregOnce.Do(func() { reg = prometheus.NewRegistry() })"
   },
   {
     "sha": "04dc30454ecae3d1c10f8c5e19e1e1e8d90a0d31",
@@ -87,7 +96,8 @@
     "message": "fix: off-by-one in batch chunking",
     "files_changed": [
       "pkg/batch/chunk.go"
-    ]
+    ],
+    "diff": "@@ pkg/batch/chunk.go @@\n-\tfor i := 0; i < len(xs); i += size {\n-\t\tend := i + size\n+\tfor i := 0; i < len(xs); i += size {\n+\t\tend := i + size\n+\t\tif end > len(xs) { end = len(xs) }"
   },
   {
     "sha": "2cbb44c01a589c058e90382ba21471c5253b96b3",
@@ -96,7 +106,8 @@
     "message": "fix: close response body in health checker",
     "files_changed": [
       "internal/health/check.go"
-    ]
+    ],
+    "diff": "@@ internal/health/check.go @@\n \tresp, err := client.Do(req)\n+\tdefer resp.Body.Close()"
   },
   {
     "sha": "53762646d2c215e4d312f05c68c8f3607bd327aa",
@@ -105,7 +116,8 @@
     "message": "refactor: rename internal package observability->telemetry",
     "files_changed": [
       "internal/telemetry/telemetry.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "4006a3260aceb653a79c35db98f777f3bff34560",
@@ -114,7 +126,8 @@
     "message": "docs: update API reference for orders endpoint",
     "files_changed": [
       "docs/api/orders.md"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "8fd5625995ac544a80a8ead474252a8d77f9e464",
@@ -123,7 +136,8 @@
     "message": "feat: add request id propagation header",
     "files_changed": [
       "internal/middleware/reqid.go"
-    ]
+    ],
+    "diff": "@@ internal/middleware/reqid.go @@\n+\t\tif rid == \"\" { rid = uuid.NewString() }\n+\t\tw.Header().Set(\"X-Request-Id\", rid)"
   },
   {
     "sha": "53190eb5c4171a1e25ec066e3e9553cb4c960b65",
@@ -132,7 +146,8 @@
     "message": "test: golden files for invoice rendering",
     "files_changed": [
       "pkg/invoice/testdata/golden.json"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "df82bfa84c1779ccf97449bc99b5cd7267efa5d4",
@@ -141,7 +156,8 @@
     "message": "feat: support gzip request bodies",
     "files_changed": [
       "internal/middleware/gzip.go"
-    ]
+    ],
+    "diff": "@@ internal/middleware/gzip.go @@\n+\t\tif r.Header.Get(\"Content-Encoding\") == \"gzip\" {\n+\t\t\tr.Body, _ = gzip.NewReader(r.Body)\n+\t\t}"
   },
   {
     "sha": "f54c101b354be85eda0c1f8106b496b7b3c2583f",
@@ -150,7 +166,8 @@
     "message": "ci: cache go build in GitHub Actions",
     "files_changed": [
       ".github/workflows/build.yml"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "4704d98ad4ab848d2ab53635350de282f99022d1",
@@ -159,7 +176,8 @@
     "message": "test: add integration test for graceful shutdown",
     "files_changed": [
       "cmd/server/shutdown_test.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "7b42d62ba831b54f4891b9aeabd93b06482d487e",
@@ -168,7 +186,8 @@
     "message": "test: add table-driven tests for currency conversion",
     "files_changed": [
       "pkg/money/convert_test.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "a68027c0cb31d33d94ff56bb35bc4bedb0832019",
@@ -177,7 +196,8 @@
     "message": "test: increase coverage on retry backoff",
     "files_changed": [
       "pkg/retry/backoff_test.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "d14a9c75f606ab2ba164ed15beaee74253776b52",
@@ -187,7 +207,8 @@
     "files_changed": [
       "pkg/cart/cart.go",
       "pkg/cart/cart_test.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "af70d81540dcda7e9991f1433cfe32ba219e4124",
@@ -196,7 +217,8 @@
     "message": "chore: pin golangci-lint to v1.61",
     "files_changed": [
       ".golangci.yml"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "e70a5ae729820015a320a9879040f96bfe2eb5d8",
@@ -205,7 +227,8 @@
     "message": "docs: clarify env var precedence",
     "files_changed": [
       "README.md"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "f3b59bfab1c05d602fd3776f60e4f899178d5615",
@@ -214,7 +237,8 @@
     "message": "perf: reuse sync.Pool for buffers in encoder",
     "files_changed": [
       "pkg/codec/pool.go"
-    ]
+    ],
+    "diff": "@@ pkg/codec/pool.go @@\n+var bufPool = sync.Pool{New: func() any { return new(bytes.Buffer) }}\n \tb := bufPool.Get().(*bytes.Buffer)\n+\tdefer bufPool.Put(b)"
   },
   {
     "sha": "807756fe272e8f0cf1383827af09310a52e757d3",
@@ -223,7 +247,8 @@
     "message": "fix: guard against negative quantity in cart",
     "files_changed": [
       "pkg/cart/validate.go"
-    ]
+    ],
+    "diff": "@@ pkg/cart/validate.go @@\n+\tif qty < 0 { return ErrNegativeQty }"
   },
   {
     "sha": "e430d4a72ccb214acdd4e05c7e89022bcfe0783d",
@@ -232,7 +257,19 @@
     "message": "chore: rotate staging TLS cert",
     "files_changed": [
       "deploy/staging/tls.yaml"
-    ]
+    ],
+    "diff": null
+  },
+  {
+    "sha": "1a6f4b9c5d8e2079c3b41f60a7e2d513c9f08b42",
+    "author": "ivan.petrov",
+    "timestamp": "2026-06-20T13:18:20Z",
+    "message": "chore(inventory): tune pgx pool idle settings",
+    "files_changed": [
+      "services/inventory/db/pool.go",
+      "services/inventory/config/db.yaml"
+    ],
+    "diff": "@@ services/inventory/db/pool.go @@\n \tcfg := db.NewPoolConfig()\n-\tcfg.MaxConnIdleTime = 30 * time.Second\n+\tcfg.MaxConnIdleTime = 5 * time.Minute\n-\tcfg.HealthCheckPeriod = 15 * time.Second\n+\tcfg.HealthCheckPeriod = 60 * time.Second\n@@ services/inventory/config/db.yaml @@\n-  max_conn_idle: 30s\n+  max_conn_idle: 5m\n-  health_check_period: 15s\n+  health_check_period: 60s"
   },
   {
     "sha": "6e19c5cea3a971931c4f48704e47077a4ef7b456",
@@ -242,7 +279,8 @@
     "files_changed": [
       "go.mod",
       "go.sum"
-    ]
+    ],
+    "diff": "@@ go.mod @@\n-\tgithub.com/jackc/pgx/v5 v5.5.4\n+\tgithub.com/jackc/pgx/v5 v5.5.5"
   },
   {
     "sha": "bd05ab0cac49e84f40cef0c1b409482f219ac4f9",
@@ -251,7 +289,8 @@
     "message": "refactor: move DTOs into api/types",
     "files_changed": [
       "api/types/types.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "19c0582d5d79d9d2cfd47fcecef0a9efbef37ff1",
@@ -260,7 +299,8 @@
     "message": "test: fuzz the SKU parser",
     "files_changed": [
       "pkg/sku/parse_fuzz_test.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "450ef9e7f8904787374574822be1db6ffa2f4db4",
@@ -269,7 +309,8 @@
     "message": "fix: correct typo in error message",
     "files_changed": [
       "internal/errors/messages.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "428407d2d32d16b7a09e2f1b6eca3396c8229e87",
@@ -278,7 +319,8 @@
     "message": "docs: document feature flag lifecycle",
     "files_changed": [
       "docs/flags.md"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "e601bd18760e98d94575396e24f1e10d6de3e612",
@@ -287,27 +329,18 @@
     "message": "refactor: simplify config loading with viper",
     "files_changed": [
       "internal/config/load.go"
-    ]
+    ],
+    "diff": "@@ internal/config/load.go @@\n-\tv := viper.New()\n-\tv.SetConfigName(\"config\")\n+\tv := viper.NewWithOptions(viper.KeyDelimiter(\".\"))\n+\tv.SetConfigName(\"config\")"
   },
   {
-    "sha": "13ac92a16b155fd29f379d4eab35ec82c976c44f",
-    "author": "ivan.petrov",
-    "timestamp": "2026-06-20T13:40:00Z",
-    "message": "perf(inventory): tune pgx pool sizing for memory headroom",
+    "sha": "c7d2e9a3f1b04658e8a72c0d9b5e34176af2c801",
+    "author": "carlos.mendez",
+    "timestamp": "2026-06-20T13:39:48Z",
+    "message": "refactor(platform): simplify pool option defaults in db client",
     "files_changed": [
-      "services/inventory/db/pool.go",
-      "services/inventory/config/db.yaml"
-    ]
-  },
-  {
-    "sha": "13ac92a16b155fd29f379d4eab35ec82c976c44f",
-    "author": "ivan.petrov",
-    "timestamp": "2026-06-20T13:40:00Z",
-    "message": "perf(inventory): tune pgx pool sizing for memory headroom",
-    "files_changed": [
-      "services/inventory/db/pool.go",
-      "services/inventory/config/db.yaml"
-    ]
+      "pkg/db/pool.go"
+    ],
+    "diff": "@@ pkg/db/pool.go @@\n func NewPoolConfig() *PoolConfig {\n \treturn &PoolConfig{\n-\t\tMaxConns:        defaultMaxConns,\n+\t\tMaxConns:        defaultMaxConns,\n \t\tMaxConnIdleTime: 30 * time.Second,\n \t}\n }\n \n-// defaultMaxConns is the pool ceiling shared by all services.\n-const defaultMaxConns = 50\n+// defaultMaxConns is the pool ceiling shared by all services.\n+const defaultMaxConns = 10"
   },
   {
     "sha": "b6262ea46bc70b162b0427fb7ed31d6008db17b1",
@@ -316,7 +349,8 @@
     "message": "feat: emit OTel span attributes for user_id",
     "files_changed": [
       "internal/trace/attrs.go"
-    ]
+    ],
+    "diff": "@@ internal/trace/attrs.go @@\n+\t\tspan.SetAttributes(attribute.String(\"user_id\", uid))"
   },
   {
     "sha": "ba9484cecab7dc64c69915a99277f714884b326d",
@@ -325,7 +359,8 @@
     "message": "feat(shipping): add carrier rate-card refresh job",
     "files_changed": [
       "services/shipping/ratecard.go"
-    ]
+    ],
+    "diff": "@@ services/shipping/ratecard.go @@\n+func (s *Server) refreshRateCard(ctx context.Context) error {\n+\tcard, err := s.carrier.FetchRates(ctx)\n+\tif err != nil { return err }\n+\ts.rates.Store(card)\n+\treturn nil\n+}"
   },
   {
     "sha": "76005bb9118b9af36cf360279e3ec2ef8442e1a9",
@@ -334,7 +369,8 @@
     "message": "fix(order): correct tax rounding for EU VAT",
     "files_changed": [
       "services/order/tax.go"
-    ]
+    ],
+    "diff": "@@ services/order/tax.go @@\n-\treturn math.Round(net * rate)\n+\treturn math.Round(net*rate*100) / 100"
   },
   {
     "sha": "467296c27d4d94d4046312c1d9ea3a26b448bf3c",
@@ -343,7 +379,8 @@
     "message": "feat: add structured logging fields to request middleware",
     "files_changed": [
       "internal/middleware/log.go"
-    ]
+    ],
+    "diff": "@@ internal/middleware/log.go @@\n+\t\tlogger = logger.With(\"route\", r.URL.Path, \"method\", r.Method)"
   },
   {
     "sha": "1d0c3c8a7ae31c7cc8af5470fcf854b0c682066a",
@@ -352,7 +389,8 @@
     "message": "perf: preallocate buffer in JSON encoder",
     "files_changed": [
       "pkg/codec/json.go"
-    ]
+    ],
+    "diff": "@@ pkg/codec/json.go @@\n-\tbuf := bytes.Buffer{}\n+\tbuf := bytes.NewBuffer(make([]byte, 0, 4096))"
   },
   {
     "sha": "8f0b56bd93b74aea189adb3325d48dbd436d3588",
@@ -361,7 +399,8 @@
     "message": "fix: handle empty slice in pagination helper",
     "files_changed": [
       "pkg/paginate/paginate.go"
-    ]
+    ],
+    "diff": "@@ pkg/paginate/paginate.go @@\n+\tif len(items) == 0 { return nil, nil }"
   },
   {
     "sha": "a817193d4f107fae6b0071e048651b68a81de963",
@@ -370,7 +409,8 @@
     "message": "chore: tidy imports in product service",
     "files_changed": [
       "services/product/main.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "dfb0b91e7979060be4e7be23f098f9b03f246017",
@@ -379,7 +419,8 @@
     "message": "feat: add /readyz endpoint",
     "files_changed": [
       "internal/health/ready.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "84da2fa2eee7b53aeab0a662e9d2689adcfb3d04",
@@ -388,7 +429,8 @@
     "message": "refactor: collapse duplicate validation funcs",
     "files_changed": [
       "pkg/validate/validate.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "b168c1a4cdbfbac155a3a0e65074a2f5470b6484",
@@ -397,7 +439,8 @@
     "message": "feat: add prometheus histogram for cache hits",
     "files_changed": [
       "pkg/cache/metrics.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "df7f5663ec91604e5051f072c9bd675e8d5f79aa",
@@ -406,7 +449,8 @@
     "message": "chore: update CODEOWNERS",
     "files_changed": [
       "CODEOWNERS"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "ea785ac9086869a8f0a1a8d06f20954c83cea82c",
@@ -415,7 +459,8 @@
     "message": "refactor: extract response writer helper",
     "files_changed": [
       "internal/httputil/writer.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "33360ae85a04cfb65738b9341cae7874c5ab2ca3",
@@ -424,7 +469,8 @@
     "message": "chore: upgrade base image to distroless:nonroot",
     "files_changed": [
       "Dockerfile"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "2459073558ed214765f035b7560db50a82bd2a45",
@@ -433,15 +479,17 @@
     "message": "docs: add runbook for deploy rollback",
     "files_changed": [
       "docs/runbooks/rollback.md"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "c4ab38a7090da45ed2db2e1a8207df9ca42970a9",
     "author": "jdoe",
     "timestamp": "2026-06-20T14:46:01Z",
-    "message": "fix: race in metrics registry init",
+    "message": "chore: lazy-init metrics registry",
     "files_changed": [
       "pkg/cache/registry.go"
-    ]
+    ],
+    "diff": null
   }
 ]

@@ -3,10 +3,11 @@
     "sha": "0fa0f1195bb6c21bf070fd4be964b0eb75384484",
     "author": "tunde.okafor",
     "timestamp": "2026-06-23T09:03:55Z",
-    "message": "#ingest Tune SQS receive batch size logging",
+    "message": "#ingest Tidy SQS receive batch logging",
     "files_changed": [
       "pkg/ingest/sqs/log.go"
-    ]
+    ],
+    "diff": "@@ pkg/ingest/sqs/log.go @@\n-\tlog.Printf(\"sqs recv batch=%d\", n)\n+\tlog.Printf(\"sqs recv batch=%d visibility=%s\", n, vt)"
   },
   {
     "sha": "65a26b1dc99b627e62133325c5c026153c973105",
@@ -15,7 +16,8 @@
     "message": "#misc Fix typo in error message",
     "files_changed": [
       "pkg/errors/messages.go"
-    ]
+    ],
+    "diff": "@@ pkg/errors/messages.go @@\n-\tErrNotFound = \"resouce not found\"\n+\tErrNotFound = \"resource not found\""
   },
   {
     "sha": "059283c53b7e011125f9955ff8dc40f687ac2459",
@@ -24,7 +26,19 @@
     "message": "#ci Cache go build in CircleCI",
     "files_changed": [
       ".circleci/config.yml"
-    ]
+    ],
+    "diff": null
+  },
+  {
+    "sha": "41f4a783a75e53ab9bd5169adaeb2b0413d0d339",
+    "author": "deepak.rao",
+    "timestamp": "2026-06-23T09:31:40Z",
+    "message": "#ai Refactor agent bootstrap",
+    "files_changed": [
+      "ai/src/runtime/bootstrap.ts",
+      "ai/src/runtime/agent_registry.ts"
+    ],
+    "diff": "@@ ai/src/runtime/bootstrap.ts @@\n export async function bootstrapAgentRuntime(cfg: RuntimeConfig): Promise<AgentRuntime> {\n   const registry = new AgentRegistry(cfg.orgId);\n   await loadOrgAgents(registry, cfg);\n-  registerPredefinedAgents(registry);\n   await registry.warmup();\n   log.info(\"agent bootstrap complete\");\n   return new AgentRuntime(registry);\n }\n@@ ai/src/runtime/agent_registry.ts @@\n-import { registerPredefinedAgents } from \"./predefined\";\n+// predefined agents are seeded by registerPredefinedAgents() during bootstrap"
   },
   {
     "sha": "0422ec79bc772e9d3ee84a27422a5d2874415444",
@@ -33,17 +47,18 @@
     "message": "#web Restyle issue card header",
     "files_changed": [
       "web/src/components/IssueCard.tsx"
-    ]
+    ],
+    "diff": "@@ web/src/components/IssueCard.tsx @@\n-  <div className=\"card-hd\">\n+  <div className=\"card-hd card-hd--compact\">"
   },
   {
-    "sha": "41f4a783a75e53ab9bd5169adaeb2b0413d0d339",
+    "sha": "7b8e1c4a9d2f3e6b0c5a8f1d7e4b2c9a6f3d0e1b",
     "author": "deepak.rao",
-    "timestamp": "2026-06-23T09:40:00Z",
-    "message": "#ai Refactor agent bootstrap",
+    "timestamp": "2026-06-23T09:41:10Z",
+    "message": "#ai Adjust predefined-agent lookup handler",
     "files_changed": [
-      "ai/src/runtime/bootstrap.ts",
-      "ai/src/runtime/agent_registry.ts"
-    ]
+      "ai/src/http/predefined_agent_handler.ts"
+    ],
+    "diff": "@@ ai/src/http/predefined_agent_handler.ts @@\n export async function getPredefinedAgent(req: Req, res: Res) {\n   const agent = req.runtime.registry.lookup(req.params.name);\n   if (!agent) {\n-    res.status(500).json({ error: req.params.name + \" not found\" });\n+    res.status(500).json({ error: req.params.name + \" not found\", scope: \"org\" });\n     return;\n   }\n   res.json(agent.describe());\n }"
   },
   {
     "sha": "cacad36dd5fce5e42cfae9af0737f2823d38bf25",
@@ -52,7 +67,8 @@
     "message": "#dashboard Update dashboard color palette",
     "files_changed": [
       "dashboard-svc/dashboard-frontend/theme.ts"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "e3eb9054a1f17c98d53e48eae4c494ad8ed11f65",
@@ -61,7 +77,8 @@
     "message": "#docs Update connector setup guide",
     "files_changed": [
       "documentation/content/connectors/slack.md"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "2954791710a6c6a7b002ee74b9f266e3513b33d4",
@@ -70,7 +87,8 @@
     "message": "#ai Update prompt template wording",
     "files_changed": [
       "ai/src/prompts/system.txt"
-    ]
+    ],
+    "diff": "@@ ai/src/prompts/system.txt @@\n-You are a helpful assistant.\n+You are a helpful on-call assistant. Be concise."
   },
   {
     "sha": "81bcf1e644523570a4896bf4b150603dbfe40b8b",
@@ -79,7 +97,8 @@
     "message": "#chore Rotate staging TLS cert",
     "files_changed": [
       "deploy/staging/tls.yaml"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "4f4c63a391c4cbf4e607c66687af9619efb0589a",
@@ -88,7 +107,8 @@
     "message": "#docs Document feature flag lifecycle",
     "files_changed": [
       "documentation/content/flags.md"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "563edcd9cdf354196c911ed717d152167b8ff750",
@@ -97,7 +117,8 @@
     "message": "#test Add table tests for CQL parser",
     "files_changed": [
       "pkg/cql/parse_test.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "e4b0f52a94064525f223db9ff90c8a15eb2181be",
@@ -106,7 +127,8 @@
     "message": "#admin Add /readyz probe handler",
     "files_changed": [
       "api/internal/health/ready.go"
-    ]
+    ],
+    "diff": "@@ api/internal/health/ready.go @@\n+func Readyz(w http.ResponseWriter, r *http.Request) {\n+\tw.WriteHeader(http.StatusOK)\n+}"
   },
   {
     "sha": "34cdc0dd0fee3df022fd29195743966e9ad60925",
@@ -115,7 +137,8 @@
     "message": "#web Fix tooltip alignment on overview page",
     "files_changed": [
       "web/src/components/Tooltip.tsx"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "bcc5ebcf165d1efbe610d9316c48589a04f20282",
@@ -124,7 +147,8 @@
     "message": "#api Collapse duplicate validation funcs",
     "files_changed": [
       "api/internal/validate/validate.go"
-    ]
+    ],
+    "diff": "@@ api/internal/validate/validate.go @@\n-func validateName(s string) bool { return len(s) > 0 }\n-func validateLabel(s string) bool { return len(s) > 0 }\n+func validateNonEmpty(s string) bool { return len(s) > 0 }"
   },
   {
     "sha": "49c563f6f857152e9b5979fe97a75e21f94ceb63",
@@ -133,7 +157,8 @@
     "message": "#olapdb Update part GC log verbosity",
     "files_changed": [
       "olapdb/src/Storages/PartGCThread.cpp"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "a254420156122475e7558d64567384b6a5e3a1ed",
@@ -142,7 +167,8 @@
     "message": "#api Add request id to access log",
     "files_changed": [
       "api/internal/middleware/reqid.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "ee6500a92af4a65c5db9c50c0021fce865a0c4f0",
@@ -151,7 +177,8 @@
     "message": "#web Restyle banner on settings page",
     "files_changed": [
       "web/src/pages/Settings.css"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "588b02ab99affde80ef09f5504f1eccaa9fe733b",
@@ -160,7 +187,8 @@
     "message": "#transformer Add structured log field service",
     "files_changed": [
       "pipeline-transformer/internal/log/fields.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "c66c4942f01e6b75aaf54a1b4e2dbd12d01541d0",
@@ -169,7 +197,8 @@
     "message": "#metrics Add histogram for cache hits",
     "files_changed": [
       "pkg/cache/metrics.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "eb69a993e40e4027db9d200dd7d46bcb3d8e99aa",
@@ -178,6 +207,7 @@
     "message": "#k8s Bump resource requests for compactor",
     "files_changed": [
       "charts/log-compactor/values.yaml"
-    ]
+    ],
+    "diff": null
   }
 ]

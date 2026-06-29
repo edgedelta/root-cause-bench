@@ -6,5 +6,5 @@
   "fired_at": "2026-06-22T11:27:00Z",
   "severity": "high",
   "monitor": "Default Log Threshold Monitor",
-  "summary": "dashboard-svc returning 500s; sqlalchemy errors 'relation \"dashboard_favorites\" does not exist' \u2014 referenced table has no migration"
+  "summary": "dashboard-svc returning 500s; sqlalchemy errors 'relation \"dashboard_favorites\" does not exist'"
 }

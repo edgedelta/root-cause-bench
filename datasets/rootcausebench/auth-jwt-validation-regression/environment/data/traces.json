@@ -1,0 +1,118 @@
+[
+  {
+    "trace_id": "2434f5275a1119710dd7de328f93b031",
+    "span_id": "a1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "POST /api/secure",
+    "start": "2026-09-14T10:15:10Z",
+    "duration_ms": 42,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "2434f5275a1119710dd7de328f93b031",
+    "span_id": "b1",
+    "parent_id": "a1",
+    "service": "gatewayservice",
+    "name": "AuthMiddleware.Validate",
+    "start": "2026-09-14T10:15:10Z",
+    "duration_ms": 3,
+    "status": "ERROR",
+    "error": "jwt validation failed: token is expired",
+    "http.status_code": 401
+  },
+  {
+    "trace_id": "90c4c082d704b44a76fce044d47eadfa",
+    "span_id": "c1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "GET /api/orders",
+    "start": "2026-09-14T10:18:02Z",
+    "duration_ms": 55,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "90c4c082d704b44a76fce044d47eadfa",
+    "span_id": "d1",
+    "parent_id": "c1",
+    "service": "gatewayservice",
+    "name": "Proxy /api/orders",
+    "start": "2026-09-14T10:18:02Z",
+    "duration_ms": 50,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "90c4c082d704b44a76fce044d47eadfa",
+    "span_id": "e1",
+    "parent_id": "d1",
+    "service": "orderservice",
+    "name": "OrderService.List",
+    "start": "2026-09-14T10:18:02Z",
+    "duration_ms": 4,
+    "status": "ERROR",
+    "error": "jwt validation failed: token is expired",
+    "http.status_code": 401
+  },
+  {
+    "trace_id": "f58d67f9215c693f94fab4718ea3d1b6",
+    "span_id": "f1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "POST /api/pay",
+    "start": "2026-09-14T10:19:40Z",
+    "duration_ms": 60,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "f58d67f9215c693f94fab4718ea3d1b6",
+    "span_id": "g1",
+    "parent_id": "f1",
+    "service": "gatewayservice",
+    "name": "Proxy /api/pay",
+    "start": "2026-09-14T10:19:40Z",
+    "duration_ms": 55,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "f58d67f9215c693f94fab4718ea3d1b6",
+    "span_id": "h1",
+    "parent_id": "g1",
+    "service": "paymentservice",
+    "name": "PaymentService.Charge",
+    "start": "2026-09-14T10:19:40Z",
+    "duration_ms": 3,
+    "status": "ERROR",
+    "error": "jwt validation failed: token is expired",
+    "http.status_code": 401
+  },
+  {
+    "trace_id": "68a47480919634c0caef9f77e7a9d599",
+    "span_id": "z1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "POST /api/secure",
+    "start": "2026-09-14T09:30:00Z",
+    "duration_ms": 38,
+    "status": "OK"
+  },
+  {
+    "trace_id": "68a47480919634c0caef9f77e7a9d599",
+    "span_id": "z2",
+    "parent_id": "z1",
+    "service": "gatewayservice",
+    "name": "AuthMiddleware.Validate",
+    "start": "2026-09-14T09:30:00Z",
+    "duration_ms": 2,
+    "status": "OK"
+  },
+  {
+    "trace_id": "68a47480919634c0caef9f77e7a9d599",
+    "span_id": "z3",
+    "parent_id": "z2",
+    "service": "userservice",
+    "name": "UserService.Get",
+    "start": "2026-09-14T09:30:00Z",
+    "duration_ms": 12,
+    "status": "OK"
+  }
+]

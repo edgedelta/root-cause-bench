@@ -1,0 +1,10 @@
+{
+  "service": "searchservice",
+  "metric": "db_query_latency_p99_ms",
+  "threshold": 800,
+  "observed": 871,
+  "fired_at": "2026-06-21T10:42:30Z",
+  "severity": "critical",
+  "monitor": "search-db-latency-p99",
+  "summary": "searchservice db_query_latency_p99_ms exceeded 800ms (observed 871ms); search page error ratio rising"
+}

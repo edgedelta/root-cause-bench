@@ -1,0 +1,10 @@
+{
+  "service": "productdb",
+  "metric": "db_cpu_utilization",
+  "threshold": 85.0,
+  "observed": 94.8,
+  "fired_at": "2026-07-11T13:46:00Z",
+  "severity": "critical",
+  "monitor": "productdb-cpu-saturation",
+  "summary": "productdb CPU sustained above 85%; query p99 elevated, upstream catalogservice latency rising"
+}

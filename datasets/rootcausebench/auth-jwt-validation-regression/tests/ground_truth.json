@@ -1,0 +1,19 @@
+{
+  "scenario": "auth-jwt-validation-regression",
+  "root_cause_commit": "7dacc6c8a3c3fe7053afd5d8518ffef1f9843baa",
+  "first_failing_service": "gatewayservice",
+  "blast_radius": [
+    "userservice",
+    "orderservice",
+    "paymentservice"
+  ],
+  "remediation": "rollback",
+  "decoy_deploy_commits": [
+    "5116e67e199f0149d13cd94f320233bb37a6cd72",
+    "e51a75bd6f9a8f8591398ff1ca6ef31a7a277861",
+    "e20445eea846570a924f4579f2ecef5fa847f343",
+    "090d53d94509234858941a7e87d9ecd7a714f76a",
+    "2e6b5b44cf6a6185b3a542760d29a0597abc0e47"
+  ],
+  "notes": "Cross-service / shared-library culprit. The loudest failing service is gatewayservice (edge), and userservice/orderservice/paymentservice ALL reject tokens at the same time -- because they all verify JWTs through the SHARED auth library pkg/auth/jwt.go. The causal diff is commit 7dacc6c8 (author carlos.mendez, security/platform team) which in pkg/auth/jwt.go DELETES the clock-skew tolerance: it removes `const leeway = 120 * time.Second` and changes the expiry check from `exp.Add(leeway).Before(now)` to `exp.Before(now)`. With leeway gone, tokens that are valid but near expiry (and tokens issued by pods whose clock is slightly ahead of the verifier) are now rejected as expired across EVERY service that imports the lib -> the simultaneous, multi-service 401 spike with logs 'jwt validation failed: token is expired' / 'invalid token' despite valid tokens. None of the failing services changed their own auth code. Onset is DELAYED ~7-8 min after the 10:05 gateway deploy (10:12-10:13) because the tightened check only starts rejecting once enough live sessions fall inside the former 120s leeway band / hit the skew boundary under load. The TEMPTING WRONG answer is 5116e67e (ivan.petrov, 10:09:30, services/gateway/middleware/auth.go) -- it is ON the loud failing service, lands right at onset, and touches the auth middleware, but its diff only changes the 401 RESPONSE BODY and adds a WWW-Authenticate header; it does not touch validation logic and cannot make valid tokens expire. It also was never deployed (no deploy event carries it; the gateway running version v2026.09.14-1003 maps to the 10:05 deploy of the culprit-bearing build). Other decoys: e20445ee (innocent refactor in pkg/auth/parse.go that only splits parsing into a helper -- same shared package, scary-looking, behavior-preserving), e51a75bd (go.mod patch bump golang-jwt v5.2.0->v5.2.1, no validation change), and the userservice(090d53d9)+orderservice(2e6b5b44) deploys at 10:13/10:14 are blast-radius victims whose own diffs (avatar upload / VAT rounding) are unrelated. flags.json (gateway_strict_audience_check, user_session_cache) are distractors -- the audience flag flipped at 10:10 but the rejection reason is expiry, not audience, and the metric ramp tracks the 10:05 code deploy, not the 10:10 flag."
+}

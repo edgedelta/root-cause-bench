@@ -13,6 +13,12 @@
   },
   {
     "timestamp": "2026-06-24T14:35:00Z",
+    "service": "olapdb-tso",
+    "commit_sha": "fdbbb0420c4b6f5ae86f9ec1863a9521dcadef0d",
+    "version": "v2026.06.24-1435"
+  },
+  {
+    "timestamp": "2026-06-24T14:35:00Z",
     "service": "dashboard-svc",
     "commit_sha": "d4100bec06bc7609d3c9272613e3019c473bc934",
     "version": "v2026.06.24-1435"

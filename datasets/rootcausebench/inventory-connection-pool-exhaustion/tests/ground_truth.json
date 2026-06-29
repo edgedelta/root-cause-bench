@@ -1,6 +1,6 @@
 {
   "scenario": "inventory-connection-pool-exhaustion",
-  "root_cause_commit": "13ac92a16b155fd29f379d4eab35ec82c976c44f",
+  "root_cause_commit": "c7d2e9a3f1b04658e8a72c0d9b5e34176af2c801",
   "first_failing_service": "inventoryservice",
   "blast_radius": [
     "cartservice",
@@ -9,8 +9,10 @@
   ],
   "remediation": "rollback",
   "decoy_deploy_commits": [
+    "1a6f4b9c5d8e2079c3b41f60a7e2d513c9f08b42",
+    "6e19c5cea3a971931c4f48704e47077a4ef7b456",
     "ba9484cecab7dc64c69915a99277f714884b326d",
     "76005bb9118b9af36cf360279e3ec2ef8442e1a9"
   ],
-  "notes": "Culprit lowers pgx pool max-conns (50->10) in db.yaml/pool.go. Onset is ~8 min after deploy as the pool saturates under load. The shipping + order deploys and the read_replica_routing flag near onset are decoys."
+  "notes": "Cross-service / shared-library culprit. The failing service is inventoryservice, but the causal diff is in the SHARED db client library pkg/db/pool.go (commit c7d2e9a3, author carlos.mendez, platform team), which lowers the shared defaultMaxConns 50->10. That ceiling is inherited by inventoryservice because it does not override MaxConns; the inventory deploy at 13:42 rebuilt against the new shared default, so db_pool_max_conns drops 50->10 at 13:42 and db_pool_in_use saturates at 10 by 13:50 (delayed onset ~8 min as the pool fills under load). The TEMPTING WRONG answer is 1a6f4b9c (ivan.petrov, services/inventory/db/pool.go + config/db.yaml) which lands at 13:18 on the failing service and looks pool-related, but its diff only raises MaxConnIdleTime and HealthCheckPeriod -- it never touches the max-conns ceiling, so it cannot saturate the pool. Other decoys: 6e19c5ce (go.mod pgx patch bump), and the shipping(ba9484ce)+order(76005bb9) deploys near onset are downstream/unrelated. flags.json (inventory_read_replica_routing) is a distractor."
 }

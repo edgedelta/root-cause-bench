@@ -3,137 +3,152 @@
     "sha": "4f3740c125c5a9cbcf606e020005d1fe047ba386",
     "author": "sofia.marino",
     "timestamp": "2026-06-22T11:22:00Z",
-    "message": "#dashboard Add dashboards table migration",
+    "message": "#dashboard wire up favorites endpoint",
     "files_changed": [
       "dashboard-svc/dashboard-svc/dao/dashboard.py",
       "dashboard-svc/dashboard-svc/views/dashboard.py"
-    ]
+    ],
+    "diff": "@@ dashboard-svc/dashboard-svc/dao/dashboard.py @@ class DashboardDAO:\n+    def list_favorites(self, user_id):\n+        return self.session.execute(\n+            text(\"SELECT dashboard_id, position FROM dashboard_favorites WHERE user_id = :uid ORDER BY position\"),\n+            {\"uid\": user_id},\n+        ).fetchall()\n@@ dashboard-svc/dashboard-svc/views/dashboard.py @@\n+    @router.get(\"/dashboard/favorites\")\n+    def favorites(user_id: str):\n+        return dao.list_favorites(user_id)"
   },
   {
     "sha": "451b10297064c3cd3cba519ef5ad0ed58ede0a8b",
     "author": "grace.kim",
     "timestamp": "2026-06-22T11:22:30Z",
-    "message": "#dashboard Update dashboard color palette",
+    "message": "#dashboard tweak palette tokens",
     "files_changed": [
       "dashboard-svc/dashboard-frontend/theme.ts"
-    ]
+    ],
+    "diff": "@@ dashboard-svc/dashboard-frontend/theme.ts @@\n-  accent: \"#3b82f6\",\n-  surface: \"#f8fafc\",\n+  accent: \"#2563eb\",\n+  surface: \"#f1f5f9\","
   },
   {
     "sha": "127b7649492ecfff8e6bc0cd24727e95d8d700cf",
     "author": "deepak.rao",
     "timestamp": "2026-06-22T11:25:30Z",
-    "message": "#chore Rotate staging TLS cert",
+    "message": "#chore rotate staging tls cert",
     "files_changed": [
       "deploy/staging/tls.yaml"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "e52343b390e17d44487c79b6720eda6d68e7a03a",
     "author": "amir.haddad",
     "timestamp": "2026-06-22T11:27:46Z",
-    "message": "#docs Document feature flag lifecycle",
+    "message": "#docs document flag lifecycle",
     "files_changed": [
       "documentation/content/flags.md"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "a71a8b207615911e52bf25ae436c75f11c65b530",
     "author": "wei.zhang",
     "timestamp": "2026-06-22T11:37:42Z",
-    "message": "#web Add empty-state illustration to issues list",
+    "message": "#web empty-state illustration on issues list",
     "files_changed": [
       "web/src/pages/Issues.tsx"
-    ]
+    ],
+    "diff": "@@ web/src/pages/Issues.tsx @@\n+      {items.length === 0 && (\n+        <EmptyState image={emptyIssues} label=\"No issues yet\" />\n+      )}"
   },
   {
     "sha": "419045e80176cf12d66f72107ed8aff0ca9cd3a4",
     "author": "noah.bergstrom",
     "timestamp": "2026-06-22T11:51:33Z",
-    "message": "#olapdb Update part GC log verbosity",
+    "message": "#olapdb tidy part gc log verbosity",
     "files_changed": [
       "olapdb/src/Storages/PartGCThread.cpp"
-    ]
+    ],
+    "diff": "@@ olapdb/src/Storages/PartGCThread.cpp @@\n-        LOG_INFO(log, \"collected part {}\", part->name);\n+        LOG_DEBUG(log, \"collected part {}\", part->name);"
   },
   {
     "sha": "f91c35b00a8c809f6900d1c9d7fc41a4c8e2f3ba",
     "author": "sofia.marino",
     "timestamp": "2026-06-22T11:51:49Z",
-    "message": "#test Add table tests for CQL parser",
+    "message": "#test add table tests for cql parser",
     "files_changed": [
       "pkg/cql/parse_test.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "da4f669f285ff891c2521ef3f8e19eab1e6aab67",
     "author": "noah.bergstrom",
     "timestamp": "2026-06-22T11:58:27Z",
-    "message": "#misc Fix typo in error message",
+    "message": "#misc fix typo in error message",
     "files_changed": [
       "pkg/errors/messages.go"
-    ]
+    ],
+    "diff": "@@ pkg/errors/messages.go @@\n-\t\"reciever not ready\"\n+\t\"receiver not ready\""
   },
   {
     "sha": "94222935b931a9ccb059dbc4c6c5b6d789db1f02",
     "author": "tunde.okafor",
     "timestamp": "2026-06-22T12:27:48Z",
-    "message": "#k8s Bump resource requests for compactor",
+    "message": "#k8s bump resource requests for compactor",
     "files_changed": [
       "charts/log-compactor/values.yaml"
-    ]
+    ],
+    "diff": "@@ charts/log-compactor/values.yaml @@\n-  cpu: 250m\n+  cpu: 500m"
   },
   {
     "sha": "e9c8943b72c842fecc29f3325813d8422a281eb7",
     "author": "yuki.tanaka",
     "timestamp": "2026-06-22T12:29:37Z",
-    "message": "#ai Update prompt template wording",
+    "message": "#ai update prompt template wording",
     "files_changed": [
       "ai/src/prompts/system.txt"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "c85280e356f2eb1e579b6a6e1a08ebd805d66609",
     "author": "yuki.tanaka",
     "timestamp": "2026-06-22T12:41:43Z",
-    "message": "#admin Add /readyz probe handler",
+    "message": "#admin add readyz probe handler",
     "files_changed": [
       "api/internal/health/ready.go"
-    ]
+    ],
+    "diff": "@@ api/internal/health/ready.go @@\n+func Readyz(w http.ResponseWriter, r *http.Request) {\n+\tw.WriteHeader(http.StatusOK)\n+}"
   },
   {
     "sha": "18a87d4ed1e7ace7575c18f8276ce68148f97bb9",
     "author": "amir.haddad",
     "timestamp": "2026-06-22T13:14:43Z",
-    "message": "#dashboard Update dashboard color palette",
+    "message": "#dashboard adjust palette tokens",
     "files_changed": [
       "dashboard-svc/dashboard-frontend/theme.ts"
-    ]
+    ],
+    "diff": "@@ dashboard-svc/dashboard-frontend/theme.ts @@\n-  radius: 6,\n+  radius: 8,"
   },
   {
     "sha": "b5c5ca5612674c92a17bdc944d07749242952a10",
     "author": "amir.haddad",
     "timestamp": "2026-06-22T13:24:19Z",
-    "message": "#api Add request id to access log",
+    "message": "#api add request id to access log",
     "files_changed": [
       "api/internal/middleware/reqid.go"
-    ]
+    ],
+    "diff": "@@ api/internal/middleware/reqid.go @@\n+\trid := uuid.NewString()\n+\tr = r.WithContext(context.WithValue(r.Context(), reqIDKey, rid))"
   },
   {
     "sha": "39c8833594d08b07658971c09c725f06f42ec586",
     "author": "sofia.marino",
     "timestamp": "2026-06-22T13:39:37Z",
-    "message": "#deps Bump aws-sdk-go-v2 patch",
+    "message": "#deps bump aws-sdk-go-v2 patch",
     "files_changed": [
       "go.mod",
       "go.sum"
-    ]
+    ],
+    "diff": "@@ go.mod @@\n-\tgithub.com/aws/aws-sdk-go-v2 v1.30.3\n+\tgithub.com/aws/aws-sdk-go-v2 v1.30.4"
   },
   {
     "sha": "e87bbc117d02c0e61bdc43d222d941b5fc6225df",
     "author": "deepak.rao",
     "timestamp": "2026-06-22T13:54:19Z",
-    "message": "#web Restyle banner on settings page",
+    "message": "#web restyle banner on settings page",
     "files_changed": [
       "web/src/pages/Settings.css"
-    ]
+    ],
+    "diff": "@@ web/src/pages/Settings.css @@\n-.banner { padding: 12px; }\n+.banner { padding: 16px; border-radius: 8px; }"
   }
 ]

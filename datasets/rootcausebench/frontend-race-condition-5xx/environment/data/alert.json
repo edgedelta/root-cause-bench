@@ -1,0 +1,10 @@
+{
+  "service": "frontend",
+  "metric": "http_server_5xx_rate",
+  "threshold": 0.02,
+  "observed": 0.047,
+  "fired_at": "2026-06-18T15:06:00Z",
+  "severity": "critical",
+  "monitor": "frontend-5xx-rate",
+  "summary": "frontend 5xx error rate above 2% for 3m"
+}

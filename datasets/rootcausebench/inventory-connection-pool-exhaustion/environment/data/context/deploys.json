@@ -2,8 +2,8 @@
   {
     "timestamp": "2026-06-20T13:42:00Z",
     "service": "inventoryservice",
-    "commit_sha": "13ac92a16b155fd29f379d4eab35ec82c976c44f",
-    "version": "v2026.06.20-1341"
+    "commit_sha": "c7d2e9a3f1b04658e8a72c0d9b5e34176af2c801",
+    "version": "v2026.06.20-1340"
   },
   {
     "timestamp": "2026-06-20T13:49:00Z",

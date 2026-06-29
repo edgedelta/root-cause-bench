@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": "2026-06-18T14:50:00Z",
+    "flag": "search_typeahead_v2",
+    "service": "frontend",
+    "change": "off->on",
+    "actor": "grace.kim"
+  },
+  {
+    "timestamp": "2026-06-18T13:10:00Z",
+    "flag": "recommend_personalization",
+    "service": "recommendationservice",
+    "change": "off->on",
+    "actor": "amir.haddad"
+  }
+]

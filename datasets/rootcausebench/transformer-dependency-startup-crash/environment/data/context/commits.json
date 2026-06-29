@@ -6,7 +6,8 @@
     "message": "#web Add empty-state illustration to issues list",
     "files_changed": [
       "web/src/pages/Issues.tsx"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "e480ed32959fd2061c7ed1502a78e497553e6679",
@@ -15,7 +16,8 @@
     "message": "#admin Add /readyz probe handler",
     "files_changed": [
       "api/internal/health/ready.go"
-    ]
+    ],
+    "diff": "@@ func RegisterRoutes(r *mux.Router) {\n  r.HandleFunc(\"/healthz\", healthz)\n+ r.HandleFunc(\"/readyz\", readyz)\n }"
   },
   {
     "sha": "fd98f83ef715740a790aeb0c9ed10e05945c374c",
@@ -24,7 +26,8 @@
     "message": "#docs Document feature flag lifecycle",
     "files_changed": [
       "documentation/content/flags.md"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "2dee1c97d917365ed74dbf9c6df1588aaa21bd15",
@@ -33,7 +36,8 @@
     "message": "#transformer Add structured log field service",
     "files_changed": [
       "pipeline-transformer/internal/log/fields.go"
-    ]
+    ],
+    "diff": "@@ func With(kv ...Field) *Logger {\n+ // attach static service field to every record\n+ kv = append(kv, String(\"service\", \"pipeline-transformer\"))\n  return &Logger{fields: kv}\n }"
   },
   {
     "sha": "e00bd323fe7c3a65e94e6dd1c6f4ca2268e21df1",
@@ -42,7 +46,8 @@
     "message": "#dashboard Update dashboard color palette",
     "files_changed": [
       "dashboard-svc/dashboard-frontend/theme.ts"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "761a0ac60fdd14698933015ea3d3b41ba1362437",
@@ -51,27 +56,30 @@
     "message": "#test Add table tests for CQL parser",
     "files_changed": [
       "pkg/cql/parse_test.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "8f1116bd26e4901475d935eb2659f8ae2273baab",
     "author": "carlos.mendez",
-    "timestamp": "2026-06-23T14:48:00Z",
-    "message": "#transformer Bump protobuf runtime",
+    "timestamp": "2026-06-23T14:42:11Z",
+    "message": "#transformer Update go module pins",
     "files_changed": [
       "pipeline-transformer/go.mod",
       "pipeline-transformer/go.sum"
-    ]
+    ],
+    "diff": "@@ module github.com/edgedelta/pipeline-transformer\n \n require (\n-\tgoogle.golang.org/protobuf v1.31.0\n+\tgoogle.golang.org/protobuf v1.34.2\n \tgithub.com/golang/protobuf v1.5.2 // indirect\n \tgithub.com/edgedelta/pkg/pb v0.18.0\n )\n@@ note: pkg/pb v0.18.0 was generated against the protobuf v1.31 runtime and\n@@ links github.com/golang/protobuf v1.5.2, whose registry is incompatible with\n@@ the v1.34 runtime's global type registry."
   },
   {
     "sha": "defc5b01691d1f6eaa8544cf812715552dc9e1da",
     "author": "amir.haddad",
     "timestamp": "2026-06-23T14:48:20Z",
-    "message": "#deps Bump aws-sdk minor",
+    "message": "#transformer Update go module pins",
     "files_changed": [
-      "go.mod",
-      "go.sum"
-    ]
+      "pipeline-transformer/go.mod",
+      "pipeline-transformer/go.sum"
+    ],
+    "diff": "@@ require (\n-\tgithub.com/aws/aws-sdk-go v1.50.0\n+\tgithub.com/aws/aws-sdk-go v1.53.0\n \tgoogle.golang.org/protobuf v1.34.2\n )\n@@ aws-sdk-go v1.53 only touches the S3 sink client; no protobuf/runtime deps change."
   },
   {
     "sha": "f50fc91ca136e3d02592a78176f7a847f6b06688",
@@ -80,7 +88,8 @@
     "message": "#olapdb Update part GC log verbosity",
     "files_changed": [
       "olapdb/src/Storages/PartGCThread.cpp"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "d5c866d25dbe55d5360b66ff14af09b98fba006a",
@@ -89,17 +98,19 @@
     "message": "#web Restyle banner on settings page",
     "files_changed": [
       "web/src/pages/Settings.css"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "ac4d66ad485527ab1ef54bd010a9fa18f18fc33f",
     "author": "priya.nair",
     "timestamp": "2026-06-23T15:17:58Z",
-    "message": "#deps Bump aws-sdk-go-v2 patch",
+    "message": "#deps Update go module pins",
     "files_changed": [
       "go.mod",
       "go.sum"
-    ]
+    ],
+    "diff": "@@ require (\n-\tgithub.com/aws/aws-sdk-go-v2 v1.27.0\n+\tgithub.com/aws/aws-sdk-go-v2 v1.27.1\n )\n@@ root module only; not vendored by pipeline-transformer."
   },
   {
     "sha": "5c5e0789d37fe76597b665db59c3f47baebfc9cc",
@@ -108,7 +119,8 @@
     "message": "#ai Update prompt template wording",
     "files_changed": [
       "ai/src/prompts/system.txt"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "4f280c6a120b94d8c08fa513e2ddeb83ea17d922",
@@ -117,7 +129,8 @@
     "message": "#api Add request id to access log",
     "files_changed": [
       "api/internal/middleware/reqid.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "4de1d4f8d58c86b966c6188f766b2e9a659f712f",
@@ -126,7 +139,8 @@
     "message": "#api Collapse duplicate validation funcs",
     "files_changed": [
       "api/internal/validate/validate.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "d2ccb8bc9ff82beb899d4db8beb119e6f16e154e",
@@ -135,7 +149,8 @@
     "message": "#metrics Add histogram for cache hits",
     "files_changed": [
       "pkg/cache/metrics.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "da2a4131eab2f1dbb01174e7c958dad9de3e1228",
@@ -144,7 +159,8 @@
     "message": "#docs Update connector setup guide",
     "files_changed": [
       "documentation/content/connectors/slack.md"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "b8ad22d1e6cf1002e589ecc58905421ee470cc41",
@@ -153,7 +169,8 @@
     "message": "#ingest Tune SQS receive batch size logging",
     "files_changed": [
       "pkg/ingest/sqs/log.go"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "ee120ed329e634294af31d46c3a55b132af66db6",
@@ -162,7 +179,8 @@
     "message": "#web Fix tooltip alignment on overview page",
     "files_changed": [
       "web/src/components/Tooltip.tsx"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "2cbbed6504afc55a750d84b4a22deaac3b1155fd",
@@ -171,7 +189,8 @@
     "message": "#ci Cache go build in CircleCI",
     "files_changed": [
       ".circleci/config.yml"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "1473d816b7dd5a59a78484b532d1d58ebf8fe4f0",
@@ -180,7 +199,8 @@
     "message": "#k8s Bump resource requests for compactor",
     "files_changed": [
       "charts/log-compactor/values.yaml"
-    ]
+    ],
+    "diff": null
   },
   {
     "sha": "827ebaec79b08abe7b9f2632a029544736b96f9b",
@@ -189,6 +209,7 @@
     "message": "#misc Fix typo in error message",
     "files_changed": [
       "pkg/errors/messages.go"
-    ]
+    ],
+    "diff": null
   }
 ]

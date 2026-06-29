@@ -1,0 +1,81 @@
+[
+  {
+    "trace_id": "b71d9f4e2a8c4d10a9f3c6e5d4b2a1f0",
+    "span_id": "a1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "GET /search",
+    "start": "2026-06-18T15:04:11Z",
+    "duration_ms": 71.2,
+    "status": "ERROR"
+  },
+  {
+    "trace_id": "b71d9f4e2a8c4d10a9f3c6e5d4b2a1f0",
+    "span_id": "b1",
+    "parent_id": "a1",
+    "service": "searchservice",
+    "name": "Search",
+    "start": "2026-06-18T15:04:11Z",
+    "duration_ms": 58.4,
+    "status": "ERROR",
+    "attributes": {
+      "query.index": "catalog_v3",
+      "query.field": "title",
+      "error.type": "query_shard_exception",
+      "error.message": "no mapping found for field [title]",
+      "result_count": 0
+    }
+  },
+  {
+    "trace_id": "c8230a17de5b41229b6f0a7c3e1d9852",
+    "span_id": "r1",
+    "parent_id": null,
+    "service": "recommendationservice",
+    "name": "GET /api/recommend",
+    "start": "2026-06-18T15:05:02Z",
+    "duration_ms": 64.0,
+    "status": "OK"
+  },
+  {
+    "trace_id": "c8230a17de5b41229b6f0a7c3e1d9852",
+    "span_id": "r2",
+    "parent_id": "r1",
+    "service": "searchservice",
+    "name": "Search",
+    "start": "2026-06-18T15:05:02Z",
+    "duration_ms": 41.7,
+    "status": "ERROR",
+    "attributes": {
+      "query.index": "catalog_v3",
+      "query.field": "title",
+      "error.type": "parse_exception",
+      "error.message": "unknown field [title]",
+      "result_count": 0
+    }
+  },
+  {
+    "trace_id": "f1029384abcd5566778899aabbccddee",
+    "span_id": "h1",
+    "parent_id": null,
+    "service": "frontend",
+    "name": "GET /search",
+    "start": "2026-06-18T14:12:30Z",
+    "duration_ms": 188.0,
+    "status": "OK"
+  },
+  {
+    "trace_id": "f1029384abcd5566778899aabbccddee",
+    "span_id": "h2",
+    "parent_id": "h1",
+    "service": "searchservice",
+    "name": "Search",
+    "start": "2026-06-18T14:12:30Z",
+    "duration_ms": 142.6,
+    "status": "OK",
+    "attributes": {
+      "query.index": "catalog_v3",
+      "query.field": "title",
+      "result_count": 14
+    }
+  }
+]
