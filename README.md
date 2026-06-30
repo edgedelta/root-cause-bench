@@ -127,28 +127,23 @@ uv run scripts/process_results.py jobs/<timestamp>
 
 ## Leaderboard
 
-Frozen run: **24 scenarios × 4 models × 3 attempts = 288 trials**, Harbor
-`terminus-2` over OpenRouter, 2026-06-28. 17 scenarios have a real culprit commit
-(the model must name its SHA, reasoning from the diff — not the commit message);
-**7 have no code cause at all** — the trigger is operational/external (an upstream
-outage, a traffic surge, an expired cert, a noisy neighbor, a poison record) and
-the correct answer is `"none"`. Pass = exact match on `root_cause_commit`.
+Frozen run: **24 scenarios x 13 models x 3 attempts = 936 trials**, Harbor `terminus-2` over OpenRouter, 2026-06-30. Pass is the scenario grader's boolean verdict. Re-score any run yourself: `uv run scripts/process_results.py jobs/<run>`.
 
-| Model | Overall | real-culprit (17) | **no-code-cause (7)** |
-|-------|--------:|------------------:|----------------------:|
-| openai/gpt-5.2-codex      | **97%** | 98% | **100%** |
-| moonshotai/kimi-k2.5      | 93% | 100% | 76% |
-| anthropic/claude-opus-4.6 | 92% | 100% | 80% |
-| google/gemini-2.5-pro     | **67%** | 76% | **43%** |
-
-The finding: **frontier models attribute root cause from diffs almost perfectly
-(76–100%)** — that half is near-solved. The whole spread lives in the
-**no-code-cause** column, which measures *confabulation resistance*: when there is
-no guilty commit, does the model have the discipline to answer `"none"`, or does
-it convict an innocent commit? gpt-5.2-codex never bit (20/20); gemini-2.5-pro
-confabulated on **57%** of no-cause incidents. The hardest single scenario,
-`bad-data-poison-record` (correct code looping on one malformed record), fools
-most models. Re-score any trajectory: `uv run scripts/process_results.py jobs/<run>`.
+| Model | Pass rate | easy | medium | hard | no-code-cause |
+|---|---|---|---|---|---|
+| claude-sonnet-4.6 | **99%** | 100% | 100% | 97% | 95% |
+| gemini-3.5-flash | **99%** | 100% | 100% | 97% | 95% |
+| gpt-5.5 | **96%** | 100% | 100% | 91% | 90% |
+| gpt-5.4 | **96%** | 100% | 100% | 91% | 90% |
+| gemini-3.1-pro-preview | **94%** | 100% | 96% | 91% | 86% |
+| claude-opus-4.8 | **93%** | 83% | 92% | 97% | 100% |
+| gpt-5.4-mini | **90%** | 100% | 96% | 85% | 100% |
+| kimi-k2.5 | **85%** | 83% | 100% | 70% | 71% |
+| kimi-k2-thinking | **85%** | 100% | 92% | 73% | 71% |
+| gpt-oss-120b | **58%** | 83% | 62% | 48% | 43% |
+| gemini-3.1-flash-lite | **56%** | 100% | 62% | 36% | 14% |
+| claude-haiku-4.5 | **35%** | 67% | 21% | 36% | 10% |
+| gpt-oss-20b | **28%** | 67% | 29% | 21% | 52% |
 
 ## Scenarios
 
