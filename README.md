@@ -127,7 +127,7 @@ uv run scripts/process_results.py jobs/<timestamp>
 
 ## Leaderboard
 
-Frozen run: **24 scenarios x 13 models x 3 attempts = 936 trials**, Harbor `terminus-2` over OpenRouter, 2026-06-30. Pass is the scenario grader's boolean verdict. Re-score any run yourself: `uv run scripts/process_results.py jobs/<run>`.
+Frozen run: **24 scenarios x 13 models x 3 attempts = 936 trials**, Harbor `terminus-2` over OpenRouter, 2026-06-30. Pass is the scenario grader's boolean verdict. Full per-trial results (outcome, cost, tokens, timing per model) + per-model/per-task rollups are committed under [`benchmark-results/`](benchmark-results/).
 
 | Model | Pass rate | easy | medium | hard | no-code-cause |
 |---|---|---|---|---|---|
