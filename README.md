@@ -127,21 +127,25 @@ uv run scripts/process_results.py jobs/<timestamp>
 
 ## Leaderboard
 
-Frozen run: **24 scenarios x 13 models x 3 attempts = 936 trials**, Harbor `terminus-2` over OpenRouter, 2026-06-30. Pass is the scenario grader's boolean verdict. Full per-trial results (outcome, cost, tokens, timing per model) + per-model/per-task rollups are committed under [`benchmark-results/`](benchmark-results/).
+Frozen run: **24 scenarios x 17 models x 3 attempts = 1224 trials**, Harbor `terminus-2` over OpenRouter, 2026-06-30 (claude-sonnet-4.6 through gpt-oss-20b) / 2026-07-02 (glm-5.2, qwen3-235b-a22b-2507, qwen3-32b, deepseek-v4-flash). Pass is the scenario grader's boolean verdict. Full per-trial results (outcome, cost, tokens, timing per model) + per-model/per-task rollups are committed under [`benchmark-results/`](benchmark-results/).
 
 | Model | Pass rate | easy | medium | hard | no-code-cause |
 |---|---|---|---|---|---|
+| glm-5.2 | **100%** | 100% | 100% | 100% | 100% |
 | claude-sonnet-4.6 | **99%** | 100% | 100% | 97% | 95% |
 | gemini-3.5-flash | **99%** | 100% | 100% | 97% | 95% |
 | gpt-5.5 | **96%** | 100% | 100% | 91% | 90% |
 | gpt-5.4 | **96%** | 100% | 100% | 91% | 90% |
 | gemini-3.1-pro-preview | **94%** | 100% | 96% | 91% | 86% |
 | claude-opus-4.8 | **93%** | 83% | 92% | 97% | 100% |
+| deepseek-v4-flash | **92%** | 100% | 96% | 86% | 76% |
 | gpt-5.4-mini | **90%** | 100% | 96% | 85% | 100% |
 | kimi-k2.5 | **85%** | 83% | 100% | 70% | 71% |
 | kimi-k2-thinking | **85%** | 100% | 92% | 73% | 71% |
+| qwen3-235b-a22b-2507 | **72%** | 89% | 70% | 69% | 71% |
 | gpt-oss-120b | **58%** | 83% | 62% | 48% | 43% |
 | gemini-3.1-flash-lite | **56%** | 100% | 62% | 36% | 14% |
+| qwen3-32b | **44%** | 89% | 37% | 39% | 33% |
 | claude-haiku-4.5 | **35%** | 67% | 21% | 36% | 10% |
 | gpt-oss-20b | **28%** | 67% | 29% | 21% | 52% |
 
