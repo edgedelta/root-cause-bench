@@ -1,0 +1,911 @@
+{
+  "summary": {
+    "latest-commit": {
+      "passed": 0,
+      "total": 24,
+      "pass_rate_pct": 0.0,
+      "decoy_hits": 0,
+      "by_tier": {
+        "easy": "0/3",
+        "hard": "0/12",
+        "medium": "0/9"
+      }
+    },
+    "always-none": {
+      "passed": 7,
+      "total": 24,
+      "pass_rate_pct": 29.2,
+      "decoy_hits": 0,
+      "by_tier": {
+        "easy": "0/3",
+        "hard": "4/12",
+        "medium": "3/9"
+      }
+    },
+    "latest-deploy": {
+      "passed": 1,
+      "total": 24,
+      "pass_rate_pct": 4.2,
+      "decoy_hits": 22,
+      "by_tier": {
+        "easy": "1/3",
+        "hard": "0/12",
+        "medium": "0/9"
+      }
+    },
+    "alert-service-deploy": {
+      "passed": 5,
+      "total": 24,
+      "pass_rate_pct": 20.8,
+      "decoy_hits": 18,
+      "by_tier": {
+        "easy": "2/3",
+        "hard": "3/12",
+        "medium": "0/9"
+      }
+    },
+    "scripted-rca": {
+      "passed": 7,
+      "total": 24,
+      "pass_rate_pct": 29.2,
+      "decoy_hits": 17,
+      "by_tier": {
+        "easy": "3/3",
+        "hard": "4/12",
+        "medium": "0/9"
+      }
+    }
+  },
+  "by_scenario": {
+    "latest-commit": {
+      "ai-agent-registration-missing": {
+        "passed": false,
+        "answered": "eb69a993e40e",
+        "hit_decoy": false,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "auth-jwt-validation-regression": {
+        "passed": false,
+        "answered": "e398ee30ce2b",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "bad-data-poison-record": {
+        "passed": false,
+        "answered": "1499f7970dfe",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": true
+      },
+      "cache-ttl-stampede": {
+        "passed": false,
+        "answered": "d8e7f6b39a8c",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "checkout-latency-n-plus-one": {
+        "passed": false,
+        "answered": "fd917abf845a",
+        "hit_decoy": false,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "cloud-region-impairment": {
+        "passed": false,
+        "answered": "f7f11d2abd93",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": true
+      },
+      "dashboard-db-schema-missing-table": {
+        "passed": false,
+        "answered": "e87bbc117d02",
+        "hit_decoy": false,
+        "difficulty": "easy",
+        "no_code_cause": false
+      },
+      "dns-resolver-degradation": {
+        "passed": false,
+        "answered": "845b926319f4",
+        "hit_decoy": false,
+        "difficulty": "medium",
+        "no_code_cause": true
+      },
+      "dynamodb-write-capacity-breach": {
+        "passed": false,
+        "answered": "b256a3daf0f2",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "frontend-race-condition-5xx": {
+        "passed": false,
+        "answered": "13c26899ab37",
+        "hit_decoy": false,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "grpc-deadline-too-tight": {
+        "passed": false,
+        "answered": "d8a433589cac",
+        "hit_decoy": false,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "inventory-connection-pool-exhaustion": {
+        "passed": false,
+        "answered": "c4ab38a7090d",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "logging-debug-disk-fill": {
+        "passed": false,
+        "answered": "335aa96c4c47",
+        "hit_decoy": false,
+        "difficulty": "easy",
+        "no_code_cause": false
+      },
+      "metric-ingestor-metadata-deser": {
+        "passed": false,
+        "answered": "e66b277b1be4",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "noisy-neighbor-node-saturation": {
+        "passed": false,
+        "answered": "8a0c6e2d4b1f",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": true
+      },
+      "olapdb-tso-cas-retry-budget": {
+        "passed": false,
+        "answered": "6db30ea6a5a4",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "payment-nil-deref-panic": {
+        "passed": false,
+        "answered": "d84662c27fca",
+        "hit_decoy": false,
+        "difficulty": "easy",
+        "no_code_cause": false
+      },
+      "recommendation-memory-leak": {
+        "passed": false,
+        "answered": "75ef3d7e0c5e",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "search-mapping-query-break": {
+        "passed": false,
+        "answered": "1f207f2c3ee8",
+        "hit_decoy": false,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "tls-cert-expiry": {
+        "passed": false,
+        "answered": "17526a9e689c",
+        "hit_decoy": false,
+        "difficulty": "medium",
+        "no_code_cause": true
+      },
+      "traffic-surge-flash-sale": {
+        "passed": false,
+        "answered": "e88a516b83e3",
+        "hit_decoy": false,
+        "difficulty": "medium",
+        "no_code_cause": true
+      },
+      "transformer-dependency-startup-crash": {
+        "passed": false,
+        "answered": "827ebaec79b0",
+        "hit_decoy": false,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "unbounded-query-delayed-onset": {
+        "passed": false,
+        "answered": "b60f3e842f1a",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "upstream-payment-provider-outage": {
+        "passed": false,
+        "answered": "f2a4b6c8d0e2",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": true
+      }
+    },
+    "always-none": {
+      "ai-agent-registration-missing": {
+        "passed": false,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "auth-jwt-validation-regression": {
+        "passed": false,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "bad-data-poison-record": {
+        "passed": true,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": true
+      },
+      "cache-ttl-stampede": {
+        "passed": false,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "checkout-latency-n-plus-one": {
+        "passed": false,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "cloud-region-impairment": {
+        "passed": true,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": true
+      },
+      "dashboard-db-schema-missing-table": {
+        "passed": false,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "easy",
+        "no_code_cause": false
+      },
+      "dns-resolver-degradation": {
+        "passed": true,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "medium",
+        "no_code_cause": true
+      },
+      "dynamodb-write-capacity-breach": {
+        "passed": false,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "frontend-race-condition-5xx": {
+        "passed": false,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "grpc-deadline-too-tight": {
+        "passed": false,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "inventory-connection-pool-exhaustion": {
+        "passed": false,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "logging-debug-disk-fill": {
+        "passed": false,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "easy",
+        "no_code_cause": false
+      },
+      "metric-ingestor-metadata-deser": {
+        "passed": false,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "noisy-neighbor-node-saturation": {
+        "passed": true,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": true
+      },
+      "olapdb-tso-cas-retry-budget": {
+        "passed": false,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "payment-nil-deref-panic": {
+        "passed": false,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "easy",
+        "no_code_cause": false
+      },
+      "recommendation-memory-leak": {
+        "passed": false,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "search-mapping-query-break": {
+        "passed": false,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "tls-cert-expiry": {
+        "passed": true,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "medium",
+        "no_code_cause": true
+      },
+      "traffic-surge-flash-sale": {
+        "passed": true,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "medium",
+        "no_code_cause": true
+      },
+      "transformer-dependency-startup-crash": {
+        "passed": false,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "unbounded-query-delayed-onset": {
+        "passed": false,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "upstream-payment-provider-outage": {
+        "passed": true,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": true
+      }
+    },
+    "latest-deploy": {
+      "ai-agent-registration-missing": {
+        "passed": false,
+        "answered": "0422ec79bc77",
+        "hit_decoy": true,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "auth-jwt-validation-regression": {
+        "passed": false,
+        "answered": "2e6b5b44cf6a",
+        "hit_decoy": true,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "bad-data-poison-record": {
+        "passed": false,
+        "answered": "d35af7feef3e",
+        "hit_decoy": true,
+        "difficulty": "hard",
+        "no_code_cause": true
+      },
+      "cache-ttl-stampede": {
+        "passed": false,
+        "answered": "9ecb8232f401",
+        "hit_decoy": true,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "checkout-latency-n-plus-one": {
+        "passed": false,
+        "answered": "78ad41355be7",
+        "hit_decoy": true,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "cloud-region-impairment": {
+        "passed": false,
+        "answered": "db5e89581657",
+        "hit_decoy": true,
+        "difficulty": "hard",
+        "no_code_cause": true
+      },
+      "dashboard-db-schema-missing-table": {
+        "passed": false,
+        "answered": "451b10297064",
+        "hit_decoy": true,
+        "difficulty": "easy",
+        "no_code_cause": false
+      },
+      "dns-resolver-degradation": {
+        "passed": false,
+        "answered": "4f9b40d3a24a",
+        "hit_decoy": true,
+        "difficulty": "medium",
+        "no_code_cause": true
+      },
+      "dynamodb-write-capacity-breach": {
+        "passed": false,
+        "answered": "ff6268f2ae72",
+        "hit_decoy": true,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "frontend-race-condition-5xx": {
+        "passed": false,
+        "answered": "30432f5f3769",
+        "hit_decoy": true,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "grpc-deadline-too-tight": {
+        "passed": false,
+        "answered": "9a756a127c06",
+        "hit_decoy": true,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "inventory-connection-pool-exhaustion": {
+        "passed": false,
+        "answered": "76005bb9118b",
+        "hit_decoy": true,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "logging-debug-disk-fill": {
+        "passed": false,
+        "answered": "335aa96c4c47",
+        "hit_decoy": false,
+        "difficulty": "easy",
+        "no_code_cause": false
+      },
+      "metric-ingestor-metadata-deser": {
+        "passed": false,
+        "answered": "17f8bae42e0e",
+        "hit_decoy": true,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "noisy-neighbor-node-saturation": {
+        "passed": false,
+        "answered": "0e7c3a9f1b6d",
+        "hit_decoy": true,
+        "difficulty": "hard",
+        "no_code_cause": true
+      },
+      "olapdb-tso-cas-retry-budget": {
+        "passed": false,
+        "answered": "fdbbb0420c4b",
+        "hit_decoy": true,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "payment-nil-deref-panic": {
+        "passed": true,
+        "answered": "5642d6b17f39",
+        "hit_decoy": false,
+        "difficulty": "easy",
+        "no_code_cause": false
+      },
+      "recommendation-memory-leak": {
+        "passed": false,
+        "answered": "f72cb9d310cf",
+        "hit_decoy": true,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "search-mapping-query-break": {
+        "passed": false,
+        "answered": "2a2f3891d9e3",
+        "hit_decoy": true,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "tls-cert-expiry": {
+        "passed": false,
+        "answered": "498ca53518c4",
+        "hit_decoy": true,
+        "difficulty": "medium",
+        "no_code_cause": true
+      },
+      "traffic-surge-flash-sale": {
+        "passed": false,
+        "answered": "4328ace96197",
+        "hit_decoy": true,
+        "difficulty": "medium",
+        "no_code_cause": true
+      },
+      "transformer-dependency-startup-crash": {
+        "passed": false,
+        "answered": "defc5b01691d",
+        "hit_decoy": true,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "unbounded-query-delayed-onset": {
+        "passed": false,
+        "answered": "f7cb29d4108e",
+        "hit_decoy": true,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "upstream-payment-provider-outage": {
+        "passed": false,
+        "answered": "f0a2b4c6d8e0",
+        "hit_decoy": true,
+        "difficulty": "hard",
+        "no_code_cause": true
+      }
+    },
+    "alert-service-deploy": {
+      "ai-agent-registration-missing": {
+        "passed": false,
+        "answered": "7b8e1c4a9d2f",
+        "hit_decoy": true,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "auth-jwt-validation-regression": {
+        "passed": true,
+        "answered": "7dacc6c8a3c3",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "bad-data-poison-record": {
+        "passed": false,
+        "answered": "d35af7feef3e",
+        "hit_decoy": true,
+        "difficulty": "hard",
+        "no_code_cause": true
+      },
+      "cache-ttl-stampede": {
+        "passed": false,
+        "answered": "9ecb8232f401",
+        "hit_decoy": true,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "checkout-latency-n-plus-one": {
+        "passed": false,
+        "answered": "78ad41355be7",
+        "hit_decoy": true,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "cloud-region-impairment": {
+        "passed": false,
+        "answered": "63737f24e6df",
+        "hit_decoy": true,
+        "difficulty": "hard",
+        "no_code_cause": true
+      },
+      "dashboard-db-schema-missing-table": {
+        "passed": false,
+        "answered": "451b10297064",
+        "hit_decoy": true,
+        "difficulty": "easy",
+        "no_code_cause": false
+      },
+      "dns-resolver-degradation": {
+        "passed": false,
+        "answered": "94e921a612d3",
+        "hit_decoy": true,
+        "difficulty": "medium",
+        "no_code_cause": true
+      },
+      "dynamodb-write-capacity-breach": {
+        "passed": true,
+        "answered": "7e2c9b41a0f5",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "frontend-race-condition-5xx": {
+        "passed": false,
+        "answered": "30432f5f3769",
+        "hit_decoy": true,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "grpc-deadline-too-tight": {
+        "passed": false,
+        "answered": "ea343eef188c",
+        "hit_decoy": true,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "inventory-connection-pool-exhaustion": {
+        "passed": true,
+        "answered": "c7d2e9a3f1b0",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "logging-debug-disk-fill": {
+        "passed": true,
+        "answered": "ce164c13c54e",
+        "hit_decoy": false,
+        "difficulty": "easy",
+        "no_code_cause": false
+      },
+      "metric-ingestor-metadata-deser": {
+        "passed": false,
+        "answered": "4e169b782276",
+        "hit_decoy": true,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "noisy-neighbor-node-saturation": {
+        "passed": false,
+        "answered": "0e7c3a9f1b6d",
+        "hit_decoy": true,
+        "difficulty": "hard",
+        "no_code_cause": true
+      },
+      "olapdb-tso-cas-retry-budget": {
+        "passed": false,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "payment-nil-deref-panic": {
+        "passed": true,
+        "answered": "5642d6b17f39",
+        "hit_decoy": false,
+        "difficulty": "easy",
+        "no_code_cause": false
+      },
+      "recommendation-memory-leak": {
+        "passed": false,
+        "answered": "f72cb9d310cf",
+        "hit_decoy": true,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "search-mapping-query-break": {
+        "passed": false,
+        "answered": "2a2f3891d9e3",
+        "hit_decoy": true,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "tls-cert-expiry": {
+        "passed": false,
+        "answered": "498ca53518c4",
+        "hit_decoy": true,
+        "difficulty": "medium",
+        "no_code_cause": true
+      },
+      "traffic-surge-flash-sale": {
+        "passed": false,
+        "answered": "4328ace96197",
+        "hit_decoy": true,
+        "difficulty": "medium",
+        "no_code_cause": true
+      },
+      "transformer-dependency-startup-crash": {
+        "passed": false,
+        "answered": "defc5b01691d",
+        "hit_decoy": true,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "unbounded-query-delayed-onset": {
+        "passed": false,
+        "answered": "f7cb29d4108e",
+        "hit_decoy": true,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "upstream-payment-provider-outage": {
+        "passed": false,
+        "answered": "f0a2b4c6d8e0",
+        "hit_decoy": true,
+        "difficulty": "hard",
+        "no_code_cause": true
+      }
+    },
+    "scripted-rca": {
+      "ai-agent-registration-missing": {
+        "passed": false,
+        "answered": "7b8e1c4a9d2f",
+        "hit_decoy": true,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "auth-jwt-validation-regression": {
+        "passed": true,
+        "answered": "7dacc6c8a3c3",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "bad-data-poison-record": {
+        "passed": false,
+        "answered": "d35af7feef3e",
+        "hit_decoy": true,
+        "difficulty": "hard",
+        "no_code_cause": true
+      },
+      "cache-ttl-stampede": {
+        "passed": false,
+        "answered": "9ecb8232f401",
+        "hit_decoy": true,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "checkout-latency-n-plus-one": {
+        "passed": false,
+        "answered": "78ad41355be7",
+        "hit_decoy": true,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "cloud-region-impairment": {
+        "passed": false,
+        "answered": "2b8b1cd98aec",
+        "hit_decoy": true,
+        "difficulty": "hard",
+        "no_code_cause": true
+      },
+      "dashboard-db-schema-missing-table": {
+        "passed": true,
+        "answered": "4f3740c125c5",
+        "hit_decoy": false,
+        "difficulty": "easy",
+        "no_code_cause": false
+      },
+      "dns-resolver-degradation": {
+        "passed": false,
+        "answered": "94e921a612d3",
+        "hit_decoy": true,
+        "difficulty": "medium",
+        "no_code_cause": true
+      },
+      "dynamodb-write-capacity-breach": {
+        "passed": true,
+        "answered": "7e2c9b41a0f5",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "frontend-race-condition-5xx": {
+        "passed": false,
+        "answered": "30432f5f3769",
+        "hit_decoy": true,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "grpc-deadline-too-tight": {
+        "passed": false,
+        "answered": "ea343eef188c",
+        "hit_decoy": true,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "inventory-connection-pool-exhaustion": {
+        "passed": true,
+        "answered": "c7d2e9a3f1b0",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "logging-debug-disk-fill": {
+        "passed": true,
+        "answered": "ce164c13c54e",
+        "hit_decoy": false,
+        "difficulty": "easy",
+        "no_code_cause": false
+      },
+      "metric-ingestor-metadata-deser": {
+        "passed": false,
+        "answered": "4e169b782276",
+        "hit_decoy": true,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "noisy-neighbor-node-saturation": {
+        "passed": false,
+        "answered": "0e7c3a9f1b6d",
+        "hit_decoy": true,
+        "difficulty": "hard",
+        "no_code_cause": true
+      },
+      "olapdb-tso-cas-retry-budget": {
+        "passed": true,
+        "answered": "48ad9c8a5a8c",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "payment-nil-deref-panic": {
+        "passed": true,
+        "answered": "5642d6b17f39",
+        "hit_decoy": false,
+        "difficulty": "easy",
+        "no_code_cause": false
+      },
+      "recommendation-memory-leak": {
+        "passed": false,
+        "answered": "f72cb9d310cf",
+        "hit_decoy": true,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "search-mapping-query-break": {
+        "passed": false,
+        "answered": "2a2f3891d9e3",
+        "hit_decoy": true,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "tls-cert-expiry": {
+        "passed": false,
+        "answered": "498ca53518c4",
+        "hit_decoy": true,
+        "difficulty": "medium",
+        "no_code_cause": true
+      },
+      "traffic-surge-flash-sale": {
+        "passed": false,
+        "answered": "4328ace96197",
+        "hit_decoy": true,
+        "difficulty": "medium",
+        "no_code_cause": true
+      },
+      "transformer-dependency-startup-crash": {
+        "passed": false,
+        "answered": "defc5b01691d",
+        "hit_decoy": true,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "unbounded-query-delayed-onset": {
+        "passed": false,
+        "answered": "f7cb29d4108e",
+        "hit_decoy": true,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "upstream-payment-provider-outage": {
+        "passed": false,
+        "answered": "f0a2b4c6d8e0",
+        "hit_decoy": true,
+        "difficulty": "hard",
+        "no_code_cause": true
+      }
+    }
+  }
+}

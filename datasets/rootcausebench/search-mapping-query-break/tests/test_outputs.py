@@ -5,6 +5,15 @@ PRIMARY reward (pass/fail): the model's `root_cause_commit` must EXACTLY match
 the ground-truth culprit SHA. Everything else is SECONDARY: we print it for the
 write-up but never fail the test on it.
 
+Besides the binary verdict, the grader emits a GRADED reward — 1.0 for the
+correct commit; 0.0 if the model blamed an innocent-deploy decoy (the cardinal
+failure); otherwise partial credit capped at 0.5 from the secondary diagnosis
+(0.5 x first-failing-service + 0.3 x blast-radius Jaccard + 0.2 x remediation).
+It is emitted as a `ROOTCAUSEBENCH_METRICS {json}` stdout line and, under
+Harbor, /logs/verifier/metrics.json. It never changes pass/fail (reward.txt
+stays binary); leaderboards use it to rank on mean graded reward instead of
+coarse pass counts.
+
 Ground truth lives in tests/ground_truth.json, which is injected only at
 verification time, so the agent never sees it.
 """
@@ -15,6 +24,17 @@ import sys
 
 ANSWER_PATH = "/workdir/root_cause.json"
 GROUND_TRUTH_PATH = os.path.join(os.path.dirname(__file__), "ground_truth.json")
+METRICS_PATH = os.environ.get("RCABENCH_METRICS_PATH", "/logs/verifier/metrics.json")
+
+
+def _emit_metrics(metrics):
+    print(f"ROOTCAUSEBENCH_METRICS {json.dumps(metrics, sort_keys=True)}")
+    try:
+        if os.path.isdir(os.path.dirname(METRICS_PATH)):
+            with open(METRICS_PATH, "w") as f:
+                json.dump(metrics, f, indent=1)
+    except OSError:
+        pass  # metrics file is best-effort; never fail grading over it
 
 VALID_REMEDIATIONS = {
     "rollback", "roll-forward", "config-revert", "scale", "feature-flag-disable",
@@ -95,6 +115,22 @@ def test_root_cause_commit_matches():
     else:
         print("")
     print("===============================================================\n")
+
+    if is_match:
+        graded = 1.0
+    elif fell_for_decoy:
+        graded = 0.0
+    else:
+        graded = round(0.5 * (0.5 * svc_correct + 0.3 * br_jaccard + 0.2 * rem_correct), 4)
+    _emit_metrics({
+        "scenario": truth.get("scenario"),
+        "sha_correct": is_match,
+        "first_failing_service_correct": svc_correct,
+        "blast_radius_jaccard": round(br_jaccard, 4),
+        "remediation_correct": rem_correct,
+        "fell_for_decoy": fell_for_decoy,
+        "graded_reward": graded,
+    })
 
     # ---- PRIMARY assertion ------------------------------------------------
     assert is_match, (

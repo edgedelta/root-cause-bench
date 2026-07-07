@@ -41,6 +41,15 @@ Given a frozen incident, the model must produce:
 - **Secondary signals (printed, never fail the run):** first-failing-service
   correctness, blast-radius Jaccard overlap vs truth, remediation match, and —
   the interesting one — **did the model fall for the innocent-deploy decoy?**
+- **Graded reward (reporting only, never gates pass/fail):** `1.0` for the
+  correct commit; `0.0` if the model blamed an innocent-deploy decoy (the
+  cardinal failure — confidently wrong beats being unsure); otherwise partial
+  credit capped at `0.5` from the secondary diagnosis (0.5 × first-failing-
+  service + 0.3 × blast-radius Jaccard + 0.2 × remediation). The grader emits
+  it per trial (`ROOTCAUSEBENCH_METRICS` stdout line + `verifier/metrics.json`)
+  and the leaderboard ranks on **mean graded reward ± 95% CI**, which
+  separates near-miss diagnoses from total whiffs and is robust to
+  single-scenario flips.
 
 Naming the right symptom is easy. Naming the right *commit* — separating cause
 from blast radius, resisting "blame the latest deploy", and handling onset that
@@ -127,27 +136,72 @@ uv run scripts/process_results.py jobs/<timestamp>
 
 ## Leaderboard
 
-Frozen run: **24 scenarios x 17 models x 3 attempts = 1224 trials**, Harbor `terminus-2` over OpenRouter, 2026-06-30 (claude-sonnet-4.6 through gpt-oss-20b) / 2026-07-02 (glm-5.2, qwen3-235b-a22b-2507, qwen3-32b, deepseek-v4-flash). Pass is the scenario grader's boolean verdict. Full per-trial results (outcome, cost, tokens, timing per model) + per-model/per-task rollups are committed under [`benchmark-results/`](benchmark-results/).
+Frozen run (v2): **24 scenarios x 19 models x 3 attempts = 1368 trials**, Harbor `terminus-2` over OpenRouter, 2026-07-07, all agents at an 1800s timeout. Models are ranked on **mean graded reward** (1.0 correct culprit; 0.0 for blaming a decoy; partial credit ≤ 0.5 otherwise; ± 95% CI over the 72 trials), with binary pass rates alongside. The three trials that hit `AgentTimeoutError` were re-run per methodology (timeouts are infra errors, not model failures). Full per-trial results (outcome, graded reward, cost, tokens, timing per model) + rollups are committed under [`benchmark-results/`](benchmark-results/).
 
-| Model | Pass rate | easy | medium | hard | no-code-cause |
-|---|---|---|---|---|---|
-| glm-5.2 | **100%** | 100% | 100% | 100% | 100% |
-| claude-sonnet-4.6 | **99%** | 100% | 100% | 97% | 95% |
-| gemini-3.5-flash | **99%** | 100% | 100% | 97% | 95% |
-| gpt-5.5 | **96%** | 100% | 100% | 91% | 90% |
-| gpt-5.4 | **96%** | 100% | 100% | 91% | 90% |
-| gemini-3.1-pro-preview | **94%** | 100% | 96% | 91% | 86% |
-| claude-opus-4.8 | **93%** | 83% | 92% | 97% | 100% |
-| deepseek-v4-flash | **92%** | 100% | 96% | 86% | 76% |
-| gpt-5.4-mini | **90%** | 100% | 96% | 85% | 100% |
-| kimi-k2.5 | **85%** | 83% | 100% | 70% | 71% |
-| kimi-k2-thinking | **85%** | 100% | 92% | 73% | 71% |
-| qwen3-235b-a22b-2507 | **72%** | 89% | 70% | 69% | 71% |
-| gpt-oss-120b | **58%** | 83% | 62% | 48% | 43% |
-| gemini-3.1-flash-lite | **56%** | 100% | 62% | 36% | 14% |
-| qwen3-32b | **44%** | 89% | 37% | 39% | 33% |
-| claude-haiku-4.5 | **35%** | 67% | 21% | 36% | 10% |
-| gpt-oss-20b | **28%** | 67% | 29% | 21% | 52% |
+> v1 → v2: the original 2026-06-30/07-02 run used a 600s agent timeout, which cost
+> deepseek-v4-flash 4 trials and four other models 1 each as `AgentTimeoutError`. v2
+> raises the timeout to 1800s for every model, treats residual timeouts as retries,
+> captures per-trial graded rewards, and adds sakana/fugu-ultra and
+> anthropic/claude-fable-5. Notable moves vs v1: claude-opus-4.8 93% → 99%,
+> claude-haiku-4.5 35% → 47%, gemini-3.1-flash-lite 56% → 60% (v1's tail numbers were
+> noisier than its top).
+
+| Model | Mean graded reward (95% CI) | Pass rate | easy | medium | hard | no-code-cause |
+|---|---|---|---|---|---|---|
+| glm-5.2 | **1.000 ± 0.000** | 100% | 100% | 100% | 100% | 100% |
+| claude-opus-4.8 | **0.986 ± 0.027** | 99% | 100% | 100% | 97% | 100% |
+| claude-fable-5 | **0.979 ± 0.030** | 97% | 100% | 100% | 94% | 100% |
+| gpt-5.4 | **0.972 ± 0.038** | 97% | 100% | 100% | 94% | 100% |
+| fugu-ultra | **0.972 ± 0.038** | 97% | 100% | 100% | 94% | 95% |
+| deepseek-v4-flash | **0.964 ± 0.041** | 96% | 100% | 96% | 94% | 90% |
+| gpt-5.5 | **0.958 ± 0.046** | 96% | 100% | 100% | 92% | 90% |
+| gemini-3.5-flash | **0.958 ± 0.046** | 96% | 100% | 100% | 92% | 86% |
+| gemini-3.1-pro-preview | **0.958 ± 0.046** | 96% | 100% | 100% | 92% | 86% |
+| claude-sonnet-4.6 | **0.958 ± 0.046** | 96% | 100% | 100% | 92% | 86% |
+| kimi-k2.5 | **0.875 ± 0.077** | 88% | 100% | 96% | 78% | 67% |
+| kimi-k2-thinking | **0.875 ± 0.074** | 86% | 100% | 89% | 81% | 67% |
+| gpt-5.4-mini | **0.851 ± 0.076** | 82% | 78% | 89% | 78% | 90% |
+| qwen3-235b-a22b-2507 | **0.767 ± 0.096** | 75% | 89% | 74% | 72% | 86% |
+| gemini-3.1-flash-lite | **0.607 ± 0.112** | 60% | 100% | 59% | 50% | 29% |
+| gpt-oss-120b | **0.534 ± 0.111** | 50% | 100% | 56% | 33% | 38% |
+| claude-haiku-4.5 | **0.507 ± 0.111** | 47% | 78% | 41% | 44% | 33% |
+| qwen3-32b | **0.450 ± 0.111** | 42% | 33% | 52% | 36% | 38% |
+| gpt-oss-20b | **0.386 ± 0.097** | 29% | 56% | 30% | 22% | 52% |
+
+## Baselines: can a script find the culprit?
+
+A benchmark whose culprit falls to a trivial policy measures nothing. Five deterministic,
+non-LLM baselines answer every scenario using only the data the agent sees and are scored
+with the grader's primary rule ([`scripts/run_baselines.py`](scripts/run_baselines.py);
+per-scenario results in
+[`benchmark-results/rootcausebench/baselines.json`](benchmark-results/rootcausebench/baselines.json)):
+
+| Baseline | Policy | Pass rate | Decoy hits | easy | medium | hard |
+|---|---|---|---|---|---|---|
+| `latest-commit` | blame the newest commit | 0/24 | 0 | 0/3 | 0/9 | 0/12 |
+| `always-none` | answer "none" every time | 7/24 | 0 | 0/3 | 3/9 | 4/12 |
+| `latest-deploy` | blame the last deploy before onset | 1/24 | **22** | 1/3 | 0/9 | 0/12 |
+| `alert-service-deploy` | last pre-onset deploy to the alerting service | 5/24 | 18 | 2/3 | 0/9 | 3/12 |
+| `scripted-rca` | ~20-line heuristic: service match + alert keywords in the diff, most recent wins | 7/24 | 17 | 3/3 | 0/9 | 4/12 |
+
+Three takeaways:
+
+- **The decoy design works.** The classic 3am heuristic — *blame the last deploy before
+  onset* — goes 1/24 and lands on an innocent-deploy decoy in **22 of 24 scenarios**.
+  Every decoy is placed exactly where that reflex looks.
+- **"none" is a prior, not an answer.** `always-none` collects the 7 no-code-cause
+  scenarios (29% pass) while scoring zero on every real culprit — the same trap a model
+  falls into if it treats "no code cause" as a safe default.
+- **Known soft spots.** `scripted-rca` (match the alerting service, grep the diffs for
+  alert keywords) solves all 3 easy scenarios and 4 hard ones — those culprits are
+  findable without understanding the diff. CI warns on each; they are slated for
+  hardening in a future data revision, and the inverted easy/hard split there is a
+  tier-calibration signal.
+
+CI ([`oracle-check`](.github/workflows/oracle-check.yml)) enforces on every push: every
+scenario's oracle (`solution/solve.sh`) satisfies its grader and matches ground truth on
+every field, all culprit/decoy/deploy SHAs resolve against `commits.json`, and
+`latest-commit` never names a culprit (that would make a scenario trivially gameable).
 
 ## Scenarios
 
