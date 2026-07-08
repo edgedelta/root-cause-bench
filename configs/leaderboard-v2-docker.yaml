@@ -1,0 +1,114 @@
+# root-cause-bench — leaderboard v2: full re-run, all 19 models (Docker).
+#
+# Changes vs the v1 frozen run (2026-06-30/07-02):
+#   - override_timeout_sec: 1800 for every agent (v1's 600s cap cost
+#     deepseek-v4-flash 4 of its 6 failures as AgentTimeoutError; 9 trials
+#     across 5 models were timeout losses)
+#   - graders emit per-trial graded reward (verifier/metrics.json): 1.0 for
+#     the correct culprit SHA, 0.0 for blaming an innocent-deploy decoy,
+#     otherwise partial credit <= 0.5 from the secondary diagnosis
+#   - adds sakana/fugu-ultra and anthropic/claude-fable-5
+#
+# NOTE: anthropic/claude-fable-5 rate-limits at 8 concurrent agents on
+# OpenRouter — run it separately at n_concurrent_trials: 2 (the 2026-07-07 v2
+# run used configs/fable-5-docker.yaml for that leg) and merge with:
+#   python3 scripts/gen_results.py jobs/<main-run> jobs/<fable-run> benchmark-results/rootcausebench
+#
+# Methodology: any residual AgentTimeoutError trial is an infra error to
+# re-run, not a scored failure.
+#
+# Usage: set -a && source .env && set +a && harbor run -c configs/leaderboard-v2-docker.yaml -y
+jobs_dir: jobs
+n_attempts: 3
+n_concurrent_trials: 8
+quiet: false
+
+environment:
+  type: docker
+
+agents:
+  - name: terminus-2
+    model_name: openrouter/anthropic/claude-fable-5
+    override_timeout_sec: 1800
+  - name: terminus-2
+    model_name: openrouter/anthropic/claude-haiku-4.5
+    override_timeout_sec: 1800
+  - name: terminus-2
+    model_name: openrouter/anthropic/claude-opus-4.8
+    override_timeout_sec: 1800
+  - name: terminus-2
+    model_name: openrouter/anthropic/claude-sonnet-4.6
+    override_timeout_sec: 1800
+  - name: terminus-2
+    model_name: openrouter/deepseek/deepseek-v4-flash
+    override_timeout_sec: 1800
+  - name: terminus-2
+    model_name: openrouter/google/gemini-3.1-flash-lite
+    override_timeout_sec: 1800
+  - name: terminus-2
+    model_name: openrouter/google/gemini-3.1-pro-preview
+    override_timeout_sec: 1800
+  - name: terminus-2
+    model_name: openrouter/google/gemini-3.5-flash
+    override_timeout_sec: 1800
+  - name: terminus-2
+    model_name: openrouter/moonshotai/kimi-k2-thinking
+    override_timeout_sec: 1800
+  - name: terminus-2
+    model_name: openrouter/moonshotai/kimi-k2.5
+    override_timeout_sec: 1800
+  - name: terminus-2
+    model_name: openrouter/openai/gpt-5.4
+    override_timeout_sec: 1800
+  - name: terminus-2
+    model_name: openrouter/openai/gpt-5.4-mini
+    override_timeout_sec: 1800
+  - name: terminus-2
+    model_name: openrouter/openai/gpt-5.5
+    override_timeout_sec: 1800
+  - name: terminus-2
+    model_name: openrouter/openai/gpt-oss-120b
+    override_timeout_sec: 1800
+  - name: terminus-2
+    model_name: openrouter/openai/gpt-oss-20b
+    override_timeout_sec: 1800
+  - name: terminus-2
+    model_name: openrouter/qwen/qwen3-235b-a22b-2507
+    override_timeout_sec: 1800
+  - name: terminus-2
+    model_name: openrouter/qwen/qwen3-32b
+    override_timeout_sec: 1800
+  - name: terminus-2
+    model_name: openrouter/sakana/fugu-ultra
+    override_timeout_sec: 1800
+  - name: terminus-2
+    model_name: openrouter/z-ai/glm-5.2
+    override_timeout_sec: 1800
+
+datasets:
+  - path: datasets/rootcausebench
+    task_names:
+      - ai-agent-registration-missing
+      - auth-jwt-validation-regression
+      - bad-data-poison-record
+      - cache-ttl-stampede
+      - checkout-latency-n-plus-one
+      - cloud-region-impairment
+      - dashboard-db-schema-missing-table
+      - dns-resolver-degradation
+      - dynamodb-write-capacity-breach
+      - frontend-race-condition-5xx
+      - grpc-deadline-too-tight
+      - inventory-connection-pool-exhaustion
+      - logging-debug-disk-fill
+      - metric-ingestor-metadata-deser
+      - noisy-neighbor-node-saturation
+      - olapdb-tso-cas-retry-budget
+      - payment-nil-deref-panic
+      - recommendation-memory-leak
+      - search-mapping-query-break
+      - tls-cert-expiry
+      - traffic-surge-flash-sale
+      - transformer-dependency-startup-crash
+      - unbounded-query-delayed-onset
+      - upstream-payment-provider-outage
