@@ -1578,6 +1578,16 @@
   "diff": "--- a/internal/health/version.go\n+++ b/internal/health/version.go\n@@ -0,0 +1,5 @@\n+func Version(w http.ResponseWriter, r *http.Request) {\n+\tfmt.Fprintln(w, buildVersion)\n+}\n"
  },
  {
+  "sha": "f6a41a5f367b7da5bcd5c79216722895f1b79c33",
+  "author": "dmitri.volkov",
+  "timestamp": "2026-07-18T21:20:00Z",
+  "message": "refactor(cache): namespace cache keys by environment",
+  "files_changed": [
+   "pkg/cache/key.go"
+  ],
+  "diff": "--- a/pkg/cache/key.go\n+++ b/pkg/cache/key.go\n@@ -1,6 +1,8 @@\n+const keyPrefix = \"prod:\"\n+\n func CatalogKey(req *Request) string {\n-\treturn fmt.Sprintf(\"catalog:%s:%s\", req.Locale, req.PageToken)\n+\treturn fmt.Sprintf(keyPrefix+\"catalog:%s:%s\", req.Locale, req.PageToken)\n }\n"
+ },
+ {
   "sha": "aaf0f37c5ccd6948cb2fa5925d09d814f7ec103a",
   "author": "jan.kowalski",
   "timestamp": "2026-07-18T21:41:57Z",
@@ -1728,6 +1738,16 @@
   "diff": "--- a/deploy/dashboards/orders.json\n+++ b/deploy/dashboards/orders.json\n@@ -14,7 +14,7 @@\n-      \"title\": \"orders/sec\",\n+      \"title\": \"Orders per second\",\n"
  },
  {
+  "sha": "7bf6f3511af670b58b7da23e0d91fe5f37034ea9",
+  "author": "grace.oyelaran",
+  "timestamp": "2026-07-19T00:50:00Z",
+  "message": "perf(catalog): raise catalog cache TTL",
+  "files_changed": [
+   "services/catalog/cache.go"
+  ],
+  "diff": "--- a/services/catalog/cache.go\n+++ b/services/catalog/cache.go\n@@ -12,2 +12,2 @@\n-\tTTL: 10 * time.Minute,\n+\tTTL: 30 * time.Minute,\n"
+ },
+ {
   "sha": "9e0ebbb40d3f6c6f7f7cfbd947733e34967e8ffc",
   "author": "tom.oduya",
   "timestamp": "2026-07-19T00:54:36Z",
@@ -1845,7 +1865,7 @@
   "files_changed": [
    "pkg/cache/key.go"
   ],
-  "diff": "--- a/pkg/cache/key.go\n+++ b/pkg/cache/key.go\n@@ -9,7 +9,8 @@ func CatalogKey(req *Request) string {\n-\treturn fmt.Sprintf(\"catalog:%s:%s\", req.Locale, req.PageToken)\n+\t// include the request context so per-session experiments can vary results\n+\treturn fmt.Sprintf(\"catalog:%s:%s:%s\",\n+\t\treq.Locale, req.PageToken, req.SessionID)\n }\n"
+  "diff": "--- a/pkg/cache/key.go\n+++ b/pkg/cache/key.go\n@@ -9,7 +9,8 @@ func CatalogKey(req *Request) string {\n-\treturn fmt.Sprintf(\"catalog:%s:%s\", req.Locale, req.PageToken)\n+\t// scope cache entries to the request context\n+\treturn fmt.Sprintf(\"catalog:%s:%s:%s\",\n+\t\treq.Locale, req.PageToken, req.SessionID)\n }\n"
  },
  {
   "sha": "be84c394fc9602d8827b418a885571d8e3572122",
