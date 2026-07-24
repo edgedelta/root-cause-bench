@@ -1,0 +1,304 @@
+[
+ {
+  "sha": "893d63ef8f79b91668dab74d48a245c08da7c1fc",
+  "author": "tom.oduya",
+  "timestamp": "2026-07-21T05:10:49Z",
+  "message": "chore: bump go.mod dependencies",
+  "files_changed": [
+   "go.mod",
+   "go.sum"
+  ],
+  "diff": null
+ },
+ {
+  "sha": "0c01457089736ba3c63d0fc42f2954303e3805cd",
+  "author": "tom.oduya",
+  "timestamp": "2026-07-21T05:13:09Z",
+  "message": "refactor: simplify config loading",
+  "files_changed": [
+   "internal/config/load.go"
+  ],
+  "diff": null
+ },
+ {
+  "sha": "e8c95b35502d9a43e972bae8301a753487c73343",
+  "author": "ahmet.yilmaz",
+  "timestamp": "2026-07-21T05:24:36Z",
+  "message": "ci: cache go build artifacts",
+  "files_changed": [
+   ".github/workflows/build.yml"
+  ],
+  "diff": null
+ },
+ {
+  "sha": "41bb928e80dd331cb84792b1ecc7e593d46c12e0",
+  "author": "sofia.rossi",
+  "timestamp": "2026-07-21T05:31:25Z",
+  "message": "docs: update API reference",
+  "files_changed": [
+   "docs/api/orders.md"
+  ],
+  "diff": null
+ },
+ {
+  "sha": "cde03bc4fa30944f70c98214ae1c24c443e2edea",
+  "author": "tom.oduya",
+  "timestamp": "2026-07-21T05:50:49Z",
+  "message": "test: raise coverage threshold",
+  "files_changed": [
+   "Makefile"
+  ],
+  "diff": null
+ },
+ {
+  "sha": "c1fdab72d96ab0d669d9a56cad040cfc4162db85",
+  "author": "ahmet.yilmaz",
+  "timestamp": "2026-07-21T05:53:56Z",
+  "message": "refactor: extract response writer helper",
+  "files_changed": [
+   "internal/httputil/writer.go"
+  ],
+  "diff": "--- a/internal/httputil/writer.go\n+++ b/internal/httputil/writer.go\n@@ -10,6 +10,10 @@\n+func writeJSON(w http.ResponseWriter, code int, v any) {\n+\tw.WriteHeader(code)\n+\t_ = json.NewEncoder(w).Encode(v)\n+}\n"
+ },
+ {
+  "sha": "70af30847488e9123072b0263ba427748605a191",
+  "author": "priya.nair",
+  "timestamp": "2026-07-21T05:57:39Z",
+  "message": "feat: add structured logging fields",
+  "files_changed": [
+   "internal/middleware/log.go"
+  ],
+  "diff": "--- a/internal/middleware/log.go\n+++ b/internal/middleware/log.go\n@@ -22,7 +22,8 @@\n-\tlogger.Info(\"request\")\n+\tlogger.Info(\"request\", \"route\", r.URL.Path, \"ms\", elapsed)\n"
+ },
+ {
+  "sha": "8bf8ba021a4a702aa38e542fcbd1627542ba422a",
+  "author": "jan.kowalski",
+  "timestamp": "2026-07-21T06:18:23Z",
+  "message": "docs: onboarding notes for new services",
+  "files_changed": [
+   "docs/onboarding.md"
+  ],
+  "diff": null
+ },
+ {
+  "sha": "33a36c20fdf9ecee9e5a30b330d2550401faf739",
+  "author": "lena.fischer",
+  "timestamp": "2026-07-21T06:27:44Z",
+  "message": "feat: add structured logging fields",
+  "files_changed": [
+   "internal/middleware/log.go"
+  ],
+  "diff": "--- a/internal/middleware/log.go\n+++ b/internal/middleware/log.go\n@@ -22,7 +22,8 @@\n-\tlogger.Info(\"request\")\n+\tlogger.Info(\"request\", \"route\", r.URL.Path, \"ms\", elapsed)\n"
+ },
+ {
+  "sha": "2a271ecc32bb89add3da85edd13817987f659057",
+  "author": "lena.fischer",
+  "timestamp": "2026-07-21T06:35:49Z",
+  "message": "chore: regenerate protobuf stubs",
+  "files_changed": [
+   "pkg/pb/orders.pb.go"
+  ],
+  "diff": null
+ },
+ {
+  "sha": "2e27a61b4b0bfabc7e034a57577e9a15c782210a",
+  "author": "priya.nair",
+  "timestamp": "2026-07-21T07:45:49Z",
+  "message": "perf: preallocate buffer in JSON encoder",
+  "files_changed": [
+   "pkg/codec/json.go"
+  ],
+  "diff": null
+ },
+ {
+  "sha": "861de1b9e192114b6bb9af7b3408b66217cfa5a2",
+  "author": "lena.fischer",
+  "timestamp": "2026-07-21T07:48:33Z",
+  "message": "feat: add /readyz endpoint",
+  "files_changed": [
+   "internal/health/ready.go"
+  ],
+  "diff": null
+ },
+ {
+  "sha": "4d1afd6db971d87591ba8fd0c09b2ab32a12c2ba",
+  "author": "tom.oduya",
+  "timestamp": "2026-07-21T07:59:45Z",
+  "message": "chore: rotate lint config",
+  "files_changed": [
+   ".golangci.yml"
+  ],
+  "diff": null
+ },
+ {
+  "sha": "f9f358d2b02e04c3a6fadaafacc3715535446980",
+  "author": "marco.silva",
+  "timestamp": "2026-07-21T08:05:00Z",
+  "message": "feat(notify): batch webhook dispatch",
+  "files_changed": [
+   "services/notification/dispatch.go"
+  ],
+  "diff": "--- a/services/notification/dispatch.go\n+++ b/services/notification/dispatch.go\n@@ -22,14 +22,12 @@ type Dispatcher struct {\n-\t// bounded queue: drop-on-full keeps memory flat under consumer slowdowns\n-\tqueue chan Event // cap 10_000\n+\tmu    sync.Mutex\n+\tbatch []Event\n }\n\n func (d *Dispatcher) Enqueue(ev Event) {\n-\tselect {\n-\tcase d.queue <- ev:\n-\tdefault:\n-\t\tmetrics.Inc(\"notify_dropped_total\")\n-\t}\n+\td.mu.Lock()\n+\td.batch = append(d.batch, ev)\n+\td.mu.Unlock()\n }\n"
+ },
+ {
+  "sha": "1c5af7aa48d48396d1bffe896c029979c810a894",
+  "author": "mei.chen",
+  "timestamp": "2026-07-21T08:13:49Z",
+  "message": "test: add table-driven tests for money conversion",
+  "files_changed": [
+   "pkg/money/convert_test.go"
+  ],
+  "diff": null
+ },
+ {
+  "sha": "8c26a687081c6bf79b1bde68af6da1c2eb44a1b6",
+  "author": "marco.silva",
+  "timestamp": "2026-07-21T08:21:26Z",
+  "message": "style: gofmt sweep",
+  "files_changed": [
+   "internal/worker/pool.go"
+  ],
+  "diff": null
+ },
+ {
+  "sha": "5729ddee6e4db61e0c09bb51c5891d7d77e3aea5",
+  "author": "marco.silva",
+  "timestamp": "2026-07-21T08:23:06Z",
+  "message": "fix: correct typo in error message",
+  "files_changed": [
+   "internal/errors/messages.go"
+  ],
+  "diff": "--- a/internal/errors/messages.go\n+++ b/internal/errors/messages.go\n@@ -4,1 +4,1 @@\n-\t\"unkown resource\"\n+\t\"unknown resource\"\n"
+ },
+ {
+  "sha": "0abc8cf8bb25d868aad720977ec4006b373bb905",
+  "author": "priya.nair",
+  "timestamp": "2026-07-21T08:57:40Z",
+  "message": "perf: preallocate buffer in JSON encoder",
+  "files_changed": [
+   "pkg/codec/json.go"
+  ],
+  "diff": null
+ },
+ {
+  "sha": "22b9f7b2c6cfb63ba3a5ff3e7d23caac07c155e5",
+  "author": "sofia.rossi",
+  "timestamp": "2026-07-21T09:00:01Z",
+  "message": "feat: expose build info endpoint",
+  "files_changed": [
+   "internal/health/version.go"
+  ],
+  "diff": null
+ },
+ {
+  "sha": "cef60d331de7fa49b9bcbb3ab5ab19dfb3eb9eb1",
+  "author": "jan.kowalski",
+  "timestamp": "2026-07-21T09:29:10Z",
+  "message": "refactor: extract response writer helper",
+  "files_changed": [
+   "internal/httputil/writer.go"
+  ],
+  "diff": "--- a/internal/httputil/writer.go\n+++ b/internal/httputil/writer.go\n@@ -10,6 +10,10 @@\n+func writeJSON(w http.ResponseWriter, code int, v any) {\n+\tw.WriteHeader(code)\n+\t_ = json.NewEncoder(w).Encode(v)\n+}\n"
+ },
+ {
+  "sha": "37b8d9f2f3eadb3d44f55a049b7ab73142eb7575",
+  "author": "priya.nair",
+  "timestamp": "2026-07-21T09:30:00Z",
+  "message": "fix(workflow): improve dispatch error logging",
+  "files_changed": [
+   "services/workflow/notify.go"
+  ],
+  "diff": "--- a/services/workflow/notify.go\n+++ b/services/workflow/notify.go\n@@ -55,1 +55,2 @@\n-\t\tlog.Error(\"notify dispatch failed\")\n+\t\tlog.Error(\"notify dispatch failed: \" + err.Error())\n"
+ },
+ {
+  "sha": "47a72ae2920b40a35abe80f58427808b8a6c1e94",
+  "author": "marco.silva",
+  "timestamp": "2026-07-21T09:30:04Z",
+  "message": "ci: cache go build artifacts",
+  "files_changed": [
+   ".github/workflows/build.yml"
+  ],
+  "diff": null
+ },
+ {
+  "sha": "f95c3800a691dfdeb8372857d5e234afadc6e934",
+  "author": "priya.nair",
+  "timestamp": "2026-07-21T09:37:38Z",
+  "message": "test: add table-driven tests for money conversion",
+  "files_changed": [
+   "pkg/money/convert_test.go"
+  ],
+  "diff": null
+ },
+ {
+  "sha": "c1efcf0d9b611323a7deff161e0303de5baf444b",
+  "author": "mei.chen",
+  "timestamp": "2026-07-21T09:41:16Z",
+  "message": "refactor: simplify config loading",
+  "files_changed": [
+   "internal/config/load.go"
+  ],
+  "diff": null
+ },
+ {
+  "sha": "cae210a4da0197f6031fb249c5f50fe4ef4e512e",
+  "author": "lena.fischer",
+  "timestamp": "2026-07-21T09:46:00Z",
+  "message": "docs: onboarding notes for new services",
+  "files_changed": [
+   "docs/onboarding.md"
+  ],
+  "diff": null
+ },
+ {
+  "sha": "577d3fa83cec348fb2edef07c66cc95c6d58ff20",
+  "author": "priya.nair",
+  "timestamp": "2026-07-21T09:59:30Z",
+  "message": "fix: correct typo in error message",
+  "files_changed": [
+   "internal/errors/messages.go"
+  ],
+  "diff": "--- a/internal/errors/messages.go\n+++ b/internal/errors/messages.go\n@@ -4,1 +4,1 @@\n-\t\"unkown resource\"\n+\t\"unknown resource\"\n"
+ },
+ {
+  "sha": "f0b5480b8e03423acab67e3a676d770fa6f9d006",
+  "author": "sofia.rossi",
+  "timestamp": "2026-07-21T10:02:10Z",
+  "message": "docs: update API reference",
+  "files_changed": [
+   "docs/api/orders.md"
+  ],
+  "diff": null
+ },
+ {
+  "sha": "bd7f93f2084cdef9bb208862903e1b32b78544ce",
+  "author": "marco.silva",
+  "timestamp": "2026-07-21T10:18:48Z",
+  "message": "chore: regenerate protobuf stubs",
+  "files_changed": [
+   "pkg/pb/orders.pb.go"
+  ],
+  "diff": null
+ },
+ {
+  "sha": "9ab292bad4a541f1ed514c773e2278b90db12596",
+  "author": "mei.chen",
+  "timestamp": "2026-07-21T10:26:43Z",
+  "message": "feat: add /readyz endpoint",
+  "files_changed": [
+   "internal/health/ready.go"
+  ],
+  "diff": null
+ },
+ {
+  "sha": "664fac3e2aa445d684d12b85ef124ceb4e6d8ad3",
+  "author": "lena.fischer",
+  "timestamp": "2026-07-21T10:38:44Z",
+  "message": "chore: bump go.mod dependencies",
+  "files_changed": [
+   "go.mod",
+   "go.sum"
+  ],
+  "diff": null
+ }
+]

@@ -1,0 +1,592 @@
+[
+ {
+  "trace_id": "4df2746fada622d094631d008035b3a0",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "POST /api/notify",
+  "start": "2026-07-21T05:00:00Z",
+  "duration_ms": 60,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4df2746fada622d094631d008035b3a0",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "workflow-engine",
+  "name": "DispatchNotification",
+  "start": "2026-07-21T05:00:00Z",
+  "duration_ms": 45,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4df2746fada622d094631d008035b3a0",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "notification-svc",
+  "name": "Enqueue",
+  "start": "2026-07-21T05:00:00Z",
+  "duration_ms": 15,
+  "status": "OK"
+ },
+ {
+  "trace_id": "bc8ef93559a8fc3902ee66c3cfe64378",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "POST /api/notify",
+  "start": "2026-07-21T05:20:00Z",
+  "duration_ms": 60,
+  "status": "OK"
+ },
+ {
+  "trace_id": "bc8ef93559a8fc3902ee66c3cfe64378",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "workflow-engine",
+  "name": "DispatchNotification",
+  "start": "2026-07-21T05:20:00Z",
+  "duration_ms": 45,
+  "status": "OK"
+ },
+ {
+  "trace_id": "bc8ef93559a8fc3902ee66c3cfe64378",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "notification-svc",
+  "name": "Enqueue",
+  "start": "2026-07-21T05:20:00Z",
+  "duration_ms": 15,
+  "status": "OK"
+ },
+ {
+  "trace_id": "0d5336ad728f5bb08e4ae5b2ce89db49",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "POST /api/notify",
+  "start": "2026-07-21T05:40:00Z",
+  "duration_ms": 60,
+  "status": "OK"
+ },
+ {
+  "trace_id": "0d5336ad728f5bb08e4ae5b2ce89db49",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "workflow-engine",
+  "name": "DispatchNotification",
+  "start": "2026-07-21T05:40:00Z",
+  "duration_ms": 45,
+  "status": "OK"
+ },
+ {
+  "trace_id": "0d5336ad728f5bb08e4ae5b2ce89db49",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "notification-svc",
+  "name": "Enqueue",
+  "start": "2026-07-21T05:40:00Z",
+  "duration_ms": 15,
+  "status": "OK"
+ },
+ {
+  "trace_id": "41637f63b1046638f3e06524e6cc2fea",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "POST /api/notify",
+  "start": "2026-07-21T06:00:00Z",
+  "duration_ms": 60,
+  "status": "OK"
+ },
+ {
+  "trace_id": "41637f63b1046638f3e06524e6cc2fea",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "workflow-engine",
+  "name": "DispatchNotification",
+  "start": "2026-07-21T06:00:00Z",
+  "duration_ms": 45,
+  "status": "OK"
+ },
+ {
+  "trace_id": "41637f63b1046638f3e06524e6cc2fea",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "notification-svc",
+  "name": "Enqueue",
+  "start": "2026-07-21T06:00:00Z",
+  "duration_ms": 15,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9b412a722996dc9a0eab8f00dd473c19",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "POST /api/notify",
+  "start": "2026-07-21T06:20:00Z",
+  "duration_ms": 60,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9b412a722996dc9a0eab8f00dd473c19",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "workflow-engine",
+  "name": "DispatchNotification",
+  "start": "2026-07-21T06:20:00Z",
+  "duration_ms": 45,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9b412a722996dc9a0eab8f00dd473c19",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "notification-svc",
+  "name": "Enqueue",
+  "start": "2026-07-21T06:20:00Z",
+  "duration_ms": 15,
+  "status": "OK"
+ },
+ {
+  "trace_id": "7419268e9e208618c5214317edc5696b",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "POST /api/notify",
+  "start": "2026-07-21T06:40:00Z",
+  "duration_ms": 60,
+  "status": "OK"
+ },
+ {
+  "trace_id": "7419268e9e208618c5214317edc5696b",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "workflow-engine",
+  "name": "DispatchNotification",
+  "start": "2026-07-21T06:40:00Z",
+  "duration_ms": 45,
+  "status": "OK"
+ },
+ {
+  "trace_id": "7419268e9e208618c5214317edc5696b",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "notification-svc",
+  "name": "Enqueue",
+  "start": "2026-07-21T06:40:00Z",
+  "duration_ms": 15,
+  "status": "OK"
+ },
+ {
+  "trace_id": "54716e889289501e265b26e4ca540c26",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "POST /api/notify",
+  "start": "2026-07-21T07:00:00Z",
+  "duration_ms": 60,
+  "status": "OK"
+ },
+ {
+  "trace_id": "54716e889289501e265b26e4ca540c26",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "workflow-engine",
+  "name": "DispatchNotification",
+  "start": "2026-07-21T07:00:00Z",
+  "duration_ms": 45,
+  "status": "OK"
+ },
+ {
+  "trace_id": "54716e889289501e265b26e4ca540c26",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "notification-svc",
+  "name": "Enqueue",
+  "start": "2026-07-21T07:00:00Z",
+  "duration_ms": 15,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e9ee5c728f82c750d2b75f2fa5d3a52a",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "POST /api/notify",
+  "start": "2026-07-21T07:20:00Z",
+  "duration_ms": 60,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e9ee5c728f82c750d2b75f2fa5d3a52a",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "workflow-engine",
+  "name": "DispatchNotification",
+  "start": "2026-07-21T07:20:00Z",
+  "duration_ms": 45,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e9ee5c728f82c750d2b75f2fa5d3a52a",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "notification-svc",
+  "name": "Enqueue",
+  "start": "2026-07-21T07:20:00Z",
+  "duration_ms": 15,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a64f36c505d166462dda8de7d0f573c8",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "POST /api/notify",
+  "start": "2026-07-21T07:40:00Z",
+  "duration_ms": 60,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a64f36c505d166462dda8de7d0f573c8",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "workflow-engine",
+  "name": "DispatchNotification",
+  "start": "2026-07-21T07:40:00Z",
+  "duration_ms": 45,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a64f36c505d166462dda8de7d0f573c8",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "notification-svc",
+  "name": "Enqueue",
+  "start": "2026-07-21T07:40:00Z",
+  "duration_ms": 15,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c8eb22d309a28278e70b9af513f4f702",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "POST /api/notify",
+  "start": "2026-07-21T08:00:00Z",
+  "duration_ms": 60,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c8eb22d309a28278e70b9af513f4f702",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "workflow-engine",
+  "name": "DispatchNotification",
+  "start": "2026-07-21T08:00:00Z",
+  "duration_ms": 45,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c8eb22d309a28278e70b9af513f4f702",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "notification-svc",
+  "name": "Enqueue",
+  "start": "2026-07-21T08:00:00Z",
+  "duration_ms": 15,
+  "status": "OK"
+ },
+ {
+  "trace_id": "7e40b3de22226a6d268c97fb0850982f",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "POST /api/notify",
+  "start": "2026-07-21T08:20:00Z",
+  "duration_ms": 60,
+  "status": "OK"
+ },
+ {
+  "trace_id": "7e40b3de22226a6d268c97fb0850982f",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "workflow-engine",
+  "name": "DispatchNotification",
+  "start": "2026-07-21T08:20:00Z",
+  "duration_ms": 45,
+  "status": "OK"
+ },
+ {
+  "trace_id": "7e40b3de22226a6d268c97fb0850982f",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "notification-svc",
+  "name": "Enqueue",
+  "start": "2026-07-21T08:20:00Z",
+  "duration_ms": 15,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e25c27ac13b685e443168061dc340988",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "POST /api/notify",
+  "start": "2026-07-21T08:40:00Z",
+  "duration_ms": 60,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e25c27ac13b685e443168061dc340988",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "workflow-engine",
+  "name": "DispatchNotification",
+  "start": "2026-07-21T08:40:00Z",
+  "duration_ms": 45,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e25c27ac13b685e443168061dc340988",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "notification-svc",
+  "name": "Enqueue",
+  "start": "2026-07-21T08:40:00Z",
+  "duration_ms": 15,
+  "status": "OK"
+ },
+ {
+  "trace_id": "7583e5e50cf8d0a1764019bb2d1dcaba",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "POST /api/notify",
+  "start": "2026-07-21T09:00:00Z",
+  "duration_ms": 60,
+  "status": "OK"
+ },
+ {
+  "trace_id": "7583e5e50cf8d0a1764019bb2d1dcaba",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "workflow-engine",
+  "name": "DispatchNotification",
+  "start": "2026-07-21T09:00:00Z",
+  "duration_ms": 45,
+  "status": "OK"
+ },
+ {
+  "trace_id": "7583e5e50cf8d0a1764019bb2d1dcaba",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "notification-svc",
+  "name": "Enqueue",
+  "start": "2026-07-21T09:00:00Z",
+  "duration_ms": 15,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3ac4dda5b548d63a340605cbc7d4c291",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "POST /api/notify",
+  "start": "2026-07-21T09:20:00Z",
+  "duration_ms": 60,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3ac4dda5b548d63a340605cbc7d4c291",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "workflow-engine",
+  "name": "DispatchNotification",
+  "start": "2026-07-21T09:20:00Z",
+  "duration_ms": 45,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3ac4dda5b548d63a340605cbc7d4c291",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "notification-svc",
+  "name": "Enqueue",
+  "start": "2026-07-21T09:20:00Z",
+  "duration_ms": 15,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6fefc121340fa73faf278609e55594a8",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "POST /api/notify",
+  "start": "2026-07-21T09:40:00Z",
+  "duration_ms": 60,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6fefc121340fa73faf278609e55594a8",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "workflow-engine",
+  "name": "DispatchNotification",
+  "start": "2026-07-21T09:40:00Z",
+  "duration_ms": 45,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6fefc121340fa73faf278609e55594a8",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "notification-svc",
+  "name": "Enqueue",
+  "start": "2026-07-21T09:40:00Z",
+  "duration_ms": 15,
+  "status": "OK"
+ },
+ {
+  "trace_id": "bd225a78f75bab12748f12f9470bb3a5",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "POST /api/notify",
+  "start": "2026-07-21T10:00:00Z",
+  "duration_ms": 60,
+  "status": "OK"
+ },
+ {
+  "trace_id": "bd225a78f75bab12748f12f9470bb3a5",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "workflow-engine",
+  "name": "DispatchNotification",
+  "start": "2026-07-21T10:00:00Z",
+  "duration_ms": 45,
+  "status": "OK"
+ },
+ {
+  "trace_id": "bd225a78f75bab12748f12f9470bb3a5",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "notification-svc",
+  "name": "Enqueue",
+  "start": "2026-07-21T10:00:00Z",
+  "duration_ms": 15,
+  "status": "OK"
+ },
+ {
+  "trace_id": "13a944b30cd353f8d2343033e8526f41",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "POST /api/notify",
+  "start": "2026-07-21T10:20:00Z",
+  "duration_ms": 60,
+  "status": "OK"
+ },
+ {
+  "trace_id": "13a944b30cd353f8d2343033e8526f41",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "workflow-engine",
+  "name": "DispatchNotification",
+  "start": "2026-07-21T10:20:00Z",
+  "duration_ms": 45,
+  "status": "OK"
+ },
+ {
+  "trace_id": "13a944b30cd353f8d2343033e8526f41",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "notification-svc",
+  "name": "Enqueue",
+  "start": "2026-07-21T10:20:00Z",
+  "duration_ms": 15,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5be6e103bcce07c69da09bca7de08f0e",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "POST /api/notify",
+  "start": "2026-07-21T10:40:00Z",
+  "duration_ms": 60,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5be6e103bcce07c69da09bca7de08f0e",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "workflow-engine",
+  "name": "DispatchNotification",
+  "start": "2026-07-21T10:40:00Z",
+  "duration_ms": 45,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5be6e103bcce07c69da09bca7de08f0e",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "notification-svc",
+  "name": "Enqueue",
+  "start": "2026-07-21T10:40:00Z",
+  "duration_ms": 15,
+  "status": "OK"
+ },
+ {
+  "trace_id": "cccccccccccccccccccccccccccc0001",
+  "span_id": "c0",
+  "service": "platform-api",
+  "name": "POST /api/notify",
+  "start": "2026-07-21T06:00:00Z",
+  "duration_ms": 120,
+  "status": "OK"
+ },
+ {
+  "trace_id": "cccccccccccccccccccccccccccc0001",
+  "span_id": "c1",
+  "parent_id": "c0",
+  "service": "workflow-engine",
+  "name": "DispatchNotification",
+  "start": "2026-07-21T06:00:00Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "cccccccccccccccccccccccccccc0001",
+  "span_id": "c2",
+  "parent_id": "c1",
+  "service": "notification-svc",
+  "name": "Enqueue",
+  "start": "2026-07-21T06:00:00Z",
+  "duration_ms": 20,
+  "status": "OK"
+ },
+ {
+  "trace_id": "cccccccccccccccccccccccccccc0002",
+  "span_id": "d0",
+  "service": "platform-api",
+  "name": "POST /api/notify",
+  "start": "2026-07-21T09:50:00Z",
+  "duration_ms": 3200,
+  "status": "ERROR",
+  "error": "upstream unavailable"
+ },
+ {
+  "trace_id": "cccccccccccccccccccccccccccc0002",
+  "span_id": "d1",
+  "parent_id": "d0",
+  "service": "workflow-engine",
+  "name": "DispatchNotification",
+  "start": "2026-07-21T09:50:00Z",
+  "duration_ms": 3150,
+  "status": "ERROR",
+  "error": "post http://notification-svc:8080/dispatch: connection refused"
+ }
+]

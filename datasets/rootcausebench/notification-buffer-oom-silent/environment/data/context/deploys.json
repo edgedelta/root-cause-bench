@@ -1,0 +1,14 @@
+[
+ {
+  "timestamp": "2026-07-21T08:40:00Z",
+  "service": "notification-svc",
+  "commit_sha": "f9f358d2b02e04c3a6fadaafacc3715535446980",
+  "version": "v2026.07.21-0840"
+ },
+ {
+  "timestamp": "2026-07-21T09:52:00Z",
+  "service": "workflow-engine",
+  "commit_sha": "37b8d9f2f3eadb3d44f55a049b7ab73142eb7575",
+  "version": "v2026.07.21-0952"
+ }
+]

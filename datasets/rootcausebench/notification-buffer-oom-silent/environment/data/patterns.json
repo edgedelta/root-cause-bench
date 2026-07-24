@@ -1,0 +1,37 @@
+[
+ {
+  "signature": "notify dispatch failed: post http://notification-svc:<N>/dispatch: connection refused",
+  "service": "workflow-engine",
+  "count": 640,
+  "delta_vs_baseline": "+640",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "user notification enqueue failed: upstream unavailable",
+  "service": "platform-api",
+  "count": 228,
+  "delta_vs_baseline": "+228",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "webhook dispatched",
+  "service": "notification-svc",
+  "count": 203,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "workflow step completed",
+  "service": "workflow-engine",
+  "count": 300,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "request served",
+  "service": "platform-api",
+  "count": 285,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ }
+]

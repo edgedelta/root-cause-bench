@@ -1,0 +1,239 @@
+name = "notification-buffer-oom-silent"
+family = "degraded-telemetry"
+seed = 303
+tags = ["degraded-telemetry", "oom", "missing-logs"]
+
+[window]
+start = "2026-07-21T05:00:00Z"
+end   = "2026-07-21T11:00:00Z"
+
+[alert]
+service = "workflow-engine"
+metric = "notification_dispatch_error_ratio"
+threshold = 0.2
+fired_at = "2026-07-21T09:58:00Z"
+summary = "workflow-engine notification_dispatch_error_ratio > 0.2"
+detail = "workflow notification dispatches failing platform-wide"
+
+[[services]]
+name = "notification-svc"
+log_weight = 2
+[[services.logs]]
+msg = "webhook dispatched"
+severity = "INFO"
+weight = 5
+[[services.logs]]
+msg = "batch flushed"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "container_memory_rss_mb"
+baseline = 310
+[[services.metrics]]
+name = "container_restarts"
+baseline = 0
+jitter = 0.0
+[[services.metrics]]
+name = "dispatch_queue_depth"
+baseline = 12
+
+[[services]]
+name = "workflow-engine"
+log_weight = 3
+[[services.logs]]
+msg = "workflow step completed"
+severity = "INFO"
+weight = 5
+[[services.logs]]
+msg = "dispatch queued for retry"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "notification_dispatch_error_ratio"
+baseline = 0.01
+jitter = 0.3
+
+[[services]]
+name = "platform-api"
+log_weight = 3
+[[services.logs]]
+msg = "request served"
+severity = "INFO"
+weight = 5
+[[services.logs]]
+msg = "auth token validated"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "api_request_p95_ms"
+baseline = 95
+
+[[trace_flows]]
+name = "POST /api/notify"
+per_hour = 3
+[[trace_flows.spans]]
+service = "platform-api"
+name = "POST /api/notify"
+duration_ms = 60
+[[trace_flows.spans]]
+service = "workflow-engine"
+name = "DispatchNotification"
+duration_ms = 45
+[[trace_flows.spans]]
+service = "notification-svc"
+name = "Enqueue"
+duration_ms = 15
+
+[incident]
+onset = "2026-07-21T09:40:00Z"
+first_failing_service = "notification-svc"
+
+[[incident.metric_faults]]
+service = "notification-svc"
+metric = "container_memory_rss_mb"
+curve = "ramp"
+to = 4090
+start = "2026-07-21T08:40:00Z"     # ramp begins at culprit deploy, OOM at onset
+end = "2026-07-21T09:40:00Z"
+[[incident.metric_faults]]
+service = "notification-svc"
+metric = "container_restarts"
+curve = "step"
+to = 7
+[[incident.metric_faults]]
+service = "notification-svc"
+metric = "dispatch_queue_depth"
+curve = "ramp"
+to = 190000
+start = "2026-07-21T08:40:00Z"
+[[incident.metric_faults]]
+service = "workflow-engine"
+metric = "notification_dispatch_error_ratio"
+curve = "step"
+to = 0.94
+
+[[incident.log_faults]]
+service = "workflow-engine"
+msg = "notify dispatch failed: post http://notification-svc:8080/dispatch: connection refused"
+severity = "ERROR"
+rate_per_min = 8
+[[incident.log_faults]]
+service = "platform-api"
+msg = "user notification enqueue failed: upstream unavailable"
+severity = "ERROR"
+rate_per_min = 3
+start = "2026-07-21T09:44:00Z"
+# NOTE: no notification-svc log_faults — and drop_logs below silences even its
+# baseline lines after onset. The silence is the clue.
+
+[[incident.trace_exemplars]]
+trace_id = "cccccccccccccccccccccccccccc0001"
+span_id = "c0"
+service = "platform-api"
+name = "POST /api/notify"
+start = "2026-07-21T06:00:00Z"
+duration_ms = 120
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "cccccccccccccccccccccccccccc0001"
+span_id = "c1"
+parent_id = "c0"
+service = "workflow-engine"
+name = "DispatchNotification"
+start = "2026-07-21T06:00:00Z"
+duration_ms = 90
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "cccccccccccccccccccccccccccc0001"
+span_id = "c2"
+parent_id = "c1"
+service = "notification-svc"
+name = "Enqueue"
+start = "2026-07-21T06:00:00Z"
+duration_ms = 20
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "cccccccccccccccccccccccccccc0002"
+span_id = "d0"
+service = "platform-api"
+name = "POST /api/notify"
+start = "2026-07-21T09:50:00Z"
+duration_ms = 3200
+status = "ERROR"
+error = "upstream unavailable"
+[[incident.trace_exemplars]]
+trace_id = "cccccccccccccccccccccccccccc0002"
+span_id = "d1"
+parent_id = "d0"
+service = "workflow-engine"
+name = "DispatchNotification"
+start = "2026-07-21T09:50:00Z"
+duration_ms = 3150
+status = "ERROR"
+error = "post http://notification-svc:8080/dispatch: connection refused"
+# NOTE: no notification-svc child span here — the service is dead (OOMKilled
+# at onset); its absence from the trace is part of the story.
+
+[[degradations]]
+type = "drop_logs"
+service = "notification-svc"
+after = "2026-07-21T09:40:00Z"
+
+[commits]
+innocent_count = 28
+
+[[commits.authored]]
+id = "culprit"
+message = "feat(notify): batch webhook dispatch"
+author = "marco.silva"
+timestamp = "2026-07-21T08:05:00Z"
+files = ["services/notification/dispatch.go"]
+diff = '''--- a/services/notification/dispatch.go
++++ b/services/notification/dispatch.go
+@@ -22,14 +22,12 @@ type Dispatcher struct {
+-	// bounded queue: drop-on-full keeps memory flat under consumer slowdowns
+-	queue chan Event // cap 10_000
++	mu    sync.Mutex
++	batch []Event
+ }
+
+ func (d *Dispatcher) Enqueue(ev Event) {
+-	select {
+-	case d.queue <- ev:
+-	default:
+-		metrics.Inc("notify_dropped_total")
+-	}
++	d.mu.Lock()
++	d.batch = append(d.batch, ev)
++	d.mu.Unlock()
+ }
+'''
+
+[[commits.authored]]
+id = "workflow-decoy"
+message = "fix(workflow): improve dispatch error logging"
+author = "priya.nair"
+timestamp = "2026-07-21T09:30:00Z"
+files = ["services/workflow/notify.go"]
+diff = '''--- a/services/workflow/notify.go
++++ b/services/workflow/notify.go
+@@ -55,1 +55,2 @@
+-		log.Error("notify dispatch failed")
++		log.Error("notify dispatch failed: " + err.Error())
+'''
+
+[[deploys]]
+service = "notification-svc"
+commit = "culprit"
+timestamp = "2026-07-21T08:40:00Z"
+[[deploys]]
+service = "workflow-engine"
+commit = "workflow-decoy"
+timestamp = "2026-07-21T09:52:00Z"
+
+[ground_truth]
+culprit_id = "culprit"
+blast_radius = ["workflow-engine", "platform-api"]
+remediation = "rollback"
+decoy_ids = ["workflow-decoy"]
+notes = "DEGRADED TELEMETRY / SILENT FAILING SERVICE (adversarial). notification-svc's own logs STOP at onset 09:40 (the process OOMs; its logging dies with it) — there is not a single notification-svc log line after onset, and that absence is the primary clue. Culprit is the batch-webhook-dispatch commit (deployed 08:40): it replaces the bounded drop-on-full channel with an unbounded batch slice, so under a consumer backlog dispatch_queue_depth and container_memory_rss_mb ramp from 08:40 until the 4GB OOMKill at 09:40 (rss flat-lines, container_restarts steps to 7, CrashLoopBackOff). Peers tell the story: workflow-engine spams 'connection refused to notification-svc:8080' from 09:40 and platform-api enqueue errors follow at 09:44. The TEMPTING answer is workflow-decoy — workflow-engine is the loudest service, it owns the alert, and it deployed at 09:52, six minutes before the alert fired; but its diff only enriches an error-log message, and the connection-refused errors predate its deploy by 12 minutes. first_failing_service is notification-svc even though it is silent. Remediation: roll back notification-svc to the bounded-queue build."
