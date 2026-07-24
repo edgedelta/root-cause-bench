@@ -1,9 +1,99 @@
 [
  {
+  "timestamp": "2026-07-17T09:01:27Z",
+  "service": "dashboard-svc",
+  "commit_sha": "30c8f37205f326e5264f7054dee23913faa1c5b2",
+  "version": "v2026.07.17-0901"
+ },
+ {
+  "timestamp": "2026-07-17T09:32:16Z",
+  "service": "platform-api",
+  "commit_sha": "306eac789f13fb46d98cfab0d8551ad4526426c6",
+  "version": "v2026.07.17-0932"
+ },
+ {
+  "timestamp": "2026-07-17T15:29:07Z",
+  "service": "platform-api",
+  "commit_sha": "408edfbd0806af90fa8d933def485317d58f70fb",
+  "version": "v2026.07.17-1529"
+ },
+ {
+  "timestamp": "2026-07-17T15:35:47Z",
+  "service": "paymentservice",
+  "commit_sha": "0275718c4949fd5af38f81165233985cad08a184",
+  "version": "v2026.07.17-1535"
+ },
+ {
+  "timestamp": "2026-07-17T17:14:57Z",
+  "service": "platform-api",
+  "commit_sha": "820b79a78b4e82bb4007f3ad30f537d3cbf07cfb",
+  "version": "v2026.07.17-1714"
+ },
+ {
+  "timestamp": "2026-07-17T21:15:04Z",
+  "service": "paymentservice",
+  "commit_sha": "820b79a78b4e82bb4007f3ad30f537d3cbf07cfb",
+  "version": "v2026.07.17-2115"
+ },
+ {
+  "timestamp": "2026-07-18T02:53:31Z",
+  "service": "frontend",
+  "commit_sha": "a4d2d28f62383c262fa5d38ba2c8942ffe591b77",
+  "version": "v2026.07.18-0253"
+ },
+ {
+  "timestamp": "2026-07-18T10:12:38Z",
+  "service": "checkoutservice",
+  "commit_sha": "d8fdce3598226ea337b5ac04e5a29f0884712338",
+  "version": "v2026.07.18-1012"
+ },
+ {
   "timestamp": "2026-07-18T10:15:00Z",
   "service": "platform-api",
   "commit_sha": "8f94b490b7122b79a9626ec3d5ae06ca804b7e77",
   "version": "v2026.07.18-1015"
+ },
+ {
+  "timestamp": "2026-07-18T18:52:38Z",
+  "service": "dashboard-svc",
+  "commit_sha": "9f00cbf6d7b65b1b1f7a748ad0ecd3c4c9142900",
+  "version": "v2026.07.18-1852"
+ },
+ {
+  "timestamp": "2026-07-18T20:00:00Z",
+  "service": "catalogservice",
+  "commit_sha": "56138ba99119c9ea0edba2baa2e604539d2c106b",
+  "version": "v2026.07.18-2000"
+ },
+ {
+  "timestamp": "2026-07-18T20:29:03Z",
+  "service": "platform-api",
+  "commit_sha": "f8fc2777805605dfa13fff2194e564965bc371e6",
+  "version": "v2026.07.18-2029"
+ },
+ {
+  "timestamp": "2026-07-18T21:09:49Z",
+  "service": "checkoutservice",
+  "commit_sha": "439f9c3fba28fd676c722af7ccba25f7ccc1070f",
+  "version": "v2026.07.18-2109"
+ },
+ {
+  "timestamp": "2026-07-19T00:05:03Z",
+  "service": "paymentservice",
+  "commit_sha": "02d2aa7f23d0766d0005ebce02dafeaf21e309ab",
+  "version": "v2026.07.19-0005"
+ },
+ {
+  "timestamp": "2026-07-19T02:00:00Z",
+  "service": "catalogservice",
+  "commit_sha": "5cd5811c60bd8aa10350af1da8c9580c6cd1c42e",
+  "version": "v2026.07.19-0200"
+ },
+ {
+  "timestamp": "2026-07-19T02:37:21Z",
+  "service": "catalogservice",
+  "commit_sha": "439f9c3fba28fd676c722af7ccba25f7ccc1070f",
+  "version": "v2026.07.19-0237"
  },
  {
   "timestamp": "2026-07-19T02:40:00Z",
@@ -12,15 +102,105 @@
   "version": "v2026.07.19-0240"
  },
  {
-  "timestamp": "2026-07-20T08:15:00Z",
+  "timestamp": "2026-07-19T03:36:14Z",
+  "service": "checkoutservice",
+  "commit_sha": "8dfc7b439ce120a586c9d70502f6af8093160a51",
+  "version": "v2026.07.19-0336"
+ },
+ {
+  "timestamp": "2026-07-19T05:44:13Z",
+  "service": "dashboard-svc",
+  "commit_sha": "4aa8c882fce5234f7ddff44df5d2c4fd50351b4f",
+  "version": "v2026.07.19-0544"
+ },
+ {
+  "timestamp": "2026-07-19T12:51:14Z",
+  "service": "shippingservice",
+  "commit_sha": "c40244e2bbac84aa228b299de1d65a3f5d5a12b4",
+  "version": "v2026.07.19-1251"
+ },
+ {
+  "timestamp": "2026-07-19T13:09:27Z",
+  "service": "shippingservice",
+  "commit_sha": "e4081573b8eeb7f55a81ae62e9ece846e4901c12",
+  "version": "v2026.07.19-1309"
+ },
+ {
+  "timestamp": "2026-07-19T13:52:19Z",
+  "service": "frontend",
+  "commit_sha": "d01e003c28f229c8c58597ba58375139567f625f",
+  "version": "v2026.07.19-1352"
+ },
+ {
+  "timestamp": "2026-07-19T14:00:00Z",
   "service": "catalogservice",
-  "commit_sha": "5cd5811c60bd8aa10350af1da8c9580c6cd1c42e",
-  "version": "v2026.07.20-0815"
+  "commit_sha": "5ca75708737f9c2733ff0452e4c495058ae27913",
+  "version": "v2026.07.19-1400"
+ },
+ {
+  "timestamp": "2026-07-19T18:39:03Z",
+  "service": "catalogservice",
+  "commit_sha": "77b635016895e7275a8894cd57897e33cbf718ac",
+  "version": "v2026.07.19-1839"
+ },
+ {
+  "timestamp": "2026-07-19T19:54:18Z",
+  "service": "paymentservice",
+  "commit_sha": "d21e5c6c57c4eea594809907a98b7986a0974dbc",
+  "version": "v2026.07.19-1954"
+ },
+ {
+  "timestamp": "2026-07-19T21:49:10Z",
+  "service": "frontend",
+  "commit_sha": "f7d22bddc76568ae56ff2049b346523d40c03376",
+  "version": "v2026.07.19-2149"
+ },
+ {
+  "timestamp": "2026-07-19T22:32:54Z",
+  "service": "cartservice",
+  "commit_sha": "6346e35c64955e2c86f24214bcc4893609b1517d",
+  "version": "v2026.07.19-2232"
+ },
+ {
+  "timestamp": "2026-07-20T00:59:42Z",
+  "service": "catalogservice",
+  "commit_sha": "fe4a6bbd6f8c268c59b87bbb1b4f208c28ffdaf2",
+  "version": "v2026.07.20-0059"
+ },
+ {
+  "timestamp": "2026-07-20T04:36:51Z",
+  "service": "cartservice",
+  "commit_sha": "2d72ab4bd92c826dd9c7d5d08903df098d235dbb",
+  "version": "v2026.07.20-0436"
+ },
+ {
+  "timestamp": "2026-07-20T05:11:31Z",
+  "service": "frontend",
+  "commit_sha": "68ac8f77133da6c69c8bd7ca6e76459379bda21d",
+  "version": "v2026.07.20-0511"
+ },
+ {
+  "timestamp": "2026-07-20T06:54:08Z",
+  "service": "cartservice",
+  "commit_sha": "86fe3dfe05ea1d972031cd40ba23341fd206488a",
+  "version": "v2026.07.20-0654"
  },
  {
   "timestamp": "2026-07-20T08:32:00Z",
   "service": "dashboard-svc",
   "commit_sha": "61c17232d189c1c823ae830efc47336ea1137e96",
   "version": "v2026.07.20-0832"
+ },
+ {
+  "timestamp": "2026-07-20T08:39:12Z",
+  "service": "shippingservice",
+  "commit_sha": "5569ddcaf4c775912cac56678831c5fe48b87471",
+  "version": "v2026.07.20-0839"
+ },
+ {
+  "timestamp": "2026-07-20T08:52:49Z",
+  "service": "cartservice",
+  "commit_sha": "ae5086e1dbef6fabb54b97fe20096f945cb3d37e",
+  "version": "v2026.07.20-0852"
  }
 ]

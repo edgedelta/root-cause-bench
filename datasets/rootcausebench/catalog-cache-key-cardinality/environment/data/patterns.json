@@ -1,17 +1,45 @@
 [
  {
-  "signature": "cache miss for catalog page; falling back to primary db",
-  "service": "catalogservice",
-  "count": 3240,
-  "delta_vs_baseline": "+3240",
+  "signature": "product page render slow: catalog upstream <N>ms",
+  "service": "frontend",
+  "count": 2880,
+  "delta_vs_baseline": "+2880",
   "sentiment": "negative"
  },
  {
-  "signature": "catalog page served",
+  "signature": "cache miss for catalog page; falling back to primary db",
   "service": "catalogservice",
-  "count": 14541,
-  "delta_vs_baseline": "+0",
-  "sentiment": "neutral"
+  "count": 2520,
+  "delta_vs_baseline": "+2520",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "kafka consumer lag rebalancing group <N>",
+  "service": "platform-api",
+  "count": 80,
+  "delta_vs_baseline": "+2",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "TLS certificate renews in <N> days warning",
+  "service": "dashboard-svc",
+  "count": 65,
+  "delta_vs_baseline": "+2",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "connection pool warmup retries exceeded <N> times",
+  "service": "paymentservice",
+  "count": 50,
+  "delta_vs_baseline": "+1",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "disk usage above <N>% on scratch volume",
+  "service": "shippingservice",
+  "count": 42,
+  "delta_vs_baseline": "+2",
+  "sentiment": "negative"
  },
  {
   "signature": "product page rendered",
@@ -21,9 +49,23 @@
   "sentiment": "neutral"
  },
  {
+  "signature": "catalog page served",
+  "service": "catalogservice",
+  "count": 14541,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
   "signature": "cart updated",
   "service": "cartservice",
   "count": 11118,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "request served",
+  "service": "platform-api",
+  "count": 11040,
   "delta_vs_baseline": "+0",
   "sentiment": "neutral"
  },
@@ -52,13 +94,6 @@
   "signature": "dashboard view rendered",
   "service": "dashboard-svc",
   "count": 6220,
-  "delta_vs_baseline": "+0",
-  "sentiment": "neutral"
- },
- {
-  "signature": "request served",
-  "service": "platform-api",
-  "count": 11040,
   "delta_vs_baseline": "+0",
   "sentiment": "neutral"
  }

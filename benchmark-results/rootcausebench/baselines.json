@@ -28,7 +28,7 @@
       "passed": 1,
       "total": 27,
       "pass_rate_pct": 3.7,
-      "decoy_hits": 24,
+      "decoy_hits": 23,
       "by_tier": {
         "adversarial": "0/3",
         "easy": "1/3",
@@ -52,7 +52,7 @@
       "passed": 5,
       "total": 27,
       "pass_rate_pct": 18.5,
-      "decoy_hits": 21,
+      "decoy_hits": 20,
       "by_tier": {
         "adversarial": "0/3",
         "easy": "2/3",
@@ -105,7 +105,7 @@
       },
       "catalog-cache-key-cardinality": {
         "passed": false,
-        "answered": "8417bd94c60f",
+        "answered": "4af4ddd34631",
         "hit_decoy": false,
         "difficulty": "adversarial",
         "no_code_cause": false
@@ -487,8 +487,8 @@
       },
       "catalog-cache-key-cardinality": {
         "passed": false,
-        "answered": "61c17232d189",
-        "hit_decoy": true,
+        "answered": "5569ddcaf4c7",
+        "hit_decoy": false,
         "difficulty": "adversarial",
         "no_code_cause": false
       },
@@ -678,7 +678,7 @@
       },
       "catalog-cache-key-cardinality": {
         "passed": false,
-        "answered": "8f94b490b712",
+        "answered": "30c8f37205f3",
         "hit_decoy": false,
         "difficulty": "adversarial",
         "no_code_cause": false
@@ -869,8 +869,8 @@
       },
       "catalog-cache-key-cardinality": {
         "passed": false,
-        "answered": "5cd5811c60bd",
-        "hit_decoy": true,
+        "answered": "fe4a6bbd6f8c",
+        "hit_decoy": false,
         "difficulty": "adversarial",
         "no_code_cause": false
       },
@@ -1060,7 +1060,7 @@
       },
       "catalog-cache-key-cardinality": {
         "passed": false,
-        "answered": "5cd5811c60bd",
+        "answered": "5ca75708737f",
         "hit_decoy": true,
         "difficulty": "adversarial",
         "no_code_cause": false
