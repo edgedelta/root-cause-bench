@@ -28,7 +28,7 @@
       "passed": 1,
       "total": 27,
       "pass_rate_pct": 3.7,
-      "decoy_hits": 23,
+      "decoy_hits": 22,
       "by_tier": {
         "adversarial": "0/3",
         "easy": "1/3",
@@ -52,7 +52,7 @@
       "passed": 5,
       "total": 27,
       "pass_rate_pct": 18.5,
-      "decoy_hits": 20,
+      "decoy_hits": 19,
       "by_tier": {
         "adversarial": "0/3",
         "easy": "2/3",
@@ -571,8 +571,8 @@
       },
       "notification-buffer-oom-silent": {
         "passed": false,
-        "answered": "37b8d9f2f3ea",
-        "hit_decoy": true,
+        "answered": "f95c3800a691",
+        "hit_decoy": false,
         "difficulty": "adversarial",
         "no_code_cause": false
       },
@@ -762,7 +762,7 @@
       },
       "notification-buffer-oom-silent": {
         "passed": false,
-        "answered": "ba673b53ded1",
+        "answered": "893d63ef8f79",
         "hit_decoy": false,
         "difficulty": "adversarial",
         "no_code_cause": false
@@ -953,8 +953,8 @@
       },
       "notification-buffer-oom-silent": {
         "passed": false,
-        "answered": "37b8d9f2f3ea",
-        "hit_decoy": true,
+        "answered": "f95c3800a691",
+        "hit_decoy": false,
         "difficulty": "adversarial",
         "no_code_cause": false
       },

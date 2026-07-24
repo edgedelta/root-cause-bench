@@ -1,9 +1,51 @@
 [
  {
+  "timestamp": "2026-07-21T05:12:57Z",
+  "service": "notification-svc",
+  "commit_sha": "893d63ef8f79b91668dab74d48a245c08da7c1fc",
+  "version": "v2026.07.21-0512"
+ },
+ {
+  "timestamp": "2026-07-21T05:22:20Z",
+  "service": "notification-svc",
+  "commit_sha": "0c01457089736ba3c63d0fc42f2954303e3805cd",
+  "version": "v2026.07.21-0522"
+ },
+ {
+  "timestamp": "2026-07-21T05:26:37Z",
+  "service": "platform-api",
+  "commit_sha": "e8c95b35502d9a43e972bae8301a753487c73343",
+  "version": "v2026.07.21-0526"
+ },
+ {
+  "timestamp": "2026-07-21T06:10:47Z",
+  "service": "platform-api",
+  "commit_sha": "41bb928e80dd331cb84792b1ecc7e593d46c12e0",
+  "version": "v2026.07.21-0610"
+ },
+ {
+  "timestamp": "2026-07-21T06:15:08Z",
+  "service": "notification-svc",
+  "commit_sha": "c1fdab72d96ab0d669d9a56cad040cfc4162db85",
+  "version": "v2026.07.21-0615"
+ },
+ {
+  "timestamp": "2026-07-21T06:40:06Z",
+  "service": "platform-api",
+  "commit_sha": "2a271ecc32bb89add3da85edd13817987f659057",
+  "version": "v2026.07.21-0640"
+ },
+ {
   "timestamp": "2026-07-21T07:10:00Z",
   "service": "platform-api",
   "commit_sha": "ba673b53ded180add1368e12334ce9f2e1736eda",
   "version": "v2026.07.21-0710"
+ },
+ {
+  "timestamp": "2026-07-21T08:27:40Z",
+  "service": "notification-svc",
+  "commit_sha": "33a36c20fdf9ecee9e5a30b330d2550401faf739",
+  "version": "v2026.07.21-0827"
  },
  {
   "timestamp": "2026-07-21T08:40:00Z",
@@ -12,9 +54,57 @@
   "version": "v2026.07.21-0840"
  },
  {
-  "timestamp": "2026-07-21T09:52:00Z",
+  "timestamp": "2026-07-21T08:40:03Z",
+  "service": "platform-api",
+  "commit_sha": "2a271ecc32bb89add3da85edd13817987f659057",
+  "version": "v2026.07.21-0840"
+ },
+ {
+  "timestamp": "2026-07-21T09:02:37Z",
+  "service": "platform-api",
+  "commit_sha": "22b9f7b2c6cfb63ba3a5ff3e7d23caac07c155e5",
+  "version": "v2026.07.21-0902"
+ },
+ {
+  "timestamp": "2026-07-21T09:10:00Z",
+  "service": "notification-svc",
+  "commit_sha": "3857106ef3c0868bd928f2854ade73f0a9d55e0e",
+  "version": "v2026.07.21-0910"
+ },
+ {
+  "timestamp": "2026-07-21T09:20:00Z",
   "service": "workflow-engine",
   "commit_sha": "37b8d9f2f3eadb3d44f55a049b7ab73142eb7575",
-  "version": "v2026.07.21-0952"
+  "version": "v2026.07.21-0920"
+ },
+ {
+  "timestamp": "2026-07-21T09:49:10Z",
+  "service": "workflow-engine",
+  "commit_sha": "f95c3800a691dfdeb8372857d5e234afadc6e934",
+  "version": "v2026.07.21-0949"
+ },
+ {
+  "timestamp": "2026-07-21T10:11:52Z",
+  "service": "workflow-engine",
+  "commit_sha": "861de1b9e192114b6bb9af7b3408b66217cfa5a2",
+  "version": "v2026.07.21-1011"
+ },
+ {
+  "timestamp": "2026-07-21T10:13:04Z",
+  "service": "notification-svc",
+  "commit_sha": "33a36c20fdf9ecee9e5a30b330d2550401faf739",
+  "version": "v2026.07.21-1013"
+ },
+ {
+  "timestamp": "2026-07-21T10:35:50Z",
+  "service": "workflow-engine",
+  "commit_sha": "0c01457089736ba3c63d0fc42f2954303e3805cd",
+  "version": "v2026.07.21-1035"
+ },
+ {
+  "timestamp": "2026-07-21T10:50:50Z",
+  "service": "workflow-engine",
+  "commit_sha": "1c5af7aa48d48396d1bffe896c029979c810a894",
+  "version": "v2026.07.21-1050"
  }
 ]
