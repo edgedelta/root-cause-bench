@@ -1,0 +1,253 @@
+name = "shared-config-pool-drain"
+family = "guilty-decoy"
+seed = 101
+
+[window]
+start = "2026-07-20T06:00:00Z"
+end   = "2026-07-20T10:30:00Z"
+log_rps = 0.06
+
+[alert]
+service = "checkoutservice"
+metric = "charge_latency_p99_ms"
+threshold = 2000
+fired_at = "2026-07-20T09:50:00Z"
+summary = "checkoutservice charge_latency_p99_ms > 2000ms for 5m"
+detail = "p99 latency of the charge RPC breached 2000ms; checkout conversions dropping"
+
+[[services]]
+name = "checkoutservice"
+log_weight = 3
+[[services.logs]]
+msg = "order placed"
+severity = "INFO"
+weight = 5
+extra = { "http.route" = "/api/checkout" }
+[[services.logs]]
+msg = "cart validated"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "charge_latency_p99_ms"
+baseline = 180
+[[services.metrics]]
+name = "checkout_error_ratio"
+baseline = 0.002
+jitter = 0.3
+
+[[services]]
+name = "paymentservice"
+log_weight = 2
+[[services.logs]]
+msg = "charge authorized"
+severity = "INFO"
+weight = 5
+[[services.metrics]]
+name = "db_conn_wait_ms"
+baseline = 2.5
+jitter = 0.2
+[[services.metrics]]
+name = "db_pool_in_use"
+baseline = 6
+jitter = 0.2
+
+[[services]]
+name = "frontend"
+log_weight = 3
+[[services.logs]]
+msg = "page rendered"
+severity = "INFO"
+weight = 5
+extra = { "http.route" = "/checkout" }
+[[services.metrics]]
+name = "checkout_5xx_ratio"
+baseline = 0.001
+jitter = 0.4
+
+[[trace_flows]]
+name = "POST /api/checkout"
+per_hour = 3
+[[trace_flows.spans]]
+service = "frontend"
+name = "POST /checkout"
+duration_ms = 240
+[[trace_flows.spans]]
+service = "checkoutservice"
+name = "PlaceOrder"
+duration_ms = 210
+[[trace_flows.spans]]
+service = "paymentservice"
+name = "Charge"
+duration_ms = 90
+
+[incident]
+onset = "2026-07-20T09:35:00Z"
+first_failing_service = "paymentservice"
+
+[[incident.metric_faults]]
+service = "paymentservice"
+metric = "db_conn_wait_ms"
+curve = "ramp"
+to = 3050
+[[incident.metric_faults]]
+service = "paymentservice"
+metric = "db_pool_in_use"
+curve = "ramp"
+to = 20
+[[incident.metric_faults]]
+service = "checkoutservice"
+metric = "charge_latency_p99_ms"
+curve = "ramp"
+to = 3400
+start = "2026-07-20T09:36:00Z"
+[[incident.metric_faults]]
+service = "checkoutservice"
+metric = "checkout_error_ratio"
+curve = "ramp"
+to = 0.22
+start = "2026-07-20T09:40:00Z"
+[[incident.metric_faults]]
+service = "frontend"
+metric = "checkout_5xx_ratio"
+curve = "step"
+to = 0.19
+start = "2026-07-20T09:44:00Z"
+
+[[incident.log_faults]]
+service = "paymentservice"
+msg = "ERROR acquiring db connection: pool acquire timeout after 3000ms"
+severity = "ERROR"
+rate_per_min = 4
+[[incident.log_faults]]
+service = "checkoutservice"
+msg = "charge rpc slow: upstream took 2900ms"
+severity = "WARN"
+rate_per_min = 3
+start = "2026-07-20T09:37:00Z"
+[[incident.log_faults]]
+service = "frontend"
+msg = "checkout failed: upstream error 503"
+severity = "ERROR"
+rate_per_min = 2
+start = "2026-07-20T09:44:00Z"
+
+[[incident.trace_exemplars]]
+trace_id = "aaaaaaaaaaaaaaaaaaaaaaaaaaaa0001"
+span_id = "a0"
+service = "frontend"
+name = "POST /checkout"
+start = "2026-07-20T09:47:10Z"
+duration_ms = 3210
+status = "ERROR"
+error = "upstream error 503"
+[[incident.trace_exemplars]]
+trace_id = "aaaaaaaaaaaaaaaaaaaaaaaaaaaa0001"
+span_id = "a1"
+parent_id = "a0"
+service = "checkoutservice"
+name = "PlaceOrder"
+start = "2026-07-20T09:47:10Z"
+duration_ms = 3150
+status = "ERROR"
+error = "charge rpc deadline"
+[[incident.trace_exemplars]]
+trace_id = "aaaaaaaaaaaaaaaaaaaaaaaaaaaa0001"
+span_id = "a2"
+parent_id = "a1"
+service = "paymentservice"
+name = "Charge db.acquire"
+start = "2026-07-20T09:47:10Z"
+duration_ms = 3001
+status = "ERROR"
+error = "pool acquire timeout after 3000ms"
+
+[commits]
+innocent_count = 26
+
+[[commits.authored]]
+id = "culprit"
+message = "refactor(dbpool): make acquire timeout configurable"
+author = "jan.kowalski"
+timestamp = "2026-07-20T07:40:00Z"
+files = ["pkg/dbpool/config.go"]
+diff = '''--- a/pkg/dbpool/config.go
++++ b/pkg/dbpool/config.go
+@@ -18,9 +18,10 @@ type PoolConfig struct {
+ func FromEnv(cfg *envconf.Loader) PoolConfig {
+ 	return PoolConfig{
+ 		MaxConns:       cfg.Int("db.pool_max_conns", 20),
+-		// acquire blocks until a connection frees up or the pool
+-		// timeout elapses.
+-		AcquireTimeout: cfg.Duration("db.pool_timeout", 30*time.Second),
++		// acquire timeout is now tunable per service in milliseconds.
++		AcquireTimeout: time.Duration(
++			cfg.Int("db.pool_timeout_ms", 3000)) * time.Millisecond,
+ 	}
+ }
+'''
+
+[[commits.authored]]
+id = "retry-decoy"
+message = "feat(checkout): bounded retry for charge rpc"
+author = "mei.chen"
+timestamp = "2026-07-20T09:05:00Z"
+files = ["services/checkout/charge.go"]
+diff = '''--- a/services/checkout/charge.go
++++ b/services/checkout/charge.go
+@@ -41,7 +41,18 @@ func (s *Server) charge(ctx context.Context, req *pb.ChargeRequest) (*pb.ChargeResponse, error) {
+-	return s.payments.Charge(ctx, req)
++	if !s.flags.Enabled("charge_retry_enabled") {
++		return s.payments.Charge(ctx, req)
++	}
++	var lastErr error
++	for attempt := 0; attempt < 2; attempt++ {
++		resp, err := s.payments.Charge(ctx, req)
++		if err == nil || !errors.Is(err, ErrTransient) {
++			return resp, err
++		}
++		lastErr = err
++		time.Sleep(time.Duration(attempt+1) * 50 * time.Millisecond)
++	}
++	return nil, lastErr
+ }
+'''
+
+[[commits.authored]]
+id = "css-decoy"
+message = "style(frontend): tighten checkout summary spacing"
+author = "sofia.rossi"
+timestamp = "2026-07-20T09:12:00Z"
+files = ["web/styles/checkout.css"]
+diff = '''--- a/web/styles/checkout.css
++++ b/web/styles/checkout.css
+@@ -12,2 +12,2 @@
+-.summary { margin: 12px; }
++.summary { margin: 8px; }
+'''
+
+[[deploys]]
+service = "paymentservice"
+commit = "culprit"
+timestamp = "2026-07-20T09:20:00Z"
+[[deploys]]
+service = "frontend"
+commit = "css-decoy"
+timestamp = "2026-07-20T09:33:00Z"
+[[deploys]]
+service = "checkoutservice"
+commit = "retry-decoy"
+timestamp = "2026-07-20T09:42:00Z"
+
+[[flags]]
+timestamp = "2026-07-20T08:55:00Z"
+flag = "charge_retry_enabled"
+service = "checkoutservice"
+change = "created (off)"
+actor = "mei.chen"
+
+[ground_truth]
+culprit_id = "culprit"
+blast_radius = ["checkoutservice", "frontend"]
+remediation = "rollback"
+decoy_ids = ["retry-decoy", "css-decoy"]
+notes = "GUILTY-LOOKING DECOY (adversarial). Culprit is the shared-library commit in pkg/dbpool/config.go: the refactor swaps a 30s AcquireTimeout duration for an int-milliseconds knob whose default is 3000 — silently shrinking the pool acquire timeout 30s -> 3s. It rides into production inside the paymentservice deploy at 09:20 (NOT the alerting service). Under the morning traffic ramp, payment db_conn_wait_ms climbs from 09:35 and acquires start failing at 3000ms ('pool acquire timeout after 3000ms' — the 3000 matches the new default). The TEMPTING answer is retry-decoy: it adds a retry loop around the exact charge RPC that is slow and deploys at 09:42, right at visible onset on the alerting service. It is exonerated twice: (1) paymentservice db_conn_wait_ms had been climbing since 09:35, before the 09:42 deploy; (2) the retry is gated on charge_retry_enabled, which flags.json shows was created OFF and never flipped, so the new code path never executes. css-decoy (frontend, 09:33) is the classic innocent-deploy-near-onset. first_failing_service is paymentservice (its DB acquires fail first); checkoutservice and frontend are blast radius. Remediation: roll back paymentservice to before the dbpool change."

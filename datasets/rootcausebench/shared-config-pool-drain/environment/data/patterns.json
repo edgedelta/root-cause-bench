@@ -1,0 +1,44 @@
+[
+ {
+  "signature": "ERROR acquiring db connection: pool acquire timeout after <N>ms",
+  "service": "paymentservice",
+  "count": 220,
+  "delta_vs_baseline": "+220",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "charge rpc slow: upstream took <N>ms",
+  "service": "checkoutservice",
+  "count": 159,
+  "delta_vs_baseline": "+159",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "checkout failed: upstream error <N>",
+  "service": "frontend",
+  "count": 92,
+  "delta_vs_baseline": "+92",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "order placed",
+  "service": "checkoutservice",
+  "count": 262,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "charge authorized",
+  "service": "paymentservice",
+  "count": 238,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "page rendered",
+  "service": "frontend",
+  "count": 376,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ }
+]

@@ -1,0 +1,424 @@
+[
+ {
+  "trace_id": "2d2f16cb0c57e36d419dd94bbd8101a8",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "POST /checkout",
+  "start": "2026-07-20T06:00:00Z",
+  "duration_ms": 240,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2d2f16cb0c57e36d419dd94bbd8101a8",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "checkoutservice",
+  "name": "PlaceOrder",
+  "start": "2026-07-20T06:00:00Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2d2f16cb0c57e36d419dd94bbd8101a8",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "paymentservice",
+  "name": "Charge",
+  "start": "2026-07-20T06:00:00Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "984c374fb0f5744014ef68d85b55d18d",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "POST /checkout",
+  "start": "2026-07-20T06:20:46Z",
+  "duration_ms": 240,
+  "status": "OK"
+ },
+ {
+  "trace_id": "984c374fb0f5744014ef68d85b55d18d",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "checkoutservice",
+  "name": "PlaceOrder",
+  "start": "2026-07-20T06:20:46Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "984c374fb0f5744014ef68d85b55d18d",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "paymentservice",
+  "name": "Charge",
+  "start": "2026-07-20T06:20:46Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9b5727f7636e6609283544a87cc1ff2a",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "POST /checkout",
+  "start": "2026-07-20T06:41:32Z",
+  "duration_ms": 240,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9b5727f7636e6609283544a87cc1ff2a",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "checkoutservice",
+  "name": "PlaceOrder",
+  "start": "2026-07-20T06:41:32Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9b5727f7636e6609283544a87cc1ff2a",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "paymentservice",
+  "name": "Charge",
+  "start": "2026-07-20T06:41:32Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "eee0893e62837ceee790569e8389ecc1",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "POST /checkout",
+  "start": "2026-07-20T07:02:18Z",
+  "duration_ms": 240,
+  "status": "OK"
+ },
+ {
+  "trace_id": "eee0893e62837ceee790569e8389ecc1",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "checkoutservice",
+  "name": "PlaceOrder",
+  "start": "2026-07-20T07:02:18Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "eee0893e62837ceee790569e8389ecc1",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "paymentservice",
+  "name": "Charge",
+  "start": "2026-07-20T07:02:18Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6b20dacf698d1930df6d51fb21098c14",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "POST /checkout",
+  "start": "2026-07-20T07:23:04Z",
+  "duration_ms": 240,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6b20dacf698d1930df6d51fb21098c14",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "checkoutservice",
+  "name": "PlaceOrder",
+  "start": "2026-07-20T07:23:04Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6b20dacf698d1930df6d51fb21098c14",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "paymentservice",
+  "name": "Charge",
+  "start": "2026-07-20T07:23:04Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "bbc77e2b3a184325b5a96df7ccd270c7",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "POST /checkout",
+  "start": "2026-07-20T07:43:50Z",
+  "duration_ms": 240,
+  "status": "OK"
+ },
+ {
+  "trace_id": "bbc77e2b3a184325b5a96df7ccd270c7",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "checkoutservice",
+  "name": "PlaceOrder",
+  "start": "2026-07-20T07:43:50Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "bbc77e2b3a184325b5a96df7ccd270c7",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "paymentservice",
+  "name": "Charge",
+  "start": "2026-07-20T07:43:50Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f1f36240a19c0621c4075b36ace0303a",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "POST /checkout",
+  "start": "2026-07-20T08:04:36Z",
+  "duration_ms": 240,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f1f36240a19c0621c4075b36ace0303a",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "checkoutservice",
+  "name": "PlaceOrder",
+  "start": "2026-07-20T08:04:36Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f1f36240a19c0621c4075b36ace0303a",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "paymentservice",
+  "name": "Charge",
+  "start": "2026-07-20T08:04:36Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6b8c4b88422c0f55b2d2e0a7d9c69be3",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "POST /checkout",
+  "start": "2026-07-20T08:25:23Z",
+  "duration_ms": 240,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6b8c4b88422c0f55b2d2e0a7d9c69be3",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "checkoutservice",
+  "name": "PlaceOrder",
+  "start": "2026-07-20T08:25:23Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6b8c4b88422c0f55b2d2e0a7d9c69be3",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "paymentservice",
+  "name": "Charge",
+  "start": "2026-07-20T08:25:23Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2f5690cdeb7eeb0edf24a216154a6317",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "POST /checkout",
+  "start": "2026-07-20T08:46:09Z",
+  "duration_ms": 240,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2f5690cdeb7eeb0edf24a216154a6317",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "checkoutservice",
+  "name": "PlaceOrder",
+  "start": "2026-07-20T08:46:09Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2f5690cdeb7eeb0edf24a216154a6317",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "paymentservice",
+  "name": "Charge",
+  "start": "2026-07-20T08:46:09Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f7b3369581b519cb38cea5049f089367",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "POST /checkout",
+  "start": "2026-07-20T09:06:55Z",
+  "duration_ms": 240,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f7b3369581b519cb38cea5049f089367",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "checkoutservice",
+  "name": "PlaceOrder",
+  "start": "2026-07-20T09:06:55Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f7b3369581b519cb38cea5049f089367",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "paymentservice",
+  "name": "Charge",
+  "start": "2026-07-20T09:06:55Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "82afdfbb6757cd84bbb8459f8eada818",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "POST /checkout",
+  "start": "2026-07-20T09:27:41Z",
+  "duration_ms": 240,
+  "status": "OK"
+ },
+ {
+  "trace_id": "82afdfbb6757cd84bbb8459f8eada818",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "checkoutservice",
+  "name": "PlaceOrder",
+  "start": "2026-07-20T09:27:41Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "82afdfbb6757cd84bbb8459f8eada818",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "paymentservice",
+  "name": "Charge",
+  "start": "2026-07-20T09:27:41Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "944356909b65d3f1ef3dacd2b3b0659f",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "POST /checkout",
+  "start": "2026-07-20T09:48:27Z",
+  "duration_ms": 240,
+  "status": "OK"
+ },
+ {
+  "trace_id": "944356909b65d3f1ef3dacd2b3b0659f",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "checkoutservice",
+  "name": "PlaceOrder",
+  "start": "2026-07-20T09:48:27Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "944356909b65d3f1ef3dacd2b3b0659f",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "paymentservice",
+  "name": "Charge",
+  "start": "2026-07-20T09:48:27Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "ea03f4cb7d91f53a37a41f4f8bc7abb4",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "POST /checkout",
+  "start": "2026-07-20T10:09:13Z",
+  "duration_ms": 240,
+  "status": "OK"
+ },
+ {
+  "trace_id": "ea03f4cb7d91f53a37a41f4f8bc7abb4",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "checkoutservice",
+  "name": "PlaceOrder",
+  "start": "2026-07-20T10:09:13Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "ea03f4cb7d91f53a37a41f4f8bc7abb4",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "paymentservice",
+  "name": "Charge",
+  "start": "2026-07-20T10:09:13Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaa0001",
+  "span_id": "a0",
+  "service": "frontend",
+  "name": "POST /checkout",
+  "start": "2026-07-20T09:47:10Z",
+  "duration_ms": 3210,
+  "status": "ERROR",
+  "error": "upstream error 503"
+ },
+ {
+  "trace_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaa0001",
+  "span_id": "a1",
+  "parent_id": "a0",
+  "service": "checkoutservice",
+  "name": "PlaceOrder",
+  "start": "2026-07-20T09:47:10Z",
+  "duration_ms": 3150,
+  "status": "ERROR",
+  "error": "charge rpc deadline"
+ },
+ {
+  "trace_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaa0001",
+  "span_id": "a2",
+  "parent_id": "a1",
+  "service": "paymentservice",
+  "name": "Charge db.acquire",
+  "start": "2026-07-20T09:47:10Z",
+  "duration_ms": 3001,
+  "status": "ERROR",
+  "error": "pool acquire timeout after 3000ms"
+ }
+]
