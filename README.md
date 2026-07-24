@@ -136,7 +136,7 @@ uv run scripts/process_results.py jobs/<timestamp>
 
 ## Leaderboard
 
-Frozen run (v2): **24 scenarios x 21 models x 3 attempts = 1512 trials**, Harbor `terminus-2` over OpenRouter, 2026-07-07/10/23, all agents at an 1800s timeout. Models are ranked on **mean graded reward** (1.0 correct culprit; 0.0 for blaming a decoy; partial credit ≤ 0.5 otherwise; ± 95% CI over the 72 trials), with binary pass rates alongside. The three trials that hit `AgentTimeoutError` were re-run per methodology (timeouts are infra errors, not model failures). Full per-trial results (outcome, graded reward, cost, tokens, timing per model) + rollups are committed under [`benchmark-results/`](benchmark-results/).
+Frozen run (v2): **24 scenarios x 22 models x 3 attempts = 1584 trials**, Harbor `terminus-2` over OpenRouter, 2026-07-07/10/23/24, all agents at an 1800s timeout. Models are ranked on **mean graded reward** (1.0 correct culprit; 0.0 for blaming a decoy; partial credit ≤ 0.5 otherwise; ± 95% CI over the 72 trials), with binary pass rates alongside. The three trials that hit `AgentTimeoutError` were re-run per methodology (timeouts are infra errors, not model failures). Full per-trial results (outcome, graded reward, cost, tokens, timing per model) + rollups are committed under [`benchmark-results/`](benchmark-results/).
 
 > v1 → v2: the original 2026-06-30/07-02 run used a 600s agent timeout, which cost
 > deepseek-v4-flash 4 trials and four other models 1 each as `AgentTimeoutError`. v2
@@ -151,6 +151,7 @@ Frozen run (v2): **24 scenarios x 21 models x 3 attempts = 1512 trials**, Harbor
 | glm-5.2 | **1.000 ± 0.000** | 100% | 100% | 100% | 100% | 100% |
 | grok-4.5 | **1.000 ± 0.000** | 100% | 100% | 100% | 100% | 100% |
 | kimi-k3 | **1.000 ± 0.000** | 100% | 100% | 100% | 100% | 100% |
+| gpt-5.6-sol | **1.000 ± 0.000** | 100% | 100% | 100% | 100% | 100% |
 | claude-opus-4.8 | **0.986 ± 0.027** | 99% | 100% | 100% | 97% | 100% |
 | claude-fable-5 | **0.979 ± 0.030** | 97% | 100% | 100% | 94% | 100% |
 | gpt-5.4 | **0.972 ± 0.038** | 97% | 100% | 100% | 94% | 100% |

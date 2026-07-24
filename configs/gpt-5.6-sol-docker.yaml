@@ -1,0 +1,42 @@
+# root-cause-bench — add openai/gpt-5.6-sol to the leaderboard (Docker).
+# Same conditions as the v2 frozen run: 1800s agent timeout, graded capture.
+jobs_dir: jobs
+n_attempts: 3
+n_concurrent_trials: 8
+quiet: false
+
+environment:
+  type: docker
+
+agents:
+  - name: terminus-2
+    model_name: openrouter/openai/gpt-5.6-sol
+    override_timeout_sec: 1800
+
+datasets:
+  - path: datasets/rootcausebench
+    task_names:
+      - ai-agent-registration-missing
+      - auth-jwt-validation-regression
+      - bad-data-poison-record
+      - cache-ttl-stampede
+      - checkout-latency-n-plus-one
+      - cloud-region-impairment
+      - dashboard-db-schema-missing-table
+      - dns-resolver-degradation
+      - dynamodb-write-capacity-breach
+      - frontend-race-condition-5xx
+      - grpc-deadline-too-tight
+      - inventory-connection-pool-exhaustion
+      - logging-debug-disk-fill
+      - metric-ingestor-metadata-deser
+      - noisy-neighbor-node-saturation
+      - olapdb-tso-cas-retry-budget
+      - payment-nil-deref-panic
+      - recommendation-memory-leak
+      - search-mapping-query-break
+      - tls-cert-expiry
+      - traffic-surge-flash-sale
+      - transformer-dependency-startup-crash
+      - unbounded-query-delayed-onset
+      - upstream-payment-provider-outage
