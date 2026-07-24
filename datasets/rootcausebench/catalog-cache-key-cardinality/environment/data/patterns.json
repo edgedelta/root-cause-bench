@@ -1,0 +1,65 @@
+[
+ {
+  "signature": "cache miss for catalog page; falling back to primary db",
+  "service": "catalogservice",
+  "count": 3240,
+  "delta_vs_baseline": "+3240",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "catalog page served",
+  "service": "catalogservice",
+  "count": 14541,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "product page rendered",
+  "service": "frontend",
+  "count": 14766,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "cart updated",
+  "service": "cartservice",
+  "count": 11118,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "order placed",
+  "service": "checkoutservice",
+  "count": 10901,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "charge authorized",
+  "service": "paymentservice",
+  "count": 8640,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "shipment scheduled",
+  "service": "shippingservice",
+  "count": 6780,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "dashboard view rendered",
+  "service": "dashboard-svc",
+  "count": 6220,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "request served",
+  "service": "platform-api",
+  "count": 11040,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ }
+]

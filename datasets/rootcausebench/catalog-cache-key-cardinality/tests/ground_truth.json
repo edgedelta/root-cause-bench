@@ -1,0 +1,14 @@
+{
+ "scenario": "catalog-cache-key-cardinality",
+ "root_cause_commit": "6795b1e12d8268ced328643112337d68a27bb784",
+ "first_failing_service": "catalogservice",
+ "blast_radius": [
+  "frontend"
+ ],
+ "remediation": "rollback",
+ "decoy_deploy_commits": [
+  "5cd5811c60bd8aa10350af1da8c9580c6cd1c42e",
+  "61c17232d189c1c823ae830efc47336ea1137e96"
+ ],
+ "notes": "BEYOND-CONTEXT / MONOREPO (adversarial). 303 commits over 73h; ~12MB of telemetry \u2014 the data cannot be read whole, it must be sliced. Culprit is the mid-history pkg/cache/key.go commit (deployed to catalogservice 2026-07-19T02:40Z, ~30h before the alert): adding req.SessionID to the catalog cache key explodes key cardinality, so cache_hit_ratio decays from 0.97 toward 0.31 and redis_mem_mb ramps 240->3900 starting right after that deploy, while catalog_latency_p99_ms only breaches threshold on 07-20 as the DB fallback saturates \u2014 a very long delayed onset. redis-decoy ('tune redis client timeouts', catalogservice, deployed 08:15) is the guilty-looking near-onset change on the right service, but hit-ratio decay predates it by ~29h and its diff only lowers a client read timeout. dashboard-decoy (08:32) is the innocent-position deploy. Monorepo: route changes by files_changed paths (services/<svc>/, pkg/), not by service-named repos. Remediation: roll back catalogservice to before the cache-key change."
+}

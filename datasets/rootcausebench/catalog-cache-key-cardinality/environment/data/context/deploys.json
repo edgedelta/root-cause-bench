@@ -1,0 +1,20 @@
+[
+ {
+  "timestamp": "2026-07-19T02:40:00Z",
+  "service": "catalogservice",
+  "commit_sha": "6795b1e12d8268ced328643112337d68a27bb784",
+  "version": "v2026.07.19-0240"
+ },
+ {
+  "timestamp": "2026-07-20T08:15:00Z",
+  "service": "catalogservice",
+  "commit_sha": "5cd5811c60bd8aa10350af1da8c9580c6cd1c42e",
+  "version": "v2026.07.20-0815"
+ },
+ {
+  "timestamp": "2026-07-20T08:32:00Z",
+  "service": "dashboard-svc",
+  "commit_sha": "61c17232d189c1c823ae830efc47336ea1137e96",
+  "version": "v2026.07.20-0832"
+ }
+]
