@@ -28,7 +28,7 @@
       "passed": 1,
       "total": 27,
       "pass_rate_pct": 3.7,
-      "decoy_hits": 25,
+      "decoy_hits": 24,
       "by_tier": {
         "adversarial": "0/3",
         "easy": "1/3",
@@ -224,7 +224,7 @@
       },
       "shared-config-pool-drain": {
         "passed": false,
-        "answered": "a184a63981e8",
+        "answered": "30af347c07ce",
         "hit_decoy": false,
         "difficulty": "adversarial",
         "no_code_cause": false
@@ -606,8 +606,8 @@
       },
       "shared-config-pool-drain": {
         "passed": false,
-        "answered": "6fba9a51cc6d",
-        "hit_decoy": true,
+        "answered": "a184a63981e8",
+        "hit_decoy": false,
         "difficulty": "adversarial",
         "no_code_cause": false
       },
@@ -797,7 +797,7 @@
       },
       "shared-config-pool-drain": {
         "passed": false,
-        "answered": "a679ece8ac5d",
+        "answered": "b1dce976ab6e",
         "hit_decoy": false,
         "difficulty": "adversarial",
         "no_code_cause": false
@@ -988,7 +988,7 @@
       },
       "shared-config-pool-drain": {
         "passed": false,
-        "answered": "6fba9a51cc6d",
+        "answered": "13e39d6c49c6",
         "hit_decoy": true,
         "difficulty": "adversarial",
         "no_code_cause": false
@@ -1179,7 +1179,7 @@
       },
       "shared-config-pool-drain": {
         "passed": false,
-        "answered": "6fba9a51cc6d",
+        "answered": "13e39d6c49c6",
         "hit_decoy": true,
         "difficulty": "adversarial",
         "no_code_cause": false
