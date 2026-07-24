@@ -131,6 +131,16 @@
   "diff": "--- a/internal/health/ready.go\n+++ b/internal/health/ready.go\n@@ -0,0 +1,6 @@\n+func Ready(w http.ResponseWriter, r *http.Request) {\n+\tw.WriteHeader(http.StatusOK)\n+}\n"
  },
  {
+  "sha": "2cf172bc071af44af26bcdb00015214abfd31998",
+  "author": "sofia.rossi",
+  "timestamp": "2026-07-21T07:50:00Z",
+  "message": "perf(notify): compress webhook payloads",
+  "files_changed": [
+   "services/notification/payload.go"
+  ],
+  "diff": "--- a/services/notification/payload.go\n+++ b/services/notification/payload.go\n@@ -18,8 +18,14 @@ func (d *Dispatcher) marshalPayload(ev Event) ([]byte, error) {\n-\tbody, err := json.Marshal(ev)\n-\tif err != nil {\n-\t\treturn nil, err\n-\t}\n-\treturn body, nil\n+\traw, err := json.Marshal(ev)\n+\tif err != nil {\n+\t\treturn nil, err\n+\t}\n+\tvar buf bytes.Buffer\n+\tgw := gzip.NewWriter(&buf)\n+\tif _, err := gw.Write(raw); err != nil {\n+\t\treturn nil, err\n+\t}\n+\tgw.Close()\n+\treturn buf.Bytes(), nil\n }\n"
+ },
+ {
   "sha": "4d1afd6db971d87591ba8fd0c09b2ab32a12c2ba",
   "author": "tom.oduya",
   "timestamp": "2026-07-21T07:59:45Z",
@@ -148,7 +158,7 @@
   "files_changed": [
    "services/notification/dispatch.go"
   ],
-  "diff": "--- a/services/notification/dispatch.go\n+++ b/services/notification/dispatch.go\n@@ -22,14 +22,12 @@ type Dispatcher struct {\n-\t// bounded queue: drop-on-full keeps memory flat under consumer slowdowns\n-\tqueue chan Event // cap 10_000\n+\tmu    sync.Mutex\n+\tbatch []Event\n }\n\n func (d *Dispatcher) Enqueue(ev Event) {\n-\tselect {\n-\tcase d.queue <- ev:\n-\tdefault:\n-\t\tmetrics.Inc(\"notify_dropped_total\")\n-\t}\n+\td.mu.Lock()\n+\td.batch = append(d.batch, ev)\n+\td.mu.Unlock()\n }\n"
+  "diff": "--- a/services/notification/dispatch.go\n+++ b/services/notification/dispatch.go\n@@ -22,14 +22,12 @@ type Dispatcher struct {\n-\tqueue chan Event\n+\tmu    sync.Mutex\n+\tbatch []Event\n }\n\n func (d *Dispatcher) Enqueue(ev Event) {\n-\tselect {\n-\tcase d.queue <- ev:\n-\tdefault:\n-\t\tmetrics.Inc(\"notify_dropped_total\")\n-\t}\n+\td.mu.Lock()\n+\td.batch = append(d.batch, ev)\n+\td.mu.Unlock()\n }\n"
  },
  {
   "sha": "1c5af7aa48d48396d1bffe896c029979c810a894",
@@ -179,6 +189,16 @@
    "internal/errors/messages.go"
   ],
   "diff": "--- a/internal/errors/messages.go\n+++ b/internal/errors/messages.go\n@@ -4,1 +4,1 @@\n-\t\"unkown resource\"\n+\t\"unknown resource\"\n"
+ },
+ {
+  "sha": "30bf4bee01e6ccaee574080ce0c9ad2d452e75cc",
+  "author": "priya.nair",
+  "timestamp": "2026-07-21T08:35:00Z",
+  "message": "feat(workflow): parallel dispatch fan-out",
+  "files_changed": [
+   "services/workflow/dispatch.go"
+  ],
+  "diff": "--- a/services/workflow/dispatch.go\n+++ b/services/workflow/dispatch.go\n@@ -14,7 +14,11 @@ const defaultPoolSize = 4\n func (s *Server) startDispatchPool() {\n-\ts.pool = NewWorkerPool(defaultPoolSize)\n+\tpoolSize := defaultPoolSize\n+\tif s.flags.Enabled(\"workflow_parallel_dispatch\") {\n+\t\tpoolSize = 8\n+\t}\n+\ts.pool = NewWorkerPool(poolSize)\n }\n"
  },
  {
   "sha": "3857106ef3c0868bd928f2854ade73f0a9d55e0e",

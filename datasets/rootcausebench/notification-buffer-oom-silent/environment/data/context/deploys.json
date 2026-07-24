@@ -42,6 +42,12 @@
   "version": "v2026.07.21-0710"
  },
  {
+  "timestamp": "2026-07-21T08:05:00Z",
+  "service": "notification-svc",
+  "commit_sha": "2cf172bc071af44af26bcdb00015214abfd31998",
+  "version": "v2026.07.21-0805"
+ },
+ {
   "timestamp": "2026-07-21T08:27:40Z",
   "service": "notification-svc",
   "commit_sha": "33a36c20fdf9ecee9e5a30b330d2550401faf739",
@@ -58,6 +64,12 @@
   "service": "platform-api",
   "commit_sha": "2a271ecc32bb89add3da85edd13817987f659057",
   "version": "v2026.07.21-0840"
+ },
+ {
+  "timestamp": "2026-07-21T09:00:00Z",
+  "service": "workflow-engine",
+  "commit_sha": "30bf4bee01e6ccaee574080ce0c9ad2d452e75cc",
+  "version": "v2026.07.21-0900"
  },
  {
   "timestamp": "2026-07-21T09:02:37Z",
