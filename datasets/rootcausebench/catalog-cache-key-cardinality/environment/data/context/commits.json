@@ -956,6 +956,16 @@
   "diff": "--- a/internal/httputil/writer.go\n+++ b/internal/httputil/writer.go\n@@ -10,6 +10,10 @@\n+func writeJSON(w http.ResponseWriter, code int, v any) {\n+\tw.WriteHeader(code)\n+\t_ = json.NewEncoder(w).Encode(v)\n+}\n"
  },
  {
+  "sha": "8f94b490b7122b79a9626ec3d5ae06ca804b7e77",
+  "author": "hana.kim",
+  "timestamp": "2026-07-18T09:00:00Z",
+  "message": "chore(platform): rotate api rate-limit config",
+  "files_changed": [
+   "services/platform-api/ratelimit.go"
+  ],
+  "diff": "--- a/services/platform-api/ratelimit.go\n+++ b/services/platform-api/ratelimit.go\n@@ -7,2 +7,2 @@\n-\tBurstSize: 200,\n+\tBurstSize: 220,\n"
+ },
+ {
   "sha": "d7dc6d451be97dc0945bc28386792c3494248b90",
   "author": "mei.chen",
   "timestamp": "2026-07-18T09:13:31Z",

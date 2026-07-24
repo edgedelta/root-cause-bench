@@ -71,6 +71,7 @@ baseline = 95
 [[trace_flows]]
 name = "POST /api/notify"
 per_hour = 3
+end = "2026-07-21T09:40:00Z"
 [[trace_flows.spans]]
 service = "platform-api"
 name = "POST /api/notify"
@@ -183,6 +184,19 @@ after = "2026-07-21T09:40:00Z"
 innocent_count = 28
 
 [[commits.authored]]
+id = "early-innocent"
+message = "refactor(platform): tidy request logging"
+author = "elena.popov"
+timestamp = "2026-07-21T06:10:00Z"
+files = ["services/platform-api/log.go"]
+diff = '''--- a/services/platform-api/log.go
++++ b/services/platform-api/log.go
+@@ -11,2 +11,2 @@
+-	log.Debug("request received")
++	log.Debug("request received: " + r.URL.Path)
+'''
+
+[[commits.authored]]
 id = "culprit"
 message = "feat(notify): batch webhook dispatch"
 author = "marco.silva"
@@ -222,6 +236,10 @@ diff = '''--- a/services/workflow/notify.go
 +		log.Error("notify dispatch failed: " + err.Error())
 '''
 
+[[deploys]]
+service = "platform-api"
+commit = "early-innocent"
+timestamp = "2026-07-21T07:10:00Z"
 [[deploys]]
 service = "notification-svc"
 commit = "culprit"

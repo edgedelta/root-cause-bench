@@ -35,7 +35,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "POST /checkout",
-  "start": "2026-07-20T06:20:46Z",
+  "start": "2026-07-20T06:21:30Z",
   "duration_ms": 240,
   "status": "OK"
  },
@@ -45,7 +45,7 @@
   "parent_id": "s0",
   "service": "checkoutservice",
   "name": "PlaceOrder",
-  "start": "2026-07-20T06:20:46Z",
+  "start": "2026-07-20T06:21:30Z",
   "duration_ms": 210,
   "status": "OK"
  },
@@ -55,7 +55,7 @@
   "parent_id": "s1",
   "service": "paymentservice",
   "name": "Charge",
-  "start": "2026-07-20T06:20:46Z",
+  "start": "2026-07-20T06:21:30Z",
   "duration_ms": 90,
   "status": "OK"
  },
@@ -65,7 +65,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "POST /checkout",
-  "start": "2026-07-20T06:41:32Z",
+  "start": "2026-07-20T06:43:00Z",
   "duration_ms": 240,
   "status": "OK"
  },
@@ -75,7 +75,7 @@
   "parent_id": "s0",
   "service": "checkoutservice",
   "name": "PlaceOrder",
-  "start": "2026-07-20T06:41:32Z",
+  "start": "2026-07-20T06:43:00Z",
   "duration_ms": 210,
   "status": "OK"
  },
@@ -85,7 +85,7 @@
   "parent_id": "s1",
   "service": "paymentservice",
   "name": "Charge",
-  "start": "2026-07-20T06:41:32Z",
+  "start": "2026-07-20T06:43:00Z",
   "duration_ms": 90,
   "status": "OK"
  },
@@ -95,7 +95,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "POST /checkout",
-  "start": "2026-07-20T07:02:18Z",
+  "start": "2026-07-20T07:04:30Z",
   "duration_ms": 240,
   "status": "OK"
  },
@@ -105,7 +105,7 @@
   "parent_id": "s0",
   "service": "checkoutservice",
   "name": "PlaceOrder",
-  "start": "2026-07-20T07:02:18Z",
+  "start": "2026-07-20T07:04:30Z",
   "duration_ms": 210,
   "status": "OK"
  },
@@ -115,7 +115,7 @@
   "parent_id": "s1",
   "service": "paymentservice",
   "name": "Charge",
-  "start": "2026-07-20T07:02:18Z",
+  "start": "2026-07-20T07:04:30Z",
   "duration_ms": 90,
   "status": "OK"
  },
@@ -125,7 +125,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "POST /checkout",
-  "start": "2026-07-20T07:23:04Z",
+  "start": "2026-07-20T07:26:00Z",
   "duration_ms": 240,
   "status": "OK"
  },
@@ -135,7 +135,7 @@
   "parent_id": "s0",
   "service": "checkoutservice",
   "name": "PlaceOrder",
-  "start": "2026-07-20T07:23:04Z",
+  "start": "2026-07-20T07:26:00Z",
   "duration_ms": 210,
   "status": "OK"
  },
@@ -145,7 +145,7 @@
   "parent_id": "s1",
   "service": "paymentservice",
   "name": "Charge",
-  "start": "2026-07-20T07:23:04Z",
+  "start": "2026-07-20T07:26:00Z",
   "duration_ms": 90,
   "status": "OK"
  },
@@ -155,7 +155,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "POST /checkout",
-  "start": "2026-07-20T07:43:50Z",
+  "start": "2026-07-20T07:47:30Z",
   "duration_ms": 240,
   "status": "OK"
  },
@@ -165,7 +165,7 @@
   "parent_id": "s0",
   "service": "checkoutservice",
   "name": "PlaceOrder",
-  "start": "2026-07-20T07:43:50Z",
+  "start": "2026-07-20T07:47:30Z",
   "duration_ms": 210,
   "status": "OK"
  },
@@ -175,7 +175,7 @@
   "parent_id": "s1",
   "service": "paymentservice",
   "name": "Charge",
-  "start": "2026-07-20T07:43:50Z",
+  "start": "2026-07-20T07:47:30Z",
   "duration_ms": 90,
   "status": "OK"
  },
@@ -185,7 +185,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "POST /checkout",
-  "start": "2026-07-20T08:04:36Z",
+  "start": "2026-07-20T08:09:00Z",
   "duration_ms": 240,
   "status": "OK"
  },
@@ -195,7 +195,7 @@
   "parent_id": "s0",
   "service": "checkoutservice",
   "name": "PlaceOrder",
-  "start": "2026-07-20T08:04:36Z",
+  "start": "2026-07-20T08:09:00Z",
   "duration_ms": 210,
   "status": "OK"
  },
@@ -205,7 +205,7 @@
   "parent_id": "s1",
   "service": "paymentservice",
   "name": "Charge",
-  "start": "2026-07-20T08:04:36Z",
+  "start": "2026-07-20T08:09:00Z",
   "duration_ms": 90,
   "status": "OK"
  },
@@ -215,7 +215,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "POST /checkout",
-  "start": "2026-07-20T08:25:23Z",
+  "start": "2026-07-20T08:30:30Z",
   "duration_ms": 240,
   "status": "OK"
  },
@@ -225,7 +225,7 @@
   "parent_id": "s0",
   "service": "checkoutservice",
   "name": "PlaceOrder",
-  "start": "2026-07-20T08:25:23Z",
+  "start": "2026-07-20T08:30:30Z",
   "duration_ms": 210,
   "status": "OK"
  },
@@ -235,7 +235,7 @@
   "parent_id": "s1",
   "service": "paymentservice",
   "name": "Charge",
-  "start": "2026-07-20T08:25:23Z",
+  "start": "2026-07-20T08:30:30Z",
   "duration_ms": 90,
   "status": "OK"
  },
@@ -245,7 +245,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "POST /checkout",
-  "start": "2026-07-20T08:46:09Z",
+  "start": "2026-07-20T08:52:00Z",
   "duration_ms": 240,
   "status": "OK"
  },
@@ -255,7 +255,7 @@
   "parent_id": "s0",
   "service": "checkoutservice",
   "name": "PlaceOrder",
-  "start": "2026-07-20T08:46:09Z",
+  "start": "2026-07-20T08:52:00Z",
   "duration_ms": 210,
   "status": "OK"
  },
@@ -265,7 +265,7 @@
   "parent_id": "s1",
   "service": "paymentservice",
   "name": "Charge",
-  "start": "2026-07-20T08:46:09Z",
+  "start": "2026-07-20T08:52:00Z",
   "duration_ms": 90,
   "status": "OK"
  },
@@ -275,7 +275,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "POST /checkout",
-  "start": "2026-07-20T09:06:55Z",
+  "start": "2026-07-20T09:13:30Z",
   "duration_ms": 240,
   "status": "OK"
  },
@@ -285,7 +285,7 @@
   "parent_id": "s0",
   "service": "checkoutservice",
   "name": "PlaceOrder",
-  "start": "2026-07-20T09:06:55Z",
+  "start": "2026-07-20T09:13:30Z",
   "duration_ms": 210,
   "status": "OK"
  },
@@ -295,97 +295,7 @@
   "parent_id": "s1",
   "service": "paymentservice",
   "name": "Charge",
-  "start": "2026-07-20T09:06:55Z",
-  "duration_ms": 90,
-  "status": "OK"
- },
- {
-  "trace_id": "82afdfbb6757cd84bbb8459f8eada818",
-  "span_id": "s0",
-  "parent_id": null,
-  "service": "frontend",
-  "name": "POST /checkout",
-  "start": "2026-07-20T09:27:41Z",
-  "duration_ms": 240,
-  "status": "OK"
- },
- {
-  "trace_id": "82afdfbb6757cd84bbb8459f8eada818",
-  "span_id": "s1",
-  "parent_id": "s0",
-  "service": "checkoutservice",
-  "name": "PlaceOrder",
-  "start": "2026-07-20T09:27:41Z",
-  "duration_ms": 210,
-  "status": "OK"
- },
- {
-  "trace_id": "82afdfbb6757cd84bbb8459f8eada818",
-  "span_id": "s2",
-  "parent_id": "s1",
-  "service": "paymentservice",
-  "name": "Charge",
-  "start": "2026-07-20T09:27:41Z",
-  "duration_ms": 90,
-  "status": "OK"
- },
- {
-  "trace_id": "944356909b65d3f1ef3dacd2b3b0659f",
-  "span_id": "s0",
-  "parent_id": null,
-  "service": "frontend",
-  "name": "POST /checkout",
-  "start": "2026-07-20T09:48:27Z",
-  "duration_ms": 240,
-  "status": "OK"
- },
- {
-  "trace_id": "944356909b65d3f1ef3dacd2b3b0659f",
-  "span_id": "s1",
-  "parent_id": "s0",
-  "service": "checkoutservice",
-  "name": "PlaceOrder",
-  "start": "2026-07-20T09:48:27Z",
-  "duration_ms": 210,
-  "status": "OK"
- },
- {
-  "trace_id": "944356909b65d3f1ef3dacd2b3b0659f",
-  "span_id": "s2",
-  "parent_id": "s1",
-  "service": "paymentservice",
-  "name": "Charge",
-  "start": "2026-07-20T09:48:27Z",
-  "duration_ms": 90,
-  "status": "OK"
- },
- {
-  "trace_id": "ea03f4cb7d91f53a37a41f4f8bc7abb4",
-  "span_id": "s0",
-  "parent_id": null,
-  "service": "frontend",
-  "name": "POST /checkout",
-  "start": "2026-07-20T10:09:13Z",
-  "duration_ms": 240,
-  "status": "OK"
- },
- {
-  "trace_id": "ea03f4cb7d91f53a37a41f4f8bc7abb4",
-  "span_id": "s1",
-  "parent_id": "s0",
-  "service": "checkoutservice",
-  "name": "PlaceOrder",
-  "start": "2026-07-20T10:09:13Z",
-  "duration_ms": 210,
-  "status": "OK"
- },
- {
-  "trace_id": "ea03f4cb7d91f53a37a41f4f8bc7abb4",
-  "span_id": "s2",
-  "parent_id": "s1",
-  "service": "paymentservice",
-  "name": "Charge",
-  "start": "2026-07-20T10:09:13Z",
+  "start": "2026-07-20T09:13:30Z",
   "duration_ms": 90,
   "status": "OK"
  },

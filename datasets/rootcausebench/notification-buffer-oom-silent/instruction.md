@@ -9,7 +9,7 @@ The alert that fired is in `/workdir/data/alert.json`.
 
 ## The data in `/workdir/data/`
 
-A frozen snapshot of the incident window. All timestamps are UTC and internally consistent.
+A frozen snapshot of the incident window. All timestamps are UTC.
 
 | file | what it is |
 |------|------------|
@@ -24,8 +24,8 @@ A frozen snapshot of the incident window. All timestamps are UTC and internally 
 
 ## Tools
 
-`jq`, `grep`, `awk`, `sort`, `python3` and the usual shell utilities are installed. The data is
-small — read it, slice it, correlate it.
+`jq`, `grep`, `awk`, `sort`, `python3` and the usual shell utilities are installed. The data may
+be large. Slice it with `jq`/`grep`/`awk`/`python3` rather than reading whole files.
 
 ## How to think about it
 
@@ -54,7 +54,7 @@ small — read it, slice it, correlate it.
 - If the evidence points to an operational/external cause (and no commit's diff explains the
   symptom), answer `root_cause_commit: "none"`. Guessing a commit when the cause is operational is
   a **wrong answer**, just like naming the wrong commit.
-- Feature-flag changes in `flags.json` are **distractors**.
+- Feature-flag changes are part of the change context — weigh them like any other change.
 
 ## Output (required)
 

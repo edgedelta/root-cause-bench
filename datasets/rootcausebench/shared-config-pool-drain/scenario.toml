@@ -67,6 +67,7 @@ jitter = 0.4
 [[trace_flows]]
 name = "POST /api/checkout"
 per_hour = 3
+end = "2026-07-20T09:35:00Z"
 [[trace_flows.spans]]
 service = "frontend"
 name = "POST /checkout"
@@ -165,6 +166,19 @@ error = "pool acquire timeout after 3000ms"
 innocent_count = 26
 
 [[commits.authored]]
+id = "early-innocent"
+message = "chore(frontend): refresh banner assets"
+author = "priya.desai"
+timestamp = "2026-07-20T07:55:00Z"
+files = ["web/assets/banner.css"]
+diff = '''--- a/web/assets/banner.css
++++ b/web/assets/banner.css
+@@ -3,2 +3,2 @@
+-.banner { background: #f4f4f4; }
++.banner { background: #f2f2f2; }
+'''
+
+[[commits.authored]]
 id = "culprit"
 message = "refactor(dbpool): make acquire timeout configurable"
 author = "jan.kowalski"
@@ -225,6 +239,10 @@ diff = '''--- a/web/styles/checkout.css
 +.summary { margin: 8px; }
 '''
 
+[[deploys]]
+service = "frontend"
+commit = "early-innocent"
+timestamp = "2026-07-20T08:30:00Z"
 [[deploys]]
 service = "paymentservice"
 commit = "culprit"

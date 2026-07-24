@@ -1,5 +1,11 @@
 [
  {
+  "timestamp": "2026-07-21T07:10:00Z",
+  "service": "platform-api",
+  "commit_sha": "ba673b53ded180add1368e12334ce9f2e1736eda",
+  "version": "v2026.07.21-0710"
+ },
+ {
   "timestamp": "2026-07-21T08:40:00Z",
   "service": "notification-svc",
   "commit_sha": "f9f358d2b02e04c3a6fadaafacc3715535446980",

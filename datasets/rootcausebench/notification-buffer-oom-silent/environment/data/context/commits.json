@@ -71,6 +71,16 @@
   "diff": "--- a/internal/middleware/log.go\n+++ b/internal/middleware/log.go\n@@ -22,7 +22,8 @@\n-\tlogger.Info(\"request\")\n+\tlogger.Info(\"request\", \"route\", r.URL.Path, \"ms\", elapsed)\n"
  },
  {
+  "sha": "ba673b53ded180add1368e12334ce9f2e1736eda",
+  "author": "elena.popov",
+  "timestamp": "2026-07-21T06:10:00Z",
+  "message": "refactor(platform): tidy request logging",
+  "files_changed": [
+   "services/platform-api/log.go"
+  ],
+  "diff": "--- a/services/platform-api/log.go\n+++ b/services/platform-api/log.go\n@@ -11,2 +11,2 @@\n-\tlog.Debug(\"request received\")\n+\tlog.Debug(\"request received: \" + r.URL.Path)\n"
+ },
+ {
   "sha": "8bf8ba021a4a702aa38e542fcbd1627542ba422a",
   "author": "jan.kowalski",
   "timestamp": "2026-07-21T06:18:23Z",

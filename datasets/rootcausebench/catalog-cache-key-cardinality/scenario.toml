@@ -159,6 +159,7 @@ jitter = 0.1
 [[trace_flows]]
 name = "GET /api/products"
 per_hour = 3
+end = "2026-07-20T02:30:00Z"
 [[trace_flows.spans]]
 service = "frontend"
 name = "GET /products"
@@ -262,6 +263,19 @@ status = "OK"
 innocent_count = 300
 
 [[commits.authored]]
+id = "early-innocent"
+message = "chore(platform): rotate api rate-limit config"
+author = "hana.kim"
+timestamp = "2026-07-18T09:00:00Z"
+files = ["services/platform-api/ratelimit.go"]
+diff = '''--- a/services/platform-api/ratelimit.go
++++ b/services/platform-api/ratelimit.go
+@@ -7,2 +7,2 @@
+-	BurstSize: 200,
++	BurstSize: 220,
+'''
+
+[[commits.authored]]
 id = "culprit"
 message = "refactor(cache): scope cache keys to request context"
 author = "tom.oduya"
@@ -304,6 +318,10 @@ diff = '''--- a/services/dashboard/views.go
 +}
 '''
 
+[[deploys]]
+service = "platform-api"
+commit = "early-innocent"
+timestamp = "2026-07-18T10:15:00Z"
 [[deploys]]
 service = "catalogservice"
 commit = "culprit"

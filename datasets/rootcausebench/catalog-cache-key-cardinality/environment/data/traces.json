@@ -35,7 +35,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T08:20:00Z",
+  "start": "2026-07-17T08:20:03Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -45,7 +45,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T08:20:00Z",
+  "start": "2026-07-17T08:20:03Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -55,7 +55,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T08:20:00Z",
+  "start": "2026-07-17T08:20:03Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -65,7 +65,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T08:40:00Z",
+  "start": "2026-07-17T08:40:06Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -75,7 +75,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T08:40:00Z",
+  "start": "2026-07-17T08:40:06Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -85,7 +85,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T08:40:00Z",
+  "start": "2026-07-17T08:40:06Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -95,7 +95,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T09:00:00Z",
+  "start": "2026-07-17T09:00:09Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -105,7 +105,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T09:00:00Z",
+  "start": "2026-07-17T09:00:09Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -115,7 +115,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T09:00:00Z",
+  "start": "2026-07-17T09:00:09Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -125,7 +125,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T09:20:00Z",
+  "start": "2026-07-17T09:20:12Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -135,7 +135,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T09:20:00Z",
+  "start": "2026-07-17T09:20:12Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -145,7 +145,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T09:20:00Z",
+  "start": "2026-07-17T09:20:12Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -155,7 +155,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T09:40:00Z",
+  "start": "2026-07-17T09:40:15Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -165,7 +165,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T09:40:00Z",
+  "start": "2026-07-17T09:40:15Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -175,7 +175,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T09:40:00Z",
+  "start": "2026-07-17T09:40:15Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -185,7 +185,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T10:00:00Z",
+  "start": "2026-07-17T10:00:18Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -195,7 +195,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T10:00:00Z",
+  "start": "2026-07-17T10:00:18Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -205,7 +205,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T10:00:00Z",
+  "start": "2026-07-17T10:00:18Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -215,7 +215,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T10:20:00Z",
+  "start": "2026-07-17T10:20:21Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -225,7 +225,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T10:20:00Z",
+  "start": "2026-07-17T10:20:21Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -235,7 +235,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T10:20:00Z",
+  "start": "2026-07-17T10:20:21Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -245,7 +245,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T10:40:00Z",
+  "start": "2026-07-17T10:40:24Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -255,7 +255,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T10:40:00Z",
+  "start": "2026-07-17T10:40:24Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -265,7 +265,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T10:40:00Z",
+  "start": "2026-07-17T10:40:24Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -275,7 +275,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T11:00:00Z",
+  "start": "2026-07-17T11:00:27Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -285,7 +285,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T11:00:00Z",
+  "start": "2026-07-17T11:00:27Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -295,7 +295,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T11:00:00Z",
+  "start": "2026-07-17T11:00:27Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -305,7 +305,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T11:20:00Z",
+  "start": "2026-07-17T11:20:30Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -315,7 +315,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T11:20:00Z",
+  "start": "2026-07-17T11:20:30Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -325,7 +325,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T11:20:00Z",
+  "start": "2026-07-17T11:20:30Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -335,7 +335,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T11:40:00Z",
+  "start": "2026-07-17T11:40:33Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -345,7 +345,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T11:40:00Z",
+  "start": "2026-07-17T11:40:33Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -355,7 +355,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T11:40:00Z",
+  "start": "2026-07-17T11:40:33Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -365,7 +365,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T12:00:00Z",
+  "start": "2026-07-17T12:00:36Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -375,7 +375,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T12:00:00Z",
+  "start": "2026-07-17T12:00:36Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -385,7 +385,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T12:00:00Z",
+  "start": "2026-07-17T12:00:36Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -395,7 +395,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T12:20:00Z",
+  "start": "2026-07-17T12:20:39Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -405,7 +405,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T12:20:00Z",
+  "start": "2026-07-17T12:20:39Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -415,7 +415,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T12:20:00Z",
+  "start": "2026-07-17T12:20:39Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -425,7 +425,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T12:40:00Z",
+  "start": "2026-07-17T12:40:42Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -435,7 +435,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T12:40:00Z",
+  "start": "2026-07-17T12:40:42Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -445,7 +445,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T12:40:00Z",
+  "start": "2026-07-17T12:40:42Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -455,7 +455,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T13:00:00Z",
+  "start": "2026-07-17T13:00:45Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -465,7 +465,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T13:00:00Z",
+  "start": "2026-07-17T13:00:45Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -475,7 +475,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T13:00:00Z",
+  "start": "2026-07-17T13:00:45Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -485,7 +485,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T13:20:00Z",
+  "start": "2026-07-17T13:20:48Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -495,7 +495,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T13:20:00Z",
+  "start": "2026-07-17T13:20:48Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -505,7 +505,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T13:20:00Z",
+  "start": "2026-07-17T13:20:48Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -515,7 +515,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T13:40:00Z",
+  "start": "2026-07-17T13:40:51Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -525,7 +525,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T13:40:00Z",
+  "start": "2026-07-17T13:40:51Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -535,7 +535,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T13:40:00Z",
+  "start": "2026-07-17T13:40:51Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -545,7 +545,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T14:00:00Z",
+  "start": "2026-07-17T14:00:54Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -555,7 +555,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T14:00:00Z",
+  "start": "2026-07-17T14:00:54Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -565,7 +565,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T14:00:00Z",
+  "start": "2026-07-17T14:00:54Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -575,7 +575,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T14:20:00Z",
+  "start": "2026-07-17T14:20:57Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -585,7 +585,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T14:20:00Z",
+  "start": "2026-07-17T14:20:57Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -595,7 +595,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T14:20:00Z",
+  "start": "2026-07-17T14:20:57Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -605,7 +605,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T14:40:00Z",
+  "start": "2026-07-17T14:41:00Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -615,7 +615,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T14:40:00Z",
+  "start": "2026-07-17T14:41:00Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -625,7 +625,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T14:40:00Z",
+  "start": "2026-07-17T14:41:00Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -635,7 +635,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T15:00:00Z",
+  "start": "2026-07-17T15:01:03Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -645,7 +645,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T15:00:00Z",
+  "start": "2026-07-17T15:01:03Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -655,7 +655,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T15:00:00Z",
+  "start": "2026-07-17T15:01:03Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -665,7 +665,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T15:20:00Z",
+  "start": "2026-07-17T15:21:06Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -675,7 +675,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T15:20:00Z",
+  "start": "2026-07-17T15:21:06Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -685,7 +685,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T15:20:00Z",
+  "start": "2026-07-17T15:21:06Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -695,7 +695,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T15:40:00Z",
+  "start": "2026-07-17T15:41:09Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -705,7 +705,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T15:40:00Z",
+  "start": "2026-07-17T15:41:09Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -715,7 +715,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T15:40:00Z",
+  "start": "2026-07-17T15:41:09Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -725,7 +725,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T16:00:00Z",
+  "start": "2026-07-17T16:01:12Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -735,7 +735,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T16:00:00Z",
+  "start": "2026-07-17T16:01:12Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -745,7 +745,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T16:00:00Z",
+  "start": "2026-07-17T16:01:12Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -755,7 +755,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T16:20:00Z",
+  "start": "2026-07-17T16:21:15Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -765,7 +765,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T16:20:00Z",
+  "start": "2026-07-17T16:21:15Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -775,7 +775,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T16:20:00Z",
+  "start": "2026-07-17T16:21:15Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -785,7 +785,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T16:40:00Z",
+  "start": "2026-07-17T16:41:18Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -795,7 +795,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T16:40:00Z",
+  "start": "2026-07-17T16:41:18Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -805,7 +805,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T16:40:00Z",
+  "start": "2026-07-17T16:41:18Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -815,7 +815,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T17:00:00Z",
+  "start": "2026-07-17T17:01:21Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -825,7 +825,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T17:00:00Z",
+  "start": "2026-07-17T17:01:21Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -835,7 +835,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T17:00:00Z",
+  "start": "2026-07-17T17:01:21Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -845,7 +845,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T17:20:00Z",
+  "start": "2026-07-17T17:21:24Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -855,7 +855,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T17:20:00Z",
+  "start": "2026-07-17T17:21:24Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -865,7 +865,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T17:20:00Z",
+  "start": "2026-07-17T17:21:24Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -875,7 +875,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T17:40:00Z",
+  "start": "2026-07-17T17:41:27Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -885,7 +885,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T17:40:00Z",
+  "start": "2026-07-17T17:41:27Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -895,7 +895,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T17:40:00Z",
+  "start": "2026-07-17T17:41:27Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -905,7 +905,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T18:00:00Z",
+  "start": "2026-07-17T18:01:30Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -915,7 +915,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T18:00:00Z",
+  "start": "2026-07-17T18:01:30Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -925,7 +925,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T18:00:00Z",
+  "start": "2026-07-17T18:01:30Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -935,7 +935,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T18:20:00Z",
+  "start": "2026-07-17T18:21:33Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -945,7 +945,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T18:20:00Z",
+  "start": "2026-07-17T18:21:33Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -955,7 +955,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T18:20:00Z",
+  "start": "2026-07-17T18:21:33Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -965,7 +965,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T18:40:00Z",
+  "start": "2026-07-17T18:41:36Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -975,7 +975,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T18:40:00Z",
+  "start": "2026-07-17T18:41:36Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -985,7 +985,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T18:40:00Z",
+  "start": "2026-07-17T18:41:36Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -995,7 +995,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T19:00:00Z",
+  "start": "2026-07-17T19:01:39Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -1005,7 +1005,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T19:00:00Z",
+  "start": "2026-07-17T19:01:39Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -1015,7 +1015,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T19:00:00Z",
+  "start": "2026-07-17T19:01:39Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -1025,7 +1025,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T19:20:00Z",
+  "start": "2026-07-17T19:21:42Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -1035,7 +1035,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T19:20:00Z",
+  "start": "2026-07-17T19:21:42Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -1045,7 +1045,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T19:20:00Z",
+  "start": "2026-07-17T19:21:42Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -1055,7 +1055,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T19:40:00Z",
+  "start": "2026-07-17T19:41:45Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -1065,7 +1065,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T19:40:00Z",
+  "start": "2026-07-17T19:41:45Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -1075,7 +1075,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T19:40:00Z",
+  "start": "2026-07-17T19:41:45Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -1085,7 +1085,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T20:00:00Z",
+  "start": "2026-07-17T20:01:48Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -1095,7 +1095,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T20:00:00Z",
+  "start": "2026-07-17T20:01:48Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -1105,7 +1105,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T20:00:00Z",
+  "start": "2026-07-17T20:01:48Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -1115,7 +1115,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T20:20:00Z",
+  "start": "2026-07-17T20:21:51Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -1125,7 +1125,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T20:20:00Z",
+  "start": "2026-07-17T20:21:51Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -1135,7 +1135,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T20:20:00Z",
+  "start": "2026-07-17T20:21:51Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -1145,7 +1145,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T20:40:00Z",
+  "start": "2026-07-17T20:41:54Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -1155,7 +1155,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T20:40:00Z",
+  "start": "2026-07-17T20:41:54Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -1165,7 +1165,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T20:40:00Z",
+  "start": "2026-07-17T20:41:54Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -1175,7 +1175,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T21:00:00Z",
+  "start": "2026-07-17T21:01:57Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -1185,7 +1185,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T21:00:00Z",
+  "start": "2026-07-17T21:01:57Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -1195,7 +1195,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T21:00:00Z",
+  "start": "2026-07-17T21:01:57Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -1205,7 +1205,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T21:20:00Z",
+  "start": "2026-07-17T21:22:00Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -1215,7 +1215,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T21:20:00Z",
+  "start": "2026-07-17T21:22:00Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -1225,7 +1225,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T21:20:00Z",
+  "start": "2026-07-17T21:22:00Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -1235,7 +1235,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T21:40:00Z",
+  "start": "2026-07-17T21:42:03Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -1245,7 +1245,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T21:40:00Z",
+  "start": "2026-07-17T21:42:03Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -1255,7 +1255,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T21:40:00Z",
+  "start": "2026-07-17T21:42:03Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -1265,7 +1265,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T22:00:00Z",
+  "start": "2026-07-17T22:02:06Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -1275,7 +1275,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T22:00:00Z",
+  "start": "2026-07-17T22:02:06Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -1285,7 +1285,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T22:00:00Z",
+  "start": "2026-07-17T22:02:06Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -1295,7 +1295,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T22:20:00Z",
+  "start": "2026-07-17T22:22:09Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -1305,7 +1305,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T22:20:00Z",
+  "start": "2026-07-17T22:22:09Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -1315,7 +1315,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T22:20:00Z",
+  "start": "2026-07-17T22:22:09Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -1325,7 +1325,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T22:40:00Z",
+  "start": "2026-07-17T22:42:12Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -1335,7 +1335,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T22:40:00Z",
+  "start": "2026-07-17T22:42:12Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -1345,7 +1345,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T22:40:00Z",
+  "start": "2026-07-17T22:42:12Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -1355,7 +1355,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T23:00:00Z",
+  "start": "2026-07-17T23:02:15Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -1365,7 +1365,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T23:00:00Z",
+  "start": "2026-07-17T23:02:15Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -1375,7 +1375,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T23:00:00Z",
+  "start": "2026-07-17T23:02:15Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -1385,7 +1385,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T23:20:00Z",
+  "start": "2026-07-17T23:22:18Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -1395,7 +1395,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T23:20:00Z",
+  "start": "2026-07-17T23:22:18Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -1405,7 +1405,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T23:20:00Z",
+  "start": "2026-07-17T23:22:18Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -1415,7 +1415,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-17T23:40:00Z",
+  "start": "2026-07-17T23:42:21Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -1425,7 +1425,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-17T23:40:00Z",
+  "start": "2026-07-17T23:42:21Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -1435,7 +1435,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-17T23:40:00Z",
+  "start": "2026-07-17T23:42:21Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -1445,7 +1445,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T00:00:00Z",
+  "start": "2026-07-18T00:02:24Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -1455,7 +1455,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T00:00:00Z",
+  "start": "2026-07-18T00:02:24Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -1465,7 +1465,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T00:00:00Z",
+  "start": "2026-07-18T00:02:24Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -1475,7 +1475,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T00:20:00Z",
+  "start": "2026-07-18T00:22:27Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -1485,7 +1485,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T00:20:00Z",
+  "start": "2026-07-18T00:22:27Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -1495,7 +1495,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T00:20:00Z",
+  "start": "2026-07-18T00:22:27Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -1505,7 +1505,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T00:40:00Z",
+  "start": "2026-07-18T00:42:30Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -1515,7 +1515,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T00:40:00Z",
+  "start": "2026-07-18T00:42:30Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -1525,7 +1525,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T00:40:00Z",
+  "start": "2026-07-18T00:42:30Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -1535,7 +1535,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T01:00:00Z",
+  "start": "2026-07-18T01:02:33Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -1545,7 +1545,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T01:00:00Z",
+  "start": "2026-07-18T01:02:33Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -1555,7 +1555,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T01:00:00Z",
+  "start": "2026-07-18T01:02:33Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -1565,7 +1565,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T01:20:00Z",
+  "start": "2026-07-18T01:22:36Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -1575,7 +1575,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T01:20:00Z",
+  "start": "2026-07-18T01:22:36Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -1585,7 +1585,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T01:20:00Z",
+  "start": "2026-07-18T01:22:36Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -1595,7 +1595,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T01:40:00Z",
+  "start": "2026-07-18T01:42:39Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -1605,7 +1605,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T01:40:00Z",
+  "start": "2026-07-18T01:42:39Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -1615,7 +1615,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T01:40:00Z",
+  "start": "2026-07-18T01:42:39Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -1625,7 +1625,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T02:00:00Z",
+  "start": "2026-07-18T02:02:42Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -1635,7 +1635,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T02:00:00Z",
+  "start": "2026-07-18T02:02:42Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -1645,7 +1645,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T02:00:00Z",
+  "start": "2026-07-18T02:02:42Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -1655,7 +1655,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T02:20:00Z",
+  "start": "2026-07-18T02:22:45Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -1665,7 +1665,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T02:20:00Z",
+  "start": "2026-07-18T02:22:45Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -1675,7 +1675,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T02:20:00Z",
+  "start": "2026-07-18T02:22:45Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -1685,7 +1685,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T02:40:00Z",
+  "start": "2026-07-18T02:42:48Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -1695,7 +1695,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T02:40:00Z",
+  "start": "2026-07-18T02:42:48Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -1705,7 +1705,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T02:40:00Z",
+  "start": "2026-07-18T02:42:48Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -1715,7 +1715,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T03:00:00Z",
+  "start": "2026-07-18T03:02:51Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -1725,7 +1725,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T03:00:00Z",
+  "start": "2026-07-18T03:02:51Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -1735,7 +1735,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T03:00:00Z",
+  "start": "2026-07-18T03:02:51Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -1745,7 +1745,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T03:20:00Z",
+  "start": "2026-07-18T03:22:54Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -1755,7 +1755,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T03:20:00Z",
+  "start": "2026-07-18T03:22:54Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -1765,7 +1765,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T03:20:00Z",
+  "start": "2026-07-18T03:22:54Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -1775,7 +1775,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T03:40:00Z",
+  "start": "2026-07-18T03:42:57Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -1785,7 +1785,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T03:40:00Z",
+  "start": "2026-07-18T03:42:57Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -1795,7 +1795,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T03:40:00Z",
+  "start": "2026-07-18T03:42:57Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -1805,7 +1805,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T04:00:00Z",
+  "start": "2026-07-18T04:03:00Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -1815,7 +1815,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T04:00:00Z",
+  "start": "2026-07-18T04:03:00Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -1825,7 +1825,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T04:00:00Z",
+  "start": "2026-07-18T04:03:00Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -1835,7 +1835,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T04:20:00Z",
+  "start": "2026-07-18T04:23:03Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -1845,7 +1845,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T04:20:00Z",
+  "start": "2026-07-18T04:23:03Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -1855,7 +1855,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T04:20:00Z",
+  "start": "2026-07-18T04:23:03Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -1865,7 +1865,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T04:40:00Z",
+  "start": "2026-07-18T04:43:06Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -1875,7 +1875,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T04:40:00Z",
+  "start": "2026-07-18T04:43:06Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -1885,7 +1885,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T04:40:00Z",
+  "start": "2026-07-18T04:43:06Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -1895,7 +1895,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T05:00:00Z",
+  "start": "2026-07-18T05:03:09Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -1905,7 +1905,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T05:00:00Z",
+  "start": "2026-07-18T05:03:09Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -1915,7 +1915,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T05:00:00Z",
+  "start": "2026-07-18T05:03:09Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -1925,7 +1925,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T05:20:00Z",
+  "start": "2026-07-18T05:23:12Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -1935,7 +1935,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T05:20:00Z",
+  "start": "2026-07-18T05:23:12Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -1945,7 +1945,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T05:20:00Z",
+  "start": "2026-07-18T05:23:12Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -1955,7 +1955,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T05:40:00Z",
+  "start": "2026-07-18T05:43:15Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -1965,7 +1965,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T05:40:00Z",
+  "start": "2026-07-18T05:43:15Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -1975,7 +1975,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T05:40:00Z",
+  "start": "2026-07-18T05:43:15Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -1985,7 +1985,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T06:00:00Z",
+  "start": "2026-07-18T06:03:18Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -1995,7 +1995,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T06:00:00Z",
+  "start": "2026-07-18T06:03:18Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -2005,7 +2005,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T06:00:00Z",
+  "start": "2026-07-18T06:03:18Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -2015,7 +2015,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T06:20:00Z",
+  "start": "2026-07-18T06:23:22Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -2025,7 +2025,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T06:20:00Z",
+  "start": "2026-07-18T06:23:22Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -2035,7 +2035,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T06:20:00Z",
+  "start": "2026-07-18T06:23:22Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -2045,7 +2045,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T06:40:00Z",
+  "start": "2026-07-18T06:43:25Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -2055,7 +2055,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T06:40:00Z",
+  "start": "2026-07-18T06:43:25Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -2065,7 +2065,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T06:40:00Z",
+  "start": "2026-07-18T06:43:25Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -2075,7 +2075,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T07:00:00Z",
+  "start": "2026-07-18T07:03:28Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -2085,7 +2085,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T07:00:00Z",
+  "start": "2026-07-18T07:03:28Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -2095,7 +2095,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T07:00:00Z",
+  "start": "2026-07-18T07:03:28Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -2105,7 +2105,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T07:20:00Z",
+  "start": "2026-07-18T07:23:31Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -2115,7 +2115,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T07:20:00Z",
+  "start": "2026-07-18T07:23:31Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -2125,7 +2125,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T07:20:00Z",
+  "start": "2026-07-18T07:23:31Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -2135,7 +2135,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T07:40:00Z",
+  "start": "2026-07-18T07:43:34Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -2145,7 +2145,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T07:40:00Z",
+  "start": "2026-07-18T07:43:34Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -2155,7 +2155,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T07:40:00Z",
+  "start": "2026-07-18T07:43:34Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -2165,7 +2165,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T08:00:00Z",
+  "start": "2026-07-18T08:03:37Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -2175,7 +2175,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T08:00:00Z",
+  "start": "2026-07-18T08:03:37Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -2185,7 +2185,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T08:00:00Z",
+  "start": "2026-07-18T08:03:37Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -2195,7 +2195,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T08:20:00Z",
+  "start": "2026-07-18T08:23:40Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -2205,7 +2205,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T08:20:00Z",
+  "start": "2026-07-18T08:23:40Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -2215,7 +2215,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T08:20:00Z",
+  "start": "2026-07-18T08:23:40Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -2225,7 +2225,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T08:40:00Z",
+  "start": "2026-07-18T08:43:43Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -2235,7 +2235,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T08:40:00Z",
+  "start": "2026-07-18T08:43:43Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -2245,7 +2245,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T08:40:00Z",
+  "start": "2026-07-18T08:43:43Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -2255,7 +2255,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T09:00:00Z",
+  "start": "2026-07-18T09:03:46Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -2265,7 +2265,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T09:00:00Z",
+  "start": "2026-07-18T09:03:46Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -2275,7 +2275,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T09:00:00Z",
+  "start": "2026-07-18T09:03:46Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -2285,7 +2285,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T09:20:00Z",
+  "start": "2026-07-18T09:23:49Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -2295,7 +2295,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T09:20:00Z",
+  "start": "2026-07-18T09:23:49Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -2305,7 +2305,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T09:20:00Z",
+  "start": "2026-07-18T09:23:49Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -2315,7 +2315,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T09:40:00Z",
+  "start": "2026-07-18T09:43:52Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -2325,7 +2325,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T09:40:00Z",
+  "start": "2026-07-18T09:43:52Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -2335,7 +2335,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T09:40:00Z",
+  "start": "2026-07-18T09:43:52Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -2345,7 +2345,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T10:00:00Z",
+  "start": "2026-07-18T10:03:55Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -2355,7 +2355,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T10:00:00Z",
+  "start": "2026-07-18T10:03:55Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -2365,7 +2365,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T10:00:00Z",
+  "start": "2026-07-18T10:03:55Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -2375,7 +2375,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T10:20:00Z",
+  "start": "2026-07-18T10:23:58Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -2385,7 +2385,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T10:20:00Z",
+  "start": "2026-07-18T10:23:58Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -2395,7 +2395,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T10:20:00Z",
+  "start": "2026-07-18T10:23:58Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -2405,7 +2405,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T10:40:00Z",
+  "start": "2026-07-18T10:44:01Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -2415,7 +2415,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T10:40:00Z",
+  "start": "2026-07-18T10:44:01Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -2425,7 +2425,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T10:40:00Z",
+  "start": "2026-07-18T10:44:01Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -2435,7 +2435,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T11:00:00Z",
+  "start": "2026-07-18T11:04:04Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -2445,7 +2445,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T11:00:00Z",
+  "start": "2026-07-18T11:04:04Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -2455,7 +2455,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T11:00:00Z",
+  "start": "2026-07-18T11:04:04Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -2465,7 +2465,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T11:20:00Z",
+  "start": "2026-07-18T11:24:07Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -2475,7 +2475,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T11:20:00Z",
+  "start": "2026-07-18T11:24:07Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -2485,7 +2485,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T11:20:00Z",
+  "start": "2026-07-18T11:24:07Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -2495,7 +2495,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T11:40:00Z",
+  "start": "2026-07-18T11:44:10Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -2505,7 +2505,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T11:40:00Z",
+  "start": "2026-07-18T11:44:10Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -2515,7 +2515,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T11:40:00Z",
+  "start": "2026-07-18T11:44:10Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -2525,7 +2525,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T12:00:00Z",
+  "start": "2026-07-18T12:04:13Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -2535,7 +2535,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T12:00:00Z",
+  "start": "2026-07-18T12:04:13Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -2545,7 +2545,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T12:00:00Z",
+  "start": "2026-07-18T12:04:13Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -2555,7 +2555,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T12:20:00Z",
+  "start": "2026-07-18T12:24:16Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -2565,7 +2565,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T12:20:00Z",
+  "start": "2026-07-18T12:24:16Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -2575,7 +2575,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T12:20:00Z",
+  "start": "2026-07-18T12:24:16Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -2585,7 +2585,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T12:40:00Z",
+  "start": "2026-07-18T12:44:19Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -2595,7 +2595,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T12:40:00Z",
+  "start": "2026-07-18T12:44:19Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -2605,7 +2605,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T12:40:00Z",
+  "start": "2026-07-18T12:44:19Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -2615,7 +2615,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T13:00:00Z",
+  "start": "2026-07-18T13:04:22Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -2625,7 +2625,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T13:00:00Z",
+  "start": "2026-07-18T13:04:22Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -2635,7 +2635,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T13:00:00Z",
+  "start": "2026-07-18T13:04:22Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -2645,7 +2645,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T13:20:00Z",
+  "start": "2026-07-18T13:24:25Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -2655,7 +2655,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T13:20:00Z",
+  "start": "2026-07-18T13:24:25Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -2665,7 +2665,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T13:20:00Z",
+  "start": "2026-07-18T13:24:25Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -2675,7 +2675,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T13:40:00Z",
+  "start": "2026-07-18T13:44:28Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -2685,7 +2685,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T13:40:00Z",
+  "start": "2026-07-18T13:44:28Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -2695,7 +2695,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T13:40:00Z",
+  "start": "2026-07-18T13:44:28Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -2705,7 +2705,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T14:00:00Z",
+  "start": "2026-07-18T14:04:31Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -2715,7 +2715,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T14:00:00Z",
+  "start": "2026-07-18T14:04:31Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -2725,7 +2725,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T14:00:00Z",
+  "start": "2026-07-18T14:04:31Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -2735,7 +2735,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T14:20:00Z",
+  "start": "2026-07-18T14:24:34Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -2745,7 +2745,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T14:20:00Z",
+  "start": "2026-07-18T14:24:34Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -2755,7 +2755,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T14:20:00Z",
+  "start": "2026-07-18T14:24:34Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -2765,7 +2765,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T14:40:00Z",
+  "start": "2026-07-18T14:44:37Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -2775,7 +2775,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T14:40:00Z",
+  "start": "2026-07-18T14:44:37Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -2785,7 +2785,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T14:40:00Z",
+  "start": "2026-07-18T14:44:37Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -2795,7 +2795,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T15:00:00Z",
+  "start": "2026-07-18T15:04:40Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -2805,7 +2805,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T15:00:00Z",
+  "start": "2026-07-18T15:04:40Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -2815,7 +2815,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T15:00:00Z",
+  "start": "2026-07-18T15:04:40Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -2825,7 +2825,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T15:20:00Z",
+  "start": "2026-07-18T15:24:43Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -2835,7 +2835,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T15:20:00Z",
+  "start": "2026-07-18T15:24:43Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -2845,7 +2845,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T15:20:00Z",
+  "start": "2026-07-18T15:24:43Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -2855,7 +2855,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T15:40:00Z",
+  "start": "2026-07-18T15:44:46Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -2865,7 +2865,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T15:40:00Z",
+  "start": "2026-07-18T15:44:46Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -2875,7 +2875,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T15:40:00Z",
+  "start": "2026-07-18T15:44:46Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -2885,7 +2885,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T16:00:00Z",
+  "start": "2026-07-18T16:04:49Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -2895,7 +2895,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T16:00:00Z",
+  "start": "2026-07-18T16:04:49Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -2905,7 +2905,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T16:00:00Z",
+  "start": "2026-07-18T16:04:49Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -2915,7 +2915,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T16:20:00Z",
+  "start": "2026-07-18T16:24:52Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -2925,7 +2925,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T16:20:00Z",
+  "start": "2026-07-18T16:24:52Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -2935,7 +2935,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T16:20:00Z",
+  "start": "2026-07-18T16:24:52Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -2945,7 +2945,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T16:40:00Z",
+  "start": "2026-07-18T16:44:55Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -2955,7 +2955,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T16:40:00Z",
+  "start": "2026-07-18T16:44:55Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -2965,7 +2965,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T16:40:00Z",
+  "start": "2026-07-18T16:44:55Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -2975,7 +2975,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T17:00:00Z",
+  "start": "2026-07-18T17:04:58Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -2985,7 +2985,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T17:00:00Z",
+  "start": "2026-07-18T17:04:58Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -2995,7 +2995,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T17:00:00Z",
+  "start": "2026-07-18T17:04:58Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -3005,7 +3005,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T17:20:00Z",
+  "start": "2026-07-18T17:25:01Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -3015,7 +3015,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T17:20:00Z",
+  "start": "2026-07-18T17:25:01Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -3025,7 +3025,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T17:20:00Z",
+  "start": "2026-07-18T17:25:01Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -3035,7 +3035,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T17:40:00Z",
+  "start": "2026-07-18T17:45:04Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -3045,7 +3045,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T17:40:00Z",
+  "start": "2026-07-18T17:45:04Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -3055,7 +3055,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T17:40:00Z",
+  "start": "2026-07-18T17:45:04Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -3065,7 +3065,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T18:00:00Z",
+  "start": "2026-07-18T18:05:07Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -3075,7 +3075,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T18:00:00Z",
+  "start": "2026-07-18T18:05:07Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -3085,7 +3085,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T18:00:00Z",
+  "start": "2026-07-18T18:05:07Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -3095,7 +3095,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T18:20:00Z",
+  "start": "2026-07-18T18:25:10Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -3105,7 +3105,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T18:20:00Z",
+  "start": "2026-07-18T18:25:10Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -3115,7 +3115,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T18:20:00Z",
+  "start": "2026-07-18T18:25:10Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -3125,7 +3125,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T18:40:00Z",
+  "start": "2026-07-18T18:45:13Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -3135,7 +3135,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T18:40:00Z",
+  "start": "2026-07-18T18:45:13Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -3145,7 +3145,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T18:40:00Z",
+  "start": "2026-07-18T18:45:13Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -3155,7 +3155,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T19:00:00Z",
+  "start": "2026-07-18T19:05:16Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -3165,7 +3165,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T19:00:00Z",
+  "start": "2026-07-18T19:05:16Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -3175,7 +3175,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T19:00:00Z",
+  "start": "2026-07-18T19:05:16Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -3185,7 +3185,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T19:20:00Z",
+  "start": "2026-07-18T19:25:19Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -3195,7 +3195,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T19:20:00Z",
+  "start": "2026-07-18T19:25:19Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -3205,7 +3205,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T19:20:00Z",
+  "start": "2026-07-18T19:25:19Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -3215,7 +3215,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T19:40:00Z",
+  "start": "2026-07-18T19:45:22Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -3225,7 +3225,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T19:40:00Z",
+  "start": "2026-07-18T19:45:22Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -3235,7 +3235,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T19:40:00Z",
+  "start": "2026-07-18T19:45:22Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -3245,7 +3245,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T20:00:00Z",
+  "start": "2026-07-18T20:05:25Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -3255,7 +3255,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T20:00:00Z",
+  "start": "2026-07-18T20:05:25Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -3265,7 +3265,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T20:00:00Z",
+  "start": "2026-07-18T20:05:25Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -3275,7 +3275,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T20:20:00Z",
+  "start": "2026-07-18T20:25:28Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -3285,7 +3285,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T20:20:00Z",
+  "start": "2026-07-18T20:25:28Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -3295,7 +3295,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T20:20:00Z",
+  "start": "2026-07-18T20:25:28Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -3305,7 +3305,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T20:40:00Z",
+  "start": "2026-07-18T20:45:31Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -3315,7 +3315,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T20:40:00Z",
+  "start": "2026-07-18T20:45:31Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -3325,7 +3325,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T20:40:00Z",
+  "start": "2026-07-18T20:45:31Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -3335,7 +3335,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T21:00:00Z",
+  "start": "2026-07-18T21:05:34Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -3345,7 +3345,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T21:00:00Z",
+  "start": "2026-07-18T21:05:34Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -3355,7 +3355,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T21:00:00Z",
+  "start": "2026-07-18T21:05:34Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -3365,7 +3365,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T21:20:00Z",
+  "start": "2026-07-18T21:25:37Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -3375,7 +3375,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T21:20:00Z",
+  "start": "2026-07-18T21:25:37Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -3385,7 +3385,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T21:20:00Z",
+  "start": "2026-07-18T21:25:37Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -3395,7 +3395,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T21:40:00Z",
+  "start": "2026-07-18T21:45:40Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -3405,7 +3405,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T21:40:00Z",
+  "start": "2026-07-18T21:45:40Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -3415,7 +3415,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T21:40:00Z",
+  "start": "2026-07-18T21:45:40Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -3425,7 +3425,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T22:00:00Z",
+  "start": "2026-07-18T22:05:43Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -3435,7 +3435,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T22:00:00Z",
+  "start": "2026-07-18T22:05:43Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -3445,7 +3445,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T22:00:00Z",
+  "start": "2026-07-18T22:05:43Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -3455,7 +3455,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T22:20:00Z",
+  "start": "2026-07-18T22:25:46Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -3465,7 +3465,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T22:20:00Z",
+  "start": "2026-07-18T22:25:46Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -3475,7 +3475,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T22:20:00Z",
+  "start": "2026-07-18T22:25:46Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -3485,7 +3485,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T22:40:00Z",
+  "start": "2026-07-18T22:45:49Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -3495,7 +3495,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T22:40:00Z",
+  "start": "2026-07-18T22:45:49Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -3505,7 +3505,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T22:40:00Z",
+  "start": "2026-07-18T22:45:49Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -3515,7 +3515,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T23:00:00Z",
+  "start": "2026-07-18T23:05:52Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -3525,7 +3525,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T23:00:00Z",
+  "start": "2026-07-18T23:05:52Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -3535,7 +3535,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T23:00:00Z",
+  "start": "2026-07-18T23:05:52Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -3545,7 +3545,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T23:20:00Z",
+  "start": "2026-07-18T23:25:55Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -3555,7 +3555,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T23:20:00Z",
+  "start": "2026-07-18T23:25:55Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -3565,7 +3565,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T23:20:00Z",
+  "start": "2026-07-18T23:25:55Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -3575,7 +3575,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-18T23:40:00Z",
+  "start": "2026-07-18T23:45:58Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -3585,7 +3585,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-18T23:40:00Z",
+  "start": "2026-07-18T23:45:58Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -3595,7 +3595,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-18T23:40:00Z",
+  "start": "2026-07-18T23:45:58Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -3605,7 +3605,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T00:00:00Z",
+  "start": "2026-07-19T00:06:01Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -3615,7 +3615,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T00:00:00Z",
+  "start": "2026-07-19T00:06:01Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -3625,7 +3625,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T00:00:00Z",
+  "start": "2026-07-19T00:06:01Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -3635,7 +3635,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T00:20:00Z",
+  "start": "2026-07-19T00:26:04Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -3645,7 +3645,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T00:20:00Z",
+  "start": "2026-07-19T00:26:04Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -3655,7 +3655,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T00:20:00Z",
+  "start": "2026-07-19T00:26:04Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -3665,7 +3665,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T00:40:00Z",
+  "start": "2026-07-19T00:46:07Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -3675,7 +3675,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T00:40:00Z",
+  "start": "2026-07-19T00:46:07Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -3685,7 +3685,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T00:40:00Z",
+  "start": "2026-07-19T00:46:07Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -3695,7 +3695,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T01:00:00Z",
+  "start": "2026-07-19T01:06:10Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -3705,7 +3705,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T01:00:00Z",
+  "start": "2026-07-19T01:06:10Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -3715,7 +3715,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T01:00:00Z",
+  "start": "2026-07-19T01:06:10Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -3725,7 +3725,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T01:20:00Z",
+  "start": "2026-07-19T01:26:13Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -3735,7 +3735,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T01:20:00Z",
+  "start": "2026-07-19T01:26:13Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -3745,7 +3745,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T01:20:00Z",
+  "start": "2026-07-19T01:26:13Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -3755,7 +3755,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T01:40:00Z",
+  "start": "2026-07-19T01:46:16Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -3765,7 +3765,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T01:40:00Z",
+  "start": "2026-07-19T01:46:16Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -3775,7 +3775,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T01:40:00Z",
+  "start": "2026-07-19T01:46:16Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -3785,7 +3785,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T02:00:00Z",
+  "start": "2026-07-19T02:06:19Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -3795,7 +3795,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T02:00:00Z",
+  "start": "2026-07-19T02:06:19Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -3805,7 +3805,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T02:00:00Z",
+  "start": "2026-07-19T02:06:19Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -3815,7 +3815,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T02:20:00Z",
+  "start": "2026-07-19T02:26:22Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -3825,7 +3825,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T02:20:00Z",
+  "start": "2026-07-19T02:26:22Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -3835,7 +3835,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T02:20:00Z",
+  "start": "2026-07-19T02:26:22Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -3845,7 +3845,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T02:40:00Z",
+  "start": "2026-07-19T02:46:25Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -3855,7 +3855,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T02:40:00Z",
+  "start": "2026-07-19T02:46:25Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -3865,7 +3865,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T02:40:00Z",
+  "start": "2026-07-19T02:46:25Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -3875,7 +3875,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T03:00:00Z",
+  "start": "2026-07-19T03:06:28Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -3885,7 +3885,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T03:00:00Z",
+  "start": "2026-07-19T03:06:28Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -3895,7 +3895,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T03:00:00Z",
+  "start": "2026-07-19T03:06:28Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -3905,7 +3905,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T03:20:00Z",
+  "start": "2026-07-19T03:26:31Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -3915,7 +3915,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T03:20:00Z",
+  "start": "2026-07-19T03:26:31Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -3925,7 +3925,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T03:20:00Z",
+  "start": "2026-07-19T03:26:31Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -3935,7 +3935,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T03:40:00Z",
+  "start": "2026-07-19T03:46:34Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -3945,7 +3945,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T03:40:00Z",
+  "start": "2026-07-19T03:46:34Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -3955,7 +3955,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T03:40:00Z",
+  "start": "2026-07-19T03:46:34Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -3965,7 +3965,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T04:00:00Z",
+  "start": "2026-07-19T04:06:37Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -3975,7 +3975,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T04:00:00Z",
+  "start": "2026-07-19T04:06:37Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -3985,7 +3985,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T04:00:00Z",
+  "start": "2026-07-19T04:06:37Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -3995,7 +3995,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T04:20:00Z",
+  "start": "2026-07-19T04:26:41Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -4005,7 +4005,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T04:20:00Z",
+  "start": "2026-07-19T04:26:41Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -4015,7 +4015,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T04:20:00Z",
+  "start": "2026-07-19T04:26:41Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -4025,7 +4025,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T04:40:00Z",
+  "start": "2026-07-19T04:46:44Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -4035,7 +4035,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T04:40:00Z",
+  "start": "2026-07-19T04:46:44Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -4045,7 +4045,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T04:40:00Z",
+  "start": "2026-07-19T04:46:44Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -4055,7 +4055,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T05:00:00Z",
+  "start": "2026-07-19T05:06:47Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -4065,7 +4065,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T05:00:00Z",
+  "start": "2026-07-19T05:06:47Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -4075,7 +4075,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T05:00:00Z",
+  "start": "2026-07-19T05:06:47Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -4085,7 +4085,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T05:20:00Z",
+  "start": "2026-07-19T05:26:50Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -4095,7 +4095,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T05:20:00Z",
+  "start": "2026-07-19T05:26:50Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -4105,7 +4105,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T05:20:00Z",
+  "start": "2026-07-19T05:26:50Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -4115,7 +4115,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T05:40:00Z",
+  "start": "2026-07-19T05:46:53Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -4125,7 +4125,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T05:40:00Z",
+  "start": "2026-07-19T05:46:53Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -4135,7 +4135,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T05:40:00Z",
+  "start": "2026-07-19T05:46:53Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -4145,7 +4145,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T06:00:00Z",
+  "start": "2026-07-19T06:06:56Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -4155,7 +4155,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T06:00:00Z",
+  "start": "2026-07-19T06:06:56Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -4165,7 +4165,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T06:00:00Z",
+  "start": "2026-07-19T06:06:56Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -4175,7 +4175,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T06:20:00Z",
+  "start": "2026-07-19T06:26:59Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -4185,7 +4185,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T06:20:00Z",
+  "start": "2026-07-19T06:26:59Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -4195,7 +4195,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T06:20:00Z",
+  "start": "2026-07-19T06:26:59Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -4205,7 +4205,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T06:40:00Z",
+  "start": "2026-07-19T06:47:02Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -4215,7 +4215,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T06:40:00Z",
+  "start": "2026-07-19T06:47:02Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -4225,7 +4225,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T06:40:00Z",
+  "start": "2026-07-19T06:47:02Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -4235,7 +4235,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T07:00:00Z",
+  "start": "2026-07-19T07:07:05Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -4245,7 +4245,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T07:00:00Z",
+  "start": "2026-07-19T07:07:05Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -4255,7 +4255,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T07:00:00Z",
+  "start": "2026-07-19T07:07:05Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -4265,7 +4265,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T07:20:00Z",
+  "start": "2026-07-19T07:27:08Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -4275,7 +4275,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T07:20:00Z",
+  "start": "2026-07-19T07:27:08Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -4285,7 +4285,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T07:20:00Z",
+  "start": "2026-07-19T07:27:08Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -4295,7 +4295,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T07:40:00Z",
+  "start": "2026-07-19T07:47:11Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -4305,7 +4305,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T07:40:00Z",
+  "start": "2026-07-19T07:47:11Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -4315,7 +4315,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T07:40:00Z",
+  "start": "2026-07-19T07:47:11Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -4325,7 +4325,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T08:00:00Z",
+  "start": "2026-07-19T08:07:14Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -4335,7 +4335,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T08:00:00Z",
+  "start": "2026-07-19T08:07:14Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -4345,7 +4345,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T08:00:00Z",
+  "start": "2026-07-19T08:07:14Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -4355,7 +4355,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T08:20:00Z",
+  "start": "2026-07-19T08:27:17Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -4365,7 +4365,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T08:20:00Z",
+  "start": "2026-07-19T08:27:17Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -4375,7 +4375,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T08:20:00Z",
+  "start": "2026-07-19T08:27:17Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -4385,7 +4385,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T08:40:00Z",
+  "start": "2026-07-19T08:47:20Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -4395,7 +4395,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T08:40:00Z",
+  "start": "2026-07-19T08:47:20Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -4405,7 +4405,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T08:40:00Z",
+  "start": "2026-07-19T08:47:20Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -4415,7 +4415,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T09:00:00Z",
+  "start": "2026-07-19T09:07:23Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -4425,7 +4425,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T09:00:00Z",
+  "start": "2026-07-19T09:07:23Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -4435,7 +4435,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T09:00:00Z",
+  "start": "2026-07-19T09:07:23Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -4445,7 +4445,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T09:20:00Z",
+  "start": "2026-07-19T09:27:26Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -4455,7 +4455,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T09:20:00Z",
+  "start": "2026-07-19T09:27:26Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -4465,7 +4465,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T09:20:00Z",
+  "start": "2026-07-19T09:27:26Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -4475,7 +4475,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T09:40:00Z",
+  "start": "2026-07-19T09:47:29Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -4485,7 +4485,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T09:40:00Z",
+  "start": "2026-07-19T09:47:29Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -4495,7 +4495,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T09:40:00Z",
+  "start": "2026-07-19T09:47:29Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -4505,7 +4505,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T10:00:00Z",
+  "start": "2026-07-19T10:07:32Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -4515,7 +4515,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T10:00:00Z",
+  "start": "2026-07-19T10:07:32Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -4525,7 +4525,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T10:00:00Z",
+  "start": "2026-07-19T10:07:32Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -4535,7 +4535,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T10:20:00Z",
+  "start": "2026-07-19T10:27:35Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -4545,7 +4545,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T10:20:00Z",
+  "start": "2026-07-19T10:27:35Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -4555,7 +4555,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T10:20:00Z",
+  "start": "2026-07-19T10:27:35Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -4565,7 +4565,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T10:40:00Z",
+  "start": "2026-07-19T10:47:38Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -4575,7 +4575,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T10:40:00Z",
+  "start": "2026-07-19T10:47:38Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -4585,7 +4585,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T10:40:00Z",
+  "start": "2026-07-19T10:47:38Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -4595,7 +4595,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T11:00:00Z",
+  "start": "2026-07-19T11:07:41Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -4605,7 +4605,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T11:00:00Z",
+  "start": "2026-07-19T11:07:41Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -4615,7 +4615,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T11:00:00Z",
+  "start": "2026-07-19T11:07:41Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -4625,7 +4625,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T11:20:00Z",
+  "start": "2026-07-19T11:27:44Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -4635,7 +4635,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T11:20:00Z",
+  "start": "2026-07-19T11:27:44Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -4645,7 +4645,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T11:20:00Z",
+  "start": "2026-07-19T11:27:44Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -4655,7 +4655,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T11:40:00Z",
+  "start": "2026-07-19T11:47:47Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -4665,7 +4665,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T11:40:00Z",
+  "start": "2026-07-19T11:47:47Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -4675,7 +4675,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T11:40:00Z",
+  "start": "2026-07-19T11:47:47Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -4685,7 +4685,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T12:00:00Z",
+  "start": "2026-07-19T12:07:50Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -4695,7 +4695,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T12:00:00Z",
+  "start": "2026-07-19T12:07:50Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -4705,7 +4705,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T12:00:00Z",
+  "start": "2026-07-19T12:07:50Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -4715,7 +4715,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T12:20:00Z",
+  "start": "2026-07-19T12:27:53Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -4725,7 +4725,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T12:20:00Z",
+  "start": "2026-07-19T12:27:53Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -4735,7 +4735,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T12:20:00Z",
+  "start": "2026-07-19T12:27:53Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -4745,7 +4745,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T12:40:00Z",
+  "start": "2026-07-19T12:47:56Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -4755,7 +4755,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T12:40:00Z",
+  "start": "2026-07-19T12:47:56Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -4765,7 +4765,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T12:40:00Z",
+  "start": "2026-07-19T12:47:56Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -4775,7 +4775,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T13:00:00Z",
+  "start": "2026-07-19T13:07:59Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -4785,7 +4785,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T13:00:00Z",
+  "start": "2026-07-19T13:07:59Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -4795,7 +4795,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T13:00:00Z",
+  "start": "2026-07-19T13:07:59Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -4805,7 +4805,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T13:20:00Z",
+  "start": "2026-07-19T13:28:02Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -4815,7 +4815,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T13:20:00Z",
+  "start": "2026-07-19T13:28:02Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -4825,7 +4825,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T13:20:00Z",
+  "start": "2026-07-19T13:28:02Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -4835,7 +4835,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T13:40:00Z",
+  "start": "2026-07-19T13:48:05Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -4845,7 +4845,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T13:40:00Z",
+  "start": "2026-07-19T13:48:05Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -4855,7 +4855,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T13:40:00Z",
+  "start": "2026-07-19T13:48:05Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -4865,7 +4865,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T14:00:00Z",
+  "start": "2026-07-19T14:08:08Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -4875,7 +4875,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T14:00:00Z",
+  "start": "2026-07-19T14:08:08Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -4885,7 +4885,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T14:00:00Z",
+  "start": "2026-07-19T14:08:08Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -4895,7 +4895,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T14:20:00Z",
+  "start": "2026-07-19T14:28:11Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -4905,7 +4905,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T14:20:00Z",
+  "start": "2026-07-19T14:28:11Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -4915,7 +4915,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T14:20:00Z",
+  "start": "2026-07-19T14:28:11Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -4925,7 +4925,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T14:40:00Z",
+  "start": "2026-07-19T14:48:14Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -4935,7 +4935,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T14:40:00Z",
+  "start": "2026-07-19T14:48:14Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -4945,7 +4945,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T14:40:00Z",
+  "start": "2026-07-19T14:48:14Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -4955,7 +4955,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T15:00:00Z",
+  "start": "2026-07-19T15:08:17Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -4965,7 +4965,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T15:00:00Z",
+  "start": "2026-07-19T15:08:17Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -4975,7 +4975,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T15:00:00Z",
+  "start": "2026-07-19T15:08:17Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -4985,7 +4985,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T15:20:00Z",
+  "start": "2026-07-19T15:28:20Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -4995,7 +4995,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T15:20:00Z",
+  "start": "2026-07-19T15:28:20Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -5005,7 +5005,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T15:20:00Z",
+  "start": "2026-07-19T15:28:20Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -5015,7 +5015,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T15:40:00Z",
+  "start": "2026-07-19T15:48:23Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -5025,7 +5025,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T15:40:00Z",
+  "start": "2026-07-19T15:48:23Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -5035,7 +5035,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T15:40:00Z",
+  "start": "2026-07-19T15:48:23Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -5045,7 +5045,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T16:00:00Z",
+  "start": "2026-07-19T16:08:26Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -5055,7 +5055,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T16:00:00Z",
+  "start": "2026-07-19T16:08:26Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -5065,7 +5065,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T16:00:00Z",
+  "start": "2026-07-19T16:08:26Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -5075,7 +5075,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T16:20:00Z",
+  "start": "2026-07-19T16:28:29Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -5085,7 +5085,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T16:20:00Z",
+  "start": "2026-07-19T16:28:29Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -5095,7 +5095,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T16:20:00Z",
+  "start": "2026-07-19T16:28:29Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -5105,7 +5105,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T16:40:00Z",
+  "start": "2026-07-19T16:48:32Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -5115,7 +5115,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T16:40:00Z",
+  "start": "2026-07-19T16:48:32Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -5125,7 +5125,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T16:40:00Z",
+  "start": "2026-07-19T16:48:32Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -5135,7 +5135,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T17:00:00Z",
+  "start": "2026-07-19T17:08:35Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -5145,7 +5145,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T17:00:00Z",
+  "start": "2026-07-19T17:08:35Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -5155,7 +5155,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T17:00:00Z",
+  "start": "2026-07-19T17:08:35Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -5165,7 +5165,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T17:20:00Z",
+  "start": "2026-07-19T17:28:38Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -5175,7 +5175,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T17:20:00Z",
+  "start": "2026-07-19T17:28:38Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -5185,7 +5185,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T17:20:00Z",
+  "start": "2026-07-19T17:28:38Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -5195,7 +5195,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T17:40:00Z",
+  "start": "2026-07-19T17:48:41Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -5205,7 +5205,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T17:40:00Z",
+  "start": "2026-07-19T17:48:41Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -5215,7 +5215,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T17:40:00Z",
+  "start": "2026-07-19T17:48:41Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -5225,7 +5225,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T18:00:00Z",
+  "start": "2026-07-19T18:08:44Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -5235,7 +5235,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T18:00:00Z",
+  "start": "2026-07-19T18:08:44Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -5245,7 +5245,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T18:00:00Z",
+  "start": "2026-07-19T18:08:44Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -5255,7 +5255,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T18:20:00Z",
+  "start": "2026-07-19T18:28:47Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -5265,7 +5265,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T18:20:00Z",
+  "start": "2026-07-19T18:28:47Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -5275,7 +5275,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T18:20:00Z",
+  "start": "2026-07-19T18:28:47Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -5285,7 +5285,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T18:40:00Z",
+  "start": "2026-07-19T18:48:50Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -5295,7 +5295,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T18:40:00Z",
+  "start": "2026-07-19T18:48:50Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -5305,7 +5305,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T18:40:00Z",
+  "start": "2026-07-19T18:48:50Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -5315,7 +5315,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T19:00:00Z",
+  "start": "2026-07-19T19:08:53Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -5325,7 +5325,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T19:00:00Z",
+  "start": "2026-07-19T19:08:53Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -5335,7 +5335,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T19:00:00Z",
+  "start": "2026-07-19T19:08:53Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -5345,7 +5345,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T19:20:00Z",
+  "start": "2026-07-19T19:28:56Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -5355,7 +5355,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T19:20:00Z",
+  "start": "2026-07-19T19:28:56Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -5365,7 +5365,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T19:20:00Z",
+  "start": "2026-07-19T19:28:56Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -5375,7 +5375,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T19:40:00Z",
+  "start": "2026-07-19T19:48:59Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -5385,7 +5385,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T19:40:00Z",
+  "start": "2026-07-19T19:48:59Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -5395,7 +5395,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T19:40:00Z",
+  "start": "2026-07-19T19:48:59Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -5405,7 +5405,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T20:00:00Z",
+  "start": "2026-07-19T20:09:02Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -5415,7 +5415,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T20:00:00Z",
+  "start": "2026-07-19T20:09:02Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -5425,7 +5425,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T20:00:00Z",
+  "start": "2026-07-19T20:09:02Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -5435,7 +5435,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T20:20:00Z",
+  "start": "2026-07-19T20:29:05Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -5445,7 +5445,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T20:20:00Z",
+  "start": "2026-07-19T20:29:05Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -5455,7 +5455,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T20:20:00Z",
+  "start": "2026-07-19T20:29:05Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -5465,7 +5465,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T20:40:00Z",
+  "start": "2026-07-19T20:49:08Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -5475,7 +5475,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T20:40:00Z",
+  "start": "2026-07-19T20:49:08Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -5485,7 +5485,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T20:40:00Z",
+  "start": "2026-07-19T20:49:08Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -5495,7 +5495,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T21:00:00Z",
+  "start": "2026-07-19T21:09:11Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -5505,7 +5505,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T21:00:00Z",
+  "start": "2026-07-19T21:09:11Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -5515,7 +5515,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T21:00:00Z",
+  "start": "2026-07-19T21:09:11Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -5525,7 +5525,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T21:20:00Z",
+  "start": "2026-07-19T21:29:14Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -5535,7 +5535,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T21:20:00Z",
+  "start": "2026-07-19T21:29:14Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -5545,7 +5545,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T21:20:00Z",
+  "start": "2026-07-19T21:29:14Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -5555,7 +5555,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T21:40:00Z",
+  "start": "2026-07-19T21:49:17Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -5565,7 +5565,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T21:40:00Z",
+  "start": "2026-07-19T21:49:17Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -5575,7 +5575,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T21:40:00Z",
+  "start": "2026-07-19T21:49:17Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -5585,7 +5585,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T22:00:00Z",
+  "start": "2026-07-19T22:09:20Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -5595,7 +5595,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T22:00:00Z",
+  "start": "2026-07-19T22:09:20Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -5605,7 +5605,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T22:00:00Z",
+  "start": "2026-07-19T22:09:20Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -5615,7 +5615,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T22:20:00Z",
+  "start": "2026-07-19T22:29:23Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -5625,7 +5625,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T22:20:00Z",
+  "start": "2026-07-19T22:29:23Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -5635,7 +5635,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T22:20:00Z",
+  "start": "2026-07-19T22:29:23Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -5645,7 +5645,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T22:40:00Z",
+  "start": "2026-07-19T22:49:26Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -5655,7 +5655,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T22:40:00Z",
+  "start": "2026-07-19T22:49:26Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -5665,7 +5665,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T22:40:00Z",
+  "start": "2026-07-19T22:49:26Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -5675,7 +5675,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T23:00:00Z",
+  "start": "2026-07-19T23:09:29Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -5685,7 +5685,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T23:00:00Z",
+  "start": "2026-07-19T23:09:29Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -5695,7 +5695,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T23:00:00Z",
+  "start": "2026-07-19T23:09:29Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -5705,7 +5705,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T23:20:00Z",
+  "start": "2026-07-19T23:29:32Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -5715,7 +5715,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T23:20:00Z",
+  "start": "2026-07-19T23:29:32Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -5725,7 +5725,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T23:20:00Z",
+  "start": "2026-07-19T23:29:32Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -5735,7 +5735,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-19T23:40:00Z",
+  "start": "2026-07-19T23:49:35Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -5745,7 +5745,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-19T23:40:00Z",
+  "start": "2026-07-19T23:49:35Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -5755,7 +5755,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-19T23:40:00Z",
+  "start": "2026-07-19T23:49:35Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -5765,7 +5765,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-20T00:00:00Z",
+  "start": "2026-07-20T00:09:38Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -5775,7 +5775,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-20T00:00:00Z",
+  "start": "2026-07-20T00:09:38Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -5785,7 +5785,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-20T00:00:00Z",
+  "start": "2026-07-20T00:09:38Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -5795,7 +5795,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-20T00:20:00Z",
+  "start": "2026-07-20T00:29:41Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -5805,7 +5805,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-20T00:20:00Z",
+  "start": "2026-07-20T00:29:41Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -5815,7 +5815,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-20T00:20:00Z",
+  "start": "2026-07-20T00:29:41Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -5825,7 +5825,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-20T00:40:00Z",
+  "start": "2026-07-20T00:49:44Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -5835,7 +5835,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-20T00:40:00Z",
+  "start": "2026-07-20T00:49:44Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -5845,7 +5845,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-20T00:40:00Z",
+  "start": "2026-07-20T00:49:44Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -5855,7 +5855,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-20T01:00:00Z",
+  "start": "2026-07-20T01:09:47Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -5865,7 +5865,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-20T01:00:00Z",
+  "start": "2026-07-20T01:09:47Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -5875,7 +5875,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-20T01:00:00Z",
+  "start": "2026-07-20T01:09:47Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -5885,7 +5885,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-20T01:20:00Z",
+  "start": "2026-07-20T01:29:50Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -5895,7 +5895,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-20T01:20:00Z",
+  "start": "2026-07-20T01:29:50Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -5905,7 +5905,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-20T01:20:00Z",
+  "start": "2026-07-20T01:29:50Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -5915,7 +5915,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-20T01:40:00Z",
+  "start": "2026-07-20T01:49:53Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -5925,7 +5925,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-20T01:40:00Z",
+  "start": "2026-07-20T01:49:53Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -5935,7 +5935,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-20T01:40:00Z",
+  "start": "2026-07-20T01:49:53Z",
   "duration_ms": 4,
   "status": "OK"
  },
@@ -5945,7 +5945,7 @@
   "parent_id": null,
   "service": "frontend",
   "name": "GET /products",
-  "start": "2026-07-20T02:00:00Z",
+  "start": "2026-07-20T02:09:56Z",
   "duration_ms": 230,
   "status": "OK"
  },
@@ -5955,7 +5955,7 @@
   "parent_id": "s0",
   "service": "catalogservice",
   "name": "ListProducts",
-  "start": "2026-07-20T02:00:00Z",
+  "start": "2026-07-20T02:09:56Z",
   "duration_ms": 160,
   "status": "OK"
  },
@@ -5965,607 +5965,7 @@
   "parent_id": "s1",
   "service": "catalogservice",
   "name": "cache.get catalog",
-  "start": "2026-07-20T02:00:00Z",
-  "duration_ms": 4,
-  "status": "OK"
- },
- {
-  "trace_id": "27136566d21b4226992e6d8b1178aef5",
-  "span_id": "s0",
-  "parent_id": null,
-  "service": "frontend",
-  "name": "GET /products",
-  "start": "2026-07-20T02:20:00Z",
-  "duration_ms": 230,
-  "status": "OK"
- },
- {
-  "trace_id": "27136566d21b4226992e6d8b1178aef5",
-  "span_id": "s1",
-  "parent_id": "s0",
-  "service": "catalogservice",
-  "name": "ListProducts",
-  "start": "2026-07-20T02:20:00Z",
-  "duration_ms": 160,
-  "status": "OK"
- },
- {
-  "trace_id": "27136566d21b4226992e6d8b1178aef5",
-  "span_id": "s2",
-  "parent_id": "s1",
-  "service": "catalogservice",
-  "name": "cache.get catalog",
-  "start": "2026-07-20T02:20:00Z",
-  "duration_ms": 4,
-  "status": "OK"
- },
- {
-  "trace_id": "18ad63a530c8f104cfa410165709f1f4",
-  "span_id": "s0",
-  "parent_id": null,
-  "service": "frontend",
-  "name": "GET /products",
-  "start": "2026-07-20T02:40:00Z",
-  "duration_ms": 230,
-  "status": "OK"
- },
- {
-  "trace_id": "18ad63a530c8f104cfa410165709f1f4",
-  "span_id": "s1",
-  "parent_id": "s0",
-  "service": "catalogservice",
-  "name": "ListProducts",
-  "start": "2026-07-20T02:40:00Z",
-  "duration_ms": 160,
-  "status": "OK"
- },
- {
-  "trace_id": "18ad63a530c8f104cfa410165709f1f4",
-  "span_id": "s2",
-  "parent_id": "s1",
-  "service": "catalogservice",
-  "name": "cache.get catalog",
-  "start": "2026-07-20T02:40:00Z",
-  "duration_ms": 4,
-  "status": "OK"
- },
- {
-  "trace_id": "bc1daed0ebed82cd66e91983dbc097ef",
-  "span_id": "s0",
-  "parent_id": null,
-  "service": "frontend",
-  "name": "GET /products",
-  "start": "2026-07-20T03:00:00Z",
-  "duration_ms": 230,
-  "status": "OK"
- },
- {
-  "trace_id": "bc1daed0ebed82cd66e91983dbc097ef",
-  "span_id": "s1",
-  "parent_id": "s0",
-  "service": "catalogservice",
-  "name": "ListProducts",
-  "start": "2026-07-20T03:00:00Z",
-  "duration_ms": 160,
-  "status": "OK"
- },
- {
-  "trace_id": "bc1daed0ebed82cd66e91983dbc097ef",
-  "span_id": "s2",
-  "parent_id": "s1",
-  "service": "catalogservice",
-  "name": "cache.get catalog",
-  "start": "2026-07-20T03:00:00Z",
-  "duration_ms": 4,
-  "status": "OK"
- },
- {
-  "trace_id": "e3dc94f378b7e71348f07a6feab78001",
-  "span_id": "s0",
-  "parent_id": null,
-  "service": "frontend",
-  "name": "GET /products",
-  "start": "2026-07-20T03:20:00Z",
-  "duration_ms": 230,
-  "status": "OK"
- },
- {
-  "trace_id": "e3dc94f378b7e71348f07a6feab78001",
-  "span_id": "s1",
-  "parent_id": "s0",
-  "service": "catalogservice",
-  "name": "ListProducts",
-  "start": "2026-07-20T03:20:00Z",
-  "duration_ms": 160,
-  "status": "OK"
- },
- {
-  "trace_id": "e3dc94f378b7e71348f07a6feab78001",
-  "span_id": "s2",
-  "parent_id": "s1",
-  "service": "catalogservice",
-  "name": "cache.get catalog",
-  "start": "2026-07-20T03:20:00Z",
-  "duration_ms": 4,
-  "status": "OK"
- },
- {
-  "trace_id": "8a0fd0ed29b61e24642b70fec9c10ff6",
-  "span_id": "s0",
-  "parent_id": null,
-  "service": "frontend",
-  "name": "GET /products",
-  "start": "2026-07-20T03:40:00Z",
-  "duration_ms": 230,
-  "status": "OK"
- },
- {
-  "trace_id": "8a0fd0ed29b61e24642b70fec9c10ff6",
-  "span_id": "s1",
-  "parent_id": "s0",
-  "service": "catalogservice",
-  "name": "ListProducts",
-  "start": "2026-07-20T03:40:00Z",
-  "duration_ms": 160,
-  "status": "OK"
- },
- {
-  "trace_id": "8a0fd0ed29b61e24642b70fec9c10ff6",
-  "span_id": "s2",
-  "parent_id": "s1",
-  "service": "catalogservice",
-  "name": "cache.get catalog",
-  "start": "2026-07-20T03:40:00Z",
-  "duration_ms": 4,
-  "status": "OK"
- },
- {
-  "trace_id": "dfb6d48a3edb9e4bc941fcda1530e1be",
-  "span_id": "s0",
-  "parent_id": null,
-  "service": "frontend",
-  "name": "GET /products",
-  "start": "2026-07-20T04:00:00Z",
-  "duration_ms": 230,
-  "status": "OK"
- },
- {
-  "trace_id": "dfb6d48a3edb9e4bc941fcda1530e1be",
-  "span_id": "s1",
-  "parent_id": "s0",
-  "service": "catalogservice",
-  "name": "ListProducts",
-  "start": "2026-07-20T04:00:00Z",
-  "duration_ms": 160,
-  "status": "OK"
- },
- {
-  "trace_id": "dfb6d48a3edb9e4bc941fcda1530e1be",
-  "span_id": "s2",
-  "parent_id": "s1",
-  "service": "catalogservice",
-  "name": "cache.get catalog",
-  "start": "2026-07-20T04:00:00Z",
-  "duration_ms": 4,
-  "status": "OK"
- },
- {
-  "trace_id": "90d6a91cea8ebe318a6931426825ab23",
-  "span_id": "s0",
-  "parent_id": null,
-  "service": "frontend",
-  "name": "GET /products",
-  "start": "2026-07-20T04:20:00Z",
-  "duration_ms": 230,
-  "status": "OK"
- },
- {
-  "trace_id": "90d6a91cea8ebe318a6931426825ab23",
-  "span_id": "s1",
-  "parent_id": "s0",
-  "service": "catalogservice",
-  "name": "ListProducts",
-  "start": "2026-07-20T04:20:00Z",
-  "duration_ms": 160,
-  "status": "OK"
- },
- {
-  "trace_id": "90d6a91cea8ebe318a6931426825ab23",
-  "span_id": "s2",
-  "parent_id": "s1",
-  "service": "catalogservice",
-  "name": "cache.get catalog",
-  "start": "2026-07-20T04:20:00Z",
-  "duration_ms": 4,
-  "status": "OK"
- },
- {
-  "trace_id": "d1a4f7d63a86482ed5f8fab0cb625bf2",
-  "span_id": "s0",
-  "parent_id": null,
-  "service": "frontend",
-  "name": "GET /products",
-  "start": "2026-07-20T04:40:00Z",
-  "duration_ms": 230,
-  "status": "OK"
- },
- {
-  "trace_id": "d1a4f7d63a86482ed5f8fab0cb625bf2",
-  "span_id": "s1",
-  "parent_id": "s0",
-  "service": "catalogservice",
-  "name": "ListProducts",
-  "start": "2026-07-20T04:40:00Z",
-  "duration_ms": 160,
-  "status": "OK"
- },
- {
-  "trace_id": "d1a4f7d63a86482ed5f8fab0cb625bf2",
-  "span_id": "s2",
-  "parent_id": "s1",
-  "service": "catalogservice",
-  "name": "cache.get catalog",
-  "start": "2026-07-20T04:40:00Z",
-  "duration_ms": 4,
-  "status": "OK"
- },
- {
-  "trace_id": "0b88044fc3763c61d3102b60f5034a43",
-  "span_id": "s0",
-  "parent_id": null,
-  "service": "frontend",
-  "name": "GET /products",
-  "start": "2026-07-20T05:00:00Z",
-  "duration_ms": 230,
-  "status": "OK"
- },
- {
-  "trace_id": "0b88044fc3763c61d3102b60f5034a43",
-  "span_id": "s1",
-  "parent_id": "s0",
-  "service": "catalogservice",
-  "name": "ListProducts",
-  "start": "2026-07-20T05:00:00Z",
-  "duration_ms": 160,
-  "status": "OK"
- },
- {
-  "trace_id": "0b88044fc3763c61d3102b60f5034a43",
-  "span_id": "s2",
-  "parent_id": "s1",
-  "service": "catalogservice",
-  "name": "cache.get catalog",
-  "start": "2026-07-20T05:00:00Z",
-  "duration_ms": 4,
-  "status": "OK"
- },
- {
-  "trace_id": "cb2929be7814cce28c90630b5463993e",
-  "span_id": "s0",
-  "parent_id": null,
-  "service": "frontend",
-  "name": "GET /products",
-  "start": "2026-07-20T05:20:00Z",
-  "duration_ms": 230,
-  "status": "OK"
- },
- {
-  "trace_id": "cb2929be7814cce28c90630b5463993e",
-  "span_id": "s1",
-  "parent_id": "s0",
-  "service": "catalogservice",
-  "name": "ListProducts",
-  "start": "2026-07-20T05:20:00Z",
-  "duration_ms": 160,
-  "status": "OK"
- },
- {
-  "trace_id": "cb2929be7814cce28c90630b5463993e",
-  "span_id": "s2",
-  "parent_id": "s1",
-  "service": "catalogservice",
-  "name": "cache.get catalog",
-  "start": "2026-07-20T05:20:00Z",
-  "duration_ms": 4,
-  "status": "OK"
- },
- {
-  "trace_id": "59fa5e67af29543c812c14a65b8d0dc4",
-  "span_id": "s0",
-  "parent_id": null,
-  "service": "frontend",
-  "name": "GET /products",
-  "start": "2026-07-20T05:40:00Z",
-  "duration_ms": 230,
-  "status": "OK"
- },
- {
-  "trace_id": "59fa5e67af29543c812c14a65b8d0dc4",
-  "span_id": "s1",
-  "parent_id": "s0",
-  "service": "catalogservice",
-  "name": "ListProducts",
-  "start": "2026-07-20T05:40:00Z",
-  "duration_ms": 160,
-  "status": "OK"
- },
- {
-  "trace_id": "59fa5e67af29543c812c14a65b8d0dc4",
-  "span_id": "s2",
-  "parent_id": "s1",
-  "service": "catalogservice",
-  "name": "cache.get catalog",
-  "start": "2026-07-20T05:40:00Z",
-  "duration_ms": 4,
-  "status": "OK"
- },
- {
-  "trace_id": "95c22e46b9b02b9c253b290f247dff42",
-  "span_id": "s0",
-  "parent_id": null,
-  "service": "frontend",
-  "name": "GET /products",
-  "start": "2026-07-20T06:00:00Z",
-  "duration_ms": 230,
-  "status": "OK"
- },
- {
-  "trace_id": "95c22e46b9b02b9c253b290f247dff42",
-  "span_id": "s1",
-  "parent_id": "s0",
-  "service": "catalogservice",
-  "name": "ListProducts",
-  "start": "2026-07-20T06:00:00Z",
-  "duration_ms": 160,
-  "status": "OK"
- },
- {
-  "trace_id": "95c22e46b9b02b9c253b290f247dff42",
-  "span_id": "s2",
-  "parent_id": "s1",
-  "service": "catalogservice",
-  "name": "cache.get catalog",
-  "start": "2026-07-20T06:00:00Z",
-  "duration_ms": 4,
-  "status": "OK"
- },
- {
-  "trace_id": "14b0161e6ac4f7d2c7cf81ab5099d7a9",
-  "span_id": "s0",
-  "parent_id": null,
-  "service": "frontend",
-  "name": "GET /products",
-  "start": "2026-07-20T06:20:00Z",
-  "duration_ms": 230,
-  "status": "OK"
- },
- {
-  "trace_id": "14b0161e6ac4f7d2c7cf81ab5099d7a9",
-  "span_id": "s1",
-  "parent_id": "s0",
-  "service": "catalogservice",
-  "name": "ListProducts",
-  "start": "2026-07-20T06:20:00Z",
-  "duration_ms": 160,
-  "status": "OK"
- },
- {
-  "trace_id": "14b0161e6ac4f7d2c7cf81ab5099d7a9",
-  "span_id": "s2",
-  "parent_id": "s1",
-  "service": "catalogservice",
-  "name": "cache.get catalog",
-  "start": "2026-07-20T06:20:00Z",
-  "duration_ms": 4,
-  "status": "OK"
- },
- {
-  "trace_id": "b4c25a8821d40809ed11f3d57ad578d5",
-  "span_id": "s0",
-  "parent_id": null,
-  "service": "frontend",
-  "name": "GET /products",
-  "start": "2026-07-20T06:40:00Z",
-  "duration_ms": 230,
-  "status": "OK"
- },
- {
-  "trace_id": "b4c25a8821d40809ed11f3d57ad578d5",
-  "span_id": "s1",
-  "parent_id": "s0",
-  "service": "catalogservice",
-  "name": "ListProducts",
-  "start": "2026-07-20T06:40:00Z",
-  "duration_ms": 160,
-  "status": "OK"
- },
- {
-  "trace_id": "b4c25a8821d40809ed11f3d57ad578d5",
-  "span_id": "s2",
-  "parent_id": "s1",
-  "service": "catalogservice",
-  "name": "cache.get catalog",
-  "start": "2026-07-20T06:40:00Z",
-  "duration_ms": 4,
-  "status": "OK"
- },
- {
-  "trace_id": "8e5b73e98899319b11b3f3a1d96b0662",
-  "span_id": "s0",
-  "parent_id": null,
-  "service": "frontend",
-  "name": "GET /products",
-  "start": "2026-07-20T07:00:00Z",
-  "duration_ms": 230,
-  "status": "OK"
- },
- {
-  "trace_id": "8e5b73e98899319b11b3f3a1d96b0662",
-  "span_id": "s1",
-  "parent_id": "s0",
-  "service": "catalogservice",
-  "name": "ListProducts",
-  "start": "2026-07-20T07:00:00Z",
-  "duration_ms": 160,
-  "status": "OK"
- },
- {
-  "trace_id": "8e5b73e98899319b11b3f3a1d96b0662",
-  "span_id": "s2",
-  "parent_id": "s1",
-  "service": "catalogservice",
-  "name": "cache.get catalog",
-  "start": "2026-07-20T07:00:00Z",
-  "duration_ms": 4,
-  "status": "OK"
- },
- {
-  "trace_id": "7da520352b8c4b8548ae2d18ae330c3c",
-  "span_id": "s0",
-  "parent_id": null,
-  "service": "frontend",
-  "name": "GET /products",
-  "start": "2026-07-20T07:20:00Z",
-  "duration_ms": 230,
-  "status": "OK"
- },
- {
-  "trace_id": "7da520352b8c4b8548ae2d18ae330c3c",
-  "span_id": "s1",
-  "parent_id": "s0",
-  "service": "catalogservice",
-  "name": "ListProducts",
-  "start": "2026-07-20T07:20:00Z",
-  "duration_ms": 160,
-  "status": "OK"
- },
- {
-  "trace_id": "7da520352b8c4b8548ae2d18ae330c3c",
-  "span_id": "s2",
-  "parent_id": "s1",
-  "service": "catalogservice",
-  "name": "cache.get catalog",
-  "start": "2026-07-20T07:20:00Z",
-  "duration_ms": 4,
-  "status": "OK"
- },
- {
-  "trace_id": "492a6ba49a7f524f6b93e69f0d0cf1dc",
-  "span_id": "s0",
-  "parent_id": null,
-  "service": "frontend",
-  "name": "GET /products",
-  "start": "2026-07-20T07:40:00Z",
-  "duration_ms": 230,
-  "status": "OK"
- },
- {
-  "trace_id": "492a6ba49a7f524f6b93e69f0d0cf1dc",
-  "span_id": "s1",
-  "parent_id": "s0",
-  "service": "catalogservice",
-  "name": "ListProducts",
-  "start": "2026-07-20T07:40:00Z",
-  "duration_ms": 160,
-  "status": "OK"
- },
- {
-  "trace_id": "492a6ba49a7f524f6b93e69f0d0cf1dc",
-  "span_id": "s2",
-  "parent_id": "s1",
-  "service": "catalogservice",
-  "name": "cache.get catalog",
-  "start": "2026-07-20T07:40:00Z",
-  "duration_ms": 4,
-  "status": "OK"
- },
- {
-  "trace_id": "b9c5b97df3b3c0c59bb9284663fa2ece",
-  "span_id": "s0",
-  "parent_id": null,
-  "service": "frontend",
-  "name": "GET /products",
-  "start": "2026-07-20T08:00:00Z",
-  "duration_ms": 230,
-  "status": "OK"
- },
- {
-  "trace_id": "b9c5b97df3b3c0c59bb9284663fa2ece",
-  "span_id": "s1",
-  "parent_id": "s0",
-  "service": "catalogservice",
-  "name": "ListProducts",
-  "start": "2026-07-20T08:00:00Z",
-  "duration_ms": 160,
-  "status": "OK"
- },
- {
-  "trace_id": "b9c5b97df3b3c0c59bb9284663fa2ece",
-  "span_id": "s2",
-  "parent_id": "s1",
-  "service": "catalogservice",
-  "name": "cache.get catalog",
-  "start": "2026-07-20T08:00:00Z",
-  "duration_ms": 4,
-  "status": "OK"
- },
- {
-  "trace_id": "bf139ed009859c5bcc77017efda8734b",
-  "span_id": "s0",
-  "parent_id": null,
-  "service": "frontend",
-  "name": "GET /products",
-  "start": "2026-07-20T08:20:00Z",
-  "duration_ms": 230,
-  "status": "OK"
- },
- {
-  "trace_id": "bf139ed009859c5bcc77017efda8734b",
-  "span_id": "s1",
-  "parent_id": "s0",
-  "service": "catalogservice",
-  "name": "ListProducts",
-  "start": "2026-07-20T08:20:00Z",
-  "duration_ms": 160,
-  "status": "OK"
- },
- {
-  "trace_id": "bf139ed009859c5bcc77017efda8734b",
-  "span_id": "s2",
-  "parent_id": "s1",
-  "service": "catalogservice",
-  "name": "cache.get catalog",
-  "start": "2026-07-20T08:20:00Z",
-  "duration_ms": 4,
-  "status": "OK"
- },
- {
-  "trace_id": "5da0b21707d1bc039f2586268a190cde",
-  "span_id": "s0",
-  "parent_id": null,
-  "service": "frontend",
-  "name": "GET /products",
-  "start": "2026-07-20T08:40:00Z",
-  "duration_ms": 230,
-  "status": "OK"
- },
- {
-  "trace_id": "5da0b21707d1bc039f2586268a190cde",
-  "span_id": "s1",
-  "parent_id": "s0",
-  "service": "catalogservice",
-  "name": "ListProducts",
-  "start": "2026-07-20T08:40:00Z",
-  "duration_ms": 160,
-  "status": "OK"
- },
- {
-  "trace_id": "5da0b21707d1bc039f2586268a190cde",
-  "span_id": "s2",
-  "parent_id": "s1",
-  "service": "catalogservice",
-  "name": "cache.get catalog",
-  "start": "2026-07-20T08:40:00Z",
+  "start": "2026-07-20T02:09:56Z",
   "duration_ms": 4,
   "status": "OK"
  },

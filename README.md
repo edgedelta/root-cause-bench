@@ -174,7 +174,7 @@ Frozen run (v2): **24 scenarios x 22 models x 3 attempts = 1584 trials**, Harbor
 
 ## Baselines: can a script find the culprit?
 
-A benchmark whose culprit falls to a trivial policy measures nothing. Five deterministic,
+A benchmark whose culprit falls to a trivial policy measures nothing. Six deterministic,
 non-LLM baselines answer every scenario using only the data the agent sees and are scored
 with the grader's primary rule ([`scripts/run_baselines.py`](scripts/run_baselines.py);
 per-scenario results in
@@ -185,6 +185,7 @@ per-scenario results in
 | `latest-commit` | blame the newest commit | 0/24 | 0 | 0/3 | 0/9 | 0/12 |
 | `always-none` | answer "none" every time | 7/24 | 0 | 0/3 | 3/9 | 4/12 |
 | `latest-deploy` | blame the last deploy before onset | 1/24 | **22** | 1/3 | 0/9 | 0/12 |
+| `earliest-deploy` | blame the first deploy before onset | 6/24 | 11 | 1/3 | 1/9 | 4/12 |
 | `alert-service-deploy` | last pre-onset deploy to the alerting service | 5/24 | 18 | 2/3 | 0/9 | 3/12 |
 | `scripted-rca` | ~20-line heuristic: service match + alert keywords in the diff, most recent wins | 7/24 | 17 | 3/3 | 0/9 | 4/12 |
 

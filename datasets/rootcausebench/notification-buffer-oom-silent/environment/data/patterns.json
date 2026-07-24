@@ -16,7 +16,7 @@
  {
   "signature": "webhook dispatched",
   "service": "notification-svc",
-  "count": 203,
+  "count": 160,
   "delta_vs_baseline": "+0",
   "sentiment": "neutral"
  },

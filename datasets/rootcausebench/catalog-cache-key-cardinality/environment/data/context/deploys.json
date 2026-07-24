@@ -1,5 +1,11 @@
 [
  {
+  "timestamp": "2026-07-18T10:15:00Z",
+  "service": "platform-api",
+  "commit_sha": "8f94b490b7122b79a9626ec3d5ae06ca804b7e77",
+  "version": "v2026.07.18-1015"
+ },
+ {
   "timestamp": "2026-07-19T02:40:00Z",
   "service": "catalogservice",
   "commit_sha": "6795b1e12d8268ced328643112337d68a27bb784",
