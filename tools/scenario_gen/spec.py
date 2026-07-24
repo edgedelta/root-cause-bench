@@ -6,7 +6,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 FAMILIES = {"guilty-decoy", "beyond-context", "degraded-telemetry"}
-CURVES = {"step", "ramp"}
+CURVES = {"step", "ramp", "spike"}
 DEGRADATIONS = {"drop_logs", "clock_skew", "sample_traces"}
 REMEDIATIONS = {"rollback", "roll-forward", "config-revert", "scale",
                 "feature-flag-disable"}

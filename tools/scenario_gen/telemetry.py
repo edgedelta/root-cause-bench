@@ -72,9 +72,20 @@ def build_metrics(spec: dict) -> list[dict]:
                     if t >= fs:
                         if fault["curve"] == "step":
                             value = fault["to"]
+                        elif fault["curve"] == "spike":
+                            frac = (min(1.0, max(0.0, (t - fs) / (fe - fs)))
+                                    if fe > fs else 1.0)
+                            if frac <= 0.5:
+                                value = (m["baseline"]
+                                         + (fault["to"] - m["baseline"]) * (frac * 2))
+                            else:
+                                value = (m["baseline"]
+                                         + (fault["to"] - m["baseline"]) * ((1 - frac) * 2))
                         else:  # ramp
                             frac = min(1.0, (t - fs) / (fe - fs)) if fe > fs else 1.0
                             value = m["baseline"] + (fault["to"] - m["baseline"]) * frac
+                        j = m["jitter"]
+                        value *= 1 + rng.uniform(-j, j)
                 precision = 1 if abs(m["baseline"]) >= 10 else 4
                 rows.append({"timestamp": fmt_ts(t), "service": svc["name"],
                              "metric": m["name"], "value": round(value, precision)})
