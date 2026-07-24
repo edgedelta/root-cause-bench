@@ -56,7 +56,7 @@
  {
   "timestamp": "2026-07-22T10:55:00Z",
   "service": "payment-refund-svc",
-  "commit_sha": "f5453382a8d30233e147746056afc0a75f8bf940",
+  "commit_sha": "72a5ee7021df38af13e04922760c221cf7e27397",
   "version": "v2026.07.22-1055"
  },
  {
