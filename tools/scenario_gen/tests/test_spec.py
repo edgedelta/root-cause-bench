@@ -113,3 +113,21 @@ def test_bad_family_rejected(tmp_path):
     bad = MINIMAL.replace('family = "guilty-decoy"', 'family = "whatever"')
     with pytest.raises(SpecError, match="family"):
         load_spec(write(tmp_path, bad))
+
+
+def test_zero_innocent_count_rejected(tmp_path):
+    # A bare `innocent_count = 0` inserted right before `[[commits.authored]]`
+    # would parse under the still-open `[incident]` table, not `[commits]`
+    # (verified against tomllib) -- so an explicit `[commits]` header is
+    # required to land the key in the right table.
+    bad = MINIMAL.replace("[[commits.authored]]",
+                          "[commits]\ninnocent_count = 0\n\n[[commits.authored]]", 1)
+    with pytest.raises(SpecError, match="innocent_count must be >= 1"):
+        load_spec(write(tmp_path, bad))
+
+
+def test_authored_timestamp_at_window_end_rejected(tmp_path):
+    bad = MINIMAL.replace('timestamp = "2026-07-20T07:00:00Z"',
+                          'timestamp = "2026-07-20T10:00:00Z"')
+    with pytest.raises(SpecError, match="strictly before window.end"):
+        load_spec(write(tmp_path, bad))

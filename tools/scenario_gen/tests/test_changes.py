@@ -1,5 +1,4 @@
 import re
-from pathlib import Path
 
 from tools.scenario_gen.changes import build_changes
 from tools.scenario_gen.spec import load_spec, parse_ts

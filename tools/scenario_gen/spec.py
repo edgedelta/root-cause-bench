@@ -99,6 +99,8 @@ def load_spec(path: Path) -> dict:
 
     c = spec["commits"]
     c.setdefault("innocent_count", 24)
+    if c["innocent_count"] < 1:
+        raise SpecError("commits: innocent_count must be >= 1")
     c.setdefault("authored", [])
     ids = [a.get("id") for a in c["authored"]]
     if len(ids) != len(set(ids)) or None in ids:
@@ -107,7 +109,10 @@ def load_spec(path: Path) -> dict:
         for k in ("message", "author", "timestamp", "files"):
             _req(a, k, f"commit {a['id']!r}")
         a.setdefault("diff", None)
-        parse_ts(a["timestamp"])
+        ts = parse_ts(a["timestamp"])
+        if not (start <= ts < end):
+            raise SpecError(f"commit {a['id']!r}: timestamp must be inside the "
+                            f"window and strictly before window.end")
 
     for dep in spec["deploys"]:
         for k in ("service", "commit", "timestamp"):

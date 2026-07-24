@@ -46,7 +46,7 @@ def _sha(name: str, ident: str) -> str:
     return hashlib.sha1(f"{name}:{ident}".encode()).hexdigest()
 
 
-def build_changes(spec: dict):
+def build_changes(spec: dict) -> tuple[list[dict], list[dict], list[dict], dict[str, str]]:
     name = spec["name"]
     rng = random.Random(spec["seed"])
     w = spec["window"]
