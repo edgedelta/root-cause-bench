@@ -111,6 +111,16 @@
   "diff": "--- a/docs/onboarding.md\n+++ b/docs/onboarding.md\n@@ -20,3 +20,5 @@\n ## Local setup\n+\n+Run `make bootstrap` before your first build.\n"
  },
  {
+  "sha": "d99e1874c3ddc1b6053d559d4c8e5d777d43392d",
+  "author": "ravi.patel",
+  "timestamp": "2026-07-20T08:25:00Z",
+  "message": "feat(payment): record pool wait-time histogram",
+  "files_changed": [
+   "services/payment/metrics.go"
+  ],
+  "diff": "--- a/services/payment/metrics.go\n+++ b/services/payment/metrics.go\n@@ -14,7 +14,12 @@ var poolWaitHistogram = telemetry.NewHistogram(\"db_pool_acquire_wait\")\n func (r *Repo) acquire(ctx context.Context) (*sql.Conn, error) {\n-\treturn r.pool.Acquire(ctx)\n+\tstart := time.Now()\n+\tconn, err := r.pool.Acquire(ctx)\n+\tpoolWaitHistogram.Observe(time.Since(start).Seconds())\n+\tif err != nil {\n+\t\treturn nil, err\n+\t}\n+\treturn conn, nil\n }\n"
+ },
+ {
   "sha": "f69c568315e22f1437b42011191765a53781d2d4",
   "author": "lena.fischer",
   "timestamp": "2026-07-20T08:25:14Z",

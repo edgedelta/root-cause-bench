@@ -14,7 +14,7 @@
   "sentiment": "negative"
  },
  {
-  "signature": "ERROR acquiring db connection: pool acquire timeout after <N>ms",
+  "signature": "db conn acquire failed: context deadline exceeded while waiting for a free connection",
   "service": "paymentservice",
   "count": 220,
   "delta_vs_baseline": "+220",
