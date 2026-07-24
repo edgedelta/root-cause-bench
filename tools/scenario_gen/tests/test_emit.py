@@ -9,21 +9,37 @@ from tools.scenario_gen.emit import _check_consistency, emit_scenario
 from tools.scenario_gen.spec import SpecError, load_spec
 from tools.scenario_gen.tests.test_spec import MINIMAL
 
-# MINIMAL lacks a non-culprit deploy near fired_at; add an innocent decoy deploy
-# so the decoy-position consistency check passes.
+# MINIMAL lacks a non-culprit deploy near fired_at. The decoy commit/deploy is
+# pre-onset (09:05 authored, 09:25 deployed -- before onset 09:30) so it can't
+# be dismissed on timing alone; "late-innocent" (authored 09:12, deployed
+# 09:42) supplies the non-culprit deploy within 15min of fired_at (09:50) that
+# the decoy-position consistency check requires.
 FULL = MINIMAL.replace(
     "[ground_truth]",
     '''[[commits.authored]]
 id = "decoy"
 message = "chore: adjust css spacing on checkout page"
 author = "sofia.rossi"
-timestamp = "2026-07-20T09:38:00Z"
+timestamp = "2026-07-20T09:05:00Z"
 files = ["web/styles/checkout.css"]
 diff = "--- a/web/styles/checkout.css\\n+++ b/web/styles/checkout.css\\n@@ -3 +3 @@\\n-margin: 4px\\n+margin: 6px\\n"
+
+[[commits.authored]]
+id = "late-innocent"
+message = "style: tweak footer spacing"
+author = "marco.silva"
+timestamp = "2026-07-20T09:12:00Z"
+files = ["web/styles/footer.css"]
+diff = "--- a/web/styles/footer.css\\n+++ b/web/styles/footer.css\\n@@ -8 +8 @@\\n-padding: 8px\\n+padding: 10px\\n"
 
 [[deploys]]
 service = "svc-a"
 commit = "decoy"
+timestamp = "2026-07-20T09:25:00Z"
+
+[[deploys]]
+service = "svc-a"
+commit = "late-innocent"
 timestamp = "2026-07-20T09:42:00Z"
 
 [ground_truth]''',
@@ -84,6 +100,23 @@ def test_culprit_deploy_after_onset_rejected(scenario_dir):
                        'timestamp = "2026-07-20T09:44:00Z"')
     (scenario_dir / "scenario.toml").write_text(bad)
     with pytest.raises(SpecError, match="culprit deploy .* after onset"):
+        emit_scenario(scenario_dir / "scenario.toml")
+
+
+def test_no_pre_onset_decoy_rejected(scenario_dir):
+    # Push the decoy's only deploy to after onset (09:30) -- it becomes
+    # dismissible on timing alone, which the new invariant forbids.
+    bad = FULL.replace(
+        '''[[deploys]]
+service = "svc-a"
+commit = "decoy"
+timestamp = "2026-07-20T09:25:00Z"''',
+        '''[[deploys]]
+service = "svc-a"
+commit = "decoy"
+timestamp = "2026-07-20T09:44:00Z"''')
+    (scenario_dir / "scenario.toml").write_text(bad)
+    with pytest.raises(SpecError, match="no decoy deploy before onset"):
         emit_scenario(scenario_dir / "scenario.toml")
 
 

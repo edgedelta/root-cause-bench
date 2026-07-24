@@ -3,7 +3,7 @@ import re
 
 import pytest
 
-from tools.scenario_gen.changes import _redraw_pre_onset, build_changes
+from tools.scenario_gen.changes import INNOCENT_POOL, _redraw_pre_onset, build_changes
 from tools.scenario_gen.spec import SpecError, load_spec, parse_ts
 from tools.scenario_gen.tests.test_spec import MINIMAL, write
 
@@ -165,6 +165,27 @@ def test_redraw_pre_onset_raises_when_unsatisfiable():
     ]
     with pytest.raises(SpecError, match="pre_onset_min unsatisfiable"):
         _redraw_pre_onset(random.Random(1), onset, innocent_commits)
+
+
+def test_innocent_pool_entries_have_realistic_diffs():
+    # Every innocent-pool entry must carry a small, plausible diff (no more
+    # `None`), so the culprit isn't the only commit with a mechanism-bearing
+    # change to point at.
+    assert len(INNOCENT_POOL) >= 24
+    seen_messages = set()
+    for msg, files, diff in INNOCENT_POOL:
+        assert isinstance(diff, str) and diff.strip(), msg
+        assert files
+        assert msg not in seen_messages, f"duplicate innocent message {msg!r}"
+        seen_messages.add(msg)
+
+
+def test_innocent_commits_never_have_null_diff(tmp_path):
+    commits, _, _, ids = build_changes(spec(tmp_path))
+    innocent = [c for c in commits if c["sha"] not in ids.values()]
+    assert innocent
+    for c in innocent:
+        assert isinstance(c["diff"], str) and c["diff"]
 
 
 def test_deploys_auto_round_robin_cycles_services(tmp_path):

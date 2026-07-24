@@ -78,6 +78,14 @@ def _check_consistency(spec: dict, commits, deploys, id_to_sha):
                 and parse_ts(d["timestamp"]) > onset:
             errs.append(f"culprit deploy at {d['timestamp']} is after onset "
                         f"{spec['incident']['onset']}")
+    decoy_ids = spec["ground_truth"]["decoy_ids"]
+    if decoy_ids:
+        decoy_shas = {id_to_sha[d] for d in decoy_ids if d in id_to_sha}
+        if not any(d["commit_sha"] in decoy_shas and parse_ts(d["timestamp"]) < onset
+                   for d in deploys):
+            errs.append("no decoy deploy before onset — decoys dismissible on "
+                        "timing alone")
+
     near = [d for d in deploys
             if d["commit_sha"] != culprit_sha
             and timedelta(0) <= fired - parse_ts(d["timestamp"])
