@@ -156,6 +156,22 @@ name = "platform_api_latency_p95_ms"
 baseline = 60
 jitter = 0.1
 
+[[trace_flows]]
+name = "GET /api/products"
+per_hour = 3
+[[trace_flows.spans]]
+service = "frontend"
+name = "GET /products"
+duration_ms = 230
+[[trace_flows.spans]]
+service = "catalogservice"
+name = "ListProducts"
+duration_ms = 160
+[[trace_flows.spans]]
+service = "catalogservice"
+name = "cache.get catalog"
+duration_ms = 4
+
 [incident]
 onset = "2026-07-20T02:30:00Z"       # visible degradation begins hours pre-alert
 first_failing_service = "catalogservice"
@@ -185,6 +201,62 @@ msg = "cache miss for catalog page; falling back to primary db"
 severity = "WARN"
 rate_per_min = 6
 start = "2026-07-20T00:00:00Z"
+
+[[incident.trace_exemplars]]
+trace_id = "bbbbbbbbbbbbbbbbbbbbbbbbbbbb0001"
+span_id = "b0"
+service = "frontend"
+name = "GET /products"
+start = "2026-07-20T08:25:00Z"
+duration_ms = 1240
+status = "ERROR"
+error = "upstream timeout (1200ms)"
+[[incident.trace_exemplars]]
+trace_id = "bbbbbbbbbbbbbbbbbbbbbbbbbbbb0001"
+span_id = "b1"
+parent_id = "b0"
+service = "catalogservice"
+name = "ListProducts"
+start = "2026-07-20T08:25:00Z"
+duration_ms = 1180
+status = "ERROR"
+error = "db fallback slow: cache miss"
+[[incident.trace_exemplars]]
+trace_id = "bbbbbbbbbbbbbbbbbbbbbbbbbbbb0001"
+span_id = "b2"
+parent_id = "b1"
+service = "catalogservice"
+name = "db.query products"
+start = "2026-07-20T08:25:00Z"
+duration_ms = 1105
+status = "OK"
+
+[[incident.trace_exemplars]]
+trace_id = "bbbbbbbbbbbbbbbbbbbbbbbbbbbb0002"
+span_id = "b0"
+service = "frontend"
+name = "GET /products"
+start = "2026-07-18T10:00:00Z"
+duration_ms = 210
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "bbbbbbbbbbbbbbbbbbbbbbbbbbbb0002"
+span_id = "b1"
+parent_id = "b0"
+service = "catalogservice"
+name = "ListProducts"
+start = "2026-07-18T10:00:00Z"
+duration_ms = 150
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "bbbbbbbbbbbbbbbbbbbbbbbbbbbb0002"
+span_id = "b2"
+parent_id = "b1"
+service = "catalogservice"
+name = "db.query products"
+start = "2026-07-18T10:00:00Z"
+duration_ms = 3
+status = "OK"
 
 [commits]
 innocent_count = 300
