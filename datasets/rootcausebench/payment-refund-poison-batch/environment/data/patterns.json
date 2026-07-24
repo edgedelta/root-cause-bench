@@ -1,16 +1,16 @@
 [
  {
-  "signature": "ERROR processing refund rfnd_<N>: invalid currency code \"XBT\"",
-  "service": "payment-refund-svc",
-  "count": 528,
-  "delta_vs_baseline": "+528",
-  "sentiment": "negative"
- },
- {
   "signature": "ERROR refund status poll timed out",
   "service": "billing-api",
   "count": 525,
   "delta_vs_baseline": "+525",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "ERROR processing refund rfnd_<N>: invalid currency code \"XBT\"",
+  "service": "payment-refund-svc",
+  "count": 440,
+  "delta_vs_baseline": "+440",
   "sentiment": "negative"
  },
  {
