@@ -121,6 +121,8 @@ def build_traces(spec: dict) -> list[dict]:
 def build_patterns(spec: dict, logs: list[dict]) -> list[dict]:
     pats = []
     for lf in spec["incident"]["log_faults"]:
+        if not lf["in_patterns"]:
+            continue
         sig = re.sub(r"\d+", "<N>", lf["msg"])
         count = sum(1 for r in logs
                     if r["msg"] == lf["msg"] and r["service"] == lf["service"])
@@ -136,4 +138,6 @@ def build_patterns(spec: dict, logs: list[dict]) -> list[dict]:
             pats.append({"signature": re.sub(r"\d+", "<N>", top["msg"]),
                          "service": svc["name"], "count": count,
                          "delta_vs_baseline": "+0", "sentiment": "neutral"})
+    pats.extend(spec.get("patterns_extra", []))
+    pats.sort(key=lambda p: (p["sentiment"] != "negative", -p["count"]))
     return pats

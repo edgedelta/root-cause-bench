@@ -158,6 +158,16 @@ def test_deploys_auto_unknown_service_rejected(tmp_path):
         load_spec(write(tmp_path, bad))
 
 
+def test_patterns_extra_missing_key_rejected(tmp_path):
+    bad = MINIMAL.replace(
+        "[incident]",
+        '[[patterns_extra]]\nsignature = "x"\nservice = "svc-a"\ncount = 1\n'
+        'delta_vs_baseline = "+1"\n\n[incident]',
+    )
+    with pytest.raises(SpecError, match="patterns_extra.*sentiment"):
+        load_spec(write(tmp_path, bad))
+
+
 def test_deploys_auto_pre_onset_min_exceeds_count_rejected(tmp_path):
     bad = MINIMAL.replace(
         "[ground_truth]",

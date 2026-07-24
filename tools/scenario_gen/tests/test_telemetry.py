@@ -82,6 +82,60 @@ def test_patterns_fault_signature_numbers_collapsed(tmp_path):
     assert any(p["sentiment"] == "neutral" for p in pats)
 
 
+def test_in_patterns_false_suppresses_fault_from_patterns_not_logs(tmp_path):
+    suppressed = FAULTY.replace(
+        'msg = "query took 1450ms: timeout"',
+        'msg = "query took 1450ms: timeout"\nin_patterns = false',
+    )
+    s = load_spec(write(tmp_path, suppressed))
+    logs = build_logs(s)
+    errs = [r for r in logs if r["severity_text"] == "ERROR"]
+    assert len(errs) == 90                          # fault rows still land in logs
+    pats = build_patterns(s, logs)
+    assert not any(p["sentiment"] == "negative" for p in pats)  # but absent from patterns
+
+
+def test_patterns_extra_passed_through_verbatim(tmp_path):
+    extra = FAULTY.replace(
+        "[incident]",
+        '''[[patterns_extra]]
+signature = "connection pool exhausted"
+service = "svc-b"
+count = 12
+delta_vs_baseline = "+3"
+sentiment = "negative"
+
+[incident]''',
+    )
+    s = load_spec(write(tmp_path, extra))
+    pats = build_patterns(s, build_logs(s))
+    assert {"signature": "connection pool exhausted", "service": "svc-b",
+            "count": 12, "delta_vs_baseline": "+3", "sentiment": "negative"} in pats
+
+
+def test_patterns_ordered_negative_first_then_by_count_desc(tmp_path):
+    extra = FAULTY.replace(
+        "[incident]",
+        '''[[patterns_extra]]
+signature = "stale background negative"
+service = "svc-b"
+count = 5
+delta_vs_baseline = "+1"
+sentiment = "negative"
+
+[incident]''',
+    )
+    s = load_spec(write(tmp_path, extra))
+    pats = build_patterns(s, build_logs(s))
+    neg = [p for p in pats if p["sentiment"] == "negative"]
+    rest = [p for p in pats if p["sentiment"] != "negative"]
+    assert pats == neg + rest
+    assert [p["count"] for p in neg] == sorted((p["count"] for p in neg), reverse=True)
+    assert [p["count"] for p in rest] == sorted((p["count"] for p in rest), reverse=True)
+    # the fault (count 90) outranks the stale background negative (count 5)
+    assert neg[0]["count"] == 90
+
+
 def test_no_baseline_templates_yields_only_fault_logs(tmp_path):
     no_logs = FAULTY.replace(
         '''[[services.logs]]

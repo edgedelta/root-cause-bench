@@ -81,6 +81,12 @@ def load_spec(path: Path) -> dict:
         lf.setdefault("start", inc["onset"])
         lf.setdefault("end", w["end"])
         lf.setdefault("extra", {})
+        lf.setdefault("in_patterns", True)
+
+    spec.setdefault("patterns_extra", [])
+    for pe in spec["patterns_extra"]:
+        for k in ("signature", "service", "count", "delta_vs_baseline", "sentiment"):
+            _req(pe, k, "patterns_extra")
 
     for svc in spec["services"]:
         _req(svc, "name", "services")
