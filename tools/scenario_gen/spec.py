@@ -131,10 +131,14 @@ def load_spec(path: Path) -> dict:
     da.setdefault("pre_onset_min", 0)
     if not isinstance(da["count"], int) or isinstance(da["count"], bool) or da["count"] < 0:
         raise SpecError("deploys_auto: count must be a non-negative integer")
+    if not isinstance(da["pre_onset_min"], int) or isinstance(da["pre_onset_min"], bool):
+        raise SpecError("deploys_auto: pre_onset_min must be a non-negative integer")
     service_names = {svc["name"] for svc in spec["services"]}
     unknown = [s for s in da["services"] if s not in service_names]
     if unknown:
         raise SpecError(f"deploys_auto: services {unknown} not in spec services")
+    if da["count"] > 0 and not da["services"]:
+        raise SpecError("deploys_auto: services must be non-empty when count > 0")
     if not (0 <= da["pre_onset_min"] <= da["count"]):
         raise SpecError("deploys_auto: pre_onset_min must be between 0 and count")
 

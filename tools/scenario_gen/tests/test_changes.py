@@ -1,7 +1,10 @@
+import random
 import re
 
-from tools.scenario_gen.changes import build_changes
-from tools.scenario_gen.spec import load_spec, parse_ts
+import pytest
+
+from tools.scenario_gen.changes import _redraw_pre_onset, build_changes
+from tools.scenario_gen.spec import SpecError, load_spec, parse_ts
 from tools.scenario_gen.tests.test_spec import MINIMAL, write
 
 SHA_RE = re.compile(r"^[0-9a-f]{40}$")
@@ -11,6 +14,35 @@ WITH_AUTO = MINIMAL.replace(
     "[deploys_auto]\ncount = 12\npre_onset_min = 4\n\n[ground_truth]",
 )
 
+# Onset moved early in the window so most randomly-drawn deploy timestamps
+# land after it, forcing the pre_onset_min shortfall/redraw path to fire for
+# every one of the 6 auto deploys.
+SHORTFALL = MINIMAL.replace(
+    'onset = "2026-07-20T09:30:00Z"',
+    'onset = "2026-07-20T06:45:00Z"',
+).replace(
+    "[ground_truth]",
+    "[deploys_auto]\ncount = 6\npre_onset_min = 6\n\n[ground_truth]",
+)
+
+# A second service so round-robin cycling is actually exercised.
+MULTI_SERVICE = MINIMAL.replace(
+    "[incident]",
+    '[[services]]\n'
+    'name = "svc-b"\n'
+    '[[services.logs]]\n'
+    'msg = "request served"\n'
+    'severity = "INFO"\n'
+    '[[services.metrics]]\n'
+    'name = "latency_p99_ms"\n'
+    'baseline = 100\n'
+    '\n[incident]',
+    1,
+).replace(
+    "[ground_truth]",
+    "[deploys_auto]\ncount = 6\n\n[ground_truth]",
+)
+
 
 def spec(tmp_path):
     return load_spec(write(tmp_path, MINIMAL))
@@ -18,6 +50,14 @@ def spec(tmp_path):
 
 def spec_with_auto(tmp_path):
     return load_spec(write(tmp_path, WITH_AUTO))
+
+
+def spec_shortfall(tmp_path):
+    return load_spec(write(tmp_path, SHORTFALL))
+
+
+def spec_multi_service(tmp_path):
+    return load_spec(write(tmp_path, MULTI_SERVICE))
 
 
 def test_deterministic_and_schema(tmp_path):
@@ -99,3 +139,40 @@ def test_deploys_auto_sorted_by_timestamp(tmp_path):
     _, deploys, _, _ = build_changes(s)
     ts = [d["timestamp"] for d in deploys]
     assert ts == sorted(ts)
+
+
+def test_deploys_auto_shortfall_redraw_all_land_pre_onset(tmp_path):
+    # pre_onset_min == count, with onset early in the window, forces the
+    # shortfall/redraw path for every auto-generated deploy.
+    s = spec_shortfall(tmp_path)
+    commits, deploys, _, ids = build_changes(s)
+    onset = parse_ts(s["incident"]["onset"])
+    sha_to_ts = {c["sha"]: c["timestamp"] for c in commits}
+    auto_deploys = [d for d in deploys if d["commit_sha"] != ids["culprit"]]
+    assert len(auto_deploys) == s["deploys_auto"]["count"] == 6
+    for d in auto_deploys:
+        assert parse_ts(d["timestamp"]) < onset
+        assert parse_ts(sha_to_ts[d["commit_sha"]]) < parse_ts(d["timestamp"])
+
+
+def test_redraw_pre_onset_raises_when_unsatisfiable():
+    # Direct unit test of the new guard: no innocent commit is authored
+    # before onset, so pre_onset_min can never be satisfied.
+    onset = parse_ts("2026-07-20T06:45:00Z")
+    innocent_commits = [
+        {"sha": "a" * 40, "timestamp": "2026-07-20T07:00:00Z"},
+        {"sha": "b" * 40, "timestamp": "2026-07-20T08:00:00Z"},
+    ]
+    with pytest.raises(SpecError, match="pre_onset_min unsatisfiable"):
+        _redraw_pre_onset(random.Random(1), onset, innocent_commits)
+
+
+def test_deploys_auto_round_robin_cycles_services(tmp_path):
+    s = spec_multi_service(tmp_path)
+    _, deploys, _, ids = build_changes(s)
+    auto_deploys = [d for d in deploys if d["commit_sha"] != ids["culprit"]]
+    assert len(auto_deploys) == 6
+    counts = {}
+    for d in auto_deploys:
+        counts[d["service"]] = counts.get(d["service"], 0) + 1
+    assert counts == {"svc-a": 3, "svc-b": 3}

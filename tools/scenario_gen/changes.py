@@ -5,7 +5,7 @@ import hashlib
 import random
 from datetime import timedelta
 
-from .spec import fmt_ts, parse_ts
+from .spec import SpecError, fmt_ts, parse_ts
 
 # Innocent-commit pool: (message, files, small plausible diff or None).
 # Messages are deliberately mundane and never fault-describing.
@@ -64,6 +64,29 @@ def _pick_innocent_commit(rng: random.Random, ts, innocent_commits: list[dict]):
     return ts, rng.choice(eligible)
 
 
+def _redraw_pre_onset(rng: random.Random, onset, innocent_commits: list[dict]):
+    """Flip a deploy to land strictly before `onset`.
+
+    Selects an innocent commit authored strictly before `onset`, then draws
+    the deploy timestamp uniformly in `(commit_ts, onset)`. Both invariants
+    -- commit-before-deploy and deploy-before-onset -- hold by construction.
+
+    Raises SpecError if no innocent commit is authored before `onset`, since
+    pre_onset_min cannot be satisfied without one.
+    """
+    eligible = [c for c in innocent_commits if parse_ts(c["timestamp"]) < onset]
+    if not eligible:
+        raise SpecError(
+            "deploys_auto: pre_onset_min unsatisfiable — no innocent commit "
+            "authored before incident onset"
+        )
+    commit = rng.choice(eligible)
+    commit_ts = parse_ts(commit["timestamp"])
+    gap = (onset - commit_ts).total_seconds()
+    ts = commit_ts + timedelta(seconds=rng.uniform(0, gap))
+    return ts, commit
+
+
 def build_changes(spec: dict) -> tuple[list[dict], list[dict], list[dict], dict[str, str]]:
     name = spec["name"]
     rng = random.Random(spec["seed"])
@@ -115,15 +138,13 @@ def build_changes(spec: dict) -> tuple[list[dict], list[dict], list[dict], dict[
     count = da["count"]
     if count:
         rng3 = random.Random(spec["seed"] + 3)
-        services = list(da["services"])
-        shuffled_services = list(services)
+        shuffled_services = list(da["services"])
         rng3.shuffle(shuffled_services)
         onset = parse_ts(spec["incident"]["onset"])
 
         generated = []
         for i in range(count):
-            service = (shuffled_services[i] if i < len(shuffled_services)
-                       else rng3.choice(services))
+            service = shuffled_services[i % len(shuffled_services)]
             ts = start + timedelta(seconds=rng3.uniform(0, span))
             ts, commit = _pick_innocent_commit(rng3, ts, innocent_commits)
             generated.append({"ts": ts, "service": service, "commit": commit})
@@ -132,13 +153,11 @@ def build_changes(spec: dict) -> tuple[list[dict], list[dict], list[dict], dict[
         before = sum(1 for g in generated if g["ts"] < onset)
         if before < pre_onset_min:
             shortfall = pre_onset_min - before
-            onset_span = (onset - start).total_seconds()
             for g in generated:
                 if shortfall <= 0:
                     break
                 if g["ts"] >= onset:
-                    new_ts = start + timedelta(seconds=rng3.uniform(0, onset_span))
-                    new_ts, commit = _pick_innocent_commit(rng3, new_ts, innocent_commits)
+                    new_ts, commit = _redraw_pre_onset(rng3, onset, innocent_commits)
                     g["ts"], g["commit"] = new_ts, commit
                     shortfall -= 1
 
