@@ -1,0 +1,65 @@
+[
+ {
+  "signature": "ERROR processing refund rfnd_<N>: invalid currency code \"XBT\"",
+  "service": "payment-refund-svc",
+  "count": 528,
+  "delta_vs_baseline": "+528",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "ERROR refund status poll timed out",
+  "service": "billing-api",
+  "count": 525,
+  "delta_vs_baseline": "+525",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "WARN refund consumer stalled: redelivery of message offset <N>",
+  "service": "payment-refund-svc",
+  "count": 340,
+  "delta_vs_baseline": "+340",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "kafka consumer lag rebalancing group <N>",
+  "service": "payment-refund-svc",
+  "count": 60,
+  "delta_vs_baseline": "+2",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "disk usage above <N>% on scratch volume",
+  "service": "partner-gateway",
+  "count": 50,
+  "delta_vs_baseline": "+2",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "TLS certificate renews in <N> days warning",
+  "service": "billing-api",
+  "count": 40,
+  "delta_vs_baseline": "+1",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "INFO refund settled",
+  "service": "payment-refund-svc",
+  "count": 879,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "INFO refund batch delivered",
+  "service": "partner-gateway",
+  "count": 279,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "INFO refund status polled",
+  "service": "billing-api",
+  "count": 249,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ }
+]

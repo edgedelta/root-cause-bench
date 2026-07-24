@@ -1,0 +1,403 @@
+[
+ {
+  "trace_id": "869fa158d5db5e549e897c98adf67dfd",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "partner-gateway",
+  "name": "POST /partner/refunds/batch",
+  "start": "2026-07-22T08:00:00Z",
+  "duration_ms": 150,
+  "status": "OK"
+ },
+ {
+  "trace_id": "869fa158d5db5e549e897c98adf67dfd",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "billing-api",
+  "name": "Enqueue refund",
+  "start": "2026-07-22T08:00:00Z",
+  "duration_ms": 60,
+  "status": "OK"
+ },
+ {
+  "trace_id": "869fa158d5db5e549e897c98adf67dfd",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "payment-refund-svc",
+  "name": "ProcessRefund",
+  "start": "2026-07-22T08:00:00Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "884320a70ff9508781c5627fb7d70745",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "partner-gateway",
+  "name": "POST /partner/refunds/batch",
+  "start": "2026-07-22T08:15:10Z",
+  "duration_ms": 150,
+  "status": "OK"
+ },
+ {
+  "trace_id": "884320a70ff9508781c5627fb7d70745",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "billing-api",
+  "name": "Enqueue refund",
+  "start": "2026-07-22T08:15:10Z",
+  "duration_ms": 60,
+  "status": "OK"
+ },
+ {
+  "trace_id": "884320a70ff9508781c5627fb7d70745",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "payment-refund-svc",
+  "name": "ProcessRefund",
+  "start": "2026-07-22T08:15:10Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5ec50563c521b5d5999cae63adfca73b",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "partner-gateway",
+  "name": "POST /partner/refunds/batch",
+  "start": "2026-07-22T08:30:20Z",
+  "duration_ms": 150,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5ec50563c521b5d5999cae63adfca73b",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "billing-api",
+  "name": "Enqueue refund",
+  "start": "2026-07-22T08:30:20Z",
+  "duration_ms": 60,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5ec50563c521b5d5999cae63adfca73b",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "payment-refund-svc",
+  "name": "ProcessRefund",
+  "start": "2026-07-22T08:30:20Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e025fa56431e77e6b3dd0a68aed7e0f8",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "partner-gateway",
+  "name": "POST /partner/refunds/batch",
+  "start": "2026-07-22T08:45:30Z",
+  "duration_ms": 150,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e025fa56431e77e6b3dd0a68aed7e0f8",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "billing-api",
+  "name": "Enqueue refund",
+  "start": "2026-07-22T08:45:30Z",
+  "duration_ms": 60,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e025fa56431e77e6b3dd0a68aed7e0f8",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "payment-refund-svc",
+  "name": "ProcessRefund",
+  "start": "2026-07-22T08:45:30Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "98d04892d7098411c0142c602e5b7c9e",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "partner-gateway",
+  "name": "POST /partner/refunds/batch",
+  "start": "2026-07-22T09:00:40Z",
+  "duration_ms": 150,
+  "status": "OK"
+ },
+ {
+  "trace_id": "98d04892d7098411c0142c602e5b7c9e",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "billing-api",
+  "name": "Enqueue refund",
+  "start": "2026-07-22T09:00:40Z",
+  "duration_ms": 60,
+  "status": "OK"
+ },
+ {
+  "trace_id": "98d04892d7098411c0142c602e5b7c9e",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "payment-refund-svc",
+  "name": "ProcessRefund",
+  "start": "2026-07-22T09:00:40Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3ce76ba885785a70aa356100ef776c09",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "partner-gateway",
+  "name": "POST /partner/refunds/batch",
+  "start": "2026-07-22T09:15:50Z",
+  "duration_ms": 150,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3ce76ba885785a70aa356100ef776c09",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "billing-api",
+  "name": "Enqueue refund",
+  "start": "2026-07-22T09:15:50Z",
+  "duration_ms": 60,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3ce76ba885785a70aa356100ef776c09",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "payment-refund-svc",
+  "name": "ProcessRefund",
+  "start": "2026-07-22T09:15:50Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e1cdcb58bfef391d24f962de2fafc684",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "partner-gateway",
+  "name": "POST /partner/refunds/batch",
+  "start": "2026-07-22T09:31:00Z",
+  "duration_ms": 150,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e1cdcb58bfef391d24f962de2fafc684",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "billing-api",
+  "name": "Enqueue refund",
+  "start": "2026-07-22T09:31:00Z",
+  "duration_ms": 60,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e1cdcb58bfef391d24f962de2fafc684",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "payment-refund-svc",
+  "name": "ProcessRefund",
+  "start": "2026-07-22T09:31:00Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "cd255a25f73442873494a2674d3e80a4",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "partner-gateway",
+  "name": "POST /partner/refunds/batch",
+  "start": "2026-07-22T09:46:10Z",
+  "duration_ms": 150,
+  "status": "OK"
+ },
+ {
+  "trace_id": "cd255a25f73442873494a2674d3e80a4",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "billing-api",
+  "name": "Enqueue refund",
+  "start": "2026-07-22T09:46:10Z",
+  "duration_ms": 60,
+  "status": "OK"
+ },
+ {
+  "trace_id": "cd255a25f73442873494a2674d3e80a4",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "payment-refund-svc",
+  "name": "ProcessRefund",
+  "start": "2026-07-22T09:46:10Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "22374eecc2939c84fe47e6be71945a80",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "partner-gateway",
+  "name": "POST /partner/refunds/batch",
+  "start": "2026-07-22T10:01:20Z",
+  "duration_ms": 150,
+  "status": "OK"
+ },
+ {
+  "trace_id": "22374eecc2939c84fe47e6be71945a80",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "billing-api",
+  "name": "Enqueue refund",
+  "start": "2026-07-22T10:01:20Z",
+  "duration_ms": 60,
+  "status": "OK"
+ },
+ {
+  "trace_id": "22374eecc2939c84fe47e6be71945a80",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "payment-refund-svc",
+  "name": "ProcessRefund",
+  "start": "2026-07-22T10:01:20Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6c8637f02e2a9d605cf8700dbcc9c84a",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "partner-gateway",
+  "name": "POST /partner/refunds/batch",
+  "start": "2026-07-22T10:16:30Z",
+  "duration_ms": 150,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6c8637f02e2a9d605cf8700dbcc9c84a",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "billing-api",
+  "name": "Enqueue refund",
+  "start": "2026-07-22T10:16:30Z",
+  "duration_ms": 60,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6c8637f02e2a9d605cf8700dbcc9c84a",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "payment-refund-svc",
+  "name": "ProcessRefund",
+  "start": "2026-07-22T10:16:30Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "73ab7362280d4138339acf98c489b1c5",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "partner-gateway",
+  "name": "POST /partner/refunds/batch",
+  "start": "2026-07-22T10:31:40Z",
+  "duration_ms": 150,
+  "status": "OK"
+ },
+ {
+  "trace_id": "73ab7362280d4138339acf98c489b1c5",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "billing-api",
+  "name": "Enqueue refund",
+  "start": "2026-07-22T10:31:40Z",
+  "duration_ms": 60,
+  "status": "OK"
+ },
+ {
+  "trace_id": "73ab7362280d4138339acf98c489b1c5",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "payment-refund-svc",
+  "name": "ProcessRefund",
+  "start": "2026-07-22T10:31:40Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "19891bced2cf280ce30767af022d94d7",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "partner-gateway",
+  "name": "POST /partner/refunds/batch",
+  "start": "2026-07-22T10:46:50Z",
+  "duration_ms": 150,
+  "status": "OK"
+ },
+ {
+  "trace_id": "19891bced2cf280ce30767af022d94d7",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "billing-api",
+  "name": "Enqueue refund",
+  "start": "2026-07-22T10:46:50Z",
+  "duration_ms": 60,
+  "status": "OK"
+ },
+ {
+  "trace_id": "19891bced2cf280ce30767af022d94d7",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "payment-refund-svc",
+  "name": "ProcessRefund",
+  "start": "2026-07-22T10:46:50Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "bbbbbbbbbbbbbbbbbbbbbbbbbbbb0001",
+  "span_id": "a0",
+  "service": "billing-api",
+  "name": "GET /refunds/rfnd_8842107763/status",
+  "start": "2026-07-22T11:10:00Z",
+  "duration_ms": 800,
+  "status": "OK"
+ },
+ {
+  "trace_id": "bbbbbbbbbbbbbbbbbbbbbbbbbbbb0001",
+  "span_id": "a1",
+  "parent_id": "a0",
+  "service": "payment-refund-svc",
+  "name": "ProcessRefund rfnd_8842107763",
+  "start": "2026-07-22T11:10:00Z",
+  "duration_ms": 120,
+  "status": "ERROR",
+  "error": "invalid currency code \"XBT\""
+ },
+ {
+  "trace_id": "bbbbbbbbbbbbbbbbbbbbbbbbbbbb0002",
+  "span_id": "b0",
+  "service": "billing-api",
+  "name": "GET /refunds/rfnd_8842107763/status",
+  "start": "2026-07-22T11:40:00Z",
+  "duration_ms": 4700,
+  "status": "ERROR",
+  "error": "refund status poll timed out"
+ },
+ {
+  "trace_id": "bbbbbbbbbbbbbbbbbbbbbbbbbbbb0002",
+  "span_id": "b1",
+  "parent_id": "b0",
+  "service": "payment-refund-svc",
+  "name": "ProcessRefund rfnd_8842107763",
+  "start": "2026-07-22T11:40:00Z",
+  "duration_ms": 130,
+  "status": "ERROR",
+  "error": "invalid currency code \"XBT\""
+ }
+]

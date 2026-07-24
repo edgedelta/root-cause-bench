@@ -1,0 +1,8 @@
+{
+ "service": "billing-api",
+ "metric": "refund_poll_latency_p95_ms",
+ "threshold": 3000,
+ "fired_at": "2026-07-22T11:34:00Z",
+ "summary": "billing-api refund_poll_latency_p95_ms > 3000ms for 5m",
+ "detail": "p95 latency of the refund status poll breached 3000ms; refund backlog growing unbounded"
+}

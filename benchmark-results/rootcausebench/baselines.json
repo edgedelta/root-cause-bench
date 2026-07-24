@@ -2,23 +2,23 @@
   "summary": {
     "latest-commit": {
       "passed": 0,
-      "total": 27,
+      "total": 28,
       "pass_rate_pct": 0.0,
       "decoy_hits": 0,
       "by_tier": {
-        "adversarial": "0/3",
+        "adversarial": "0/4",
         "easy": "0/3",
         "hard": "0/12",
         "medium": "0/9"
       }
     },
     "always-none": {
-      "passed": 7,
-      "total": 27,
-      "pass_rate_pct": 25.9,
+      "passed": 8,
+      "total": 28,
+      "pass_rate_pct": 28.6,
       "decoy_hits": 0,
       "by_tier": {
-        "adversarial": "0/3",
+        "adversarial": "1/4",
         "easy": "0/3",
         "hard": "4/12",
         "medium": "3/9"
@@ -26,11 +26,11 @@
     },
     "latest-deploy": {
       "passed": 1,
-      "total": 27,
-      "pass_rate_pct": 3.7,
-      "decoy_hits": 22,
+      "total": 28,
+      "pass_rate_pct": 3.6,
+      "decoy_hits": 23,
       "by_tier": {
-        "adversarial": "0/3",
+        "adversarial": "0/4",
         "easy": "1/3",
         "hard": "0/12",
         "medium": "0/9"
@@ -38,11 +38,11 @@
     },
     "earliest-deploy": {
       "passed": 6,
-      "total": 27,
-      "pass_rate_pct": 22.2,
+      "total": 28,
+      "pass_rate_pct": 21.4,
       "decoy_hits": 11,
       "by_tier": {
-        "adversarial": "0/3",
+        "adversarial": "0/4",
         "easy": "1/3",
         "hard": "4/12",
         "medium": "1/9"
@@ -50,11 +50,11 @@
     },
     "alert-service-deploy": {
       "passed": 5,
-      "total": 27,
-      "pass_rate_pct": 18.5,
+      "total": 28,
+      "pass_rate_pct": 17.9,
       "decoy_hits": 19,
       "by_tier": {
-        "adversarial": "0/3",
+        "adversarial": "0/4",
         "easy": "2/3",
         "hard": "3/12",
         "medium": "0/9"
@@ -62,11 +62,11 @@
     },
     "scripted-rca": {
       "passed": 7,
-      "total": 27,
-      "pass_rate_pct": 25.9,
+      "total": 28,
+      "pass_rate_pct": 25.0,
       "decoy_hits": 20,
       "by_tier": {
-        "adversarial": "0/3",
+        "adversarial": "0/4",
         "easy": "3/3",
         "hard": "4/12",
         "medium": "0/9"
@@ -207,6 +207,13 @@
         "hit_decoy": false,
         "difficulty": "easy",
         "no_code_cause": false
+      },
+      "payment-refund-poison-batch": {
+        "passed": false,
+        "answered": "3ffdcff9ac6a",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": true
       },
       "recommendation-memory-leak": {
         "passed": false,
@@ -399,6 +406,13 @@
         "difficulty": "easy",
         "no_code_cause": false
       },
+      "payment-refund-poison-batch": {
+        "passed": true,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": true
+      },
       "recommendation-memory-leak": {
         "passed": false,
         "answered": "none",
@@ -589,6 +603,13 @@
         "hit_decoy": false,
         "difficulty": "easy",
         "no_code_cause": false
+      },
+      "payment-refund-poison-batch": {
+        "passed": false,
+        "answered": "1aa567371a86",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
+        "no_code_cause": true
       },
       "recommendation-memory-leak": {
         "passed": false,
@@ -781,6 +802,13 @@
         "difficulty": "easy",
         "no_code_cause": false
       },
+      "payment-refund-poison-batch": {
+        "passed": false,
+        "answered": "c65dae774c9c",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": true
+      },
       "recommendation-memory-leak": {
         "passed": false,
         "answered": "dc20d6c44ee5",
@@ -972,6 +1000,13 @@
         "difficulty": "easy",
         "no_code_cause": false
       },
+      "payment-refund-poison-batch": {
+        "passed": false,
+        "answered": "68ca762e8eb3",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": true
+      },
       "recommendation-memory-leak": {
         "passed": false,
         "answered": "f72cb9d310cf",
@@ -1162,6 +1197,13 @@
         "hit_decoy": false,
         "difficulty": "easy",
         "no_code_cause": false
+      },
+      "payment-refund-poison-batch": {
+        "passed": false,
+        "answered": "68ca762e8eb3",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": true
       },
       "recommendation-memory-leak": {
         "passed": false,

@@ -100,7 +100,7 @@ for the full data + ground-truth schema.
 | **easy** | one obvious culprit, clear failure signature (a panic stack trace), few distractors — but you still have to pick the *right* SHA. |
 | **medium** | the culprit is buried among ~40 commits and an innocent deploy lands near onset as a decoy. |
 | **hard** | **delayed onset** (the bad deploy detonates minutes later), multiple innocent deploys near onset, and a feature-flag flip in the same window. |
-| **adversarial** *(preview — 3 of 12 scenarios)* | guilty-looking decoy diffs (the innocent change plausibly explains the symptom), beyond-context data volumes that force strategic querying, and degraded telemetry (missing logs, clock skew, sampled traces). |
+| **adversarial** *(preview — 4 of 12 scenarios)* | guilty-looking decoy diffs (the innocent change plausibly explains the symptom), beyond-context data volumes that force strategic querying, degraded telemetry (missing logs, clock skew, sampled traces), and abstention traps (no guilty commit exists at all — a guilty-looking decoy deploys right at onset, and the correct answer is `"none"`). |
 
 ## Running it
 
