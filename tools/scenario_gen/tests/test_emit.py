@@ -3,8 +3,9 @@ from pathlib import Path
 
 import pytest
 
-from tools.scenario_gen.emit import emit_scenario
-from tools.scenario_gen.spec import SpecError
+from tools.scenario_gen.changes import build_changes
+from tools.scenario_gen.emit import _check_consistency, emit_scenario
+from tools.scenario_gen.spec import SpecError, load_spec
 from tools.scenario_gen.tests.test_spec import MINIMAL
 
 # MINIMAL lacks a non-culprit deploy near fired_at; add an innocent decoy deploy
@@ -83,6 +84,17 @@ def test_culprit_deploy_after_onset_rejected(scenario_dir):
     (scenario_dir / "scenario.toml").write_text(bad)
     with pytest.raises(SpecError, match="culprit deploy .* after onset"):
         emit_scenario(scenario_dir / "scenario.toml")
+
+
+def test_sha_resolution_recheck(scenario_dir):
+    spec = load_spec(scenario_dir / "scenario.toml")
+    commits, deploys, flags, id_to_sha = build_changes(spec)
+
+    culprit_sha = id_to_sha[spec["ground_truth"]["culprit_id"]]
+    stripped_commits = [c for c in commits if c["sha"] != culprit_sha]
+
+    with pytest.raises(SpecError, match="not in commits.json|does not resolve"):
+        _check_consistency(spec, stripped_commits, deploys, id_to_sha)
 
 
 def test_emit_is_deterministic(scenario_dir):

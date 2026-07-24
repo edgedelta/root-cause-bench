@@ -84,6 +84,16 @@ def _check_consistency(spec: dict, commits, deploys, id_to_sha):
     if not near:
         errs.append("no non-culprit deploy within 15min before fired_at "
                     "(decoy-position invariant)")
+
+    shas = {c["sha"] for c in commits}
+    for d in deploys:
+        if d["commit_sha"] not in shas:
+            errs.append(f"deploy commit {d['commit_sha'][:12]} not in commits.json")
+    for label, ref in [("culprit", spec["ground_truth"]["culprit_id"]),
+                       *(("decoy", d) for d in spec["ground_truth"]["decoy_ids"])]:
+        if ref != "none" and id_to_sha.get(ref) not in shas:
+            errs.append(f"{label} id {ref!r} does not resolve into commits.json")
+
     if errs:
         raise SpecError("consistency: " + "; ".join(errs))
 
