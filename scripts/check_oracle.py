@@ -72,6 +72,14 @@ def check_structure(name, d):
         errors += fail(name, "remediation empty")
     if not alert.get("fired_at") or not alert.get("service"):
         errors += fail(name, "alert.json missing fired_at/service")
+
+    # Beyond-context floor: these scenarios exist to exceed context windows.
+    task_toml = (d / "task.toml").read_text()
+    if '"beyond-context"' in task_toml:
+        total = sum(p.stat().st_size for p in data.rglob("*") if p.is_file())
+        if total < 8_000_000:
+            errors += fail(name, f"beyond-context scenario data is only "
+                                 f"{total:,} bytes (< 8,000,000 floor)")
     return errors, gt
 
 

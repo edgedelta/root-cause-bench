@@ -192,6 +192,19 @@ def main():
             print(f"CI FAIL: 'latest-commit' passes {hard_fails} — culprit is the newest "
                   f"commit; trivially gameable.")
             sys.exit(1)
+        adversarial_fails = []
+        for n in ("latest-commit", "latest-deploy", "alert-service-deploy",
+                  "scripted-rca", "always-none"):
+            for s, r in results[n].items():
+                if r["difficulty"] != "adversarial" or not r["passed"]:
+                    continue
+                if n == "always-none" and r["no_code_cause"]:
+                    continue  # abstention is the correct answer here
+                adversarial_fails.append(f"{n} passes {s}")
+        if adversarial_fails:
+            print("CI FAIL: adversarial scenarios must defeat every scripted "
+                  "baseline: " + "; ".join(adversarial_fails))
+            sys.exit(1)
         print("CI OK: no degenerate baseline passes any scenario.")
 
 
