@@ -255,6 +255,28 @@ def test_log_fault_negative_rate_per_min_rejected(tmp_path):
         load_spec(write(tmp_path, bad))
 
 
+def test_log_fault_string_rate_per_min_rejected(tmp_path):
+    bad = MINIMAL.replace(
+        'first_failing_service = "svc-a"',
+        'first_failing_service = "svc-a"\n'
+        '[[incident.log_faults]]\nservice = "svc-a"\nmsg = "boom"\n'
+        'rate_per_min = "fast"\n',
+    )
+    with pytest.raises(SpecError, match="log_faults.*0.*rate_per_min.*positive number"):
+        load_spec(write(tmp_path, bad))
+
+
+def test_log_fault_bool_rate_per_min_rejected(tmp_path):
+    bad = MINIMAL.replace(
+        'first_failing_service = "svc-a"',
+        'first_failing_service = "svc-a"\n'
+        '[[incident.log_faults]]\nservice = "svc-a"\nmsg = "boom"\n'
+        'rate_per_min = true\n',
+    )
+    with pytest.raises(SpecError, match="log_faults.*0.*rate_per_min.*positive number"):
+        load_spec(write(tmp_path, bad))
+
+
 def test_duplicate_metric_fault_service_metric_pair_rejected(tmp_path):
     bad = MINIMAL.replace(
         'first_failing_service = "svc-a"',

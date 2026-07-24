@@ -95,6 +95,8 @@ def load_spec(path: Path) -> dict:
         lf.setdefault("end", w["end"])
         lf.setdefault("extra", {})
         lf.setdefault("in_patterns", True)
+        if not isinstance(lf["rate_per_min"], (int, float)) or isinstance(lf["rate_per_min"], bool):
+            raise SpecError(f"log_faults[{i}]: rate_per_min must be a positive number")
         if lf["rate_per_min"] <= 0:
             raise SpecError(f"log_faults[{i}]: rate_per_min must be > 0")
 
