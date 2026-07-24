@@ -131,3 +131,37 @@ def test_authored_timestamp_at_window_end_rejected(tmp_path):
                           'timestamp = "2026-07-20T10:00:00Z"')
     with pytest.raises(SpecError, match="strictly before window.end"):
         load_spec(write(tmp_path, bad))
+
+
+def test_deploys_auto_defaults(tmp_path):
+    spec = load_spec(write(tmp_path, MINIMAL))
+    assert spec["deploys_auto"]["count"] == 0
+    assert spec["deploys_auto"]["services"] == ["svc-a"]
+    assert spec["deploys_auto"]["pre_onset_min"] == 0
+
+
+def test_deploys_auto_negative_count_rejected(tmp_path):
+    bad = MINIMAL.replace(
+        "[ground_truth]",
+        "[deploys_auto]\ncount = -1\n\n[ground_truth]",
+    )
+    with pytest.raises(SpecError, match="count"):
+        load_spec(write(tmp_path, bad))
+
+
+def test_deploys_auto_unknown_service_rejected(tmp_path):
+    bad = MINIMAL.replace(
+        "[ground_truth]",
+        '[deploys_auto]\ncount = 2\nservices = ["svc-ghost"]\n\n[ground_truth]',
+    )
+    with pytest.raises(SpecError, match="deploys_auto"):
+        load_spec(write(tmp_path, bad))
+
+
+def test_deploys_auto_pre_onset_min_exceeds_count_rejected(tmp_path):
+    bad = MINIMAL.replace(
+        "[ground_truth]",
+        "[deploys_auto]\ncount = 2\npre_onset_min = 3\n\n[ground_truth]",
+    )
+    with pytest.raises(SpecError, match="pre_onset_min"):
+        load_spec(write(tmp_path, bad))

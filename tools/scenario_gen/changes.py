@@ -46,6 +46,24 @@ def _sha(name: str, ident: str) -> str:
     return hashlib.sha1(f"{name}:{ident}".encode()).hexdigest()
 
 
+def _default_version(ts_str: str) -> str:
+    return ("v" + ts_str[:10].replace("-", ".") + "-" + ts_str[11:16].replace(":", ""))
+
+
+def _pick_innocent_commit(rng: random.Random, ts, innocent_commits: list[dict]):
+    """Pick an innocent commit authored strictly before `ts` (a datetime).
+
+    If none is eligible, shift `ts` to 5-40 minutes after the earliest
+    innocent commit so at least that commit becomes eligible.
+    """
+    eligible = [c for c in innocent_commits if parse_ts(c["timestamp"]) < ts]
+    if not eligible:
+        earliest = min(innocent_commits, key=lambda c: c["timestamp"])
+        ts = parse_ts(earliest["timestamp"]) + timedelta(minutes=rng.randint(5, 40))
+        eligible = [c for c in innocent_commits if parse_ts(c["timestamp"]) < ts]
+    return ts, rng.choice(eligible)
+
+
 def build_changes(spec: dict) -> tuple[list[dict], list[dict], list[dict], dict[str, str]]:
     name = spec["name"]
     rng = random.Random(spec["seed"])
@@ -83,11 +101,56 @@ def build_changes(spec: dict) -> tuple[list[dict], list[dict], list[dict], dict[
         })
     commits.sort(key=lambda c: (c["timestamp"], c["sha"]))
 
-    deploys = sorted(({
+    authored_shas = set(id_to_sha.values())
+    innocent_commits = [c for c in commits if c["sha"] not in authored_shas]
+
+    deploys = [{
         "timestamp": d["timestamp"],
         "service": d["service"],
         "commit_sha": id_to_sha[d["commit"]],
         "version": d["version"],
-    } for d in spec["deploys"]), key=lambda d: d["timestamp"])
+    } for d in spec["deploys"]]
+
+    da = spec["deploys_auto"]
+    count = da["count"]
+    if count:
+        rng3 = random.Random(spec["seed"] + 3)
+        services = list(da["services"])
+        shuffled_services = list(services)
+        rng3.shuffle(shuffled_services)
+        onset = parse_ts(spec["incident"]["onset"])
+
+        generated = []
+        for i in range(count):
+            service = (shuffled_services[i] if i < len(shuffled_services)
+                       else rng3.choice(services))
+            ts = start + timedelta(seconds=rng3.uniform(0, span))
+            ts, commit = _pick_innocent_commit(rng3, ts, innocent_commits)
+            generated.append({"ts": ts, "service": service, "commit": commit})
+
+        pre_onset_min = da["pre_onset_min"]
+        before = sum(1 for g in generated if g["ts"] < onset)
+        if before < pre_onset_min:
+            shortfall = pre_onset_min - before
+            onset_span = (onset - start).total_seconds()
+            for g in generated:
+                if shortfall <= 0:
+                    break
+                if g["ts"] >= onset:
+                    new_ts = start + timedelta(seconds=rng3.uniform(0, onset_span))
+                    new_ts, commit = _pick_innocent_commit(rng3, new_ts, innocent_commits)
+                    g["ts"], g["commit"] = new_ts, commit
+                    shortfall -= 1
+
+        for g in generated:
+            ts_str = fmt_ts(g["ts"])
+            deploys.append({
+                "timestamp": ts_str,
+                "service": g["service"],
+                "commit_sha": g["commit"]["sha"],
+                "version": _default_version(ts_str),
+            })
+
+    deploys.sort(key=lambda d: d["timestamp"])
 
     return commits, deploys, list(spec["flags"]), id_to_sha

@@ -125,6 +125,19 @@ def load_spec(path: Path) -> dict:
         dep.setdefault("version", "v" + dep["timestamp"][:10].replace("-", ".")
                        + "-" + dep["timestamp"][11:16].replace(":", ""))
 
+    da = spec.setdefault("deploys_auto", {})
+    da.setdefault("count", 0)
+    da.setdefault("services", [svc["name"] for svc in spec["services"]])
+    da.setdefault("pre_onset_min", 0)
+    if not isinstance(da["count"], int) or isinstance(da["count"], bool) or da["count"] < 0:
+        raise SpecError("deploys_auto: count must be a non-negative integer")
+    service_names = {svc["name"] for svc in spec["services"]}
+    unknown = [s for s in da["services"] if s not in service_names]
+    if unknown:
+        raise SpecError(f"deploys_auto: services {unknown} not in spec services")
+    if not (0 <= da["pre_onset_min"] <= da["count"]):
+        raise SpecError("deploys_auto: pre_onset_min must be between 0 and count")
+
     for deg in spec["degradations"]:
         if deg.get("type") not in DEGRADATIONS:
             raise SpecError(f"degradations: type {deg.get('type')!r} not in "
