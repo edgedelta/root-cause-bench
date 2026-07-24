@@ -1,4 +1,4 @@
-# root-cause-bench — adversarial-tier calibration: the three current perfect
+# root-cause-bench — adversarial-tier calibration: the four current perfect
 # scorers x 3 attempts x 3 exemplar scenarios. Ship gate: every scenario sees
 # >=1 failed trial, and each model lands in the 30-70% pass band on the tier.
 # Usage: set -a && source .env && set +a && harbor run -c configs/calibration-adversarial.yaml -y
@@ -17,6 +17,8 @@ agents:
     model_name: openrouter/x-ai/grok-4.5
   - name: terminus-2
     model_name: openrouter/moonshotai/kimi-k3
+  - name: terminus-2
+    model_name: openrouter/anthropic/claude-opus-5
 
 datasets:
   - path: datasets/rootcausebench
