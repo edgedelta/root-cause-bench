@@ -1,0 +1,26 @@
+# root-cause-bench — adversarial-tier calibration: the three current perfect
+# scorers x 3 attempts x 3 exemplar scenarios. Ship gate: every scenario sees
+# >=1 failed trial, and each model lands in the 30-70% pass band on the tier.
+# Usage: set -a && source .env && set +a && harbor run -c configs/calibration-adversarial.yaml -y
+jobs_dir: jobs
+n_attempts: 3
+n_concurrent_trials: 3
+quiet: false
+
+environment:
+  type: docker
+
+agents:
+  - name: terminus-2
+    model_name: openrouter/z-ai/glm-5.2
+  - name: terminus-2
+    model_name: openrouter/x-ai/grok-4.5
+  - name: terminus-2
+    model_name: openrouter/moonshotai/kimi-k3
+
+datasets:
+  - path: datasets/rootcausebench
+    task_names:
+      - shared-config-pool-drain
+      - catalog-cache-key-cardinality
+      - notification-buffer-oom-silent
