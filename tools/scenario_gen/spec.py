@@ -96,6 +96,8 @@ def load_spec(path: Path) -> dict:
 
     for flow in spec["trace_flows"]:
         flow.setdefault("per_hour", 4)
+        flow.setdefault("end", w["end"])
+        parse_ts(flow["end"])
 
     c = spec["commits"]
     c.setdefault("innocent_count", 24)

@@ -1,4 +1,5 @@
 import json
+import re
 from pathlib import Path
 
 import pytest
@@ -95,6 +96,37 @@ def test_sha_resolution_recheck(scenario_dir):
 
     with pytest.raises(SpecError, match="not in commits.json|does not resolve"):
         _check_consistency(spec, stripped_commits, deploys, id_to_sha)
+
+
+DEGRADED = FULL.replace(
+    "[ground_truth]",
+    '''[[degradations]]
+type = "drop_logs"
+service = "svc-a"
+after = "2026-07-20T09:30:00Z"
+
+[ground_truth]''')
+
+
+def test_patterns_reflect_degraded_logs(scenario_dir):
+    spec_path = scenario_dir / "scenario.toml"
+    spec_path.write_text(DEGRADED)
+    emit_scenario(spec_path)
+    logs = [json.loads(l) for l in
+            (scenario_dir / "environment/data/logs.ndjson").read_text().splitlines()
+            if l]
+    patterns = json.loads(
+        (scenario_dir / "environment/data/patterns.json").read_text())
+
+    # the degradation must actually have removed rows for this test to mean anything
+    assert not any(r["service"] == "svc-a" and r["timestamp"] >= "2026-07-20T09:30:00Z"
+                   for r in logs)
+
+    for p in patterns:
+        actual = sum(1 for r in logs
+                     if r["service"] == p["service"]
+                     and re.sub(r"\d+", "<N>", r["msg"]) == p["signature"])
+        assert actual == p["count"], p
 
 
 def test_emit_is_deterministic(scenario_dir):

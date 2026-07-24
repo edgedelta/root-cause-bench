@@ -15,6 +15,7 @@ from .telemetry import build_logs, build_metrics, build_patterns, build_traces
 
 REPO = Path(__file__).resolve().parent.parent.parent
 TEMPLATE = REPO / "datasets" / "rootcausebench" / "payment-nil-deref-panic"
+INSTRUCTION_TEMPLATE = Path(__file__).parent / "templates" / "instruction.md"
 
 TASK_TOML = '''version = "1.0"
 
@@ -108,8 +109,8 @@ def emit_scenario(spec_path: Path) -> Path:
     logs = build_logs(spec)
     metrics = build_metrics(spec)
     traces = build_traces(spec)
-    patterns = build_patterns(spec, logs)
     logs, metrics, traces = apply_degradations(spec, logs, metrics, traces)
+    patterns = build_patterns(spec, logs)
     _check_consistency(spec, commits, deploys, id_to_sha)
 
     def write(rel: str, content: str):
@@ -129,7 +130,8 @@ def emit_scenario(spec_path: Path) -> Path:
     write("task.toml", TASK_TOML.format(
         difficulty=spec["difficulty"], category=spec["category"],
         tags=", ".join(f'"{t}"' for t in spec["tags"])))
-    for rel in ("instruction.md", "environment/Dockerfile",
+    write("instruction.md", INSTRUCTION_TEMPLATE.read_text())
+    for rel in ("environment/Dockerfile",
                 "tests/test.sh", "tests/test_outputs.py"):
         copy(rel)
 

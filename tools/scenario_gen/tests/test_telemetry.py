@@ -92,3 +92,42 @@ severity = "INFO"
     assert logs
     assert all(r["severity_text"] == "ERROR" for r in logs)
     assert all(r["msg"] == "query took 1450ms: timeout" for r in logs)
+
+
+def test_trace_flow_end_bounds_spans(tmp_path):
+    s = spec(tmp_path)
+    mid = "2026-07-20T08:00:00Z"          # window is 06:00-10:00
+    s["trace_flows"][0]["end"] = mid
+    exemplar = {"trace_id": "y" * 32, "span_id": "e1", "parent_id": None,
+                "service": "svc-a", "name": "GET /api/a",
+                "start": "2026-07-20T09:45:00Z", "duration_ms": 10,
+                "status": "OK"}
+    s["incident"]["trace_exemplars"] = [exemplar]
+    spans = build_traces(s)
+    flow_spans, ex_spans = spans[:-1], spans[-1:]
+    assert flow_spans
+    assert all(sp["start"] < mid for sp in flow_spans)
+    assert ex_spans == [exemplar]        # exemplar spans unaffected by flow end
+
+
+RATIO = FAULTY.replace(
+    '''[[services.metrics]]
+name = "latency_p99_ms"
+baseline = 120''',
+    '''[[services.metrics]]
+name = "latency_p99_ms"
+baseline = 120
+[[services.metrics]]
+name = "cache_hit_ratio"
+baseline = 0.97
+jitter = 0.01''')
+
+
+def test_ratio_metric_precision_not_flattened(tmp_path):
+    s = load_spec(write(tmp_path, RATIO))
+    rows = build_metrics(s)
+    vals = [r["value"] for r in rows if r["metric"] == "cache_hit_ratio"]
+    assert len(vals) > 1
+    assert len(set(vals)) > 1                    # jitter must survive rounding
+    assert all(0.955 <= v <= 0.985 for v in vals)
+    assert not all(v == 1.0 for v in vals)

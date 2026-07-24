@@ -75,8 +75,9 @@ def build_metrics(spec: dict) -> list[dict]:
                         else:  # ramp
                             frac = min(1.0, (t - fs) / (fe - fs)) if fe > fs else 1.0
                             value = m["baseline"] + (fault["to"] - m["baseline"]) * frac
+                precision = 1 if abs(m["baseline"]) >= 10 else 4
                 rows.append({"timestamp": fmt_ts(t), "service": svc["name"],
-                             "metric": m["name"], "value": round(value, 1)})
+                             "metric": m["name"], "value": round(value, precision)})
                 t += step
     rows.sort(key=lambda r: (r["timestamp"], r["service"], r["metric"]))
     return rows
@@ -84,14 +85,15 @@ def build_metrics(spec: dict) -> list[dict]:
 
 def build_traces(spec: dict) -> list[dict]:
     w = spec["window"]
-    start, end = parse_ts(w["start"]), parse_ts(w["end"])
-    hours = (end - start).total_seconds() / 3600
+    start = parse_ts(w["start"])
     spans = []
     for flow in spec["trace_flows"]:
+        flow_end = parse_ts(flow["end"])
+        hours = (flow_end - start).total_seconds() / 3600
         n = int(flow["per_hour"] * hours)
         for i in range(n):
             tid = _trace_id(spec["name"], f"flow:{flow['name']}:{i}")
-            t0 = start + (end - start) * (i / max(1, n))
+            t0 = start + (flow_end - start) * (i / max(1, n))
             parent = None
             for k, sp in enumerate(flow["spans"]):
                 spans.append({
