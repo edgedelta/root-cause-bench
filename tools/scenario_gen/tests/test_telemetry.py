@@ -79,3 +79,16 @@ def test_patterns_fault_signature_numbers_collapsed(tmp_path):
     assert neg[0]["signature"] == "query took <N>ms: timeout"
     assert neg[0]["count"] == 90 and neg[0]["delta_vs_baseline"] == "+90"
     assert any(p["sentiment"] == "neutral" for p in pats)
+
+
+def test_no_baseline_templates_yields_only_fault_logs(tmp_path):
+    no_logs = FAULTY.replace(
+        '''[[services.logs]]
+msg = "request served"
+severity = "INFO"
+''', '')
+    s = load_spec(write(tmp_path, no_logs))
+    logs = build_logs(s)
+    assert logs
+    assert all(r["severity_text"] == "ERROR" for r in logs)
+    assert all(r["msg"] == "query took 1450ms: timeout" for r in logs)
