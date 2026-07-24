@@ -175,3 +175,169 @@ def test_deploys_auto_pre_onset_min_exceeds_count_rejected(tmp_path):
     )
     with pytest.raises(SpecError, match="pre_onset_min"):
         load_spec(write(tmp_path, bad))
+
+
+def test_alert_missing_field_rejected(tmp_path):
+    bad = MINIMAL.replace('detail = "svc-a latency_p99_ms > 500"\n', "")
+    with pytest.raises(SpecError, match="alert.*detail"):
+        load_spec(write(tmp_path, bad))
+
+
+def test_metric_fault_missing_service_rejected(tmp_path):
+    bad = MINIMAL.replace(
+        'first_failing_service = "svc-a"',
+        'first_failing_service = "svc-a"\n'
+        '[[incident.metric_faults]]\nmetric = "latency_p99_ms"\nto = 900\n',
+    )
+    with pytest.raises(SpecError, match="metric_faults.*0.*service"):
+        load_spec(write(tmp_path, bad))
+
+
+def test_metric_fault_missing_metric_rejected(tmp_path):
+    bad = MINIMAL.replace(
+        'first_failing_service = "svc-a"',
+        'first_failing_service = "svc-a"\n'
+        '[[incident.metric_faults]]\nservice = "svc-a"\nto = 900\n',
+    )
+    with pytest.raises(SpecError, match="metric_faults.*0.*metric"):
+        load_spec(write(tmp_path, bad))
+
+
+def test_metric_fault_missing_to_rejected(tmp_path):
+    bad = MINIMAL.replace(
+        'first_failing_service = "svc-a"',
+        'first_failing_service = "svc-a"\n'
+        '[[incident.metric_faults]]\nservice = "svc-a"\nmetric = "latency_p99_ms"\n',
+    )
+    with pytest.raises(SpecError, match="metric_faults.*0.*to"):
+        load_spec(write(tmp_path, bad))
+
+
+def test_log_fault_missing_service_rejected(tmp_path):
+    bad = MINIMAL.replace(
+        'first_failing_service = "svc-a"',
+        'first_failing_service = "svc-a"\n'
+        '[[incident.log_faults]]\nmsg = "boom"\n',
+    )
+    with pytest.raises(SpecError, match="log_faults.*0.*service"):
+        load_spec(write(tmp_path, bad))
+
+
+def test_log_fault_missing_msg_rejected(tmp_path):
+    bad = MINIMAL.replace(
+        'first_failing_service = "svc-a"',
+        'first_failing_service = "svc-a"\n'
+        '[[incident.log_faults]]\nservice = "svc-a"\n',
+    )
+    with pytest.raises(SpecError, match="log_faults.*0.*msg"):
+        load_spec(write(tmp_path, bad))
+
+
+def test_log_fault_zero_rate_per_min_rejected(tmp_path):
+    bad = MINIMAL.replace(
+        'first_failing_service = "svc-a"',
+        'first_failing_service = "svc-a"\n'
+        '[[incident.log_faults]]\nservice = "svc-a"\nmsg = "boom"\n'
+        'rate_per_min = 0\n',
+    )
+    with pytest.raises(SpecError, match="rate_per_min"):
+        load_spec(write(tmp_path, bad))
+
+
+def test_log_fault_negative_rate_per_min_rejected(tmp_path):
+    bad = MINIMAL.replace(
+        'first_failing_service = "svc-a"',
+        'first_failing_service = "svc-a"\n'
+        '[[incident.log_faults]]\nservice = "svc-a"\nmsg = "boom"\n'
+        'rate_per_min = -2\n',
+    )
+    with pytest.raises(SpecError, match="rate_per_min"):
+        load_spec(write(tmp_path, bad))
+
+
+def test_duplicate_metric_fault_service_metric_pair_rejected(tmp_path):
+    bad = MINIMAL.replace(
+        'first_failing_service = "svc-a"',
+        'first_failing_service = "svc-a"\n'
+        '[[incident.metric_faults]]\nservice = "svc-a"\nmetric = "latency_p99_ms"\n'
+        'to = 900\n'
+        '[[incident.metric_faults]]\nservice = "svc-a"\nmetric = "latency_p99_ms"\n'
+        'to = 950\n',
+    )
+    with pytest.raises(SpecError, match="duplicate.*svc-a.*latency_p99_ms"):
+        load_spec(write(tmp_path, bad))
+
+
+def test_drop_logs_degradation_requires_service_and_after(tmp_path):
+    bad = MINIMAL.replace(
+        "[ground_truth]",
+        '[[degradations]]\ntype = "drop_logs"\n\n[ground_truth]',
+    )
+    with pytest.raises(SpecError, match="drop_logs.*service"):
+        load_spec(write(tmp_path, bad))
+
+
+def test_drop_logs_degradation_requires_valid_after_timestamp(tmp_path):
+    bad = MINIMAL.replace(
+        "[ground_truth]",
+        '[[degradations]]\ntype = "drop_logs"\nservice = "svc-a"\n'
+        'after = "not-a-timestamp"\n\n[ground_truth]',
+    )
+    with pytest.raises(SpecError, match="bad timestamp"):
+        load_spec(write(tmp_path, bad))
+
+
+def test_clock_skew_degradation_requires_valid_target(tmp_path):
+    bad = MINIMAL.replace(
+        "[ground_truth]",
+        '[[degradations]]\ntype = "clock_skew"\ntarget = "nope"\noffset_s = 5\n'
+        '\n[ground_truth]',
+    )
+    with pytest.raises(SpecError, match="clock_skew.*target"):
+        load_spec(write(tmp_path, bad))
+
+
+def test_clock_skew_degradation_requires_numeric_offset(tmp_path):
+    bad = MINIMAL.replace(
+        "[ground_truth]",
+        '[[degradations]]\ntype = "clock_skew"\ntarget = "logs"\n'
+        'offset_s = "soon"\n\n[ground_truth]',
+    )
+    with pytest.raises(SpecError, match="clock_skew.*offset_s"):
+        load_spec(write(tmp_path, bad))
+
+
+def test_sample_traces_degradation_requires_rate_in_range(tmp_path):
+    bad = MINIMAL.replace(
+        "[ground_truth]",
+        '[[degradations]]\ntype = "sample_traces"\nrate = 0\n\n[ground_truth]',
+    )
+    with pytest.raises(SpecError, match="sample_traces.*rate"):
+        load_spec(write(tmp_path, bad))
+
+
+def test_sample_traces_degradation_rejects_rate_above_one(tmp_path):
+    bad = MINIMAL.replace(
+        "[ground_truth]",
+        '[[degradations]]\ntype = "sample_traces"\nrate = 1.5\n\n[ground_truth]',
+    )
+    with pytest.raises(SpecError, match="sample_traces.*rate"):
+        load_spec(write(tmp_path, bad))
+
+
+def test_hand_authored_deploy_timestamp_before_window_start_rejected(tmp_path):
+    bad = MINIMAL.replace(
+        'timestamp = "2026-07-20T09:20:00Z"\n\n[ground_truth]',
+        'timestamp = "2026-07-20T05:00:00Z"\n\n[ground_truth]',
+    )
+    with pytest.raises(SpecError, match="deploys?.*window"):
+        load_spec(write(tmp_path, bad))
+
+
+def test_hand_authored_deploy_timestamp_after_window_end_rejected(tmp_path):
+    bad = MINIMAL.replace(
+        'timestamp = "2026-07-20T09:20:00Z"\n\n[ground_truth]',
+        'timestamp = "2026-07-20T11:00:00Z"\n\n[ground_truth]',
+    )
+    with pytest.raises(SpecError, match="deploys?.*window"):
+        load_spec(write(tmp_path, bad))

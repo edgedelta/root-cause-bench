@@ -44,6 +44,9 @@ def load_spec(path: Path) -> dict:
     if spec["family"] not in FAMILIES:
         raise SpecError(f"family {spec['family']!r} not in {sorted(FAMILIES)}")
 
+    for k in ("service", "metric", "threshold", "fired_at", "summary", "detail"):
+        _req(spec["alert"], k, "alert")
+
     spec.setdefault("difficulty", "adversarial")
     spec.setdefault("category", "observability")
     base_tags = ["root-cause", "adversarial", spec["family"], "observability",
@@ -69,19 +72,31 @@ def load_spec(path: Path) -> dict:
     if not (start <= onset <= end):
         raise SpecError("incident: onset must fall inside the window")
     _req(inc, "first_failing_service", "incident")
-    for mf in inc["metric_faults"]:
+    seen_metric_faults = set()
+    for i, mf in enumerate(inc["metric_faults"]):
+        for k in ("service", "metric", "to"):
+            _req(mf, k, f"metric_faults[{i}]")
+        key = (mf["service"], mf["metric"])
+        if key in seen_metric_faults:
+            raise SpecError(f"metric_faults: duplicate (service, metric) pair "
+                            f"{mf['service']!r}, {mf['metric']!r}")
+        seen_metric_faults.add(key)
         mf.setdefault("curve", "ramp")
         mf.setdefault("start", inc["onset"])
         mf.setdefault("end", w["end"])
         if mf["curve"] not in CURVES:
             raise SpecError(f"metric_faults: curve {mf['curve']!r} not in {sorted(CURVES)}")
-    for lf in inc["log_faults"]:
+    for i, lf in enumerate(inc["log_faults"]):
+        for k in ("service", "msg"):
+            _req(lf, k, f"log_faults[{i}]")
         lf.setdefault("severity", "ERROR")
         lf.setdefault("rate_per_min", 2)
         lf.setdefault("start", inc["onset"])
         lf.setdefault("end", w["end"])
         lf.setdefault("extra", {})
         lf.setdefault("in_patterns", True)
+        if lf["rate_per_min"] <= 0:
+            raise SpecError(f"log_faults[{i}]: rate_per_min must be > 0")
 
     spec.setdefault("patterns_extra", [])
     for pe in spec["patterns_extra"]:
@@ -125,7 +140,10 @@ def load_spec(path: Path) -> dict:
     for dep in spec["deploys"]:
         for k in ("service", "commit", "timestamp"):
             _req(dep, k, "deploys")
-        parse_ts(dep["timestamp"])
+        dep_ts = parse_ts(dep["timestamp"])
+        if not (start <= dep_ts <= end):
+            raise SpecError(f"deploys: timestamp {dep['timestamp']!r} must lie "
+                            f"within the window [{w['start']}, {w['end']}]")
         if dep["commit"] not in ids:
             raise SpecError(f"deploy references unknown commit id {dep['commit']!r}")
         dep.setdefault("version", "v" + dep["timestamp"][:10].replace("-", ".")
@@ -149,9 +167,28 @@ def load_spec(path: Path) -> dict:
         raise SpecError("deploys_auto: pre_onset_min must be between 0 and count")
 
     for deg in spec["degradations"]:
-        if deg.get("type") not in DEGRADATIONS:
-            raise SpecError(f"degradations: type {deg.get('type')!r} not in "
+        t = deg.get("type")
+        if t not in DEGRADATIONS:
+            raise SpecError(f"degradations: type {t!r} not in "
                             f"{sorted(DEGRADATIONS)}")
+        if t == "drop_logs":
+            _req(deg, "service", "degradations[drop_logs]")
+            parse_ts(_req(deg, "after", "degradations[drop_logs]"))
+        elif t == "clock_skew":
+            target = _req(deg, "target", "degradations[clock_skew]")
+            if target not in {"logs", "metrics", "traces"}:
+                raise SpecError(f"degradations[clock_skew]: target {target!r} not "
+                                f"in {{'logs', 'metrics', 'traces'}}")
+            offset = _req(deg, "offset_s", "degradations[clock_skew]")
+            if not isinstance(offset, (int, float)) or isinstance(offset, bool):
+                raise SpecError(f"degradations[clock_skew]: offset_s must be "
+                                f"numeric, got {offset!r}")
+        elif t == "sample_traces":
+            rate = _req(deg, "rate", "degradations[sample_traces]")
+            if not isinstance(rate, (int, float)) or isinstance(rate, bool) \
+                    or not (0 < rate <= 1):
+                raise SpecError(f"degradations[sample_traces]: rate must be in "
+                                f"(0, 1], got {rate!r}")
 
     gt = spec["ground_truth"]
     for k in ("culprit_id", "blast_radius", "remediation", "notes"):

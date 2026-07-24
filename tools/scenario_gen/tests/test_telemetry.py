@@ -149,6 +149,23 @@ severity = "INFO"
     assert all(r["msg"] == "query took 1450ms: timeout" for r in logs)
 
 
+def test_all_zero_weight_log_templates_treated_as_no_templates(tmp_path):
+    zero_weight = FAULTY.replace(
+        '''[[services.logs]]
+msg = "request served"
+severity = "INFO"
+''', '''[[services.logs]]
+msg = "request served"
+severity = "INFO"
+weight = 0
+''')
+    s = load_spec(write(tmp_path, zero_weight))
+    logs = build_logs(s)  # must not raise (rng.choices requires weight sum > 0)
+    assert logs
+    assert all(r["severity_text"] == "ERROR" for r in logs)
+    assert all(r["msg"] == "query took 1450ms: timeout" for r in logs)
+
+
 def test_trace_flow_end_bounds_spans(tmp_path):
     s = spec(tmp_path)
     mid = "2026-07-20T08:00:00Z"          # window is 06:00-10:00

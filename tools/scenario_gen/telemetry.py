@@ -20,7 +20,8 @@ def build_logs(spec: dict) -> list[dict]:
     total_s = (end - start).total_seconds()
     rows = []
 
-    weights = [(svc, svc["log_weight"]) for svc in spec["services"] if svc["logs"]]
+    weights = [(svc, svc["log_weight"]) for svc in spec["services"]
+               if svc["logs"] and any(l["weight"] > 0 for l in svc["logs"])]
     n_baseline = int(total_s * w["log_rps"]) if weights else 0
     for i in range(n_baseline):
         svc = rng.choices([s for s, _ in weights],
