@@ -9,8 +9,8 @@
  {
   "signature": "cache miss for catalog page; falling back to primary db",
   "service": "catalogservice",
-  "count": 2520,
-  "delta_vs_baseline": "+2520",
+  "count": 1800,
+  "delta_vs_baseline": "+1800",
   "sentiment": "negative"
  },
  {
