@@ -1,0 +1,65 @@
+[
+ {
+  "signature": "webhook confirmation delayed: awaiting delivery receipt past deadline",
+  "service": "billing-api",
+  "count": 1845,
+  "delta_vs_baseline": "+1845",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "webhook post failed: connect: cannot assign requested address",
+  "service": "webhook-dispatcher",
+  "count": 1075,
+  "delta_vs_baseline": "+1075",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "kafka consumer lag rebalancing group <N>",
+  "service": "partner-sync-worker",
+  "count": 66,
+  "delta_vs_baseline": "+2",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "TLS certificate renews in <N> days warning",
+  "service": "billing-api",
+  "count": 58,
+  "delta_vs_baseline": "+2",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "connection pool warmup retries exceeded <N> times",
+  "service": "partner-sync-worker",
+  "count": 50,
+  "delta_vs_baseline": "+1",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "disk usage above <N>% on scratch volume",
+  "service": "partner-sync-worker",
+  "count": 42,
+  "delta_vs_baseline": "+1",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "webhook dispatched",
+  "service": "webhook-dispatcher",
+  "count": 496,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "webhook confirmed",
+  "service": "billing-api",
+  "count": 352,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "batch synced",
+  "service": "partner-sync-worker",
+  "count": 221,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ }
+]

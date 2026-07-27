@@ -1,0 +1,386 @@
+name = "webhook-keepalive-default-flip"
+family = "guilty-decoy"
+seed = 402
+tags = ["guilty-decoy", "dependency-bump", "connection-exhaustion"]
+
+[window]
+start = "2026-07-23T08:00:00Z"
+end   = "2026-07-23T14:00:00Z"
+log_rps = 0.07
+
+[alert]
+service = "billing-api"
+metric = "webhook_confirmation_p99_ms"
+threshold = 4000
+fired_at = "2026-07-23T11:10:00Z"
+summary = "billing-api webhook_confirmation_p99_ms > 4000ms for 5m"
+detail = "p99 latency for partner webhook-delivery confirmations breached 4000ms; partner receipts stuck pending confirmation"
+
+[[patterns_extra]]
+signature = "TLS certificate renews in <N> days warning"
+service = "billing-api"
+count = 58
+delta_vs_baseline = "+2"
+sentiment = "negative"
+[[patterns_extra]]
+signature = "disk usage above <N>% on scratch volume"
+service = "partner-sync-worker"
+count = 42
+delta_vs_baseline = "+1"
+sentiment = "negative"
+[[patterns_extra]]
+signature = "connection pool warmup retries exceeded <N> times"
+service = "partner-sync-worker"
+count = 50
+delta_vs_baseline = "+1"
+sentiment = "negative"
+[[patterns_extra]]
+signature = "kafka consumer lag rebalancing group <N>"
+service = "partner-sync-worker"
+count = 66
+delta_vs_baseline = "+2"
+sentiment = "negative"
+
+[[services]]
+name = "webhook-dispatcher"
+log_weight = 4
+[[services.logs]]
+msg = "webhook dispatched"
+severity = "INFO"
+weight = 5
+extra = { "http.route" = "/webhooks/deliver" }
+[[services.logs]]
+msg = "webhook queued for delivery"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "tcp_new_conns_per_s"
+baseline = 12
+jitter = 0.1
+[[services.metrics]]
+name = "tls_handshake_p95_ms"
+baseline = 18
+jitter = 0.08
+[[services.metrics]]
+name = "webhook_dispatch_p95_ms"
+baseline = 190
+jitter = 0.07
+[[services.metrics]]
+name = "container_memory_rss_mb"
+baseline = 480
+jitter = 0.03
+
+[[services]]
+name = "billing-api"
+log_weight = 3
+[[services.logs]]
+msg = "webhook confirmed"
+severity = "INFO"
+weight = 5
+extra = { "http.route" = "/webhooks/confirm" }
+[[services.logs]]
+msg = "invoice reconciled"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "webhook_confirmation_p99_ms"
+baseline = 300
+jitter = 0.06
+[[services.metrics]]
+name = "webhook_retry_queue_depth"
+baseline = 4
+jitter = 0.1
+
+[[services]]
+name = "partner-sync-worker"
+log_weight = 2
+[[services.logs]]
+msg = "batch synced"
+severity = "INFO"
+weight = 4
+[[services.logs]]
+msg = "checkpoint saved"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "sync_lag_s"
+baseline = 6
+jitter = 0.15
+[[services.metrics]]
+name = "records_processed_per_min"
+baseline = 240
+jitter = 0.1
+[[services.metrics]]
+name = "sync_backlog_depth"
+baseline = 20
+jitter = 0.12
+
+[[trace_flows]]
+name = "POST /webhooks/deliver"
+per_hour = 6
+end = "2026-07-23T10:25:00Z"
+[[trace_flows.spans]]
+service = "webhook-dispatcher"
+name = "POST /webhooks/deliver"
+duration_ms = 90
+[[trace_flows.spans]]
+service = "webhook-dispatcher"
+name = "httpkit.Post"
+duration_ms = 55
+[[trace_flows.spans]]
+service = "billing-api"
+name = "ReceiveWebhookConfirmation"
+duration_ms = 30
+
+[incident]
+onset = "2026-07-23T10:25:00Z"
+first_failing_service = "webhook-dispatcher"
+
+[[incident.metric_faults]]
+service = "webhook-dispatcher"
+metric = "tcp_new_conns_per_s"
+curve = "ramp"
+start = "2026-07-23T10:25:00Z"
+end = "2026-07-23T10:55:00Z"
+to = 480
+[[incident.metric_faults]]
+service = "webhook-dispatcher"
+metric = "tls_handshake_p95_ms"
+curve = "ramp"
+start = "2026-07-23T10:25:00Z"
+end = "2026-07-23T10:55:00Z"
+to = 640
+[[incident.metric_faults]]
+service = "webhook-dispatcher"
+metric = "webhook_dispatch_p95_ms"
+curve = "ramp"
+start = "2026-07-23T10:25:00Z"
+end = "2026-07-23T11:05:00Z"
+to = 4300
+[[incident.metric_faults]]
+service = "billing-api"
+metric = "webhook_confirmation_p99_ms"
+curve = "ramp"
+start = "2026-07-23T10:35:00Z"
+end = "2026-07-23T11:25:00Z"
+to = 6800
+[[incident.metric_faults]]
+service = "billing-api"
+metric = "webhook_retry_queue_depth"
+curve = "ramp"
+start = "2026-07-23T10:35:00Z"
+end = "2026-07-23T11:25:00Z"
+to = 900
+[[incident.metric_faults]]
+service = "partner-sync-worker"
+metric = "sync_backlog_depth"
+curve = "spike"
+start = "2026-07-23T08:15:00Z"
+end = "2026-07-23T08:45:00Z"
+to = 300
+
+[[incident.log_faults]]
+service = "webhook-dispatcher"
+msg = "webhook post failed: connect: cannot assign requested address"
+severity = "ERROR"
+rate_per_min = 5
+start = "2026-07-23T10:25:00Z"
+[[incident.log_faults]]
+service = "billing-api"
+msg = "webhook confirmation delayed: awaiting delivery receipt past deadline"
+severity = "WARN"
+rate_per_min = 9
+start = "2026-07-23T10:35:00Z"
+
+[[incident.trace_exemplars]]
+trace_id = "eeeeeeeeeeeeeeeeeeeeeeeeeeee0001"
+span_id = "w0"
+service = "webhook-dispatcher"
+name = "POST /webhooks/deliver"
+start = "2026-07-23T10:50:10Z"
+duration_ms = 3120
+status = "ERROR"
+error = "webhook post failed"
+[[incident.trace_exemplars]]
+trace_id = "eeeeeeeeeeeeeeeeeeeeeeeeeeee0001"
+span_id = "w1"
+parent_id = "w0"
+service = "webhook-dispatcher"
+name = "httpkit.Post"
+start = "2026-07-23T10:50:10Z"
+duration_ms = 3080
+status = "ERROR"
+error = "connect: cannot assign requested address"
+
+[[incident.trace_exemplars]]
+trace_id = "eeeeeeeeeeeeeeeeeeeeeeeeeeee0002"
+span_id = "w2"
+service = "webhook-dispatcher"
+name = "POST /webhooks/deliver"
+start = "2026-07-23T11:05:40Z"
+duration_ms = 3210
+status = "ERROR"
+error = "webhook post failed"
+[[incident.trace_exemplars]]
+trace_id = "eeeeeeeeeeeeeeeeeeeeeeeeeeee0002"
+span_id = "w3"
+parent_id = "w2"
+service = "webhook-dispatcher"
+name = "httpkit.Post"
+start = "2026-07-23T11:05:40Z"
+duration_ms = 3175
+status = "ERROR"
+error = "connect: cannot assign requested address"
+
+[commits]
+innocent_count = 30
+
+[[commits.authored]]
+id = "early-innocent"
+message = "chore(webhook-dispatcher): tidy retry backoff comment"
+author = "lena.fischer"
+timestamp = "2026-07-23T08:15:00Z"
+files = ["internal/webhooks/retry.go"]
+diff = '''--- a/internal/webhooks/retry.go
++++ b/internal/webhooks/retry.go
+@@ -4,6 +4,6 @@ func backoff(attempt int) time.Duration {
+-	// exponential backoff
++	// exponential backoff, capped at 30s per attempt
+ 	return cap(base(attempt), 30*time.Second)
+ }
+'''
+
+[[commits.authored]]
+id = "worker-bump-decoy"
+message = "chore(partner-sync-worker): bump metrics client lib"
+author = "ahmet.yilmaz"
+timestamp = "2026-07-23T09:00:00Z"
+files = ["go.mod"]
+diff = '''--- a/go.mod
++++ b/go.mod
+@@ -5,7 +5,7 @@ require (
+-	github.com/edgedelta/metrics-client v1.5.0
++	github.com/edgedelta/metrics-client v1.5.1
+ )
+'''
+
+[[commits.authored]]
+id = "buffer-pool-trap"
+message = "perf(webhooks): pool request buffers"
+author = "mei.chen"
+timestamp = "2026-07-23T09:35:00Z"
+files = ["internal/webhooks/dispatch.go"]
+diff = '''--- a/internal/webhooks/dispatch.go
++++ b/internal/webhooks/dispatch.go
+@@ -6,6 +6,8 @@ import (
+ 	"bytes"
+ 	"encoding/json"
++	"sync"
+ )
++var bufPool = sync.Pool{New: func() any { return new(bytes.Buffer) }}
+@@ -30,10 +32,13 @@ func (d *Dispatcher) encodePayload(ev Event) ([]byte, error) {
+-	buf := &bytes.Buffer{}
++	buf := bufPool.Get().(*bytes.Buffer)
++	buf.Reset()
++	defer bufPool.Put(buf)
+ 	if err := json.NewEncoder(buf).Encode(ev); err != nil {
+ 		return nil, err
+ 	}
+ 	return append([]byte(nil), buf.Bytes()...), nil
+ }
+'''
+
+[[commits.authored]]
+id = "culprit"
+message = "chore(webhooks): bump httpkit 1.8.4 -> 2.0.0"
+author = "jan.kowalski"
+timestamp = "2026-07-23T09:55:00Z"
+files = ["go.mod", "internal/webhooks/client.go"]
+diff = '''--- a/go.mod
++++ b/go.mod
+@@ -8,7 +8,7 @@ require (
+-	github.com/edgedelta/httpkit v1.8.4
++	github.com/edgedelta/httpkit v2.0.0
+ )
+--- a/internal/webhooks/client.go
++++ b/internal/webhooks/client.go
+@@ -10,10 +10,11 @@ package webhooks
+ func newDispatchClient() *httpkit.Client {
+-	// httpkit.New wires the package-default transport, which keeps
+-	// idle connections open for reuse across requests.
+-	return httpkit.New()
++	// v2 replaces the package-default constructor with an explicit
++	// Config; any field left unset takes its Go zero value, so a
++	// bare httpkit.Config{} inherits none of v1's transport defaults
++	// (KeepAlive included) unless the caller sets it explicitly.
++	return httpkit.NewClient(httpkit.Config{})
+ }
+'''
+
+[[commits.authored]]
+id = "error-wrap-trap"
+message = "refactor(webhooks): wrap dispatch errors with endpoint context"
+author = "sofia.rossi"
+timestamp = "2026-07-23T10:30:00Z"
+files = ["internal/webhooks/dispatch.go"]
+diff = '''--- a/internal/webhooks/dispatch.go
++++ b/internal/webhooks/dispatch.go
+@@ -55,8 +55,8 @@ func (d *Dispatcher) Post(ctx context.Context, ep Endpoint, body []byte) error {
+ 	resp, err := d.client.Do(req)
+ 	if err != nil {
+-		return fmt.Errorf("webhook post failed: %w", err)
++		return fmt.Errorf("webhook post failed: %w (endpoint=%s)", err, ep.URL)
+ 	}
+ 	defer resp.Body.Close()
+'''
+
+[[commits.authored]]
+id = "billing-decoy"
+message = "style(billing-api): tighten invoice PDF header margin"
+author = "priya.nair"
+timestamp = "2026-07-23T10:35:00Z"
+files = ["internal/billing/invoice_template.go"]
+diff = '''--- a/internal/billing/invoice_template.go
++++ b/internal/billing/invoice_template.go
+@@ -9,1 +9,1 @@
+-const headerMarginPt = 24
++const headerMarginPt = 18
+'''
+
+[[deploys]]
+service = "webhook-dispatcher"
+commit = "early-innocent"
+timestamp = "2026-07-23T08:30:00Z"
+[[deploys]]
+service = "partner-sync-worker"
+commit = "worker-bump-decoy"
+timestamp = "2026-07-23T09:15:00Z"
+[[deploys]]
+service = "webhook-dispatcher"
+commit = "buffer-pool-trap"
+timestamp = "2026-07-23T09:50:00Z"
+[[deploys]]
+service = "webhook-dispatcher"
+commit = "culprit"
+timestamp = "2026-07-23T10:10:00Z"
+[[deploys]]
+service = "webhook-dispatcher"
+commit = "error-wrap-trap"
+timestamp = "2026-07-23T10:45:00Z"
+[[deploys]]
+service = "billing-api"
+commit = "billing-decoy"
+timestamp = "2026-07-23T11:00:00Z"
+
+[deploys_auto]
+count = 20
+services = ["webhook-dispatcher", "billing-api", "partner-sync-worker"]
+pre_onset_min = 7
+
+[ground_truth]
+culprit_id = "culprit"
+first_failing_service = "webhook-dispatcher"
+blast_radius = ["billing-api"]
+remediation = "rollback"
+decoy_ids = ["buffer-pool-trap", "error-wrap-trap", "billing-decoy", "worker-bump-decoy"]
+notes = "GUILTY-DECOY (adversarial, dependency-bump culprit). Culprit is 'chore(webhooks): bump httpkit 1.8.4 -> 2.0.0', authored 09:55 and deployed to webhook-dispatcher at 2026-07-23T10:10Z. The diff has two parts, and the second is the actual fault: go.mod bumps httpkit to v2, and the required call-site adaptation in internal/webhooks/client.go swaps 'httpkit.New()' (v1's package-default constructor, which kept idle connections open for reuse) for 'httpkit.NewClient(httpkit.Config{})' (v2's explicit-Config constructor). The bug is an absence, not a positive setting: Config{} is a zero-value struct, so every unset field -- including KeepAlive -- silently takes Go's zero value (disabled) instead of inheriting v1's pooling defaults. The diff's own comment states this plainly ('a bare httpkit.Config{} inherits none of v1's transport defaults... unless the caller sets it explicitly'), but no field name is asserted to be the cause anywhere in commit text -- proving it requires recognizing that a struct literal with no fields set means no keep-alive, which then explains every downstream signal. With pooled connections gone, every webhook POST now opens a fresh TCP+TLS handshake instead of reusing one; tcp_new_conns_per_s ramps 12 -> 480 from onset (2026-07-23T10:25Z, 15 minutes after the deploy, as partner webhook volume climbs through the morning) to 2026-07-23T10:55Z, tls_handshake_p95_ms ramps 18ms -> 640ms on the same schedule (the handshake-per-request tax), and webhook_dispatch_p95_ms ramps 190ms -> 4300ms by 11:05Z as the accumulating connect/handshake overhead compounds into dispatch latency. Once the OS runs out of ephemeral source ports for the churn, new connect() calls fail outright: webhook-dispatcher logs 'webhook post failed: connect: cannot assign requested address' (the real errno for ephemeral-port exhaustion, EADDRNOTAVAIL -- no magic constant, no digits, nothing quoting the diff) at 5/min from onset. billing-api is blast radius, not the cause: it never talks to httpkit and never deploys the bad client, but every delivery it is waiting on now either times out or never arrives, so its own webhook_confirmation_p99_ms (the alerting metric) and webhook_retry_queue_depth ramp starting 10:35Z -- ten minutes after webhook-dispatcher's own onset -- crossing the 4000ms alert threshold around 11:03Z and firing at 11:10Z, and its 'webhook confirmation delayed: awaiting delivery receipt past deadline' pattern (9/min from 10:35Z) ends up LOUDER over the window than webhook-dispatcher's own connect-failure pattern (5/min from 10:25Z) -- the victim outshouts the actual failing service, exactly the trap a naive 'loudest pattern wins' heuristic falls for. Two mechanism-traps deploy to webhook-dispatcher, the causally-relevant service, and both read as maximally guilty yet are exonerable purely by code semantics: (1) buffer-pool-trap ('perf(webhooks): pool request buffers', deployed 2026-07-23T09:50Z, PRE-onset) adds a sync.Pool for the byte buffer used to encode outbound JSON payloads -- a memory-shaped change that touches encodePayload, not the HTTP client or transport, and cannot open or close a socket. Its mechanism is falsified in the data itself: container_memory_rss_mb stays flat (480MB +/-3% jitter) for the entire window, including through the incident, which is exactly what a buffer-pool change touching only allocation reuse should look like, and rules out any memory-pressure-driven explanation. (2) error-wrap-trap ('refactor(webhooks): wrap dispatch errors with endpoint context', deployed 2026-07-23T10:30Z, five minutes after onset) touches the exact function (Post) whose error becomes the incident's own error log line -- maximally suspicious surface match -- but the diff shows the 'webhook post failed: %w' wrapping already existed before this commit; the change only appends '(endpoint=%s)' onto an already-wrapped error for observability, and does not touch d.client, the transport, or connection handling at all. It also deploys five minutes AFTER tcp_new_conns_per_s had already begun ramping at onset (10:25Z) and after the connect-failure logs had already been firing for 5 minutes, so the underlying failure demonstrably predates this commit's deploy. billing-decoy (billing-api, 2026-07-23T11:00Z, 10 minutes before fired_at) is a CSS/PDF-margin-style constant tweak on an unrelated invoice template file -- classic innocent-deploy-near-alert bait on the alerting service itself. worker-bump-decoy (partner-sync-worker, 09:15Z) is an unrelated go.mod patch bump on the uninvolved background service. The 20 deploys_auto entries (7+ pre-onset, cycling across all three services) are routine dependency/docs/CI noise touching none of go.mod's httpkit line, client.go, or dispatch.go. patterns_extra (TLS renewal, disk usage, pool warmup retries, kafka rebalancing; counts 42-66) are stale pre-existing background chatter on billing-api/partner-sync-worker, well below both incident patterns. partner-sync-worker's sync_backlog_depth spike (20 -> 300, 08:15-08:45Z) fully self-heals nearly two hours before onset and is unrelated noise on the uninvolved background service. first_failing_service is webhook-dispatcher (its own connection/handshake/dispatch metrics and connect-failure logs move first, at onset); billing-api is blast radius, waiting on deliveries that never arrive. Remediation: roll back webhook-dispatcher to the pre-2.0.0 httpkit client (or, forward-fix, construct httpkit.Config with KeepAlive explicitly enabled to match v1 defaults)."
