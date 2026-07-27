@@ -1,0 +1,32 @@
+# root-cause-bench — adversarial-tier leaderboard run: 12 adversarial scenarios x
+# 1 models x 3 attempts. Merged with the frozen v2 base-tier job dirs via
+# scripts/gen_results.py (same conditions: terminus-2, 1800s timeout).
+# fable-5 runs separately at low concurrency (rate limits) (this is the fable leg).
+# Usage: set -a && source .env && set +a && harbor run -c configs/leaderboard-adversarial-fable.yaml -y
+jobs_dir: jobs
+n_attempts: 3
+n_concurrent_trials: 2
+quiet: false
+
+environment:
+  type: docker
+
+agents:
+  - name: terminus-2
+    model_name: openrouter/anthropic/claude-fable-5
+    override_timeout_sec: 1800
+datasets:
+  - path: datasets/rootcausebench
+    task_names:
+      - shared-config-pool-drain
+      - catalog-cache-key-cardinality
+      - notification-buffer-oom-silent
+      - payment-refund-poison-batch
+      - orders-index-migration-drift
+      - webhook-keepalive-default-flip
+      - orders-fanout-nplusone
+      - ingest-partition-skew
+      - report-scheduler-lock-removal
+      - session-cache-clockskew
+      - config-fanout-sampled-traces
+      - ingester-flush-interval-oom
