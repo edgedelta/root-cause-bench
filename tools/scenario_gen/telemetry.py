@@ -121,9 +121,18 @@ def build_traces(spec: dict) -> list[dict]:
 
 def build_patterns(spec: dict, logs: list[dict]) -> list[dict]:
     pats = []
+    seen = set()
     for lf in spec["incident"]["log_faults"]:
         if not lf["in_patterns"]:
             continue
+        key = (lf["msg"], lf["service"])
+        if key in seen:
+            # a precursor stage and an onset stage of the same signature
+            # (same msg, same service) merge into a single pattern entry;
+            # the count below is already the file-wide total so it's correct
+            # for the merged signature without re-emitting a duplicate row.
+            continue
+        seen.add(key)
         sig = re.sub(r"\d+", "<N>", lf["msg"])
         count = sum(1 for r in logs
                     if r["msg"] == lf["msg"] and r["service"] == lf["service"])

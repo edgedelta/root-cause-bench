@@ -82,6 +82,43 @@ def test_patterns_fault_signature_numbers_collapsed(tmp_path):
     assert any(p["sentiment"] == "neutral" for p in pats)
 
 
+def test_patterns_dedupes_repeated_fault_signature(tmp_path):
+    # a precursor stage and an onset stage of the same signature (same msg,
+    # same service; different windows/rates) must collapse to ONE pattern
+    # entry whose count is the file-wide total across both faults.
+    dup = FAULTY.replace(
+        '''[[incident.log_faults]]
+service = "svc-a"
+msg = "query took 1450ms: timeout"
+severity = "ERROR"
+rate_per_min = 3
+''',
+        '''[[incident.log_faults]]
+service = "svc-a"
+msg = "query took 1450ms: timeout"
+severity = "WARN"
+rate_per_min = 1
+start = "2026-07-20T06:00:00Z"
+end = "2026-07-20T09:30:00Z"
+[[incident.log_faults]]
+service = "svc-a"
+msg = "query took 1450ms: timeout"
+severity = "ERROR"
+rate_per_min = 3
+''',
+    )
+    s = load_spec(write(tmp_path, dup))
+    logs = build_logs(s)
+    pats = build_patterns(s, logs)
+    matches = [p for p in pats if p["signature"] == "query took <N>ms: timeout"
+               and p["service"] == "svc-a"]
+    assert len(matches) == 1
+    total = sum(1 for r in logs if r["msg"] == "query took 1450ms: timeout"
+                and r["service"] == "svc-a")
+    assert matches[0]["count"] == total
+    assert total == 300                    # 210 precursor rows + 90 onset rows
+
+
 def test_in_patterns_false_suppresses_fault_from_patterns_not_logs(tmp_path):
     suppressed = FAULTY.replace(
         'msg = "query took 1450ms: timeout"',
