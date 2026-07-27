@@ -8416,7 +8416,7 @@
   "start": "2026-07-26T13:40:00Z",
   "duration_ms": 41200,
   "status": "ERROR",
-  "error": "poll interval exceeded while draining partition 7 backlog; rebalance triggered"
+  "error": "poll interval exceeded while draining backlog; rebalance triggered"
  },
  {
   "trace_id": "1111111111111111111111111111a002",
@@ -8447,7 +8447,7 @@
   "start": "2026-07-26T13:47:00Z",
   "duration_ms": 44500,
   "status": "ERROR",
-  "error": "poll interval exceeded while draining partition 7 backlog; rebalance triggered"
+  "error": "poll interval exceeded while draining backlog; rebalance triggered"
  },
  {
   "trace_id": "1111111111111111111111111111a003",
