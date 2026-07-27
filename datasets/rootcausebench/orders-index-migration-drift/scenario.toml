@@ -1,0 +1,459 @@
+name = "orders-index-migration-drift"
+family = "guilty-decoy"
+seed = 302
+tags = ["guilty-decoy", "delayed-onset", "database"]
+
+[window]
+start = "2026-07-23T06:00:00Z"
+end   = "2026-07-25T02:00:00Z"      # 44 hours
+log_rps = 0.08
+
+[alert]
+service = "orders-api"
+metric = "orders_latency_p99_ms"
+threshold = 1200
+fired_at = "2026-07-25T01:10:00Z"
+summary = "orders-api orders_latency_p99_ms > 1200ms for 10m"
+detail = "order listing p99 latency breached 1200ms; order-history page timing out for tenants with large order histories"
+
+[[patterns_extra]]
+signature = "connection pool warmup retries exceeded <N> times"
+service = "inventory-service"
+count = 48
+delta_vs_baseline = "+1"
+sentiment = "negative"
+[[patterns_extra]]
+signature = "TLS certificate renews in <N> days warning"
+service = "frontend"
+count = 55
+delta_vs_baseline = "+2"
+sentiment = "negative"
+[[patterns_extra]]
+signature = "kafka consumer lag rebalancing group <N>"
+service = "inventory-service"
+count = 70
+delta_vs_baseline = "+2"
+sentiment = "negative"
+[[patterns_extra]]
+signature = "disk usage above <N>% on scratch volume"
+service = "orders-api"
+count = 40
+delta_vs_baseline = "+1"
+sentiment = "negative"
+
+[[services]]
+name = "orders-api"
+log_weight = 4
+[[services.logs]]
+msg = "order listed"
+severity = "INFO"
+weight = 5
+extra = { "http.route" = "/api/orders" }
+[[services.logs]]
+msg = "order created"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "orders_latency_p99_ms"
+baseline = 220
+jitter = 0.06
+[[services.metrics]]
+name = "db_rows_examined"
+baseline = 80
+jitter = 0.1
+[[services.metrics]]
+name = "order_create_rate"
+baseline = 35
+jitter = 0.15
+
+[[services]]
+name = "frontend"
+log_weight = 4
+[[services.logs]]
+msg = "order-history page rendered"
+severity = "INFO"
+weight = 5
+extra = { "http.route" = "/order-history" }
+[[services.logs]]
+msg = "product search executed"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "order_history_timeout_ratio"
+baseline = 0.001
+jitter = 0.1
+[[services.metrics]]
+name = "page_load_p95_ms"
+baseline = 310
+jitter = 0.07
+
+[[services]]
+name = "inventory-service"
+log_weight = 2
+[[services.logs]]
+msg = "inventory reconciled"
+severity = "INFO"
+weight = 4
+[[services.logs]]
+msg = "stock level updated"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "warehouse_queue_depth"
+baseline = 12
+jitter = 0.2
+[[services.metrics]]
+name = "inventory_sync_lag_s"
+baseline = 5
+jitter = 0.15
+
+[[trace_flows]]
+name = "GET /order-history"
+per_hour = 3
+end = "2026-07-24T23:30:00Z"
+[[trace_flows.spans]]
+service = "frontend"
+name = "GET /order-history"
+duration_ms = 260
+[[trace_flows.spans]]
+service = "orders-api"
+name = "ListOrders"
+duration_ms = 210
+[[trace_flows.spans]]
+service = "orders-api"
+name = "db.query orders"
+duration_ms = 140
+
+[incident]
+onset = "2026-07-24T23:30:00Z"
+first_failing_service = "orders-api"
+
+[[incident.metric_faults]]
+service = "orders-api"
+metric = "db_rows_examined"
+curve = "ramp"
+start = "2026-07-23T10:05:00Z"
+to = 2100000
+end = "2026-07-25T01:30:00Z"
+[[incident.metric_faults]]
+service = "orders-api"
+metric = "orders_latency_p99_ms"
+curve = "ramp"
+start = "2026-07-24T23:30:00Z"
+to = 1400
+end = "2026-07-25T01:05:00Z"
+[[incident.metric_faults]]
+service = "frontend"
+metric = "order_history_timeout_ratio"
+curve = "ramp"
+start = "2026-07-24T23:35:00Z"
+to = 0.42
+end = "2026-07-25T01:20:00Z"
+[[incident.metric_faults]]
+service = "inventory-service"
+metric = "warehouse_queue_depth"
+curve = "spike"
+to = 340
+start = "2026-07-23T18:00:00Z"
+end = "2026-07-23T20:00:00Z"
+
+[[incident.log_faults]]
+service = "orders-api"
+msg = "order listing latency creeping above baseline as result set grows"
+severity = "WARN"
+rate_per_min = 0.2
+start = "2026-07-24T06:00:00Z"
+end = "2026-07-24T23:30:00Z"
+[[incident.log_faults]]
+service = "orders-api"
+msg = "order listing query scanning far more rows than expected; latency degraded"
+severity = "WARN"
+rate_per_min = 4
+start = "2026-07-24T23:30:00Z"
+[[incident.log_faults]]
+service = "frontend"
+msg = "order-history page timeout: upstream orders-api exceeded deadline"
+severity = "ERROR"
+rate_per_min = 6
+start = "2026-07-24T23:40:00Z"
+
+[[incident.trace_exemplars]]
+trace_id = "ddddddddddddddddddddddddddddd001"
+span_id = "d0"
+service = "frontend"
+name = "GET /order-history"
+start = "2026-07-25T01:15:00Z"
+duration_ms = 1620
+status = "ERROR"
+error = "upstream orders-api deadline exceeded"
+[[incident.trace_exemplars]]
+trace_id = "ddddddddddddddddddddddddddddd001"
+span_id = "d1"
+parent_id = "d0"
+service = "orders-api"
+name = "ListOrders"
+start = "2026-07-25T01:15:00Z"
+duration_ms = 1540
+status = "ERROR"
+error = "query exceeded latency budget"
+[[incident.trace_exemplars]]
+trace_id = "ddddddddddddddddddddddddddddd001"
+span_id = "d2"
+parent_id = "d1"
+service = "orders-api"
+name = "db.query orders"
+start = "2026-07-25T01:15:00Z"
+duration_ms = 1480
+status = "ERROR"
+error = "scan exceeded row budget"
+
+[[incident.trace_exemplars]]
+trace_id = "ddddddddddddddddddddddddddddd002"
+span_id = "e0"
+service = "frontend"
+name = "GET /order-history"
+start = "2026-07-25T01:25:00Z"
+duration_ms = 1610
+status = "ERROR"
+error = "upstream orders-api deadline exceeded"
+[[incident.trace_exemplars]]
+trace_id = "ddddddddddddddddddddddddddddd002"
+span_id = "e1"
+parent_id = "e0"
+service = "orders-api"
+name = "ListOrders"
+start = "2026-07-25T01:25:00Z"
+duration_ms = 1530
+status = "ERROR"
+error = "query exceeded latency budget"
+[[incident.trace_exemplars]]
+trace_id = "ddddddddddddddddddddddddddddd002"
+span_id = "e2"
+parent_id = "e1"
+service = "orders-api"
+name = "db.query orders"
+start = "2026-07-25T01:25:00Z"
+duration_ms = 1470
+status = "ERROR"
+error = "scan exceeded row budget"
+
+[commits]
+innocent_count = 150
+
+[[commits.authored]]
+id = "early-innocent"
+message = "chore(frontend): refresh order-history empty-state illustration"
+author = "mira.oyelaran"
+timestamp = "2026-07-23T06:10:00Z"
+files = ["web/assets/empty-state.svg"]
+diff = '''--- a/web/assets/empty-state.svg
++++ b/web/assets/empty-state.svg
+@@ -2,2 +2,2 @@
+-<path fill="#d8dce1" d="M12 4h24v24H12z"/>
++<path fill="#dde1e6" d="M12 4h24v24H12z"/>
+'''
+
+[[commits.authored]]
+id = "culprit"
+message = "chore(db): consolidate orders table indexes"
+author = "devon.marsh"
+timestamp = "2026-07-23T09:55:00Z"
+files = ["migrations/0047_consolidate_orders_indexes.up.sql", "migrations/0047_consolidate_orders_indexes.down.sql"]
+diff = '''--- /dev/null
++++ b/migrations/0047_consolidate_orders_indexes.up.sql
+@@ -0,0 +1,5 @@
++-- Consolidate the legacy per-tenant listing index and the ops status
++-- index into a single composite so we maintain one index instead of two.
++DROP INDEX IF EXISTS idx_orders_tenant_created;
++CREATE INDEX idx_orders_status_created
++    ON orders (status, created_at);
+--- /dev/null
++++ b/migrations/0047_consolidate_orders_indexes.down.sql
+@@ -0,0 +1,4 @@
++DROP INDEX IF EXISTS idx_orders_status_created;
++CREATE INDEX idx_orders_tenant_created
++    ON orders (tenant_id, created_at);
+'''
+
+[[commits.authored]]
+id = "pagination-decoy"
+message = "feat(orders): add cursor pagination for admin export"
+author = "greta.holm"
+timestamp = "2026-07-24T08:50:00Z"
+files = ["services/orders-api/export.go"]
+diff = '''--- a/services/orders-api/export.go
++++ b/services/orders-api/export.go
+@@ -20,6 +20,16 @@ func (r *Repo) ExportOrders(ctx context.Context, cursor string) ([]Order, string, error) {
+-	return r.legacyExport(ctx, cursor)
++	rows, err := r.db.QueryContext(ctx, exportOrdersSQL, cursor)
++	if err != nil {
++		return nil, "", err
++	}
++	defer rows.Close()
++	var out []Order
++	for rows.Next() {
++		var o Order
++		if err := rows.Scan(&o.ID, &o.TenantID, &o.Status, &o.CreatedAt); err != nil {
++			return nil, "", err
++		}
++		out = append(out, o)
++	}
++	next := nextCursor(out)
++	return out, next, rows.Err()
+ }
+'''
+
+[[commits.authored]]
+id = "inventory-bump-decoy"
+message = "chore(inventory-service): bump metrics client lib"
+author = "priya.nair"
+timestamp = "2026-07-24T04:40:00Z"
+files = ["go.mod"]
+diff = '''--- a/go.mod
++++ b/go.mod
+@@ -4,7 +4,7 @@ require (
+-	github.com/edgedelta/metrics-client v1.4.2
++	github.com/edgedelta/metrics-client v1.4.3
+ )
+'''
+
+[[commits.authored]]
+id = "rows-close-trap"
+message = "fix(orders): close rows iterator on early return"
+author = "theo.nakamura"
+timestamp = "2026-07-24T19:40:00Z"
+files = ["services/orders-api/repo.go"]
+diff = '''--- a/services/orders-api/repo.go
++++ b/services/orders-api/repo.go
+@@ -18,9 +18,10 @@ func (r *Repo) ListOrders(ctx context.Context, tenantID string, since time.Time) ([]Order, error) {
+ 	rows, err := r.db.QueryContext(ctx, listOrdersSQL, tenantID, since)
+ 	if err != nil {
+ 		return nil, err
+ 	}
++	defer rows.Close()
+ 	var out []Order
+ 	for rows.Next() {
+ 		var o Order
+ 		if err := rows.Scan(&o.ID, &o.TenantID, &o.Status, &o.CreatedAt); err != nil {
+-			return nil, err
++			return nil, err // rows is now closed via the defer above, even here
+ 		}
+ 		out = append(out, o)
+ 	}
+'''
+
+[[commits.authored]]
+id = "query-builder-trap"
+message = "perf(orders): rewrite listing query with builder"
+author = "sana.iqbal"
+timestamp = "2026-07-24T22:20:00Z"
+files = ["services/orders-api/repo.go"]
+diff = '''--- a/services/orders-api/repo.go
++++ b/services/orders-api/repo.go
+@@ -6,11 +6,19 @@ import (
+-const listOrdersSQL = `SELECT id, tenant_id, status, created_at
+-	FROM orders
+-	WHERE tenant_id = $1 AND created_at > $2
+-	ORDER BY created_at DESC
+-	LIMIT 50`
++// listOrdersBuilder renders to the exact same statement the hand-written
++// constant above used to produce; ToSql() is deterministic for a fixed
++// chain, so this is a representation change only.
++var listOrdersBuilder = sq.Select("id", "tenant_id", "status", "created_at").
++	From("orders").
++	Where(sq.Eq{"tenant_id": "$1"}).
++	Where(sq.Gt{"created_at": "$2"}).
++	OrderBy("created_at DESC").
++	Limit(50)
++
++func renderListOrdersSQL() (string, error) {
++	// sql == "SELECT id, tenant_id, status, created_at FROM orders
++	//         WHERE tenant_id = $1 AND created_at > $2
++	//         ORDER BY created_at DESC LIMIT 50"
++	sql, _, err := listOrdersBuilder.ToSql()
++	return sql, err
++}
+@@ -21,7 +29,11 @@ func (r *Repo) ListOrders(ctx context.Context, tenantID string, since time.Time) ([]Order, error) {
+-	rows, err := r.db.QueryContext(ctx, listOrdersSQL, tenantID, since)
++	sqlStr, err := renderListOrdersSQL()
++	if err != nil {
++		return nil, err
++	}
++	rows, err := r.db.QueryContext(ctx, sqlStr, tenantID, since)
+ 	if err != nil {
+ 		return nil, err
+ 	}
+'''
+
+[[commits.authored]]
+id = "css-decoy"
+message = "style(frontend): tighten order-history table row spacing"
+author = "sofia.rossi"
+timestamp = "2026-07-24T22:55:00Z"
+files = ["web/styles/order-history.css"]
+diff = '''--- a/web/styles/order-history.css
++++ b/web/styles/order-history.css
+@@ -9,2 +9,2 @@
+-.order-row { padding: 10px; }
++.order-row { padding: 7px; }
+'''
+
+[[commits.authored]]
+id = "json-lib-bump-decoy"
+message = "chore(orders-api): bump json validation lib v2.3.0->v2.3.1"
+author = "ahmet.yilmaz"
+timestamp = "2026-07-25T00:50:00Z"
+files = ["go.mod"]
+diff = '''--- a/go.mod
++++ b/go.mod
+@@ -11,7 +11,7 @@ require (
+-	github.com/edgedelta/jsonvalidate v2.3.0
++	github.com/edgedelta/jsonvalidate v2.3.1
+ )
+'''
+
+[[deploys]]
+service = "frontend"
+commit = "early-innocent"
+timestamp = "2026-07-23T06:30:00Z"
+[[deploys]]
+service = "orders-api"
+commit = "culprit"
+timestamp = "2026-07-23T10:00:00Z"
+[[deploys]]
+service = "inventory-service"
+commit = "inventory-bump-decoy"
+timestamp = "2026-07-24T05:10:00Z"
+[[deploys]]
+service = "orders-api"
+commit = "pagination-decoy"
+timestamp = "2026-07-24T09:15:00Z"
+[[deploys]]
+service = "orders-api"
+commit = "rows-close-trap"
+timestamp = "2026-07-24T20:00:00Z"
+[[deploys]]
+service = "orders-api"
+commit = "query-builder-trap"
+timestamp = "2026-07-24T22:40:00Z"
+[[deploys]]
+service = "frontend"
+commit = "css-decoy"
+timestamp = "2026-07-24T23:10:00Z"
+[[deploys]]
+service = "orders-api"
+commit = "json-lib-bump-decoy"
+timestamp = "2026-07-25T01:05:00Z"
+
+[deploys_auto]
+count = 22
+services = ["orders-api", "frontend", "inventory-service"]
+pre_onset_min = 8
+
+[ground_truth]
+culprit_id = "culprit"
+first_failing_service = "orders-api"
+blast_radius = ["frontend"]
+remediation = "rollback"
+decoy_ids = ["rows-close-trap", "query-builder-trap", "pagination-decoy", "css-decoy", "json-lib-bump-decoy", "inventory-bump-decoy"]
+notes = "GUILTY-DECOY (adversarial, delayed onset ~40h). Culprit is the migration commit 'chore(db): consolidate orders table indexes', authored and deployed to orders-api at 2026-07-23T10:00Z. Its diff drops idx_orders_tenant_created (tenant_id, created_at) — the covering index for the hot order-listing query's WHERE tenant_id = $1 AND created_at > $2 ORDER BY created_at DESC predicate — and replaces it with idx_orders_status_created (status, created_at), a composite that does not lead with tenant_id and so cannot satisfy that predicate order; the planner falls back to scanning far more rows per query as the orders table grows. db_rows_examined ramps from 80 starting at 2026-07-23T10:05Z (5 minutes after the migration deploy) all the way to a ~2.1M plateau by 2026-07-25T01:30Z — the ramp begins at the deploy itself, ~39h before the alert. orders_latency_p99_ms, by contrast, stays under threshold for most of that window because per-query scan cost only becomes latency-dominant once the table has grown enough; it is flat until 2026-07-24T23:30Z (onset) and then ramps quickly from 220ms to a ~1400ms plateau by 2026-07-25T01:05Z, crossing the 1200ms alert threshold about 10 minutes before fired_at (2026-07-25T01:10Z). A low-rate WARN ('order listing latency creeping above baseline as result set grows', 0.2/min) is present in orders-api logs from 2026-07-24T06:00Z onward — many hours before either trap below deploys — establishing in the data itself that the degradation was already underway before those commits shipped. Two mechanism-traps are deployed pre-onset to orders-api, the causally-relevant service, and both read as maximally guilty (same file, same hot function, landed in the hours right before the alert) yet are exonerable purely by code semantics: (1) query-builder-trap ('perf(orders): rewrite listing query with builder', deployed 2026-07-24T22:40Z) replaces the raw SQL constant with a squirrel query builder — but the builder's Select/From/Where/Where/OrderBy/Limit chain renders byte-identical SQL to the original constant (same columns, same WHERE clause order — tenant_id equality then created_at range — same ORDER BY/LIMIT); it is a semantics-preserving representation change that touches no index, no predicate, and no column order, so it cannot have caused or worsened the scan-cost regression. (2) rows-close-trap ('fix(orders): close rows iterator on early return', deployed 2026-07-24T20:00Z) adds a defer rows.Close() so the Scan-error early-return path releases its connection instead of leaking it — a resource-releasing change, which is the wrong direction for a scan-cost/latency regression: releasing a resource sooner cannot make a query examine more rows or take longer. Neither trap touches the WHERE clause, the index used, or the column order that the migration broke. pagination-decoy ('feat(orders): add cursor pagination for admin export', deployed 2026-07-24T09:15Z, same service) touches a completely different endpoint (ExportOrders, admin CSV/cursor export) and file (export.go); it never calls ListOrders or listOrdersSQL and cannot affect the tenant-listing query path. css-decoy (frontend, 2026-07-24T23:10Z, 20 minutes pre-onset) is a pure CSS padding change with no backend effect — classic innocent-deploy-near-onset bait. json-lib-bump-decoy (orders-api, 2026-07-25T00:50Z authored / 01:05Z deployed, 5 minutes before fired_at) is a changelog-free go.mod patch-version bump of a JSON validation library — the classic innocent-deploy-near-alert bait, deployed closer to the alert than the actual culprit. inventory-bump-decoy is an unrelated go.mod bump on an unrelated background service. The 22 deploys_auto entries (8+ pre-onset, cyclic across orders-api/frontend/inventory-service) are routine dependency/docs/CI/test noise touching none of the migration, the repo.go hot path, or the index. Patterns are victim-first: frontend's 'order-history page timeout: upstream orders-api exceeded deadline' ERROR pattern (6/min from 2026-07-24T23:40Z, count 840 over the window) outnumbers orders-api's own incident WARN pattern ('order listing query scanning far more rows than expected...', 4/min from onset, count 600) and its early precursor WARN (0.2/min, count 210); four stale patterns_extra (pool warmup retries, TLS renewal, kafka rebalancing, disk usage; counts 40-70) on inventory-service/frontend/orders-api are unrelated pre-existing background chatter, well below both incident patterns. An inventory-service warehouse_queue_depth spike (baseline 12 -> 340, 2026-07-23T18:00-20:00Z) fully self-heals more than a day before onset and is unrelated noise on an uninvolved service. first_failing_service is orders-api (its own query path degrades first, both in db_rows_examined and orders_latency_p99_ms); frontend is blast radius (its order-history page times out waiting on the slow upstream query). Remediation: roll back the migration — drop idx_orders_status_created and recreate idx_orders_tenant_created (tenant_id, created_at)."

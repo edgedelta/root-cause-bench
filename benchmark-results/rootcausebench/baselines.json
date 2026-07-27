@@ -2,11 +2,11 @@
   "summary": {
     "latest-commit": {
       "passed": 0,
-      "total": 28,
+      "total": 29,
       "pass_rate_pct": 0.0,
       "decoy_hits": 0,
       "by_tier": {
-        "adversarial": "0/4",
+        "adversarial": "0/5",
         "easy": "0/3",
         "hard": "0/12",
         "medium": "0/9"
@@ -14,11 +14,11 @@
     },
     "always-none": {
       "passed": 8,
-      "total": 28,
-      "pass_rate_pct": 28.6,
+      "total": 29,
+      "pass_rate_pct": 27.6,
       "decoy_hits": 0,
       "by_tier": {
-        "adversarial": "1/4",
+        "adversarial": "1/5",
         "easy": "0/3",
         "hard": "4/12",
         "medium": "3/9"
@@ -26,11 +26,11 @@
     },
     "latest-deploy": {
       "passed": 1,
-      "total": 28,
-      "pass_rate_pct": 3.6,
-      "decoy_hits": 23,
+      "total": 29,
+      "pass_rate_pct": 3.4,
+      "decoy_hits": 24,
       "by_tier": {
-        "adversarial": "0/4",
+        "adversarial": "0/5",
         "easy": "1/3",
         "hard": "0/12",
         "medium": "0/9"
@@ -38,11 +38,11 @@
     },
     "earliest-deploy": {
       "passed": 6,
-      "total": 28,
-      "pass_rate_pct": 21.4,
+      "total": 29,
+      "pass_rate_pct": 20.7,
       "decoy_hits": 11,
       "by_tier": {
-        "adversarial": "0/4",
+        "adversarial": "0/5",
         "easy": "1/3",
         "hard": "4/12",
         "medium": "1/9"
@@ -50,11 +50,11 @@
     },
     "alert-service-deploy": {
       "passed": 5,
-      "total": 28,
-      "pass_rate_pct": 17.9,
-      "decoy_hits": 19,
+      "total": 29,
+      "pass_rate_pct": 17.2,
+      "decoy_hits": 20,
       "by_tier": {
-        "adversarial": "0/4",
+        "adversarial": "0/5",
         "easy": "2/3",
         "hard": "3/12",
         "medium": "0/9"
@@ -62,11 +62,11 @@
     },
     "scripted-rca": {
       "passed": 7,
-      "total": 28,
-      "pass_rate_pct": 25.0,
-      "decoy_hits": 20,
+      "total": 29,
+      "pass_rate_pct": 24.1,
+      "decoy_hits": 21,
       "by_tier": {
-        "adversarial": "0/4",
+        "adversarial": "0/5",
         "easy": "3/3",
         "hard": "4/12",
         "medium": "0/9"
@@ -199,6 +199,13 @@
         "answered": "6db30ea6a5a4",
         "hit_decoy": false,
         "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "orders-index-migration-drift": {
+        "passed": false,
+        "answered": "eb7b35e98d07",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
         "no_code_cause": false
       },
       "payment-nil-deref-panic": {
@@ -399,6 +406,13 @@
         "difficulty": "hard",
         "no_code_cause": false
       },
+      "orders-index-migration-drift": {
+        "passed": false,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
       "payment-nil-deref-panic": {
         "passed": false,
         "answered": "none",
@@ -595,6 +609,13 @@
         "answered": "fdbbb0420c4b",
         "hit_decoy": true,
         "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "orders-index-migration-drift": {
+        "passed": false,
+        "answered": "d7eeecc1ea04",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
         "no_code_cause": false
       },
       "payment-nil-deref-panic": {
@@ -795,6 +816,13 @@
         "difficulty": "hard",
         "no_code_cause": false
       },
+      "orders-index-migration-drift": {
+        "passed": false,
+        "answered": "d84b7d10dacc",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
       "payment-nil-deref-panic": {
         "passed": false,
         "answered": "b3318c4dc309",
@@ -993,6 +1021,13 @@
         "difficulty": "hard",
         "no_code_cause": false
       },
+      "orders-index-migration-drift": {
+        "passed": false,
+        "answered": "d7eeecc1ea04",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
       "payment-nil-deref-panic": {
         "passed": true,
         "answered": "5642d6b17f39",
@@ -1189,6 +1224,13 @@
         "answered": "48ad9c8a5a8c",
         "hit_decoy": false,
         "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "orders-index-migration-drift": {
+        "passed": false,
+        "answered": "00dec36918a5",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
         "no_code_cause": false
       },
       "payment-nil-deref-panic": {

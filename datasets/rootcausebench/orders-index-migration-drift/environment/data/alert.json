@@ -1,0 +1,8 @@
+{
+ "service": "orders-api",
+ "metric": "orders_latency_p99_ms",
+ "threshold": 1200,
+ "fired_at": "2026-07-25T01:10:00Z",
+ "summary": "orders-api orders_latency_p99_ms > 1200ms for 10m",
+ "detail": "order listing p99 latency breached 1200ms; order-history page timing out for tenants with large order histories"
+}

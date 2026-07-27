@@ -1,0 +1,3786 @@
+[
+ {
+  "trace_id": "1c8606d48793503934054bb24bd03a33",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T06:00:00Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "1c8606d48793503934054bb24bd03a33",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T06:00:00Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "1c8606d48793503934054bb24bd03a33",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T06:00:00Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "deb60966cab1099d0a47f9a9fb5de6c3",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T06:20:04Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "deb60966cab1099d0a47f9a9fb5de6c3",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T06:20:04Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "deb60966cab1099d0a47f9a9fb5de6c3",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T06:20:04Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "7b643d67052f99747b7aececfb634349",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T06:40:09Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "7b643d67052f99747b7aececfb634349",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T06:40:09Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "7b643d67052f99747b7aececfb634349",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T06:40:09Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "786c65b2ef40526789b56b68d275187c",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T07:00:14Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "786c65b2ef40526789b56b68d275187c",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T07:00:14Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "786c65b2ef40526789b56b68d275187c",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T07:00:14Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e5604a78badb878cbbebe0a367706055",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T07:20:19Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e5604a78badb878cbbebe0a367706055",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T07:20:19Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e5604a78badb878cbbebe0a367706055",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T07:20:19Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6f971ceafa7a3003d215bd860f4efc1e",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T07:40:24Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6f971ceafa7a3003d215bd860f4efc1e",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T07:40:24Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6f971ceafa7a3003d215bd860f4efc1e",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T07:40:24Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "004827c3aac3ff71ec592a817aa40ebc",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T08:00:29Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "004827c3aac3ff71ec592a817aa40ebc",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T08:00:29Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "004827c3aac3ff71ec592a817aa40ebc",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T08:00:29Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4e8a516be95ed1eb8fe1be7cfba0ea9e",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T08:20:33Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4e8a516be95ed1eb8fe1be7cfba0ea9e",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T08:20:33Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4e8a516be95ed1eb8fe1be7cfba0ea9e",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T08:20:33Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "108f0ee8ad25215cf6d419afd856be57",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T08:40:38Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "108f0ee8ad25215cf6d419afd856be57",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T08:40:38Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "108f0ee8ad25215cf6d419afd856be57",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T08:40:38Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "058524d1f25304cb47db37c04121815c",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T09:00:43Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "058524d1f25304cb47db37c04121815c",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T09:00:43Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "058524d1f25304cb47db37c04121815c",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T09:00:43Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "cb5702f7beb3084cace83d7f8caa24de",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T09:20:48Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "cb5702f7beb3084cace83d7f8caa24de",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T09:20:48Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "cb5702f7beb3084cace83d7f8caa24de",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T09:20:48Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3dbd9d859e81737c162544885adbe271",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T09:40:53Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3dbd9d859e81737c162544885adbe271",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T09:40:53Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3dbd9d859e81737c162544885adbe271",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T09:40:53Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4efe27da2a5751ff6982b03f38e9e469",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T10:00:58Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4efe27da2a5751ff6982b03f38e9e469",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T10:00:58Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4efe27da2a5751ff6982b03f38e9e469",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T10:00:58Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "264ac70b220eaaadc6d5d3129c14d67a",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T10:21:02Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "264ac70b220eaaadc6d5d3129c14d67a",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T10:21:02Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "264ac70b220eaaadc6d5d3129c14d67a",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T10:21:02Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "aa01786022fc9aa4ea3ee3e076f2d802",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T10:41:07Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "aa01786022fc9aa4ea3ee3e076f2d802",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T10:41:07Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "aa01786022fc9aa4ea3ee3e076f2d802",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T10:41:07Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c39d9bf91ea0e1e7cdb42bb34a54d71a",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T11:01:12Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c39d9bf91ea0e1e7cdb42bb34a54d71a",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T11:01:12Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c39d9bf91ea0e1e7cdb42bb34a54d71a",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T11:01:12Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b6da784ea641ba3c203625fc96af137a",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T11:21:17Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b6da784ea641ba3c203625fc96af137a",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T11:21:17Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b6da784ea641ba3c203625fc96af137a",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T11:21:17Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c816474131a5a2ef13f75f2e3835853d",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T11:41:22Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c816474131a5a2ef13f75f2e3835853d",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T11:41:22Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c816474131a5a2ef13f75f2e3835853d",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T11:41:22Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "bdd08c6536c97f4e38c19f37dd0f98a0",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T12:01:27Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "bdd08c6536c97f4e38c19f37dd0f98a0",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T12:01:27Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "bdd08c6536c97f4e38c19f37dd0f98a0",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T12:01:27Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2c59938de882ea3466f9574d995d2be7",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T12:21:31Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2c59938de882ea3466f9574d995d2be7",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T12:21:31Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2c59938de882ea3466f9574d995d2be7",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T12:21:31Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "14689c499080d30f651c39901f9faf15",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T12:41:36Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "14689c499080d30f651c39901f9faf15",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T12:41:36Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "14689c499080d30f651c39901f9faf15",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T12:41:36Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5bbd5c67b8b81b996d45a7b443bc4c01",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T13:01:41Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5bbd5c67b8b81b996d45a7b443bc4c01",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T13:01:41Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5bbd5c67b8b81b996d45a7b443bc4c01",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T13:01:41Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "8b1f993cdb854d91e97f3840c9cf81ef",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T13:21:46Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "8b1f993cdb854d91e97f3840c9cf81ef",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T13:21:46Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "8b1f993cdb854d91e97f3840c9cf81ef",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T13:21:46Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4485d99dae7c17d2583de23c0a80364e",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T13:41:51Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4485d99dae7c17d2583de23c0a80364e",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T13:41:51Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4485d99dae7c17d2583de23c0a80364e",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T13:41:51Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "01ab40118711c32fed2c1ab747d5e2b4",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T14:01:56Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "01ab40118711c32fed2c1ab747d5e2b4",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T14:01:56Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "01ab40118711c32fed2c1ab747d5e2b4",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T14:01:56Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "55107849250e96cd1167c6f97fb7d0e6",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T14:22:00Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "55107849250e96cd1167c6f97fb7d0e6",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T14:22:00Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "55107849250e96cd1167c6f97fb7d0e6",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T14:22:00Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b19646bc06dcd5cb3bd24d85daca6431",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T14:42:05Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b19646bc06dcd5cb3bd24d85daca6431",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T14:42:05Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b19646bc06dcd5cb3bd24d85daca6431",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T14:42:05Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3b8e3eb83a42c0320aca1544e0ed4231",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T15:02:10Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3b8e3eb83a42c0320aca1544e0ed4231",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T15:02:10Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3b8e3eb83a42c0320aca1544e0ed4231",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T15:02:10Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2554dbcba8d30b236342275b25b06468",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T15:22:15Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2554dbcba8d30b236342275b25b06468",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T15:22:15Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2554dbcba8d30b236342275b25b06468",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T15:22:15Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6d2d7ecbaf3462c41ca4101c57ec1339",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T15:42:20Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6d2d7ecbaf3462c41ca4101c57ec1339",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T15:42:20Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6d2d7ecbaf3462c41ca4101c57ec1339",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T15:42:20Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f5d62dc2fada7517550513b4eea6f47b",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T16:02:25Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f5d62dc2fada7517550513b4eea6f47b",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T16:02:25Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f5d62dc2fada7517550513b4eea6f47b",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T16:02:25Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "ce5759aa6641859be775d9287ad1e152",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T16:22:30Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "ce5759aa6641859be775d9287ad1e152",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T16:22:30Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "ce5759aa6641859be775d9287ad1e152",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T16:22:30Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "0564991eb1d016b0c802bf06d21cd37b",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T16:42:34Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "0564991eb1d016b0c802bf06d21cd37b",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T16:42:34Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "0564991eb1d016b0c802bf06d21cd37b",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T16:42:34Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "538711827a738045b05efab2b68a90f6",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T17:02:39Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "538711827a738045b05efab2b68a90f6",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T17:02:39Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "538711827a738045b05efab2b68a90f6",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T17:02:39Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "754f4a64793e7c89595b08728fc3b3c0",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T17:22:44Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "754f4a64793e7c89595b08728fc3b3c0",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T17:22:44Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "754f4a64793e7c89595b08728fc3b3c0",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T17:22:44Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e82565f551716bfa46556c26d04dfb88",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T17:42:49Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e82565f551716bfa46556c26d04dfb88",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T17:42:49Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e82565f551716bfa46556c26d04dfb88",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T17:42:49Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "11fca33375446b3cbb3c2a3f9273596c",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T18:02:54Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "11fca33375446b3cbb3c2a3f9273596c",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T18:02:54Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "11fca33375446b3cbb3c2a3f9273596c",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T18:02:54Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "8baf66f6dc1090e880617babf87e4ae0",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T18:22:59Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "8baf66f6dc1090e880617babf87e4ae0",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T18:22:59Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "8baf66f6dc1090e880617babf87e4ae0",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T18:22:59Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e0b1a5000bbe5e34483c852299798c37",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T18:43:03Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e0b1a5000bbe5e34483c852299798c37",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T18:43:03Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e0b1a5000bbe5e34483c852299798c37",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T18:43:03Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6d97aa1dd971579499c96c6be5a02ce0",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T19:03:08Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6d97aa1dd971579499c96c6be5a02ce0",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T19:03:08Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6d97aa1dd971579499c96c6be5a02ce0",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T19:03:08Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f2fb36fd58dffa285f3ecdce93c144dd",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T19:23:13Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f2fb36fd58dffa285f3ecdce93c144dd",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T19:23:13Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f2fb36fd58dffa285f3ecdce93c144dd",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T19:23:13Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a0efd7f7893dd9e886b083e9fc03dea7",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T19:43:18Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a0efd7f7893dd9e886b083e9fc03dea7",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T19:43:18Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a0efd7f7893dd9e886b083e9fc03dea7",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T19:43:18Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "dd066f5777b3cd2dc986afef7bd144cc",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T20:03:23Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "dd066f5777b3cd2dc986afef7bd144cc",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T20:03:23Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "dd066f5777b3cd2dc986afef7bd144cc",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T20:03:23Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a91a72a624f1ee4bb366d6f35fda6065",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T20:23:28Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a91a72a624f1ee4bb366d6f35fda6065",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T20:23:28Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a91a72a624f1ee4bb366d6f35fda6065",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T20:23:28Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "da4c8a23887e4db1da9ba632e72d02a4",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T20:43:32Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "da4c8a23887e4db1da9ba632e72d02a4",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T20:43:32Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "da4c8a23887e4db1da9ba632e72d02a4",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T20:43:32Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3d781bb38a0e811b73ec588d8cf32fb9",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T21:03:37Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3d781bb38a0e811b73ec588d8cf32fb9",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T21:03:37Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3d781bb38a0e811b73ec588d8cf32fb9",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T21:03:37Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "eb5f25d47d384c34fb3649e8a84785aa",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T21:23:42Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "eb5f25d47d384c34fb3649e8a84785aa",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T21:23:42Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "eb5f25d47d384c34fb3649e8a84785aa",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T21:23:42Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "af764991d1b6342feb48077ae0274b12",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T21:43:47Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "af764991d1b6342feb48077ae0274b12",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T21:43:47Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "af764991d1b6342feb48077ae0274b12",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T21:43:47Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "48de8ad8e830b8b04eec84138eb6c1a5",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T22:03:52Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "48de8ad8e830b8b04eec84138eb6c1a5",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T22:03:52Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "48de8ad8e830b8b04eec84138eb6c1a5",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T22:03:52Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "daf6e06cf904a24d66c8739bb9ff315d",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T22:23:57Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "daf6e06cf904a24d66c8739bb9ff315d",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T22:23:57Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "daf6e06cf904a24d66c8739bb9ff315d",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T22:23:57Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "1d738b33b1ae39e46b9dfa4b6c873852",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T22:44:01Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "1d738b33b1ae39e46b9dfa4b6c873852",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T22:44:01Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "1d738b33b1ae39e46b9dfa4b6c873852",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T22:44:01Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "09b51481de594b6b0b399498db1dff8b",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T23:04:06Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "09b51481de594b6b0b399498db1dff8b",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T23:04:06Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "09b51481de594b6b0b399498db1dff8b",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T23:04:06Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "06ca54f06176f647ec7f15cb4f52042c",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T23:24:11Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "06ca54f06176f647ec7f15cb4f52042c",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T23:24:11Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "06ca54f06176f647ec7f15cb4f52042c",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T23:24:11Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f23603a2354b994afaa3f2b97b998c5e",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-23T23:44:16Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f23603a2354b994afaa3f2b97b998c5e",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-23T23:44:16Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f23603a2354b994afaa3f2b97b998c5e",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-23T23:44:16Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "490fae07e6d61acc7cdbc9fc35554986",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T00:04:21Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "490fae07e6d61acc7cdbc9fc35554986",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T00:04:21Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "490fae07e6d61acc7cdbc9fc35554986",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T00:04:21Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "bbf708e1d6076719efff335bd3cc2e07",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T00:24:26Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "bbf708e1d6076719efff335bd3cc2e07",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T00:24:26Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "bbf708e1d6076719efff335bd3cc2e07",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T00:24:26Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "afc1143212216cf01e865352f885c21b",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T00:44:30Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "afc1143212216cf01e865352f885c21b",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T00:44:30Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "afc1143212216cf01e865352f885c21b",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T00:44:30Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "263550ecd4d562e4c48aff89bf34ac7d",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T01:04:35Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "263550ecd4d562e4c48aff89bf34ac7d",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T01:04:35Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "263550ecd4d562e4c48aff89bf34ac7d",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T01:04:35Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "18c5584e02b16d6c2de72f77e99a9124",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T01:24:40Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "18c5584e02b16d6c2de72f77e99a9124",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T01:24:40Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "18c5584e02b16d6c2de72f77e99a9124",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T01:24:40Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "75a3ace05ee954e463e214e127fb29fe",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T01:44:45Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "75a3ace05ee954e463e214e127fb29fe",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T01:44:45Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "75a3ace05ee954e463e214e127fb29fe",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T01:44:45Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "696f0268c9899b896f3973110db6786a",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T02:04:50Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "696f0268c9899b896f3973110db6786a",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T02:04:50Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "696f0268c9899b896f3973110db6786a",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T02:04:50Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "138577141bcb3db3b88d5b6d6d67801a",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T02:24:55Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "138577141bcb3db3b88d5b6d6d67801a",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T02:24:55Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "138577141bcb3db3b88d5b6d6d67801a",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T02:24:55Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6ce21c34c77649e0f516c76a00084686",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T02:45:00Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6ce21c34c77649e0f516c76a00084686",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T02:45:00Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6ce21c34c77649e0f516c76a00084686",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T02:45:00Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b9bbc0ec4c126aaeb9abdb1bbd640ec5",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T03:05:04Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b9bbc0ec4c126aaeb9abdb1bbd640ec5",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T03:05:04Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b9bbc0ec4c126aaeb9abdb1bbd640ec5",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T03:05:04Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3c4f91b6b786f91d1327b7804578e03d",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T03:25:09Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3c4f91b6b786f91d1327b7804578e03d",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T03:25:09Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3c4f91b6b786f91d1327b7804578e03d",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T03:25:09Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "78e4d5da541802f57e1819f3783bf7a2",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T03:45:14Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "78e4d5da541802f57e1819f3783bf7a2",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T03:45:14Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "78e4d5da541802f57e1819f3783bf7a2",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T03:45:14Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "adc4df510c7c3e805e4bb79edf90c006",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T04:05:19Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "adc4df510c7c3e805e4bb79edf90c006",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T04:05:19Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "adc4df510c7c3e805e4bb79edf90c006",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T04:05:19Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "dc0fe0b3481759b13a528c7eaa88c423",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T04:25:24Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "dc0fe0b3481759b13a528c7eaa88c423",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T04:25:24Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "dc0fe0b3481759b13a528c7eaa88c423",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T04:25:24Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "42c2cba054820778f495384b94d17feb",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T04:45:29Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "42c2cba054820778f495384b94d17feb",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T04:45:29Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "42c2cba054820778f495384b94d17feb",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T04:45:29Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "90592911345898f7b1e40767c7019b57",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T05:05:33Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "90592911345898f7b1e40767c7019b57",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T05:05:33Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "90592911345898f7b1e40767c7019b57",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T05:05:33Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "72047f2c63f8c6e91f937323ac0ae587",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T05:25:38Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "72047f2c63f8c6e91f937323ac0ae587",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T05:25:38Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "72047f2c63f8c6e91f937323ac0ae587",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T05:25:38Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9fe6420e290d7568b34f0c7233618d02",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T05:45:43Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9fe6420e290d7568b34f0c7233618d02",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T05:45:43Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9fe6420e290d7568b34f0c7233618d02",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T05:45:43Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6e31db388e32c81978569c224c888fd3",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T06:05:48Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6e31db388e32c81978569c224c888fd3",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T06:05:48Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6e31db388e32c81978569c224c888fd3",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T06:05:48Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3c7a83751ed66bca44a2afd07f3ecb1d",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T06:25:53Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3c7a83751ed66bca44a2afd07f3ecb1d",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T06:25:53Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3c7a83751ed66bca44a2afd07f3ecb1d",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T06:25:53Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9a55baa42e923ff2010fc7069626c5b7",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T06:45:58Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9a55baa42e923ff2010fc7069626c5b7",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T06:45:58Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9a55baa42e923ff2010fc7069626c5b7",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T06:45:58Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e9f990ca45eb23e7024c35a3a78a0359",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T07:06:02Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e9f990ca45eb23e7024c35a3a78a0359",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T07:06:02Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e9f990ca45eb23e7024c35a3a78a0359",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T07:06:02Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b93cd28ad30a39d284164d3193a83461",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T07:26:07Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b93cd28ad30a39d284164d3193a83461",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T07:26:07Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b93cd28ad30a39d284164d3193a83461",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T07:26:07Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "69a0dce2355339ac42da3069e302d77f",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T07:46:12Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "69a0dce2355339ac42da3069e302d77f",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T07:46:12Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "69a0dce2355339ac42da3069e302d77f",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T07:46:12Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "94cda0f191d8b41448a8bca6f41b3501",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T08:06:17Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "94cda0f191d8b41448a8bca6f41b3501",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T08:06:17Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "94cda0f191d8b41448a8bca6f41b3501",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T08:06:17Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "aa048dfdce77102e51c096e57df41ed6",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T08:26:22Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "aa048dfdce77102e51c096e57df41ed6",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T08:26:22Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "aa048dfdce77102e51c096e57df41ed6",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T08:26:22Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b007191fd0f9b925ff06ab48d4ca2733",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T08:46:27Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b007191fd0f9b925ff06ab48d4ca2733",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T08:46:27Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b007191fd0f9b925ff06ab48d4ca2733",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T08:46:27Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "52ecc6fd8bcaa44c300f4783cf1029c7",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T09:06:31Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "52ecc6fd8bcaa44c300f4783cf1029c7",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T09:06:31Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "52ecc6fd8bcaa44c300f4783cf1029c7",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T09:06:31Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "512fa6866c5ec2224b404822ee1d327c",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T09:26:36Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "512fa6866c5ec2224b404822ee1d327c",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T09:26:36Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "512fa6866c5ec2224b404822ee1d327c",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T09:26:36Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9741c77e52b612841d3aa8008d1cbecf",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T09:46:41Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9741c77e52b612841d3aa8008d1cbecf",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T09:46:41Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9741c77e52b612841d3aa8008d1cbecf",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T09:46:41Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4376df7b5cfbc6d3a2ed0191bdc6f0d6",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T10:06:46Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4376df7b5cfbc6d3a2ed0191bdc6f0d6",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T10:06:46Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4376df7b5cfbc6d3a2ed0191bdc6f0d6",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T10:06:46Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "bcc57b920f6a1a13e31b3b052c9c9378",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T10:26:51Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "bcc57b920f6a1a13e31b3b052c9c9378",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T10:26:51Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "bcc57b920f6a1a13e31b3b052c9c9378",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T10:26:51Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "dc31b75b230078aa29d57b7a1690b459",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T10:46:56Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "dc31b75b230078aa29d57b7a1690b459",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T10:46:56Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "dc31b75b230078aa29d57b7a1690b459",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T10:46:56Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c1f18ec43cc16925c55c514e28e831ee",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T11:07:00Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c1f18ec43cc16925c55c514e28e831ee",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T11:07:00Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c1f18ec43cc16925c55c514e28e831ee",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T11:07:00Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e4697b5cc8ff1a889d2e9998b598ab4a",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T11:27:05Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e4697b5cc8ff1a889d2e9998b598ab4a",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T11:27:05Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e4697b5cc8ff1a889d2e9998b598ab4a",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T11:27:05Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "8d1dd3084b19f4ef6e719750b68863ed",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T11:47:10Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "8d1dd3084b19f4ef6e719750b68863ed",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T11:47:10Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "8d1dd3084b19f4ef6e719750b68863ed",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T11:47:10Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "ae37fbf3acdebbc89f2a59ec1e264dc8",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T12:07:15Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "ae37fbf3acdebbc89f2a59ec1e264dc8",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T12:07:15Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "ae37fbf3acdebbc89f2a59ec1e264dc8",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T12:07:15Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3f7ed2660b1168dc231b563dd91c908e",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T12:27:20Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3f7ed2660b1168dc231b563dd91c908e",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T12:27:20Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3f7ed2660b1168dc231b563dd91c908e",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T12:27:20Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "801c55b1cf1f6317a6aa65a4b010f2fe",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T12:47:25Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "801c55b1cf1f6317a6aa65a4b010f2fe",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T12:47:25Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "801c55b1cf1f6317a6aa65a4b010f2fe",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T12:47:25Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "fdd45005b4d6daf26f71d5d589b3aa1c",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T13:07:30Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "fdd45005b4d6daf26f71d5d589b3aa1c",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T13:07:30Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "fdd45005b4d6daf26f71d5d589b3aa1c",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T13:07:30Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3a8b5488ceaced51b441c4150efc2491",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T13:27:34Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3a8b5488ceaced51b441c4150efc2491",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T13:27:34Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3a8b5488ceaced51b441c4150efc2491",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T13:27:34Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "954e779af669ead1a6c7fad0af96e82c",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T13:47:39Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "954e779af669ead1a6c7fad0af96e82c",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T13:47:39Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "954e779af669ead1a6c7fad0af96e82c",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T13:47:39Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e0832d52634efa3b32c6976ec49fb19a",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T14:07:44Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e0832d52634efa3b32c6976ec49fb19a",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T14:07:44Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e0832d52634efa3b32c6976ec49fb19a",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T14:07:44Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2ca8ae77ab6259ddff656fdf90c60266",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T14:27:49Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2ca8ae77ab6259ddff656fdf90c60266",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T14:27:49Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2ca8ae77ab6259ddff656fdf90c60266",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T14:27:49Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "81e369597e3e143a50886b0b68e4565b",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T14:47:54Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "81e369597e3e143a50886b0b68e4565b",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T14:47:54Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "81e369597e3e143a50886b0b68e4565b",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T14:47:54Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9bb94a5e6b316eadf8e3e5f81e7600ec",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T15:07:59Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9bb94a5e6b316eadf8e3e5f81e7600ec",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T15:07:59Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9bb94a5e6b316eadf8e3e5f81e7600ec",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T15:07:59Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "04794d382fb79af23393e342ce65297c",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T15:28:03Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "04794d382fb79af23393e342ce65297c",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T15:28:03Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "04794d382fb79af23393e342ce65297c",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T15:28:03Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2cc373d258b20793314e8ed1a1dfa866",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T15:48:08Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2cc373d258b20793314e8ed1a1dfa866",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T15:48:08Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2cc373d258b20793314e8ed1a1dfa866",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T15:48:08Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "da666b9f5436b447d2c3215a57aa839e",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T16:08:13Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "da666b9f5436b447d2c3215a57aa839e",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T16:08:13Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "da666b9f5436b447d2c3215a57aa839e",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T16:08:13Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "7962b2b624f625a79a2f3270719bffef",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T16:28:18Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "7962b2b624f625a79a2f3270719bffef",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T16:28:18Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "7962b2b624f625a79a2f3270719bffef",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T16:28:18Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "66aff0b841a5f6da46f0b13647e82fe1",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T16:48:23Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "66aff0b841a5f6da46f0b13647e82fe1",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T16:48:23Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "66aff0b841a5f6da46f0b13647e82fe1",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T16:48:23Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "0dd564edff4ff8e5dbdd9cad413b31fa",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T17:08:28Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "0dd564edff4ff8e5dbdd9cad413b31fa",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T17:08:28Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "0dd564edff4ff8e5dbdd9cad413b31fa",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T17:08:28Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c242ac964142a1fe5358c796fc590a9a",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T17:28:32Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c242ac964142a1fe5358c796fc590a9a",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T17:28:32Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c242ac964142a1fe5358c796fc590a9a",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T17:28:32Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "d350f06e4711e9f2519e40543ee886ff",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T17:48:37Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "d350f06e4711e9f2519e40543ee886ff",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T17:48:37Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "d350f06e4711e9f2519e40543ee886ff",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T17:48:37Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "40925b48ca88b49c792c37cfa7af03e2",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T18:08:42Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "40925b48ca88b49c792c37cfa7af03e2",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T18:08:42Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "40925b48ca88b49c792c37cfa7af03e2",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T18:08:42Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9296cc000ee46a99784c7fa0dc1f1920",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T18:28:47Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9296cc000ee46a99784c7fa0dc1f1920",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T18:28:47Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9296cc000ee46a99784c7fa0dc1f1920",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T18:28:47Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "d4c777f804973513fb2124b8b51fb33b",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T18:48:52Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "d4c777f804973513fb2124b8b51fb33b",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T18:48:52Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "d4c777f804973513fb2124b8b51fb33b",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T18:48:52Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a1572a16485746a2d475d3e46b6e708e",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T19:08:57Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a1572a16485746a2d475d3e46b6e708e",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T19:08:57Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a1572a16485746a2d475d3e46b6e708e",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T19:08:57Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "77c62e6f060b3af38a24c77c21af4add",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T19:29:01Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "77c62e6f060b3af38a24c77c21af4add",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T19:29:01Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "77c62e6f060b3af38a24c77c21af4add",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T19:29:01Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "1fb16116439b10f38a34ee11c4e4be7e",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T19:49:06Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "1fb16116439b10f38a34ee11c4e4be7e",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T19:49:06Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "1fb16116439b10f38a34ee11c4e4be7e",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T19:49:06Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2cc52c6ff724d6fde8760c629fd02eef",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T20:09:11Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2cc52c6ff724d6fde8760c629fd02eef",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T20:09:11Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2cc52c6ff724d6fde8760c629fd02eef",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T20:09:11Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3e519e0c828b20e398947e3715b8b02c",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T20:29:16Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3e519e0c828b20e398947e3715b8b02c",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T20:29:16Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3e519e0c828b20e398947e3715b8b02c",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T20:29:16Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b00b9b25648a740ab7307a630354edbf",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T20:49:21Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b00b9b25648a740ab7307a630354edbf",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T20:49:21Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b00b9b25648a740ab7307a630354edbf",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T20:49:21Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "39af2c12f33492e5325d212ad4a7c6fc",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T21:09:26Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "39af2c12f33492e5325d212ad4a7c6fc",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T21:09:26Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "39af2c12f33492e5325d212ad4a7c6fc",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T21:09:26Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c7e6346130875f351ed1693944cbd032",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T21:29:30Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c7e6346130875f351ed1693944cbd032",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T21:29:30Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c7e6346130875f351ed1693944cbd032",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T21:29:30Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9bb10fedf0981e0fa3de7f8e0faa1d3c",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T21:49:35Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9bb10fedf0981e0fa3de7f8e0faa1d3c",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T21:49:35Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9bb10fedf0981e0fa3de7f8e0faa1d3c",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T21:49:35Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5afe29c9456b6f9d4ffe10065680192b",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T22:09:40Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5afe29c9456b6f9d4ffe10065680192b",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T22:09:40Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5afe29c9456b6f9d4ffe10065680192b",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T22:09:40Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4f1709fa4b8aab421c296baf6631ad5c",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T22:29:45Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4f1709fa4b8aab421c296baf6631ad5c",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T22:29:45Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4f1709fa4b8aab421c296baf6631ad5c",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T22:29:45Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "548f1599b18f55e0881f9dd0549c5b57",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T22:49:50Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "548f1599b18f55e0881f9dd0549c5b57",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T22:49:50Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "548f1599b18f55e0881f9dd0549c5b57",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T22:49:50Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9d3e2871fab7f9f79c2138f5a07def9d",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-24T23:09:55Z",
+  "duration_ms": 260,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9d3e2871fab7f9f79c2138f5a07def9d",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-24T23:09:55Z",
+  "duration_ms": 210,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9d3e2871fab7f9f79c2138f5a07def9d",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-24T23:09:55Z",
+  "duration_ms": 140,
+  "status": "OK"
+ },
+ {
+  "trace_id": "ddddddddddddddddddddddddddddd001",
+  "span_id": "d0",
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-25T01:15:00Z",
+  "duration_ms": 1620,
+  "status": "ERROR",
+  "error": "upstream orders-api deadline exceeded"
+ },
+ {
+  "trace_id": "ddddddddddddddddddddddddddddd001",
+  "span_id": "d1",
+  "parent_id": "d0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-25T01:15:00Z",
+  "duration_ms": 1540,
+  "status": "ERROR",
+  "error": "query exceeded latency budget"
+ },
+ {
+  "trace_id": "ddddddddddddddddddddddddddddd001",
+  "span_id": "d2",
+  "parent_id": "d1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-25T01:15:00Z",
+  "duration_ms": 1480,
+  "status": "ERROR",
+  "error": "scan exceeded row budget"
+ },
+ {
+  "trace_id": "ddddddddddddddddddddddddddddd002",
+  "span_id": "e0",
+  "service": "frontend",
+  "name": "GET /order-history",
+  "start": "2026-07-25T01:25:00Z",
+  "duration_ms": 1610,
+  "status": "ERROR",
+  "error": "upstream orders-api deadline exceeded"
+ },
+ {
+  "trace_id": "ddddddddddddddddddddddddddddd002",
+  "span_id": "e1",
+  "parent_id": "e0",
+  "service": "orders-api",
+  "name": "ListOrders",
+  "start": "2026-07-25T01:25:00Z",
+  "duration_ms": 1530,
+  "status": "ERROR",
+  "error": "query exceeded latency budget"
+ },
+ {
+  "trace_id": "ddddddddddddddddddddddddddddd002",
+  "span_id": "e2",
+  "parent_id": "e1",
+  "service": "orders-api",
+  "name": "db.query orders",
+  "start": "2026-07-25T01:25:00Z",
+  "duration_ms": 1470,
+  "status": "ERROR",
+  "error": "scan exceeded row budget"
+ }
+]
