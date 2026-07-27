@@ -1,0 +1,107 @@
+[
+ {
+  "signature": "order-history page timeout: upstream orders-api exceeded deadline",
+  "service": "frontend",
+  "count": 780,
+  "delta_vs_baseline": "+780",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "order listing issuing far more queries than expected; latency degraded",
+  "service": "orders-api",
+  "count": 560,
+  "delta_vs_baseline": "+560",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "order item lookups creeping above baseline as cart sizes grow",
+  "service": "orders-api",
+  "count": 308,
+  "delta_vs_baseline": "+308",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "kafka consumer lag rebalancing group <N>",
+  "service": "platform-api",
+  "count": 80,
+  "delta_vs_baseline": "+2",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "TLS certificate renews in <N> days warning",
+  "service": "dashboard-svc",
+  "count": 65,
+  "delta_vs_baseline": "+2",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "connection pool warmup retries exceeded <N> times",
+  "service": "paymentservice",
+  "count": 50,
+  "delta_vs_baseline": "+1",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "disk usage above <N>% on scratch volume",
+  "service": "shippingservice",
+  "count": 42,
+  "delta_vs_baseline": "+2",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "order-history page rendered",
+  "service": "frontend",
+  "count": 15307,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "order listed",
+  "service": "orders-api",
+  "count": 15018,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "request served",
+  "service": "platform-api",
+  "count": 11372,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "order placed",
+  "service": "checkoutservice",
+  "count": 11369,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "charge authorized",
+  "service": "paymentservice",
+  "count": 8701,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "shipment scheduled",
+  "service": "shippingservice",
+  "count": 6991,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "inventory reconciled",
+  "service": "inventory-service",
+  "count": 6959,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "dashboard view rendered",
+  "service": "dashboard-svc",
+  "count": 6428,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ }
+]
