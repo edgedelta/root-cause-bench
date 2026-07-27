@@ -1,0 +1,8 @@
+{
+ "service": "dashboard-svc",
+ "metric": "report_freshness_s",
+ "threshold": 600,
+ "fired_at": "2026-07-26T17:50:00Z",
+ "summary": "dashboard-svc report_freshness_s > 600s for 10m",
+ "detail": "scheduled report widgets showing data more than 10 minutes stale"
+}

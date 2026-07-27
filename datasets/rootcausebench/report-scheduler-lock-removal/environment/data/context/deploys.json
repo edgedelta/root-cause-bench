@@ -1,0 +1,194 @@
+[
+ {
+  "timestamp": "2026-07-23T18:45:00Z",
+  "service": "report-scheduler",
+  "commit_sha": "650ed61eba2f3634f6013ac944e05d98a0286dd9",
+  "version": "v2026.07.23-1845"
+ },
+ {
+  "timestamp": "2026-07-23T20:14:52Z",
+  "service": "paymentservice",
+  "commit_sha": "fc22e4a255caa79a65be42244810cf2df5302e3e",
+  "version": "v2026.07.23-2014"
+ },
+ {
+  "timestamp": "2026-07-23T21:48:25Z",
+  "service": "inventory-service",
+  "commit_sha": "c21e4e54f3bb60dfd22933107f557c8ac25df4ed",
+  "version": "v2026.07.23-2148"
+ },
+ {
+  "timestamp": "2026-07-23T22:05:06Z",
+  "service": "inventory-service",
+  "commit_sha": "f951081bc3e651e671987c9e01cba1603d4ce157",
+  "version": "v2026.07.23-2205"
+ },
+ {
+  "timestamp": "2026-07-23T22:57:35Z",
+  "service": "platform-api",
+  "commit_sha": "f951081bc3e651e671987c9e01cba1603d4ce157",
+  "version": "v2026.07.23-2257"
+ },
+ {
+  "timestamp": "2026-07-24T08:07:39Z",
+  "service": "inventory-service",
+  "commit_sha": "899765ea2591a9766ab64fb7c8717f090748b392",
+  "version": "v2026.07.24-0807"
+ },
+ {
+  "timestamp": "2026-07-24T08:14:08Z",
+  "service": "reportdb-proxy",
+  "commit_sha": "374a93a2677a0ef13e9adebb526d15e58d24e9aa",
+  "version": "v2026.07.24-0814"
+ },
+ {
+  "timestamp": "2026-07-24T08:38:19Z",
+  "service": "reportdb-proxy",
+  "commit_sha": "1f50d994123ea18ea6b4913e104a1bd8a7f7e790",
+  "version": "v2026.07.24-0838"
+ },
+ {
+  "timestamp": "2026-07-24T09:25:46Z",
+  "service": "shippingservice",
+  "commit_sha": "899765ea2591a9766ab64fb7c8717f090748b392",
+  "version": "v2026.07.24-0925"
+ },
+ {
+  "timestamp": "2026-07-24T20:03:11Z",
+  "service": "reportdb-proxy",
+  "commit_sha": "31adba05002091105040c19b0bd094750d21db4d",
+  "version": "v2026.07.24-2003"
+ },
+ {
+  "timestamp": "2026-07-24T23:17:49Z",
+  "service": "platform-api",
+  "commit_sha": "422912dde7e2862da874338fc88266a565574656",
+  "version": "v2026.07.24-2317"
+ },
+ {
+  "timestamp": "2026-07-25T01:25:34Z",
+  "service": "report-scheduler",
+  "commit_sha": "31ba86a1929216d52e3258bfe7e332bc523061ca",
+  "version": "v2026.07.25-0125"
+ },
+ {
+  "timestamp": "2026-07-25T04:13:49Z",
+  "service": "paymentservice",
+  "commit_sha": "834e05e4fba9cd73601f1541accfd9d240ce1d64",
+  "version": "v2026.07.25-0413"
+ },
+ {
+  "timestamp": "2026-07-25T09:57:00Z",
+  "service": "shippingservice",
+  "commit_sha": "af5f15c3a6e4e305b3df9bd9a27d3734e4a54ab2",
+  "version": "v2026.07.25-0957"
+ },
+ {
+  "timestamp": "2026-07-25T11:52:45Z",
+  "service": "dashboard-svc",
+  "commit_sha": "7d0d7f038cac8630d4bd958c0783d0e6021a4d06",
+  "version": "v2026.07.25-1152"
+ },
+ {
+  "timestamp": "2026-07-25T14:03:39Z",
+  "service": "checkoutservice",
+  "commit_sha": "6496cfa765d812922db60f19950bccdda5bd4c12",
+  "version": "v2026.07.25-1403"
+ },
+ {
+  "timestamp": "2026-07-25T15:49:52Z",
+  "service": "dashboard-svc",
+  "commit_sha": "ac43d52e5ef526c552828fc17e6f824e741fcbd4",
+  "version": "v2026.07.25-1549"
+ },
+ {
+  "timestamp": "2026-07-25T15:50:00Z",
+  "service": "report-scheduler",
+  "commit_sha": "5029747244846cba3c7c95710d798d7b1c3843ab",
+  "version": "v2026.07.25-1550"
+ },
+ {
+  "timestamp": "2026-07-25T16:10:56Z",
+  "service": "platform-api",
+  "commit_sha": "121073f864900817cb974a5b556de2936960c3a4",
+  "version": "v2026.07.25-1610"
+ },
+ {
+  "timestamp": "2026-07-25T20:54:39Z",
+  "service": "dashboard-svc",
+  "commit_sha": "7f21e3f3b72027bdc4e79fa1b31be4f8896d3f48",
+  "version": "v2026.07.25-2054"
+ },
+ {
+  "timestamp": "2026-07-25T21:07:45Z",
+  "service": "paymentservice",
+  "commit_sha": "012ce267ad919b6d24249caeaff9099eddd4b17b",
+  "version": "v2026.07.25-2107"
+ },
+ {
+  "timestamp": "2026-07-25T21:50:00Z",
+  "service": "report-scheduler",
+  "commit_sha": "77a586c2f4656d91f738a32891ca09d5bfadc4bd",
+  "version": "v2026.07.25-2150"
+ },
+ {
+  "timestamp": "2026-07-25T21:57:45Z",
+  "service": "report-scheduler",
+  "commit_sha": "445e565a9699ddc2666f3cea2b15280a77388c0f",
+  "version": "v2026.07.25-2157"
+ },
+ {
+  "timestamp": "2026-07-26T01:31:15Z",
+  "service": "checkoutservice",
+  "commit_sha": "b7d839d2a0768d64bee58069b9dae1dea5219662",
+  "version": "v2026.07.26-0131"
+ },
+ {
+  "timestamp": "2026-07-26T03:43:13Z",
+  "service": "checkoutservice",
+  "commit_sha": "4f2c7dd479e69cec03e80271f8b02581cb110c85",
+  "version": "v2026.07.26-0343"
+ },
+ {
+  "timestamp": "2026-07-26T07:39:25Z",
+  "service": "shippingservice",
+  "commit_sha": "70ea0d818497f4f44c103b3e9fea122c59ac055b",
+  "version": "v2026.07.26-0739"
+ },
+ {
+  "timestamp": "2026-07-26T07:50:00Z",
+  "service": "report-scheduler",
+  "commit_sha": "3d97c6b5e454d034f9ba7dd2314a0eb331152d2e",
+  "version": "v2026.07.26-0750"
+ },
+ {
+  "timestamp": "2026-07-26T08:22:03Z",
+  "service": "reportdb-proxy",
+  "commit_sha": "1ed46643954ccbe20568d4984af68e3f210ad399",
+  "version": "v2026.07.26-0822"
+ },
+ {
+  "timestamp": "2026-07-26T08:45:45Z",
+  "service": "checkoutservice",
+  "commit_sha": "1f50d994123ea18ea6b4913e104a1bd8a7f7e790",
+  "version": "v2026.07.26-0845"
+ },
+ {
+  "timestamp": "2026-07-26T11:54:06Z",
+  "service": "report-scheduler",
+  "commit_sha": "eeaf967e658f43ae5bfb3855245480a53a3470ee",
+  "version": "v2026.07.26-1154"
+ },
+ {
+  "timestamp": "2026-07-26T12:50:00Z",
+  "service": "report-scheduler",
+  "commit_sha": "616686532c189b6dfa49fb9295ca81772adf66a3",
+  "version": "v2026.07.26-1250"
+ },
+ {
+  "timestamp": "2026-07-26T17:40:00Z",
+  "service": "dashboard-svc",
+  "commit_sha": "d8e1f074183d8bb82428a6af29fbaab0d2a84e47",
+  "version": "v2026.07.26-1740"
+ }
+]

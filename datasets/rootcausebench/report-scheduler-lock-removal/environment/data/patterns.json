@@ -1,0 +1,107 @@
+[
+ {
+  "signature": "report data unavailable: generation did not complete within refresh window",
+  "service": "dashboard-svc",
+  "count": 858,
+  "delta_vs_baseline": "+858",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "database query slow: execution exceeded expected duration",
+  "service": "reportdb-proxy",
+  "count": 513,
+  "delta_vs_baseline": "+513",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "report generation slow: query exceeded expected duration",
+  "service": "report-scheduler",
+  "count": 471,
+  "delta_vs_baseline": "+471",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "TLS certificate renews in <N> days warning",
+  "service": "checkoutservice",
+  "count": 65,
+  "delta_vs_baseline": "+2",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "outbound webhook retries exceeded <N> attempts",
+  "service": "platform-api",
+  "count": 58,
+  "delta_vs_baseline": "+2",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "connection pool warmup retries exceeded <N> times",
+  "service": "paymentservice",
+  "count": 50,
+  "delta_vs_baseline": "+1",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "disk usage above <N>% on scratch volume",
+  "service": "shippingservice",
+  "count": 42,
+  "delta_vs_baseline": "+2",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "report job completed",
+  "service": "report-scheduler",
+  "count": 14849,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "request served",
+  "service": "platform-api",
+  "count": 13058,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "order placed",
+  "service": "checkoutservice",
+  "count": 13010,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "charge authorized",
+  "service": "paymentservice",
+  "count": 10326,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "query executed",
+  "service": "reportdb-proxy",
+  "count": 8821,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "inventory reconciled",
+  "service": "inventory-service",
+  "count": 8219,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "shipment scheduled",
+  "service": "shippingservice",
+  "count": 8022,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "report viewed",
+  "service": "dashboard-svc",
+  "count": 7460,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ }
+]

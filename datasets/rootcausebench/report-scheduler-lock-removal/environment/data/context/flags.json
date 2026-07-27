@@ -1,0 +1,9 @@
+[
+ {
+  "timestamp": "2026-07-25T21:15:00Z",
+  "flag": "scheduler_parallel_workers",
+  "service": "report-scheduler",
+  "change": "created (off)",
+  "actor": "mei.chen"
+ }
+]
