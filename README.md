@@ -137,7 +137,17 @@ uv run scripts/process_results.py jobs/<timestamp>
 
 ## Leaderboard
 
-Frozen run (v2): **24 scenarios x 23 models x 3 attempts = 1656 trials**, Harbor `terminus-2` over OpenRouter, 2026-07-07/10/23/24, all agents at an 1800s timeout. Models are ranked on **mean graded reward** (1.0 correct culprit; 0.0 for blaming a decoy; partial credit ≤ 0.5 otherwise; ± 95% CI over the 72 trials), with binary pass rates alongside. The three trials that hit `AgentTimeoutError` were re-run per methodology (timeouts are infra errors, not model failures). Full per-trial results (outcome, graded reward, cost, tokens, timing per model) + rollups are committed under [`benchmark-results/`](benchmark-results/).
+Frozen run (v3): **36 scenarios x 23 models x 3 attempts = 2484 trials**, Harbor `terminus-2` over OpenRouter (base tiers 2026-07-07/10/23/24, adversarial tier 2026-07-27), all agents at an 1800s timeout. Models are ranked on **mean graded reward** (1.0 correct culprit; 0.0 for blaming a decoy; partial credit ≤ 0.5 otherwise; ± 95% CI over the 108 trials), with binary pass rates alongside. Any `AgentTimeoutError` trial is re-run per methodology (timeouts are infra errors, not model failures). Full per-trial results (outcome, graded reward, cost, tokens, timing per model) + rollups are committed under [`benchmark-results/`](benchmark-results/).
+
+> v2 → v3: adds the **adversarial tier** — 12 new scenarios (guilty-looking
+> mechanism-trap decoys exonerable only by code-semantics reasoning, beyond-context
+> data volumes, degraded telemetry incl. clock skew and 1% trace sampling, and an
+> abstention trap) — plus openai/gpt-5.6-sol. Base-tier trials are carried over
+> unchanged from the frozen v2 job dirs; the adversarial tier resolves v2's five-way
+> tie at 1.000: kimi-k3 0.991, glm-5.2 = claude-opus-5 0.981, claude-fable-5 0.968,
+> gpt-5.6-sol 0.967, grok-4.5 0.963. Six scripted baselines (incl. the new
+> earliest-deploy policy) fail every adversarial scenario; per-scenario adversarial
+> pass rates across all models span 36–78% (none saturated, none unsolvable).
 
 > v1 → v2: the original 2026-06-30/07-02 run used a 600s agent timeout, which cost
 > deepseek-v4-flash 4 trials and four other models 1 each as `AgentTimeoutError`. v2
@@ -147,31 +157,31 @@ Frozen run (v2): **24 scenarios x 23 models x 3 attempts = 1656 trials**, Harbor
 > claude-haiku-4.5 35% → 47%, gemini-3.1-flash-lite 56% → 60% (v1's tail numbers were
 > noisier than its top).
 
-| Model | Mean graded reward (95% CI) | Pass rate | easy | medium | hard | no-code-cause |
-|---|---|---|---|---|---|---|
-| glm-5.2 | **1.000 ± 0.000** | 100% | 100% | 100% | 100% | 100% |
-| grok-4.5 | **1.000 ± 0.000** | 100% | 100% | 100% | 100% | 100% |
-| kimi-k3 | **1.000 ± 0.000** | 100% | 100% | 100% | 100% | 100% |
-| gpt-5.6-sol | **1.000 ± 0.000** | 100% | 100% | 100% | 100% | 100% |
-| claude-opus-5 | **1.000 ± 0.000** | 100% | 100% | 100% | 100% | 100% |
-| claude-opus-4.8 | **0.986 ± 0.027** | 99% | 100% | 100% | 97% | 100% |
-| claude-fable-5 | **0.979 ± 0.030** | 97% | 100% | 100% | 94% | 100% |
-| gpt-5.4 | **0.972 ± 0.038** | 97% | 100% | 100% | 94% | 100% |
-| fugu-ultra | **0.972 ± 0.038** | 97% | 100% | 100% | 94% | 95% |
-| deepseek-v4-flash | **0.964 ± 0.041** | 96% | 100% | 96% | 94% | 90% |
-| gpt-5.5 | **0.958 ± 0.046** | 96% | 100% | 100% | 92% | 90% |
-| gemini-3.5-flash | **0.958 ± 0.046** | 96% | 100% | 100% | 92% | 86% |
-| gemini-3.1-pro-preview | **0.958 ± 0.046** | 96% | 100% | 100% | 92% | 86% |
-| claude-sonnet-4.6 | **0.958 ± 0.046** | 96% | 100% | 100% | 92% | 86% |
-| kimi-k2.5 | **0.875 ± 0.077** | 88% | 100% | 96% | 78% | 67% |
-| kimi-k2-thinking | **0.875 ± 0.074** | 86% | 100% | 89% | 81% | 67% |
-| gpt-5.4-mini | **0.851 ± 0.076** | 82% | 78% | 89% | 78% | 90% |
-| qwen3-235b-a22b-2507 | **0.767 ± 0.096** | 75% | 89% | 74% | 72% | 86% |
-| gemini-3.1-flash-lite | **0.607 ± 0.112** | 60% | 100% | 59% | 50% | 29% |
-| gpt-oss-120b | **0.534 ± 0.111** | 50% | 100% | 56% | 33% | 38% |
-| claude-haiku-4.5 | **0.507 ± 0.111** | 47% | 78% | 41% | 44% | 33% |
-| qwen3-32b | **0.450 ± 0.111** | 42% | 33% | 52% | 36% | 38% |
-| gpt-oss-20b | **0.386 ± 0.097** | 29% | 56% | 30% | 22% | 52% |
+| Model | Mean graded reward (95% CI) | Pass rate | easy | medium | hard | adversarial | no-code-cause |
+|---|---|---|---|---|---|---|---|
+| kimi-k3 | **0.991 ± 0.018** | 99% | 100% | 100% | 100% | 97% | 100% |
+| claude-opus-5 | **0.981 ± 0.026** | 98% | 100% | 100% | 100% | 94% | 100% |
+| glm-5.2 | **0.981 ± 0.026** | 98% | 100% | 100% | 100% | 94% | 100% |
+| claude-fable-5 | **0.968 ± 0.032** | 96% | 100% | 100% | 94% | 94% | 100% |
+| gpt-5.6-sol | **0.967 ± 0.033** | 96% | 100% | 100% | 100% | 89% | 100% |
+| grok-4.5 | **0.963 ± 0.036** | 96% | 100% | 100% | 100% | 89% | 100% |
+| fugu-ultra | **0.952 ± 0.039** | 94% | 100% | 100% | 94% | 89% | 96% |
+| claude-opus-4.8 | **0.944 ± 0.043** | 94% | 100% | 100% | 97% | 86% | 100% |
+| deepseek-v4-flash | **0.942 ± 0.043** | 94% | 100% | 96% | 94% | 89% | 83% |
+| gemini-3.5-flash | **0.935 ± 0.047** | 94% | 100% | 100% | 92% | 89% | 88% |
+| gemini-3.1-pro-preview | **0.925 ± 0.048** | 92% | 100% | 100% | 92% | 83% | 88% |
+| claude-sonnet-4.6 | **0.917 ± 0.052** | 92% | 100% | 100% | 92% | 83% | 88% |
+| gpt-5.5 | **0.917 ± 0.052** | 92% | 100% | 100% | 92% | 83% | 92% |
+| kimi-k2-thinking | **0.852 ± 0.066** | 84% | 100% | 89% | 81% | 81% | 62% |
+| gpt-5.4 | **0.845 ± 0.067** | 83% | 100% | 100% | 94% | 56% | 92% |
+| kimi-k2.5 | **0.815 ± 0.074** | 81% | 100% | 96% | 78% | 69% | 58% |
+| gpt-5.4-mini | **0.739 ± 0.076** | 69% | 78% | 89% | 78% | 42% | 88% |
+| qwen3-235b-a22b-2507 | **0.643 ± 0.084** | 59% | 89% | 74% | 72% | 28% | 79% |
+| gemini-3.1-flash-lite | **0.518 ± 0.091** | 49% | 100% | 59% | 50% | 28% | 25% |
+| gpt-oss-120b | **0.465 ± 0.088** | 42% | 100% | 56% | 33% | 25% | 38% |
+| claude-haiku-4.5 | **0.446 ± 0.089** | 41% | 78% | 41% | 44% | 28% | 29% |
+| qwen3-32b | **0.356 ± 0.085** | 31% | 33% | 52% | 36% | 11% | 38% |
+| gpt-oss-20b | **0.302 ± 0.075** | 22% | 56% | 30% | 22% | 8% | 54% |
 
 ## Baselines: can a script find the culprit?
 
