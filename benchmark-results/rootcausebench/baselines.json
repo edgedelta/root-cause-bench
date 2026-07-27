@@ -2,11 +2,11 @@
   "summary": {
     "latest-commit": {
       "passed": 0,
-      "total": 35,
+      "total": 36,
       "pass_rate_pct": 0.0,
       "decoy_hits": 0,
       "by_tier": {
-        "adversarial": "0/11",
+        "adversarial": "0/12",
         "easy": "0/3",
         "hard": "0/12",
         "medium": "0/9"
@@ -14,11 +14,11 @@
     },
     "always-none": {
       "passed": 8,
-      "total": 35,
-      "pass_rate_pct": 22.9,
+      "total": 36,
+      "pass_rate_pct": 22.2,
       "decoy_hits": 0,
       "by_tier": {
-        "adversarial": "1/11",
+        "adversarial": "1/12",
         "easy": "0/3",
         "hard": "4/12",
         "medium": "3/9"
@@ -26,11 +26,11 @@
     },
     "latest-deploy": {
       "passed": 1,
-      "total": 35,
-      "pass_rate_pct": 2.9,
+      "total": 36,
+      "pass_rate_pct": 2.8,
       "decoy_hits": 30,
       "by_tier": {
-        "adversarial": "0/11",
+        "adversarial": "0/12",
         "easy": "1/3",
         "hard": "0/12",
         "medium": "0/9"
@@ -38,11 +38,11 @@
     },
     "earliest-deploy": {
       "passed": 6,
-      "total": 35,
-      "pass_rate_pct": 17.1,
+      "total": 36,
+      "pass_rate_pct": 16.7,
       "decoy_hits": 11,
       "by_tier": {
-        "adversarial": "0/11",
+        "adversarial": "0/12",
         "easy": "1/3",
         "hard": "4/12",
         "medium": "1/9"
@@ -50,11 +50,11 @@
     },
     "alert-service-deploy": {
       "passed": 5,
-      "total": 35,
-      "pass_rate_pct": 14.3,
-      "decoy_hits": 25,
+      "total": 36,
+      "pass_rate_pct": 13.9,
+      "decoy_hits": 26,
       "by_tier": {
-        "adversarial": "0/11",
+        "adversarial": "0/12",
         "easy": "2/3",
         "hard": "3/12",
         "medium": "0/9"
@@ -62,11 +62,11 @@
     },
     "scripted-rca": {
       "passed": 7,
-      "total": 35,
-      "pass_rate_pct": 20.0,
-      "decoy_hits": 26,
+      "total": 36,
+      "pass_rate_pct": 19.4,
+      "decoy_hits": 27,
       "by_tier": {
-        "adversarial": "0/11",
+        "adversarial": "0/12",
         "easy": "3/3",
         "hard": "4/12",
         "medium": "0/9"
@@ -169,6 +169,13 @@
       "ingest-partition-skew": {
         "passed": false,
         "answered": "9cdbc562b246",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
+      "ingester-flush-interval-oom": {
+        "passed": false,
+        "answered": "24e0ddf5b578",
         "hit_decoy": false,
         "difficulty": "adversarial",
         "no_code_cause": false
@@ -414,6 +421,13 @@
         "no_code_cause": false
       },
       "ingest-partition-skew": {
+        "passed": false,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
+      "ingester-flush-interval-oom": {
         "passed": false,
         "answered": "none",
         "hit_decoy": false,
@@ -667,6 +681,13 @@
         "difficulty": "adversarial",
         "no_code_cause": false
       },
+      "ingester-flush-interval-oom": {
+        "passed": false,
+        "answered": "fe32ff8c5a84",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
       "inventory-connection-pool-exhaustion": {
         "passed": false,
         "answered": "76005bb9118b",
@@ -910,6 +931,13 @@
       "ingest-partition-skew": {
         "passed": false,
         "answered": "d86ef4ed5506",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
+      "ingester-flush-interval-oom": {
+        "passed": false,
+        "answered": "62067ac00c76",
         "hit_decoy": false,
         "difficulty": "adversarial",
         "no_code_cause": false
@@ -1161,6 +1189,13 @@
         "difficulty": "adversarial",
         "no_code_cause": false
       },
+      "ingester-flush-interval-oom": {
+        "passed": false,
+        "answered": "87bb5b3e88eb",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
       "inventory-connection-pool-exhaustion": {
         "passed": true,
         "answered": "c7d2e9a3f1b0",
@@ -1405,6 +1440,13 @@
         "passed": false,
         "answered": "4c2791e18101",
         "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
+      "ingester-flush-interval-oom": {
+        "passed": false,
+        "answered": "87bb5b3e88eb",
+        "hit_decoy": true,
         "difficulty": "adversarial",
         "no_code_cause": false
       },

@@ -1,0 +1,128 @@
+[
+ {
+  "timestamp": "2026-07-25T06:15:28Z",
+  "service": "query-svc",
+  "commit_sha": "62067ac00c76236b318dea0a044ff5e72ff4bbd2",
+  "version": "v2026.07.25-0615"
+ },
+ {
+  "timestamp": "2026-07-25T06:20:00Z",
+  "service": "platform-api",
+  "commit_sha": "f598f12ff419d8184070611603384acf188cb226",
+  "version": "v2026.07.25-0620"
+ },
+ {
+  "timestamp": "2026-07-25T06:26:00Z",
+  "service": "query-svc",
+  "commit_sha": "d4fa1494a99c5f5a3e2e7fcd581f254eab447f2f",
+  "version": "v2026.07.25-0626"
+ },
+ {
+  "timestamp": "2026-07-25T06:32:50Z",
+  "service": "platform-api",
+  "commit_sha": "9e821af39aa26de9309172fe3cfe1a2acf8162c7",
+  "version": "v2026.07.25-0632"
+ },
+ {
+  "timestamp": "2026-07-25T06:41:07Z",
+  "service": "billing-worker",
+  "commit_sha": "bb2ade7874eed5c54485738a574fc06f4ff68fad",
+  "version": "v2026.07.25-0641"
+ },
+ {
+  "timestamp": "2026-07-25T06:59:30Z",
+  "service": "metric-ingester",
+  "commit_sha": "d4fa1494a99c5f5a3e2e7fcd581f254eab447f2f",
+  "version": "v2026.07.25-0659"
+ },
+ {
+  "timestamp": "2026-07-25T07:07:28Z",
+  "service": "query-svc",
+  "commit_sha": "62067ac00c76236b318dea0a044ff5e72ff4bbd2",
+  "version": "v2026.07.25-0707"
+ },
+ {
+  "timestamp": "2026-07-25T07:40:00Z",
+  "service": "metric-ingester",
+  "commit_sha": "8a0f10d4f7a539c5638022bf8e2959433003e1af",
+  "version": "v2026.07.25-0740"
+ },
+ {
+  "timestamp": "2026-07-25T08:05:00Z",
+  "service": "metric-ingester",
+  "commit_sha": "562a0b733ec41e4f820aba1dfca05ef24c73dc15",
+  "version": "v2026.07.25-0805"
+ },
+ {
+  "timestamp": "2026-07-25T08:08:17Z",
+  "service": "billing-worker",
+  "commit_sha": "bf88136a12a1611e86c201b610277f3153038e99",
+  "version": "v2026.07.25-0808"
+ },
+ {
+  "timestamp": "2026-07-25T08:30:00Z",
+  "service": "metric-ingester",
+  "commit_sha": "a551417cc832bc3e4f480f6845d8c4de4a7eea66",
+  "version": "v2026.07.25-0830"
+ },
+ {
+  "timestamp": "2026-07-25T09:26:45Z",
+  "service": "billing-worker",
+  "commit_sha": "d6a127fb0737c0c87f0708c7cbd6430df6e2f52a",
+  "version": "v2026.07.25-0926"
+ },
+ {
+  "timestamp": "2026-07-25T09:30:09Z",
+  "service": "billing-worker",
+  "commit_sha": "863a3814ef21b5399b2957bb1decdc4c8d659b18",
+  "version": "v2026.07.25-0930"
+ },
+ {
+  "timestamp": "2026-07-25T10:04:24Z",
+  "service": "platform-api",
+  "commit_sha": "863a3814ef21b5399b2957bb1decdc4c8d659b18",
+  "version": "v2026.07.25-1004"
+ },
+ {
+  "timestamp": "2026-07-25T10:10:00Z",
+  "service": "query-svc",
+  "commit_sha": "3a7070b8218a052d76c4ed2e4fc8b98778f9e7f9",
+  "version": "v2026.07.25-1010"
+ },
+ {
+  "timestamp": "2026-07-25T10:40:26Z",
+  "service": "metric-ingester",
+  "commit_sha": "c98939d460f2334a33d213b3454f879008ec9318",
+  "version": "v2026.07.25-1040"
+ },
+ {
+  "timestamp": "2026-07-25T10:45:00Z",
+  "service": "platform-api",
+  "commit_sha": "87bb5b3e88eb458653cc00c11f604895b39297ff",
+  "version": "v2026.07.25-1045"
+ },
+ {
+  "timestamp": "2026-07-25T10:48:38Z",
+  "service": "metric-ingester",
+  "commit_sha": "fe32ff8c5a84b89f81309e129df1850c3379c629",
+  "version": "v2026.07.25-1048"
+ },
+ {
+  "timestamp": "2026-07-25T10:50:35Z",
+  "service": "platform-api",
+  "commit_sha": "863a3814ef21b5399b2957bb1decdc4c8d659b18",
+  "version": "v2026.07.25-1050"
+ },
+ {
+  "timestamp": "2026-07-25T10:54:04Z",
+  "service": "metric-ingester",
+  "commit_sha": "6d5843eb2a0995b1cb0360cbb70fde91c91a8adb",
+  "version": "v2026.07.25-1054"
+ },
+ {
+  "timestamp": "2026-07-25T11:20:38Z",
+  "service": "platform-api",
+  "commit_sha": "a5907013ecdc47ddb5a3caaee5c33e611f108af0",
+  "version": "v2026.07.25-1120"
+ }
+]

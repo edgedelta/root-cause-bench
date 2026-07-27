@@ -1,0 +1,413 @@
+name = "ingester-flush-interval-oom"
+family = "degraded-telemetry"
+seed = 811
+tags = ["degraded-telemetry", "oom", "misleading-patterns"]
+
+[window]
+start = "2026-07-25T06:00:00Z"
+end   = "2026-07-25T11:30:00Z"
+log_rps = 0.06
+
+[alert]
+service = "platform-api"
+metric = "metric_query_p95_ms"
+threshold = 2000
+fired_at = "2026-07-25T10:50:00Z"
+summary = "platform-api metric_query_p95_ms > 2000ms for 5m"
+detail = "dashboard metric queries timing out platform-wide"
+
+[[patterns_extra]]
+signature = "gc pause exceeded budget"
+service = "query-svc"
+count = 900
+delta_vs_baseline = "+3"
+sentiment = "negative"
+[[patterns_extra]]
+signature = "disk usage above <N>% on scratch volume"
+service = "auth-gateway"
+count = 51
+delta_vs_baseline = "+2"
+sentiment = "negative"
+[[patterns_extra]]
+signature = "TLS certificate renews in <N> days warning"
+service = "billing-worker"
+count = 63
+delta_vs_baseline = "+2"
+sentiment = "negative"
+
+[[services]]
+name = "metric-ingester"
+log_weight = 3
+[[services.logs]]
+msg = "flush cycle completed"
+severity = "INFO"
+weight = 5
+[[services.logs]]
+msg = "buffer accepted batch"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "buffered_points"
+baseline = 40000
+jitter = 0.05
+[[services.metrics]]
+name = "container_memory_rss_mb"
+baseline = 420
+jitter = 0.04
+[[services.metrics]]
+name = "container_restarts"
+baseline = 0
+jitter = 0.0
+[[services.metrics]]
+name = "points_flushed_per_min"
+baseline = 780
+jitter = 0.08
+[[services.metrics]]
+name = "cpu_pct"
+baseline = 34
+jitter = 0.08
+
+[[services]]
+name = "query-svc"
+log_weight = 3
+[[services.logs]]
+msg = "metric query served"
+severity = "INFO"
+weight = 5
+[[services.logs]]
+msg = "query cache hit"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "query_cache_hit_ratio"
+baseline = 0.91
+jitter = 0.05
+
+[[services]]
+name = "platform-api"
+log_weight = 3
+[[services.logs]]
+msg = "request served"
+severity = "INFO"
+weight = 5
+[[services.logs]]
+msg = "dashboard rendered"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "metric_query_p95_ms"
+baseline = 210
+jitter = 0.08
+
+[[services]]
+name = "billing-worker"
+log_weight = 2
+[[services.logs]]
+msg = "invoice batch processed"
+severity = "INFO"
+weight = 5
+[[services.logs]]
+msg = "ledger entry written"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "invoice_queue_depth"
+baseline = 40
+jitter = 0.06
+
+[[trace_flows]]
+name = "GET /api/dashboard/metrics"
+per_hour = 4
+end = "2026-07-25T10:20:00Z"
+[[trace_flows.spans]]
+service = "platform-api"
+name = "GET /api/dashboard/metrics"
+duration_ms = 85
+[[trace_flows.spans]]
+service = "query-svc"
+name = "QueryMetrics"
+duration_ms = 55
+[[trace_flows.spans]]
+service = "metric-ingester"
+name = "ReadBuffer"
+duration_ms = 12
+
+[incident]
+onset = "2026-07-25T10:20:00Z"
+first_failing_service = "metric-ingester"
+
+[[incident.metric_faults]]
+service = "metric-ingester"
+metric = "buffered_points"
+curve = "ramp"
+to = 2400000
+start = "2026-07-25T08:45:00Z"
+end = "2026-07-25T10:20:00Z"
+[[incident.metric_faults]]
+service = "metric-ingester"
+metric = "container_memory_rss_mb"
+curve = "ramp"
+to = 4090
+start = "2026-07-25T08:45:00Z"
+end = "2026-07-25T10:20:00Z"
+[[incident.metric_faults]]
+service = "metric-ingester"
+metric = "container_restarts"
+curve = "step"
+to = 5
+[[incident.metric_faults]]
+service = "metric-ingester"
+metric = "points_flushed_per_min"
+curve = "ramp"
+to = 95
+start = "2026-07-25T08:45:00Z"
+end = "2026-07-25T10:20:00Z"
+[[incident.metric_faults]]
+service = "platform-api"
+metric = "metric_query_p95_ms"
+curve = "ramp"
+to = 3400
+start = "2026-07-25T10:20:00Z"
+end = "2026-07-25T10:45:00Z"
+
+[[incident.log_faults]]
+service = "metric-ingester"
+msg = "flush cycle skipped: buffer not due"
+severity = "WARN"
+rate_per_min = 3
+start = "2026-07-25T08:45:00Z"
+end = "2026-07-25T11:30:00Z"
+in_patterns = false
+[[incident.log_faults]]
+service = "query-svc"
+msg = "metric query timeout: upstream metric-ingester unresponsive"
+severity = "ERROR"
+rate_per_min = 8
+start = "2026-07-25T10:20:00Z"
+end = "2026-07-25T11:30:00Z"
+[[incident.log_faults]]
+service = "platform-api"
+msg = "dashboard metric query failed: upstream timeout"
+severity = "ERROR"
+rate_per_min = 5
+start = "2026-07-25T10:50:00Z"
+end = "2026-07-25T11:30:00Z"
+
+[[incident.trace_exemplars]]
+trace_id = "eeeeeeeeeeeeeeeeeeeeeeeeeeee0001"
+span_id = "e0"
+service = "platform-api"
+name = "GET /api/dashboard/metrics"
+start = "2026-07-25T09:10:00Z"
+duration_ms = 90
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "eeeeeeeeeeeeeeeeeeeeeeeeeeee0001"
+span_id = "e1"
+parent_id = "e0"
+service = "query-svc"
+name = "QueryMetrics"
+start = "2026-07-25T09:10:00Z"
+duration_ms = 58
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "eeeeeeeeeeeeeeeeeeeeeeeeeeee0001"
+span_id = "e2"
+parent_id = "e1"
+service = "metric-ingester"
+name = "ReadBuffer"
+start = "2026-07-25T09:10:00Z"
+duration_ms = 14
+status = "OK"
+
+[[incident.trace_exemplars]]
+trace_id = "eeeeeeeeeeeeeeeeeeeeeeeeeeee0002"
+span_id = "f0"
+service = "platform-api"
+name = "GET /api/dashboard/metrics"
+start = "2026-07-25T10:55:00Z"
+duration_ms = 3210
+status = "ERROR"
+error = "upstream timeout"
+[[incident.trace_exemplars]]
+trace_id = "eeeeeeeeeeeeeeeeeeeeeeeeeeee0002"
+span_id = "f1"
+parent_id = "f0"
+service = "query-svc"
+name = "QueryMetrics"
+start = "2026-07-25T10:55:00Z"
+duration_ms = 3180
+status = "ERROR"
+error = "upstream metric-ingester unresponsive"
+[[incident.trace_exemplars]]
+trace_id = "eeeeeeeeeeeeeeeeeeeeeeeeeeee0002"
+span_id = "f2"
+parent_id = "f1"
+service = "metric-ingester"
+name = "ReadBuffer"
+start = "2026-07-25T10:55:00Z"
+duration_ms = 2950
+status = "ERROR"
+error = "write deadline exceeded"
+
+[[incident.trace_exemplars]]
+trace_id = "eeeeeeeeeeeeeeeeeeeeeeeeeeee0003"
+span_id = "g0"
+service = "platform-api"
+name = "GET /api/dashboard/metrics"
+start = "2026-07-25T11:05:00Z"
+duration_ms = 3260
+status = "ERROR"
+error = "upstream timeout"
+[[incident.trace_exemplars]]
+trace_id = "eeeeeeeeeeeeeeeeeeeeeeeeeeee0003"
+span_id = "g1"
+parent_id = "g0"
+service = "query-svc"
+name = "QueryMetrics"
+start = "2026-07-25T11:05:00Z"
+duration_ms = 3225
+status = "ERROR"
+error = "upstream metric-ingester unresponsive"
+[[incident.trace_exemplars]]
+trace_id = "eeeeeeeeeeeeeeeeeeeeeeeeeeee0003"
+span_id = "g2"
+parent_id = "g1"
+service = "metric-ingester"
+name = "ReadBuffer"
+start = "2026-07-25T11:05:00Z"
+duration_ms = 2990
+status = "ERROR"
+error = "write deadline exceeded"
+
+[commits]
+innocent_count = 27
+
+[[commits.authored]]
+id = "early-innocent"
+message = "chore(platform-api): tidy dashboard route comments"
+author = "elena.popov"
+timestamp = "2026-07-25T06:15:00Z"
+files = ["services/platform-api/routes.go"]
+diff = '''--- a/services/platform-api/routes.go
++++ b/services/platform-api/routes.go
+@@ -8,2 +8,2 @@
+-// dashboard routes
++// dashboard metric routes
+ mux.HandleFunc("/api/dashboard/metrics", handleMetrics)
+'''
+
+[[commits.authored]]
+id = "protobuf-decoy"
+message = "chore(metric-ingester): bump protobuf runtime"
+author = "marco.silva"
+timestamp = "2026-07-25T07:35:00Z"
+files = ["services/metric-ingester/go.mod", "services/metric-ingester/pb/event.pb.go"]
+diff = '''--- a/services/metric-ingester/go.mod
++++ b/services/metric-ingester/go.mod
+@@ -4,1 +4,1 @@
+-	google.golang.org/protobuf v1.31.0
++	google.golang.org/protobuf v1.33.0
+--- a/services/metric-ingester/pb/event.pb.go
++++ b/services/metric-ingester/pb/event.pb.go
+@@ -1,3 +1,3 @@
+-// Code generated by protoc-gen-go. DO NOT EDIT.
+-// source: event.proto, protoc-gen-go v1.31.0
++// Code generated by protoc-gen-go. DO NOT EDIT.
++// source: event.proto, protoc-gen-go v1.33.0
+ package pb
+'''
+
+[[commits.authored]]
+id = "zstd-decoy"
+message = "perf(metric-ingester): zstd compression level 3->8"
+author = "sofia.rossi"
+timestamp = "2026-07-25T08:00:00Z"
+files = ["services/metric-ingester/wire.go"]
+diff = '''--- a/services/metric-ingester/wire.go
++++ b/services/metric-ingester/wire.go
+@@ -12,3 +12,3 @@ func newEncoder() *zstd.Encoder {
+-	enc, _ := zstd.NewWriter(nil, zstd.WithEncoderLevel(3))
++	enc, _ := zstd.NewWriter(nil, zstd.WithEncoderLevel(8))
+ 	return enc
+ }
+'''
+
+[[commits.authored]]
+id = "culprit"
+message = "perf(metric-ingester): adaptive flush scheduling"
+author = "marco.silva"
+timestamp = "2026-07-25T08:25:00Z"
+files = ["services/metric-ingester/flush.go"]
+diff = '''--- a/services/metric-ingester/flush.go
++++ b/services/metric-ingester/flush.go
+@@ -37,8 +37,8 @@ func (b *Buffer) nextFlush() time.Duration {
+-	flushEvery := 30 * time.Second
+-	return flushEvery
++	interval := time.Duration(max(30, len(b.pending)/b.ratePerMin)) * time.Second
++	return interval
+ }
+'''
+
+[[commits.authored]]
+id = "query-decoy"
+message = "fix(query-svc): correct log field name in cache metrics"
+author = "priya.nair"
+timestamp = "2026-07-25T10:05:00Z"
+files = ["services/query-svc/cache.go"]
+diff = '''--- a/services/query-svc/cache.go
++++ b/services/query-svc/cache.go
+@@ -21,1 +21,1 @@
+-	log.Info("cache_hit", "ratio", r.hitRatio())
++	log.Info("cache hit", "hit_ratio", r.hitRatio())
+'''
+
+[[commits.authored]]
+id = "platform-decoy"
+message = "chore(platform-api): relabel dashboard latency metric tag"
+author = "noah.becker"
+timestamp = "2026-07-25T10:42:00Z"
+files = ["services/platform-api/metrics.go"]
+diff = '''--- a/services/platform-api/metrics.go
++++ b/services/platform-api/metrics.go
+@@ -9,1 +9,1 @@
+-metricQueryP95.WithLabelValues("v1").Observe(ms)
++metricQueryP95.WithLabelValues("dashboard").Observe(ms)
+'''
+
+[[deploys]]
+service = "platform-api"
+commit = "early-innocent"
+timestamp = "2026-07-25T06:20:00Z"
+[[deploys]]
+service = "metric-ingester"
+commit = "protobuf-decoy"
+timestamp = "2026-07-25T07:40:00Z"
+[[deploys]]
+service = "metric-ingester"
+commit = "zstd-decoy"
+timestamp = "2026-07-25T08:05:00Z"
+[[deploys]]
+service = "metric-ingester"
+commit = "culprit"
+timestamp = "2026-07-25T08:30:00Z"
+[[deploys]]
+service = "query-svc"
+commit = "query-decoy"
+timestamp = "2026-07-25T10:10:00Z"
+[[deploys]]
+service = "platform-api"
+commit = "platform-decoy"
+timestamp = "2026-07-25T10:45:00Z"
+
+[deploys_auto]
+count = 15
+services = ["metric-ingester", "query-svc", "platform-api", "billing-worker"]
+pre_onset_min = 6
+
+[ground_truth]
+culprit_id = "culprit"
+blast_radius = ["query-svc", "platform-api"]
+remediation = "rollback"
+decoy_ids = ["protobuf-decoy", "zstd-decoy", "query-decoy", "platform-decoy"]
+notes = "MISLEADING PATTERNS (adversarial, degraded-telemetry). Culprit is 'perf(metric-ingester): adaptive flush scheduling' (authored+deployed 08:25/08:30 to metric-ingester): the diff is comment-free on both sides and reads as a harmless efficiency tweak, but it is a units bug. Old code: a fixed flushEvery := 30 * time.Second. New code: interval := time.Duration(max(30, len(b.pending)/b.ratePerMin)) * time.Second. len(b.pending) is a raw point COUNT; b.ratePerMin is the ingestion rate in points-per-MINUTE — so their quotient is naturally in units of MINUTES-of-backlog-at-current-throughput, not seconds. The code nonetheless feeds that number straight into a `* time.Second` duration, so once the backlog is large enough the quotient exceeds 30 and the flush interval balloons: at sustained load the quotient resolves to roughly 300, giving a 300s (5 min) flush interval versus the intended 30s baseline — a 10x jump the code never intended to allow, since the correct computation would have divided by a per-second rate (b.ratePerMin/60), not the per-minute figure itself. A longer interval means more points accumulate before the next flush, which raises b.pending further, which grows the quotient further — a runaway feedback loop. This is directly visible in the derived telemetry: buffered_points ramps 40k -> 2.4M and container_memory_rss_mb ramps 420MB -> 4090MB from 08:45 (15 min after the deploy, once the first few inflated intervals compound) to the OOM plateau at onset 10:20, where container_restarts steps 0 -> 5 (CrashLoopBackOff) and points_flushed_per_min collapses from ~780/min to ~95/min in the same window (the flush cadence itself, observed indirectly, not a flush_interval_s gauge — no such metric is exposed, by design, so the mechanism must be read from the code and inferred from its downstream effects). No log line or trace ever quotes '300s', '30x', or any diff constant — every incident number is derived from metric curves and cross-service timing. THE MISLEAD: patterns.json is headlined by a `[[patterns_extra]]` entry — 'gc pause exceeded budget' on query-svc, count 900, delta +3 — sitting ABOVE every real incident pattern (query-svc's own 'metric query timeout: upstream metric-ingester unresponsive' ERROR at 8/min for the 70 min from onset to window end totals 560; platform-api's 'dashboard metric query failed: upstream timeout' ERROR at 5/min for the 40 min from alert to window end totals 200; both comfortably under 900). A solver who trusts pattern-count ranking alone will fixate on query-svc GC pauses as the story. The count-900 entry is stale background chatter, not incident-caused: its delta_vs_baseline is +3 (barely above its pre-existing steady-state count), meaning virtually all 900 occurrences predate the window and are unrelated to the incident, whereas the two real incident patterns show explosive deltas (+560, +200) starting exactly at onset/alert timestamps that a careful solver can check against logs.ndjson row timestamps. Compounding the mislead: metric-ingester's own flush-degradation evidence is invisible in patterns.json by construction — its WARN log_fault ('flush cycle skipped: buffer not due', 3/min from 08:45 onward) is marked in_patterns=false, so the clusterer 'missed' it; the rows are still present verbatim in logs.ndjson (searchable by service+severity), so a solver who reads raw logs rather than trusting the patterns summary will find the one clue patterns.json omits. Two other patterns_extra entries (disk usage on auth-gateway, count 51; TLS renewal on billing-worker, count 63; both delta +2) are ordinary pre-existing background noise on services not even present in this scenario's service roster, included purely as low-count filler beneath the mislead. TRAPS (both pre-onset, both exonerated by code semantics, not timing): (1) 'perf(metric-ingester): zstd compression level 3->8' (deployed 08:05, 25 min before the culprit, same service) raises the outbound wire compression level — a CPU-shaped change that plausibly explains resource pressure on the same box that later OOMs. It is exonerated by cpu_pct: the metric has no incident.metric_faults entry at all and stays flat at its ~34% baseline (jitter only) for the entire window — if the compression bump were straining the CPU, cpu_pct would show it, and it never does; the RSS ramp that actually happens begins 40 minutes after this deploy and is driven by buffered_points, not by any CPU signal. (2) 'chore(metric-ingester): bump protobuf runtime' (deployed 07:40, 50 min before the culprit) is a semantics-preserving dependency bump: go.mod moves v1.31.0 -> v1.33.0 and the regenerated stub's header comment updates to match, with zero behavioral change to any struct, field, or serialization path touched by the flush/buffer code. Two additional innocent-looking decoys sit at classic bait positions near the visible activity: 'fix(query-svc): correct log field name in cache metrics' deploys at 10:10, 10 minutes before onset and to the service whose errors the solver will notice first — exonerated because it only renames a log field key, no behavior change, and query-svc's timeout errors don't start until 10:20, after this deploy already existed in production without incident. 'chore(platform-api): relabel dashboard latency metric tag' deploys at 10:45, 5 minutes before the alert fires on the very metric it touches — exonerated because it only changes a Prometheus label value on an existing Observe() call, it cannot manufacture latency, and metric_query_p95_ms had already been ramping for 25 minutes (since onset 10:20) before this deploy landed. first_failing_service is metric-ingester (the buffer/OOM originates there); query-svc and platform-api are blast radius as downstream/victim. 15 deploys_auto entries (>=6 pre-onset) cycle across all four services as background noise. Remediation: roll back metric-ingester to the pre-adaptive-flush build (restore the fixed 30s flushEvery)."
