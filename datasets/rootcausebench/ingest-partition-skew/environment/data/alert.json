@@ -1,0 +1,8 @@
+{
+ "service": "dashboard-svc",
+ "metric": "chart_data_staleness_s",
+ "threshold": 900,
+ "fired_at": "2026-07-26T13:50:00Z",
+ "summary": "dashboard-svc chart_data_staleness_s > 900s for 10m",
+ "detail": "customer dashboards showing charts more than 15 minutes behind live ingest"
+}

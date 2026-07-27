@@ -2,11 +2,11 @@
   "summary": {
     "latest-commit": {
       "passed": 0,
-      "total": 31,
+      "total": 32,
       "pass_rate_pct": 0.0,
       "decoy_hits": 0,
       "by_tier": {
-        "adversarial": "0/7",
+        "adversarial": "0/8",
         "easy": "0/3",
         "hard": "0/12",
         "medium": "0/9"
@@ -14,11 +14,11 @@
     },
     "always-none": {
       "passed": 8,
-      "total": 31,
-      "pass_rate_pct": 25.8,
+      "total": 32,
+      "pass_rate_pct": 25.0,
       "decoy_hits": 0,
       "by_tier": {
-        "adversarial": "1/7",
+        "adversarial": "1/8",
         "easy": "0/3",
         "hard": "4/12",
         "medium": "3/9"
@@ -26,11 +26,11 @@
     },
     "latest-deploy": {
       "passed": 1,
-      "total": 31,
-      "pass_rate_pct": 3.2,
-      "decoy_hits": 26,
+      "total": 32,
+      "pass_rate_pct": 3.1,
+      "decoy_hits": 27,
       "by_tier": {
-        "adversarial": "0/7",
+        "adversarial": "0/8",
         "easy": "1/3",
         "hard": "0/12",
         "medium": "0/9"
@@ -38,11 +38,11 @@
     },
     "earliest-deploy": {
       "passed": 6,
-      "total": 31,
-      "pass_rate_pct": 19.4,
+      "total": 32,
+      "pass_rate_pct": 18.8,
       "decoy_hits": 11,
       "by_tier": {
-        "adversarial": "0/7",
+        "adversarial": "0/8",
         "easy": "1/3",
         "hard": "4/12",
         "medium": "1/9"
@@ -50,11 +50,11 @@
     },
     "alert-service-deploy": {
       "passed": 5,
-      "total": 31,
-      "pass_rate_pct": 16.1,
-      "decoy_hits": 22,
+      "total": 32,
+      "pass_rate_pct": 15.6,
+      "decoy_hits": 23,
       "by_tier": {
-        "adversarial": "0/7",
+        "adversarial": "0/8",
         "easy": "2/3",
         "hard": "3/12",
         "medium": "0/9"
@@ -62,11 +62,11 @@
     },
     "scripted-rca": {
       "passed": 7,
-      "total": 31,
-      "pass_rate_pct": 22.6,
+      "total": 32,
+      "pass_rate_pct": 21.9,
       "decoy_hits": 23,
       "by_tier": {
-        "adversarial": "0/7",
+        "adversarial": "0/8",
         "easy": "3/3",
         "hard": "4/12",
         "medium": "0/9"
@@ -157,6 +157,13 @@
         "answered": "d8a433589cac",
         "hit_decoy": false,
         "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "ingest-partition-skew": {
+        "passed": false,
+        "answered": "9cdbc562b246",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
         "no_code_cause": false
       },
       "inventory-connection-pool-exhaustion": {
@@ -378,6 +385,13 @@
         "difficulty": "medium",
         "no_code_cause": false
       },
+      "ingest-partition-skew": {
+        "passed": false,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
       "inventory-connection-pool-exhaustion": {
         "passed": false,
         "answered": "none",
@@ -595,6 +609,13 @@
         "answered": "9a756a127c06",
         "hit_decoy": true,
         "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "ingest-partition-skew": {
+        "passed": false,
+        "answered": "08e093acbfa1",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
         "no_code_cause": false
       },
       "inventory-connection-pool-exhaustion": {
@@ -816,6 +837,13 @@
         "difficulty": "medium",
         "no_code_cause": false
       },
+      "ingest-partition-skew": {
+        "passed": false,
+        "answered": "d86ef4ed5506",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
       "inventory-connection-pool-exhaustion": {
         "passed": true,
         "answered": "c7d2e9a3f1b0",
@@ -1035,6 +1063,13 @@
         "difficulty": "medium",
         "no_code_cause": false
       },
+      "ingest-partition-skew": {
+        "passed": false,
+        "answered": "08e093acbfa1",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
       "inventory-connection-pool-exhaustion": {
         "passed": true,
         "answered": "c7d2e9a3f1b0",
@@ -1252,6 +1287,13 @@
         "answered": "ea343eef188c",
         "hit_decoy": true,
         "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "ingest-partition-skew": {
+        "passed": false,
+        "answered": "4c2791e18101",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
         "no_code_cause": false
       },
       "inventory-connection-pool-exhaustion": {

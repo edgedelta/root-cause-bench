@@ -1,0 +1,532 @@
+name = "ingest-partition-skew"
+family = "beyond-context"
+seed = 402
+tags = ["beyond-context", "monorepo", "kafka", "partition-skew", "delayed-onset"]
+
+[window]
+start = "2026-07-23T14:00:00Z"
+end   = "2026-07-26T14:00:00Z"      # 72 hours
+log_rps = 0.45
+
+[alert]
+service = "dashboard-svc"
+metric = "chart_data_staleness_s"
+threshold = 900
+fired_at = "2026-07-26T13:50:00Z"
+summary = "dashboard-svc chart_data_staleness_s > 900s for 10m"
+detail = "customer dashboards showing charts more than 15 minutes behind live ingest"
+
+[[patterns_extra]]
+signature = "connection pool warmup retries exceeded <N> times"
+service = "paymentservice"
+count = 50
+delta_vs_baseline = "+1"
+sentiment = "negative"
+[[patterns_extra]]
+signature = "disk usage above <N>% on scratch volume"
+service = "shippingservice"
+count = 42
+delta_vs_baseline = "+2"
+sentiment = "negative"
+[[patterns_extra]]
+signature = "TLS certificate renews in <N> days warning"
+service = "checkoutservice"
+count = 65
+delta_vs_baseline = "+2"
+sentiment = "negative"
+[[patterns_extra]]
+signature = "cron sync skipped: previous run still active"
+service = "platform-api"
+count = 58
+delta_vs_baseline = "+2"
+sentiment = "negative"
+
+[[services]]
+name = "event-producer"
+log_weight = 4
+[[services.logs]]
+msg = "event published"
+severity = "INFO"
+weight = 5
+[[services.logs]]
+msg = "batch flushed"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "producer_publish_rate"
+baseline = 500
+jitter = 0.1
+[[services.metrics]]
+name = "producer_publish_error_ratio"
+baseline = 0.001
+jitter = 0.2
+
+[[services]]
+name = "kafka-metric-ingestor"
+log_weight = 3
+[[services.logs]]
+msg = "batch consumed"
+severity = "INFO"
+weight = 5
+[[services.logs]]
+msg = "offset committed"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "consumer_lag_partition_0"
+baseline = 210
+jitter = 0.15
+[[services.metrics]]
+name = "consumer_lag_partition_1"
+baseline = 380
+jitter = 0.15
+[[services.metrics]]
+name = "consumer_lag_partition_2"
+baseline = 250
+jitter = 0.15
+[[services.metrics]]
+name = "consumer_lag_partition_3"
+baseline = 320
+jitter = 0.15
+[[services.metrics]]
+name = "consumer_lag_partition_4"
+baseline = 290
+jitter = 0.15
+[[services.metrics]]
+name = "consumer_lag_partition_5"
+baseline = 360
+jitter = 0.15
+[[services.metrics]]
+name = "consumer_lag_partition_6"
+baseline = 230
+jitter = 0.15
+[[services.metrics]]
+name = "consumer_lag_partition_7"
+baseline = 300
+jitter = 0.1
+[[services.metrics]]
+name = "messages_consumed_per_sec"
+baseline = 850
+jitter = 0.08
+
+[[services]]
+name = "dashboard-svc"
+log_weight = 2
+[[services.logs]]
+msg = "dashboard view rendered"
+severity = "INFO"
+weight = 3
+[[services.logs]]
+msg = "saved view loaded"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "chart_data_staleness_s"
+baseline = 45
+jitter = 0.1
+[[services.metrics]]
+name = "dashboard_request_count"
+baseline = 40
+jitter = 0.15
+
+[[services]]
+name = "paymentservice"
+log_weight = 2
+[[services.logs]]
+msg = "charge authorized"
+severity = "INFO"
+weight = 5
+[[services.logs]]
+msg = "refund processed"
+severity = "INFO"
+weight = 1
+[[services.metrics]]
+name = "payment_success_ratio"
+baseline = 0.995
+jitter = 0.02
+
+[[services]]
+name = "shippingservice"
+log_weight = 2
+[[services.logs]]
+msg = "shipment scheduled"
+severity = "INFO"
+weight = 4
+[[services.logs]]
+msg = "tracking number issued"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "shipping_queue_depth"
+baseline = 12
+jitter = 0.2
+[[services.metrics]]
+name = "label_api_latency_ms"
+baseline = 85
+jitter = 0.15
+
+[[services]]
+name = "inventory-service"
+log_weight = 2
+[[services.logs]]
+msg = "inventory reconciled"
+severity = "INFO"
+weight = 4
+[[services.logs]]
+msg = "stock level updated"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "warehouse_queue_depth"
+baseline = 12
+jitter = 0.2
+[[services.metrics]]
+name = "inventory_sync_lag_s"
+baseline = 5
+jitter = 0.15
+
+[[services]]
+name = "platform-api"
+log_weight = 3
+[[services.logs]]
+msg = "request served"
+severity = "INFO"
+weight = 5
+extra = { "http.route" = "/api/v1" }
+[[services.logs]]
+msg = "auth token validated"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "platform_api_latency_p95_ms"
+baseline = 60
+jitter = 0.1
+
+[[services]]
+name = "checkoutservice"
+log_weight = 3
+[[services.logs]]
+msg = "order placed"
+severity = "INFO"
+weight = 5
+extra = { "http.route" = "/api/checkout" }
+[[services.logs]]
+msg = "checkout session started"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "checkout_latency_p99_ms"
+baseline = 300
+jitter = 0.05
+
+[[trace_flows]]
+name = "ingest event batch"
+per_hour = 4
+end = "2026-07-26T11:50:00Z"
+[[trace_flows.spans]]
+service = "event-producer"
+name = "PublishBatch"
+duration_ms = 48
+[[trace_flows.spans]]
+service = "kafka-metric-ingestor"
+name = "ConsumeBatch"
+duration_ms = 60
+[[trace_flows.spans]]
+service = "dashboard-svc"
+name = "RefreshChartData"
+duration_ms = 30
+
+[incident]
+onset = "2026-07-26T11:50:00Z"       # chart_data_staleness_s's own ramp visibly accelerates here
+first_failing_service = "kafka-metric-ingestor"
+
+[[incident.metric_faults]]
+service = "kafka-metric-ingestor"
+metric = "consumer_lag_partition_7"
+curve = "ramp"
+to = 900000
+start = "2026-07-25T18:50:00Z"        # begins 1h after the culprit deploy
+end = "2026-07-26T09:50:00Z"
+[[incident.metric_faults]]
+service = "kafka-metric-ingestor"
+metric = "messages_consumed_per_sec"
+curve = "ramp"
+to = 400
+start = "2026-07-26T05:00:00Z"
+end = "2026-07-26T11:50:00Z"
+[[incident.metric_faults]]
+service = "dashboard-svc"
+metric = "chart_data_staleness_s"
+curve = "ramp"
+to = 1400
+start = "2026-07-26T11:50:00Z"        # onset — the alerting metric's own ramp
+end = "2026-07-26T13:55:00Z"
+[[incident.metric_faults]]
+service = "inventory-service"
+metric = "warehouse_queue_depth"
+curve = "spike"
+to = 340
+start = "2026-07-24T18:00:00Z"
+end = "2026-07-24T20:00:00Z"
+
+[[incident.log_faults]]
+service = "kafka-metric-ingestor"
+msg = "rebalance triggered: max poll interval exceeded"
+severity = "WARN"
+rate_per_min = 0.2
+start = "2026-07-25T19:30:00Z"
+end = "2026-07-26T11:50:00Z"
+[[incident.log_faults]]
+service = "kafka-metric-ingestor"
+msg = "rebalance triggered: max poll interval exceeded"
+severity = "WARN"
+rate_per_min = 4
+start = "2026-07-26T11:50:00Z"
+end = "2026-07-26T13:50:00Z"
+[[incident.log_faults]]
+service = "dashboard-svc"
+msg = "chart render served stale data: upstream ingest lag exceeded refresh window"
+severity = "ERROR"
+rate_per_min = 6
+start = "2026-07-26T11:55:00Z"
+
+[[incident.trace_exemplars]]
+trace_id = "1111111111111111111111111111a001"
+span_id = "a0"
+service = "event-producer"
+name = "PublishBatch"
+start = "2026-07-24T10:00:00Z"
+duration_ms = 45
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "1111111111111111111111111111a001"
+span_id = "a1"
+parent_id = "a0"
+service = "kafka-metric-ingestor"
+name = "ConsumeBatch"
+start = "2026-07-24T10:00:00Z"
+duration_ms = 55
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "1111111111111111111111111111a001"
+span_id = "a2"
+parent_id = "a1"
+service = "dashboard-svc"
+name = "RefreshChartData"
+start = "2026-07-24T10:00:00Z"
+duration_ms = 28
+status = "OK"
+
+[[incident.trace_exemplars]]
+trace_id = "1111111111111111111111111111a002"
+span_id = "b0"
+service = "event-producer"
+name = "PublishBatch"
+start = "2026-07-26T13:40:00Z"
+duration_ms = 50
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "1111111111111111111111111111a002"
+span_id = "b1"
+parent_id = "b0"
+service = "kafka-metric-ingestor"
+name = "ConsumeBatch"
+start = "2026-07-26T13:40:00Z"
+duration_ms = 41200
+status = "ERROR"
+error = "poll interval exceeded while draining partition 7 backlog; rebalance triggered"
+[[incident.trace_exemplars]]
+trace_id = "1111111111111111111111111111a002"
+span_id = "b2"
+parent_id = "b1"
+service = "dashboard-svc"
+name = "RefreshChartData"
+start = "2026-07-26T13:40:00Z"
+duration_ms = 41800
+status = "ERROR"
+error = "chart data stale: upstream ingest lag exceeded refresh window"
+
+[[incident.trace_exemplars]]
+trace_id = "1111111111111111111111111111a003"
+span_id = "c0"
+service = "event-producer"
+name = "PublishBatch"
+start = "2026-07-26T13:47:00Z"
+duration_ms = 52
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "1111111111111111111111111111a003"
+span_id = "c1"
+parent_id = "c0"
+service = "kafka-metric-ingestor"
+name = "ConsumeBatch"
+start = "2026-07-26T13:47:00Z"
+duration_ms = 44500
+status = "ERROR"
+error = "poll interval exceeded while draining partition 7 backlog; rebalance triggered"
+[[incident.trace_exemplars]]
+trace_id = "1111111111111111111111111111a003"
+span_id = "c2"
+parent_id = "c1"
+service = "dashboard-svc"
+name = "RefreshChartData"
+start = "2026-07-26T13:47:00Z"
+duration_ms = 45100
+status = "ERROR"
+error = "chart data stale: upstream ingest lag exceeded refresh window"
+
+[commits]
+innocent_count = 260
+
+[[commits.authored]]
+id = "early-innocent"
+message = "chore(consumer): add partition id to consume log line"
+author = "lena.fischer"
+timestamp = "2026-07-23T14:30:00Z"
+files = ["services/kafka-metric-ingestor/log.go"]
+diff = '''--- a/services/kafka-metric-ingestor/log.go
++++ b/services/kafka-metric-ingestor/log.go
+@@ -6,2 +6,2 @@
+-	log.Info("batch consumed")
++	log.Info("batch consumed", "partition", msg.Partition)
+'''
+
+[[commits.authored]]
+id = "producer-batch-size-decoy"
+message = "perf(producer): raise batch.size for higher throughput"
+author = "mei.chen"
+timestamp = "2026-07-24T09:00:00Z"
+files = ["services/event-producer/config.go"]
+diff = '''--- a/services/event-producer/config.go
++++ b/services/event-producer/config.go
+@@ -9,2 +9,2 @@
+-	BatchSize: 16384,
++	BatchSize: 65536,
+'''
+
+[[commits.authored]]
+id = "culprit"
+message = "refactor(ingest): stable partitioning for tenant affinity"
+author = "devon.marsh"
+timestamp = "2026-07-25T17:20:00Z"
+files = ["services/event-producer/partition.go"]
+diff = '''--- a/services/event-producer/partition.go
++++ b/services/event-producer/partition.go
+@@ -10,8 +10,9 @@ func (p *Partitioner) partitionFor(msg *Message) int32 {
+-	// route by device so a single device's events land on one partition
+-	// (keeps per-device ordering, which is all we need today).
+-	h := hash(msg.DeviceID)
+-	return int32(h % p.numPartitions)
++	// stable partitioning: route by tenant instead of device so a tenant's
++	// events always land on the same partition (needed for the new
++	// per-tenant windowed aggregation job).
++	h := hash(msg.TenantID)
++	return int32(h % p.numPartitions)
+ }
+'''
+
+[[commits.authored]]
+id = "kafka-bump-decoy"
+message = "chore(consumer): bump kafka client 3.6->3.7"
+author = "priya.nair"
+timestamp = "2026-07-26T05:35:00Z"
+files = ["go.mod", "go.sum", "services/kafka-metric-ingestor/client.go"]
+diff = '''--- a/go.mod
++++ b/go.mod
+@@ -4,7 +4,7 @@ require (
+-	github.com/segmentio/kafka-go v3.6.0
++	github.com/segmentio/kafka-go v3.7.0
+ )
+--- a/services/kafka-metric-ingestor/client.go
++++ b/services/kafka-metric-ingestor/client.go
+@@ -22,7 +22,7 @@ func newConsumerGroup(cfg Config) *kafka.ConsumerGroup {
+-		// v3.6 exposes the range assignor as kafka.RangeAssignor
+-		Assignor: kafka.RangeAssignor,
++		// v3.7 renamed the constant (same assignor, no behavior change)
++		Assignor: kafka.RangeAssignorName,
+ 	})
+'''
+
+[[commits.authored]]
+id = "poll-records-decoy"
+message = "perf(consumer): raise max.poll.records 500->1000"
+author = "tom.oduya"
+timestamp = "2026-07-26T09:35:00Z"
+files = ["services/kafka-metric-ingestor/consumer_config.go"]
+diff = '''--- a/services/kafka-metric-ingestor/consumer_config.go
++++ b/services/kafka-metric-ingestor/consumer_config.go
+@@ -14,2 +14,2 @@
+-	MaxPollRecords: 500,
++	MaxPollRecords: 1000,
+'''
+
+[[commits.authored]]
+id = "fetch-bytes-decoy"
+message = "perf(consumer): raise fetch.max.bytes 1MB->5MB"
+author = "sofia.rossi"
+timestamp = "2026-07-26T10:35:00Z"
+files = ["services/kafka-metric-ingestor/consumer_config.go"]
+diff = '''--- a/services/kafka-metric-ingestor/consumer_config.go
++++ b/services/kafka-metric-ingestor/consumer_config.go
+@@ -18,2 +18,2 @@
+-	FetchMaxBytes: 1 << 20, // 1MB per fetch
++	FetchMaxBytes: 5 << 20, // 5MB per fetch
+'''
+
+[[commits.authored]]
+id = "innocent-near-alert"
+message = "feat(dashboard): add ingest-throughput widget"
+author = "ahmet.yilmaz"
+timestamp = "2026-07-26T13:35:00Z"
+files = ["services/dashboard/widgets.go"]
+diff = '''--- a/services/dashboard/widgets.go
++++ b/services/dashboard/widgets.go
+@@ -40,0 +41,4 @@
++func (s *Server) ingestThroughputWidget(ctx context.Context) (*Widget, error) {
++	return s.widgets.Render(ctx, "ingest_throughput")
++}
+'''
+
+[[deploys]]
+service = "kafka-metric-ingestor"
+commit = "early-innocent"
+timestamp = "2026-07-23T14:45:00Z"
+[[deploys]]
+service = "event-producer"
+commit = "producer-batch-size-decoy"
+timestamp = "2026-07-24T09:15:00Z"
+[[deploys]]
+service = "event-producer"
+commit = "culprit"
+timestamp = "2026-07-25T17:50:00Z"
+[[deploys]]
+service = "kafka-metric-ingestor"
+commit = "kafka-bump-decoy"
+timestamp = "2026-07-26T05:50:00Z"
+[[deploys]]
+service = "kafka-metric-ingestor"
+commit = "poll-records-decoy"
+timestamp = "2026-07-26T09:50:00Z"
+[[deploys]]
+service = "kafka-metric-ingestor"
+commit = "fetch-bytes-decoy"
+timestamp = "2026-07-26T10:50:00Z"
+[[deploys]]
+service = "dashboard-svc"
+commit = "innocent-near-alert"
+timestamp = "2026-07-26T13:40:00Z"
+
+[deploys_auto]
+count = 26
+services = ["event-producer", "kafka-metric-ingestor", "dashboard-svc",
+            "paymentservice", "shippingservice", "inventory-service",
+            "platform-api", "checkoutservice"]
+pre_onset_min = 20
+
+[ground_truth]
+culprit_id = "culprit"
+first_failing_service = "kafka-metric-ingestor"
+blast_radius = ["dashboard-svc"]
+remediation = "rollback"
+decoy_ids = ["kafka-bump-decoy", "poll-records-decoy", "fetch-bytes-decoy", "producer-batch-size-decoy", "innocent-near-alert"]
+notes = "BEYOND-CONTEXT / MONOREPO (adversarial, chunk 2). 267 commits over 72h; log_rps 0.45 produces well over 8MB of telemetry across logs/metrics/traces/patterns — the data must be sliced, not read whole. Culprit is 'refactor(ingest): stable partitioning for tenant affinity' (services/event-producer/partition.go), authored 2026-07-25T17:20Z and deployed to event-producer at 17:50Z, ~20h before the alert fires at 2026-07-26T13:50Z. The diff swaps the partition-key field: `hash(msg.DeviceID)` becomes `hash(msg.TenantID)` — the comment only mentions 'per-tenant windowed aggregation', never skew or overload, so the fault must be read from the code: routing by tenant instead of device means every event from one whale tenant now hashes to the SAME partition instead of being spread across devices. The mechanism is only visible as a DERIVED signature, never named directly: kafka-metric-ingestor exposes eight per-partition lag gauges, consumer_lag_partition_0 through _7. Partitions 0-6 stay flat at their own baselines (210-380, jitter 0.15) for the entire window — direct proof the skew is confined to one partition, not a global consumer problem. consumer_lag_partition_7 alone ramps from a baseline of 300 starting 2026-07-25T18:50Z (1h after the culprit's own deploy) up to a ~900,000 plateau by 2026-07-26T09:50Z — a 15h ramp that is flatly inconsistent with any of the consumer-side decoys below, all of which deploy well after that ramp is already established. messages_consumed_per_sec (kafka-metric-ingestor) independently corroborates: it starts declining from its 850 baseline toward ~400 at 2026-07-26T05:00Z, hours before the alerting service shows any sign of trouble — this is why first_failing_service is kafka-metric-ingestor even though the causal commit shipped to event-producer. chart_data_staleness_s (dashboard-svc), by contrast, stays near its 45s baseline for nearly the whole window: staleness only becomes threshold-crossing once the backlog on partition 7 is large enough to starve the downstream refresh job, so it is flat until onset (2026-07-26T11:50Z, chosen where the alerting metric's own ramp visibly accelerates) and then ramps to a ~1400s plateau by 13:55Z, crossing the 900s threshold a few minutes before the alert fires — an ~18h delayed onset relative to the actual cause. Two WARN log_faults on kafka-metric-ingestor ('rebalance triggered: max poll interval exceeded') establish the timeline in the data itself: a low precursor rate (0.2/min, count 196) runs from 2026-07-25T19:30Z — 40 minutes after the lag ramp begins and many hours before either mechanism-trap deploys — then jumps to 4/min (count 480) at onset. dashboard-svc's own victim pattern ('chart render served stale data: upstream ingest lag exceeded refresh window', 6/min from 2026-07-26T11:55Z, count 750) outnumbers kafka-metric-ingestor's onset-linked WARN pattern (480), satisfying victim-first pattern loudness. Three hand-authored trace exemplars make the mechanism directly visible: a healthy pre-deploy exemplar (2026-07-24T10:00Z) shows PublishBatch(45ms,OK) -> ConsumeBatch(55ms,OK) -> RefreshChartData(28ms,OK); two independent post-onset exemplars (2026-07-26T13:40Z and 13:47Z) show ConsumeBatch spans blowing up to ~41-45 seconds, erroring 'poll interval exceeded while draining partition 7 backlog; rebalance triggered', which propagates directly into RefreshChartData spans erroring 'chart data stale: upstream ingest lag exceeded refresh window' — the derived partition-7 signature corroborated across two independent traces, with no numeric fingerprint from any diff quoted in the text. Five mechanism-traps deploy pre-onset (except innocent-near-alert, which is post-onset bait) and are each exonerable purely by code semantics, not timing: (1) kafka-bump-decoy ('chore(consumer): bump kafka client 3.6->3.7', deployed 2026-07-26T05:50Z, 8h pre-alert) touches go.mod plus one renamed constant, `kafka.RangeAssignor` -> `kafka.RangeAssignorName` — the client's v3.7 release simply renamed the identifier for the same range-assignor strategy, so the diff is semantics-preserving: no partition-assignment behavior changes, and by the time it deploys consumer_lag_partition_7 has already been ramping for 11 hours. (2) poll-records-decoy ('perf(consumer): raise max.poll.records 500->1000', deployed 2026-07-26T09:35Z, 4h pre-alert) is the classic plausible-overload reading — it touches the exact consumer whose logs show poll-interval WARNs — but it is exonerated on two independent grounds: it is a global per-consumer setting applied uniformly across every partition a consumer polls, so it cannot manufacture a single-partition-7-only divergence while partitions 0-6 stay flat; and directionally it *raises* the record ceiling per poll call, a throughput-enhancing change, the wrong direction for a change that would need to shrink capacity to cause a backlog. It also deploys 15 hours after the partition-7 ramp began. (3) fetch-bytes-decoy ('perf(consumer): raise fetch.max.bytes 1MB->5MB', deployed 2026-07-26T10:35Z, 3h pre-alert) is exonerated the same way: fetch-size caps apply uniformly across the whole poll response, not per-partition, and raising the byte ceiling is again capacity-increasing, not capacity-shrinking. (4) producer-batch-size-decoy ('perf(producer): raise batch.size for higher throughput', event-producer, deployed 2026-07-24T09:15Z) rides on the causally-relevant service but only tunes how many records are grouped per network send — batch.size has no path into the partitionFor() key-selection function, and it deploys a full day before the partition-7 ramp even begins, so timing alone would also clear it. (5) innocent-near-alert ('feat(dashboard): add ingest-throughput widget', dashboard-svc, deployed 2026-07-26T13:40Z, 10 minutes before fired_at) is classic innocent-deploy-near-alert bait: a new read-only dashboard widget with no write path into the ingestion pipeline. The 26 deploys_auto entries (20 pre-onset, cyclic across all 8 services) are routine dependency/docs/CI/test noise touching none of partition.go, client.go, consumer_config.go, or the producer config. Four stale patterns_extra (pool warmup retries, disk usage, TLS renewal, cron-sync-skipped; counts 42-65) on paymentservice/shippingservice/checkoutservice/platform-api are unrelated pre-existing background chatter, well below all incident patterns. An inventory-service warehouse_queue_depth spike (baseline 12 -> 340, 2026-07-24T18:00-20:00Z) fully self-heals a day before the culprit even deploys and is unrelated noise on an uninvolved service. Monorepo: route changes by files_changed paths (services/<svc>/, go.mod), not by service-named repos. first_failing_service is kafka-metric-ingestor (its own per-partition lag and throughput metrics move first, many hours before dashboard-svc shows any staleness); dashboard-svc is blast radius (its chart refresh job starves waiting on the backlogged consumer). Remediation: roll back event-producer to the device-id-based partitioning key (restore `hash(msg.DeviceID)`)."

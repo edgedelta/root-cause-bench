@@ -1,0 +1,200 @@
+[
+ {
+  "timestamp": "2026-07-23T14:45:00Z",
+  "service": "kafka-metric-ingestor",
+  "commit_sha": "d86ef4ed55060768a0f02ae63d37eab2e4e0fee5",
+  "version": "v2026.07.23-1445"
+ },
+ {
+  "timestamp": "2026-07-23T17:14:56Z",
+  "service": "checkoutservice",
+  "commit_sha": "937a823e3f7d23e91d794430c9234518fe0c9ebd",
+  "version": "v2026.07.23-1714"
+ },
+ {
+  "timestamp": "2026-07-23T18:10:49Z",
+  "service": "shippingservice",
+  "commit_sha": "664b3dcef5c15ff2ce32e7cf3a696e0bbaaf4324",
+  "version": "v2026.07.23-1810"
+ },
+ {
+  "timestamp": "2026-07-23T19:38:04Z",
+  "service": "checkoutservice",
+  "commit_sha": "287837d85746c8104726b5d2ea98385682a32bb6",
+  "version": "v2026.07.23-1938"
+ },
+ {
+  "timestamp": "2026-07-23T20:03:20Z",
+  "service": "shippingservice",
+  "commit_sha": "7af4e1293bd9d45c46e6c4371ee1b2abe0ad071f",
+  "version": "v2026.07.23-2003"
+ },
+ {
+  "timestamp": "2026-07-24T00:51:39Z",
+  "service": "event-producer",
+  "commit_sha": "8ad9c75e0ed2e53d713ff45b05a48419fb7e910d",
+  "version": "v2026.07.24-0051"
+ },
+ {
+  "timestamp": "2026-07-24T02:13:40Z",
+  "service": "dashboard-svc",
+  "commit_sha": "4c2791e181011f936cd67fb3de6bc4ff07648911",
+  "version": "v2026.07.24-0213"
+ },
+ {
+  "timestamp": "2026-07-24T04:11:47Z",
+  "service": "paymentservice",
+  "commit_sha": "1b32e067606d546a291d29637df7928ad02377d2",
+  "version": "v2026.07.24-0411"
+ },
+ {
+  "timestamp": "2026-07-24T04:23:15Z",
+  "service": "dashboard-svc",
+  "commit_sha": "fc8615437ac7a3ebc298647ed656e6ec01c47ed1",
+  "version": "v2026.07.24-0423"
+ },
+ {
+  "timestamp": "2026-07-24T06:18:04Z",
+  "service": "kafka-metric-ingestor",
+  "commit_sha": "ea3c41bdc6c821d29b3b8e21f6f97bebbc298387",
+  "version": "v2026.07.24-0618"
+ },
+ {
+  "timestamp": "2026-07-24T08:50:53Z",
+  "service": "paymentservice",
+  "commit_sha": "5219824e1b1275bd84a5ae85bd127dc83dfe2913",
+  "version": "v2026.07.24-0850"
+ },
+ {
+  "timestamp": "2026-07-24T09:15:00Z",
+  "service": "event-producer",
+  "commit_sha": "3b3a2bc96231aa891422be63effa8166963e7cac",
+  "version": "v2026.07.24-0915"
+ },
+ {
+  "timestamp": "2026-07-24T10:48:15Z",
+  "service": "inventory-service",
+  "commit_sha": "68cba58e2d7981a0861a2de96769da9049b3b305",
+  "version": "v2026.07.24-1048"
+ },
+ {
+  "timestamp": "2026-07-24T11:43:17Z",
+  "service": "shippingservice",
+  "commit_sha": "1f240f04fa230953dbb1c98d3e7f8a63df88a4bc",
+  "version": "v2026.07.24-1143"
+ },
+ {
+  "timestamp": "2026-07-24T13:34:54Z",
+  "service": "platform-api",
+  "commit_sha": "6dad09ce82a3aefd5aeedafb61179367d0f40432",
+  "version": "v2026.07.24-1334"
+ },
+ {
+  "timestamp": "2026-07-24T17:42:21Z",
+  "service": "event-producer",
+  "commit_sha": "8ad9c75e0ed2e53d713ff45b05a48419fb7e910d",
+  "version": "v2026.07.24-1742"
+ },
+ {
+  "timestamp": "2026-07-24T18:28:06Z",
+  "service": "dashboard-svc",
+  "commit_sha": "bffed4355a6c24b087516d88459d73e7c1da5855",
+  "version": "v2026.07.24-1828"
+ },
+ {
+  "timestamp": "2026-07-24T20:49:05Z",
+  "service": "kafka-metric-ingestor",
+  "commit_sha": "8ad9c75e0ed2e53d713ff45b05a48419fb7e910d",
+  "version": "v2026.07.24-2049"
+ },
+ {
+  "timestamp": "2026-07-25T00:42:04Z",
+  "service": "kafka-metric-ingestor",
+  "commit_sha": "f32361cbc24fc9cd5b1b60536fd5beb5860496ad",
+  "version": "v2026.07.25-0042"
+ },
+ {
+  "timestamp": "2026-07-25T00:48:10Z",
+  "service": "inventory-service",
+  "commit_sha": "8ad9c75e0ed2e53d713ff45b05a48419fb7e910d",
+  "version": "v2026.07.25-0048"
+ },
+ {
+  "timestamp": "2026-07-25T03:14:16Z",
+  "service": "platform-api",
+  "commit_sha": "4c2791e181011f936cd67fb3de6bc4ff07648911",
+  "version": "v2026.07.25-0314"
+ },
+ {
+  "timestamp": "2026-07-25T03:51:00Z",
+  "service": "paymentservice",
+  "commit_sha": "e39284fe3af153cffedb92da208d2c1216b24fea",
+  "version": "v2026.07.25-0351"
+ },
+ {
+  "timestamp": "2026-07-25T05:18:03Z",
+  "service": "platform-api",
+  "commit_sha": "426e96ed59c5132de6bfd969ae6e9ae40de3227a",
+  "version": "v2026.07.25-0518"
+ },
+ {
+  "timestamp": "2026-07-25T06:23:37Z",
+  "service": "shippingservice",
+  "commit_sha": "4909db8058581b9132ed93458d950959455b243a",
+  "version": "v2026.07.25-0623"
+ },
+ {
+  "timestamp": "2026-07-25T07:31:36Z",
+  "service": "inventory-service",
+  "commit_sha": "6866de097671ca056245f213f8df26f65b22a043",
+  "version": "v2026.07.25-0731"
+ },
+ {
+  "timestamp": "2026-07-25T14:35:18Z",
+  "service": "platform-api",
+  "commit_sha": "aea0ba8f4d6f034768e61122c91a5e550017baf0",
+  "version": "v2026.07.25-1435"
+ },
+ {
+  "timestamp": "2026-07-25T14:51:34Z",
+  "service": "event-producer",
+  "commit_sha": "5065e0670b77f5696d062396f18814216ddb00dc",
+  "version": "v2026.07.25-1451"
+ },
+ {
+  "timestamp": "2026-07-25T17:50:00Z",
+  "service": "event-producer",
+  "commit_sha": "7a9069408012b5a0ab33eb3368cc9faca474c85e",
+  "version": "v2026.07.25-1750"
+ },
+ {
+  "timestamp": "2026-07-25T23:40:08Z",
+  "service": "checkoutservice",
+  "commit_sha": "1c2e9742d74b0816dfcae428e3601f6177b0511b",
+  "version": "v2026.07.25-2340"
+ },
+ {
+  "timestamp": "2026-07-26T05:50:00Z",
+  "service": "kafka-metric-ingestor",
+  "commit_sha": "f48c798a76d8732277fde9d9b70d0120b255f51d",
+  "version": "v2026.07.26-0550"
+ },
+ {
+  "timestamp": "2026-07-26T09:50:00Z",
+  "service": "kafka-metric-ingestor",
+  "commit_sha": "ea1e8628c37989b84cae212af1402081b5319b49",
+  "version": "v2026.07.26-0950"
+ },
+ {
+  "timestamp": "2026-07-26T10:50:00Z",
+  "service": "kafka-metric-ingestor",
+  "commit_sha": "8e5f951c1b816e15951310577fba9d3101628a63",
+  "version": "v2026.07.26-1050"
+ },
+ {
+  "timestamp": "2026-07-26T13:40:00Z",
+  "service": "dashboard-svc",
+  "commit_sha": "08e093acbfa1183b74eef547b0f57391e86ea165",
+  "version": "v2026.07.26-1340"
+ }
+]
