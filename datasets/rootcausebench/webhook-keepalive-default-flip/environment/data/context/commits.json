@@ -119,7 +119,7 @@
    "go.mod",
    "internal/webhooks/client.go"
   ],
-  "diff": "--- a/go.mod\n+++ b/go.mod\n@@ -8,7 +8,7 @@ require (\n-\tgithub.com/edgedelta/httpkit v1.8.4\n+\tgithub.com/edgedelta/httpkit v2.0.0\n )\n--- a/internal/webhooks/client.go\n+++ b/internal/webhooks/client.go\n@@ -10,10 +10,11 @@ package webhooks\n func newDispatchClient() *httpkit.Client {\n-\t// httpkit.New wires the package-default transport, which keeps\n-\t// idle connections open for reuse across requests.\n-\treturn httpkit.New()\n+\t// v2 replaces the package-default constructor with an explicit\n+\t// Config; any field left unset takes its Go zero value, so a\n+\t// bare httpkit.Config{} inherits none of v1's transport defaults\n+\t// (KeepAlive included) unless the caller sets it explicitly.\n+\treturn httpkit.NewClient(httpkit.Config{})\n }\n"
+  "diff": "--- a/go.mod\n+++ b/go.mod\n@@ -8,7 +8,7 @@ require (\n-\tgithub.com/edgedelta/httpkit v1.8.4\n+\tgithub.com/edgedelta/httpkit v2.0.0\n )\n--- a/internal/webhooks/client.go\n+++ b/internal/webhooks/client.go\n@@ -10,5 +10,5 @@ package webhooks\n func newDispatchClient() *httpkit.Client {\n-\t// httpkit.New wires package defaults, which keep idle\n-\t// connections open for reuse across requests.\n-\treturn httpkit.New()\n+\t// v2: construct the client from an explicit Config; unset fields\n+\t// take their zero values.\n+\treturn httpkit.NewClient(httpkit.Config{})\n }\n"
  },
  {
   "sha": "4269638f6712be9ec8f99b05edeb56fc6d50a33a",

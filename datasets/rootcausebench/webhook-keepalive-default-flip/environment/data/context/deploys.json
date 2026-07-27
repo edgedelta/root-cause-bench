@@ -72,12 +72,6 @@
   "version": "v2026.07.23-1045"
  },
  {
-  "timestamp": "2026-07-23T11:00:00Z",
-  "service": "billing-api",
-  "commit_sha": "3a7d8bfba4bb663c2b12a7f08fe7682c083d4bba",
-  "version": "v2026.07.23-1100"
- },
- {
   "timestamp": "2026-07-23T11:03:56Z",
   "service": "billing-api",
   "commit_sha": "dd170b4c6b2ddeb9d783481e1ad7f11d149e67e0",
@@ -88,6 +82,12 @@
   "service": "billing-api",
   "commit_sha": "4269638f6712be9ec8f99b05edeb56fc6d50a33a",
   "version": "v2026.07.23-1104"
+ },
+ {
+  "timestamp": "2026-07-23T11:06:00Z",
+  "service": "billing-api",
+  "commit_sha": "3a7d8bfba4bb663c2b12a7f08fe7682c083d4bba",
+  "version": "v2026.07.23-1106"
  },
  {
   "timestamp": "2026-07-23T11:15:48Z",
