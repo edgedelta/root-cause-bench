@@ -1,0 +1,8 @@
+{
+ "service": "dashboard-svc",
+ "metric": "dashboard_data_lag_s",
+ "threshold": 300,
+ "fired_at": "2026-07-24T16:10:00Z",
+ "summary": "dashboard-svc dashboard_data_lag_s > 300s for 10m",
+ "detail": "dashboard views serving stale pipeline output; data lag breaching 5 minutes platform-wide"
+}

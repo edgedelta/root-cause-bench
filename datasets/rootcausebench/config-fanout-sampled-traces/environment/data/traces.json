@@ -1,0 +1,61 @@
+[
+ {
+  "trace_id": "dddddddddddddddddddddddddddd0103",
+  "span_id": "d0",
+  "service": "pipeline-transformer",
+  "name": "ProcessBatch",
+  "start": "2026-07-24T14:30:00Z",
+  "duration_ms": 185,
+  "status": "OK"
+ },
+ {
+  "trace_id": "dddddddddddddddddddddddddddd0103",
+  "span_id": "d1",
+  "parent_id": "d0",
+  "service": "config-svc",
+  "name": "config.Get",
+  "start": "2026-07-24T14:30:00Z",
+  "duration_ms": 8,
+  "status": "OK"
+ },
+ {
+  "trace_id": "dddddddddddddddddddddddddddd0231",
+  "span_id": "e0",
+  "service": "pipeline-transformer",
+  "name": "ProcessBatch",
+  "start": "2026-07-24T15:50:00Z",
+  "duration_ms": 2380,
+  "status": "ERROR",
+  "error": "batch deadline exceeded"
+ },
+ {
+  "trace_id": "dddddddddddddddddddddddddddd0231",
+  "span_id": "e1",
+  "parent_id": "e0",
+  "service": "config-svc",
+  "name": "config.Get",
+  "start": "2026-07-24T15:50:00Z",
+  "duration_ms": 9,
+  "status": "OK"
+ },
+ {
+  "trace_id": "dddddddddddddddddddddddddddd0231",
+  "span_id": "e2",
+  "parent_id": "e0",
+  "service": "config-svc",
+  "name": "config.Get",
+  "start": "2026-07-24T15:50:00Z",
+  "duration_ms": 11,
+  "status": "OK"
+ },
+ {
+  "trace_id": "dddddddddddddddddddddddddddd0231",
+  "span_id": "e3",
+  "parent_id": "e0",
+  "service": "config-svc",
+  "name": "config.Get",
+  "start": "2026-07-24T15:50:00Z",
+  "duration_ms": 10,
+  "status": "OK"
+ }
+]

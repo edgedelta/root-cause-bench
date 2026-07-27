@@ -2,11 +2,11 @@
   "summary": {
     "latest-commit": {
       "passed": 0,
-      "total": 34,
+      "total": 35,
       "pass_rate_pct": 0.0,
       "decoy_hits": 0,
       "by_tier": {
-        "adversarial": "0/10",
+        "adversarial": "0/11",
         "easy": "0/3",
         "hard": "0/12",
         "medium": "0/9"
@@ -14,11 +14,11 @@
     },
     "always-none": {
       "passed": 8,
-      "total": 34,
-      "pass_rate_pct": 23.5,
+      "total": 35,
+      "pass_rate_pct": 22.9,
       "decoy_hits": 0,
       "by_tier": {
-        "adversarial": "1/10",
+        "adversarial": "1/11",
         "easy": "0/3",
         "hard": "4/12",
         "medium": "3/9"
@@ -26,11 +26,11 @@
     },
     "latest-deploy": {
       "passed": 1,
-      "total": 34,
+      "total": 35,
       "pass_rate_pct": 2.9,
-      "decoy_hits": 29,
+      "decoy_hits": 30,
       "by_tier": {
-        "adversarial": "0/10",
+        "adversarial": "0/11",
         "easy": "1/3",
         "hard": "0/12",
         "medium": "0/9"
@@ -38,11 +38,11 @@
     },
     "earliest-deploy": {
       "passed": 6,
-      "total": 34,
-      "pass_rate_pct": 17.6,
+      "total": 35,
+      "pass_rate_pct": 17.1,
       "decoy_hits": 11,
       "by_tier": {
-        "adversarial": "0/10",
+        "adversarial": "0/11",
         "easy": "1/3",
         "hard": "4/12",
         "medium": "1/9"
@@ -50,11 +50,11 @@
     },
     "alert-service-deploy": {
       "passed": 5,
-      "total": 34,
-      "pass_rate_pct": 14.7,
-      "decoy_hits": 24,
+      "total": 35,
+      "pass_rate_pct": 14.3,
+      "decoy_hits": 25,
       "by_tier": {
-        "adversarial": "0/10",
+        "adversarial": "0/11",
         "easy": "2/3",
         "hard": "3/12",
         "medium": "0/9"
@@ -62,11 +62,11 @@
     },
     "scripted-rca": {
       "passed": 7,
-      "total": 34,
-      "pass_rate_pct": 20.6,
-      "decoy_hits": 25,
+      "total": 35,
+      "pass_rate_pct": 20.0,
+      "decoy_hits": 26,
       "by_tier": {
-        "adversarial": "0/10",
+        "adversarial": "0/11",
         "easy": "3/3",
         "hard": "4/12",
         "medium": "0/9"
@@ -123,6 +123,13 @@
         "hit_decoy": false,
         "difficulty": "hard",
         "no_code_cause": true
+      },
+      "config-fanout-sampled-traces": {
+        "passed": false,
+        "answered": "c389d43c4f6f",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
       },
       "dashboard-db-schema-missing-table": {
         "passed": false,
@@ -364,6 +371,13 @@
         "difficulty": "hard",
         "no_code_cause": true
       },
+      "config-fanout-sampled-traces": {
+        "passed": false,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
       "dashboard-db-schema-missing-table": {
         "passed": false,
         "answered": "none",
@@ -603,6 +617,13 @@
         "hit_decoy": true,
         "difficulty": "hard",
         "no_code_cause": true
+      },
+      "config-fanout-sampled-traces": {
+        "passed": false,
+        "answered": "f58f2639dcee",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
+        "no_code_cause": false
       },
       "dashboard-db-schema-missing-table": {
         "passed": false,
@@ -844,6 +865,13 @@
         "difficulty": "hard",
         "no_code_cause": true
       },
+      "config-fanout-sampled-traces": {
+        "passed": false,
+        "answered": "0c9a19a5b14e",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
       "dashboard-db-schema-missing-table": {
         "passed": true,
         "answered": "4f3740c125c5",
@@ -1084,6 +1112,13 @@
         "difficulty": "hard",
         "no_code_cause": true
       },
+      "config-fanout-sampled-traces": {
+        "passed": false,
+        "answered": "f58f2639dcee",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
       "dashboard-db-schema-missing-table": {
         "passed": false,
         "answered": "451b10297064",
@@ -1323,6 +1358,13 @@
         "hit_decoy": true,
         "difficulty": "hard",
         "no_code_cause": true
+      },
+      "config-fanout-sampled-traces": {
+        "passed": false,
+        "answered": "f58f2639dcee",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
+        "no_code_cause": false
       },
       "dashboard-db-schema-missing-table": {
         "passed": true,

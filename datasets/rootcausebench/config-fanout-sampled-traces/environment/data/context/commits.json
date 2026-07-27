@@ -1,0 +1,327 @@
+[
+ {
+  "sha": "057f059ae2430ce7193e8302e15aa4e96137cf25",
+  "author": "sofia.rossi",
+  "timestamp": "2026-07-24T13:01:42Z",
+  "message": "chore: bump golang.org/x/net to v0.24.0",
+  "files_changed": [
+   "go.mod",
+   "go.sum"
+  ],
+  "diff": "--- a/go.mod\n+++ b/go.mod\n@@ -9,7 +9,7 @@\n-\tgolang.org/x/net v0.23.0\n+\tgolang.org/x/net v0.24.0\n"
+ },
+ {
+  "sha": "0c9a19a5b14ed2eee54702c1e471521c72a69228",
+  "author": "jan.kowalski",
+  "timestamp": "2026-07-24T13:02:35Z",
+  "message": "chore: rotate lint config",
+  "files_changed": [
+   ".golangci.yml"
+  ],
+  "diff": "--- a/.golangci.yml\n+++ b/.golangci.yml\n@@ -3,6 +3,7 @@\n linters:\n   enable:\n+    - unconvert\n"
+ },
+ {
+  "sha": "e4595e088ac386b4b3090c5c15ea878c7ab66b8a",
+  "author": "jan.kowalski",
+  "timestamp": "2026-07-24T13:05:01Z",
+  "message": "chore: bump go.mod dependencies",
+  "files_changed": [
+   "go.mod",
+   "go.sum"
+  ],
+  "diff": "--- a/go.mod\n+++ b/go.mod\n@@ -3,7 +3,7 @@\n require (\n-\tgithub.com/gorilla/mux v1.8.0\n+\tgithub.com/gorilla/mux v1.8.1\n )\n"
+ },
+ {
+  "sha": "0fcdb7674fb8ca8a459605aad071f85314e700cc",
+  "author": "ahmet.yilmaz",
+  "timestamp": "2026-07-24T13:10:00Z",
+  "message": "chore(dashboard-svc): update footer copyright year",
+  "files_changed": [
+   "web/dashboard/footer.go"
+  ],
+  "diff": "--- a/web/dashboard/footer.go\n+++ b/web/dashboard/footer.go\n@@ -3,1 +3,1 @@\n-\tCopyright = \"\u00a9 2025 Acme\"\n+\tCopyright = \"\u00a9 2026 Acme\"\n"
+ },
+ {
+  "sha": "5b4fb2b01853ee11df1e010cc90329dbc55cb08c",
+  "author": "marco.silva",
+  "timestamp": "2026-07-24T13:11:39Z",
+  "message": "ci: cache go build artifacts",
+  "files_changed": [
+   ".github/workflows/build.yml"
+  ],
+  "diff": "--- a/.github/workflows/build.yml\n+++ b/.github/workflows/build.yml\n@@ -8,6 +8,9 @@\n     steps:\n+      - uses: actions/cache@v4\n+        with:\n+          path: ~/go/pkg/mod\n"
+ },
+ {
+  "sha": "5c1ad58befd4e5b06cd1c958ccb54aa5ead185de",
+  "author": "sofia.rossi",
+  "timestamp": "2026-07-24T13:16:39Z",
+  "message": "chore: clarify retry backoff comment",
+  "files_changed": [
+   "internal/retry/backoff.go"
+  ],
+  "diff": "--- a/internal/retry/backoff.go\n+++ b/internal/retry/backoff.go\n@@ -11,6 +11,7 @@\n func Backoff(attempt int) time.Duration {\n+\t// exponential with full jitter, capped at 30s\n\treturn cap(base(attempt), 30*time.Second)\n }\n"
+ },
+ {
+  "sha": "8d1d63f00c50f7cdad47b6fa3a5a05ad5f8d933c",
+  "author": "ahmet.yilmaz",
+  "timestamp": "2026-07-24T13:23:14Z",
+  "message": "style: gofmt sweep",
+  "files_changed": [
+   "internal/worker/pool.go"
+  ],
+  "diff": "--- a/internal/worker/pool.go\n+++ b/internal/worker/pool.go\n@@ -5,7 +5,7 @@\n-func  NewPool(n int) *Pool {\n+func NewPool(n int) *Pool {\n"
+ },
+ {
+  "sha": "858d6ec08bf64b20f421bc256da4a146a9fac2e4",
+  "author": "sofia.rossi",
+  "timestamp": "2026-07-24T13:27:36Z",
+  "message": "fix: correct typo in error message",
+  "files_changed": [
+   "internal/errors/messages.go"
+  ],
+  "diff": "--- a/internal/errors/messages.go\n+++ b/internal/errors/messages.go\n@@ -4,1 +4,1 @@\n-\t\"unkown resource\"\n+\t\"unknown resource\"\n"
+ },
+ {
+  "sha": "f635e79b6ff994463c1ce6addec2d2b6bd6f5e08",
+  "author": "ahmet.yilmaz",
+  "timestamp": "2026-07-24T13:31:56Z",
+  "message": "refactor: extract response writer helper",
+  "files_changed": [
+   "internal/httputil/writer.go"
+  ],
+  "diff": "--- a/internal/httputil/writer.go\n+++ b/internal/httputil/writer.go\n@@ -10,6 +10,10 @@\n+func writeJSON(w http.ResponseWriter, code int, v any) {\n+\tw.WriteHeader(code)\n+\t_ = json.NewEncoder(w).Encode(v)\n+}\n"
+ },
+ {
+  "sha": "bd573b3a30137dd446ea4a0b311cc05de140fcd9",
+  "author": "jan.kowalski",
+  "timestamp": "2026-07-24T13:36:03Z",
+  "message": "chore: update grafana dashboard panel titles",
+  "files_changed": [
+   "deploy/dashboards/orders.json"
+  ],
+  "diff": "--- a/deploy/dashboards/orders.json\n+++ b/deploy/dashboards/orders.json\n@@ -14,7 +14,7 @@\n-      \"title\": \"orders/sec\",\n+      \"title\": \"Orders per second\",\n"
+ },
+ {
+  "sha": "4a735e35b4b3564086f76bca74703272740c5a8e",
+  "author": "tom.oduya",
+  "timestamp": "2026-07-24T14:15:00Z",
+  "message": "feat(pipeline): parallel batch workers",
+  "files_changed": [
+   "services/pipeline-transformer/workers.go"
+  ],
+  "diff": "--- a/services/pipeline-transformer/workers.go\n+++ b/services/pipeline-transformer/workers.go\n@@ -6,6 +6,19 @@ func (s *Server) Run(ctx context.Context) {\n-\tfor batch := range s.batches {\n-\t\ts.ProcessBatch(ctx, batch)\n-\t}\n+\tif s.flags.Enabled(\"pipeline_parallel_batches\") {\n+\t\tvar wg sync.WaitGroup\n+\t\tfor batch := range s.batches {\n+\t\t\twg.Add(1)\n+\t\t\tgo func(b []Record) {\n+\t\t\t\tdefer wg.Done()\n+\t\t\t\ts.ProcessBatch(ctx, b)\n+\t\t\t}(batch)\n+\t\t}\n+\t\twg.Wait()\n+\t\treturn\n+\t}\n+\tfor batch := range s.batches {\n+\t\ts.ProcessBatch(ctx, batch)\n+\t}\n }\n"
+ },
+ {
+  "sha": "0e49d9cb6ad1396379b50d93f274e94aa50561e2",
+  "author": "ahmet.yilmaz",
+  "timestamp": "2026-07-24T14:18:07Z",
+  "message": "feat: add /readyz endpoint",
+  "files_changed": [
+   "internal/health/ready.go"
+  ],
+  "diff": "--- a/internal/health/ready.go\n+++ b/internal/health/ready.go\n@@ -0,0 +1,6 @@\n+func Ready(w http.ResponseWriter, r *http.Request) {\n+\tw.WriteHeader(http.StatusOK)\n+}\n"
+ },
+ {
+  "sha": "e07855063c41c9caedea8187ddd08f0be0af5fa6",
+  "author": "mei.chen",
+  "timestamp": "2026-07-24T14:19:40Z",
+  "message": "feat: add structured logging fields",
+  "files_changed": [
+   "internal/middleware/log.go"
+  ],
+  "diff": "--- a/internal/middleware/log.go\n+++ b/internal/middleware/log.go\n@@ -22,7 +22,8 @@\n-\tlogger.Info(\"request\")\n+\tlogger.Info(\"request\", \"route\", r.URL.Path, \"ms\", elapsed)\n"
+ },
+ {
+  "sha": "fad460e8a0093fbbc0148e52680eb79094f16fb6",
+  "author": "sofia.rossi",
+  "timestamp": "2026-07-24T14:26:32Z",
+  "message": "chore: bump aws-sdk-go-v2 to v1.30.1",
+  "files_changed": [
+   "go.mod",
+   "go.sum"
+  ],
+  "diff": "--- a/go.mod\n+++ b/go.mod\n@@ -6,7 +6,7 @@\n require (\n-\tgithub.com/aws/aws-sdk-go-v2 v1.29.0\n+\tgithub.com/aws/aws-sdk-go-v2 v1.30.1\n )\n"
+ },
+ {
+  "sha": "3a02623a6610825dab312feb11bfca6c9c10c573",
+  "author": "lena.fischer",
+  "timestamp": "2026-07-24T14:35:00Z",
+  "message": "perf(config-svc): add response compression",
+  "files_changed": [
+   "services/config-svc/handler.go"
+  ],
+  "diff": "--- a/services/config-svc/handler.go\n+++ b/services/config-svc/handler.go\n@@ -15,6 +15,10 @@ func (h *Handler) ServeConfig(w http.ResponseWriter, r *http.Request) {\n-\tbody, _ := json.Marshal(cfg)\n-\tw.Write(body)\n+\tbody, _ := json.Marshal(cfg)\n+\tw.Header().Set(\"Content-Encoding\", \"gzip\")\n+\tgz := gzip.NewWriter(w)\n+\tdefer gz.Close()\n+\tgz.Write(body)\n }\n"
+ },
+ {
+  "sha": "1581cfb6e408366a91f4cf738a5ac96631b28bbc",
+  "author": "sofia.rossi",
+  "timestamp": "2026-07-24T14:45:07Z",
+  "message": "chore: regenerate protobuf stubs",
+  "files_changed": [
+   "pkg/pb/orders.pb.go"
+  ],
+  "diff": "--- a/pkg/pb/orders.pb.go\n+++ b/pkg/pb/orders.pb.go\n@@ -1,4 +1,4 @@\n-// Code generated by protoc-gen-go. DO NOT EDIT.\n-// source: orders.proto\n+// Code generated by protoc-gen-go v1.32. DO NOT EDIT.\n+// source: orders.proto\n"
+ },
+ {
+  "sha": "7d9065eecddba5708a0bbcbe113c0104f3dedc91",
+  "author": "ahmet.yilmaz",
+  "timestamp": "2026-07-24T14:57:37Z",
+  "message": "test: raise coverage threshold",
+  "files_changed": [
+   "Makefile"
+  ],
+  "diff": "--- a/Makefile\n+++ b/Makefile\n@@ -30,1 +30,1 @@\n-COVERAGE_MIN := 70\n+COVERAGE_MIN := 75\n"
+ },
+ {
+  "sha": "3bf7134cf6eb6663539e2fe5301ff8a6e07d68e0",
+  "author": "grace.oyelaran",
+  "timestamp": "2026-07-24T15:00:00Z",
+  "message": "refactor(pipeline): per-record config resolution",
+  "files_changed": [
+   "services/pipeline-transformer/transform.go"
+  ],
+  "diff": "--- a/services/pipeline-transformer/transform.go\n+++ b/services/pipeline-transformer/transform.go\n@@ -18,16 +18,15 @@ func (s *Server) ProcessBatch(ctx context.Context, batch []Record) error {\n-\tcfg, err := s.config.Get(ctx, batch[0].Type)\n-\tif err != nil {\n-\t\treturn err\n-\t}\n \tfor _, rec := range batch {\n+\t\tcfg, err := s.config.Get(ctx, rec.Type)\n+\t\tif err != nil {\n+\t\t\treturn err\n+\t\t}\n \t\tout, err := s.transformRecord(ctx, rec, cfg)\n \t\tif err != nil {\n \t\t\treturn err\n \t\t}\n \t\ts.sink.Write(out)\n \t}\n \ts.emitBatchFlushed(len(batch))\n \treturn nil\n }\n"
+ },
+ {
+  "sha": "3003406faab776c969934e61b799059d5c619ec1",
+  "author": "marco.silva",
+  "timestamp": "2026-07-24T15:05:24Z",
+  "message": "chore: bump go.mod dependencies",
+  "files_changed": [
+   "go.mod",
+   "go.sum"
+  ],
+  "diff": "--- a/go.mod\n+++ b/go.mod\n@@ -3,7 +3,7 @@\n require (\n-\tgithub.com/gorilla/mux v1.8.0\n+\tgithub.com/gorilla/mux v1.8.1\n )\n"
+ },
+ {
+  "sha": "9faa54aec3ae095d271589ed9aa312a2d8d635c0",
+  "author": "mei.chen",
+  "timestamp": "2026-07-24T15:06:35Z",
+  "message": "refactor: simplify config loading",
+  "files_changed": [
+   "internal/config/load.go"
+  ],
+  "diff": "--- a/internal/config/load.go\n+++ b/internal/config/load.go\n@@ -18,9 +18,6 @@\n-\tif v := os.Getenv(\"FOO\"); v != \"\" {\n-\t\tcfg.Foo = v\n-\t}\n+\tcfg.Foo = envOr(\"FOO\", cfg.Foo)\n"
+ },
+ {
+  "sha": "d6273531c80caeb8a1d3f092d5acc8f4baf462d6",
+  "author": "marco.silva",
+  "timestamp": "2026-07-24T15:08:00Z",
+  "message": "refactor(pipeline): extract batch metrics helper",
+  "files_changed": [
+   "services/pipeline-transformer/metrics.go"
+  ],
+  "diff": "--- a/services/pipeline-transformer/metrics.go\n+++ b/services/pipeline-transformer/metrics.go\n@@ -1,7 +1,11 @@\n func (s *Server) emitBatchFlushed(n int) {\n-\tbatchSizeHist.Observe(float64(n))\n-\tbatchesFlushed.Inc()\n+\ts.recordBatchMetrics(n)\n }\n+\n+func (s *Server) recordBatchMetrics(n int) {\n+\tbatchSizeHist.Observe(float64(n))\n+\tbatchesFlushed.Inc()\n+}\n"
+ },
+ {
+  "sha": "89269e5bc79de24853a5cce0e2f107583011c876",
+  "author": "mei.chen",
+  "timestamp": "2026-07-24T15:12:26Z",
+  "message": "chore: bump testify to v1.9.0",
+  "files_changed": [
+   "go.mod",
+   "go.sum"
+  ],
+  "diff": "--- a/go.mod\n+++ b/go.mod\n@@ -12,7 +12,7 @@\n-\tgithub.com/stretchr/testify v1.8.4\n+\tgithub.com/stretchr/testify v1.9.0\n"
+ },
+ {
+  "sha": "4f5f696dd69a87e3ef9f93785a254700453982d6",
+  "author": "marco.silva",
+  "timestamp": "2026-07-24T15:21:00Z",
+  "message": "docs: onboarding notes for new services",
+  "files_changed": [
+   "docs/onboarding.md"
+  ],
+  "diff": "--- a/docs/onboarding.md\n+++ b/docs/onboarding.md\n@@ -20,3 +20,5 @@\n ## Local setup\n+\n+Run `make bootstrap` before your first build.\n"
+ },
+ {
+  "sha": "711c652ff39865eacc4fc41439d554f86f8e7906",
+  "author": "ahmet.yilmaz",
+  "timestamp": "2026-07-24T15:26:41Z",
+  "message": "docs: update API reference",
+  "files_changed": [
+   "docs/api/orders.md"
+  ],
+  "diff": "--- a/docs/api/orders.md\n+++ b/docs/api/orders.md\n@@ -12,6 +12,7 @@\n ## GET /orders/{id}\n+Returns 404 if the order does not exist.\n"
+ },
+ {
+  "sha": "870ccd1421026b3f427d5acc5a679b964a5070d7",
+  "author": "tom.oduya",
+  "timestamp": "2026-07-24T15:32:40Z",
+  "message": "test: add integration test for order cancellation",
+  "files_changed": [
+   "tests/integration/cancel_order_test.go"
+  ],
+  "diff": "--- a/tests/integration/cancel_order_test.go\n+++ b/tests/integration/cancel_order_test.go\n@@ -0,0 +1,9 @@\n+func TestCancelOrder(t *testing.T) {\n+\tresp := cancel(t, orderID)\n+\tassertOK(t, resp)\n+}\n"
+ },
+ {
+  "sha": "f58f2639dceeea12bfa602e0f5477065fe854e07",
+  "author": "priya.nair",
+  "timestamp": "2026-07-24T16:00:00Z",
+  "message": "chore(dashboard-svc): refresh banner copy",
+  "files_changed": [
+   "web/dashboard/banner.go"
+  ],
+  "diff": "--- a/web/dashboard/banner.go\n+++ b/web/dashboard/banner.go\n@@ -2,1 +2,1 @@\n-\tBanner = \"Live pipeline metrics\"\n+\tBanner = \"Live pipeline metrics!\"\n"
+ },
+ {
+  "sha": "969986d1774e0bb012954d29be59d2b0b13441f4",
+  "author": "lena.fischer",
+  "timestamp": "2026-07-24T16:03:00Z",
+  "message": "docs: update API reference",
+  "files_changed": [
+   "docs/api/orders.md"
+  ],
+  "diff": "--- a/docs/api/orders.md\n+++ b/docs/api/orders.md\n@@ -12,6 +12,7 @@\n ## GET /orders/{id}\n+Returns 404 if the order does not exist.\n"
+ },
+ {
+  "sha": "646417b9dd60741e35bcdfc20c7ddbe9fd4380c1",
+  "author": "sofia.rossi",
+  "timestamp": "2026-07-24T16:08:31Z",
+  "message": "test: add table-driven tests for money conversion",
+  "files_changed": [
+   "pkg/money/convert_test.go"
+  ],
+  "diff": "--- a/pkg/money/convert_test.go\n+++ b/pkg/money/convert_test.go\n@@ -1,6 +1,18 @@\n func TestConvert(t *testing.T) {\n+\tcases := []struct{ in, out int64 }{{100, 1}, {250, 3}}\n+\tfor _, c := range cases {\n+\t\t_ = c\n+\t}\n }\n"
+ },
+ {
+  "sha": "d92ebfcbe029a29d50abdb2c171ac41e2a6ede2a",
+  "author": "priya.nair",
+  "timestamp": "2026-07-24T16:59:56Z",
+  "message": "feat: expose build info endpoint",
+  "files_changed": [
+   "internal/health/version.go"
+  ],
+  "diff": "--- a/internal/health/version.go\n+++ b/internal/health/version.go\n@@ -0,0 +1,5 @@\n+func Version(w http.ResponseWriter, r *http.Request) {\n+\tfmt.Fprintln(w, buildVersion)\n+}\n"
+ },
+ {
+  "sha": "e5da90c08d0d3f3649c5b6d70b6d2bfe730f6a8a",
+  "author": "mei.chen",
+  "timestamp": "2026-07-24T17:05:39Z",
+  "message": "test: skip flaky retry test on CI",
+  "files_changed": [
+   "internal/retry/backoff_test.go"
+  ],
+  "diff": "--- a/internal/retry/backoff_test.go\n+++ b/internal/retry/backoff_test.go\n@@ -6,6 +6,9 @@\n func TestBackoffJitter(t *testing.T) {\n+\tif os.Getenv(\"CI\") != \"\" {\n+\t\tt.Skip(\"flaky on CI runners\")\n+\t}\n"
+ },
+ {
+  "sha": "a75087d22db740b75220c8215fcfca97ecd1a5eb",
+  "author": "tom.oduya",
+  "timestamp": "2026-07-24T17:22:58Z",
+  "message": "chore: tidy helm values indentation",
+  "files_changed": [
+   "deploy/helm/values.yaml"
+  ],
+  "diff": "--- a/deploy/helm/values.yaml\n+++ b/deploy/helm/values.yaml\n@@ -18,8 +18,8 @@\n resources:\n-    limits:\n-        cpu: 500m\n+  limits:\n+    cpu: 500m\n"
+ },
+ {
+  "sha": "c389d43c4f6fab1e77655989a28e06961d96e5ca",
+  "author": "ahmet.yilmaz",
+  "timestamp": "2026-07-24T17:30:52Z",
+  "message": "perf: preallocate buffer in JSON encoder",
+  "files_changed": [
+   "pkg/codec/json.go"
+  ],
+  "diff": "--- a/pkg/codec/json.go\n+++ b/pkg/codec/json.go\n@@ -14,7 +14,7 @@\n-\tbuf := bytes.Buffer{}\n+\tbuf := make([]byte, 0, 512)\n"
+ }
+]

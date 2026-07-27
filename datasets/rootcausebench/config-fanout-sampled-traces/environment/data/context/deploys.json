@@ -1,0 +1,146 @@
+[
+ {
+  "timestamp": "2026-07-24T13:04:49Z",
+  "service": "ingest-worker",
+  "commit_sha": "0c9a19a5b14ed2eee54702c1e471521c72a69228",
+  "version": "v2026.07.24-1304"
+ },
+ {
+  "timestamp": "2026-07-24T13:11:37Z",
+  "service": "pipeline-transformer",
+  "commit_sha": "057f059ae2430ce7193e8302e15aa4e96137cf25",
+  "version": "v2026.07.24-1311"
+ },
+ {
+  "timestamp": "2026-07-24T13:15:00Z",
+  "service": "dashboard-svc",
+  "commit_sha": "0fcdb7674fb8ca8a459605aad071f85314e700cc",
+  "version": "v2026.07.24-1315"
+ },
+ {
+  "timestamp": "2026-07-24T13:22:42Z",
+  "service": "pipeline-transformer",
+  "commit_sha": "0c9a19a5b14ed2eee54702c1e471521c72a69228",
+  "version": "v2026.07.24-1322"
+ },
+ {
+  "timestamp": "2026-07-24T13:36:57Z",
+  "service": "config-svc",
+  "commit_sha": "8d1d63f00c50f7cdad47b6fa3a5a05ad5f8d933c",
+  "version": "v2026.07.24-1336"
+ },
+ {
+  "timestamp": "2026-07-24T13:59:47Z",
+  "service": "dashboard-svc",
+  "commit_sha": "0c9a19a5b14ed2eee54702c1e471521c72a69228",
+  "version": "v2026.07.24-1359"
+ },
+ {
+  "timestamp": "2026-07-24T14:20:00Z",
+  "service": "pipeline-transformer",
+  "commit_sha": "4a735e35b4b3564086f76bca74703272740c5a8e",
+  "version": "v2026.07.24-1420"
+ },
+ {
+  "timestamp": "2026-07-24T14:21:43Z",
+  "service": "config-svc",
+  "commit_sha": "5c1ad58befd4e5b06cd1c958ccb54aa5ead185de",
+  "version": "v2026.07.24-1421"
+ },
+ {
+  "timestamp": "2026-07-24T14:28:37Z",
+  "service": "pipeline-transformer",
+  "commit_sha": "0c9a19a5b14ed2eee54702c1e471521c72a69228",
+  "version": "v2026.07.24-1428"
+ },
+ {
+  "timestamp": "2026-07-24T14:38:52Z",
+  "service": "pipeline-transformer",
+  "commit_sha": "e07855063c41c9caedea8187ddd08f0be0af5fa6",
+  "version": "v2026.07.24-1438"
+ },
+ {
+  "timestamp": "2026-07-24T14:40:00Z",
+  "service": "config-svc",
+  "commit_sha": "3a02623a6610825dab312feb11bfca6c9c10c573",
+  "version": "v2026.07.24-1440"
+ },
+ {
+  "timestamp": "2026-07-24T14:51:11Z",
+  "service": "ingest-worker",
+  "commit_sha": "0e49d9cb6ad1396379b50d93f274e94aa50561e2",
+  "version": "v2026.07.24-1451"
+ },
+ {
+  "timestamp": "2026-07-24T15:05:00Z",
+  "service": "pipeline-transformer",
+  "commit_sha": "3bf7134cf6eb6663539e2fe5301ff8a6e07d68e0",
+  "version": "v2026.07.24-1505"
+ },
+ {
+  "timestamp": "2026-07-24T15:07:10Z",
+  "service": "dashboard-svc",
+  "commit_sha": "057f059ae2430ce7193e8302e15aa4e96137cf25",
+  "version": "v2026.07.24-1507"
+ },
+ {
+  "timestamp": "2026-07-24T15:10:00Z",
+  "service": "pipeline-transformer",
+  "commit_sha": "d6273531c80caeb8a1d3f092d5acc8f4baf462d6",
+  "version": "v2026.07.24-1510"
+ },
+ {
+  "timestamp": "2026-07-24T15:11:53Z",
+  "service": "config-svc",
+  "commit_sha": "0c9a19a5b14ed2eee54702c1e471521c72a69228",
+  "version": "v2026.07.24-1511"
+ },
+ {
+  "timestamp": "2026-07-24T15:40:39Z",
+  "service": "ingest-worker",
+  "commit_sha": "1581cfb6e408366a91f4cf738a5ac96631b28bbc",
+  "version": "v2026.07.24-1540"
+ },
+ {
+  "timestamp": "2026-07-24T15:54:54Z",
+  "service": "dashboard-svc",
+  "commit_sha": "7d9065eecddba5708a0bbcbe113c0104f3dedc91",
+  "version": "v2026.07.24-1554"
+ },
+ {
+  "timestamp": "2026-07-24T16:05:00Z",
+  "service": "dashboard-svc",
+  "commit_sha": "f58f2639dceeea12bfa602e0f5477065fe854e07",
+  "version": "v2026.07.24-1605"
+ },
+ {
+  "timestamp": "2026-07-24T16:25:34Z",
+  "service": "dashboard-svc",
+  "commit_sha": "711c652ff39865eacc4fc41439d554f86f8e7906",
+  "version": "v2026.07.24-1625"
+ },
+ {
+  "timestamp": "2026-07-24T16:36:14Z",
+  "service": "config-svc",
+  "commit_sha": "870ccd1421026b3f427d5acc5a679b964a5070d7",
+  "version": "v2026.07.24-1636"
+ },
+ {
+  "timestamp": "2026-07-24T17:01:20Z",
+  "service": "search-svc",
+  "commit_sha": "e07855063c41c9caedea8187ddd08f0be0af5fa6",
+  "version": "v2026.07.24-1701"
+ },
+ {
+  "timestamp": "2026-07-24T17:21:13Z",
+  "service": "search-svc",
+  "commit_sha": "89269e5bc79de24853a5cce0e2f107583011c876",
+  "version": "v2026.07.24-1721"
+ },
+ {
+  "timestamp": "2026-07-24T17:28:35Z",
+  "service": "search-svc",
+  "commit_sha": "969986d1774e0bb012954d29be59d2b0b13441f4",
+  "version": "v2026.07.24-1728"
+ }
+]

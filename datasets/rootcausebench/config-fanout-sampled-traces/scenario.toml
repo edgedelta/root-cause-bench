@@ -1,0 +1,446 @@
+name = "config-fanout-sampled-traces"
+family = "degraded-telemetry"
+seed = 707
+tags = ["degraded-telemetry", "sample-traces", "config-fanout"]
+
+[window]
+start = "2026-07-24T13:00:00Z"
+end   = "2026-07-24T18:00:00Z"
+log_rps = 0.1
+
+[alert]
+service = "dashboard-svc"
+metric = "dashboard_data_lag_s"
+threshold = 300
+fired_at = "2026-07-24T16:10:00Z"
+summary = "dashboard-svc dashboard_data_lag_s > 300s for 10m"
+detail = "dashboard views serving stale pipeline output; data lag breaching 5 minutes platform-wide"
+
+[[patterns_extra]]
+signature = "kafka consumer lag rebalancing group <N>"
+service = "ingest-worker"
+count = 72
+delta_vs_baseline = "+2"
+sentiment = "negative"
+[[patterns_extra]]
+signature = "disk usage above <N>% on scratch volume"
+service = "search-svc"
+count = 50
+delta_vs_baseline = "+2"
+sentiment = "negative"
+[[patterns_extra]]
+signature = "TLS certificate renews in <N> days warning"
+service = "config-svc"
+count = 60
+delta_vs_baseline = "+2"
+sentiment = "negative"
+
+[[services]]
+name = "pipeline-transformer"
+log_weight = 4
+[[services.logs]]
+msg = "batch flushed"
+severity = "INFO"
+weight = 5
+extra = { "records" = 96 }
+[[services.logs]]
+msg = "record transformed"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "batch_process_p95_ms"
+baseline = 180
+jitter = 0.08
+
+[[services]]
+name = "config-svc"
+log_weight = 3
+[[services.logs]]
+msg = "config resolved"
+severity = "INFO"
+weight = 5
+[[services.logs]]
+msg = "config cache refreshed"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "config_svc_requests_per_s"
+baseline = 40
+jitter = 0.1
+[[services.metrics]]
+name = "rpc_latency_p95_ms"
+baseline = 15
+jitter = 0.1
+
+[[services]]
+name = "dashboard-svc"
+log_weight = 3
+[[services.logs]]
+msg = "dashboard view rendered"
+severity = "INFO"
+weight = 5
+extra = { "http.route" = "/dashboard" }
+[[services.logs]]
+msg = "saved view loaded"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "dashboard_data_lag_s"
+baseline = 5
+jitter = 0.1
+[[services.metrics]]
+name = "dashboard_request_p95_ms"
+baseline = 140
+jitter = 0.07
+
+[[services]]
+name = "ingest-worker"
+log_weight = 2
+[[services.logs]]
+msg = "event ingested"
+severity = "INFO"
+weight = 4
+[[services.logs]]
+msg = "batch committed"
+severity = "INFO"
+weight = 1
+[[services.metrics]]
+name = "ingest_queue_depth"
+baseline = 20
+jitter = 0.15
+
+[[services]]
+name = "search-svc"
+log_weight = 2
+[[services.logs]]
+msg = "document indexed"
+severity = "INFO"
+weight = 4
+[[services.logs]]
+msg = "index commit flushed"
+severity = "INFO"
+weight = 1
+[[services.metrics]]
+name = "index_lag_ms"
+baseline = 90
+jitter = 0.12
+
+[[trace_flows]]
+name = "ProcessBatch"
+per_hour = 15
+end = "2026-07-24T15:15:00Z"
+[[trace_flows.spans]]
+service = "pipeline-transformer"
+name = "ProcessBatch"
+duration_ms = 180
+[[trace_flows.spans]]
+service = "config-svc"
+name = "GetConfig"
+duration_ms = 8
+
+[incident]
+onset = "2026-07-24T15:15:00Z"
+first_failing_service = "pipeline-transformer"
+
+[[incident.metric_faults]]
+service = "config-svc"
+metric = "config_svc_requests_per_s"
+curve = "ramp"
+to = 3900
+start = "2026-07-24T15:15:00Z"
+end = "2026-07-24T15:45:00Z"
+[[incident.metric_faults]]
+service = "pipeline-transformer"
+metric = "batch_process_p95_ms"
+curve = "ramp"
+to = 2400
+start = "2026-07-24T15:15:00Z"
+end = "2026-07-24T15:50:00Z"
+[[incident.metric_faults]]
+service = "config-svc"
+metric = "rpc_latency_p95_ms"
+curve = "ramp"
+to = 480
+start = "2026-07-24T15:22:00Z"
+end = "2026-07-24T15:55:00Z"
+[[incident.metric_faults]]
+service = "dashboard-svc"
+metric = "dashboard_data_lag_s"
+curve = "ramp"
+to = 640
+start = "2026-07-24T15:35:00Z"
+end = "2026-07-24T16:05:00Z"
+[[incident.metric_faults]]
+service = "search-svc"
+metric = "index_lag_ms"
+curve = "spike"
+to = 450
+start = "2026-07-24T13:20:00Z"
+end = "2026-07-24T13:50:00Z"
+# NOTE: pre-onset self-healing spike on an uninvolved service — red herring.
+
+[[incident.log_faults]]
+service = "pipeline-transformer"
+msg = "config resolution slow: batch deadline exceeded"
+severity = "WARN"
+rate_per_min = 3
+start = "2026-07-24T15:15:00Z"
+[[incident.log_faults]]
+service = "config-svc"
+msg = "rpc queue saturated: shedding load"
+severity = "WARN"
+rate_per_min = 5
+start = "2026-07-24T15:20:00Z"
+[[incident.log_faults]]
+service = "dashboard-svc"
+msg = "dashboard render failed: pipeline data stale"
+severity = "ERROR"
+rate_per_min = 8
+start = "2026-07-24T15:40:00Z"
+
+[[incident.trace_exemplars]]
+trace_id = "dddddddddddddddddddddddddddd0103"
+span_id = "d0"
+service = "pipeline-transformer"
+name = "ProcessBatch"
+start = "2026-07-24T14:30:00Z"
+duration_ms = 185
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "dddddddddddddddddddddddddddd0103"
+span_id = "d1"
+parent_id = "d0"
+service = "config-svc"
+name = "config.Get"
+start = "2026-07-24T14:30:00Z"
+duration_ms = 8
+status = "OK"
+# NOTE: pre-onset (14:30, before the 15:05 culprit deploy) healthy exemplar —
+# exactly ONE config-svc child span per batch, the pre-bug 1-call-per-batch
+# shape. trace_id verified to survive sample_traces rate=0.01
+# (md5 % 10000 = 25 < 100).
+
+[[incident.trace_exemplars]]
+trace_id = "dddddddddddddddddddddddddddd0231"
+span_id = "e0"
+service = "pipeline-transformer"
+name = "ProcessBatch"
+start = "2026-07-24T15:50:00Z"
+duration_ms = 2380
+status = "ERROR"
+error = "batch deadline exceeded"
+[[incident.trace_exemplars]]
+trace_id = "dddddddddddddddddddddddddddd0231"
+span_id = "e1"
+parent_id = "e0"
+service = "config-svc"
+name = "config.Get"
+start = "2026-07-24T15:50:00Z"
+duration_ms = 9
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "dddddddddddddddddddddddddddd0231"
+span_id = "e2"
+parent_id = "e0"
+service = "config-svc"
+name = "config.Get"
+start = "2026-07-24T15:50:00Z"
+duration_ms = 11
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "dddddddddddddddddddddddddddd0231"
+span_id = "e3"
+parent_id = "e0"
+service = "config-svc"
+name = "config.Get"
+start = "2026-07-24T15:50:00Z"
+duration_ms = 10
+status = "OK"
+# NOTE: post-onset (15:50, mid-ramp) exemplar — DESIGN DECISION (binding):
+# shows the batch span erroring generically ("batch deadline exceeded") with
+# only 3 generic "config.Get" child spans at NORMAL durations (9-11ms, same
+# ballpark as the healthy exemplar's 8ms). This is deliberate: it proves the
+# per-record call pattern now exists (3 calls instead of 1) without
+# "screaming" the full 85-96x multiplication a real per-record batch would
+# produce. trace_id verified to survive sample_traces rate=0.01
+# (md5 % 10000 = 27 < 100). The true request-count explosion (40->3900 rps)
+# must be read off the config_svc_requests_per_s METRIC, not counted from
+# spans — traces.json is far too sparse (1% whole-trace sampling) to expose
+# it directly. This is the intended degraded-telemetry lesson: metric
+# corroboration replaces trace evidence.
+
+[commits]
+innocent_count = 26
+
+[[commits.authored]]
+id = "early-innocent"
+message = "chore(dashboard-svc): update footer copyright year"
+author = "ahmet.yilmaz"
+timestamp = "2026-07-24T13:10:00Z"
+files = ["web/dashboard/footer.go"]
+diff = '''--- a/web/dashboard/footer.go
++++ b/web/dashboard/footer.go
+@@ -3,1 +3,1 @@
+-	Copyright = "© 2025 Acme"
++	Copyright = "© 2026 Acme"
+'''
+
+[[commits.authored]]
+id = "parallel-decoy"
+message = "feat(pipeline): parallel batch workers"
+author = "tom.oduya"
+timestamp = "2026-07-24T14:15:00Z"
+files = ["services/pipeline-transformer/workers.go"]
+diff = '''--- a/services/pipeline-transformer/workers.go
++++ b/services/pipeline-transformer/workers.go
+@@ -6,6 +6,19 @@ func (s *Server) Run(ctx context.Context) {
+-	for batch := range s.batches {
+-		s.ProcessBatch(ctx, batch)
+-	}
++	if s.flags.Enabled("pipeline_parallel_batches") {
++		var wg sync.WaitGroup
++		for batch := range s.batches {
++			wg.Add(1)
++			go func(b []Record) {
++				defer wg.Done()
++				s.ProcessBatch(ctx, b)
++			}(batch)
++		}
++		wg.Wait()
++		return
++	}
++	for batch := range s.batches {
++		s.ProcessBatch(ctx, batch)
++	}
+ }
+'''
+
+[[commits.authored]]
+id = "compression-decoy"
+message = "perf(config-svc): add response compression"
+author = "lena.fischer"
+timestamp = "2026-07-24T14:35:00Z"
+files = ["services/config-svc/handler.go"]
+diff = '''--- a/services/config-svc/handler.go
++++ b/services/config-svc/handler.go
+@@ -15,6 +15,10 @@ func (h *Handler) ServeConfig(w http.ResponseWriter, r *http.Request) {
+-	body, _ := json.Marshal(cfg)
+-	w.Write(body)
++	body, _ := json.Marshal(cfg)
++	w.Header().Set("Content-Encoding", "gzip")
++	gz := gzip.NewWriter(w)
++	defer gz.Close()
++	gz.Write(body)
+ }
+'''
+
+[[commits.authored]]
+id = "culprit"
+message = "refactor(pipeline): per-record config resolution"
+author = "grace.oyelaran"
+timestamp = "2026-07-24T15:00:00Z"
+files = ["services/pipeline-transformer/transform.go"]
+diff = '''--- a/services/pipeline-transformer/transform.go
++++ b/services/pipeline-transformer/transform.go
+@@ -18,16 +18,15 @@ func (s *Server) ProcessBatch(ctx context.Context, batch []Record) error {
+-	cfg, err := s.config.Get(ctx, batch[0].Type)
+-	if err != nil {
+-		return err
+-	}
+ 	for _, rec := range batch {
++		cfg, err := s.config.Get(ctx, rec.Type)
++		if err != nil {
++			return err
++		}
+ 		out, err := s.transformRecord(ctx, rec, cfg)
+ 		if err != nil {
+ 			return err
+ 		}
+ 		s.sink.Write(out)
+ 	}
+ 	s.emitBatchFlushed(len(batch))
+ 	return nil
+ }
+'''
+
+[[commits.authored]]
+id = "metrics-helper-decoy"
+message = "refactor(pipeline): extract batch metrics helper"
+author = "marco.silva"
+timestamp = "2026-07-24T15:08:00Z"
+files = ["services/pipeline-transformer/metrics.go"]
+diff = '''--- a/services/pipeline-transformer/metrics.go
++++ b/services/pipeline-transformer/metrics.go
+@@ -1,7 +1,11 @@
+ func (s *Server) emitBatchFlushed(n int) {
+-	batchSizeHist.Observe(float64(n))
+-	batchesFlushed.Inc()
++	s.recordBatchMetrics(n)
+ }
++
++func (s *Server) recordBatchMetrics(n int) {
++	batchSizeHist.Observe(float64(n))
++	batchesFlushed.Inc()
++}
+'''
+
+[[commits.authored]]
+id = "banner-decoy"
+message = "chore(dashboard-svc): refresh banner copy"
+author = "priya.nair"
+timestamp = "2026-07-24T16:00:00Z"
+files = ["web/dashboard/banner.go"]
+diff = '''--- a/web/dashboard/banner.go
++++ b/web/dashboard/banner.go
+@@ -2,1 +2,1 @@
+-	Banner = "Live pipeline metrics"
++	Banner = "Live pipeline metrics!"
+'''
+
+[[deploys]]
+service = "dashboard-svc"
+commit = "early-innocent"
+timestamp = "2026-07-24T13:15:00Z"
+[[deploys]]
+service = "pipeline-transformer"
+commit = "parallel-decoy"
+timestamp = "2026-07-24T14:20:00Z"
+[[deploys]]
+service = "config-svc"
+commit = "compression-decoy"
+timestamp = "2026-07-24T14:40:00Z"
+[[deploys]]
+service = "pipeline-transformer"
+commit = "culprit"
+timestamp = "2026-07-24T15:05:00Z"
+[[deploys]]
+service = "pipeline-transformer"
+commit = "metrics-helper-decoy"
+timestamp = "2026-07-24T15:10:00Z"
+[[deploys]]
+service = "dashboard-svc"
+commit = "banner-decoy"
+timestamp = "2026-07-24T16:05:00Z"
+
+[deploys_auto]
+count = 18
+services = ["pipeline-transformer", "config-svc", "dashboard-svc", "ingest-worker", "search-svc"]
+pre_onset_min = 6
+
+[[flags]]
+timestamp = "2026-07-24T14:10:00Z"
+flag = "pipeline_parallel_batches"
+service = "pipeline-transformer"
+change = "created (off)"
+actor = "tom.oduya"
+
+[[degradations]]
+type = "sample_traces"
+rate = 0.01
+
+[ground_truth]
+culprit_id = "culprit"
+blast_radius = ["config-svc", "dashboard-svc"]
+remediation = "rollback"
+decoy_ids = ["parallel-decoy", "compression-decoy", "metrics-helper-decoy", "banner-decoy"]
+notes = "DEGRADED TELEMETRY / TRACE SAMPLING (adversarial, first sample_traces scenario). Culprit is 'refactor(pipeline): per-record config resolution' (services/pipeline-transformer/transform.go, deployed to pipeline-transformer at 15:05): it moves the config lookup from once-per-batch (`cfg, err := s.config.Get(ctx, batch[0].Type)`, called before the loop) to once-per-record (`cfg, err := s.config.Get(ctx, rec.Type)`, called inside `for _, rec := range batch`) — a realistic change (it lets records within a batch carry different types) whose side effect is an N-fold multiplication of calls to config-svc, N being the batch size. The commit message and diff never mention this cost; it must be inferred from the code motion (the Get call crossing the loop boundary) plus derived telemetry. PROOF CHAIN: (1) config_svc_requests_per_s ramps 40 -> 3900 starting 15:15 (10 min after the 15:05 deploy, once traffic volume ramps through the new code path); (2) pipeline-transformer's own batch_process_p95_ms ramps in lockstep from 15:15 (180ms -> 2400ms) because each batch's total wall time is now dominated by N sequential config-svc round trips instead of one; (3) config-svc's own rpc_latency_p95_ms only starts climbing at 15:22, 7 minutes later (15ms -> 480ms) as sustained 3900 rps saturates it — config-svc is a downstream victim of the fanout, not the origin; (4) dashboard-svc's dashboard_data_lag_s (the alerting metric) ramps from 15:35 (5s -> 640s) as pipeline-transformer's collapsed throughput starves it of fresh data, crossing the 300s alert threshold by ~15:59 and firing at 16:10. BATCH-SIZE ARITHMETIC: pipeline-transformer's routine 'batch flushed' INFO log line carries a constant `records=96` field on every occurrence (pre- and post-onset alike — a stable batch-size fact, not an incident marker, and never quoted in the culprit diff). Pre-onset, config_svc_requests_per_s's baseline of ~40 IS the batches-processed-per-second rate (the old code issued exactly one config-svc call per batch, a 1:1 ratio). Post-onset, every one of the ~96 records in a batch now issues its own call, so the expected rate is batches-per-s x records-per-batch =~ 40 x 96 = 3840, which lines up with the observed ramp to ~3900 (the small gap is realistic jitter/rounding, not a contradiction) — this is the derivable arithmetic proof of the N+1 fanout, built entirely from two independent metrics plus one constant log field, never from a leaked diff constant. DEGRADATION MECHANICS: sample_traces keeps whole traces (never individual spans) with probability rate=0.01 via `md5(trace_id) % 10000 < rate*10000`; at rate=0.01 well over 99% of the auto-generated ProcessBatch trace_flow traffic (15/hour, ending at onset 15:15 per convention) is dropped, so traces.json is visibly sparse relative to the ~2.25h of pre-onset flow traffic and the incident's log volume — a solver should notice the tiny surviving span count and treat traces as corroborating color, not primary evidence. Two hand-authored exemplars were deliberately chosen with trace_ids verified (via md5(trace_id) % 10000 < 100) to survive this sampling: dddddddddddddddddddddddddddd0103 (md5%10000=25) is a healthy PRE-onset exemplar at 14:30 (before the 15:05 deploy) showing the OLD shape — exactly one config-svc 'config.Get' child span per ProcessBatch span; dddddddddddddddddddddddddddd0231 (md5%10000=27) is a POST-onset exemplar at 15:50 (mid-ramp) showing the NEW shape — the batch span erroring generically 'batch deadline exceeded' with exactly 3 generic 'config.Get' child spans, all at NORMAL durations (9-11ms, same ballpark as the healthy exemplar's 8ms). This is a deliberate design choice: the surviving post-onset trace proves the per-record call pattern now exists (multiple children instead of one) without directly exposing the full 96x multiplication a real batch would show — a solver who only reads traces would see '3 calls, all fast' and could wrongly conclude the fanout is mild. The real magnitude (40 -> 3900 rps, ~96x) only comes from config_svc_requests_per_s; this is the intended lesson of the sample_traces degradation — metric corroboration must replace trace-count evidence when traces are this sparse. first_failing_service is pipeline-transformer: it is both the culprit's deploy target and the first service whose own metric (batch_process_p95_ms) starts ramping, tied at 15:15 with config_svc_requests_per_s (a load figure imposed on config-svc by the caller, not config-svc's own degradation) — config-svc's own health metric (rpc_latency_p95_ms) only degrades 7 minutes later, confirming it is a downstream victim, not the origin. blast_radius = [config-svc, dashboard-svc] (config-svc is overwhelmed upstream load; dashboard-svc is the alerting victim). TRAP LOGIC: compression-decoy ('perf(config-svc): add response compression', config-svc, deployed 14:40, pre-onset) is the response-shaping trap: gzip-encoding the config payload changes response SIZE/bytes-on-wire, never request COUNT — it cannot multiply config_svc_requests_per_s, which is the discriminating metric. parallel-decoy ('feat(pipeline): parallel batch workers', pipeline-transformer, deployed 14:20, pre-onset) is the flag-gated trap: the new goroutine-per-batch path is wrapped in `if s.flags.Enabled(\"pipeline_parallel_batches\")`, and flags.json shows this flag created OFF at 14:10 and never flipped for the rest of the window, so the new code path never executes regardless of deploy timing. metrics-helper-decoy ('refactor(pipeline): extract batch metrics helper', pipeline-transformer, deployed 15:10, only 5 minutes after the real culprit, to the SAME service) is the most dangerous decoy: right service, right neighborhood, right file family. It is exonerated purely by mechanism: the diff only extracts the existing `batchSizeHist.Observe`/`batchesFlushed.Inc()` body into a new `recordBatchMetrics` helper called from the unchanged `emitBatchFlushed` — a semantics-preserving refactor with zero control-flow change, touching neither the config lookup nor the per-record loop. banner-decoy ('refresh banner copy', dashboard-svc, deployed 16:05, 5 minutes before fired_at 16:10) is classic innocent-deploy-near-alert bait: a one-character copy change (added '!') in an unrelated file. Pre-onset invariant: both compression-decoy (14:40) and parallel-decoy (14:20) deploy before onset (15:15), alongside 18 deploys_auto entries (>=6 pre-onset, cyclic across all five services) that are pure background noise: routine dependency/docs/CI/test tweaks touching none of transform.go, workers.go, handler.go, or metrics.go. Patterns are victim-first: dashboard-svc's ERROR pattern (8/min from 15:40 -> ~1120 total) is the loudest, ahead of config-svc's WARN pattern (5/min from 15:20 -> ~800), ahead of pipeline-transformer's own WARN pattern (3/min from 15:15 -> ~495, the quietest despite being the true cause); 3 patterns_extra stale background negatives (kafka rebalancing on ingest-worker, disk usage on search-svc, TLS renewal on config-svc; counts 50-72, delta +2) sit below all three incident patterns as unrelated pre-existing chatter. A search-svc index_lag_ms spike (baseline ~90 -> 450, 13:20-13:50) self-heals nearly 90 minutes before onset and is unrelated red-herring noise on an uninvolved service. Remediation: roll back pipeline-transformer to before the per-record config-resolution change."
