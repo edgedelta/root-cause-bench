@@ -1,0 +1,32 @@
+# root-cause-bench — chunk-2 validation probe: the mid-field (96%-tied) trio x 2
+# attempts x the 8 new mechanism-trap scenarios. Success = the spread seen in
+# probe #6 holds or widens; every failure should be a decoy conviction (graded 0),
+# not an ambiguity artifact.
+# Usage: set -a && source .env && set +a && harbor run -c configs/probe-chunk2-midfield.yaml -y
+jobs_dir: jobs
+n_attempts: 2
+n_concurrent_trials: 2
+quiet: false
+
+environment:
+  type: docker
+
+agents:
+  - name: terminus-2
+    model_name: openrouter/openai/gpt-5.5
+  - name: terminus-2
+    model_name: openrouter/google/gemini-3.1-pro-preview
+  - name: terminus-2
+    model_name: openrouter/anthropic/claude-sonnet-4.6
+
+datasets:
+  - path: datasets/rootcausebench
+    task_names:
+      - orders-index-migration-drift
+      - webhook-keepalive-default-flip
+      - orders-fanout-nplusone
+      - ingest-partition-skew
+      - report-scheduler-lock-removal
+      - session-cache-clockskew
+      - config-fanout-sampled-traces
+      - ingester-flush-interval-oom
