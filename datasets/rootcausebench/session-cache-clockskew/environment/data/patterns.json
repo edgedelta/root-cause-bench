@@ -1,0 +1,79 @@
+[
+ {
+  "signature": "session lookup slow: falling back to primary store",
+  "service": "auth-gw",
+  "count": 1104,
+  "delta_vs_baseline": "+1104",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "login failed: session validation timeout",
+  "service": "frontend",
+  "count": 615,
+  "delta_vs_baseline": "+615",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "cache miss; evicted key required origin re-fetch",
+  "service": "session-cache",
+  "count": 444,
+  "delta_vs_baseline": "+444",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "kafka consumer lag rebalancing group <N>",
+  "service": "billing-worker",
+  "count": 70,
+  "delta_vs_baseline": "+2",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "TLS certificate renews in <N> days warning",
+  "service": "frontend",
+  "count": 60,
+  "delta_vs_baseline": "+2",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "disk usage above <N>% on scratch volume",
+  "service": "search-indexer",
+  "count": 48,
+  "delta_vs_baseline": "+2",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "page rendered",
+  "service": "frontend",
+  "count": 287,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "session validated",
+  "service": "auth-gw",
+  "count": 251,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "session cache hit",
+  "service": "session-cache",
+  "count": 190,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "invoice processed",
+  "service": "billing-worker",
+  "count": 183,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "document indexed",
+  "service": "search-indexer",
+  "count": 155,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ }
+]

@@ -1,0 +1,395 @@
+[
+ {
+  "trace_id": "e9c718645935017769dd867c85c97108",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /account",
+  "start": "2026-07-24T07:00:00Z",
+  "duration_ms": 200,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e9c718645935017769dd867c85c97108",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "auth-gw",
+  "name": "ValidateSession",
+  "start": "2026-07-24T07:00:00Z",
+  "duration_ms": 40,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e9c718645935017769dd867c85c97108",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "session-cache",
+  "name": "Get session",
+  "start": "2026-07-24T07:00:00Z",
+  "duration_ms": 5,
+  "status": "OK"
+ },
+ {
+  "trace_id": "817836f77737394d5a94e17a29354fa5",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /account",
+  "start": "2026-07-24T07:15:00Z",
+  "duration_ms": 200,
+  "status": "OK"
+ },
+ {
+  "trace_id": "817836f77737394d5a94e17a29354fa5",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "auth-gw",
+  "name": "ValidateSession",
+  "start": "2026-07-24T07:15:00Z",
+  "duration_ms": 40,
+  "status": "OK"
+ },
+ {
+  "trace_id": "817836f77737394d5a94e17a29354fa5",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "session-cache",
+  "name": "Get session",
+  "start": "2026-07-24T07:15:00Z",
+  "duration_ms": 5,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e5be5ea4330501e450bb574645b2169a",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /account",
+  "start": "2026-07-24T07:30:00Z",
+  "duration_ms": 200,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e5be5ea4330501e450bb574645b2169a",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "auth-gw",
+  "name": "ValidateSession",
+  "start": "2026-07-24T07:30:00Z",
+  "duration_ms": 40,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e5be5ea4330501e450bb574645b2169a",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "session-cache",
+  "name": "Get session",
+  "start": "2026-07-24T07:30:00Z",
+  "duration_ms": 5,
+  "status": "OK"
+ },
+ {
+  "trace_id": "06114cce655b7992887e34b8d2299295",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /account",
+  "start": "2026-07-24T07:45:00Z",
+  "duration_ms": 200,
+  "status": "OK"
+ },
+ {
+  "trace_id": "06114cce655b7992887e34b8d2299295",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "auth-gw",
+  "name": "ValidateSession",
+  "start": "2026-07-24T07:45:00Z",
+  "duration_ms": 40,
+  "status": "OK"
+ },
+ {
+  "trace_id": "06114cce655b7992887e34b8d2299295",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "session-cache",
+  "name": "Get session",
+  "start": "2026-07-24T07:45:00Z",
+  "duration_ms": 5,
+  "status": "OK"
+ },
+ {
+  "trace_id": "ed7b37592cf106dad1d1b9a5d06284b9",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /account",
+  "start": "2026-07-24T08:00:00Z",
+  "duration_ms": 200,
+  "status": "OK"
+ },
+ {
+  "trace_id": "ed7b37592cf106dad1d1b9a5d06284b9",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "auth-gw",
+  "name": "ValidateSession",
+  "start": "2026-07-24T08:00:00Z",
+  "duration_ms": 40,
+  "status": "OK"
+ },
+ {
+  "trace_id": "ed7b37592cf106dad1d1b9a5d06284b9",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "session-cache",
+  "name": "Get session",
+  "start": "2026-07-24T08:00:00Z",
+  "duration_ms": 5,
+  "status": "OK"
+ },
+ {
+  "trace_id": "8032ad4f063a1a491c9428ba7a046128",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /account",
+  "start": "2026-07-24T08:15:00Z",
+  "duration_ms": 200,
+  "status": "OK"
+ },
+ {
+  "trace_id": "8032ad4f063a1a491c9428ba7a046128",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "auth-gw",
+  "name": "ValidateSession",
+  "start": "2026-07-24T08:15:00Z",
+  "duration_ms": 40,
+  "status": "OK"
+ },
+ {
+  "trace_id": "8032ad4f063a1a491c9428ba7a046128",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "session-cache",
+  "name": "Get session",
+  "start": "2026-07-24T08:15:00Z",
+  "duration_ms": 5,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3861a6d18b23ae525d1eb928da8a8f49",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /account",
+  "start": "2026-07-24T08:30:00Z",
+  "duration_ms": 200,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3861a6d18b23ae525d1eb928da8a8f49",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "auth-gw",
+  "name": "ValidateSession",
+  "start": "2026-07-24T08:30:00Z",
+  "duration_ms": 40,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3861a6d18b23ae525d1eb928da8a8f49",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "session-cache",
+  "name": "Get session",
+  "start": "2026-07-24T08:30:00Z",
+  "duration_ms": 5,
+  "status": "OK"
+ },
+ {
+  "trace_id": "0d2d87c605c95fca03050eb5cdeca038",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /account",
+  "start": "2026-07-24T08:45:00Z",
+  "duration_ms": 200,
+  "status": "OK"
+ },
+ {
+  "trace_id": "0d2d87c605c95fca03050eb5cdeca038",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "auth-gw",
+  "name": "ValidateSession",
+  "start": "2026-07-24T08:45:00Z",
+  "duration_ms": 40,
+  "status": "OK"
+ },
+ {
+  "trace_id": "0d2d87c605c95fca03050eb5cdeca038",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "session-cache",
+  "name": "Get session",
+  "start": "2026-07-24T08:45:00Z",
+  "duration_ms": 5,
+  "status": "OK"
+ },
+ {
+  "trace_id": "50aa483c0e59a27fbd2b9be1f3d63c8e",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /account",
+  "start": "2026-07-24T09:00:00Z",
+  "duration_ms": 200,
+  "status": "OK"
+ },
+ {
+  "trace_id": "50aa483c0e59a27fbd2b9be1f3d63c8e",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "auth-gw",
+  "name": "ValidateSession",
+  "start": "2026-07-24T09:00:00Z",
+  "duration_ms": 40,
+  "status": "OK"
+ },
+ {
+  "trace_id": "50aa483c0e59a27fbd2b9be1f3d63c8e",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "session-cache",
+  "name": "Get session",
+  "start": "2026-07-24T09:00:00Z",
+  "duration_ms": 5,
+  "status": "OK"
+ },
+ {
+  "trace_id": "88f31111ed2655dc4707887d8b1550c0",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "frontend",
+  "name": "GET /account",
+  "start": "2026-07-24T09:15:00Z",
+  "duration_ms": 200,
+  "status": "OK"
+ },
+ {
+  "trace_id": "88f31111ed2655dc4707887d8b1550c0",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "auth-gw",
+  "name": "ValidateSession",
+  "start": "2026-07-24T09:15:00Z",
+  "duration_ms": 40,
+  "status": "OK"
+ },
+ {
+  "trace_id": "88f31111ed2655dc4707887d8b1550c0",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "session-cache",
+  "name": "Get session",
+  "start": "2026-07-24T09:15:00Z",
+  "duration_ms": 5,
+  "status": "OK"
+ },
+ {
+  "trace_id": "eeeeeeeeeeeeeeeeeeeeeeeeeeee0001",
+  "span_id": "e0",
+  "service": "frontend",
+  "name": "GET /account",
+  "start": "2026-07-24T09:47:10Z",
+  "duration_ms": 2430,
+  "status": "ERROR",
+  "error": "login failed: session validation timeout"
+ },
+ {
+  "trace_id": "eeeeeeeeeeeeeeeeeeeeeeeeeeee0001",
+  "span_id": "e1",
+  "parent_id": "e0",
+  "service": "auth-gw",
+  "name": "ValidateSession",
+  "start": "2026-07-24T09:47:10Z",
+  "duration_ms": 2380,
+  "status": "ERROR",
+  "error": "session lookup slow: primary store fallback"
+ },
+ {
+  "trace_id": "eeeeeeeeeeeeeeeeeeeeeeeeeeee0001",
+  "span_id": "e2",
+  "parent_id": "e1",
+  "service": "session-cache",
+  "name": "Get session (miss)",
+  "start": "2026-07-24T09:47:10Z",
+  "duration_ms": 6,
+  "status": "OK"
+ },
+ {
+  "trace_id": "eeeeeeeeeeeeeeeeeeeeeeeeeeee0002",
+  "span_id": "f0",
+  "service": "frontend",
+  "name": "GET /account",
+  "start": "2026-07-24T10:15:40Z",
+  "duration_ms": 2510,
+  "status": "ERROR",
+  "error": "login failed: session validation timeout"
+ },
+ {
+  "trace_id": "eeeeeeeeeeeeeeeeeeeeeeeeeeee0002",
+  "span_id": "f1",
+  "parent_id": "f0",
+  "service": "auth-gw",
+  "name": "ValidateSession",
+  "start": "2026-07-24T10:15:40Z",
+  "duration_ms": 2460,
+  "status": "ERROR",
+  "error": "session lookup slow: primary store fallback"
+ },
+ {
+  "trace_id": "eeeeeeeeeeeeeeeeeeeeeeeeeeee0002",
+  "span_id": "f2",
+  "parent_id": "f1",
+  "service": "session-cache",
+  "name": "Get session (miss)",
+  "start": "2026-07-24T10:15:40Z",
+  "duration_ms": 5,
+  "status": "OK"
+ },
+ {
+  "trace_id": "eeeeeeeeeeeeeeeeeeeeeeeeeeee0003",
+  "span_id": "g0",
+  "service": "frontend",
+  "name": "GET /account",
+  "start": "2026-07-24T10:36:50Z",
+  "duration_ms": 2600,
+  "status": "ERROR",
+  "error": "login failed: session validation timeout"
+ },
+ {
+  "trace_id": "eeeeeeeeeeeeeeeeeeeeeeeeeeee0003",
+  "span_id": "g1",
+  "parent_id": "g0",
+  "service": "auth-gw",
+  "name": "ValidateSession",
+  "start": "2026-07-24T10:36:50Z",
+  "duration_ms": 2550,
+  "status": "ERROR",
+  "error": "session lookup slow: primary store fallback"
+ },
+ {
+  "trace_id": "eeeeeeeeeeeeeeeeeeeeeeeeeeee0003",
+  "span_id": "g2",
+  "parent_id": "g1",
+  "service": "session-cache",
+  "name": "Get session (miss)",
+  "start": "2026-07-24T10:36:50Z",
+  "duration_ms": 7,
+  "status": "OK"
+ }
+]
