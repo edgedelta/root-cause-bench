@@ -8,7 +8,7 @@ from tools.scenario_gen.spec import SpecError, fmt_ts, load_spec, parse_ts
 
 MINIMAL = '''
 name = "demo-scenario"
-family = "guilty-decoy"
+family = "beyond-context"
 seed = 7
 
 [window]
@@ -82,7 +82,7 @@ def test_load_minimal_spec_applies_defaults(tmp_path):
     assert spec["flags"] == []
     assert spec["degradations"] == []
     assert spec["trace_flows"] == []
-    assert "adversarial" in spec["tags"] and "guilty-decoy" in spec["tags"]
+    assert "adversarial" in spec["tags"] and "beyond-context" in spec["tags"]
 
 
 def test_unknown_deploy_commit_id_rejected(tmp_path):
@@ -110,7 +110,7 @@ def test_onset_after_window_end_rejected(tmp_path):
 
 
 def test_bad_family_rejected(tmp_path):
-    bad = MINIMAL.replace('family = "guilty-decoy"', 'family = "whatever"')
+    bad = MINIMAL.replace('family = "beyond-context"', 'family = "whatever"')
     with pytest.raises(SpecError, match="family"):
         load_spec(write(tmp_path, bad))
 
@@ -277,6 +277,27 @@ def test_log_fault_bool_rate_per_min_rejected(tmp_path):
         load_spec(write(tmp_path, bad))
 
 
+def test_metric_fault_undeclared_metric_rejected(tmp_path):
+    # Typo'd (service, metric) pair in a metric_fault that doesn't match any
+    # declared services[].metrics[] entry must be rejected -- previously it
+    # was silently ignored (build_metrics never fires a fault for a pair with
+    # no matching declared metric).
+    bad = MINIMAL.replace(
+        'first_failing_service = "svc-a"',
+        'first_failing_service = "svc-a"\n'
+        '[[incident.metric_faults]]\nservice = "svc-a"\nmetric = "latency_p99_ms_typo"\n'
+        'to = 900\n',
+    )
+    with pytest.raises(SpecError, match="metric_faults.*svc-a.*latency_p99_ms_typo"):
+        load_spec(write(tmp_path, bad))
+
+
+def test_alert_metric_not_declared_on_service_rejected(tmp_path):
+    bad = MINIMAL.replace('metric = "latency_p99_ms"', 'metric = "bogus_metric"')
+    with pytest.raises(SpecError, match="alert.*bogus_metric"):
+        load_spec(write(tmp_path, bad))
+
+
 def test_duplicate_metric_fault_service_metric_pair_rejected(tmp_path):
     bad = MINIMAL.replace(
         'first_failing_service = "svc-a"',
@@ -354,6 +375,20 @@ def test_hand_authored_deploy_timestamp_before_window_start_rejected(tmp_path):
     )
     with pytest.raises(SpecError, match="deploys?.*window"):
         load_spec(write(tmp_path, bad))
+
+
+def test_guilty_decoy_family_requires_nonempty_decoy_ids(tmp_path):
+    # MINIMAL's default decoy_ids is the empty list -- the pre-onset-decoy
+    # consistency check in emit.py no-ops when decoy_ids is empty, so a
+    # guilty-decoy scenario with no decoys is a vacuous invariant. Reject it
+    # at spec-load time instead.
+    bad = MINIMAL.replace('family = "beyond-context"', 'family = "guilty-decoy"')
+    with pytest.raises(SpecError, match="guilty-decoy.*decoy_ids"):
+        load_spec(write(tmp_path, bad))
+
+
+def test_beyond_context_family_allows_empty_decoy_ids(tmp_path):
+    assert load_spec(write(tmp_path, MINIMAL))["ground_truth"]["decoy_ids"] == []
 
 
 def test_hand_authored_deploy_timestamp_after_window_end_rejected(tmp_path):

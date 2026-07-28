@@ -1,3 +1,4 @@
+import ast
 import json
 import re
 from pathlib import Path
@@ -120,6 +121,41 @@ timestamp = "2026-07-20T09:44:00Z"''')
         emit_scenario(scenario_dir / "scenario.toml")
 
 
+def test_deploy_not_strictly_after_commit_rejected(scenario_dir):
+    # Regression test for the sub-second commit==deploy collapse invariant:
+    # _check_consistency must reject any deploy whose commit timestamp is
+    # not strictly before the deploy's own timestamp.
+    spec = load_spec(scenario_dir / "scenario.toml")
+    commits, deploys, _, id_to_sha = build_changes(spec)
+    culprit_sha = id_to_sha[spec["ground_truth"]["culprit_id"]]
+    culprit_ts = next(c["timestamp"] for c in commits if c["sha"] == culprit_sha)
+    bad_deploys = [dict(d) for d in deploys]
+    for d in bad_deploys:
+        if d["commit_sha"] == culprit_sha:
+            d["timestamp"] = culprit_ts
+    with pytest.raises(SpecError, match="not strictly after its commit"):
+        _check_consistency(spec, commits, bad_deploys, id_to_sha)
+
+
+def test_deploy_outside_window_rejected(scenario_dir):
+    spec = load_spec(scenario_dir / "scenario.toml")
+    commits, deploys, _, id_to_sha = build_changes(spec)
+    bad_deploys = [dict(d) for d in deploys]
+    bad_deploys[0] = dict(bad_deploys[0])
+    bad_deploys[0]["timestamp"] = "2026-07-20T11:00:00Z"  # window.end is 10:00
+    with pytest.raises(SpecError, match="outside window"):
+        _check_consistency(spec, commits, bad_deploys, id_to_sha)
+
+
+def test_undeployed_culprit_rejected(scenario_dir):
+    spec = load_spec(scenario_dir / "scenario.toml")
+    commits, deploys, _, id_to_sha = build_changes(spec)
+    culprit_sha = id_to_sha[spec["ground_truth"]["culprit_id"]]
+    stripped_deploys = [d for d in deploys if d["commit_sha"] != culprit_sha]
+    with pytest.raises(SpecError, match="never deployed"):
+        _check_consistency(spec, commits, stripped_deploys, id_to_sha)
+
+
 def test_sha_resolution_recheck(scenario_dir):
     spec = load_spec(scenario_dir / "scenario.toml")
     commits, deploys, flags, id_to_sha = build_changes(spec)
@@ -160,6 +196,78 @@ def test_patterns_reflect_degraded_logs(scenario_dir):
                      if r["service"] == p["service"]
                      and re.sub(r"\d+", "<N>", r["msg"]) == p["signature"])
         assert actual == p["count"], p
+
+
+def _text_io_calls_missing_encoding(py_path):
+    """Find read_text()/write_text()/open() calls with no explicit encoding.
+
+    Without an explicit encoding, these fall back to
+    locale.getpreferredencoding(), which can be plain ASCII in a minimal/CI
+    locale (this repo's own templates/instruction.md contains non-ASCII
+    bytes, so reading it that way would raise UnicodeDecodeError). Binary
+    ("...b..." mode) opens are exempt since encoding doesn't apply to them.
+    """
+    tree = ast.parse(py_path.read_text(encoding="utf-8"), filename=str(py_path))
+    missing = []
+    for node in ast.walk(tree):
+        if not isinstance(node, ast.Call):
+            continue
+        func = node.func
+        name = (func.attr if isinstance(func, ast.Attribute)
+               else func.id if isinstance(func, ast.Name) else None)
+        if name in ("read_text", "write_text"):
+            if not any(kw.arg == "encoding" for kw in node.keywords):
+                missing.append(f"{py_path.name}:{node.lineno}: {name}() missing encoding=")
+        elif name == "open":
+            mode = None
+            if len(node.args) >= 2 and isinstance(node.args[1], ast.Constant):
+                mode = node.args[1].value
+            for kw in node.keywords:
+                if kw.arg == "mode" and isinstance(kw.value, ast.Constant):
+                    mode = kw.value.value
+            is_binary = isinstance(mode, str) and "b" in mode
+            has_encoding = any(kw.arg == "encoding" for kw in node.keywords)
+            if not is_binary and not has_encoding:
+                missing.append(f"{py_path.name}:{node.lineno}: open() missing encoding=")
+    return missing
+
+
+def test_all_text_io_specifies_utf8_encoding():
+    pkg_dir = Path(__file__).resolve().parent.parent  # tools/scenario_gen
+    offenders = []
+    for py in pkg_dir.glob("*.py"):
+        offenders.extend(_text_io_calls_missing_encoding(py))
+    assert not offenders, offenders
+
+
+EXEMPLAR_DROPPED_BY_SAMPLING = FULL.replace(
+    "[ground_truth]",
+    '''[[incident.trace_exemplars]]
+trace_id = "doomed-trace"
+span_id = "s0"
+parent_id = ""
+service = "svc-a"
+name = "handle"
+start = "2026-07-20T09:31:00Z"
+duration_ms = 120
+status = "ERROR"
+
+[[degradations]]
+type = "sample_traces"
+rate = 0.5
+
+[ground_truth]''',
+)
+
+
+def test_sample_traces_dropping_trace_exemplar_rejected(scenario_dir):
+    # "doomed-trace" hashes to 5088/10000 under the sample_traces md5 rule,
+    # so a rate=0.5 (cut=5000) degradation silently dropped it pre-fix --
+    # the grader's trace exemplar would vanish from traces.json with no
+    # signal that the scenario was broken.
+    (scenario_dir / "scenario.toml").write_text(EXEMPLAR_DROPPED_BY_SAMPLING)
+    with pytest.raises(SpecError, match="sample_traces.*doomed-trace"):
+        emit_scenario(scenario_dir / "scenario.toml")
 
 
 def test_emit_is_deterministic(scenario_dir):

@@ -36,6 +36,33 @@ def spec(tmp_path):
     return load_spec(write(tmp_path, FAULTY))
 
 
+# A ratio metric (baseline right at its natural ceiling of 1.0, with jitter
+# wide enough that plain baseline*(1+jitter) overshoots past 1.0 on its own,
+# no fault needed) -- reproducing this with MINIMAL's seed (7) confirms
+# several of the 241 rows land above 1.0 pre-fix.
+CLAMPED = MINIMAL.replace(
+    '[[services.metrics]]\nname = "latency_p99_ms"\nbaseline = 120\n',
+    '[[services.metrics]]\nname = "latency_p99_ms"\nbaseline = 120\n'
+    '[[services.metrics]]\nname = "cache_hit_ratio"\nbaseline = 1.0\n'
+    'jitter = 0.15\nclamp_min = 0.0\nclamp_max = 1.0\n',
+)
+
+
+def test_metric_clamp_max_bounds_jittered_ratio_metric(tmp_path):
+    s = load_spec(write(tmp_path, CLAMPED))
+    rows = build_metrics(s)
+    ratio_vals = [r["value"] for r in rows if r["metric"] == "cache_hit_ratio"]
+    assert ratio_vals
+    assert all(v <= 1.0 for v in ratio_vals), ratio_vals
+    assert all(v >= 0.0 for v in ratio_vals), ratio_vals
+
+
+def test_metric_without_clamp_fields_is_unaffected(tmp_path):
+    s = spec(tmp_path)
+    m = s["services"][0]["metrics"][0]
+    assert m["clamp_min"] is None and m["clamp_max"] is None
+
+
 def test_logs_sorted_deterministic_with_fault_rows(tmp_path):
     s = spec(tmp_path)
     logs = build_logs(s)

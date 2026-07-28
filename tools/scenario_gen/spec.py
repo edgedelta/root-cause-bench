@@ -116,6 +116,18 @@ def load_spec(path: Path) -> dict:
             line.setdefault("extra", {})
         for m in svc["metrics"]:
             m.setdefault("jitter", 0.05)
+            m.setdefault("clamp_min", None)
+            m.setdefault("clamp_max", None)
+
+    svc_metrics = {(svc["name"], m["name"]) for svc in spec["services"] for m in svc["metrics"]}
+    for i, mf in enumerate(inc["metric_faults"]):
+        if (mf["service"], mf["metric"]) not in svc_metrics:
+            raise SpecError(f"metric_faults[{i}]: ({mf['service']!r}, "
+                            f"{mf['metric']!r}) is not a declared "
+                            f"services[].metrics[] entry")
+    if (spec["alert"]["service"], spec["alert"]["metric"]) not in svc_metrics:
+        raise SpecError(f"alert: metric {spec['alert']['metric']!r} is not "
+                        f"declared on service {spec['alert']['service']!r}")
 
     for flow in spec["trace_flows"]:
         flow.setdefault("per_hour", 4)
@@ -202,6 +214,10 @@ def load_spec(path: Path) -> dict:
     for d in gt["decoy_ids"]:
         if d not in ids:
             raise SpecError(f"ground_truth: decoy id {d!r} is not an authored commit id")
+    if spec["family"] == "guilty-decoy" and not gt["decoy_ids"]:
+        raise SpecError("ground_truth: family 'guilty-decoy' requires a "
+                        "non-empty decoy_ids (an empty list makes the "
+                        "pre-onset-decoy consistency check vacuous)")
     if gt["remediation"] not in REMEDIATIONS:
         raise SpecError(f"ground_truth: remediation {gt['remediation']!r} not in "
                         f"{sorted(REMEDIATIONS)}")

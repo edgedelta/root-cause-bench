@@ -130,31 +130,50 @@ def _default_version(ts_str: str) -> str:
     return ("v" + ts_str[:10].replace("-", ".") + "-" + ts_str[11:16].replace(":", ""))
 
 
-def _pick_innocent_commit(rng: random.Random, ts, innocent_commits: list[dict]):
-    """Pick an innocent commit authored strictly before `ts` (a datetime).
+# fmt_ts truncates to whole seconds, so any draw that lands < 1s after a
+# commit's (whole-second) timestamp collapses to equality once formatted.
+# Every eligibility check and every derived-from-commit draw below enforces
+# a >=1-second real gap so the post-truncation ordering always holds.
+MIN_GAP = timedelta(seconds=1)
+
+
+def _pick_innocent_commit(rng: random.Random, ts, innocent_commits: list[dict],
+                          window_end=None):
+    """Pick an innocent commit authored >=1s strictly before `ts` (a datetime).
 
     If none is eligible, shift `ts` to 5-40 minutes after the earliest
-    innocent commit so at least that commit becomes eligible.
+    innocent commit (clamped to `window_end`, if given) so at least that
+    commit becomes eligible. Raises SpecError if even the clamped shift
+    can't leave room for the required 1-second gap.
     """
-    eligible = [c for c in innocent_commits if parse_ts(c["timestamp"]) < ts]
+    eligible = [c for c in innocent_commits if parse_ts(c["timestamp"]) < ts - MIN_GAP]
     if not eligible:
         earliest = min(innocent_commits, key=lambda c: c["timestamp"])
-        ts = parse_ts(earliest["timestamp"]) + timedelta(minutes=rng.randint(5, 40))
-        eligible = [c for c in innocent_commits if parse_ts(c["timestamp"]) < ts]
+        shifted = parse_ts(earliest["timestamp"]) + timedelta(minutes=rng.randint(5, 40))
+        if window_end is not None:
+            shifted = min(shifted, window_end)
+        ts = shifted
+        eligible = [c for c in innocent_commits if parse_ts(c["timestamp"]) < ts - MIN_GAP]
+        if not eligible:
+            raise SpecError(
+                "deploys_auto: cannot place an auto deploy within the window "
+                "with a >=1s gap after its commit"
+            )
     return ts, rng.choice(eligible)
 
 
 def _redraw_pre_onset(rng: random.Random, onset, innocent_commits: list[dict]):
     """Flip a deploy to land strictly before `onset`.
 
-    Selects an innocent commit authored strictly before `onset`, then draws
-    the deploy timestamp uniformly in `(commit_ts, onset)`. Both invariants
-    -- commit-before-deploy and deploy-before-onset -- hold by construction.
+    Selects an innocent commit authored >=1s before `onset`, then draws the
+    deploy timestamp as a whole-second offset in `[commit_ts+1s, onset-1s]`.
+    All three invariants -- commit-before-deploy (by >=1s, so truncation
+    can't collapse it), and deploy-before-onset -- hold by construction.
 
-    Raises SpecError if no innocent commit is authored before `onset`, since
-    pre_onset_min cannot be satisfied without one.
+    Raises SpecError if no innocent commit leaves room for both gaps.
     """
-    eligible = [c for c in innocent_commits if parse_ts(c["timestamp"]) < onset]
+    eligible = [c for c in innocent_commits
+               if parse_ts(c["timestamp"]) < onset - MIN_GAP]
     if not eligible:
         raise SpecError(
             "deploys_auto: pre_onset_min unsatisfiable — no innocent commit "
@@ -162,8 +181,14 @@ def _redraw_pre_onset(rng: random.Random, onset, innocent_commits: list[dict]):
         )
     commit = rng.choice(eligible)
     commit_ts = parse_ts(commit["timestamp"])
-    gap = (onset - commit_ts).total_seconds()
-    ts = commit_ts + timedelta(seconds=rng.uniform(0, gap))
+    gap = int((onset - commit_ts).total_seconds())
+    if gap < 2:
+        raise SpecError(
+            "deploys_auto: pre_onset_min unsatisfiable — no innocent commit "
+            "leaves room for a >=1s gap on both sides before onset"
+        )
+    offset = rng.randint(1, gap - 1)
+    ts = commit_ts + timedelta(seconds=offset)
     return ts, commit
 
 
@@ -226,7 +251,8 @@ def build_changes(spec: dict) -> tuple[list[dict], list[dict], list[dict], dict[
         for i in range(count):
             service = shuffled_services[i % len(shuffled_services)]
             ts = start + timedelta(seconds=rng3.uniform(0, span))
-            ts, commit = _pick_innocent_commit(rng3, ts, innocent_commits)
+            ts, commit = _pick_innocent_commit(rng3, ts, innocent_commits,
+                                               window_end=end)
             generated.append({"ts": ts, "service": service, "commit": commit})
 
         pre_onset_min = da["pre_onset_min"]

@@ -87,6 +87,10 @@ def build_metrics(spec: dict) -> list[dict]:
                             value = m["baseline"] + (fault["to"] - m["baseline"]) * frac
                         j = m["jitter"]
                         value *= 1 + rng.uniform(-j, j)
+                if m.get("clamp_min") is not None:
+                    value = max(m["clamp_min"], value)
+                if m.get("clamp_max") is not None:
+                    value = min(m["clamp_max"], value)
                 precision = 1 if abs(m["baseline"]) >= 10 else 4
                 rows.append({"timestamp": fmt_ts(t), "service": svc["name"],
                              "metric": m["name"], "value": round(value, precision)})

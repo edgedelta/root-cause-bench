@@ -65,6 +65,7 @@ def _check_consistency(spec: dict, commits, deploys, id_to_sha):
     errs = []
     onset = parse_ts(spec["incident"]["onset"])
     fired = parse_ts(spec["alert"]["fired_at"])
+    start = parse_ts(spec["window"]["start"])
     end = parse_ts(spec["window"]["end"])
     if not (onset <= fired <= end):
         errs.append("alert.fired_at must satisfy onset <= fired_at <= window.end")
@@ -103,6 +104,20 @@ def _check_consistency(spec: dict, commits, deploys, id_to_sha):
         if ref != "none" and id_to_sha.get(ref) not in shas:
             errs.append(f"{label} id {ref!r} does not resolve into commits.json")
 
+    sha_to_ts = {c["sha"]: c["timestamp"] for c in commits}
+    for d in deploys:
+        d_ts = parse_ts(d["timestamp"])
+        if not (start <= d_ts <= end):
+            errs.append(f"deploy at {d['timestamp']} outside window "
+                        f"[{spec['window']['start']}, {spec['window']['end']}]")
+        commit_ts_str = sha_to_ts.get(d["commit_sha"])
+        if commit_ts_str is not None and not (parse_ts(commit_ts_str) < d_ts):
+            errs.append(f"deploy at {d['timestamp']} not strictly after its "
+                        f"commit ({commit_ts_str}, sha {d['commit_sha'][:12]})")
+
+    if culprit_sha and not any(d["commit_sha"] == culprit_sha for d in deploys):
+        errs.append(f"culprit {culprit_id!r} is never deployed")
+
     if errs:
         raise SpecError("consistency: " + "; ".join(errs))
 
@@ -118,6 +133,15 @@ def emit_scenario(spec_path: Path) -> Path:
     metrics = build_metrics(spec)
     traces = build_traces(spec)
     logs, metrics, traces = apply_degradations(spec, logs, metrics, traces)
+    if any(deg.get("type") == "sample_traces" for deg in spec.get("degradations", [])):
+        exemplar_ids = {t["trace_id"] for t in spec["incident"]["trace_exemplars"]}
+        surviving_ids = {t["trace_id"] for t in traces}
+        losers = sorted(exemplar_ids - surviving_ids)
+        if losers:
+            raise SpecError(
+                "sample_traces: degradation drops incident.trace_exemplars: "
+                + ", ".join(losers)
+            )
     patterns = build_patterns(spec, logs)
     _check_consistency(spec, commits, deploys, id_to_sha)
 
@@ -126,7 +150,7 @@ def emit_scenario(spec_path: Path) -> Path:
         if p in keep and p.exists():
             return
         p.parent.mkdir(parents=True, exist_ok=True)
-        p.write_text(content)
+        p.write_text(content, encoding="utf-8")
 
     def copy(rel: str):
         p = out / rel
@@ -138,7 +162,7 @@ def emit_scenario(spec_path: Path) -> Path:
     write("task.toml", TASK_TOML.format(
         difficulty=spec["difficulty"], category=spec["category"],
         tags=", ".join(f'"{t}"' for t in spec["tags"])))
-    write("instruction.md", INSTRUCTION_TEMPLATE.read_text())
+    write("instruction.md", INSTRUCTION_TEMPLATE.read_text(encoding="utf-8"))
     for rel in ("environment/Dockerfile",
                 "tests/test.sh", "tests/test_outputs.py"):
         copy(rel)

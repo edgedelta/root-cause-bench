@@ -7,7 +7,7 @@ from tools.scenario_gen.tests.test_spec import MINIMAL, write
 
 
 def test_main_spec_error_exits_cleanly_no_traceback(tmp_path, capsys):
-    bad = MINIMAL.replace('family = "guilty-decoy"', 'family = "whatever"')
+    bad = MINIMAL.replace('family = "beyond-context"', 'family = "whatever"')
     p = write(tmp_path, bad)
     with pytest.raises(SystemExit) as exc_info:
         main([str(p)])

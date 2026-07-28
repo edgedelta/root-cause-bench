@@ -188,6 +188,66 @@ def test_innocent_commits_never_have_null_diff(tmp_path):
         assert isinstance(c["diff"], str) and c["diff"]
 
 
+def test_deploy_never_collapses_onto_its_commit_timestamp(tmp_path):
+    # Regression test for a sub-second commit==deploy collapse: deploy ts was
+    # drawn as commit_ts + uniform(0, gap), but fmt_ts truncates to whole
+    # seconds, so a draw within 1s of commit_ts collapsed to equality --
+    # violating commit-strictly-before-deploy. Seed 63 against WITH_AUTO
+    # reproduces the exact collapse pre-fix (found by scanning seeds 0-200).
+    for seed in [63] + list(range(30)):
+        text = WITH_AUTO.replace("seed = 7", f"seed = {seed}")
+        seed_dir = tmp_path / f"seed{seed}"
+        seed_dir.mkdir()
+        s = load_spec(write(seed_dir, text))
+        commits, deploys, _, _ = build_changes(s)
+        sha_to_ts = {c["sha"]: c["timestamp"] for c in commits}
+        for d in deploys:
+            commit_ts = sha_to_ts.get(d["commit_sha"])
+            assert commit_ts is not None
+            assert parse_ts(commit_ts) < parse_ts(d["timestamp"]), \
+                f"seed={seed}: deploy {d['timestamp']} not strictly after " \
+                f"commit {commit_ts}"
+
+
+# A 24-minute window with a single innocent commit forces most auto-deploy
+# draws through _pick_innocent_commit's fallback shift path, where the
+# unclamped 5-40 minute shift used to be able to walk the deploy timestamp
+# well past window.end. Sized so a clamped shift always still leaves room
+# for the required 1s gap (never unsatisfiable) -- confirmed by replaying
+# the pre-fix (unclamped) logic against this exact fixture, which produces
+# 128 out-of-window deploys across 40 seeds x 8 auto deploys.
+TIGHT_WINDOW = (
+    MINIMAL
+    .replace('end   = "2026-07-20T10:00:00Z"', 'end   = "2026-07-20T06:25:00Z"')
+    .replace('fired_at = "2026-07-20T09:50:00Z"', 'fired_at = "2026-07-20T06:24:00Z"')
+    .replace('timestamp = "2026-07-20T07:00:00Z"', 'timestamp = "2026-07-20T06:01:00Z"')
+    .replace('timestamp = "2026-07-20T09:20:00Z"', 'timestamp = "2026-07-20T06:10:00Z"')
+    .replace('onset = "2026-07-20T09:30:00Z"', 'onset = "2026-07-20T06:20:00Z"')
+    .replace("[[commits.authored]]",
+            "[commits]\ninnocent_count = 1\n\n[[commits.authored]]", 1)
+    .replace("[ground_truth]", "[deploys_auto]\ncount = 8\n\n[ground_truth]")
+)
+
+
+def test_deploys_auto_never_land_past_window_end(tmp_path):
+    # Regression test for the deploys_auto fallback-shift path landing past
+    # window.end: with only one eligible innocent commit and a tight window,
+    # the pre-fix unclamped shift (earliest + 5-40min) exceeded window.end.
+    for seed in range(40):
+        text = TIGHT_WINDOW.replace("seed = 7", f"seed = {seed}")
+        seed_dir = tmp_path / f"tw{seed}"
+        seed_dir.mkdir()
+        s = load_spec(write(seed_dir, text))
+        start = parse_ts(s["window"]["start"])
+        end = parse_ts(s["window"]["end"])
+        _, deploys, _, _ = build_changes(s)
+        for d in deploys:
+            ts = parse_ts(d["timestamp"])
+            assert start <= ts <= end, \
+                f"seed={seed}: deploy {d['timestamp']} outside window " \
+                f"[{s['window']['start']}, {s['window']['end']}]"
+
+
 def test_deploys_auto_round_robin_cycles_services(tmp_path):
     s = spec_multi_service(tmp_path)
     _, deploys, _, ids = build_changes(s)
