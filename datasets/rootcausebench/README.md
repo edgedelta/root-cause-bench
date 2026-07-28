@@ -105,9 +105,9 @@ punish "blame the latest change" heuristics.
 
 ## Scenarios
 
-The first four scenarios are fault injections on a synthetic microservices app
-(see "How scenarios are generated" in the top-level README). The remaining six
-are **reconstructions of representative production incident classes** on a
+Some scenarios are fault injections on a synthetic microservices app (see "How
+scenarios are generated" in the top-level README); most are
+**reconstructions of representative production incident classes** on a
 fictional platform — they use fictional service names (`olapdb-tso`,
 `ai-agent-svc`, `ai-memory-svc`, `metric-ingestor-1`, `kafka-metric-ingestor`,
 `pipeline-transformer`, `workflow-engine`, `dashboard-svc`, `platform-api`, the
