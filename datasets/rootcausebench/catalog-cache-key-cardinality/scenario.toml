@@ -1,0 +1,468 @@
+name = "catalog-cache-key-cardinality"
+family = "beyond-context"
+seed = 202
+tags = ["beyond-context", "monorepo", "cache", "delayed-onset"]
+
+[window]
+start = "2026-07-17T08:00:00Z"
+end   = "2026-07-20T09:00:00Z"      # 73 hours
+log_rps = 0.45
+
+[alert]
+service = "catalogservice"
+metric = "catalog_latency_p99_ms"
+threshold = 900
+fired_at = "2026-07-20T08:40:00Z"
+summary = "catalogservice catalog_latency_p99_ms > 900ms for 10m"
+detail = "catalog reads degraded; product pages slow platform-wide"
+
+[[patterns_extra]]
+signature = "connection pool warmup retries exceeded <N> times"
+service = "paymentservice"
+count = 50
+delta_vs_baseline = "+1"
+sentiment = "negative"
+[[patterns_extra]]
+signature = "disk usage above <N>% on scratch volume"
+service = "shippingservice"
+count = 42
+delta_vs_baseline = "+2"
+sentiment = "negative"
+[[patterns_extra]]
+signature = "TLS certificate renews in <N> days warning"
+service = "dashboard-svc"
+count = 65
+delta_vs_baseline = "+2"
+sentiment = "negative"
+[[patterns_extra]]
+signature = "kafka consumer lag rebalancing group <N>"
+service = "platform-api"
+count = 80
+delta_vs_baseline = "+2"
+sentiment = "negative"
+
+[[services]]
+name = "catalogservice"
+log_weight = 4
+[[services.logs]]
+msg = "catalog page served"
+severity = "INFO"
+weight = 5
+extra = { "http.route" = "/api/catalog" }
+[[services.logs]]
+msg = "catalog cache warmed"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "catalog_latency_p99_ms"
+baseline = 140
+jitter = 0.1
+[[services.metrics]]
+name = "cache_hit_ratio"
+baseline = 0.97
+jitter = 0.01
+[[services.metrics]]
+name = "redis_mem_mb"
+baseline = 240
+jitter = 0.05
+
+[[services]]
+name = "frontend"
+log_weight = 4
+[[services.logs]]
+msg = "product page rendered"
+severity = "INFO"
+weight = 5
+extra = { "http.route" = "/product" }
+[[services.logs]]
+msg = "search query executed"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "product_page_latency_p95_ms"
+baseline = 210
+jitter = 0.05
+
+[[services]]
+name = "cartservice"
+log_weight = 3
+[[services.logs]]
+msg = "cart updated"
+severity = "INFO"
+weight = 5
+[[services.logs]]
+msg = "cart item removed"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "cart_request_count"
+baseline = 42
+jitter = 0.15
+
+[[services]]
+name = "checkoutservice"
+log_weight = 3
+[[services.logs]]
+msg = "order placed"
+severity = "INFO"
+weight = 5
+extra = { "http.route" = "/api/checkout" }
+[[services.logs]]
+msg = "checkout session started"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "checkout_latency_p99_ms"
+baseline = 300
+jitter = 0.05
+
+[[services]]
+name = "paymentservice"
+log_weight = 2
+[[services.logs]]
+msg = "charge authorized"
+severity = "INFO"
+weight = 5
+[[services.logs]]
+msg = "refund processed"
+severity = "INFO"
+weight = 1
+[[services.metrics]]
+name = "payment_success_ratio"
+baseline = 0.995
+jitter = 0.02
+
+[[services]]
+name = "shippingservice"
+log_weight = 2
+[[services.logs]]
+msg = "shipment scheduled"
+severity = "INFO"
+weight = 4
+[[services.logs]]
+msg = "tracking number issued"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "shipping_queue_depth"
+baseline = 12
+jitter = 0.2
+[[services.metrics]]
+name = "label_api_latency_ms"
+baseline = 85
+jitter = 0.15
+
+[[services]]
+name = "dashboard-svc"
+log_weight = 2
+[[services.logs]]
+msg = "dashboard view rendered"
+severity = "INFO"
+weight = 3
+[[services.logs]]
+msg = "saved view loaded"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "dashboard_request_count"
+baseline = 40
+jitter = 0.15
+
+[[services]]
+name = "platform-api"
+log_weight = 3
+[[services.logs]]
+msg = "request served"
+severity = "INFO"
+weight = 5
+extra = { "http.route" = "/api/v1" }
+[[services.logs]]
+msg = "auth token validated"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "platform_api_latency_p95_ms"
+baseline = 60
+jitter = 0.1
+
+[[trace_flows]]
+name = "GET /api/products"
+per_hour = 3
+end = "2026-07-20T02:30:00Z"
+[[trace_flows.spans]]
+service = "frontend"
+name = "GET /products"
+duration_ms = 230
+[[trace_flows.spans]]
+service = "catalogservice"
+name = "ListProducts"
+duration_ms = 160
+[[trace_flows.spans]]
+service = "catalogservice"
+name = "cache.get catalog"
+duration_ms = 4
+
+[incident]
+onset = "2026-07-20T02:30:00Z"       # visible degradation begins hours pre-alert
+first_failing_service = "catalogservice"
+
+[[incident.metric_faults]]
+service = "catalogservice"
+metric = "cache_hit_ratio"
+curve = "ramp"
+to = 0.31
+start = "2026-07-19T03:00:00Z"       # decay starts soon after culprit deploy
+[[incident.metric_faults]]
+service = "catalogservice"
+metric = "redis_mem_mb"
+curve = "ramp"
+to = 3900
+start = "2026-07-19T03:00:00Z"
+[[incident.metric_faults]]
+service = "catalogservice"
+metric = "catalog_latency_p99_ms"
+curve = "ramp"
+to = 1150
+start = "2026-07-20T02:30:00Z"
+[[incident.metric_faults]]
+service = "shippingservice"
+metric = "label_api_latency_ms"
+curve = "spike"
+to = 340
+start = "2026-07-19T21:00:00Z"
+end = "2026-07-19T22:00:00Z"
+
+[[incident.log_faults]]
+service = "catalogservice"
+msg = "cache miss for catalog page; falling back to primary db"
+severity = "WARN"
+rate_per_min = 6
+start = "2026-07-20T04:00:00Z"
+[[incident.log_faults]]
+service = "frontend"
+msg = "product page render slow: catalog upstream 900ms"
+severity = "WARN"
+rate_per_min = 8
+start = "2026-07-20T03:00:00Z"
+
+[[incident.trace_exemplars]]
+trace_id = "bbbbbbbbbbbbbbbbbbbbbbbbbbbb0001"
+span_id = "b0"
+service = "frontend"
+name = "GET /products"
+start = "2026-07-20T08:25:00Z"
+duration_ms = 1240
+status = "ERROR"
+error = "upstream timeout (1200ms)"
+[[incident.trace_exemplars]]
+trace_id = "bbbbbbbbbbbbbbbbbbbbbbbbbbbb0001"
+span_id = "b1"
+parent_id = "b0"
+service = "catalogservice"
+name = "ListProducts"
+start = "2026-07-20T08:25:00Z"
+duration_ms = 1180
+status = "ERROR"
+error = "db fallback slow: cache miss"
+[[incident.trace_exemplars]]
+trace_id = "bbbbbbbbbbbbbbbbbbbbbbbbbbbb0001"
+span_id = "b2"
+parent_id = "b1"
+service = "catalogservice"
+name = "db.query products"
+start = "2026-07-20T08:25:00Z"
+duration_ms = 1105
+status = "OK"
+
+[[incident.trace_exemplars]]
+trace_id = "bbbbbbbbbbbbbbbbbbbbbbbbbbbb0002"
+span_id = "b0"
+service = "frontend"
+name = "GET /products"
+start = "2026-07-18T10:00:00Z"
+duration_ms = 210
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "bbbbbbbbbbbbbbbbbbbbbbbbbbbb0002"
+span_id = "b1"
+parent_id = "b0"
+service = "catalogservice"
+name = "ListProducts"
+start = "2026-07-18T10:00:00Z"
+duration_ms = 150
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "bbbbbbbbbbbbbbbbbbbbbbbbbbbb0002"
+span_id = "b2"
+parent_id = "b1"
+service = "catalogservice"
+name = "db.query products"
+start = "2026-07-18T10:00:00Z"
+duration_ms = 3
+status = "OK"
+
+[commits]
+innocent_count = 299
+
+[[commits.authored]]
+id = "early-innocent"
+message = "chore(platform): rotate api rate-limit config"
+author = "hana.kim"
+timestamp = "2026-07-18T09:00:00Z"
+files = ["services/platform-api/ratelimit.go"]
+diff = '''--- a/services/platform-api/ratelimit.go
++++ b/services/platform-api/ratelimit.go
+@@ -7,2 +7,2 @@
+-	BurstSize: 200,
++	BurstSize: 220,
+'''
+
+[[commits.authored]]
+id = "culprit"
+message = "refactor(cache): scope cache keys to request context"
+author = "tom.oduya"
+timestamp = "2026-07-19T02:10:00Z"   # mid-history, ~30h before the alert
+files = ["pkg/cache/key.go"]
+diff = '''--- a/pkg/cache/key.go
++++ b/pkg/cache/key.go
+@@ -9,7 +9,8 @@ func CatalogKey(req *Request) string {
+-	return fmt.Sprintf("catalog:%s:%s", req.Locale, req.PageToken)
++	// scope cache entries to the request context
++	return fmt.Sprintf("catalog:%s:%s:%s",
++		req.Locale, req.PageToken, req.SessionID)
+ }
+'''
+
+[[commits.authored]]
+id = "redis-decoy"
+message = "perf(catalog): tune redis client timeouts"
+author = "lena.fischer"
+timestamp = "2026-07-19T01:45:00Z"
+files = ["services/catalog/redis.go"]
+diff = '''--- a/services/catalog/redis.go
++++ b/services/catalog/redis.go
+@@ -14,2 +14,2 @@
+-	ReadTimeout:  500 * time.Millisecond,
++	ReadTimeout:  400 * time.Millisecond,
+'''
+
+[[commits.authored]]
+id = "ttl-raise-decoy"
+message = "perf(catalog): raise catalog cache TTL"
+author = "grace.oyelaran"
+timestamp = "2026-07-19T00:50:00Z"
+files = ["services/catalog/cache.go"]
+diff = '''--- a/services/catalog/cache.go
++++ b/services/catalog/cache.go
+@@ -12,2 +12,2 @@
+-	TTL: 10 * time.Minute,
++	TTL: 30 * time.Minute,
+'''
+
+[[commits.authored]]
+id = "env-prefix-decoy"
+message = "refactor(cache): namespace cache keys by environment"
+author = "dmitri.volkov"
+timestamp = "2026-07-18T21:20:00Z"
+files = ["pkg/cache/key.go"]
+diff = '''--- a/pkg/cache/key.go
++++ b/pkg/cache/key.go
+@@ -1,6 +1,8 @@
++const keyPrefix = "prod:"
++
+ func CatalogKey(req *Request) string {
+-	return fmt.Sprintf("catalog:%s:%s", req.Locale, req.PageToken)
++	return fmt.Sprintf(keyPrefix+"catalog:%s:%s", req.Locale, req.PageToken)
+ }
+'''
+
+[[commits.authored]]
+id = "redis-lib-bump"
+message = "chore(catalog): bump redis client lib 8.4.1->8.4.3"
+author = "priya.nair"
+timestamp = "2026-07-18T19:30:00Z"
+files = ["go.mod"]
+diff = '''--- a/go.mod
++++ b/go.mod
+@@ -5,7 +5,7 @@ require (
+-	github.com/redis/go-redis/v9 v8.4.1
++	github.com/redis/go-redis/v9 v8.4.3
+ )
+'''
+
+[[commits.authored]]
+id = "cache-warm-on-boot"
+message = "feat(catalog): warm popular-page cache on boot"
+author = "marco.silva"
+timestamp = "2026-07-19T13:20:00Z"
+files = ["services/catalog/warmup.go"]
+diff = '''--- a/services/catalog/warmup.go
++++ b/services/catalog/warmup.go
+@@ -0,0 +1,7 @@
++func WarmPopularPages(ctx context.Context, c *Cache) {
++	for _, page := range popularPages {
++		key := CatalogKey(&Request{PageToken: page})
++		c.Set(ctx, key, fetchFromDB(ctx, page))
++	}
++}
+'''
+
+[[commits.authored]]
+id = "dashboard-decoy"
+message = "feat(dashboard): add saved-view sharing"
+author = "ahmet.yilmaz"
+timestamp = "2026-07-20T08:05:00Z"
+files = ["services/dashboard/views.go"]
+diff = '''--- a/services/dashboard/views.go
++++ b/services/dashboard/views.go
+@@ -30,0 +31,4 @@
++func (s *Server) shareView(ctx context.Context, id string) (string, error) {
++	return s.links.Create(ctx, id)
++}
+'''
+
+[[deploys]]
+service = "platform-api"
+commit = "early-innocent"
+timestamp = "2026-07-18T10:15:00Z"
+[[deploys]]
+service = "catalogservice"
+commit = "env-prefix-decoy"
+timestamp = "2026-07-18T22:00:00Z"
+[[deploys]]
+service = "catalogservice"
+commit = "redis-lib-bump"
+timestamp = "2026-07-18T20:00:00Z"
+[[deploys]]
+service = "catalogservice"
+commit = "ttl-raise-decoy"
+timestamp = "2026-07-19T01:30:00Z"
+[[deploys]]
+service = "catalogservice"
+commit = "redis-decoy"
+timestamp = "2026-07-19T02:00:00Z"
+[[deploys]]
+service = "catalogservice"
+commit = "culprit"
+timestamp = "2026-07-19T02:40:00Z"
+[[deploys]]
+service = "catalogservice"
+commit = "cache-warm-on-boot"
+timestamp = "2026-07-19T14:00:00Z"
+[[deploys]]
+service = "dashboard-svc"
+commit = "dashboard-decoy"
+timestamp = "2026-07-20T08:32:00Z"
+
+[deploys_auto]
+count = 28
+services = ["catalogservice", "frontend", "cartservice", "checkoutservice",
+            "paymentservice", "shippingservice", "dashboard-svc", "platform-api"]
+pre_onset_min = 18
+
+[ground_truth]
+culprit_id = "culprit"
+blast_radius = ["frontend"]
+remediation = "rollback"
+decoy_ids = ["redis-decoy", "dashboard-decoy", "redis-lib-bump", "cache-warm-on-boot", "ttl-raise-decoy", "env-prefix-decoy"]
+notes = "BEYOND-CONTEXT / MONOREPO (adversarial, v3 — cache-adjacent decoy candidates, cardinality-only discrimination). 307 commits over 73h; ~24MB of telemetry across logs/metrics/traces/patterns — the data cannot be read whole, it must be sliced. Culprit is the mid-history pkg/cache/key.go commit (deployed to catalogservice 2026-07-19T02:40Z, ~30h before the alert): adding req.SessionID to the catalog cache key explodes key cardinality, so cache_hit_ratio decays from 0.97 toward 0.31 and redis_mem_mb ramps 240->3900 starting at 2026-07-19T03:00Z (right after that deploy), while catalog_latency_p99_ms only breaches threshold on 07-20 as the DB fallback saturates — a very long delayed onset. v3 deepens the candidate set so the culprit can no longer be found by 'only one diff touches the cache' — there are now FOUR key/cache-touching catalogservice changes pre-dating onset (env-prefix-decoy 2026-07-18T22:00Z, ttl-raise-decoy 2026-07-19T01:30Z, redis-decoy 2026-07-19T02:00Z, culprit 02:40Z), and the hit-ratio decay + redis_mem_mb ramp only begin at 03:00 — after ALL FOUR deploys, so timing exonerates none of them. The culprit must be found by CARDINALITY reasoning: which change actually multiplies the key space? env-prefix-decoy ('namespace cache keys by environment', deployed 2026-07-18T22:00Z) edits the SAME FILE as the culprit (pkg/cache/key.go) and looks like the smoking gun — but its diff only prepends a static const `\"prod:\"` prefix to the key format string; a constant prefix is cardinality-neutral, one extra fixed token cannot multiply the key space or move a hit ratio. ttl-raise-decoy ('raise catalog cache TTL', deployed 2026-07-19T01:30Z, services/catalog/cache.go) triples TTL from 10m to 30m; a longer TTL retains entries LONGER, which can only increase hit ratio, and a 3x TTL bump cannot explain a 16x memory blowup (240->3900MB) or a hit-ratio collapse to 0.31 — the direction of the change is wrong. redis-decoy ('tune redis client timeouts', deployed 2026-07-19T02:00Z, about an hour before the 03:00 onset) is exonerated purely by mechanism too: lowering a ReadTimeout from 500ms to 400ms cannot decay a hit ratio or grow memory footprint. Only the culprit's diff adds a per-request/per-session dimension (req.SessionID) to the key itself, which is the one change that actually multiplies cardinality; the comment on that diff has been softened to 'scope cache entries to the request context' so the mechanism must be read from the code (the added req.SessionID field), not announced by the prose. redis-lib-bump ('bump redis client lib 8.4.1->8.4.3', catalogservice, deployed 2026-07-18T20:00Z) is a changelog-free go.mod version bump with no logic change, exonerated by mechanism. cache-warm-on-boot ('warm popular-page cache on boot', catalogservice, deployed 2026-07-19T14:00Z, squarely mid-decay) looks maximally relevant — a cache change landing while cache_hit_ratio is actively decaying — but its diff only pre-populates a handful of popular-page keys via the same CatalogKey helper on startup; it adds hits, it cannot explain a hit-ratio *decay* driven by per-session key cardinality, and it does not touch key construction. dashboard-decoy (08:32) remains the innocent-position deploy near the alert (fired_at 08:40). 28 deploys_auto entries (18+ pre-onset, cyclic across all 8 services) are pure background noise: routine dependency/docs/CI/test tweaks, none touching cache keys, redis, or catalog. Patterns are victim-first: frontend's new WARN ('product page render slow: catalog upstream 900ms', 8/min from 2026-07-20T03:00Z) is the loudest negative pattern, ahead of catalogservice's own cache-miss WARN (6/min from 2026-07-20T04:00Z through window end so it doesn't out-count the victim); 4 stale patterns_extra (pool-warmup retries, disk usage, TLS renewal, kafka rebalancing; counts 42-80) are unrelated background chatter across other services, well below both incident patterns. A shippingservice label_api_latency_ms spike (baseline ~85 -> 340, 2026-07-19T21:00-22:00Z) self-heals well before onset and is unrelated noise on an uninvolved service. Monorepo: route changes by files_changed paths (services/<svc>/, pkg/, go.mod), not by service-named repos. Remediation: roll back catalogservice to before the cache-key change."

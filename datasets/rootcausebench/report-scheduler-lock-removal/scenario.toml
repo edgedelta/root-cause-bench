@@ -1,0 +1,539 @@
+name = "report-scheduler-lock-removal"
+family = "beyond-context"
+seed = 602
+tags = ["beyond-context", "monorepo", "scheduler", "lock-removal", "delayed-onset"]
+
+[window]
+start = "2026-07-23T18:00:00Z"
+end   = "2026-07-26T18:00:00Z"      # 72 hours
+log_rps = 0.45
+
+[alert]
+service = "dashboard-svc"
+metric = "report_freshness_s"
+threshold = 600
+fired_at = "2026-07-26T17:50:00Z"
+summary = "dashboard-svc report_freshness_s > 600s for 10m"
+detail = "scheduled report widgets showing data more than 10 minutes stale"
+
+[[patterns_extra]]
+signature = "connection pool warmup retries exceeded <N> times"
+service = "paymentservice"
+count = 50
+delta_vs_baseline = "+1"
+sentiment = "negative"
+[[patterns_extra]]
+signature = "disk usage above <N>% on scratch volume"
+service = "shippingservice"
+count = 42
+delta_vs_baseline = "+2"
+sentiment = "negative"
+[[patterns_extra]]
+signature = "TLS certificate renews in <N> days warning"
+service = "checkoutservice"
+count = 65
+delta_vs_baseline = "+2"
+sentiment = "negative"
+[[patterns_extra]]
+signature = "outbound webhook retries exceeded <N> attempts"
+service = "platform-api"
+count = 58
+delta_vs_baseline = "+2"
+sentiment = "negative"
+
+[[services]]
+name = "report-scheduler"
+log_weight = 3
+[[services.logs]]
+msg = "report job completed"
+severity = "INFO"
+weight = 4
+[[services.logs]]
+msg = "config reloaded"
+severity = "INFO"
+weight = 1
+[[services.metrics]]
+name = "concurrent_report_jobs"
+baseline = 1
+jitter = 0.1
+[[services.metrics]]
+name = "report_job_duration_s"
+baseline = 45
+jitter = 0.05
+[[services.metrics]]
+name = "report_queue_depth"
+baseline = 2
+jitter = 0.2
+
+[[services]]
+name = "reportdb-proxy"
+log_weight = 2
+[[services.logs]]
+msg = "query executed"
+severity = "INFO"
+weight = 5
+[[services.logs]]
+msg = "connection acquired"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "report_db_cpu_pct"
+baseline = 22
+jitter = 0.1
+[[services.metrics]]
+name = "report_db_active_connections"
+baseline = 6
+jitter = 0.15
+
+[[services]]
+name = "dashboard-svc"
+log_weight = 2
+[[services.logs]]
+msg = "report viewed"
+severity = "INFO"
+weight = 3
+[[services.logs]]
+msg = "dashboard refreshed"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "report_freshness_s"
+baseline = 40
+jitter = 0.1
+[[services.metrics]]
+name = "dashboard_request_count"
+baseline = 35
+jitter = 0.15
+
+[[services]]
+name = "paymentservice"
+log_weight = 2
+[[services.logs]]
+msg = "charge authorized"
+severity = "INFO"
+weight = 5
+[[services.logs]]
+msg = "refund processed"
+severity = "INFO"
+weight = 1
+[[services.metrics]]
+name = "payment_success_ratio"
+baseline = 0.995
+jitter = 0.02
+
+[[services]]
+name = "shippingservice"
+log_weight = 2
+[[services.logs]]
+msg = "shipment scheduled"
+severity = "INFO"
+weight = 4
+[[services.logs]]
+msg = "tracking number issued"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "shipping_queue_depth"
+baseline = 12
+jitter = 0.2
+[[services.metrics]]
+name = "label_api_latency_ms"
+baseline = 85
+jitter = 0.15
+
+[[services]]
+name = "inventory-service"
+log_weight = 2
+[[services.logs]]
+msg = "inventory reconciled"
+severity = "INFO"
+weight = 4
+[[services.logs]]
+msg = "stock level updated"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "warehouse_queue_depth"
+baseline = 12
+jitter = 0.2
+[[services.metrics]]
+name = "inventory_sync_lag_s"
+baseline = 5
+jitter = 0.15
+
+[[services]]
+name = "platform-api"
+log_weight = 3
+[[services.logs]]
+msg = "request served"
+severity = "INFO"
+weight = 5
+extra = { "http.route" = "/api/v1" }
+[[services.logs]]
+msg = "auth token validated"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "platform_api_latency_p95_ms"
+baseline = 60
+jitter = 0.1
+
+[[services]]
+name = "checkoutservice"
+log_weight = 3
+[[services.logs]]
+msg = "order placed"
+severity = "INFO"
+weight = 5
+extra = { "http.route" = "/api/checkout" }
+[[services.logs]]
+msg = "checkout session started"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "checkout_latency_p99_ms"
+baseline = 300
+jitter = 0.05
+
+[[trace_flows]]
+name = "GenerateReport"
+per_hour = 2
+end = "2026-07-26T15:30:00Z"
+[[trace_flows.spans]]
+service = "report-scheduler"
+name = "RunReportJob"
+duration_ms = 45000
+[[trace_flows.spans]]
+service = "reportdb-proxy"
+name = "QueryReportData"
+duration_ms = 38000
+[[trace_flows.spans]]
+service = "dashboard-svc"
+name = "RefreshReportView"
+duration_ms = 500
+
+[incident]
+onset = "2026-07-26T15:30:00Z"       # report_freshness_s's own ramp visibly accelerates here
+first_failing_service = "report-scheduler"
+
+[[incident.metric_faults]]
+service = "report-scheduler"
+metric = "concurrent_report_jobs"
+curve = "ramp"
+to = 14
+start = "2026-07-25T16:20:00Z"        # first stacking cron tick, 30min after the culprit deploy
+end = "2026-07-26T15:30:00Z"
+[[incident.metric_faults]]
+service = "report-scheduler"
+metric = "report_job_duration_s"
+curve = "ramp"
+to = 260
+start = "2026-07-26T13:30:00Z"        # only rises once concurrency is already high, well
+end = "2026-07-26T17:50:00Z"          # after the page-size decoy deploys (12:50)
+[[incident.metric_faults]]
+service = "reportdb-proxy"
+metric = "report_db_cpu_pct"
+curve = "ramp"
+to = 94
+start = "2026-07-25T18:00:00Z"
+end = "2026-07-26T17:50:00Z"
+[[incident.metric_faults]]
+service = "reportdb-proxy"
+metric = "report_db_active_connections"
+curve = "ramp"
+to = 25
+start = "2026-07-26T02:00:00Z"
+end = "2026-07-26T15:30:00Z"
+[[incident.metric_faults]]
+service = "dashboard-svc"
+metric = "report_freshness_s"
+curve = "ramp"
+to = 1500
+start = "2026-07-26T15:30:00Z"        # onset — the alerting metric's own ramp
+end = "2026-07-26T17:55:00Z"
+[[incident.metric_faults]]
+service = "inventory-service"
+metric = "warehouse_queue_depth"
+curve = "spike"
+to = 340
+start = "2026-07-24T10:00:00Z"
+end = "2026-07-24T12:00:00Z"
+
+[[incident.log_faults]]
+service = "report-scheduler"
+msg = "report job started"
+severity = "INFO"
+rate_per_min = 0.0333
+start = "2026-07-23T18:00:00Z"
+end = "2026-07-26T18:00:00Z"
+in_patterns = false
+[[incident.log_faults]]
+service = "report-scheduler"
+msg = "report generation slow: query exceeded expected duration"
+severity = "WARN"
+rate_per_min = 0.3
+start = "2026-07-26T13:30:00Z"
+end = "2026-07-26T15:30:00Z"
+[[incident.log_faults]]
+service = "report-scheduler"
+msg = "report generation slow: query exceeded expected duration"
+severity = "WARN"
+rate_per_min = 3
+start = "2026-07-26T15:30:00Z"
+end = "2026-07-26T17:55:00Z"
+[[incident.log_faults]]
+service = "reportdb-proxy"
+msg = "database query slow: execution exceeded expected duration"
+severity = "WARN"
+rate_per_min = 0.2
+start = "2026-07-26T09:00:00Z"
+end = "2026-07-26T15:30:00Z"
+[[incident.log_faults]]
+service = "reportdb-proxy"
+msg = "database query slow: execution exceeded expected duration"
+severity = "WARN"
+rate_per_min = 3
+start = "2026-07-26T15:30:00Z"
+end = "2026-07-26T17:55:00Z"
+[[incident.log_faults]]
+service = "dashboard-svc"
+msg = "report data unavailable: generation did not complete within refresh window"
+severity = "ERROR"
+rate_per_min = 6
+start = "2026-07-26T15:35:00Z"
+end = "2026-07-26T17:58:00Z"
+
+[[incident.trace_exemplars]]
+trace_id = "2222222222222222222222222222a001"
+span_id = "a0"
+service = "report-scheduler"
+name = "RunReportJob"
+start = "2026-07-24T10:00:00Z"
+duration_ms = 44000
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "2222222222222222222222222222a001"
+span_id = "a1"
+parent_id = "a0"
+service = "reportdb-proxy"
+name = "QueryReportData"
+start = "2026-07-24T10:00:00Z"
+duration_ms = 37000
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "2222222222222222222222222222a001"
+span_id = "a2"
+parent_id = "a1"
+service = "dashboard-svc"
+name = "RefreshReportView"
+start = "2026-07-24T10:00:00Z"
+duration_ms = 480
+status = "OK"
+
+[[incident.trace_exemplars]]
+trace_id = "2222222222222222222222222222a002"
+span_id = "b0"
+service = "report-scheduler"
+name = "RunReportJob"
+start = "2026-07-26T17:40:00Z"
+duration_ms = 205000
+status = "ERROR"
+error = "report generation timed out"
+[[incident.trace_exemplars]]
+trace_id = "2222222222222222222222222222a002"
+span_id = "b1"
+parent_id = "b0"
+service = "reportdb-proxy"
+name = "QueryReportData"
+start = "2026-07-26T17:40:00Z"
+duration_ms = 192000
+status = "ERROR"
+error = "query exceeded configured timeout"
+[[incident.trace_exemplars]]
+trace_id = "2222222222222222222222222222a002"
+span_id = "b2"
+parent_id = "b1"
+service = "dashboard-svc"
+name = "RefreshReportView"
+start = "2026-07-26T17:40:00Z"
+duration_ms = 205500
+status = "ERROR"
+error = "report data unavailable: generation did not complete"
+
+[[incident.trace_exemplars]]
+trace_id = "2222222222222222222222222222a003"
+span_id = "c0"
+service = "report-scheduler"
+name = "RunReportJob"
+start = "2026-07-26T17:45:00Z"
+duration_ms = 228000
+status = "ERROR"
+error = "report generation timed out"
+[[incident.trace_exemplars]]
+trace_id = "2222222222222222222222222222a003"
+span_id = "c1"
+parent_id = "c0"
+service = "reportdb-proxy"
+name = "QueryReportData"
+start = "2026-07-26T17:45:00Z"
+duration_ms = 210000
+status = "ERROR"
+error = "query exceeded configured timeout"
+[[incident.trace_exemplars]]
+trace_id = "2222222222222222222222222222a003"
+span_id = "c2"
+parent_id = "c1"
+service = "dashboard-svc"
+name = "RefreshReportView"
+start = "2026-07-26T17:45:00Z"
+duration_ms = 228500
+status = "ERROR"
+error = "report data unavailable: generation did not complete"
+
+[commits]
+innocent_count = 253
+
+[[commits.authored]]
+id = "early-innocent"
+message = "chore(scheduler): add job id to log line"
+author = "lena.fischer"
+timestamp = "2026-07-23T18:30:00Z"
+files = ["services/report-scheduler/log.go"]
+diff = '''--- a/services/report-scheduler/log.go
++++ b/services/report-scheduler/log.go
+@@ -6,2 +6,2 @@
+-	log.Info("report job started")
++	log.Info("report job started", "job", jobKey)
+'''
+
+[[commits.authored]]
+id = "culprit"
+message = "refactor(scheduler): simplify job runner"
+author = "noah.becker"
+timestamp = "2026-07-25T15:20:00Z"
+files = ["services/report-scheduler/runner.go"]
+diff = '''--- a/services/report-scheduler/runner.go
++++ b/services/report-scheduler/runner.go
+@@ -11,15 +11,7 @@ func (s *Scheduler) RunReportJob(ctx context.Context, jobKey string) error {
+-	lock, err := s.locks.Acquire(ctx, jobKey)
+-	if err != nil {
+-		if errors.Is(err, ErrHeld) {
+-			return nil
+-		}
+-		return err
+-	}
+-	defer lock.Release()
+-
+ 	report, err := s.generator.Generate(ctx, jobKey)
+ 	if err != nil {
+ 		return err
+ 	}
+ 	return s.store.Save(ctx, report)
+ }
+'''
+
+[[commits.authored]]
+id = "parallel-workers-decoy"
+message = "feat(scheduler): enable parallel report generation workers"
+author = "mei.chen"
+timestamp = "2026-07-25T21:20:00Z"
+files = ["services/report-scheduler/dispatch.go"]
+diff = '''--- a/services/report-scheduler/dispatch.go
++++ b/services/report-scheduler/dispatch.go
+@@ -8,7 +8,10 @@ func (s *Scheduler) dispatch(ctx context.Context, jobKey string) error {
+-	return s.RunReportJob(ctx, jobKey)
++	if !s.flags.Enabled("scheduler_parallel_workers") {
++		return s.RunReportJob(ctx, jobKey)
++	}
++	return s.workerPool.SubmitParallel(ctx, jobKey)
+ }
+'''
+
+[[commits.authored]]
+id = "dbpool-tune-decoy"
+message = "chore(scheduler): tune db pool max 15->25"
+author = "priya.nair"
+timestamp = "2026-07-26T07:20:00Z"
+files = ["services/report-scheduler/config.go"]
+diff = '''--- a/services/report-scheduler/config.go
++++ b/services/report-scheduler/config.go
+@@ -22,7 +22,7 @@ func FromEnv(cfg *envconf.Loader) SchedulerConfig {
+-		MaxDBConns: cfg.Int("scheduler.db_pool_max", 15),
++		MaxDBConns: cfg.Int("scheduler.db_pool_max", 25),
+ 	}
+ }
+'''
+
+[[commits.authored]]
+id = "pagesize-decoy"
+message = "perf(reports): raise generator page size 500->2000"
+author = "sofia.rossi"
+timestamp = "2026-07-26T12:20:00Z"
+files = ["services/report-scheduler/generator.go"]
+diff = '''--- a/services/report-scheduler/generator.go
++++ b/services/report-scheduler/generator.go
+@@ -9,2 +9,2 @@
+-	const reportPageSize = 500
++	const reportPageSize = 2000
+'''
+
+[[commits.authored]]
+id = "innocent-near-alert"
+message = "feat(dashboard): add report queue depth widget"
+author = "ahmet.yilmaz"
+timestamp = "2026-07-26T17:10:00Z"
+files = ["services/dashboard/widgets.go"]
+diff = '''--- a/services/dashboard/widgets.go
++++ b/services/dashboard/widgets.go
+@@ -40,0 +41,4 @@
++func (s *Server) reportQueueDepthWidget(ctx context.Context) (*Widget, error) {
++	return s.widgets.Render(ctx, "report_queue_depth")
++}
+'''
+
+[[deploys]]
+service = "report-scheduler"
+commit = "early-innocent"
+timestamp = "2026-07-23T18:45:00Z"
+[[deploys]]
+service = "report-scheduler"
+commit = "culprit"
+timestamp = "2026-07-25T15:50:00Z"
+[[deploys]]
+service = "report-scheduler"
+commit = "parallel-workers-decoy"
+timestamp = "2026-07-25T21:50:00Z"
+[[deploys]]
+service = "report-scheduler"
+commit = "dbpool-tune-decoy"
+timestamp = "2026-07-26T07:50:00Z"
+[[deploys]]
+service = "report-scheduler"
+commit = "pagesize-decoy"
+timestamp = "2026-07-26T12:50:00Z"
+[[deploys]]
+service = "dashboard-svc"
+commit = "innocent-near-alert"
+timestamp = "2026-07-26T17:40:00Z"
+
+[deploys_auto]
+count = 26
+services = ["report-scheduler", "reportdb-proxy", "dashboard-svc",
+            "paymentservice", "shippingservice", "inventory-service",
+            "platform-api", "checkoutservice"]
+pre_onset_min = 20
+
+[[flags]]
+timestamp = "2026-07-25T21:15:00Z"
+flag = "scheduler_parallel_workers"
+service = "report-scheduler"
+change = "created (off)"
+actor = "mei.chen"
+
+[ground_truth]
+culprit_id = "culprit"
+first_failing_service = "report-scheduler"
+blast_radius = ["dashboard-svc"]
+remediation = "rollback"
+decoy_ids = ["parallel-workers-decoy", "dbpool-tune-decoy", "pagesize-decoy", "innocent-near-alert"]
+notes = "BEYOND-CONTEXT / MONOREPO (adversarial, chunk 2). 259 commits over 72h; log_rps 0.45 produces well over 8MB of telemetry across logs/metrics/traces/patterns — the data must be sliced, not read whole. Culprit is 'refactor(scheduler): simplify job runner' (services/report-scheduler/runner.go), authored 2026-07-25T15:20Z and deployed to report-scheduler at 15:50Z, exactly 26h before the alert fires at 2026-07-26T17:50Z. The diff deletes the entire lock-guard block around report generation — `lock, err := s.locks.Acquire(ctx, jobKey)`, its ErrHeld early-return, and the paired `defer lock.Release()` — leaving RunReportJob call straight into the generator with no serialization; the commit message says only 'simplify job runner', never mentions locking, concurrency, or overlap. report-scheduler runs a cron-triggered job every 30 minutes (visible directly in logs.ndjson: a benign 'report job started' INFO line recurs on report-scheduler roughly every 30 minutes for the entire 72h window, independent of the incident — this is the cadence baseline against which the ramp must be read). Normally a report job finishes in well under 30 minutes, so the lock was rarely contended; once it is deleted, an occasional slow job no longer blocks the next cron tick from launching a second, overlapping job — and because the two jobs now compete for the same DB resources and both run slower, each subsequent 30-minute tick stacks another overlapping job on top of the last, a self-reinforcing pileup. This is the intended STAIRCASE reading: concurrent_report_jobs (report-scheduler) ramps from a baseline of 1 up to a plateau of 14 between 2026-07-25T16:20Z (the first stacking tick, 30 minutes after the culprit's own deploy) and onset — a rise that lines up, tick-for-tick, with the 30-minute cron cadence established by the 'report job started' log line; no metric field literally says 'staircase' or 'overlap', the shape must be read off the ramp against the log cadence. report_db_cpu_pct (reportdb-proxy) independently corroborates, climbing from a 22% baseline toward 94% starting 2026-07-25T18:00Z — under two hours after the concurrency ramp begins and many hours before the alerting service shows any sign of trouble — which is why first_failing_service is report-scheduler even though the eventual alert fires on dashboard-svc. report_freshness_s (dashboard-svc), by contrast, sits flat near its 40s baseline for nearly the entire window: staleness only becomes threshold-crossing once the job backlog is large enough to starve the downstream refresh, so it stays flat until onset (2026-07-26T15:30Z, chosen where the alerting metric's own ramp visibly accelerates) and then ramps to a ~1500s plateau by 17:55Z, crossing the 600s threshold around 16:26Z — well over an hour before the alert actually fires at 17:50Z. Two WARN log_faults (report-scheduler's 'report generation slow: query exceeded expected duration' and reportdb-proxy's 'database query slow: execution exceeded expected duration') each run a low-rate precursor stage that starts hours before onset and then jump in rate at onset — the toolkit merges each into a single deduped pattern entry, whose count is dominated by the onset-rate stage. dashboard-svc's own victim pattern ('report data unavailable: generation did not complete within refresh window', 6/min from 2026-07-26T15:35Z, count ~858) outnumbers both cause-side onset patterns (report-scheduler ~471, reportdb-proxy ~513), satisfying victim-first pattern loudness. Three hand-authored trace exemplars make the mechanism directly visible without naming it: a healthy pre-deploy exemplar (2026-07-24T10:00Z) shows RunReportJob(44000ms,OK) -> QueryReportData(37000ms,OK) -> RefreshReportView(480ms,OK); two independent post-onset exemplars (17:40Z and 17:45Z) show RunReportJob and QueryReportData spans blowing up to ~2-4 minutes, erroring generically with 'report generation timed out' / 'query exceeded configured timeout' — no span or log anywhere says 'overlapping', 'concurrent', or 'lock', so the mechanism must be inferred from the concurrent_report_jobs ramp and cron cadence, never read off a text string. Four mechanism-traps deploy pre-onset (except innocent-near-alert, which is post-onset bait) and are each exonerable purely by code semantics, not timing: (1) parallel-workers-decoy ('feat(scheduler): enable parallel report generation workers', deployed 2026-07-25T21:50Z, ~20h pre-alert) is the scariest-sounding commit in the scenario — it reads as though it directly explains concurrent jobs running in parallel — but flags.json shows `scheduler_parallel_workers` was created OFF at 21:15Z and never flipped anywhere in the window, so the new SubmitParallel code path is provably dead: the diff itself gates the change behind `if !s.flags.Enabled(...) { return s.RunReportJob(...) }`, meaning production traffic keeps calling the exact same function whether or not this commit ships. (2) dbpool-tune-decoy ('chore(scheduler): tune db pool max 15->25', deployed 2026-07-26T07:50Z, ~10h pre-alert) is capacity-*adding*, the wrong direction for a change that would need to shrink a resource to cause a backlog — and report_db_active_connections shows the exoneration directly: the metric is already at ~14.2 (essentially saturating the OLD 15-connection cap) by the time this commit deploys, proving the growth was organic and predates the tune; afterward it simply continues climbing to saturate the NEW 25-connection cap by onset, showing that raising the pool ceiling only deferred the same underlying growth, it never caused or fixed it. (3) pagesize-decoy ('perf(reports): raise generator page size 500->2000', deployed 2026-07-26T12:50Z, ~5h pre-alert) is exonerated by timeline plus a dedicated per-job metric: report_job_duration_s stays flat at its ~45s baseline through this deploy and for the following 40 minutes, only beginning to ramp at 13:30Z — well after the deploy and correlated instead with concurrent_report_jobs already sitting near its saturation plateau, i.e., queueing contention from job count, not per-job generator work, is what slows individual jobs. (4) innocent-near-alert ('feat(dashboard): add report queue depth widget', dashboard-svc, deployed 2026-07-26T17:40Z, 10 minutes before fired_at) is classic innocent-deploy-near-alert bait: a new read-only dashboard widget with no write path into the scheduling or generation pipeline. The 26 deploys_auto entries (20 pre-onset, cyclic across all 8 services) are routine dependency/docs/CI/test noise touching none of runner.go, dispatch.go, config.go, or generator.go. Four stale patterns_extra (pool warmup retries, disk usage, TLS renewal, webhook retries; counts 42-65) on paymentservice/shippingservice/checkoutservice/platform-api are unrelated pre-existing background chatter, well below all incident patterns. An inventory-service warehouse_queue_depth spike (baseline 12 -> 340, 2026-07-24T10:00-12:00Z) fully self-heals more than a day before the culprit even deploys and is unrelated noise on an uninvolved service. Monorepo: route changes by files_changed paths (services/<svc>/, go.mod), not by service-named repos. first_failing_service is report-scheduler (its own concurrency and the downstream DB CPU move first, many hours before dashboard-svc shows any freshness degradation); dashboard-svc is blast radius (its report refresh starves waiting on the backlogged scheduler). Remediation: roll back report-scheduler to restore the lock-guard block (`lock, err := s.locks.Acquire(ctx, jobKey)` / ErrHeld early-return / `defer lock.Release()`) around report generation."

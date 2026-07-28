@@ -1,0 +1,79 @@
+[
+ {
+  "signature": "dashboard render failed: pipeline data stale",
+  "service": "dashboard-svc",
+  "count": 1120,
+  "delta_vs_baseline": "+1120",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "rpc queue saturated: shedding load",
+  "service": "config-svc",
+  "count": 800,
+  "delta_vs_baseline": "+800",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "config resolution slow: batch deadline exceeded",
+  "service": "pipeline-transformer",
+  "count": 495,
+  "delta_vs_baseline": "+495",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "kafka consumer lag rebalancing group <N>",
+  "service": "ingest-worker",
+  "count": 72,
+  "delta_vs_baseline": "+2",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "TLS certificate renews in <N> days warning",
+  "service": "config-svc",
+  "count": 60,
+  "delta_vs_baseline": "+2",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "disk usage above <N>% on scratch volume",
+  "service": "search-svc",
+  "count": 50,
+  "delta_vs_baseline": "+2",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "batch flushed",
+  "service": "pipeline-transformer",
+  "count": 347,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "dashboard view rendered",
+  "service": "dashboard-svc",
+  "count": 283,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "config resolved",
+  "service": "config-svc",
+  "count": 256,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "event ingested",
+  "service": "ingest-worker",
+  "count": 235,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "document indexed",
+  "service": "search-svc",
+  "count": 204,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ }
+]

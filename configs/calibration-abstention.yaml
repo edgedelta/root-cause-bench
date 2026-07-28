@@ -1,0 +1,26 @@
+# root-cause-bench — abstention-trap mini-calibration: four frontier models x 3
+# attempts x the payment-refund-poison-batch exemplar. Discrimination gate: this
+# family is the tier's proven frontier-killer; expect wrong-conviction failures.
+# Usage: set -a && source .env && set +a && harbor run -c configs/calibration-abstention.yaml -y
+jobs_dir: jobs
+n_attempts: 3
+n_concurrent_trials: 2
+quiet: false
+
+environment:
+  type: docker
+
+agents:
+  - name: terminus-2
+    model_name: openrouter/z-ai/glm-5.2
+  - name: terminus-2
+    model_name: openrouter/x-ai/grok-4.5
+  - name: terminus-2
+    model_name: openrouter/moonshotai/kimi-k3
+  - name: terminus-2
+    model_name: openrouter/anthropic/claude-opus-5
+
+datasets:
+  - path: datasets/rootcausebench
+    task_names:
+      - payment-refund-poison-batch

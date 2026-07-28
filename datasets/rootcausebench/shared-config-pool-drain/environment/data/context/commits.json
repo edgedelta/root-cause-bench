@@ -1,0 +1,347 @@
+[
+ {
+  "sha": "b1dce976ab6ee8616bdcb2f6c4c979c029793dd4",
+  "author": "lena.fischer",
+  "timestamp": "2026-07-20T06:21:47Z",
+  "message": "perf: preallocate buffer in JSON encoder",
+  "files_changed": [
+   "pkg/codec/json.go"
+  ],
+  "diff": "--- a/pkg/codec/json.go\n+++ b/pkg/codec/json.go\n@@ -14,7 +14,7 @@\n-\tbuf := bytes.Buffer{}\n+\tbuf := make([]byte, 0, 512)\n"
+ },
+ {
+  "sha": "fc251ff232786904be66056858f6c0b3f933d08f",
+  "author": "jan.kowalski",
+  "timestamp": "2026-07-20T06:38:00Z",
+  "message": "chore: bump go.mod dependencies",
+  "files_changed": [
+   "go.mod",
+   "go.sum"
+  ],
+  "diff": "--- a/go.mod\n+++ b/go.mod\n@@ -3,7 +3,7 @@\n require (\n-\tgithub.com/gorilla/mux v1.8.0\n+\tgithub.com/gorilla/mux v1.8.1\n )\n"
+ },
+ {
+  "sha": "a4868e8b204fbc249c7061fb385ee9d3615bcc3b",
+  "author": "priya.nair",
+  "timestamp": "2026-07-20T06:43:31Z",
+  "message": "docs: update API reference",
+  "files_changed": [
+   "docs/api/orders.md"
+  ],
+  "diff": "--- a/docs/api/orders.md\n+++ b/docs/api/orders.md\n@@ -12,6 +12,7 @@\n ## GET /orders/{id}\n+Returns 404 if the order does not exist.\n"
+ },
+ {
+  "sha": "c37f4f3dfcc7bc6d52e4350a9b06bb73a210e69f",
+  "author": "marco.silva",
+  "timestamp": "2026-07-20T07:03:12Z",
+  "message": "style: gofmt sweep",
+  "files_changed": [
+   "internal/worker/pool.go"
+  ],
+  "diff": "--- a/internal/worker/pool.go\n+++ b/internal/worker/pool.go\n@@ -5,7 +5,7 @@\n-func  NewPool(n int) *Pool {\n+func NewPool(n int) *Pool {\n"
+ },
+ {
+  "sha": "7525e9b2d180e5d97a51713e0fbc17fab5bf757b",
+  "author": "marco.silva",
+  "timestamp": "2026-07-20T07:33:13Z",
+  "message": "chore: clarify retry backoff comment",
+  "files_changed": [
+   "internal/retry/backoff.go"
+  ],
+  "diff": "--- a/internal/retry/backoff.go\n+++ b/internal/retry/backoff.go\n@@ -11,6 +11,7 @@\n func Backoff(attempt int) time.Duration {\n+\t// exponential with full jitter, capped at 30s\n\treturn cap(base(attempt), 30*time.Second)\n }\n"
+ },
+ {
+  "sha": "bd3bb3073e04fa5138af2561588174d4ecabff98",
+  "author": "mei.chen",
+  "timestamp": "2026-07-20T07:38:34Z",
+  "message": "test: add table-driven tests for money conversion",
+  "files_changed": [
+   "pkg/money/convert_test.go"
+  ],
+  "diff": "--- a/pkg/money/convert_test.go\n+++ b/pkg/money/convert_test.go\n@@ -1,6 +1,18 @@\n func TestConvert(t *testing.T) {\n+\tcases := []struct{ in, out int64 }{{100, 1}, {250, 3}}\n+\tfor _, c := range cases {\n+\t\t_ = c\n+\t}\n }\n"
+ },
+ {
+  "sha": "894bc5e29dde539c6031dba8cf092d3b399f4812",
+  "author": "jan.kowalski",
+  "timestamp": "2026-07-20T07:40:00Z",
+  "message": "refactor(dbpool): make acquire timeout configurable",
+  "files_changed": [
+   "pkg/dbpool/config.go"
+  ],
+  "diff": "--- a/pkg/dbpool/config.go\n+++ b/pkg/dbpool/config.go\n@@ -18,9 +18,10 @@ type PoolConfig struct {\n func FromEnv(cfg *envconf.Loader) PoolConfig {\n \treturn PoolConfig{\n \t\tMaxConns:       cfg.Int(\"db.pool_max_conns\", 20),\n-\t\t// acquire blocks until a connection frees up or the pool\n-\t\t// timeout elapses.\n-\t\tAcquireTimeout: cfg.Duration(\"db.pool_timeout\", 30*time.Second),\n+\t\t// acquire timeout is now tunable per service in milliseconds.\n+\t\tAcquireTimeout: time.Duration(\n+\t\t\tcfg.Int(\"db.pool_timeout_ms\", 3000)) * time.Millisecond,\n \t}\n }\n"
+ },
+ {
+  "sha": "48f3761ebc7041ae65b0d395a5ba77185915fae7",
+  "author": "ahmet.yilmaz",
+  "timestamp": "2026-07-20T07:51:01Z",
+  "message": "chore: tidy helm values indentation",
+  "files_changed": [
+   "deploy/helm/values.yaml"
+  ],
+  "diff": "--- a/deploy/helm/values.yaml\n+++ b/deploy/helm/values.yaml\n@@ -18,8 +18,8 @@\n resources:\n-    limits:\n-        cpu: 500m\n+  limits:\n+    cpu: 500m\n"
+ },
+ {
+  "sha": "ddae98be3e6ed8be10c2285a4812093f57dac570",
+  "author": "priya.nair",
+  "timestamp": "2026-07-20T07:53:14Z",
+  "message": "fix: correct typo in error message",
+  "files_changed": [
+   "internal/errors/messages.go"
+  ],
+  "diff": "--- a/internal/errors/messages.go\n+++ b/internal/errors/messages.go\n@@ -4,1 +4,1 @@\n-\t\"unkown resource\"\n+\t\"unknown resource\"\n"
+ },
+ {
+  "sha": "a679ece8ac5d72663c46ba49b1a6c30ea45c35a7",
+  "author": "priya.desai",
+  "timestamp": "2026-07-20T07:55:00Z",
+  "message": "chore(frontend): refresh banner assets",
+  "files_changed": [
+   "web/assets/banner.css"
+  ],
+  "diff": "--- a/web/assets/banner.css\n+++ b/web/assets/banner.css\n@@ -3,2 +3,2 @@\n-.banner { background: #f4f4f4; }\n+.banner { background: #f2f2f2; }\n"
+ },
+ {
+  "sha": "e59078819a0e3f05fd3535c599eb728e2858f358",
+  "author": "mei.chen",
+  "timestamp": "2026-07-20T08:05:53Z",
+  "message": "docs: onboarding notes for new services",
+  "files_changed": [
+   "docs/onboarding.md"
+  ],
+  "diff": "--- a/docs/onboarding.md\n+++ b/docs/onboarding.md\n@@ -20,3 +20,5 @@\n ## Local setup\n+\n+Run `make bootstrap` before your first build.\n"
+ },
+ {
+  "sha": "d99e1874c3ddc1b6053d559d4c8e5d777d43392d",
+  "author": "ravi.patel",
+  "timestamp": "2026-07-20T08:25:00Z",
+  "message": "feat(payment): record pool wait-time histogram",
+  "files_changed": [
+   "services/payment/metrics.go"
+  ],
+  "diff": "--- a/services/payment/metrics.go\n+++ b/services/payment/metrics.go\n@@ -14,7 +14,12 @@ var poolWaitHistogram = telemetry.NewHistogram(\"db_pool_acquire_wait\")\n func (r *Repo) acquire(ctx context.Context) (*sql.Conn, error) {\n-\treturn r.pool.Acquire(ctx)\n+\tstart := time.Now()\n+\tconn, err := r.pool.Acquire(ctx)\n+\tpoolWaitHistogram.Observe(time.Since(start).Seconds())\n+\tif err != nil {\n+\t\treturn nil, err\n+\t}\n+\treturn conn, nil\n }\n"
+ },
+ {
+  "sha": "f69c568315e22f1437b42011191765a53781d2d4",
+  "author": "lena.fischer",
+  "timestamp": "2026-07-20T08:25:14Z",
+  "message": "refactor: extract response writer helper",
+  "files_changed": [
+   "internal/httputil/writer.go"
+  ],
+  "diff": "--- a/internal/httputil/writer.go\n+++ b/internal/httputil/writer.go\n@@ -10,6 +10,10 @@\n+func writeJSON(w http.ResponseWriter, code int, v any) {\n+\tw.WriteHeader(code)\n+\t_ = json.NewEncoder(w).Encode(v)\n+}\n"
+ },
+ {
+  "sha": "fa6e661a4569b777a7be9edd48e4c4d762392b20",
+  "author": "sofia.rossi",
+  "timestamp": "2026-07-20T08:31:01Z",
+  "message": "chore: update grafana dashboard panel titles",
+  "files_changed": [
+   "deploy/dashboards/orders.json"
+  ],
+  "diff": "--- a/deploy/dashboards/orders.json\n+++ b/deploy/dashboards/orders.json\n@@ -14,7 +14,7 @@\n-      \"title\": \"orders/sec\",\n+      \"title\": \"Orders per second\",\n"
+ },
+ {
+  "sha": "f2174807018e47ee2aa75cc18f6550dc4edc0e73",
+  "author": "marco.silva",
+  "timestamp": "2026-07-20T08:41:38Z",
+  "message": "test: raise coverage threshold",
+  "files_changed": [
+   "Makefile"
+  ],
+  "diff": "--- a/Makefile\n+++ b/Makefile\n@@ -30,1 +30,1 @@\n-COVERAGE_MIN := 70\n+COVERAGE_MIN := 75\n"
+ },
+ {
+  "sha": "25d523ee7b999f24c6563738ffd31bd11b1c11f9",
+  "author": "ahmet.yilmaz",
+  "timestamp": "2026-07-20T08:43:49Z",
+  "message": "chore: bump go.mod dependencies",
+  "files_changed": [
+   "go.mod",
+   "go.sum"
+  ],
+  "diff": "--- a/go.mod\n+++ b/go.mod\n@@ -3,7 +3,7 @@\n require (\n-\tgithub.com/gorilla/mux v1.8.0\n+\tgithub.com/gorilla/mux v1.8.1\n )\n"
+ },
+ {
+  "sha": "afb008fa0a25c5ec58fa1a13e9c36d73b76ef7e4",
+  "author": "noah.becker",
+  "timestamp": "2026-07-20T08:45:00Z",
+  "message": "fix(checkout): raise charge rpc deadline 2s->5s",
+  "files_changed": [
+   "services/checkout/charge.go"
+  ],
+  "diff": "--- a/services/checkout/charge.go\n+++ b/services/checkout/charge.go\n@@ -33,7 +33,7 @@ func (s *Server) charge(ctx context.Context, req *pb.ChargeRequest) (*pb.ChargeResponse, error) {\n-\tctx, cancel := context.WithTimeout(ctx, 2*time.Second)\n+\tctx, cancel := context.WithTimeout(ctx, 5*time.Second)\n \tdefer cancel()\n \treturn s.payments.Charge(ctx, req)\n }\n"
+ },
+ {
+  "sha": "ab8cf056cdced2a8bd67f8032e6d80807fbe75fa",
+  "author": "mei.chen",
+  "timestamp": "2026-07-20T08:56:22Z",
+  "message": "chore: rotate lint config",
+  "files_changed": [
+   ".golangci.yml"
+  ],
+  "diff": "--- a/.golangci.yml\n+++ b/.golangci.yml\n@@ -3,6 +3,7 @@\n linters:\n   enable:\n+    - unconvert\n"
+ },
+ {
+  "sha": "cf35845ea6167ebdb339ed84c973df54edbb83f3",
+  "author": "ahmet.yilmaz",
+  "timestamp": "2026-07-20T08:56:55Z",
+  "message": "feat: add /readyz endpoint",
+  "files_changed": [
+   "internal/health/ready.go"
+  ],
+  "diff": "--- a/internal/health/ready.go\n+++ b/internal/health/ready.go\n@@ -0,0 +1,6 @@\n+func Ready(w http.ResponseWriter, r *http.Request) {\n+\tw.WriteHeader(http.StatusOK)\n+}\n"
+ },
+ {
+  "sha": "9ddc530789c6591d485326776281126c2f4f2e05",
+  "author": "ravi.patel",
+  "timestamp": "2026-07-20T08:58:00Z",
+  "message": "perf(payment): reuse prepared statements",
+  "files_changed": [
+   "services/payment/db.go"
+  ],
+  "diff": "--- a/services/payment/db.go\n+++ b/services/payment/db.go\n@@ -21,8 +21,12 @@ func (r *Repo) LoadCard(ctx context.Context, id string) (*Card, error) {\n-\tstmt, err := r.db.PrepareContext(ctx, loadCardSQL)\n-\tif err != nil {\n-\t\treturn nil, err\n-\t}\n-\tdefer stmt.Close()\n+\tstmt, ok := r.stmtCache[loadCardSQL]\n+\tif !ok {\n+\t\tvar err error\n+\t\tstmt, err = r.db.PrepareContext(ctx, loadCardSQL)\n+\t\tif err != nil {\n+\t\t\treturn nil, err\n+\t\t}\n+\t\tr.stmtCache[loadCardSQL] = stmt\n+\t}\n \trow := stmt.QueryRowContext(ctx, id)\n"
+ },
+ {
+  "sha": "ecc7c44830961c247ed7605443d0443c122a7b34",
+  "author": "priya.nair",
+  "timestamp": "2026-07-20T09:03:12Z",
+  "message": "chore: regenerate protobuf stubs",
+  "files_changed": [
+   "pkg/pb/orders.pb.go"
+  ],
+  "diff": "--- a/pkg/pb/orders.pb.go\n+++ b/pkg/pb/orders.pb.go\n@@ -1,4 +1,4 @@\n-// Code generated by protoc-gen-go. DO NOT EDIT.\n-// source: orders.proto\n+// Code generated by protoc-gen-go v1.32. DO NOT EDIT.\n+// source: orders.proto\n"
+ },
+ {
+  "sha": "6fba9a51cc6d75fb18853c9c7e058555f6a61045",
+  "author": "mei.chen",
+  "timestamp": "2026-07-20T09:05:00Z",
+  "message": "feat(checkout): bounded retry for charge rpc",
+  "files_changed": [
+   "services/checkout/charge.go"
+  ],
+  "diff": "--- a/services/checkout/charge.go\n+++ b/services/checkout/charge.go\n@@ -41,7 +41,18 @@ func (s *Server) charge(ctx context.Context, req *pb.ChargeRequest) (*pb.ChargeResponse, error) {\n-\treturn s.payments.Charge(ctx, req)\n+\tif !s.flags.Enabled(\"charge_retry_enabled\") {\n+\t\treturn s.payments.Charge(ctx, req)\n+\t}\n+\tvar lastErr error\n+\tfor attempt := 0; attempt < 2; attempt++ {\n+\t\tresp, err := s.payments.Charge(ctx, req)\n+\t\tif err == nil || !errors.Is(err, ErrTransient) {\n+\t\t\treturn resp, err\n+\t\t}\n+\t\tlastErr = err\n+\t\ttime.Sleep(time.Duration(attempt+1) * 50 * time.Millisecond)\n+\t}\n+\treturn nil, lastErr\n }\n"
+ },
+ {
+  "sha": "3a3c0994986c3c3dfbe16a65929c13ba53a8c645",
+  "author": "priya.nair",
+  "timestamp": "2026-07-20T09:05:46Z",
+  "message": "ci: cache go build artifacts",
+  "files_changed": [
+   ".github/workflows/build.yml"
+  ],
+  "diff": "--- a/.github/workflows/build.yml\n+++ b/.github/workflows/build.yml\n@@ -8,6 +8,9 @@\n     steps:\n+      - uses: actions/cache@v4\n+        with:\n+          path: ~/go/pkg/mod\n"
+ },
+ {
+  "sha": "8a53e81b14d0920a0a75ce28a7f39b5df4ed86d0",
+  "author": "mei.chen",
+  "timestamp": "2026-07-20T09:08:36Z",
+  "message": "feat: add structured logging fields",
+  "files_changed": [
+   "internal/middleware/log.go"
+  ],
+  "diff": "--- a/internal/middleware/log.go\n+++ b/internal/middleware/log.go\n@@ -22,7 +22,8 @@\n-\tlogger.Info(\"request\")\n+\tlogger.Info(\"request\", \"route\", r.URL.Path, \"ms\", elapsed)\n"
+ },
+ {
+  "sha": "4eaf24578e0240f9fb5182787b87a31ff8887223",
+  "author": "mei.chen",
+  "timestamp": "2026-07-20T09:11:45Z",
+  "message": "chore: bump aws-sdk-go-v2 to v1.30.1",
+  "files_changed": [
+   "go.mod",
+   "go.sum"
+  ],
+  "diff": "--- a/go.mod\n+++ b/go.mod\n@@ -6,7 +6,7 @@\n require (\n-\tgithub.com/aws/aws-sdk-go-v2 v1.29.0\n+\tgithub.com/aws/aws-sdk-go-v2 v1.30.1\n )\n"
+ },
+ {
+  "sha": "189c55c0358993743fb81afb121089d41cc9abba",
+  "author": "sofia.rossi",
+  "timestamp": "2026-07-20T09:12:00Z",
+  "message": "style(frontend): tighten checkout summary spacing",
+  "files_changed": [
+   "web/styles/checkout.css"
+  ],
+  "diff": "--- a/web/styles/checkout.css\n+++ b/web/styles/checkout.css\n@@ -12,2 +12,2 @@\n-.summary { margin: 12px; }\n+.summary { margin: 8px; }\n"
+ },
+ {
+  "sha": "a184a63981e8215a9758d7d46793411dba7e9551",
+  "author": "ahmet.yilmaz",
+  "timestamp": "2026-07-20T09:31:37Z",
+  "message": "test: skip flaky retry test on CI",
+  "files_changed": [
+   "internal/retry/backoff_test.go"
+  ],
+  "diff": "--- a/internal/retry/backoff_test.go\n+++ b/internal/retry/backoff_test.go\n@@ -6,6 +6,9 @@\n func TestBackoffJitter(t *testing.T) {\n+\tif os.Getenv(\"CI\") != \"\" {\n+\t\tt.Skip(\"flaky on CI runners\")\n+\t}\n"
+ },
+ {
+  "sha": "1fc57bc3281ba27775637edcd0e8e8c51a9888d4",
+  "author": "mei.chen",
+  "timestamp": "2026-07-20T09:32:30Z",
+  "message": "feat: expose build info endpoint",
+  "files_changed": [
+   "internal/health/version.go"
+  ],
+  "diff": "--- a/internal/health/version.go\n+++ b/internal/health/version.go\n@@ -0,0 +1,5 @@\n+func Version(w http.ResponseWriter, r *http.Request) {\n+\tfmt.Fprintln(w, buildVersion)\n+}\n"
+ },
+ {
+  "sha": "7c1fb7983410be5df6f2bb57ccd2d6756f1821d4",
+  "author": "priya.nair",
+  "timestamp": "2026-07-20T09:35:31Z",
+  "message": "chore: bump golang.org/x/net to v0.24.0",
+  "files_changed": [
+   "go.mod",
+   "go.sum"
+  ],
+  "diff": "--- a/go.mod\n+++ b/go.mod\n@@ -9,7 +9,7 @@\n-\tgolang.org/x/net v0.23.0\n+\tgolang.org/x/net v0.24.0\n"
+ },
+ {
+  "sha": "13e39d6c49c6478d754063a53cc059d9383e3478",
+  "author": "elena.popov",
+  "timestamp": "2026-07-20T09:44:00Z",
+  "message": "chore(checkout): bump csv export page size",
+  "files_changed": [
+   "services/checkout/export.go"
+  ],
+  "diff": "--- a/services/checkout/export.go\n+++ b/services/checkout/export.go\n@@ -9,1 +9,1 @@\n-const exportPageSize = 500\n+const exportPageSize = 1000\n"
+ },
+ {
+  "sha": "dc597c7be34fb6ef27fded12434a494cca144d5d",
+  "author": "tom.oduya",
+  "timestamp": "2026-07-20T09:50:26Z",
+  "message": "refactor: simplify config loading",
+  "files_changed": [
+   "internal/config/load.go"
+  ],
+  "diff": "--- a/internal/config/load.go\n+++ b/internal/config/load.go\n@@ -18,9 +18,6 @@\n-\tif v := os.Getenv(\"FOO\"); v != \"\" {\n-\t\tcfg.Foo = v\n-\t}\n+\tcfg.Foo = envOr(\"FOO\", cfg.Foo)\n"
+ },
+ {
+  "sha": "8f0a001a7b8e7c3e0bd5fd7a214dfc867e640017",
+  "author": "priya.nair",
+  "timestamp": "2026-07-20T09:52:47Z",
+  "message": "chore: bump testify to v1.9.0",
+  "files_changed": [
+   "go.mod",
+   "go.sum"
+  ],
+  "diff": "--- a/go.mod\n+++ b/go.mod\n@@ -12,7 +12,7 @@\n-\tgithub.com/stretchr/testify v1.8.4\n+\tgithub.com/stretchr/testify v1.9.0\n"
+ },
+ {
+  "sha": "f0419c8d15799959751f94b4bc35ba68b874d51b",
+  "author": "tom.oduya",
+  "timestamp": "2026-07-20T10:03:00Z",
+  "message": "docs: update API reference",
+  "files_changed": [
+   "docs/api/orders.md"
+  ],
+  "diff": "--- a/docs/api/orders.md\n+++ b/docs/api/orders.md\n@@ -12,6 +12,7 @@\n ## GET /orders/{id}\n+Returns 404 if the order does not exist.\n"
+ },
+ {
+  "sha": "30af347c07ce49d5ad8d636bb8efa73f73a6cb08",
+  "author": "sofia.rossi",
+  "timestamp": "2026-07-20T10:07:25Z",
+  "message": "test: add integration test for order cancellation",
+  "files_changed": [
+   "tests/integration/cancel_order_test.go"
+  ],
+  "diff": "--- a/tests/integration/cancel_order_test.go\n+++ b/tests/integration/cancel_order_test.go\n@@ -0,0 +1,9 @@\n+func TestCancelOrder(t *testing.T) {\n+\tresp := cancel(t, orderID)\n+\tassertOK(t, resp)\n+}\n"
+ }
+]

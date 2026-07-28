@@ -1,0 +1,128 @@
+[
+ {
+  "timestamp": "2026-07-24T07:15:00Z",
+  "service": "frontend",
+  "commit_sha": "bab5ecbb0abf58581eaea9517c3df04b00e3bc6f",
+  "version": "v2026.07.24-0715"
+ },
+ {
+  "timestamp": "2026-07-24T07:52:37Z",
+  "service": "session-cache",
+  "commit_sha": "24c7aa3cc941543fc62b2356a98dce7b1ae75f08",
+  "version": "v2026.07.24-0752"
+ },
+ {
+  "timestamp": "2026-07-24T07:54:37Z",
+  "service": "frontend",
+  "commit_sha": "24c7aa3cc941543fc62b2356a98dce7b1ae75f08",
+  "version": "v2026.07.24-0754"
+ },
+ {
+  "timestamp": "2026-07-24T08:10:01Z",
+  "service": "billing-worker",
+  "commit_sha": "893b6d2c4c92ee22681d3b9db51da79870e2ca82",
+  "version": "v2026.07.24-0810"
+ },
+ {
+  "timestamp": "2026-07-24T08:14:37Z",
+  "service": "frontend",
+  "commit_sha": "24c7aa3cc941543fc62b2356a98dce7b1ae75f08",
+  "version": "v2026.07.24-0814"
+ },
+ {
+  "timestamp": "2026-07-24T08:21:37Z",
+  "service": "billing-worker",
+  "commit_sha": "893b6d2c4c92ee22681d3b9db51da79870e2ca82",
+  "version": "v2026.07.24-0821"
+ },
+ {
+  "timestamp": "2026-07-24T08:30:15Z",
+  "service": "frontend",
+  "commit_sha": "893b6d2c4c92ee22681d3b9db51da79870e2ca82",
+  "version": "v2026.07.24-0830"
+ },
+ {
+  "timestamp": "2026-07-24T08:50:00Z",
+  "service": "session-cache",
+  "commit_sha": "5d3814837fd1337896b59ad53c0f85e63713b729",
+  "version": "v2026.07.24-0850"
+ },
+ {
+  "timestamp": "2026-07-24T08:50:20Z",
+  "service": "billing-worker",
+  "commit_sha": "f81d5a445fab3d4748cd3fe7bfa640f1f503fdd0",
+  "version": "v2026.07.24-0850"
+ },
+ {
+  "timestamp": "2026-07-24T09:00:00Z",
+  "service": "session-cache",
+  "commit_sha": "a3ae3ba4b0704c64c6683be2b8288db02d70dc75",
+  "version": "v2026.07.24-0900"
+ },
+ {
+  "timestamp": "2026-07-24T09:16:46Z",
+  "service": "auth-gw",
+  "commit_sha": "f81d5a445fab3d4748cd3fe7bfa640f1f503fdd0",
+  "version": "v2026.07.24-0916"
+ },
+ {
+  "timestamp": "2026-07-24T09:20:00Z",
+  "service": "session-cache",
+  "commit_sha": "12349bc6b9f9310d8fc7f5a6beb6111a897770ea",
+  "version": "v2026.07.24-0920"
+ },
+ {
+  "timestamp": "2026-07-24T09:22:21Z",
+  "service": "auth-gw",
+  "commit_sha": "e21de5a44e17fffca8f7ddd6a214d74b58c10df5",
+  "version": "v2026.07.24-0922"
+ },
+ {
+  "timestamp": "2026-07-24T09:23:49Z",
+  "service": "search-indexer",
+  "commit_sha": "f7e7e8c59a8c849d2d710f2cea3ace08b3b28c6a",
+  "version": "v2026.07.24-0923"
+ },
+ {
+  "timestamp": "2026-07-24T09:31:00Z",
+  "service": "auth-gw",
+  "commit_sha": "ee02161138909450b50a17296d57c9ddc66629ec",
+  "version": "v2026.07.24-0931"
+ },
+ {
+  "timestamp": "2026-07-24T09:39:07Z",
+  "service": "session-cache",
+  "commit_sha": "e74fc397d62e3a1234af13e287ce430af01fb507",
+  "version": "v2026.07.24-0939"
+ },
+ {
+  "timestamp": "2026-07-24T09:50:00Z",
+  "service": "auth-gw",
+  "commit_sha": "b76e143b9a259f5dbfb77fce2dd32556bb04ac5b",
+  "version": "v2026.07.24-0950"
+ },
+ {
+  "timestamp": "2026-07-24T09:57:21Z",
+  "service": "search-indexer",
+  "commit_sha": "ccb932e6d451f0769f1c47ec5dfcb5ff19b297a1",
+  "version": "v2026.07.24-0957"
+ },
+ {
+  "timestamp": "2026-07-24T10:11:33Z",
+  "service": "auth-gw",
+  "commit_sha": "a271482ec1466f677832f023c873db4279f29fab",
+  "version": "v2026.07.24-1011"
+ },
+ {
+  "timestamp": "2026-07-24T10:34:00Z",
+  "service": "frontend",
+  "commit_sha": "523e8e10959625fb37e5fe1e7f047c975e89a7ac",
+  "version": "v2026.07.24-1034"
+ },
+ {
+  "timestamp": "2026-07-24T11:45:51Z",
+  "service": "session-cache",
+  "commit_sha": "f7307ddc4c31736e2b1ca97e3d6f5ef689fc6710",
+  "version": "v2026.07.24-1145"
+ }
+]

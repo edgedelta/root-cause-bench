@@ -100,6 +100,7 @@ for the full data + ground-truth schema.
 | **easy** | one obvious culprit, clear failure signature (a panic stack trace), few distractors — but you still have to pick the *right* SHA. |
 | **medium** | the culprit is buried among ~40 commits and an innocent deploy lands near onset as a decoy. |
 | **hard** | **delayed onset** (the bad deploy detonates minutes later), multiple innocent deploys near onset, and a feature-flag flip in the same window. |
+| **adversarial** *(12 scenarios)* | guilty-looking decoy diffs (the innocent change plausibly explains the symptom), beyond-context data volumes that force strategic querying, degraded telemetry (missing logs, clock skew, sampled traces), and abstention traps (no guilty commit exists at all — a guilty-looking decoy deploys right at onset, and the correct answer is `"none"`). |
 
 ## Running it
 
@@ -136,7 +137,18 @@ uv run scripts/process_results.py jobs/<timestamp>
 
 ## Leaderboard
 
-Frozen run (v2): **24 scenarios x 23 models x 3 attempts = 1656 trials**, Harbor `terminus-2` over OpenRouter, 2026-07-07/10/23/24, all agents at an 1800s timeout. Models are ranked on **mean graded reward** (1.0 correct culprit; 0.0 for blaming a decoy; partial credit ≤ 0.5 otherwise; ± 95% CI over the 72 trials), with binary pass rates alongside. The three trials that hit `AgentTimeoutError` were re-run per methodology (timeouts are infra errors, not model failures). Full per-trial results (outcome, graded reward, cost, tokens, timing per model) + rollups are committed under [`benchmark-results/`](benchmark-results/).
+Frozen run (v3): **36 scenarios x 23 models x 3 attempts = 2484 trials**, Harbor `terminus-2` over OpenRouter (base tiers 2026-07-07/10/23/24, adversarial tier 2026-07-27), all agents at an 1800s timeout. Models are ranked on **mean graded reward** (1.0 correct culprit; 0.0 for blaming a decoy; partial credit ≤ 0.5 otherwise; ± 95% CI over the 108 trials), with binary pass rates alongside. Any `AgentTimeoutError` trial is re-run per methodology (timeouts are infra errors, not model failures). Full per-trial results (outcome, graded reward, cost, tokens, timing per model) + rollups are committed under [`benchmark-results/`](benchmark-results/).
+
+> v2 → v3: adds the **adversarial tier** — 12 new scenarios (guilty-looking
+> mechanism-trap decoys exonerable only by code-semantics reasoning, beyond-context
+> data volumes, degraded telemetry incl. clock skew and 1% trace sampling, and an
+> abstention trap). Base-tier trials are carried over
+> unchanged from the frozen v2 job dirs; the adversarial tier resolves v2's five-way
+> tie at 1.000: kimi-k3 0.991, glm-5.2 = claude-opus-5 0.981, claude-fable-5 0.968,
+> gpt-5.6-sol 0.967, grok-4.5 0.963. Five of the six scripted baselines fail every
+> adversarial scenario (`always-none` legitimately passes the tier's one
+> no-code-cause abstention scenario); per-scenario adversarial pass rates across
+> all 23 models span 39.1–79.7% (none saturated, none unsolvable).
 
 > v1 → v2: the original 2026-06-30/07-02 run used a 600s agent timeout, which cost
 > deepseek-v4-flash 4 trials and four other models 1 each as `AgentTimeoutError`. v2
@@ -146,61 +158,65 @@ Frozen run (v2): **24 scenarios x 23 models x 3 attempts = 1656 trials**, Harbor
 > claude-haiku-4.5 35% → 47%, gemini-3.1-flash-lite 56% → 60% (v1's tail numbers were
 > noisier than its top).
 
-| Model | Mean graded reward (95% CI) | Pass rate | easy | medium | hard | no-code-cause |
-|---|---|---|---|---|---|---|
-| glm-5.2 | **1.000 ± 0.000** | 100% | 100% | 100% | 100% | 100% |
-| grok-4.5 | **1.000 ± 0.000** | 100% | 100% | 100% | 100% | 100% |
-| kimi-k3 | **1.000 ± 0.000** | 100% | 100% | 100% | 100% | 100% |
-| gpt-5.6-sol | **1.000 ± 0.000** | 100% | 100% | 100% | 100% | 100% |
-| claude-opus-5 | **1.000 ± 0.000** | 100% | 100% | 100% | 100% | 100% |
-| claude-opus-4.8 | **0.986 ± 0.027** | 99% | 100% | 100% | 97% | 100% |
-| claude-fable-5 | **0.979 ± 0.030** | 97% | 100% | 100% | 94% | 100% |
-| gpt-5.4 | **0.972 ± 0.038** | 97% | 100% | 100% | 94% | 100% |
-| fugu-ultra | **0.972 ± 0.038** | 97% | 100% | 100% | 94% | 95% |
-| deepseek-v4-flash | **0.964 ± 0.041** | 96% | 100% | 96% | 94% | 90% |
-| gpt-5.5 | **0.958 ± 0.046** | 96% | 100% | 100% | 92% | 90% |
-| gemini-3.5-flash | **0.958 ± 0.046** | 96% | 100% | 100% | 92% | 86% |
-| gemini-3.1-pro-preview | **0.958 ± 0.046** | 96% | 100% | 100% | 92% | 86% |
-| claude-sonnet-4.6 | **0.958 ± 0.046** | 96% | 100% | 100% | 92% | 86% |
-| kimi-k2.5 | **0.875 ± 0.077** | 88% | 100% | 96% | 78% | 67% |
-| kimi-k2-thinking | **0.875 ± 0.074** | 86% | 100% | 89% | 81% | 67% |
-| gpt-5.4-mini | **0.851 ± 0.076** | 82% | 78% | 89% | 78% | 90% |
-| qwen3-235b-a22b-2507 | **0.767 ± 0.096** | 75% | 89% | 74% | 72% | 86% |
-| gemini-3.1-flash-lite | **0.607 ± 0.112** | 60% | 100% | 59% | 50% | 29% |
-| gpt-oss-120b | **0.534 ± 0.111** | 50% | 100% | 56% | 33% | 38% |
-| claude-haiku-4.5 | **0.507 ± 0.111** | 47% | 78% | 41% | 44% | 33% |
-| qwen3-32b | **0.450 ± 0.111** | 42% | 33% | 52% | 36% | 38% |
-| gpt-oss-20b | **0.386 ± 0.097** | 29% | 56% | 30% | 22% | 52% |
+| Model | Mean graded reward (95% CI) | Pass rate | easy | medium | hard | adversarial | no-code-cause |
+|---|---|---|---|---|---|---|---|
+| kimi-k3 | **0.991 ± 0.018** | 99% | 100% | 100% | 100% | 97% | 100% |
+| claude-opus-5 | **0.981 ± 0.026** | 98% | 100% | 100% | 100% | 94% | 100% |
+| glm-5.2 | **0.981 ± 0.026** | 98% | 100% | 100% | 100% | 94% | 100% |
+| claude-fable-5 | **0.968 ± 0.032** | 96% | 100% | 100% | 94% | 94% | 100% |
+| gpt-5.6-sol | **0.967 ± 0.033** | 96% | 100% | 100% | 100% | 89% | 100% |
+| grok-4.5 | **0.963 ± 0.036** | 96% | 100% | 100% | 100% | 89% | 100% |
+| fugu-ultra | **0.952 ± 0.039** | 94% | 100% | 100% | 94% | 89% | 96% |
+| claude-opus-4.8 | **0.944 ± 0.043** | 94% | 100% | 100% | 97% | 86% | 100% |
+| deepseek-v4-flash | **0.942 ± 0.043** | 94% | 100% | 96% | 94% | 89% | 83% |
+| gemini-3.5-flash | **0.935 ± 0.047** | 94% | 100% | 100% | 92% | 89% | 88% |
+| gemini-3.1-pro-preview | **0.925 ± 0.048** | 92% | 100% | 100% | 92% | 83% | 88% |
+| claude-sonnet-4.6 | **0.917 ± 0.052** | 92% | 100% | 100% | 92% | 83% | 88% |
+| gpt-5.5 | **0.917 ± 0.052** | 92% | 100% | 100% | 92% | 83% | 92% |
+| kimi-k2-thinking | **0.852 ± 0.066** | 84% | 100% | 89% | 81% | 81% | 62% |
+| gpt-5.4 | **0.845 ± 0.067** | 83% | 100% | 100% | 94% | 56% | 92% |
+| kimi-k2.5 | **0.815 ± 0.074** | 81% | 100% | 96% | 78% | 69% | 58% |
+| gpt-5.4-mini | **0.739 ± 0.076** | 69% | 78% | 89% | 78% | 42% | 88% |
+| qwen3-235b-a22b-2507 | **0.643 ± 0.084** | 59% | 89% | 74% | 72% | 28% | 79% |
+| gemini-3.1-flash-lite | **0.518 ± 0.091** | 49% | 100% | 59% | 50% | 28% | 25% |
+| gpt-oss-120b | **0.465 ± 0.088** | 42% | 100% | 56% | 33% | 25% | 38% |
+| claude-haiku-4.5 | **0.446 ± 0.089** | 41% | 78% | 41% | 44% | 28% | 29% |
+| qwen3-32b | **0.356 ± 0.085** | 31% | 33% | 52% | 36% | 11% | 38% |
+| gpt-oss-20b | **0.302 ± 0.075** | 22% | 56% | 30% | 22% | 8% | 54% |
 
 ## Baselines: can a script find the culprit?
 
-A benchmark whose culprit falls to a trivial policy measures nothing. Five deterministic,
+A benchmark whose culprit falls to a trivial policy measures nothing. Six deterministic,
 non-LLM baselines answer every scenario using only the data the agent sees and are scored
 with the grader's primary rule ([`scripts/run_baselines.py`](scripts/run_baselines.py);
 per-scenario results in
 [`benchmark-results/rootcausebench/baselines.json`](benchmark-results/rootcausebench/baselines.json)):
 
-| Baseline | Policy | Pass rate | Decoy hits | easy | medium | hard |
-|---|---|---|---|---|---|---|
-| `latest-commit` | blame the newest commit | 0/24 | 0 | 0/3 | 0/9 | 0/12 |
-| `always-none` | answer "none" every time | 7/24 | 0 | 0/3 | 3/9 | 4/12 |
-| `latest-deploy` | blame the last deploy before onset | 1/24 | **22** | 1/3 | 0/9 | 0/12 |
-| `alert-service-deploy` | last pre-onset deploy to the alerting service | 5/24 | 18 | 2/3 | 0/9 | 3/12 |
-| `scripted-rca` | ~20-line heuristic: service match + alert keywords in the diff, most recent wins | 7/24 | 17 | 3/3 | 0/9 | 4/12 |
+| Baseline | Policy | Pass rate | Decoy hits | easy | medium | hard | adversarial |
+|---|---|---|---|---|---|---|---|
+| `latest-commit` | blame the newest commit | 0/36 | 0 | 0/3 | 0/9 | 0/12 | 0/12 |
+| `always-none` | answer "none" every time | 8/36 | 0 | 0/3 | 3/9 | 4/12 | 1/12 |
+| `latest-deploy` | blame the last deploy before onset | 1/36 | **30** | 1/3 | 0/9 | 0/12 | 0/12 |
+| `earliest-deploy` | blame the first deploy before onset | 6/36 | 11 | 1/3 | 1/9 | 4/12 | 0/12 |
+| `alert-service-deploy` | last pre-onset deploy to the alerting service | 5/36 | 26 | 2/3 | 0/9 | 3/12 | 0/12 |
+| `scripted-rca` | ~20-line heuristic: service match + alert keywords in the diff, most recent wins | 7/36 | 27 | 3/3 | 0/9 | 4/12 | 0/12 |
 
 Three takeaways:
 
 - **The decoy design works.** The classic 3am heuristic — *blame the last deploy before
-  onset* — goes 1/24 and lands on an innocent-deploy decoy in **22 of 24 scenarios**.
+  onset* — goes 1/36 and lands on an innocent-deploy decoy in **30 of 36 scenarios**.
   Every decoy is placed exactly where that reflex looks.
-- **"none" is a prior, not an answer.** `always-none` collects the 7 no-code-cause
-  scenarios (29% pass) while scoring zero on every real culprit — the same trap a model
-  falls into if it treats "no code cause" as a safe default.
+- **"none" is a prior, not an answer.** `always-none` collects 8 of 36 (22%) by
+  matching every no-code-cause scenario — including the adversarial tier's abstention
+  trap, `payment-refund-poison-batch` — while scoring zero on every real culprit; the
+  same trap a model falls into if it treats "no code cause" as a safe default.
 - **Known soft spots.** `scripted-rca` (match the alerting service, grep the diffs for
-  alert keywords) solves all 3 easy scenarios and 4 hard ones — those culprits are
-  findable without understanding the diff. CI warns on each; they are slated for
-  hardening in a future data revision, and the inverted easy/hard split there is a
-  tier-calibration signal.
+  alert keywords) solves all 3 easy scenarios and 4 hard ones, and none of the 12
+  adversarial scenarios — the easy/hard culprits it catches are findable without
+  understanding the diff, while the adversarial tier's guilty-looking decoys defeat
+  every scripted baseline. CI warns on each non-adversarial pass; the easy/hard hits
+  are slated for hardening in a future data revision, and the inverted easy/hard split
+  there is a tier-calibration signal.
 
 CI ([`oracle-check`](.github/workflows/oracle-check.yml)) enforces on every push: every
 scenario's oracle (`solution/solve.sh`) satisfies its grader and matches ground truth on
@@ -209,31 +225,25 @@ every field, all culprit/decoy/deploy SHAs resolve against `commits.json`, and
 
 ## Scenarios
 
-Twenty-four frozen incidents, three kinds:
+Thirty-six frozen incidents, three kinds:
 
-- **Real-culprit (17)** — a single commit caused the regression and the model must
+- **Real-culprit (28)** — a single commit caused the regression and the model must
   name its SHA by reading the **diff** (commit messages are neutralized and never
   describe the fault). Misleading structures throughout: cross-service / shared-
   library culprits (the failing service didn't change), better-surface-match
   decoys on the loud service, and delayed-onset faults where an innocent deploy
   lands right at onset. A few are fault injections on a synthetic microservices
-  app (Online Boutique fork); the rest are reconstructions of production incident
-  classes.
-- **No-code-cause (7)** — there is **no guilty commit**; the trigger is
+  app (Online Boutique fork); most are reconstructions of production incident
+  classes, including 11 of the 12 adversarial-tier scenarios described above
+  (guilty-decoy, beyond-context, degraded-telemetry).
+- **No-code-cause (8)** — there is **no guilty commit**; the trigger is
   operational/external (upstream provider outage, cloud-region impairment, DNS
-  degradation, traffic surge, noisy-neighbor node, expired TLS cert, poison data
-  record), with innocent commits planted as bait. The correct answer is `"none"`.
-  These measure whether a model will *abstain* instead of confabulating a culprit.
+  degradation, traffic surge, noisy-neighbor node, expired TLS cert, and two
+  poison-data-record scenarios), with innocent commits planted as bait. The
+  correct answer is `"none"`. These measure whether a model will *abstain*
+  instead of confabulating a culprit — one of them,
+  `payment-refund-poison-batch`, is the adversarial tier's abstention trap.
 - The reconstructions **use a fictional platform's service names** (`olapdb-tso`, `ai-agent-svc`,
-  `ai-memory-svc`, `metric-ingestor-1`, `kafka-metric-ingestor`,
-  `pipeline-transformer`, `workflow-engine`, `dashboard-svc`, `platform-api`, the
-  `stream-taskmanager` Flink taskmanager, …) and realistic log signatures
-  (FoundationDB/CnchLock transaction timeouts, DynamoDB
-  `ProvisionedThroughputExceededException`, missing-relation errors,
-  protobuf-runtime startup panics). All service, host, and commit identifiers are
-  fictional stand-ins; the scenarios reproduce common incident *classes*, not any
-  specific real incident. See
-  use a fictional platform's service names (`olapdb-tso`, `ai-agent-svc`,
   `ai-memory-svc`, `metric-ingestor-1`, `kafka-metric-ingestor`,
   `pipeline-transformer`, `workflow-engine`, `dashboard-svc`, `platform-api`, the
   `stream-taskmanager` Flink taskmanager, …) and realistic log signatures

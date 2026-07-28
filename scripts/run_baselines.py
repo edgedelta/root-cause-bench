@@ -2,7 +2,7 @@
 """Non-LLM baselines for RootCauseBench: can a script name the culprit commit?
 
 A benchmark whose culprit can be found by a trivial policy measures nothing.
-Five deterministic baselines answer every scenario using only the data the
+Six deterministic baselines answer every scenario using only the data the
 agent sees (alert.json + context/{commits,deploys}.json) and are scored with
 the grader's primary rule (exact culprit SHA match; "none" for no-code-cause):
 
@@ -10,6 +10,8 @@ the grader's primary rule (exact culprit SHA match; "none" for no-code-cause):
   always-none            answer "none" every time (the no-code-cause prior)
   latest-deploy          blame the last deploy before alert onset — the classic
                          3am heuristic the decoy deploys are designed to catch
+  earliest-deploy        blame the first deploy before onset — catches the
+                         "only a couple deploys in the window" shortcut
   alert-service-deploy   blame the last pre-onset deploy to the alerting service
   scripted-rca           ~20-line heuristic: score pre-onset deployed commits by
                          service match + alert-keyword hits in the diff, most
@@ -57,6 +59,13 @@ def latest_deploy(alert, commits, deploys):
     return max(pre, key=lambda d: d["timestamp"])["commit_sha"]
 
 
+def earliest_deploy(alert, commits, deploys):
+    pre = _pre_onset(deploys, alert)
+    if not pre:
+        return "none"
+    return min(pre, key=lambda d: d["timestamp"])["commit_sha"]
+
+
 def alert_service_deploy(alert, commits, deploys):
     pre = [d for d in _pre_onset(deploys, alert) if d["service"] == alert["service"]]
     if not pre:
@@ -90,6 +99,7 @@ BASELINES = {
     "latest-commit": latest_commit,
     "always-none": always_none,
     "latest-deploy": latest_deploy,
+    "earliest-deploy": earliest_deploy,
     "alert-service-deploy": alert_service_deploy,
     "scripted-rca": scripted_rca,
 }
@@ -191,6 +201,19 @@ def main():
         if hard_fails:
             print(f"CI FAIL: 'latest-commit' passes {hard_fails} — culprit is the newest "
                   f"commit; trivially gameable.")
+            sys.exit(1)
+        adversarial_fails = []
+        for n in ("latest-commit", "latest-deploy", "earliest-deploy",
+                  "alert-service-deploy", "scripted-rca", "always-none"):
+            for s, r in results[n].items():
+                if r["difficulty"] != "adversarial" or not r["passed"]:
+                    continue
+                if n == "always-none" and r["no_code_cause"]:
+                    continue  # abstention is the correct answer here
+                adversarial_fails.append(f"{n} passes {s}")
+        if adversarial_fails:
+            print("CI FAIL: adversarial scenarios must defeat every scripted "
+                  "baseline: " + "; ".join(adversarial_fails))
             sys.exit(1)
         print("CI OK: no degenerate baseline passes any scenario.")
 

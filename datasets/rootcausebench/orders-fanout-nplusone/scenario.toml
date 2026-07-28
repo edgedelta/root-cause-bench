@@ -1,0 +1,713 @@
+name = "orders-fanout-nplusone"
+family = "beyond-context"
+seed = 502
+tags = ["beyond-context", "monorepo", "orders", "delayed-onset", "n-plus-one"]
+
+[window]
+start = "2026-07-23T09:00:00Z"
+end   = "2026-07-26T09:00:00Z"      # 72 hours
+log_rps = 0.45
+
+[alert]
+service = "orders-api"
+metric = "orders_latency_p99_ms"
+threshold = 1500
+fired_at = "2026-07-26T08:40:00Z"
+summary = "orders-api orders_latency_p99_ms > 1500ms for 10m"
+detail = "order-history p99 latency breached 1500ms; order-history page timing out for customers with large carts"
+
+[[patterns_extra]]
+signature = "connection pool warmup retries exceeded <N> times"
+service = "paymentservice"
+count = 50
+delta_vs_baseline = "+1"
+sentiment = "negative"
+[[patterns_extra]]
+signature = "disk usage above <N>% on scratch volume"
+service = "shippingservice"
+count = 42
+delta_vs_baseline = "+2"
+sentiment = "negative"
+[[patterns_extra]]
+signature = "TLS certificate renews in <N> days warning"
+service = "dashboard-svc"
+count = 65
+delta_vs_baseline = "+2"
+sentiment = "negative"
+[[patterns_extra]]
+signature = "kafka consumer lag rebalancing group <N>"
+service = "platform-api"
+count = 80
+delta_vs_baseline = "+2"
+sentiment = "negative"
+
+[[services]]
+name = "orders-api"
+log_weight = 4
+[[services.logs]]
+msg = "order listed"
+severity = "INFO"
+weight = 5
+extra = { "http.route" = "/api/orders" }
+[[services.logs]]
+msg = "order created"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "orders_latency_p99_ms"
+baseline = 220
+jitter = 0.06
+[[services.metrics]]
+name = "db_queries_per_request"
+baseline = 3
+jitter = 0.1
+[[services.metrics]]
+name = "order_create_rate"
+baseline = 35
+jitter = 0.15
+
+[[services]]
+name = "frontend"
+log_weight = 4
+[[services.logs]]
+msg = "order-history page rendered"
+severity = "INFO"
+weight = 5
+extra = { "http.route" = "/order-history" }
+[[services.logs]]
+msg = "product search executed"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "order_history_timeout_ratio"
+baseline = 0.001
+jitter = 0.1
+[[services.metrics]]
+name = "page_load_p95_ms"
+baseline = 310
+jitter = 0.07
+
+[[services]]
+name = "checkoutservice"
+log_weight = 3
+[[services.logs]]
+msg = "order placed"
+severity = "INFO"
+weight = 5
+extra = { "http.route" = "/api/checkout" }
+[[services.logs]]
+msg = "checkout session started"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "checkout_latency_p99_ms"
+baseline = 300
+jitter = 0.05
+
+[[services]]
+name = "paymentservice"
+log_weight = 2
+[[services.logs]]
+msg = "charge authorized"
+severity = "INFO"
+weight = 5
+[[services.logs]]
+msg = "refund processed"
+severity = "INFO"
+weight = 1
+[[services.metrics]]
+name = "payment_success_ratio"
+baseline = 0.995
+jitter = 0.02
+
+[[services]]
+name = "shippingservice"
+log_weight = 2
+[[services.logs]]
+msg = "shipment scheduled"
+severity = "INFO"
+weight = 4
+[[services.logs]]
+msg = "tracking number issued"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "shipping_queue_depth"
+baseline = 12
+jitter = 0.2
+[[services.metrics]]
+name = "label_api_latency_ms"
+baseline = 85
+jitter = 0.15
+
+[[services]]
+name = "inventory-service"
+log_weight = 2
+[[services.logs]]
+msg = "inventory reconciled"
+severity = "INFO"
+weight = 4
+[[services.logs]]
+msg = "stock level updated"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "warehouse_queue_depth"
+baseline = 12
+jitter = 0.2
+[[services.metrics]]
+name = "inventory_sync_lag_s"
+baseline = 5
+jitter = 0.15
+
+[[services]]
+name = "dashboard-svc"
+log_weight = 2
+[[services.logs]]
+msg = "dashboard view rendered"
+severity = "INFO"
+weight = 3
+[[services.logs]]
+msg = "saved view loaded"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "dashboard_request_count"
+baseline = 40
+jitter = 0.15
+
+[[services]]
+name = "platform-api"
+log_weight = 3
+[[services.logs]]
+msg = "request served"
+severity = "INFO"
+weight = 5
+extra = { "http.route" = "/api/v1" }
+[[services.logs]]
+msg = "auth token validated"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "platform_api_latency_p95_ms"
+baseline = 60
+jitter = 0.1
+
+[[trace_flows]]
+name = "GET /order-history"
+per_hour = 3
+end = "2026-07-26T06:40:00Z"
+[[trace_flows.spans]]
+service = "frontend"
+name = "GET /order-history"
+duration_ms = 260
+[[trace_flows.spans]]
+service = "orders-api"
+name = "ListOrders"
+duration_ms = 210
+[[trace_flows.spans]]
+service = "orders-api"
+name = "db.query order_items"
+duration_ms = 8
+
+[incident]
+onset = "2026-07-26T06:40:00Z"       # orders_latency_p99_ms ramp visibly accelerates here
+first_failing_service = "orders-api"
+
+[[incident.metric_faults]]
+service = "orders-api"
+metric = "db_queries_per_request"
+curve = "ramp"
+to = 85
+start = "2026-07-25T02:45:00Z"        # begins 5 min after the culprit deploy
+end = "2026-07-26T06:40:00Z"
+[[incident.metric_faults]]
+service = "orders-api"
+metric = "orders_latency_p99_ms"
+curve = "ramp"
+to = 1650
+start = "2026-07-26T06:40:00Z"        # onset — the user-facing metric's own ramp
+end = "2026-07-26T08:35:00Z"
+[[incident.metric_faults]]
+service = "frontend"
+metric = "order_history_timeout_ratio"
+curve = "ramp"
+to = 0.4
+start = "2026-07-26T06:45:00Z"
+end = "2026-07-26T08:30:00Z"
+[[incident.metric_faults]]
+service = "inventory-service"
+metric = "warehouse_queue_depth"
+curve = "spike"
+to = 340
+start = "2026-07-24T18:00:00Z"
+end = "2026-07-24T20:00:00Z"
+
+[[incident.log_faults]]
+service = "orders-api"
+msg = "order item lookups creeping above baseline as cart sizes grow"
+severity = "WARN"
+rate_per_min = 0.2
+start = "2026-07-25T05:00:00Z"
+end = "2026-07-26T06:40:00Z"
+[[incident.log_faults]]
+service = "orders-api"
+msg = "order listing issuing far more queries than expected; latency degraded"
+severity = "WARN"
+rate_per_min = 4
+start = "2026-07-26T06:40:00Z"
+[[incident.log_faults]]
+service = "frontend"
+msg = "order-history page timeout: upstream orders-api exceeded deadline"
+severity = "ERROR"
+rate_per_min = 6
+start = "2026-07-26T06:50:00Z"
+
+[[incident.trace_exemplars]]
+trace_id = "ffffffffffffffffffffffffffff0001"
+span_id = "a0"
+service = "frontend"
+name = "GET /order-history"
+start = "2026-07-24T10:00:00Z"
+duration_ms = 260
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "ffffffffffffffffffffffffffff0001"
+span_id = "a1"
+parent_id = "a0"
+service = "orders-api"
+name = "ListOrders"
+start = "2026-07-24T10:00:00Z"
+duration_ms = 210
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "ffffffffffffffffffffffffffff0001"
+span_id = "a2"
+parent_id = "a1"
+service = "orders-api"
+name = "db.query order_items"
+start = "2026-07-24T10:00:00Z"
+duration_ms = 8
+status = "OK"
+
+[[incident.trace_exemplars]]
+trace_id = "ffffffffffffffffffffffffffff0002"
+span_id = "b0"
+service = "frontend"
+name = "GET /order-history"
+start = "2026-07-26T08:25:00Z"
+duration_ms = 1650
+status = "ERROR"
+error = "upstream orders-api exceeded deadline"
+[[incident.trace_exemplars]]
+trace_id = "ffffffffffffffffffffffffffff0002"
+span_id = "b1"
+parent_id = "b0"
+service = "orders-api"
+name = "ListOrders"
+start = "2026-07-26T08:25:00Z"
+duration_ms = 1600
+status = "ERROR"
+error = "item hydration exceeded latency budget"
+[[incident.trace_exemplars]]
+trace_id = "ffffffffffffffffffffffffffff0002"
+span_id = "b2"
+parent_id = "b1"
+service = "orders-api"
+name = "db.query order_items"
+start = "2026-07-26T08:25:00Z"
+duration_ms = 130
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "ffffffffffffffffffffffffffff0002"
+span_id = "b3"
+parent_id = "b1"
+service = "orders-api"
+name = "db.query order_items"
+start = "2026-07-26T08:25:00Z"
+duration_ms = 130
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "ffffffffffffffffffffffffffff0002"
+span_id = "b4"
+parent_id = "b1"
+service = "orders-api"
+name = "db.query order_items"
+start = "2026-07-26T08:25:00Z"
+duration_ms = 130
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "ffffffffffffffffffffffffffff0002"
+span_id = "b5"
+parent_id = "b1"
+service = "orders-api"
+name = "db.query order_items"
+start = "2026-07-26T08:25:00Z"
+duration_ms = 130
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "ffffffffffffffffffffffffffff0002"
+span_id = "b6"
+parent_id = "b1"
+service = "orders-api"
+name = "db.query order_items"
+start = "2026-07-26T08:25:00Z"
+duration_ms = 130
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "ffffffffffffffffffffffffffff0002"
+span_id = "b7"
+parent_id = "b1"
+service = "orders-api"
+name = "db.query order_items"
+start = "2026-07-26T08:25:00Z"
+duration_ms = 130
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "ffffffffffffffffffffffffffff0002"
+span_id = "b8"
+parent_id = "b1"
+service = "orders-api"
+name = "db.query order_items"
+start = "2026-07-26T08:25:00Z"
+duration_ms = 130
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "ffffffffffffffffffffffffffff0002"
+span_id = "b9"
+parent_id = "b1"
+service = "orders-api"
+name = "db.query order_items"
+start = "2026-07-26T08:25:00Z"
+duration_ms = 130
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "ffffffffffffffffffffffffffff0002"
+span_id = "b10"
+parent_id = "b1"
+service = "orders-api"
+name = "db.query order_items"
+start = "2026-07-26T08:25:00Z"
+duration_ms = 130
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "ffffffffffffffffffffffffffff0002"
+span_id = "b11"
+parent_id = "b1"
+service = "orders-api"
+name = "db.query order_items"
+start = "2026-07-26T08:25:00Z"
+duration_ms = 130
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "ffffffffffffffffffffffffffff0002"
+span_id = "b12"
+parent_id = "b1"
+service = "orders-api"
+name = "db.query order_items"
+start = "2026-07-26T08:25:00Z"
+duration_ms = 130
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "ffffffffffffffffffffffffffff0002"
+span_id = "b13"
+parent_id = "b1"
+service = "orders-api"
+name = "db.query order_items"
+start = "2026-07-26T08:25:00Z"
+duration_ms = 130
+status = "OK"
+
+[[incident.trace_exemplars]]
+trace_id = "ffffffffffffffffffffffffffff0003"
+span_id = "c0"
+service = "frontend"
+name = "GET /order-history"
+start = "2026-07-26T08:33:00Z"
+duration_ms = 1710
+status = "ERROR"
+error = "upstream orders-api exceeded deadline"
+[[incident.trace_exemplars]]
+trace_id = "ffffffffffffffffffffffffffff0003"
+span_id = "c1"
+parent_id = "c0"
+service = "orders-api"
+name = "ListOrders"
+start = "2026-07-26T08:33:00Z"
+duration_ms = 1660
+status = "ERROR"
+error = "item hydration exceeded latency budget"
+[[incident.trace_exemplars]]
+trace_id = "ffffffffffffffffffffffffffff0003"
+span_id = "c2"
+parent_id = "c1"
+service = "orders-api"
+name = "db.query order_items"
+start = "2026-07-26T08:33:00Z"
+duration_ms = 135
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "ffffffffffffffffffffffffffff0003"
+span_id = "c3"
+parent_id = "c1"
+service = "orders-api"
+name = "db.query order_items"
+start = "2026-07-26T08:33:00Z"
+duration_ms = 135
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "ffffffffffffffffffffffffffff0003"
+span_id = "c4"
+parent_id = "c1"
+service = "orders-api"
+name = "db.query order_items"
+start = "2026-07-26T08:33:00Z"
+duration_ms = 135
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "ffffffffffffffffffffffffffff0003"
+span_id = "c5"
+parent_id = "c1"
+service = "orders-api"
+name = "db.query order_items"
+start = "2026-07-26T08:33:00Z"
+duration_ms = 135
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "ffffffffffffffffffffffffffff0003"
+span_id = "c6"
+parent_id = "c1"
+service = "orders-api"
+name = "db.query order_items"
+start = "2026-07-26T08:33:00Z"
+duration_ms = 135
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "ffffffffffffffffffffffffffff0003"
+span_id = "c7"
+parent_id = "c1"
+service = "orders-api"
+name = "db.query order_items"
+start = "2026-07-26T08:33:00Z"
+duration_ms = 135
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "ffffffffffffffffffffffffffff0003"
+span_id = "c8"
+parent_id = "c1"
+service = "orders-api"
+name = "db.query order_items"
+start = "2026-07-26T08:33:00Z"
+duration_ms = 135
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "ffffffffffffffffffffffffffff0003"
+span_id = "c9"
+parent_id = "c1"
+service = "orders-api"
+name = "db.query order_items"
+start = "2026-07-26T08:33:00Z"
+duration_ms = 135
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "ffffffffffffffffffffffffffff0003"
+span_id = "c10"
+parent_id = "c1"
+service = "orders-api"
+name = "db.query order_items"
+start = "2026-07-26T08:33:00Z"
+duration_ms = 135
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "ffffffffffffffffffffffffffff0003"
+span_id = "c11"
+parent_id = "c1"
+service = "orders-api"
+name = "db.query order_items"
+start = "2026-07-26T08:33:00Z"
+duration_ms = 135
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "ffffffffffffffffffffffffffff0003"
+span_id = "c12"
+parent_id = "c1"
+service = "orders-api"
+name = "db.query order_items"
+start = "2026-07-26T08:33:00Z"
+duration_ms = 135
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "ffffffffffffffffffffffffffff0003"
+span_id = "c13"
+parent_id = "c1"
+service = "orders-api"
+name = "db.query order_items"
+start = "2026-07-26T08:33:00Z"
+duration_ms = 135
+status = "OK"
+
+[commits]
+innocent_count = 280
+
+[[commits.authored]]
+id = "early-innocent"
+message = "chore(orders-api): include route in request-handled log line"
+author = "lena.fischer"
+timestamp = "2026-07-23T09:30:00Z"
+files = ["services/orders-api/log.go"]
+diff = '''--- a/services/orders-api/log.go
++++ b/services/orders-api/log.go
+@@ -7,2 +7,2 @@
+-	log.Info("order request handled")
++	log.Info("order request handled", "route", r.URL.Path)
+'''
+
+[[commits.authored]]
+id = "culprit"
+message = "refactor(orders): simplify item hydration"
+author = "devon.marsh"
+timestamp = "2026-07-25T02:10:00Z"
+files = ["services/orders-api/items.go"]
+diff = '''--- a/services/orders-api/items.go
++++ b/services/orders-api/items.go
+@@ -18,15 +18,12 @@ func (r *Repo) LoadOrderItems(ctx context.Context, order *Order) error {
+-	ids := itemIDs(order)
+-	rows, err := r.db.QueryContext(ctx,
+-		`SELECT id, sku, qty, price FROM order_items WHERE order_id IN (?)`, ids)
+-	if err != nil {
+-		return err
+-	}
+-	defer rows.Close()
+-	items, err := scanItems(rows)
+-	if err != nil {
+-		return err
+-	}
+-	order.Items = items
+-	return nil
++	// simplify: hydrate each item independently instead of building an
++	// IN-clause parameter list.
++	for _, id := range itemIDs(order) {
++		item, err := r.itemsClient.GetItem(ctx, id)
++		if err != nil {
++			return err
++		}
++		order.Items = append(order.Items, item)
++	}
++	return nil
+ }
+'''
+
+[[commits.authored]]
+id = "cache-decoy"
+message = "feat(orders): cache order summaries"
+author = "greta.holm"
+timestamp = "2026-07-26T02:10:00Z"
+files = ["services/orders-api/summary_cache.go"]
+diff = '''--- /dev/null
++++ b/services/orders-api/summary_cache.go
+@@ -0,0 +1,14 @@
++func (r *Repo) GetOrderSummary(ctx context.Context, orderID string) (*Summary, error) {
++	if !r.flags.Enabled("orders_summary_cache") {
++		return r.loadSummaryFromDB(ctx, orderID)
++	}
++	if s, ok := r.summaryCache.Get(orderID); ok {
++		return s, nil
++	}
++	s, err := r.loadSummaryFromDB(ctx, orderID)
++	if err != nil {
++		return nil, err
++	}
++	r.summaryCache.Set(orderID, s)
++	return s, nil
++}
+'''
+
+[[commits.authored]]
+id = "index-decoy"
+message = "chore(db): add index on order_items(order_id)"
+author = "priya.nair"
+timestamp = "2026-07-26T05:10:00Z"
+files = ["migrations/0052_add_order_items_order_id_idx.up.sql", "migrations/0052_add_order_items_order_id_idx.down.sql"]
+diff = '''--- /dev/null
++++ b/migrations/0052_add_order_items_order_id_idx.up.sql
+@@ -0,0 +1,2 @@
++CREATE INDEX IF NOT EXISTS idx_order_items_order_id
++    ON order_items (order_id);
+--- /dev/null
++++ b/migrations/0052_add_order_items_order_id_idx.down.sql
+@@ -0,0 +1,1 @@
++DROP INDEX IF EXISTS idx_order_items_order_id;
+'''
+
+[[commits.authored]]
+id = "pool-tune-decoy"
+message = "perf(orders-api): raise db connection pool max size"
+author = "mei.chen"
+timestamp = "2026-07-25T13:45:00Z"
+files = ["services/orders-api/dbpool.go"]
+diff = '''--- a/services/orders-api/dbpool.go
++++ b/services/orders-api/dbpool.go
+@@ -9,2 +9,2 @@
+-	MaxConns: 20,
++	MaxConns: 40,
+'''
+
+[[commits.authored]]
+id = "innocent-near-alert"
+message = "feat(dashboard): add order-volume widget"
+author = "ahmet.yilmaz"
+timestamp = "2026-07-26T08:15:00Z"
+files = ["services/dashboard/widgets.go"]
+diff = '''--- a/services/dashboard/widgets.go
++++ b/services/dashboard/widgets.go
+@@ -30,0 +31,4 @@
++func (s *Server) orderVolumeWidget(ctx context.Context) (*Widget, error) {
++	return s.widgets.Render(ctx, "order_volume")
++}
+'''
+
+[[deploys]]
+service = "orders-api"
+commit = "early-innocent"
+timestamp = "2026-07-23T09:45:00Z"
+[[deploys]]
+service = "orders-api"
+commit = "culprit"
+timestamp = "2026-07-25T02:40:00Z"
+[[deploys]]
+service = "orders-api"
+commit = "pool-tune-decoy"
+timestamp = "2026-07-25T14:15:00Z"
+[[deploys]]
+service = "orders-api"
+commit = "cache-decoy"
+timestamp = "2026-07-26T02:40:00Z"
+[[deploys]]
+service = "orders-api"
+commit = "index-decoy"
+timestamp = "2026-07-26T05:40:00Z"
+[[deploys]]
+service = "dashboard-svc"
+commit = "innocent-near-alert"
+timestamp = "2026-07-26T08:32:00Z"
+
+[deploys_auto]
+count = 28
+services = ["orders-api", "frontend", "checkoutservice", "paymentservice",
+            "shippingservice", "inventory-service", "dashboard-svc", "platform-api"]
+pre_onset_min = 24
+
+[[flags]]
+timestamp = "2026-07-26T02:35:00Z"
+flag = "orders_summary_cache"
+service = "orders-api"
+change = "created (off)"
+actor = "greta.holm"
+
+[ground_truth]
+culprit_id = "culprit"
+first_failing_service = "orders-api"
+blast_radius = ["frontend"]
+remediation = "rollback"
+decoy_ids = ["cache-decoy", "index-decoy", "pool-tune-decoy", "innocent-near-alert"]
+notes = "BEYOND-CONTEXT / MONOREPO (adversarial, chunk 2). 286 commits over 72h; log_rps 0.45 produces well over 20MB of telemetry across logs/metrics/traces/patterns — the data cannot be read whole, it must be sliced. Culprit is 'refactor(orders): simplify item hydration' (services/orders-api/items.go), authored 2026-07-25T02:10Z and deployed to orders-api at 02:40Z, ~30h before the alert. The diff swaps a single batched query (`SELECT ... FROM order_items WHERE order_id IN (?)`) for a loop that calls `r.itemsClient.GetItem(ctx, id)` once per item id — a classic N+1 fan-out. The comment only says 'simplify' and never names the fanout, so the fault must be read from the code: one query per order became one query per item. db_queries_per_request (orders-api) ramps from a baseline of 3 starting 2026-07-25T02:45Z — 5 minutes after the culprit's own deploy — up to a ~85 plateau by 2026-07-26T06:40Z, a 28-hour ramp that tracks cart sizes growing through the window. orders_latency_p99_ms, by contrast, stays under the 1500ms threshold for most of that same window: per-query overhead only becomes latency-dominant once the fan-out width is large enough, so p99 is flat near baseline (220ms) until onset (2026-07-26T06:40Z, chosen where the alerting metric's own ramp visibly accelerates) and then ramps quickly to a ~1650ms plateau by 08:35Z, crossing the 1500ms threshold a few minutes before the alert fires at 08:40Z — a ~30h delayed onset relative to the actual cause. A low-rate WARN ('order item lookups creeping above baseline as cart sizes grow', 0.2/min) is present in orders-api logs from 2026-07-25T05:00Z onward, many hours before either trap below deploys, establishing in the data itself that the fan-out was already underway before those commits shipped. One exemplar trace makes the mechanism directly visible: trace ffffffffffffffffffffffffffff0002 (2026-07-26T08:25Z) shows a single ListOrders span (1600ms, ERROR 'item hydration exceeded latency budget') fanning out into twelve sequential 'db.query order_items' child spans (130ms each, all status OK) instead of one batched call — the N+1 signature made directly visible, corroborated by a second independent exemplar (ffffffffffffffffffffffffffff0003, 08:33Z, also twelve ~135ms child spans). A pre-deploy healthy exemplar (ffffffffffffffffffffffffffff0001, 2026-07-24T10:00Z) shows the same code path issuing exactly one 'db.query order_items' span (8ms) for contrast — trace sampling is not degraded in this scenario, so the fan-out is directly countable in the data, not just inferable from metrics. Two mechanism-traps deploy pre-onset to orders-api, the causally-relevant service, and both are exonerable purely by code semantics. (1) cache-decoy ('feat(orders): cache order summaries', deployed 2026-07-26T02:40Z, 6h pre-alert) adds a brand-new order-summary cache lookup that reads as exactly the kind of change that could explain shifting query patterns — but flags.json shows orders_summary_cache was created OFF by greta.holm at 02:35Z and never flipped for the rest of the window; every call falls straight through `if !r.flags.Enabled(...)` to the unchanged `loadSummaryFromDB` path, so the new code never executes and cannot have added or removed a single query. (2) index-decoy ('chore(db): add index on order_items(order_id)', deployed 2026-07-26T05:40Z, 3h pre-alert) lands on the exact table driving the regression and looks like a database change gone wrong — but it is an index ADDITION (`CREATE INDEX ... ON order_items (order_id)`), the wrong direction entirely: a new index can only speed up lookups by order_id (precisely the per-item GetItem calls the culprit introduced), it cannot manufacture extra queries or slow anything down. Both traps also deploy hours after db_queries_per_request had already been ramping for a day, so timing corroborates the mechanism argument without being required to carry it alone. pool-tune-decoy ('perf(orders-api): raise db connection pool max size', deployed 2026-07-25T14:15Z, mid-ramp) raises MaxConns 20->40 — more headroom for concurrent connections, the opposite of what would cause a query-count blowup; it cannot manufacture additional per-request queries and if anything relieves contention. innocent-near-alert ('feat(dashboard): add order-volume widget', dashboard-svc, deployed 2026-07-26T08:32Z, 8 minutes before fired_at) is classic innocent-deploy-near-alert bait: a new read-only dashboard widget with no path into orders-api's request-handling code. The 28 deploys_auto entries (24+ pre-onset, cyclic across all 8 services) are routine dependency/docs/CI/test noise touching none of items.go, summary_cache.go, the migration, or dbpool.go. Patterns are victim-first: frontend's 'order-history page timeout: upstream orders-api exceeded deadline' ERROR pattern (6/min from 2026-07-26T06:50Z, count 780) outnumbers orders-api's own incident WARN pattern ('order listing issuing far more queries than expected...', 4/min from onset, count 560) and its early precursor WARN (0.2/min, count ~308); four stale patterns_extra (pool warmup retries, disk usage, TLS renewal, kafka rebalancing; counts 42-80) on paymentservice/shippingservice/dashboard-svc/platform-api are unrelated pre-existing background chatter, well below all three incident patterns. An inventory-service warehouse_queue_depth spike (baseline 12 -> 340, 2026-07-24T18:00-20:00Z) fully self-heals a day before onset and is unrelated noise on an uninvolved service. Monorepo: route changes by files_changed paths (services/<svc>/, migrations/), not by service-named repos. first_failing_service is orders-api (its own query-count and latency metrics move first); frontend is blast radius (its order-history page times out waiting on the fanned-out upstream calls). Remediation: roll back orders-api to before the item-hydration refactor (restore the batched IN-clause load)."

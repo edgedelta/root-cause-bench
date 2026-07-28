@@ -1,0 +1,65 @@
+[
+ {
+  "signature": "gc pause exceeded budget",
+  "service": "query-svc",
+  "count": 900,
+  "delta_vs_baseline": "+3",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "metric query timeout: upstream metric-ingester unresponsive",
+  "service": "query-svc",
+  "count": 560,
+  "delta_vs_baseline": "+560",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "dashboard metric query failed: upstream timeout",
+  "service": "platform-api",
+  "count": 200,
+  "delta_vs_baseline": "+200",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "TLS certificate renews in <N> days warning",
+  "service": "billing-worker",
+  "count": 63,
+  "delta_vs_baseline": "+2",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "disk usage above <N>% on scratch volume",
+  "service": "auth-gateway",
+  "count": 51,
+  "delta_vs_baseline": "+2",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "request served",
+  "service": "platform-api",
+  "count": 255,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "flush cycle completed",
+  "service": "metric-ingester",
+  "count": 230,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "metric query served",
+  "service": "query-svc",
+  "count": 218,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "invoice batch processed",
+  "service": "billing-worker",
+  "count": 124,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ }
+]

@@ -1,0 +1,8 @@
+{
+ "service": "checkoutservice",
+ "metric": "charge_latency_p99_ms",
+ "threshold": 2000,
+ "fired_at": "2026-07-20T09:50:00Z",
+ "summary": "checkoutservice charge_latency_p99_ms > 2000ms for 5m",
+ "detail": "p99 latency of the charge RPC breached 2000ms; checkout conversions dropping"
+}

@@ -1,0 +1,72 @@
+[
+ {
+  "signature": "order-history page timeout: upstream orders-api exceeded deadline",
+  "service": "frontend",
+  "count": 840,
+  "delta_vs_baseline": "+840",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "order listing query scanning far more rows than expected; latency degraded",
+  "service": "orders-api",
+  "count": 600,
+  "delta_vs_baseline": "+600",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "order listing latency creeping above baseline as result set grows",
+  "service": "orders-api",
+  "count": 210,
+  "delta_vs_baseline": "+210",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "kafka consumer lag rebalancing group <N>",
+  "service": "inventory-service",
+  "count": 70,
+  "delta_vs_baseline": "+2",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "TLS certificate renews in <N> days warning",
+  "service": "frontend",
+  "count": 55,
+  "delta_vs_baseline": "+2",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "connection pool warmup retries exceeded <N> times",
+  "service": "inventory-service",
+  "count": 48,
+  "delta_vs_baseline": "+1",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "disk usage above <N>% on scratch volume",
+  "service": "orders-api",
+  "count": 40,
+  "delta_vs_baseline": "+1",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "order-history page rendered",
+  "service": "frontend",
+  "count": 3607,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "order listed",
+  "service": "orders-api",
+  "count": 3603,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "inventory reconciled",
+  "service": "inventory-service",
+  "count": 1661,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ }
+]

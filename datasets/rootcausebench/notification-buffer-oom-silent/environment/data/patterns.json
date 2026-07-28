@@ -1,0 +1,58 @@
+[
+ {
+  "signature": "notify dispatch failed: post http://notification-svc:<N>/dispatch: connection refused",
+  "service": "workflow-engine",
+  "count": 640,
+  "delta_vs_baseline": "+640",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "user notification enqueue failed: upstream unavailable",
+  "service": "platform-api",
+  "count": 380,
+  "delta_vs_baseline": "+380",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "kafka consumer lag rebalancing group <N>",
+  "service": "billing-worker",
+  "count": 74,
+  "delta_vs_baseline": "+2",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "TLS certificate renews in <N> days warning",
+  "service": "search-indexer",
+  "count": 62,
+  "delta_vs_baseline": "+2",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "disk usage above <N>% on scratch volume",
+  "service": "auth-gateway",
+  "count": 48,
+  "delta_vs_baseline": "+2",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "workflow step completed",
+  "service": "workflow-engine",
+  "count": 300,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "request served",
+  "service": "platform-api",
+  "count": 285,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "webhook dispatched",
+  "service": "notification-svc",
+  "count": 160,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ }
+]

@@ -1,0 +1,8 @@
+{
+ "service": "workflow-engine",
+ "metric": "notification_dispatch_error_ratio",
+ "threshold": 0.2,
+ "fired_at": "2026-07-21T09:58:00Z",
+ "summary": "workflow-engine notification_dispatch_error_ratio > 0.2",
+ "detail": "workflow notification dispatches failing platform-wide"
+}

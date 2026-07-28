@@ -1,0 +1,280 @@
+name = "payment-refund-poison-batch"
+family = "guilty-decoy"
+seed = 404
+tags = ["no-code-cause", "bad-data", "abstention"]
+
+[window]
+start = "2026-07-22T08:00:00Z"
+end   = "2026-07-22T12:30:00Z"
+log_rps = 0.08
+
+[alert]
+service = "billing-api"
+metric = "refund_poll_latency_p95_ms"
+threshold = 3000
+fired_at = "2026-07-22T11:34:00Z"
+summary = "billing-api refund_poll_latency_p95_ms > 3000ms for 5m"
+detail = "p95 latency of the refund status poll breached 3000ms; refund backlog growing unbounded"
+
+[[patterns_extra]]
+signature = "disk usage above <N>% on scratch volume"
+service = "partner-gateway"
+count = 50
+delta_vs_baseline = "+2"
+sentiment = "negative"
+[[patterns_extra]]
+signature = "TLS certificate renews in <N> days warning"
+service = "billing-api"
+count = 40
+delta_vs_baseline = "+1"
+sentiment = "negative"
+[[patterns_extra]]
+signature = "kafka consumer lag rebalancing group <N>"
+service = "payment-refund-svc"
+count = 60
+delta_vs_baseline = "+2"
+sentiment = "negative"
+
+[[services]]
+name = "payment-refund-svc"
+log_weight = 3
+[[services.logs]]
+msg = "INFO refund settled"
+severity = "INFO"
+weight = 5
+[[services.logs]]
+msg = "INFO refund batch received"
+severity = "INFO"
+weight = 2
+[[services.logs]]
+msg = "DEBUG refund validator ok"
+severity = "DEBUG"
+weight = 1
+[[services.metrics]]
+name = "refund_backlog_depth"
+baseline = 40
+jitter = 0.06
+[[services.metrics]]
+name = "refund_processed_per_min"
+baseline = 55
+jitter = 0.0
+
+[[services]]
+name = "billing-api"
+log_weight = 2
+[[services.logs]]
+msg = "INFO refund status polled"
+severity = "INFO"
+weight = 5
+[[services.logs]]
+msg = "INFO refund status ok"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "refund_poll_latency_p95_ms"
+baseline = 120
+jitter = 0.08
+
+[[services]]
+name = "partner-gateway"
+log_weight = 2
+[[services.logs]]
+msg = "INFO refund batch delivered"
+severity = "INFO"
+weight = 5
+[[services.logs]]
+msg = "INFO batch ack sent"
+severity = "INFO"
+weight = 2
+[[services.metrics]]
+name = "gateway_5xx_ratio"
+baseline = 0.002
+jitter = 0.1
+
+[[trace_flows]]
+name = "POST /partner/refunds/batch"
+per_hour = 4
+end = "2026-07-22T11:02:00Z"
+[[trace_flows.spans]]
+service = "partner-gateway"
+name = "POST /partner/refunds/batch"
+duration_ms = 150
+[[trace_flows.spans]]
+service = "billing-api"
+name = "Enqueue refund"
+duration_ms = 60
+[[trace_flows.spans]]
+service = "payment-refund-svc"
+name = "ProcessRefund"
+duration_ms = 90
+
+[incident]
+onset = "2026-07-22T11:02:00Z"
+first_failing_service = "payment-refund-svc"
+
+[[incident.metric_faults]]
+service = "payment-refund-svc"
+metric = "refund_backlog_depth"
+curve = "ramp"
+to = 5200
+[[incident.metric_faults]]
+service = "payment-refund-svc"
+metric = "refund_processed_per_min"
+curve = "step"
+to = 0
+[[incident.metric_faults]]
+service = "billing-api"
+metric = "refund_poll_latency_p95_ms"
+curve = "ramp"
+to = 4800
+start = "2026-07-22T11:15:00Z"
+[[incident.metric_faults]]
+service = "partner-gateway"
+metric = "gateway_5xx_ratio"
+curve = "spike"
+to = 0.08
+start = "2026-07-22T09:40:00Z"
+end = "2026-07-22T10:00:00Z"
+
+[[incident.log_faults]]
+service = "payment-refund-svc"
+msg = 'ERROR processing refund rfnd_8842107763: invalid currency code "XBT"'
+severity = "ERROR"
+rate_per_min = 5
+[[incident.log_faults]]
+service = "payment-refund-svc"
+msg = "WARN refund consumer stalled: redelivery of message offset 448211"
+severity = "WARN"
+rate_per_min = 4
+start = "2026-07-22T11:05:00Z"
+[[incident.log_faults]]
+service = "billing-api"
+msg = "ERROR refund status poll timed out"
+severity = "ERROR"
+rate_per_min = 7
+start = "2026-07-22T11:15:00Z"
+[[incident.log_faults]]
+service = "payment-refund-svc"
+msg = "INFO refund settled"
+severity = "INFO"
+rate_per_min = 3
+start = "2026-07-22T08:00:00Z"
+end = "2026-07-22T11:02:00Z"
+in_patterns = false
+
+[[incident.trace_exemplars]]
+trace_id = "bbbbbbbbbbbbbbbbbbbbbbbbbbbb0001"
+span_id = "a0"
+service = "billing-api"
+name = "GET /refunds/rfnd_8842107763/status"
+start = "2026-07-22T11:10:00Z"
+duration_ms = 800
+status = "OK"
+[[incident.trace_exemplars]]
+trace_id = "bbbbbbbbbbbbbbbbbbbbbbbbbbbb0001"
+span_id = "a1"
+parent_id = "a0"
+service = "payment-refund-svc"
+name = "ProcessRefund rfnd_8842107763"
+start = "2026-07-22T11:10:00Z"
+duration_ms = 120
+status = "ERROR"
+error = 'invalid currency code "XBT"'
+
+[[incident.trace_exemplars]]
+trace_id = "bbbbbbbbbbbbbbbbbbbbbbbbbbbb0002"
+span_id = "b0"
+service = "billing-api"
+name = "GET /refunds/rfnd_8842107763/status"
+start = "2026-07-22T11:40:00Z"
+duration_ms = 4700
+status = "ERROR"
+error = "refund status poll timed out"
+[[incident.trace_exemplars]]
+trace_id = "bbbbbbbbbbbbbbbbbbbbbbbbbbbb0002"
+span_id = "b1"
+parent_id = "b0"
+service = "payment-refund-svc"
+name = "ProcessRefund rfnd_8842107763"
+start = "2026-07-22T11:40:00Z"
+duration_ms = 130
+status = "ERROR"
+error = 'invalid currency code "XBT"'
+
+[commits]
+innocent_count = 26
+
+[[commits.authored]]
+id = "validator-refactor-decoy"
+message = "refactor(refunds): table-drive currency validation"
+author = "wei.zhang"
+timestamp = "2026-07-22T10:30:00Z"
+files = ["services/refunds/validate.go"]
+diff = '''--- a/services/refunds/validate.go
++++ b/services/refunds/validate.go
+@@ -4,20 +4,25 @@ package refunds
+
+ import "fmt"
+
+-// ValidateCurrency checks the refund's currency code against the set of
+-// ISO-4217 codes this service is provisioned to settle.
+-func ValidateCurrency(code string) error {
+-	switch code {
+-	case "USD", "EUR", "GBP", "JPY", "CAD", "AUD", "CHF", "SEK":
+-		return nil
+-	default:
+-		return fmt.Errorf("invalid currency code %q", code)
+-	}
+-}
++// allowedCurrencies is the set of ISO-4217 codes this service is
++// provisioned to settle. Kept as a package-level map so new codes can be
++// added in one place instead of extending a switch statement.
++var allowedCurrencies = map[string]bool{
++	"USD": true, "EUR": true, "GBP": true, "JPY": true,
++	"CAD": true, "AUD": true, "CHF": true, "SEK": true,
++}
++
++// ValidateCurrency checks the refund's currency code against
++// allowedCurrencies.
++func ValidateCurrency(code string) error {
++	if allowedCurrencies[code] {
++		return nil
++	}
++	return fmt.Errorf("invalid currency code %q", code)
++}
+'''
+
+[[commits.authored]]
+id = "sdk-bump-decoy"
+message = "chore(refunds): bump partner sdk 3.2.1->3.2.2"
+author = "priya.nair"
+timestamp = "2026-07-22T11:00:00Z"
+files = ["go.mod", "go.sum"]
+diff = '''--- a/go.mod
++++ b/go.mod
+@@ -8,7 +8,7 @@ require (
+-	github.com/partnerco/refund-sdk v3.2.1
++	github.com/partnerco/refund-sdk v3.2.2
+ )
+'''
+
+[[deploys]]
+service = "payment-refund-svc"
+commit = "validator-refactor-decoy"
+timestamp = "2026-07-22T10:55:00Z"
+[[deploys]]
+service = "payment-refund-svc"
+commit = "sdk-bump-decoy"
+timestamp = "2026-07-22T11:20:00Z"
+
+[deploys_auto]
+count = 12
+services = ["payment-refund-svc", "billing-api", "partner-gateway"]
+pre_onset_min = 4
+
+[ground_truth]
+culprit_id = "none"
+blast_radius = ["billing-api"]
+remediation = "roll-forward"
+decoy_ids = ["validator-refactor-decoy", "sdk-bump-decoy"]
+notes = "NO-CODE-CAUSE / ABSTENTION TRAP (adversarial). At 11:02 a partner refund batch delivered a malformed record, refund_id=rfnd_8842107763, currency='XBT' (not an ISO-4217 code), amount='918447e12' (not a plain decimal). payment-refund-svc's validator correctly rejects it (ERROR processing refund rfnd_8842107763: invalid currency code \"XBT\", 5/min from 11:02). Because the consumer has no DLQ, it cannot commit past a record it can't process and redelivers the SAME message forever (WARN refund consumer stalled: redelivery of message offset 448211, 4/min from 11:05) -- so refund_processed_per_min steps to 0 and refund_backlog_depth ramps to 5200 while the identical refund_id/offset fails on every retry. billing-api is the downstream victim: its status-poll RPC to payment-refund-svc blocks on the stalled consumer, so refund_poll_latency_p95_ms ramps from 11:15 (ERROR refund status poll timed out, 7/min) and the alert fires on billing-api at 11:34 -- in the pattern index billing-api's error is the louder of the two (525 rows vs. the origin service's 440-row currency error, itself louder than the 340-row stalled-consumer WARN, i.e. billing-api 525 > currency 440 > stalled-consumer WARN) -- but billing-api is blast radius, not the cause. Two trace exemplars (11:10 and 11:40) show the SAME refund_id (rfnd_8842107763) failing with the SAME 'invalid currency code \"XBT\"' error on payment-refund-svc's ProcessRefund span, on two different requests 30 minutes apart -- that is the redelivery loop made directly visible, not two different bugs. There is a maximally magnetic guilty-looking decoy: refactor(refunds): table-drive currency validation (validator-refactor-decoy), authored 10:30, deployed to payment-refund-svc at 10:55 -- only 7 minutes before onset, AND it touches the exact file (services/refunds/validate.go) whose ValidateCurrency function emits the fault message, so the lazy file-mismatch exoneration used by v1 of this scenario (\"the diff is in a different file than the error\") does not apply here. The diff replaces an if/switch chain (case \"USD\", \"EUR\", \"GBP\", \"JPY\", \"CAD\", \"AUD\", \"CHF\", \"SEK\": return nil; default: return the invalid-currency error) with a package-level `var allowedCurrencies = map[string]bool{...}` holding the IDENTICAL eight codes, and the function body becomes `if allowedCurrencies[code] { return nil }; return fmt.Errorf(...)` -- the same default-path error on any miss. This is a semantics-preserving refactor: the accepted-currency set is byte-identical on both sides of the diff (same eight codes, same miss behavior), and \"XBT\" appears in NEITHER side of the diff because it was never part of the accepted set before or after -- it is rejected identically under the pre-refactor switch and the post-refactor map lookup. Conviction requires disproving that equivalence (finding some code the old switch accepted that the new map doesn't, or vice versa); there is none, so this decoy must be exonerated on diff-semantics grounds alone. Crucially, the healthy telemetry window does NOT do this exoneration's work: refunds continued to settle normally for the full 7 minutes between the validator deploy (10:55) and the actual onset (11:02) -- INFO refund settled rows continue on payment-refund-svc throughout that window at the normal rate, with no backlog growth and no errors -- but that only proves the 10:55 deploy didn't break the happy path (normal currencies like USD/EUR continuing to validate fine); no XBT-shaped record arrived during 10:55-11:02 to exercise the changed code path, so the healthy window alone cannot prove the refactor still rejects XBT. A solver who reasons \"healthy window = innocent, therefore don't need to check the diff\" has gotten the right answer for the wrong reason and would be wrong on a scenario where the refactor silently widened the accepted set. The only valid proof of innocence here is reading the diff and confirming the accepted-currency set is unchanged. A second decoy, chore(refunds): bump partner sdk 3.2.1->3.2.2 (sdk-bump-decoy), deploys at 11:20, close to the 11:34 alert; its diff is a go.mod/go.sum version bump only -- no code changes at all, so it cannot produce any runtime behavior, let alone a validation error naming a specific currency code. 12 auto-generated background deploys (>=4 pre-onset) across all three services add further noise, none touching refund parsing, validation, or the consumer loop. The poison record is DATA, not CODE: it arrived from partner-gateway as part of a partner-submitted batch, and no commit in the window authored or could have authored that record's contents. Correct answer: root_cause_commit='none'. first_failing_service=payment-refund-svc (its validator is where the rejection loop starts); blast_radius=[billing-api] (times out waiting on the stalled consumer). Remediation: roll-forward -- ship a fix that adds a dead-letter queue / skip-and-quarantine path for unparseable records (specifically rfnd_8842107763) so the consumer can advance past the poison record; no rollback of any commit fixes this, since no commit caused it, and rolling back the validator refactor would be a no-op (it behaves identically to what preceded it)."

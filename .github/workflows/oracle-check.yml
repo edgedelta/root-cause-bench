@@ -13,12 +13,14 @@ on:
       - "datasets/**"
       - "scripts/check_oracle.py"
       - "scripts/run_baselines.py"
+      - "tools/**"
       - ".github/workflows/oracle-check.yml"
   pull_request:
     paths:
       - "datasets/**"
       - "scripts/check_oracle.py"
       - "scripts/run_baselines.py"
+      - "tools/**"
       - ".github/workflows/oracle-check.yml"
 
 jobs:
@@ -37,3 +39,8 @@ jobs:
 
       - name: Baseline gameability check
         run: python3 scripts/run_baselines.py --check
+
+      - name: scenario_gen unit tests
+        run: |
+          pip install pytest
+          python3 -m pytest tools/scenario_gen/tests -q

@@ -1,0 +1,8 @@
+{
+ "service": "billing-api",
+ "metric": "webhook_confirmation_p99_ms",
+ "threshold": 4000,
+ "fired_at": "2026-07-23T11:10:00Z",
+ "summary": "billing-api webhook_confirmation_p99_ms > 4000ms for 5m",
+ "detail": "p99 latency for partner webhook-delivery confirmations breached 4000ms; partner receipts stuck pending confirmation"
+}

@@ -2,21 +2,23 @@
   "summary": {
     "latest-commit": {
       "passed": 0,
-      "total": 24,
+      "total": 36,
       "pass_rate_pct": 0.0,
       "decoy_hits": 0,
       "by_tier": {
+        "adversarial": "0/12",
         "easy": "0/3",
         "hard": "0/12",
         "medium": "0/9"
       }
     },
     "always-none": {
-      "passed": 7,
-      "total": 24,
-      "pass_rate_pct": 29.2,
+      "passed": 8,
+      "total": 36,
+      "pass_rate_pct": 22.2,
       "decoy_hits": 0,
       "by_tier": {
+        "adversarial": "1/12",
         "easy": "0/3",
         "hard": "4/12",
         "medium": "3/9"
@@ -24,21 +26,35 @@
     },
     "latest-deploy": {
       "passed": 1,
-      "total": 24,
-      "pass_rate_pct": 4.2,
-      "decoy_hits": 22,
+      "total": 36,
+      "pass_rate_pct": 2.8,
+      "decoy_hits": 30,
       "by_tier": {
+        "adversarial": "0/12",
         "easy": "1/3",
         "hard": "0/12",
         "medium": "0/9"
       }
     },
+    "earliest-deploy": {
+      "passed": 6,
+      "total": 36,
+      "pass_rate_pct": 16.7,
+      "decoy_hits": 11,
+      "by_tier": {
+        "adversarial": "0/12",
+        "easy": "1/3",
+        "hard": "4/12",
+        "medium": "1/9"
+      }
+    },
     "alert-service-deploy": {
       "passed": 5,
-      "total": 24,
-      "pass_rate_pct": 20.8,
-      "decoy_hits": 18,
+      "total": 36,
+      "pass_rate_pct": 13.9,
+      "decoy_hits": 26,
       "by_tier": {
+        "adversarial": "0/12",
         "easy": "2/3",
         "hard": "3/12",
         "medium": "0/9"
@@ -46,10 +62,11 @@
     },
     "scripted-rca": {
       "passed": 7,
-      "total": 24,
-      "pass_rate_pct": 29.2,
-      "decoy_hits": 17,
+      "total": 36,
+      "pass_rate_pct": 19.4,
+      "decoy_hits": 27,
       "by_tier": {
+        "adversarial": "0/12",
         "easy": "3/3",
         "hard": "4/12",
         "medium": "0/9"
@@ -86,6 +103,13 @@
         "difficulty": "hard",
         "no_code_cause": false
       },
+      "catalog-cache-key-cardinality": {
+        "passed": false,
+        "answered": "4af4ddd34631",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
       "checkout-latency-n-plus-one": {
         "passed": false,
         "answered": "fd917abf845a",
@@ -99,6 +123,13 @@
         "hit_decoy": false,
         "difficulty": "hard",
         "no_code_cause": true
+      },
+      "config-fanout-sampled-traces": {
+        "passed": false,
+        "answered": "c389d43c4f6f",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
       },
       "dashboard-db-schema-missing-table": {
         "passed": false,
@@ -135,6 +166,20 @@
         "difficulty": "medium",
         "no_code_cause": false
       },
+      "ingest-partition-skew": {
+        "passed": false,
+        "answered": "9cdbc562b246",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
+      "ingester-flush-interval-oom": {
+        "passed": false,
+        "answered": "24e0ddf5b578",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
       "inventory-connection-pool-exhaustion": {
         "passed": false,
         "answered": "c4ab38a7090d",
@@ -163,11 +208,32 @@
         "difficulty": "hard",
         "no_code_cause": true
       },
+      "notification-buffer-oom-silent": {
+        "passed": false,
+        "answered": "664fac3e2aa4",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
       "olapdb-tso-cas-retry-budget": {
         "passed": false,
         "answered": "6db30ea6a5a4",
         "hit_decoy": false,
         "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "orders-fanout-nplusone": {
+        "passed": false,
+        "answered": "9a83f735aa3f",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
+      "orders-index-migration-drift": {
+        "passed": false,
+        "answered": "eb7b35e98d07",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
         "no_code_cause": false
       },
       "payment-nil-deref-panic": {
@@ -177,6 +243,13 @@
         "difficulty": "easy",
         "no_code_cause": false
       },
+      "payment-refund-poison-batch": {
+        "passed": false,
+        "answered": "3ffdcff9ac6a",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": true
+      },
       "recommendation-memory-leak": {
         "passed": false,
         "answered": "75ef3d7e0c5e",
@@ -184,11 +257,32 @@
         "difficulty": "hard",
         "no_code_cause": false
       },
+      "report-scheduler-lock-removal": {
+        "passed": false,
+        "answered": "da51d5df16cb",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
       "search-mapping-query-break": {
         "passed": false,
         "answered": "1f207f2c3ee8",
         "hit_decoy": false,
         "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "session-cache-clockskew": {
+        "passed": false,
+        "answered": "dc37eb29ffe1",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
+      "shared-config-pool-drain": {
+        "passed": false,
+        "answered": "30af347c07ce",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
         "no_code_cause": false
       },
       "tls-cert-expiry": {
@@ -225,6 +319,13 @@
         "hit_decoy": false,
         "difficulty": "hard",
         "no_code_cause": true
+      },
+      "webhook-keepalive-default-flip": {
+        "passed": false,
+        "answered": "6f0dac5a3f71",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
       }
     },
     "always-none": {
@@ -256,6 +357,13 @@
         "difficulty": "hard",
         "no_code_cause": false
       },
+      "catalog-cache-key-cardinality": {
+        "passed": false,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
       "checkout-latency-n-plus-one": {
         "passed": false,
         "answered": "none",
@@ -269,6 +377,13 @@
         "hit_decoy": false,
         "difficulty": "hard",
         "no_code_cause": true
+      },
+      "config-fanout-sampled-traces": {
+        "passed": false,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
       },
       "dashboard-db-schema-missing-table": {
         "passed": false,
@@ -305,6 +420,20 @@
         "difficulty": "medium",
         "no_code_cause": false
       },
+      "ingest-partition-skew": {
+        "passed": false,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
+      "ingester-flush-interval-oom": {
+        "passed": false,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
       "inventory-connection-pool-exhaustion": {
         "passed": false,
         "answered": "none",
@@ -333,11 +462,32 @@
         "difficulty": "hard",
         "no_code_cause": true
       },
+      "notification-buffer-oom-silent": {
+        "passed": false,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
       "olapdb-tso-cas-retry-budget": {
         "passed": false,
         "answered": "none",
         "hit_decoy": false,
         "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "orders-fanout-nplusone": {
+        "passed": false,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
+      "orders-index-migration-drift": {
+        "passed": false,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
         "no_code_cause": false
       },
       "payment-nil-deref-panic": {
@@ -347,6 +497,13 @@
         "difficulty": "easy",
         "no_code_cause": false
       },
+      "payment-refund-poison-batch": {
+        "passed": true,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": true
+      },
       "recommendation-memory-leak": {
         "passed": false,
         "answered": "none",
@@ -354,11 +511,32 @@
         "difficulty": "hard",
         "no_code_cause": false
       },
+      "report-scheduler-lock-removal": {
+        "passed": false,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
       "search-mapping-query-break": {
         "passed": false,
         "answered": "none",
         "hit_decoy": false,
         "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "session-cache-clockskew": {
+        "passed": false,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
+      "shared-config-pool-drain": {
+        "passed": false,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
         "no_code_cause": false
       },
       "tls-cert-expiry": {
@@ -395,6 +573,13 @@
         "hit_decoy": false,
         "difficulty": "hard",
         "no_code_cause": true
+      },
+      "webhook-keepalive-default-flip": {
+        "passed": false,
+        "answered": "none",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
       }
     },
     "latest-deploy": {
@@ -426,6 +611,13 @@
         "difficulty": "hard",
         "no_code_cause": false
       },
+      "catalog-cache-key-cardinality": {
+        "passed": false,
+        "answered": "5569ddcaf4c7",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
       "checkout-latency-n-plus-one": {
         "passed": false,
         "answered": "78ad41355be7",
@@ -439,6 +631,13 @@
         "hit_decoy": true,
         "difficulty": "hard",
         "no_code_cause": true
+      },
+      "config-fanout-sampled-traces": {
+        "passed": false,
+        "answered": "f58f2639dcee",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
+        "no_code_cause": false
       },
       "dashboard-db-schema-missing-table": {
         "passed": false,
@@ -475,6 +674,20 @@
         "difficulty": "medium",
         "no_code_cause": false
       },
+      "ingest-partition-skew": {
+        "passed": false,
+        "answered": "08e093acbfa1",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
+      "ingester-flush-interval-oom": {
+        "passed": false,
+        "answered": "fe32ff8c5a84",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
       "inventory-connection-pool-exhaustion": {
         "passed": false,
         "answered": "76005bb9118b",
@@ -503,11 +716,32 @@
         "difficulty": "hard",
         "no_code_cause": true
       },
+      "notification-buffer-oom-silent": {
+        "passed": false,
+        "answered": "f95c3800a691",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
       "olapdb-tso-cas-retry-budget": {
         "passed": false,
         "answered": "fdbbb0420c4b",
         "hit_decoy": true,
         "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "orders-fanout-nplusone": {
+        "passed": false,
+        "answered": "da0a481b8d68",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
+      "orders-index-migration-drift": {
+        "passed": false,
+        "answered": "d7eeecc1ea04",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
         "no_code_cause": false
       },
       "payment-nil-deref-panic": {
@@ -517,6 +751,13 @@
         "difficulty": "easy",
         "no_code_cause": false
       },
+      "payment-refund-poison-batch": {
+        "passed": false,
+        "answered": "1aa567371a86",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
+        "no_code_cause": true
+      },
       "recommendation-memory-leak": {
         "passed": false,
         "answered": "f72cb9d310cf",
@@ -524,11 +765,32 @@
         "difficulty": "hard",
         "no_code_cause": false
       },
+      "report-scheduler-lock-removal": {
+        "passed": false,
+        "answered": "d8e1f074183d",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
       "search-mapping-query-break": {
         "passed": false,
         "answered": "2a2f3891d9e3",
         "hit_decoy": true,
         "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "session-cache-clockskew": {
+        "passed": false,
+        "answered": "523e8e109596",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
+      "shared-config-pool-drain": {
+        "passed": false,
+        "answered": "a184a63981e8",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
         "no_code_cause": false
       },
       "tls-cert-expiry": {
@@ -565,6 +827,267 @@
         "hit_decoy": true,
         "difficulty": "hard",
         "no_code_cause": true
+      },
+      "webhook-keepalive-default-flip": {
+        "passed": false,
+        "answered": "3a7d8bfba4bb",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      }
+    },
+    "earliest-deploy": {
+      "ai-agent-registration-missing": {
+        "passed": false,
+        "answered": "7b8e1c4a9d2f",
+        "hit_decoy": true,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "auth-jwt-validation-regression": {
+        "passed": true,
+        "answered": "7dacc6c8a3c3",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "bad-data-poison-record": {
+        "passed": false,
+        "answered": "30cb6576698a",
+        "hit_decoy": true,
+        "difficulty": "hard",
+        "no_code_cause": true
+      },
+      "cache-ttl-stampede": {
+        "passed": true,
+        "answered": "c62e9decee7b",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "catalog-cache-key-cardinality": {
+        "passed": false,
+        "answered": "30c8f37205f3",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
+      "checkout-latency-n-plus-one": {
+        "passed": false,
+        "answered": "f34060747d8d",
+        "hit_decoy": false,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "cloud-region-impairment": {
+        "passed": false,
+        "answered": "2b8b1cd98aec",
+        "hit_decoy": true,
+        "difficulty": "hard",
+        "no_code_cause": true
+      },
+      "config-fanout-sampled-traces": {
+        "passed": false,
+        "answered": "0c9a19a5b14e",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
+      "dashboard-db-schema-missing-table": {
+        "passed": true,
+        "answered": "4f3740c125c5",
+        "hit_decoy": false,
+        "difficulty": "easy",
+        "no_code_cause": false
+      },
+      "dns-resolver-degradation": {
+        "passed": false,
+        "answered": "94e921a612d3",
+        "hit_decoy": true,
+        "difficulty": "medium",
+        "no_code_cause": true
+      },
+      "dynamodb-write-capacity-breach": {
+        "passed": true,
+        "answered": "7e2c9b41a0f5",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "frontend-race-condition-5xx": {
+        "passed": false,
+        "answered": "854268721b46",
+        "hit_decoy": false,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "grpc-deadline-too-tight": {
+        "passed": true,
+        "answered": "47f38c226685",
+        "hit_decoy": false,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "ingest-partition-skew": {
+        "passed": false,
+        "answered": "d86ef4ed5506",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
+      "ingester-flush-interval-oom": {
+        "passed": false,
+        "answered": "62067ac00c76",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
+      "inventory-connection-pool-exhaustion": {
+        "passed": true,
+        "answered": "c7d2e9a3f1b0",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "logging-debug-disk-fill": {
+        "passed": false,
+        "answered": "d270fbb2e2fc",
+        "hit_decoy": true,
+        "difficulty": "easy",
+        "no_code_cause": false
+      },
+      "metric-ingestor-metadata-deser": {
+        "passed": false,
+        "answered": "1f0d0d35569e",
+        "hit_decoy": true,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "noisy-neighbor-node-saturation": {
+        "passed": false,
+        "answered": "d4b8e1a6c9f0",
+        "hit_decoy": true,
+        "difficulty": "hard",
+        "no_code_cause": true
+      },
+      "notification-buffer-oom-silent": {
+        "passed": false,
+        "answered": "893d63ef8f79",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
+      "olapdb-tso-cas-retry-budget": {
+        "passed": false,
+        "answered": "a76c469dd48b",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "orders-fanout-nplusone": {
+        "passed": false,
+        "answered": "e3a2ada43cd2",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
+      "orders-index-migration-drift": {
+        "passed": false,
+        "answered": "d84b7d10dacc",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
+      "payment-nil-deref-panic": {
+        "passed": false,
+        "answered": "b3318c4dc309",
+        "hit_decoy": false,
+        "difficulty": "easy",
+        "no_code_cause": false
+      },
+      "payment-refund-poison-batch": {
+        "passed": false,
+        "answered": "c65dae774c9c",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": true
+      },
+      "recommendation-memory-leak": {
+        "passed": false,
+        "answered": "dc20d6c44ee5",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "report-scheduler-lock-removal": {
+        "passed": false,
+        "answered": "650ed61eba2f",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
+      "search-mapping-query-break": {
+        "passed": false,
+        "answered": "f6c5e8f564aa",
+        "hit_decoy": false,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "session-cache-clockskew": {
+        "passed": false,
+        "answered": "bab5ecbb0abf",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
+      "shared-config-pool-drain": {
+        "passed": false,
+        "answered": "b1dce976ab6e",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
+      "tls-cert-expiry": {
+        "passed": false,
+        "answered": "40465f54a9e1",
+        "hit_decoy": true,
+        "difficulty": "medium",
+        "no_code_cause": true
+      },
+      "traffic-surge-flash-sale": {
+        "passed": false,
+        "answered": "f832d01fe185",
+        "hit_decoy": true,
+        "difficulty": "medium",
+        "no_code_cause": true
+      },
+      "transformer-dependency-startup-crash": {
+        "passed": false,
+        "answered": "defc5b01691d",
+        "hit_decoy": true,
+        "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "unbounded-query-delayed-onset": {
+        "passed": false,
+        "answered": "e16b8f4a2b3c",
+        "hit_decoy": false,
+        "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "upstream-payment-provider-outage": {
+        "passed": false,
+        "answered": "b6c8d0e2f4a6",
+        "hit_decoy": true,
+        "difficulty": "hard",
+        "no_code_cause": true
+      },
+      "webhook-keepalive-default-flip": {
+        "passed": false,
+        "answered": "320c00630e03",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
       }
     },
     "alert-service-deploy": {
@@ -596,6 +1119,13 @@
         "difficulty": "hard",
         "no_code_cause": false
       },
+      "catalog-cache-key-cardinality": {
+        "passed": false,
+        "answered": "fe4a6bbd6f8c",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
       "checkout-latency-n-plus-one": {
         "passed": false,
         "answered": "78ad41355be7",
@@ -609,6 +1139,13 @@
         "hit_decoy": true,
         "difficulty": "hard",
         "no_code_cause": true
+      },
+      "config-fanout-sampled-traces": {
+        "passed": false,
+        "answered": "f58f2639dcee",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
+        "no_code_cause": false
       },
       "dashboard-db-schema-missing-table": {
         "passed": false,
@@ -645,6 +1182,20 @@
         "difficulty": "medium",
         "no_code_cause": false
       },
+      "ingest-partition-skew": {
+        "passed": false,
+        "answered": "08e093acbfa1",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
+      "ingester-flush-interval-oom": {
+        "passed": false,
+        "answered": "87bb5b3e88eb",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
       "inventory-connection-pool-exhaustion": {
         "passed": true,
         "answered": "c7d2e9a3f1b0",
@@ -673,11 +1224,32 @@
         "difficulty": "hard",
         "no_code_cause": true
       },
+      "notification-buffer-oom-silent": {
+        "passed": false,
+        "answered": "f95c3800a691",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
       "olapdb-tso-cas-retry-budget": {
         "passed": false,
         "answered": "none",
         "hit_decoy": false,
         "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "orders-fanout-nplusone": {
+        "passed": false,
+        "answered": "bc9b14a7a4a5",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
+      "orders-index-migration-drift": {
+        "passed": false,
+        "answered": "d7eeecc1ea04",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
         "no_code_cause": false
       },
       "payment-nil-deref-panic": {
@@ -687,6 +1259,13 @@
         "difficulty": "easy",
         "no_code_cause": false
       },
+      "payment-refund-poison-batch": {
+        "passed": false,
+        "answered": "68ca762e8eb3",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": true
+      },
       "recommendation-memory-leak": {
         "passed": false,
         "answered": "f72cb9d310cf",
@@ -694,11 +1273,32 @@
         "difficulty": "hard",
         "no_code_cause": false
       },
+      "report-scheduler-lock-removal": {
+        "passed": false,
+        "answered": "d8e1f074183d",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
       "search-mapping-query-break": {
         "passed": false,
         "answered": "2a2f3891d9e3",
         "hit_decoy": true,
         "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "session-cache-clockskew": {
+        "passed": false,
+        "answered": "a271482ec146",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
+      "shared-config-pool-drain": {
+        "passed": false,
+        "answered": "13e39d6c49c6",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
         "no_code_cause": false
       },
       "tls-cert-expiry": {
@@ -735,6 +1335,13 @@
         "hit_decoy": true,
         "difficulty": "hard",
         "no_code_cause": true
+      },
+      "webhook-keepalive-default-flip": {
+        "passed": false,
+        "answered": "3a7d8bfba4bb",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
+        "no_code_cause": false
       }
     },
     "scripted-rca": {
@@ -766,6 +1373,13 @@
         "difficulty": "hard",
         "no_code_cause": false
       },
+      "catalog-cache-key-cardinality": {
+        "passed": false,
+        "answered": "5ca75708737f",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
       "checkout-latency-n-plus-one": {
         "passed": false,
         "answered": "78ad41355be7",
@@ -779,6 +1393,13 @@
         "hit_decoy": true,
         "difficulty": "hard",
         "no_code_cause": true
+      },
+      "config-fanout-sampled-traces": {
+        "passed": false,
+        "answered": "f58f2639dcee",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
+        "no_code_cause": false
       },
       "dashboard-db-schema-missing-table": {
         "passed": true,
@@ -815,6 +1436,20 @@
         "difficulty": "medium",
         "no_code_cause": false
       },
+      "ingest-partition-skew": {
+        "passed": false,
+        "answered": "4c2791e18101",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
+      "ingester-flush-interval-oom": {
+        "passed": false,
+        "answered": "87bb5b3e88eb",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
       "inventory-connection-pool-exhaustion": {
         "passed": true,
         "answered": "c7d2e9a3f1b0",
@@ -843,11 +1478,32 @@
         "difficulty": "hard",
         "no_code_cause": true
       },
+      "notification-buffer-oom-silent": {
+        "passed": false,
+        "answered": "37b8d9f2f3ea",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
       "olapdb-tso-cas-retry-budget": {
         "passed": true,
         "answered": "48ad9c8a5a8c",
         "hit_decoy": false,
         "difficulty": "hard",
+        "no_code_cause": false
+      },
+      "orders-fanout-nplusone": {
+        "passed": false,
+        "answered": "2e678e429f9c",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
+      "orders-index-migration-drift": {
+        "passed": false,
+        "answered": "00dec36918a5",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
         "no_code_cause": false
       },
       "payment-nil-deref-panic": {
@@ -857,6 +1513,13 @@
         "difficulty": "easy",
         "no_code_cause": false
       },
+      "payment-refund-poison-batch": {
+        "passed": false,
+        "answered": "68ca762e8eb3",
+        "hit_decoy": false,
+        "difficulty": "adversarial",
+        "no_code_cause": true
+      },
       "recommendation-memory-leak": {
         "passed": false,
         "answered": "f72cb9d310cf",
@@ -864,11 +1527,32 @@
         "difficulty": "hard",
         "no_code_cause": false
       },
+      "report-scheduler-lock-removal": {
+        "passed": false,
+        "answered": "d8e1f074183d",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
       "search-mapping-query-break": {
         "passed": false,
         "answered": "2a2f3891d9e3",
         "hit_decoy": true,
         "difficulty": "medium",
+        "no_code_cause": false
+      },
+      "session-cache-clockskew": {
+        "passed": false,
+        "answered": "ee0216113890",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
+        "no_code_cause": false
+      },
+      "shared-config-pool-drain": {
+        "passed": false,
+        "answered": "13e39d6c49c6",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
         "no_code_cause": false
       },
       "tls-cert-expiry": {
@@ -905,6 +1589,13 @@
         "hit_decoy": true,
         "difficulty": "hard",
         "no_code_cause": true
+      },
+      "webhook-keepalive-default-flip": {
+        "passed": false,
+        "answered": "3a7d8bfba4bb",
+        "hit_decoy": true,
+        "difficulty": "adversarial",
+        "no_code_cause": false
       }
     }
   }

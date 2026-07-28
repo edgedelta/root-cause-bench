@@ -1,0 +1,65 @@
+[
+ {
+  "signature": "charge rpc slow: upstream took <N>ms",
+  "service": "checkoutservice",
+  "count": 424,
+  "delta_vs_baseline": "+424",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "checkout failed: upstream error <N>",
+  "service": "frontend",
+  "count": 276,
+  "delta_vs_baseline": "+276",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "db conn acquire failed: context deadline exceeded while waiting for a free connection",
+  "service": "paymentservice",
+  "count": 220,
+  "delta_vs_baseline": "+220",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "kafka consumer lag rebalancing group <N>",
+  "service": "notification-worker",
+  "count": 78,
+  "delta_vs_baseline": "+2",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "TLS certificate renews in <N> days warning",
+  "service": "frontend",
+  "count": 60,
+  "delta_vs_baseline": "+2",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "disk usage above <N>% on scratch volume",
+  "service": "paymentservice",
+  "count": 45,
+  "delta_vs_baseline": "+2",
+  "sentiment": "negative"
+ },
+ {
+  "signature": "page rendered",
+  "service": "frontend",
+  "count": 396,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "order placed",
+  "service": "checkoutservice",
+  "count": 255,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ },
+ {
+  "signature": "charge authorized",
+  "service": "paymentservice",
+  "count": 228,
+  "delta_vs_baseline": "+0",
+  "sentiment": "neutral"
+ }
+]

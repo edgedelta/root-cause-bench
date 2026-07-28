@@ -1,0 +1,464 @@
+[
+ {
+  "trace_id": "b64653c941728626334921e347be16cd",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "webhook-dispatcher",
+  "name": "POST /webhooks/deliver",
+  "start": "2026-07-23T08:00:00Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b64653c941728626334921e347be16cd",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "webhook-dispatcher",
+  "name": "httpkit.Post",
+  "start": "2026-07-23T08:00:00Z",
+  "duration_ms": 55,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b64653c941728626334921e347be16cd",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "billing-api",
+  "name": "ReceiveWebhookConfirmation",
+  "start": "2026-07-23T08:00:00Z",
+  "duration_ms": 30,
+  "status": "OK"
+ },
+ {
+  "trace_id": "ee0dd96ddedba84904d49903a8ed471f",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "webhook-dispatcher",
+  "name": "POST /webhooks/deliver",
+  "start": "2026-07-23T08:10:21Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "ee0dd96ddedba84904d49903a8ed471f",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "webhook-dispatcher",
+  "name": "httpkit.Post",
+  "start": "2026-07-23T08:10:21Z",
+  "duration_ms": 55,
+  "status": "OK"
+ },
+ {
+  "trace_id": "ee0dd96ddedba84904d49903a8ed471f",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "billing-api",
+  "name": "ReceiveWebhookConfirmation",
+  "start": "2026-07-23T08:10:21Z",
+  "duration_ms": 30,
+  "status": "OK"
+ },
+ {
+  "trace_id": "36dc969eddc5dcb100b1ba282c41f505",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "webhook-dispatcher",
+  "name": "POST /webhooks/deliver",
+  "start": "2026-07-23T08:20:42Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "36dc969eddc5dcb100b1ba282c41f505",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "webhook-dispatcher",
+  "name": "httpkit.Post",
+  "start": "2026-07-23T08:20:42Z",
+  "duration_ms": 55,
+  "status": "OK"
+ },
+ {
+  "trace_id": "36dc969eddc5dcb100b1ba282c41f505",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "billing-api",
+  "name": "ReceiveWebhookConfirmation",
+  "start": "2026-07-23T08:20:42Z",
+  "duration_ms": 30,
+  "status": "OK"
+ },
+ {
+  "trace_id": "453de85b1f884ad24c9eb027029f8c37",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "webhook-dispatcher",
+  "name": "POST /webhooks/deliver",
+  "start": "2026-07-23T08:31:04Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "453de85b1f884ad24c9eb027029f8c37",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "webhook-dispatcher",
+  "name": "httpkit.Post",
+  "start": "2026-07-23T08:31:04Z",
+  "duration_ms": 55,
+  "status": "OK"
+ },
+ {
+  "trace_id": "453de85b1f884ad24c9eb027029f8c37",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "billing-api",
+  "name": "ReceiveWebhookConfirmation",
+  "start": "2026-07-23T08:31:04Z",
+  "duration_ms": 30,
+  "status": "OK"
+ },
+ {
+  "trace_id": "60e822fcd64852071a42d5143cb53e03",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "webhook-dispatcher",
+  "name": "POST /webhooks/deliver",
+  "start": "2026-07-23T08:41:25Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "60e822fcd64852071a42d5143cb53e03",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "webhook-dispatcher",
+  "name": "httpkit.Post",
+  "start": "2026-07-23T08:41:25Z",
+  "duration_ms": 55,
+  "status": "OK"
+ },
+ {
+  "trace_id": "60e822fcd64852071a42d5143cb53e03",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "billing-api",
+  "name": "ReceiveWebhookConfirmation",
+  "start": "2026-07-23T08:41:25Z",
+  "duration_ms": 30,
+  "status": "OK"
+ },
+ {
+  "trace_id": "60095e91f029ed3dac0e6b42aa6c086c",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "webhook-dispatcher",
+  "name": "POST /webhooks/deliver",
+  "start": "2026-07-23T08:51:47Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "60095e91f029ed3dac0e6b42aa6c086c",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "webhook-dispatcher",
+  "name": "httpkit.Post",
+  "start": "2026-07-23T08:51:47Z",
+  "duration_ms": 55,
+  "status": "OK"
+ },
+ {
+  "trace_id": "60095e91f029ed3dac0e6b42aa6c086c",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "billing-api",
+  "name": "ReceiveWebhookConfirmation",
+  "start": "2026-07-23T08:51:47Z",
+  "duration_ms": 30,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4489624806624fbd522778dd9d5bc3a1",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "webhook-dispatcher",
+  "name": "POST /webhooks/deliver",
+  "start": "2026-07-23T09:02:08Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4489624806624fbd522778dd9d5bc3a1",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "webhook-dispatcher",
+  "name": "httpkit.Post",
+  "start": "2026-07-23T09:02:08Z",
+  "duration_ms": 55,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4489624806624fbd522778dd9d5bc3a1",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "billing-api",
+  "name": "ReceiveWebhookConfirmation",
+  "start": "2026-07-23T09:02:08Z",
+  "duration_ms": 30,
+  "status": "OK"
+ },
+ {
+  "trace_id": "64c37f04c79116b5b34d2bd29bf64e5d",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "webhook-dispatcher",
+  "name": "POST /webhooks/deliver",
+  "start": "2026-07-23T09:12:30Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "64c37f04c79116b5b34d2bd29bf64e5d",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "webhook-dispatcher",
+  "name": "httpkit.Post",
+  "start": "2026-07-23T09:12:30Z",
+  "duration_ms": 55,
+  "status": "OK"
+ },
+ {
+  "trace_id": "64c37f04c79116b5b34d2bd29bf64e5d",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "billing-api",
+  "name": "ReceiveWebhookConfirmation",
+  "start": "2026-07-23T09:12:30Z",
+  "duration_ms": 30,
+  "status": "OK"
+ },
+ {
+  "trace_id": "016895f3b14b6dc2ca9a00dce1059d0c",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "webhook-dispatcher",
+  "name": "POST /webhooks/deliver",
+  "start": "2026-07-23T09:22:51Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "016895f3b14b6dc2ca9a00dce1059d0c",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "webhook-dispatcher",
+  "name": "httpkit.Post",
+  "start": "2026-07-23T09:22:51Z",
+  "duration_ms": 55,
+  "status": "OK"
+ },
+ {
+  "trace_id": "016895f3b14b6dc2ca9a00dce1059d0c",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "billing-api",
+  "name": "ReceiveWebhookConfirmation",
+  "start": "2026-07-23T09:22:51Z",
+  "duration_ms": 30,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3285cfe29e12671e73844b56746b3b8b",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "webhook-dispatcher",
+  "name": "POST /webhooks/deliver",
+  "start": "2026-07-23T09:33:12Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3285cfe29e12671e73844b56746b3b8b",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "webhook-dispatcher",
+  "name": "httpkit.Post",
+  "start": "2026-07-23T09:33:12Z",
+  "duration_ms": 55,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3285cfe29e12671e73844b56746b3b8b",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "billing-api",
+  "name": "ReceiveWebhookConfirmation",
+  "start": "2026-07-23T09:33:12Z",
+  "duration_ms": 30,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f3775a61b859d0ea57ced625399411d5",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "webhook-dispatcher",
+  "name": "POST /webhooks/deliver",
+  "start": "2026-07-23T09:43:34Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f3775a61b859d0ea57ced625399411d5",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "webhook-dispatcher",
+  "name": "httpkit.Post",
+  "start": "2026-07-23T09:43:34Z",
+  "duration_ms": 55,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f3775a61b859d0ea57ced625399411d5",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "billing-api",
+  "name": "ReceiveWebhookConfirmation",
+  "start": "2026-07-23T09:43:34Z",
+  "duration_ms": 30,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5e3ce7917ffd266b3b3fce698809f3e3",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "webhook-dispatcher",
+  "name": "POST /webhooks/deliver",
+  "start": "2026-07-23T09:53:55Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5e3ce7917ffd266b3b3fce698809f3e3",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "webhook-dispatcher",
+  "name": "httpkit.Post",
+  "start": "2026-07-23T09:53:55Z",
+  "duration_ms": 55,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5e3ce7917ffd266b3b3fce698809f3e3",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "billing-api",
+  "name": "ReceiveWebhookConfirmation",
+  "start": "2026-07-23T09:53:55Z",
+  "duration_ms": 30,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2abf1c329ac6fc83a43ccabe2d10c9e5",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "webhook-dispatcher",
+  "name": "POST /webhooks/deliver",
+  "start": "2026-07-23T10:04:17Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2abf1c329ac6fc83a43ccabe2d10c9e5",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "webhook-dispatcher",
+  "name": "httpkit.Post",
+  "start": "2026-07-23T10:04:17Z",
+  "duration_ms": 55,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2abf1c329ac6fc83a43ccabe2d10c9e5",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "billing-api",
+  "name": "ReceiveWebhookConfirmation",
+  "start": "2026-07-23T10:04:17Z",
+  "duration_ms": 30,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2cacf3fe2d8dbe7b26dd53439477f79d",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "webhook-dispatcher",
+  "name": "POST /webhooks/deliver",
+  "start": "2026-07-23T10:14:38Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2cacf3fe2d8dbe7b26dd53439477f79d",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "webhook-dispatcher",
+  "name": "httpkit.Post",
+  "start": "2026-07-23T10:14:38Z",
+  "duration_ms": 55,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2cacf3fe2d8dbe7b26dd53439477f79d",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "billing-api",
+  "name": "ReceiveWebhookConfirmation",
+  "start": "2026-07-23T10:14:38Z",
+  "duration_ms": 30,
+  "status": "OK"
+ },
+ {
+  "trace_id": "eeeeeeeeeeeeeeeeeeeeeeeeeeee0001",
+  "span_id": "w0",
+  "service": "webhook-dispatcher",
+  "name": "POST /webhooks/deliver",
+  "start": "2026-07-23T10:50:10Z",
+  "duration_ms": 3120,
+  "status": "ERROR",
+  "error": "webhook post failed"
+ },
+ {
+  "trace_id": "eeeeeeeeeeeeeeeeeeeeeeeeeeee0001",
+  "span_id": "w1",
+  "parent_id": "w0",
+  "service": "webhook-dispatcher",
+  "name": "httpkit.Post",
+  "start": "2026-07-23T10:50:10Z",
+  "duration_ms": 3080,
+  "status": "ERROR",
+  "error": "connect: cannot assign requested address"
+ },
+ {
+  "trace_id": "eeeeeeeeeeeeeeeeeeeeeeeeeeee0002",
+  "span_id": "w2",
+  "service": "webhook-dispatcher",
+  "name": "POST /webhooks/deliver",
+  "start": "2026-07-23T11:05:40Z",
+  "duration_ms": 3210,
+  "status": "ERROR",
+  "error": "webhook post failed"
+ },
+ {
+  "trace_id": "eeeeeeeeeeeeeeeeeeeeeeeeeeee0002",
+  "span_id": "w3",
+  "parent_id": "w2",
+  "service": "webhook-dispatcher",
+  "name": "httpkit.Post",
+  "start": "2026-07-23T11:05:40Z",
+  "duration_ms": 3175,
+  "status": "ERROR",
+  "error": "connect: cannot assign requested address"
+ }
+]

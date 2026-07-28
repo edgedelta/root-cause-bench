@@ -1,0 +1,8 @@
+{
+ "service": "platform-api",
+ "metric": "metric_query_p95_ms",
+ "threshold": 2000,
+ "fired_at": "2026-07-25T10:50:00Z",
+ "summary": "platform-api metric_query_p95_ms > 2000ms for 5m",
+ "detail": "dashboard metric queries timing out platform-wide"
+}

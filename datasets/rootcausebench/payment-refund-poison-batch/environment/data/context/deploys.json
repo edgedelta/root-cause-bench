@@ -1,0 +1,86 @@
+[
+ {
+  "timestamp": "2026-07-22T08:33:08Z",
+  "service": "payment-refund-svc",
+  "commit_sha": "c65dae774c9cb8a01cf9f0126464026711ba6474",
+  "version": "v2026.07.22-0833"
+ },
+ {
+  "timestamp": "2026-07-22T08:51:17Z",
+  "service": "payment-refund-svc",
+  "commit_sha": "f5cf25999847de148eb97fa7e9f3c969b452cc58",
+  "version": "v2026.07.22-0851"
+ },
+ {
+  "timestamp": "2026-07-22T09:10:58Z",
+  "service": "partner-gateway",
+  "commit_sha": "8bdb216b143ee32f65d5ecd79b0b0972fe3ec159",
+  "version": "v2026.07.22-0910"
+ },
+ {
+  "timestamp": "2026-07-22T09:43:26Z",
+  "service": "payment-refund-svc",
+  "commit_sha": "e788f668d1eb072434ea1181187b16856adf09f2",
+  "version": "v2026.07.22-0943"
+ },
+ {
+  "timestamp": "2026-07-22T09:50:17Z",
+  "service": "billing-api",
+  "commit_sha": "f5cf25999847de148eb97fa7e9f3c969b452cc58",
+  "version": "v2026.07.22-0950"
+ },
+ {
+  "timestamp": "2026-07-22T10:14:57Z",
+  "service": "partner-gateway",
+  "commit_sha": "20c192e203b6277094aecb0acd0babd050460773",
+  "version": "v2026.07.22-1014"
+ },
+ {
+  "timestamp": "2026-07-22T10:26:24Z",
+  "service": "payment-refund-svc",
+  "commit_sha": "e94a44330fcd573f22023b9d3d3d471b1ad292f8",
+  "version": "v2026.07.22-1026"
+ },
+ {
+  "timestamp": "2026-07-22T10:35:55Z",
+  "service": "partner-gateway",
+  "commit_sha": "c65dae774c9cb8a01cf9f0126464026711ba6474",
+  "version": "v2026.07.22-1035"
+ },
+ {
+  "timestamp": "2026-07-22T10:48:40Z",
+  "service": "partner-gateway",
+  "commit_sha": "20c192e203b6277094aecb0acd0babd050460773",
+  "version": "v2026.07.22-1048"
+ },
+ {
+  "timestamp": "2026-07-22T10:55:00Z",
+  "service": "payment-refund-svc",
+  "commit_sha": "72a5ee7021df38af13e04922760c221cf7e27397",
+  "version": "v2026.07.22-1055"
+ },
+ {
+  "timestamp": "2026-07-22T11:03:58Z",
+  "service": "billing-api",
+  "commit_sha": "68ca762e8eb34cc95e0c2e5163c2e10cd4e2eb24",
+  "version": "v2026.07.22-1103"
+ },
+ {
+  "timestamp": "2026-07-22T11:20:00Z",
+  "service": "payment-refund-svc",
+  "commit_sha": "1aa567371a863bfeb66498fbc951c8ced7c49e8c",
+  "version": "v2026.07.22-1120"
+ },
+ {
+  "timestamp": "2026-07-22T11:43:56Z",
+  "service": "billing-api",
+  "commit_sha": "b088bd39988fee0061321f71e75059ba110b15c3",
+  "version": "v2026.07.22-1143"
+ },
+ {
+  "timestamp": "2026-07-22T12:05:52Z",
+  "service": "billing-api",
+  "commit_sha": "68ca762e8eb34cc95e0c2e5163c2e10cd4e2eb24",
+  "version": "v2026.07.22-1205"
+ }
+]

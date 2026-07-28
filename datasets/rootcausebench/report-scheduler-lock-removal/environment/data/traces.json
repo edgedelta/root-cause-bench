@@ -1,0 +1,4265 @@
+[
+ {
+  "trace_id": "b39673dca347f40bece529331b7dba06",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-23T18:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b39673dca347f40bece529331b7dba06",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-23T18:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b39673dca347f40bece529331b7dba06",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-23T18:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "dd9b891c63210d8dae315812e484bc60",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-23T18:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "dd9b891c63210d8dae315812e484bc60",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-23T18:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "dd9b891c63210d8dae315812e484bc60",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-23T18:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "d41323c8e0fe307566669eb23cace28a",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-23T19:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "d41323c8e0fe307566669eb23cace28a",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-23T19:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "d41323c8e0fe307566669eb23cace28a",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-23T19:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4fbc6351fa0e810f284e550050df385b",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-23T19:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4fbc6351fa0e810f284e550050df385b",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-23T19:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4fbc6351fa0e810f284e550050df385b",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-23T19:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "cfbcfebebb7daf11fc606a4fa1d10fba",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-23T20:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "cfbcfebebb7daf11fc606a4fa1d10fba",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-23T20:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "cfbcfebebb7daf11fc606a4fa1d10fba",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-23T20:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9a8b45d9c93f1e79dc087a3b1b0ae158",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-23T20:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9a8b45d9c93f1e79dc087a3b1b0ae158",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-23T20:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9a8b45d9c93f1e79dc087a3b1b0ae158",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-23T20:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "84d52909a930339faf0d6a49d4e0bbeb",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-23T21:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "84d52909a930339faf0d6a49d4e0bbeb",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-23T21:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "84d52909a930339faf0d6a49d4e0bbeb",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-23T21:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f8bca65b0cecd004bf722094467e80ba",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-23T21:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f8bca65b0cecd004bf722094467e80ba",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-23T21:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f8bca65b0cecd004bf722094467e80ba",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-23T21:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "0758ada4c2aa0a6af101c987085a3e07",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-23T22:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "0758ada4c2aa0a6af101c987085a3e07",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-23T22:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "0758ada4c2aa0a6af101c987085a3e07",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-23T22:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e4fcf447b67c7347c6b6dd95c0abc492",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-23T22:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e4fcf447b67c7347c6b6dd95c0abc492",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-23T22:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e4fcf447b67c7347c6b6dd95c0abc492",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-23T22:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "107f74182cc1fdf2842ed2421d8ba7fd",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-23T23:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "107f74182cc1fdf2842ed2421d8ba7fd",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-23T23:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "107f74182cc1fdf2842ed2421d8ba7fd",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-23T23:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "646f64a6f900ca288bad9edb5a32260e",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-23T23:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "646f64a6f900ca288bad9edb5a32260e",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-23T23:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "646f64a6f900ca288bad9edb5a32260e",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-23T23:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "d6585802fc9f3b3a0066ec0de828f86e",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T00:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "d6585802fc9f3b3a0066ec0de828f86e",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T00:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "d6585802fc9f3b3a0066ec0de828f86e",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T00:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b5e3f53ce7ec02193e747067ea0a30d9",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T00:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b5e3f53ce7ec02193e747067ea0a30d9",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T00:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b5e3f53ce7ec02193e747067ea0a30d9",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T00:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b44bda0fbc962ce3ed067ac198a7218f",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T01:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b44bda0fbc962ce3ed067ac198a7218f",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T01:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b44bda0fbc962ce3ed067ac198a7218f",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T01:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "8916b8ccd5dee08da5b1b22a38283698",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T01:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "8916b8ccd5dee08da5b1b22a38283698",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T01:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "8916b8ccd5dee08da5b1b22a38283698",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T01:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5e562608863b1ace958ce453342d7097",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T02:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5e562608863b1ace958ce453342d7097",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T02:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5e562608863b1ace958ce453342d7097",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T02:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4056364f83a85e5a952d012186636bad",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T02:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4056364f83a85e5a952d012186636bad",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T02:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4056364f83a85e5a952d012186636bad",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T02:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6197b9f05fba794074102f99e307d5fd",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T03:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6197b9f05fba794074102f99e307d5fd",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T03:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6197b9f05fba794074102f99e307d5fd",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T03:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "11383aca00506afcdbccf4ffa17bc2da",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T03:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "11383aca00506afcdbccf4ffa17bc2da",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T03:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "11383aca00506afcdbccf4ffa17bc2da",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T03:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f4dd0854a1617480bd1b2c5e32db11ef",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T04:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f4dd0854a1617480bd1b2c5e32db11ef",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T04:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f4dd0854a1617480bd1b2c5e32db11ef",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T04:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "67cd6646a3c686ec13aca306ab0ac92b",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T04:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "67cd6646a3c686ec13aca306ab0ac92b",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T04:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "67cd6646a3c686ec13aca306ab0ac92b",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T04:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "98a209a03ad4d057bafc5f23e83d9659",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T05:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "98a209a03ad4d057bafc5f23e83d9659",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T05:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "98a209a03ad4d057bafc5f23e83d9659",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T05:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b007e21baff8c2f46f7960205ed99b00",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T05:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b007e21baff8c2f46f7960205ed99b00",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T05:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b007e21baff8c2f46f7960205ed99b00",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T05:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9b27e0a546de30edd80688b71d1fb3ab",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T06:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9b27e0a546de30edd80688b71d1fb3ab",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T06:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9b27e0a546de30edd80688b71d1fb3ab",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T06:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "39b6386a053d1629803ef52e303edc21",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T06:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "39b6386a053d1629803ef52e303edc21",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T06:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "39b6386a053d1629803ef52e303edc21",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T06:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "d7987510df4ca39736de3e0769fc5895",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T07:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "d7987510df4ca39736de3e0769fc5895",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T07:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "d7987510df4ca39736de3e0769fc5895",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T07:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9b30147e555e284b6a794a399eb73f81",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T07:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9b30147e555e284b6a794a399eb73f81",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T07:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9b30147e555e284b6a794a399eb73f81",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T07:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c0926841f6c9963d1d3bb3682f99dacb",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T08:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c0926841f6c9963d1d3bb3682f99dacb",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T08:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c0926841f6c9963d1d3bb3682f99dacb",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T08:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "713ad1da7e4a7177af61624b08413852",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T08:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "713ad1da7e4a7177af61624b08413852",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T08:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "713ad1da7e4a7177af61624b08413852",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T08:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "0cb1e15c720043b5803701a8599b5883",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T09:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "0cb1e15c720043b5803701a8599b5883",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T09:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "0cb1e15c720043b5803701a8599b5883",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T09:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a390911979676e575f4616aa85fdd64d",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T09:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a390911979676e575f4616aa85fdd64d",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T09:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a390911979676e575f4616aa85fdd64d",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T09:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "7dbcae4386091204ff06dc10b9411681",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T10:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "7dbcae4386091204ff06dc10b9411681",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T10:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "7dbcae4386091204ff06dc10b9411681",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T10:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "82c435d70bd1ff416b64b12fe17aa4bc",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T10:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "82c435d70bd1ff416b64b12fe17aa4bc",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T10:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "82c435d70bd1ff416b64b12fe17aa4bc",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T10:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "72ade1195976c1923668ee7b94c85b1a",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T11:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "72ade1195976c1923668ee7b94c85b1a",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T11:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "72ade1195976c1923668ee7b94c85b1a",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T11:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "405d5d4ed5aca6af205dc300f200fe46",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T11:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "405d5d4ed5aca6af205dc300f200fe46",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T11:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "405d5d4ed5aca6af205dc300f200fe46",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T11:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "532ef70b07f8b958bd5c5c6510d3fabb",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T12:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "532ef70b07f8b958bd5c5c6510d3fabb",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T12:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "532ef70b07f8b958bd5c5c6510d3fabb",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T12:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "bd3607858709392ed8735fcf6c277174",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T12:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "bd3607858709392ed8735fcf6c277174",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T12:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "bd3607858709392ed8735fcf6c277174",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T12:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "946f0a1c6f7e861cb2ba1c5305851187",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T13:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "946f0a1c6f7e861cb2ba1c5305851187",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T13:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "946f0a1c6f7e861cb2ba1c5305851187",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T13:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "356c0fc33580f4f6cd4ccb3332e968c9",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T13:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "356c0fc33580f4f6cd4ccb3332e968c9",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T13:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "356c0fc33580f4f6cd4ccb3332e968c9",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T13:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "eb78935530d7dd721da034a6c5143716",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T14:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "eb78935530d7dd721da034a6c5143716",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T14:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "eb78935530d7dd721da034a6c5143716",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T14:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c05b14ed27867fbf6b3a4c813acf1685",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T14:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c05b14ed27867fbf6b3a4c813acf1685",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T14:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c05b14ed27867fbf6b3a4c813acf1685",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T14:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a7806ca69fbd3518a106342d9a87ba35",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T15:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a7806ca69fbd3518a106342d9a87ba35",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T15:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a7806ca69fbd3518a106342d9a87ba35",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T15:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "09a054e8aa1000c468cdbc55ae410b81",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T15:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "09a054e8aa1000c468cdbc55ae410b81",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T15:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "09a054e8aa1000c468cdbc55ae410b81",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T15:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "065d53806e5d5be0537101cbf4515e1a",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T16:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "065d53806e5d5be0537101cbf4515e1a",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T16:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "065d53806e5d5be0537101cbf4515e1a",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T16:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "120026ebf664f4641069e95ccb62bd19",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T16:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "120026ebf664f4641069e95ccb62bd19",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T16:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "120026ebf664f4641069e95ccb62bd19",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T16:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "eb7a97ecf981cae1c9037dde3b4aa1d4",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T17:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "eb7a97ecf981cae1c9037dde3b4aa1d4",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T17:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "eb7a97ecf981cae1c9037dde3b4aa1d4",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T17:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "dafeb95ec2b336ec686172e146fd19ef",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T17:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "dafeb95ec2b336ec686172e146fd19ef",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T17:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "dafeb95ec2b336ec686172e146fd19ef",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T17:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "df1773a61ac80d376457b0707fa27b82",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T18:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "df1773a61ac80d376457b0707fa27b82",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T18:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "df1773a61ac80d376457b0707fa27b82",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T18:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "68dce33021347abe5befb97702af6b0a",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T18:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "68dce33021347abe5befb97702af6b0a",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T18:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "68dce33021347abe5befb97702af6b0a",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T18:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "708cf160bea28134f6133c5ffa3ec008",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T19:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "708cf160bea28134f6133c5ffa3ec008",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T19:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "708cf160bea28134f6133c5ffa3ec008",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T19:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "604629dddd038ae95bf263f9777abcee",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T19:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "604629dddd038ae95bf263f9777abcee",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T19:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "604629dddd038ae95bf263f9777abcee",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T19:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "06954f3b99f77ecdfb8245515174f0df",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T20:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "06954f3b99f77ecdfb8245515174f0df",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T20:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "06954f3b99f77ecdfb8245515174f0df",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T20:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5cc0cdaacfa9086869b6b3c7a91d2b28",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T20:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5cc0cdaacfa9086869b6b3c7a91d2b28",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T20:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5cc0cdaacfa9086869b6b3c7a91d2b28",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T20:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "017b653fb03990e799078758e3411721",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T21:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "017b653fb03990e799078758e3411721",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T21:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "017b653fb03990e799078758e3411721",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T21:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "25caa1c7607494556dfafe3005467f4c",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T21:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "25caa1c7607494556dfafe3005467f4c",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T21:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "25caa1c7607494556dfafe3005467f4c",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T21:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "821d14fcab2edefa9f2762b93a5c8c3f",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T22:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "821d14fcab2edefa9f2762b93a5c8c3f",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T22:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "821d14fcab2edefa9f2762b93a5c8c3f",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T22:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4429da74f0aef9a0f121822ec34ae223",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T22:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4429da74f0aef9a0f121822ec34ae223",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T22:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4429da74f0aef9a0f121822ec34ae223",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T22:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "fe26f2e1bd01a6a0bf427357c52bacf6",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T23:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "fe26f2e1bd01a6a0bf427357c52bacf6",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T23:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "fe26f2e1bd01a6a0bf427357c52bacf6",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T23:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b1835df2337dbdbfd0812991be9bac23",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T23:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b1835df2337dbdbfd0812991be9bac23",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T23:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b1835df2337dbdbfd0812991be9bac23",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T23:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "cf676e842127d62edfa34dcf0c8a5e0d",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T00:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "cf676e842127d62edfa34dcf0c8a5e0d",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T00:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "cf676e842127d62edfa34dcf0c8a5e0d",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T00:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "df6b6bbb0d84b7b114aa987e1334471a",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T00:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "df6b6bbb0d84b7b114aa987e1334471a",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T00:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "df6b6bbb0d84b7b114aa987e1334471a",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T00:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "24caec48643bb527229ae570ba7b5028",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T01:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "24caec48643bb527229ae570ba7b5028",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T01:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "24caec48643bb527229ae570ba7b5028",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T01:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "ccc60844a0df5b27bfd3d3f0f80657f7",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T01:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "ccc60844a0df5b27bfd3d3f0f80657f7",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T01:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "ccc60844a0df5b27bfd3d3f0f80657f7",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T01:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "13c8087826f7b3a741050a845421ba7b",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T02:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "13c8087826f7b3a741050a845421ba7b",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T02:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "13c8087826f7b3a741050a845421ba7b",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T02:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "0f80258c71c33b4f7671ee4c0442eb8a",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T02:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "0f80258c71c33b4f7671ee4c0442eb8a",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T02:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "0f80258c71c33b4f7671ee4c0442eb8a",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T02:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "88b3bd121c00796e71ab5f00a5db379e",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T03:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "88b3bd121c00796e71ab5f00a5db379e",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T03:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "88b3bd121c00796e71ab5f00a5db379e",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T03:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "41329019eae44dab6ea7c44c9e875cd9",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T03:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "41329019eae44dab6ea7c44c9e875cd9",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T03:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "41329019eae44dab6ea7c44c9e875cd9",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T03:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "d68141c191fa2f76dd6e40dafe80e094",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T04:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "d68141c191fa2f76dd6e40dafe80e094",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T04:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "d68141c191fa2f76dd6e40dafe80e094",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T04:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a9c447506177cb79f14cb6f52fd58e3b",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T04:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a9c447506177cb79f14cb6f52fd58e3b",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T04:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a9c447506177cb79f14cb6f52fd58e3b",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T04:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "d8692bc8fca9c7905262fbd564f33ea9",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T05:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "d8692bc8fca9c7905262fbd564f33ea9",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T05:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "d8692bc8fca9c7905262fbd564f33ea9",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T05:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5113495e9dc571e9f7abbc4c7da01f59",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T05:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5113495e9dc571e9f7abbc4c7da01f59",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T05:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5113495e9dc571e9f7abbc4c7da01f59",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T05:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6a0e6fe22d47bb936ad63128a3c090fa",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T06:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6a0e6fe22d47bb936ad63128a3c090fa",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T06:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6a0e6fe22d47bb936ad63128a3c090fa",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T06:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f6ba87a042bf9d062ea9188f58e1253b",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T06:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f6ba87a042bf9d062ea9188f58e1253b",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T06:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f6ba87a042bf9d062ea9188f58e1253b",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T06:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a0ef81a63920660dd20b95a9651b585a",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T07:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a0ef81a63920660dd20b95a9651b585a",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T07:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a0ef81a63920660dd20b95a9651b585a",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T07:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "50b5bb211c92d63dc39069847585ce76",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T07:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "50b5bb211c92d63dc39069847585ce76",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T07:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "50b5bb211c92d63dc39069847585ce76",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T07:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b0b7338aa1efd9670cd5390593e25883",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T08:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b0b7338aa1efd9670cd5390593e25883",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T08:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b0b7338aa1efd9670cd5390593e25883",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T08:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "d045bdc65e620a9cac9e8a41e0fd411a",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T08:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "d045bdc65e620a9cac9e8a41e0fd411a",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T08:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "d045bdc65e620a9cac9e8a41e0fd411a",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T08:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c2b096a38b8302a640a293d145076d7a",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T09:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c2b096a38b8302a640a293d145076d7a",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T09:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c2b096a38b8302a640a293d145076d7a",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T09:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f748273c458950dcb1ebad2cec3085e0",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T09:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f748273c458950dcb1ebad2cec3085e0",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T09:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f748273c458950dcb1ebad2cec3085e0",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T09:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "12ad41061d4c7de13d2b6160d472abd0",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T10:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "12ad41061d4c7de13d2b6160d472abd0",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T10:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "12ad41061d4c7de13d2b6160d472abd0",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T10:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "42b2b3b006b0b025943d7a757f777fff",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T10:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "42b2b3b006b0b025943d7a757f777fff",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T10:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "42b2b3b006b0b025943d7a757f777fff",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T10:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e80aec89514f561b5d4a670114850951",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T11:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e80aec89514f561b5d4a670114850951",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T11:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e80aec89514f561b5d4a670114850951",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T11:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "8e456c0cbe32a53e8b036b0c2e10edf6",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T11:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "8e456c0cbe32a53e8b036b0c2e10edf6",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T11:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "8e456c0cbe32a53e8b036b0c2e10edf6",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T11:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3bbe459b22c86e668092a2093e46653f",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T12:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3bbe459b22c86e668092a2093e46653f",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T12:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3bbe459b22c86e668092a2093e46653f",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T12:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f5e0eae699e83970d13f1ffede670c6f",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T12:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f5e0eae699e83970d13f1ffede670c6f",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T12:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f5e0eae699e83970d13f1ffede670c6f",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T12:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e722219e2d0a0dfbaa0cef6c8ac9536d",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T13:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e722219e2d0a0dfbaa0cef6c8ac9536d",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T13:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e722219e2d0a0dfbaa0cef6c8ac9536d",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T13:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "8cdb321b0407ad18bf30dfe7a342b6c0",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T13:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "8cdb321b0407ad18bf30dfe7a342b6c0",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T13:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "8cdb321b0407ad18bf30dfe7a342b6c0",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T13:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "979d4eebfb11eaaf04589724e594d8fa",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T14:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "979d4eebfb11eaaf04589724e594d8fa",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T14:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "979d4eebfb11eaaf04589724e594d8fa",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T14:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6ce72771050111f06746fa914e079a23",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T14:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6ce72771050111f06746fa914e079a23",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T14:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "6ce72771050111f06746fa914e079a23",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T14:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f77633bfcb7b80ed52f8bd03a8d96859",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T15:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f77633bfcb7b80ed52f8bd03a8d96859",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T15:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "f77633bfcb7b80ed52f8bd03a8d96859",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T15:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "1b40ae1e44c10ed0834285cc7db8b710",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T15:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "1b40ae1e44c10ed0834285cc7db8b710",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T15:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "1b40ae1e44c10ed0834285cc7db8b710",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T15:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5cafa36deff528f723ef08df3af42b85",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T16:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5cafa36deff528f723ef08df3af42b85",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T16:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5cafa36deff528f723ef08df3af42b85",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T16:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "27aa55d2493b8d16cdfc655ecd0405ea",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T16:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "27aa55d2493b8d16cdfc655ecd0405ea",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T16:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "27aa55d2493b8d16cdfc655ecd0405ea",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T16:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "504b53083754f4b6cc406877e42bbd39",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T17:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "504b53083754f4b6cc406877e42bbd39",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T17:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "504b53083754f4b6cc406877e42bbd39",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T17:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "daa8779ec2ef1fdcdfe79d1c1c55125a",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T17:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "daa8779ec2ef1fdcdfe79d1c1c55125a",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T17:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "daa8779ec2ef1fdcdfe79d1c1c55125a",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T17:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c90a347dc6502dfe2e88ec806b3089a1",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T18:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c90a347dc6502dfe2e88ec806b3089a1",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T18:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c90a347dc6502dfe2e88ec806b3089a1",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T18:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e320f5cfe09c73a08d19384a0e50e6c4",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T18:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e320f5cfe09c73a08d19384a0e50e6c4",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T18:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e320f5cfe09c73a08d19384a0e50e6c4",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T18:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c94eb64f5cfb864377433e0070eb3fb5",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T19:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c94eb64f5cfb864377433e0070eb3fb5",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T19:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c94eb64f5cfb864377433e0070eb3fb5",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T19:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "dddc2ff2c25e92a1cdf907a94bbff72b",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T19:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "dddc2ff2c25e92a1cdf907a94bbff72b",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T19:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "dddc2ff2c25e92a1cdf907a94bbff72b",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T19:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "195ad089aa38833f9b370082ef108d29",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T20:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "195ad089aa38833f9b370082ef108d29",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T20:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "195ad089aa38833f9b370082ef108d29",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T20:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5989be2074ff51c035caba3227933348",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T20:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5989be2074ff51c035caba3227933348",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T20:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5989be2074ff51c035caba3227933348",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T20:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b3c38d31036b885108fbf2152b8e494a",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T21:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b3c38d31036b885108fbf2152b8e494a",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T21:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b3c38d31036b885108fbf2152b8e494a",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T21:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "cff13b4e198df7a2810f56ee958b1d92",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T21:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "cff13b4e198df7a2810f56ee958b1d92",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T21:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "cff13b4e198df7a2810f56ee958b1d92",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T21:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "8d7b8cb8ddecb80edbb109aaf44a32b3",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T22:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "8d7b8cb8ddecb80edbb109aaf44a32b3",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T22:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "8d7b8cb8ddecb80edbb109aaf44a32b3",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T22:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "1b14ac462c98b10c340c3425fe6298ee",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T22:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "1b14ac462c98b10c340c3425fe6298ee",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T22:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "1b14ac462c98b10c340c3425fe6298ee",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T22:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9577e690ba43b370cdb1fd600566264c",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T23:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9577e690ba43b370cdb1fd600566264c",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T23:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9577e690ba43b370cdb1fd600566264c",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T23:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "0802114337a83790504527ca4236c0cb",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-25T23:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "0802114337a83790504527ca4236c0cb",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-25T23:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "0802114337a83790504527ca4236c0cb",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-25T23:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2a0177a6b4aa713511e1b2afa3534e8c",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-26T00:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2a0177a6b4aa713511e1b2afa3534e8c",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-26T00:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2a0177a6b4aa713511e1b2afa3534e8c",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-26T00:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5144cd4bf4201eecf6c5d7c1b5c24f57",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-26T00:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5144cd4bf4201eecf6c5d7c1b5c24f57",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-26T00:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5144cd4bf4201eecf6c5d7c1b5c24f57",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-26T00:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "ed9e2620bf548ac39cbe1959e8ecf3cc",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-26T01:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "ed9e2620bf548ac39cbe1959e8ecf3cc",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-26T01:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "ed9e2620bf548ac39cbe1959e8ecf3cc",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-26T01:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "26415ee7d57d9a017b9f714367ce17f8",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-26T01:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "26415ee7d57d9a017b9f714367ce17f8",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-26T01:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "26415ee7d57d9a017b9f714367ce17f8",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-26T01:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "79ffeb1e1c09e655fdca6f25f0400a10",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-26T02:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "79ffeb1e1c09e655fdca6f25f0400a10",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-26T02:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "79ffeb1e1c09e655fdca6f25f0400a10",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-26T02:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4537119276f30e9b3938d2a3a4d2b302",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-26T02:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4537119276f30e9b3938d2a3a4d2b302",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-26T02:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4537119276f30e9b3938d2a3a4d2b302",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-26T02:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "637f671c4ce85f5e578a9de01e7335b0",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-26T03:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "637f671c4ce85f5e578a9de01e7335b0",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-26T03:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "637f671c4ce85f5e578a9de01e7335b0",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-26T03:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "891b9372575a88f1595ef5ee0a4654cd",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-26T03:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "891b9372575a88f1595ef5ee0a4654cd",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-26T03:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "891b9372575a88f1595ef5ee0a4654cd",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-26T03:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4d522e11ab74a30bc5e61d89e3857ee1",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-26T04:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4d522e11ab74a30bc5e61d89e3857ee1",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-26T04:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "4d522e11ab74a30bc5e61d89e3857ee1",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-26T04:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "0c777c05f8a8b590c3a9e53bec097fc1",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-26T04:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "0c777c05f8a8b590c3a9e53bec097fc1",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-26T04:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "0c777c05f8a8b590c3a9e53bec097fc1",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-26T04:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e9ba62109e015e9afabe5361db043c89",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-26T05:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e9ba62109e015e9afabe5361db043c89",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-26T05:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e9ba62109e015e9afabe5361db043c89",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-26T05:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "8f694526196fb80b5d42e7397a17aa13",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-26T05:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "8f694526196fb80b5d42e7397a17aa13",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-26T05:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "8f694526196fb80b5d42e7397a17aa13",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-26T05:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c51b990eb40bb6d4b27dfd9cc4de6804",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-26T06:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c51b990eb40bb6d4b27dfd9cc4de6804",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-26T06:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "c51b990eb40bb6d4b27dfd9cc4de6804",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-26T06:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "cf7ba910b84027fe219fcd32a6cf4241",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-26T06:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "cf7ba910b84027fe219fcd32a6cf4241",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-26T06:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "cf7ba910b84027fe219fcd32a6cf4241",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-26T06:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2bda697ee723041f9057347b1b6afa03",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-26T07:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2bda697ee723041f9057347b1b6afa03",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-26T07:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2bda697ee723041f9057347b1b6afa03",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-26T07:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a41d9cf13c850856ca93c8a606932df1",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-26T07:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a41d9cf13c850856ca93c8a606932df1",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-26T07:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a41d9cf13c850856ca93c8a606932df1",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-26T07:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9fbd01a089db6c26597f4e344d60b1d2",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-26T08:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9fbd01a089db6c26597f4e344d60b1d2",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-26T08:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9fbd01a089db6c26597f4e344d60b1d2",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-26T08:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e66e5cc3ec5eac30fb2a4487efc8d582",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-26T08:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e66e5cc3ec5eac30fb2a4487efc8d582",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-26T08:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e66e5cc3ec5eac30fb2a4487efc8d582",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-26T08:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "19ffbdfa59e39c04212d5cd2969dffe0",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-26T09:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "19ffbdfa59e39c04212d5cd2969dffe0",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-26T09:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "19ffbdfa59e39c04212d5cd2969dffe0",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-26T09:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "8165ea66347a3579cc2c7ac9a18454ae",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-26T09:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "8165ea66347a3579cc2c7ac9a18454ae",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-26T09:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "8165ea66347a3579cc2c7ac9a18454ae",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-26T09:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e59120777fc2684e25236a8719ee19a5",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-26T10:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e59120777fc2684e25236a8719ee19a5",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-26T10:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e59120777fc2684e25236a8719ee19a5",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-26T10:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "540a0155209b6f31062034752f63448b",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-26T10:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "540a0155209b6f31062034752f63448b",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-26T10:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "540a0155209b6f31062034752f63448b",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-26T10:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "416d0556a4becf52f4a7ea82cb82c876",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-26T11:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "416d0556a4becf52f4a7ea82cb82c876",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-26T11:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "416d0556a4becf52f4a7ea82cb82c876",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-26T11:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "dc28e82eb7427929bbc5da143243ce06",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-26T11:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "dc28e82eb7427929bbc5da143243ce06",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-26T11:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "dc28e82eb7427929bbc5da143243ce06",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-26T11:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "428324f8f6d5ce0e37c283f07045608a",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-26T12:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "428324f8f6d5ce0e37c283f07045608a",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-26T12:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "428324f8f6d5ce0e37c283f07045608a",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-26T12:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "34f15bd304397dbc041ae5d88b0211db",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-26T12:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "34f15bd304397dbc041ae5d88b0211db",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-26T12:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "34f15bd304397dbc041ae5d88b0211db",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-26T12:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "ba8ffa13ac5b0885bbf98566b04db23a",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-26T13:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "ba8ffa13ac5b0885bbf98566b04db23a",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-26T13:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "ba8ffa13ac5b0885bbf98566b04db23a",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-26T13:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5ae01fd7f5de1e1208983ba0895cf083",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-26T13:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5ae01fd7f5de1e1208983ba0895cf083",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-26T13:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "5ae01fd7f5de1e1208983ba0895cf083",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-26T13:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "71e425803ca74c1a852c42d3b5312b6e",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-26T14:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "71e425803ca74c1a852c42d3b5312b6e",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-26T14:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "71e425803ca74c1a852c42d3b5312b6e",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-26T14:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9fe73033b7ee12052f17da052eb9c47b",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-26T14:30:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9fe73033b7ee12052f17da052eb9c47b",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-26T14:30:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "9fe73033b7ee12052f17da052eb9c47b",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-26T14:30:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a6178775be3fff9c9c79860a874bae7c",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-26T15:00:00Z",
+  "duration_ms": 45000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a6178775be3fff9c9c79860a874bae7c",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-26T15:00:00Z",
+  "duration_ms": 38000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a6178775be3fff9c9c79860a874bae7c",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-26T15:00:00Z",
+  "duration_ms": 500,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2222222222222222222222222222a001",
+  "span_id": "a0",
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-24T10:00:00Z",
+  "duration_ms": 44000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2222222222222222222222222222a001",
+  "span_id": "a1",
+  "parent_id": "a0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-24T10:00:00Z",
+  "duration_ms": 37000,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2222222222222222222222222222a001",
+  "span_id": "a2",
+  "parent_id": "a1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-24T10:00:00Z",
+  "duration_ms": 480,
+  "status": "OK"
+ },
+ {
+  "trace_id": "2222222222222222222222222222a002",
+  "span_id": "b0",
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-26T17:40:00Z",
+  "duration_ms": 205000,
+  "status": "ERROR",
+  "error": "report generation timed out"
+ },
+ {
+  "trace_id": "2222222222222222222222222222a002",
+  "span_id": "b1",
+  "parent_id": "b0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-26T17:40:00Z",
+  "duration_ms": 192000,
+  "status": "ERROR",
+  "error": "query exceeded configured timeout"
+ },
+ {
+  "trace_id": "2222222222222222222222222222a002",
+  "span_id": "b2",
+  "parent_id": "b1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-26T17:40:00Z",
+  "duration_ms": 205500,
+  "status": "ERROR",
+  "error": "report data unavailable: generation did not complete"
+ },
+ {
+  "trace_id": "2222222222222222222222222222a003",
+  "span_id": "c0",
+  "service": "report-scheduler",
+  "name": "RunReportJob",
+  "start": "2026-07-26T17:45:00Z",
+  "duration_ms": 228000,
+  "status": "ERROR",
+  "error": "report generation timed out"
+ },
+ {
+  "trace_id": "2222222222222222222222222222a003",
+  "span_id": "c1",
+  "parent_id": "c0",
+  "service": "reportdb-proxy",
+  "name": "QueryReportData",
+  "start": "2026-07-26T17:45:00Z",
+  "duration_ms": 210000,
+  "status": "ERROR",
+  "error": "query exceeded configured timeout"
+ },
+ {
+  "trace_id": "2222222222222222222222222222a003",
+  "span_id": "c2",
+  "parent_id": "c1",
+  "service": "dashboard-svc",
+  "name": "RefreshReportView",
+  "start": "2026-07-26T17:45:00Z",
+  "duration_ms": 228500,
+  "status": "ERROR",
+  "error": "report data unavailable: generation did not complete"
+ }
+]

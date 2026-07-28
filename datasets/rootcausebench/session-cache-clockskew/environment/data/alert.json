@@ -1,0 +1,8 @@
+{
+ "service": "auth-gw",
+ "metric": "session_lookup_p95_ms",
+ "threshold": 900,
+ "fired_at": "2026-07-24T10:40:00Z",
+ "summary": "auth-gw session_lookup_p95_ms > 900ms for 10m",
+ "detail": "session lookups degraded; users failing login/session validation platform-wide"
+}

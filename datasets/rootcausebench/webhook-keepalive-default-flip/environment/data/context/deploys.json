@@ -1,0 +1,158 @@
+[
+ {
+  "timestamp": "2026-07-23T08:05:23Z",
+  "service": "partner-sync-worker",
+  "commit_sha": "320c00630e0327b233b7b480215e518fb64b74d7",
+  "version": "v2026.07.23-0805"
+ },
+ {
+  "timestamp": "2026-07-23T08:14:05Z",
+  "service": "partner-sync-worker",
+  "commit_sha": "320c00630e0327b233b7b480215e518fb64b74d7",
+  "version": "v2026.07.23-0814"
+ },
+ {
+  "timestamp": "2026-07-23T08:30:00Z",
+  "service": "webhook-dispatcher",
+  "commit_sha": "38e5488f6d046c0a8efe42e542a675610ba1df3a",
+  "version": "v2026.07.23-0830"
+ },
+ {
+  "timestamp": "2026-07-23T09:15:00Z",
+  "service": "partner-sync-worker",
+  "commit_sha": "11cdbba9f68f146312db025c772e38e84bc074e6",
+  "version": "v2026.07.23-0915"
+ },
+ {
+  "timestamp": "2026-07-23T09:28:26Z",
+  "service": "billing-api",
+  "commit_sha": "34518e64246d0a154d9df4ccb82e12f853abe0b0",
+  "version": "v2026.07.23-0928"
+ },
+ {
+  "timestamp": "2026-07-23T09:34:14Z",
+  "service": "webhook-dispatcher",
+  "commit_sha": "e97e1d8b512595c47d78f25f252aa3b8f2845edb",
+  "version": "v2026.07.23-0934"
+ },
+ {
+  "timestamp": "2026-07-23T09:44:19Z",
+  "service": "billing-api",
+  "commit_sha": "e97e1d8b512595c47d78f25f252aa3b8f2845edb",
+  "version": "v2026.07.23-0944"
+ },
+ {
+  "timestamp": "2026-07-23T09:48:36Z",
+  "service": "webhook-dispatcher",
+  "commit_sha": "878a93e88cdd5a26f2157b5feebc460364753417",
+  "version": "v2026.07.23-0948"
+ },
+ {
+  "timestamp": "2026-07-23T09:50:00Z",
+  "service": "webhook-dispatcher",
+  "commit_sha": "ef32840d6e2a2a0f03ea98fff45ce156398aef29",
+  "version": "v2026.07.23-0950"
+ },
+ {
+  "timestamp": "2026-07-23T10:10:00Z",
+  "service": "webhook-dispatcher",
+  "commit_sha": "0c2bfd4de8cc1b17b0de772f11b6aaa8cca8d040",
+  "version": "v2026.07.23-1010"
+ },
+ {
+  "timestamp": "2026-07-23T10:20:23Z",
+  "service": "partner-sync-worker",
+  "commit_sha": "e97e1d8b512595c47d78f25f252aa3b8f2845edb",
+  "version": "v2026.07.23-1020"
+ },
+ {
+  "timestamp": "2026-07-23T10:45:00Z",
+  "service": "webhook-dispatcher",
+  "commit_sha": "49613b77988a8fa0fd8041eaf53d2eb916b79ab2",
+  "version": "v2026.07.23-1045"
+ },
+ {
+  "timestamp": "2026-07-23T11:03:56Z",
+  "service": "billing-api",
+  "commit_sha": "dd170b4c6b2ddeb9d783481e1ad7f11d149e67e0",
+  "version": "v2026.07.23-1103"
+ },
+ {
+  "timestamp": "2026-07-23T11:04:19Z",
+  "service": "billing-api",
+  "commit_sha": "4269638f6712be9ec8f99b05edeb56fc6d50a33a",
+  "version": "v2026.07.23-1104"
+ },
+ {
+  "timestamp": "2026-07-23T11:06:00Z",
+  "service": "billing-api",
+  "commit_sha": "3a7d8bfba4bb663c2b12a7f08fe7682c083d4bba",
+  "version": "v2026.07.23-1106"
+ },
+ {
+  "timestamp": "2026-07-23T11:15:48Z",
+  "service": "webhook-dispatcher",
+  "commit_sha": "f78bc72542591cd248750c096821945ec2d18e97",
+  "version": "v2026.07.23-1115"
+ },
+ {
+  "timestamp": "2026-07-23T11:25:36Z",
+  "service": "billing-api",
+  "commit_sha": "878a93e88cdd5a26f2157b5feebc460364753417",
+  "version": "v2026.07.23-1125"
+ },
+ {
+  "timestamp": "2026-07-23T11:41:40Z",
+  "service": "webhook-dispatcher",
+  "commit_sha": "dd170b4c6b2ddeb9d783481e1ad7f11d149e67e0",
+  "version": "v2026.07.23-1141"
+ },
+ {
+  "timestamp": "2026-07-23T11:46:00Z",
+  "service": "billing-api",
+  "commit_sha": "e97e1d8b512595c47d78f25f252aa3b8f2845edb",
+  "version": "v2026.07.23-1146"
+ },
+ {
+  "timestamp": "2026-07-23T12:02:56Z",
+  "service": "partner-sync-worker",
+  "commit_sha": "6252011e77b337afd4801f42f31a7fa19159576c",
+  "version": "v2026.07.23-1202"
+ },
+ {
+  "timestamp": "2026-07-23T12:17:22Z",
+  "service": "partner-sync-worker",
+  "commit_sha": "1d1f4346ea820ea8fae3a470a077b8dab770ccd9",
+  "version": "v2026.07.23-1217"
+ },
+ {
+  "timestamp": "2026-07-23T12:41:49Z",
+  "service": "partner-sync-worker",
+  "commit_sha": "7fca7dfd5d3ed46ac6aefc9ccf58a255f2d7118e",
+  "version": "v2026.07.23-1241"
+ },
+ {
+  "timestamp": "2026-07-23T13:02:40Z",
+  "service": "webhook-dispatcher",
+  "commit_sha": "7a95ca3924edbc77f6ba4303019669532e6f40a7",
+  "version": "v2026.07.23-1302"
+ },
+ {
+  "timestamp": "2026-07-23T13:28:18Z",
+  "service": "billing-api",
+  "commit_sha": "8c6d88923e2183e62a92c8aa64b32b652745554a",
+  "version": "v2026.07.23-1328"
+ },
+ {
+  "timestamp": "2026-07-23T13:42:36Z",
+  "service": "partner-sync-worker",
+  "commit_sha": "320c00630e0327b233b7b480215e518fb64b74d7",
+  "version": "v2026.07.23-1342"
+ },
+ {
+  "timestamp": "2026-07-23T13:53:38Z",
+  "service": "webhook-dispatcher",
+  "commit_sha": "dd170b4c6b2ddeb9d783481e1ad7f11d149e67e0",
+  "version": "v2026.07.23-1353"
+ }
+]

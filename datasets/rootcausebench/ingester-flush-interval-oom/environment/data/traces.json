@@ -1,0 +1,605 @@
+[
+ {
+  "trace_id": "b7a790b1dff1a828058903b1e69f138b",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "GET /api/dashboard/metrics",
+  "start": "2026-07-25T06:00:00Z",
+  "duration_ms": 85,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b7a790b1dff1a828058903b1e69f138b",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "query-svc",
+  "name": "QueryMetrics",
+  "start": "2026-07-25T06:00:00Z",
+  "duration_ms": 55,
+  "status": "OK"
+ },
+ {
+  "trace_id": "b7a790b1dff1a828058903b1e69f138b",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "metric-ingester",
+  "name": "ReadBuffer",
+  "start": "2026-07-25T06:00:00Z",
+  "duration_ms": 12,
+  "status": "OK"
+ },
+ {
+  "trace_id": "ee7e3e8086e19f806eb10763d1eb0c6a",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "GET /api/dashboard/metrics",
+  "start": "2026-07-25T06:15:17Z",
+  "duration_ms": 85,
+  "status": "OK"
+ },
+ {
+  "trace_id": "ee7e3e8086e19f806eb10763d1eb0c6a",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "query-svc",
+  "name": "QueryMetrics",
+  "start": "2026-07-25T06:15:17Z",
+  "duration_ms": 55,
+  "status": "OK"
+ },
+ {
+  "trace_id": "ee7e3e8086e19f806eb10763d1eb0c6a",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "metric-ingester",
+  "name": "ReadBuffer",
+  "start": "2026-07-25T06:15:17Z",
+  "duration_ms": 12,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e69eeb80d64c501a2cf8ca3f6518e456",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "GET /api/dashboard/metrics",
+  "start": "2026-07-25T06:30:35Z",
+  "duration_ms": 85,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e69eeb80d64c501a2cf8ca3f6518e456",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "query-svc",
+  "name": "QueryMetrics",
+  "start": "2026-07-25T06:30:35Z",
+  "duration_ms": 55,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e69eeb80d64c501a2cf8ca3f6518e456",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "metric-ingester",
+  "name": "ReadBuffer",
+  "start": "2026-07-25T06:30:35Z",
+  "duration_ms": 12,
+  "status": "OK"
+ },
+ {
+  "trace_id": "45b372b3da0950823edb1b1623b05bef",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "GET /api/dashboard/metrics",
+  "start": "2026-07-25T06:45:52Z",
+  "duration_ms": 85,
+  "status": "OK"
+ },
+ {
+  "trace_id": "45b372b3da0950823edb1b1623b05bef",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "query-svc",
+  "name": "QueryMetrics",
+  "start": "2026-07-25T06:45:52Z",
+  "duration_ms": 55,
+  "status": "OK"
+ },
+ {
+  "trace_id": "45b372b3da0950823edb1b1623b05bef",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "metric-ingester",
+  "name": "ReadBuffer",
+  "start": "2026-07-25T06:45:52Z",
+  "duration_ms": 12,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e492aca8c130993fe5e50b3ba8218cae",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "GET /api/dashboard/metrics",
+  "start": "2026-07-25T07:01:10Z",
+  "duration_ms": 85,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e492aca8c130993fe5e50b3ba8218cae",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "query-svc",
+  "name": "QueryMetrics",
+  "start": "2026-07-25T07:01:10Z",
+  "duration_ms": 55,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e492aca8c130993fe5e50b3ba8218cae",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "metric-ingester",
+  "name": "ReadBuffer",
+  "start": "2026-07-25T07:01:10Z",
+  "duration_ms": 12,
+  "status": "OK"
+ },
+ {
+  "trace_id": "68a61015f75c2ee9ae4e04c4ec76f251",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "GET /api/dashboard/metrics",
+  "start": "2026-07-25T07:16:28Z",
+  "duration_ms": 85,
+  "status": "OK"
+ },
+ {
+  "trace_id": "68a61015f75c2ee9ae4e04c4ec76f251",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "query-svc",
+  "name": "QueryMetrics",
+  "start": "2026-07-25T07:16:28Z",
+  "duration_ms": 55,
+  "status": "OK"
+ },
+ {
+  "trace_id": "68a61015f75c2ee9ae4e04c4ec76f251",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "metric-ingester",
+  "name": "ReadBuffer",
+  "start": "2026-07-25T07:16:28Z",
+  "duration_ms": 12,
+  "status": "OK"
+ },
+ {
+  "trace_id": "738d52813a882bf7a4842507ebaee2fe",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "GET /api/dashboard/metrics",
+  "start": "2026-07-25T07:31:45Z",
+  "duration_ms": 85,
+  "status": "OK"
+ },
+ {
+  "trace_id": "738d52813a882bf7a4842507ebaee2fe",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "query-svc",
+  "name": "QueryMetrics",
+  "start": "2026-07-25T07:31:45Z",
+  "duration_ms": 55,
+  "status": "OK"
+ },
+ {
+  "trace_id": "738d52813a882bf7a4842507ebaee2fe",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "metric-ingester",
+  "name": "ReadBuffer",
+  "start": "2026-07-25T07:31:45Z",
+  "duration_ms": 12,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a81ff0c131adeca87e3239b088f5b3e8",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "GET /api/dashboard/metrics",
+  "start": "2026-07-25T07:47:03Z",
+  "duration_ms": 85,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a81ff0c131adeca87e3239b088f5b3e8",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "query-svc",
+  "name": "QueryMetrics",
+  "start": "2026-07-25T07:47:03Z",
+  "duration_ms": 55,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a81ff0c131adeca87e3239b088f5b3e8",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "metric-ingester",
+  "name": "ReadBuffer",
+  "start": "2026-07-25T07:47:03Z",
+  "duration_ms": 12,
+  "status": "OK"
+ },
+ {
+  "trace_id": "aea34c6ebeeefa0cc4899ad307cd48a1",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "GET /api/dashboard/metrics",
+  "start": "2026-07-25T08:02:21Z",
+  "duration_ms": 85,
+  "status": "OK"
+ },
+ {
+  "trace_id": "aea34c6ebeeefa0cc4899ad307cd48a1",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "query-svc",
+  "name": "QueryMetrics",
+  "start": "2026-07-25T08:02:21Z",
+  "duration_ms": 55,
+  "status": "OK"
+ },
+ {
+  "trace_id": "aea34c6ebeeefa0cc4899ad307cd48a1",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "metric-ingester",
+  "name": "ReadBuffer",
+  "start": "2026-07-25T08:02:21Z",
+  "duration_ms": 12,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a2452fabb7d83d8cf8391fa623903a73",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "GET /api/dashboard/metrics",
+  "start": "2026-07-25T08:17:38Z",
+  "duration_ms": 85,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a2452fabb7d83d8cf8391fa623903a73",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "query-svc",
+  "name": "QueryMetrics",
+  "start": "2026-07-25T08:17:38Z",
+  "duration_ms": 55,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a2452fabb7d83d8cf8391fa623903a73",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "metric-ingester",
+  "name": "ReadBuffer",
+  "start": "2026-07-25T08:17:38Z",
+  "duration_ms": 12,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e6994462aa7a339709b772e5ae289df5",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "GET /api/dashboard/metrics",
+  "start": "2026-07-25T08:32:56Z",
+  "duration_ms": 85,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e6994462aa7a339709b772e5ae289df5",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "query-svc",
+  "name": "QueryMetrics",
+  "start": "2026-07-25T08:32:56Z",
+  "duration_ms": 55,
+  "status": "OK"
+ },
+ {
+  "trace_id": "e6994462aa7a339709b772e5ae289df5",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "metric-ingester",
+  "name": "ReadBuffer",
+  "start": "2026-07-25T08:32:56Z",
+  "duration_ms": 12,
+  "status": "OK"
+ },
+ {
+  "trace_id": "0f99231e21309f49f24c0bf2427f7566",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "GET /api/dashboard/metrics",
+  "start": "2026-07-25T08:48:14Z",
+  "duration_ms": 85,
+  "status": "OK"
+ },
+ {
+  "trace_id": "0f99231e21309f49f24c0bf2427f7566",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "query-svc",
+  "name": "QueryMetrics",
+  "start": "2026-07-25T08:48:14Z",
+  "duration_ms": 55,
+  "status": "OK"
+ },
+ {
+  "trace_id": "0f99231e21309f49f24c0bf2427f7566",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "metric-ingester",
+  "name": "ReadBuffer",
+  "start": "2026-07-25T08:48:14Z",
+  "duration_ms": 12,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3e11eec4183e1c23f08d48755de332f9",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "GET /api/dashboard/metrics",
+  "start": "2026-07-25T09:03:31Z",
+  "duration_ms": 85,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3e11eec4183e1c23f08d48755de332f9",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "query-svc",
+  "name": "QueryMetrics",
+  "start": "2026-07-25T09:03:31Z",
+  "duration_ms": 55,
+  "status": "OK"
+ },
+ {
+  "trace_id": "3e11eec4183e1c23f08d48755de332f9",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "metric-ingester",
+  "name": "ReadBuffer",
+  "start": "2026-07-25T09:03:31Z",
+  "duration_ms": 12,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a26a99b8a2393b741601005c5b6b1281",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "GET /api/dashboard/metrics",
+  "start": "2026-07-25T09:18:49Z",
+  "duration_ms": 85,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a26a99b8a2393b741601005c5b6b1281",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "query-svc",
+  "name": "QueryMetrics",
+  "start": "2026-07-25T09:18:49Z",
+  "duration_ms": 55,
+  "status": "OK"
+ },
+ {
+  "trace_id": "a26a99b8a2393b741601005c5b6b1281",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "metric-ingester",
+  "name": "ReadBuffer",
+  "start": "2026-07-25T09:18:49Z",
+  "duration_ms": 12,
+  "status": "OK"
+ },
+ {
+  "trace_id": "ea066704a07c58ea4981b27cd4c12f59",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "GET /api/dashboard/metrics",
+  "start": "2026-07-25T09:34:07Z",
+  "duration_ms": 85,
+  "status": "OK"
+ },
+ {
+  "trace_id": "ea066704a07c58ea4981b27cd4c12f59",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "query-svc",
+  "name": "QueryMetrics",
+  "start": "2026-07-25T09:34:07Z",
+  "duration_ms": 55,
+  "status": "OK"
+ },
+ {
+  "trace_id": "ea066704a07c58ea4981b27cd4c12f59",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "metric-ingester",
+  "name": "ReadBuffer",
+  "start": "2026-07-25T09:34:07Z",
+  "duration_ms": 12,
+  "status": "OK"
+ },
+ {
+  "trace_id": "896adf78a05f5cfb7f30a3415a423d42",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "GET /api/dashboard/metrics",
+  "start": "2026-07-25T09:49:24Z",
+  "duration_ms": 85,
+  "status": "OK"
+ },
+ {
+  "trace_id": "896adf78a05f5cfb7f30a3415a423d42",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "query-svc",
+  "name": "QueryMetrics",
+  "start": "2026-07-25T09:49:24Z",
+  "duration_ms": 55,
+  "status": "OK"
+ },
+ {
+  "trace_id": "896adf78a05f5cfb7f30a3415a423d42",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "metric-ingester",
+  "name": "ReadBuffer",
+  "start": "2026-07-25T09:49:24Z",
+  "duration_ms": 12,
+  "status": "OK"
+ },
+ {
+  "trace_id": "ab4e6c1b3e5c171fa82c3f04ff6407e6",
+  "span_id": "s0",
+  "parent_id": null,
+  "service": "platform-api",
+  "name": "GET /api/dashboard/metrics",
+  "start": "2026-07-25T10:04:42Z",
+  "duration_ms": 85,
+  "status": "OK"
+ },
+ {
+  "trace_id": "ab4e6c1b3e5c171fa82c3f04ff6407e6",
+  "span_id": "s1",
+  "parent_id": "s0",
+  "service": "query-svc",
+  "name": "QueryMetrics",
+  "start": "2026-07-25T10:04:42Z",
+  "duration_ms": 55,
+  "status": "OK"
+ },
+ {
+  "trace_id": "ab4e6c1b3e5c171fa82c3f04ff6407e6",
+  "span_id": "s2",
+  "parent_id": "s1",
+  "service": "metric-ingester",
+  "name": "ReadBuffer",
+  "start": "2026-07-25T10:04:42Z",
+  "duration_ms": 12,
+  "status": "OK"
+ },
+ {
+  "trace_id": "eeeeeeeeeeeeeeeeeeeeeeeeeeee0001",
+  "span_id": "e0",
+  "service": "platform-api",
+  "name": "GET /api/dashboard/metrics",
+  "start": "2026-07-25T09:10:00Z",
+  "duration_ms": 90,
+  "status": "OK"
+ },
+ {
+  "trace_id": "eeeeeeeeeeeeeeeeeeeeeeeeeeee0001",
+  "span_id": "e1",
+  "parent_id": "e0",
+  "service": "query-svc",
+  "name": "QueryMetrics",
+  "start": "2026-07-25T09:10:00Z",
+  "duration_ms": 58,
+  "status": "OK"
+ },
+ {
+  "trace_id": "eeeeeeeeeeeeeeeeeeeeeeeeeeee0001",
+  "span_id": "e2",
+  "parent_id": "e1",
+  "service": "metric-ingester",
+  "name": "ReadBuffer",
+  "start": "2026-07-25T09:10:00Z",
+  "duration_ms": 14,
+  "status": "OK"
+ },
+ {
+  "trace_id": "eeeeeeeeeeeeeeeeeeeeeeeeeeee0002",
+  "span_id": "f0",
+  "service": "platform-api",
+  "name": "GET /api/dashboard/metrics",
+  "start": "2026-07-25T10:55:00Z",
+  "duration_ms": 3210,
+  "status": "ERROR",
+  "error": "upstream timeout"
+ },
+ {
+  "trace_id": "eeeeeeeeeeeeeeeeeeeeeeeeeeee0002",
+  "span_id": "f1",
+  "parent_id": "f0",
+  "service": "query-svc",
+  "name": "QueryMetrics",
+  "start": "2026-07-25T10:55:00Z",
+  "duration_ms": 3180,
+  "status": "ERROR",
+  "error": "upstream metric-ingester unresponsive"
+ },
+ {
+  "trace_id": "eeeeeeeeeeeeeeeeeeeeeeeeeeee0002",
+  "span_id": "f2",
+  "parent_id": "f1",
+  "service": "metric-ingester",
+  "name": "ReadBuffer",
+  "start": "2026-07-25T10:55:00Z",
+  "duration_ms": 2950,
+  "status": "ERROR",
+  "error": "write deadline exceeded"
+ },
+ {
+  "trace_id": "eeeeeeeeeeeeeeeeeeeeeeeeeeee0003",
+  "span_id": "g0",
+  "service": "platform-api",
+  "name": "GET /api/dashboard/metrics",
+  "start": "2026-07-25T11:05:00Z",
+  "duration_ms": 3260,
+  "status": "ERROR",
+  "error": "upstream timeout"
+ },
+ {
+  "trace_id": "eeeeeeeeeeeeeeeeeeeeeeeeeeee0003",
+  "span_id": "g1",
+  "parent_id": "g0",
+  "service": "query-svc",
+  "name": "QueryMetrics",
+  "start": "2026-07-25T11:05:00Z",
+  "duration_ms": 3225,
+  "status": "ERROR",
+  "error": "upstream metric-ingester unresponsive"
+ },
+ {
+  "trace_id": "eeeeeeeeeeeeeeeeeeeeeeeeeeee0003",
+  "span_id": "g2",
+  "parent_id": "g1",
+  "service": "metric-ingester",
+  "name": "ReadBuffer",
+  "start": "2026-07-25T11:05:00Z",
+  "duration_ms": 2990,
+  "status": "ERROR",
+  "error": "write deadline exceeded"
+ }
+]
