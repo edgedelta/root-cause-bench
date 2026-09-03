@@ -137,7 +137,7 @@ uv run scripts/process_results.py jobs/<timestamp>
 
 ## Leaderboard
 
-Frozen run (v3): **36 scenarios x 27 models x 3 attempts = 2916 trials**, Harbor `terminus-2` over OpenRouter (base tiers 2026-07-07/10/23/24, adversarial tier 2026-07-27; muse models 2026-08-11; qwen3.8-27b 2026-08-16; glm-5.3 2026-08-31), all agents at an 1800s timeout. Models are ranked on **mean graded reward** (1.0 correct culprit; 0.0 for blaming a decoy; partial credit ≤ 0.5 otherwise; ± 95% CI over the 108 trials), with binary pass rates alongside. Any `AgentTimeoutError` trial is re-run per methodology (timeouts are infra errors, not model failures). Full per-trial results (outcome, graded reward, cost, tokens, timing per model) + rollups are committed under [`benchmark-results/`](benchmark-results/).
+Frozen run (v3): **36 scenarios x 28 models x 3 attempts = 3024 trials**, Harbor `terminus-2` over OpenRouter (base tiers 2026-07-07/10/23/24, adversarial tier 2026-07-27; muse models 2026-08-11; qwen3.8-27b 2026-08-16; glm-5.3 2026-08-31; muse-spark-1.3 2026-09-03), all agents at an 1800s timeout. Models are ranked on **mean graded reward** (1.0 correct culprit; 0.0 for blaming a decoy; partial credit ≤ 0.5 otherwise; ± 95% CI over the 108 trials), with binary pass rates alongside. Any `AgentTimeoutError` trial is re-run per methodology (timeouts are infra errors, not model failures). Full per-trial results (outcome, graded reward, cost, tokens, timing per model) + rollups are committed under [`benchmark-results/`](benchmark-results/).
 
 > v2 → v3: adds the **adversarial tier** — 12 new scenarios (guilty-looking
 > mechanism-trap decoys exonerable only by code-semantics reasoning, beyond-context
@@ -164,6 +164,7 @@ Frozen run (v3): **36 scenarios x 27 models x 3 attempts = 2916 trials**, Harbor
 | claude-opus-5 | **0.981 ± 0.026** | 98% | 100% | 100% | 100% | 94% | 100% |
 | glm-5.2 | **0.981 ± 0.026** | 98% | 100% | 100% | 100% | 94% | 100% |
 | muse-spark-1.2 | **0.972 ± 0.031** | 97% | 100% | 100% | 100% | 92% | 100% |
+| muse-spark-1.3 | **0.972 ± 0.031** | 97% | 100% | 100% | 100% | 92% | 100% |
 | claude-fable-5 | **0.968 ± 0.032** | 96% | 100% | 100% | 94% | 94% | 100% |
 | gpt-5.6-sol | **0.967 ± 0.033** | 96% | 100% | 100% | 100% | 89% | 100% |
 | grok-4.5 | **0.963 ± 0.036** | 96% | 100% | 100% | 100% | 89% | 100% |
