@@ -1,4 +1,4 @@
-# root-cause-bench — leaderboard v2: full re-run, all 30 models (Docker).
+# root-cause-bench — leaderboard v2: full re-run, all 31 models (Docker).
 #
 # Changes vs the v1 frozen run (2026-06-30/07-02):
 #   - override_timeout_sec: 1800 for every agent (v1's 600s cap cost
@@ -47,6 +47,9 @@ agents:
     override_timeout_sec: 1800
   - name: terminus-2
     model_name: openrouter/deepseek/deepseek-v4-flash
+    override_timeout_sec: 1800
+  - name: terminus-2
+    model_name: openrouter/deepseek/deepseek-v4.1-flash
     override_timeout_sec: 1800
   - name: terminus-2
     model_name: openrouter/google/gemini-3.1-flash-lite
