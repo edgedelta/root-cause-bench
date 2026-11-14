@@ -137,7 +137,7 @@ uv run scripts/process_results.py jobs/<timestamp>
 
 ## Leaderboard
 
-Frozen run (v3): **36 scenarios x 34 models x 3 attempts = 3672 trials**, Harbor `terminus-2` over OpenRouter (base tiers 2026-07-07/10/23/24, adversarial tier 2026-07-27; muse models 2026-08-11; qwen3.8-27b 2026-08-16; glm-5.3 2026-08-31; muse-spark-1.3 + claude-fable-5.1 2026-09-03; gpt-6-astra 2026-09-05; deepseek-v4.1-flash 2026-09-11; claude-opus-5.5 2026-09-24; gemini-4-argon 2026-10-14; kimi-k3.1-pro 2026-10-24), all agents at an 1800s timeout. Models are ranked on **mean graded reward** (1.0 correct culprit; 0.0 for blaming a decoy; partial credit ≤ 0.5 otherwise; ± 95% CI over the 108 trials), with binary pass rates alongside. Any `AgentTimeoutError` trial is re-run per methodology (timeouts are infra errors, not model failures). Full per-trial results (outcome, graded reward, cost, tokens, timing per model) + rollups are committed under [`benchmark-results/`](benchmark-results/).
+Frozen run (v3): **36 scenarios x 39 models x 3 attempts = 4212 trials**, Harbor `terminus-2` over OpenRouter (base tiers 2026-07-07/10/23/24, adversarial tier 2026-07-27; muse models 2026-08-11; qwen3.8-27b 2026-08-16; glm-5.3 2026-08-31; muse-spark-1.3 + claude-fable-5.1 2026-09-03; gpt-6-astra 2026-09-05; deepseek-v4.1-flash 2026-09-11; claude-opus-5.5 2026-09-24; gemini-4-argon 2026-10-14; kimi-k3.1-pro 2026-10-24; glm-5.3-flash + claude-haiku-5.5 + gemini-4-hydrogen + gemini-4-carbon + claude-fable-5.2 2026-11-13/14), all agents at an 1800s timeout. Models are ranked on **mean graded reward** (1.0 correct culprit; 0.0 for blaming a decoy; partial credit ≤ 0.5 otherwise; ± 95% CI over the 108 trials), with binary pass rates alongside. Any `AgentTimeoutError` trial is re-run per methodology (timeouts are infra errors, not model failures). Full per-trial results (outcome, graded reward, cost, tokens, timing per model) + rollups are committed under [`benchmark-results/`](benchmark-results/).
 
 > 2026-09-05: openai/gpt-6-astra is the first model to clear all 108 trials
 > (1.000 ± 0.000), including every adversarial scenario 3/3 and every no-code-cause
@@ -147,6 +147,11 @@ Frozen run (v3): **36 scenarios x 34 models x 3 attempts = 3672 trials**, Harbor
 > 2026-10-14: google/gemini-4-argon is the second model to clear all 108 trials
 > (1.000 ± 0.000); its two `AgentTimeoutError` trials on shared-config-pool-drain
 > were re-run per methodology and both passed.
+>
+> 2026-11-14: google/gemini-4-carbon and anthropic/claude-fable-5.2 are the third and
+> fourth models to clear all 108 trials (1.000 ± 0.000). claude-fable-5.2 had no agent
+> exceptions; gemini-4-carbon's `AgentTimeoutError` trials on shared-config-pool-drain
+> were re-run per methodology (its clean attempts use ~1450s of the 1800s budget).
 
 > v2 → v3: adds the **adversarial tier** — 12 new scenarios (guilty-looking
 > mechanism-trap decoys exonerable only by code-semantics reasoning, beyond-context
@@ -171,8 +176,13 @@ Frozen run (v3): **36 scenarios x 34 models x 3 attempts = 3672 trials**, Harbor
 |---|---|---|---|---|---|---|---|
 | gpt-6-astra | **1.000 ± 0.000** | 100% | 100% | 100% | 100% | 100% | 100% |
 | gemini-4-argon | **1.000 ± 0.000** | 100% | 100% | 100% | 100% | 100% | 100% |
+| gemini-4-carbon | **1.000 ± 0.000** | 100% | 100% | 100% | 100% | 100% | 100% |
+| claude-fable-5.2 | **1.000 ± 0.000** | 100% | 100% | 100% | 100% | 100% | 100% |
 | kimi-k3 | **0.991 ± 0.018** | 99% | 100% | 100% | 100% | 97% | 100% |
 | claude-opus-5.5 | **0.991 ± 0.018** | 99% | 100% | 100% | 100% | 97% | 100% |
+| claude-haiku-5.5 | **0.991 ± 0.018** | 99% | 100% | 100% | 100% | 97% | 100% |
+| gemini-4-hydrogen | **0.991 ± 0.018** | 99% | 100% | 100% | 97% | 100% | 100% |
+| glm-5.3-flash | **0.982 ± 0.025** | 98% | 100% | 100% | 100% | 94% | 100% |
 | claude-opus-5 | **0.981 ± 0.026** | 98% | 100% | 100% | 100% | 94% | 100% |
 | glm-5.2 | **0.981 ± 0.026** | 98% | 100% | 100% | 100% | 94% | 100% |
 | muse-spark-1.2 | **0.972 ± 0.031** | 97% | 100% | 100% | 100% | 92% | 100% |
